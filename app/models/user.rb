@@ -8,6 +8,15 @@ class User < ApplicationRecord
   validates :email, length: {in: 3..255}, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, length: { in: 6..255 }, allow_nil: true
 
+  def self.find_by_credentials(email, password)
+    user = User.find_by(email: email)
+    return user&.authenticate(password) ? user : nil
+  end
+
+  def reset_session_token!
+    self.session_token = generate_unique_session_token
+  end
+
   private
 
   def generate_unique_session_token
