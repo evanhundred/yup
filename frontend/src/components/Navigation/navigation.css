@@ -2,12 +2,26 @@ body {
   font-family: inherit;
 }
 
-/* #root {
+/* .homeLink img {
+  width: 90px; */
+/* } */
 
-} */
+#logo {
+  font-family: "Roboto Mono", Helvetica, Arial, sans-serif;
+  font-size: 30px;
+}
 
-.homeLink img {
-  width: 90px;
+#logo,
+#logo span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#logo span {
+  font-size: 50px;
+  color: red;
+  font-weight: 800;
+  margin-top: -10px;
 }
 
 #nav-bar {
@@ -16,6 +30,28 @@ body {
   justify-content: space-between;
   align-items: center;
   margin: 10px 40px;
+}
+
+#header-bar {
+  background-color: #e34234;
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
+
+#header-bar h1 {
+  color: white;
+  font-size: 30px;
+  font-family: "Roboto Mono", Helvetica, Arial, sans-serif;
+}
+
+/* #header-bar h1.yup-logo */
+
+#header-bar h1.star {
+  font-size: 60px;
+  font-weight: 600;
+  margin-bottom: -5px;
 }
 
 button,
@@ -36,4 +72,11 @@ a {
   border: 2px solid black;
   border-radius: 4px;
   padding: 6px 12px;
+}
+
+#form-header-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 10px 0; */
 }

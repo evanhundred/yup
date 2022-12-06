@@ -3,6 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import "./LoginForm.css";
+import LoginImage from "./LoginImage";
 
 const LoginFormPage = () => {
   const dispatch = useDispatch();
@@ -13,9 +14,11 @@ const LoginFormPage = () => {
 
   if (sessionUser) return <Redirect to="/" />;
 
+  // original code
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
+    // debugger;
 
     return dispatch(sessionActions.login({ email, password })).catch(
       async (res) => {
@@ -25,40 +28,56 @@ const LoginFormPage = () => {
         } catch {
           data = await res.text();
         }
-        if (data?.errors) setErrors(data);
+        if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
         else setErrors([res.statusText]);
       }
     );
   };
 
+  // benchbnb phase 5-6
+  // const [errors, handleSubmit] = useSubmit({
+  //   createAction: () => {
+
+  //   }
+  // })
+
+  // debugger;
+
   return (
     <>
-      <form onSubmit={handleSubmit} className="login-form">
-        <ul>
-          {errors.map((error) => (
-            <li key={error}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            value={password}
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button>Login</button>
-      </form>
+      <div className="login-page-container">
+        <div className="login-left">
+          <form onSubmit={handleSubmit} className="login-form">
+            <ul>
+              {errors.map((error) => (
+                <li key={error}>{error}</li>
+              ))}
+            </ul>
+            <label>
+              Email
+              <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Password
+              <input
+                value={password}
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </label>
+            <button>Login</button>
+          </form>
+        </div>
+        <div className="login-right">
+          <LoginImage />
+        </div>
+      </div>
     </>
   );
 };

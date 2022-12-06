@@ -1,3 +1,9 @@
 .login-form {
   font-family: Helvetica, Arial, sans-serif;
 }
+
+.login-page-container {
+  padding: 20px 0 10px;
+  display: flex;
+  justify-content: center;
+}
