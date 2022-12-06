@@ -46,6 +46,14 @@ const LoginFormPage = () => {
 
   return (
     <>
+      <div id="login-errors">
+        <ul>
+          {errors.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+        <p>x</p>
+      </div>
       <div className="login-page-container">
         <div className="login-left">
           <div className="top-text">
@@ -59,11 +67,6 @@ const LoginFormPage = () => {
             </p>
           </div>
           <form onSubmit={handleSubmit} className="login-form">
-            <ul>
-              {errors.map((error) => (
-                <li key={error}>{error}</li>
-              ))}
-            </ul>
             <label>
               <input
                 value={email}

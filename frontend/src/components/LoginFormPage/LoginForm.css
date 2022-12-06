@@ -1,3 +1,19 @@
+#login-errors {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #fcd6d3;
+  padding: 15px;
+  font-size: 15px;
+  margin: 13px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#login-errors p {
+  color: #666666;
+  font-size: 20px;
+}
+
 .login-form {
   display: flex;
   flex-direction: column;
@@ -6,7 +22,7 @@
 }
 
 .login-page-container {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 20px 0 10px;
   display: flex;
   justify-content: center;

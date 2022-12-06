@@ -1,8 +1,8 @@
 /* #root {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 } */
 /* form {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 } */
 .signup-form {
   display: flex;
@@ -12,7 +12,7 @@
 }
 
 .signup-page-container {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 20px 0 10px;
   display: flex;
   justify-content: center;

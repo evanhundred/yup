@@ -7,7 +7,7 @@ body {
 /* } */
 
 #logo {
-  font-family: "Roboto Mono", Helvetica, Arial, sans-serif;
+  font-family: "Roboto Mono", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 30px;
 }
 
@@ -43,7 +43,7 @@ body {
 #header-bar h1 {
   color: white;
   font-size: 30px;
-  font-family: "Roboto Mono", Helvetica, Arial, sans-serif;
+  font-family: "Roboto Mono", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* #header-bar h1.yup-logo */
@@ -62,11 +62,11 @@ a {
 #session-links {
   display: flex;
   gap: 15px;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #session-links a {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 800;
   font-size: 16px;
   border: 2px solid black;
