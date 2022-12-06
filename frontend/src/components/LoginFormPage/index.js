@@ -47,6 +47,8 @@ const LoginFormPage = () => {
   console.log(errors);
   // let errorsExist = errors ? true : false;
 
+  const closeBox = () => {};
+
   const ErrorBox = () => {
     if (errors.length > 0) {
       return (
@@ -56,7 +58,10 @@ const LoginFormPage = () => {
               <li key={error}>{error}</li>
             ))}
           </ul>
-          <p>x</p>
+
+          <button id="closeBoxButton" onClick={closeBox}>
+            x
+          </button>
         </div>
       );
     } else {
@@ -101,7 +106,7 @@ const LoginFormPage = () => {
                 required
               />
             </label>
-            <button>Login</button>
+            <button id="login-button">Login</button>
           </form>
         </div>
         <div className="login-right">

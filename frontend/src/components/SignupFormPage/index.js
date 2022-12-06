@@ -92,7 +92,7 @@ const SignupFormPage = () => {
                 required
               />
             </label>
-            <button>Sign Up</button>
+            <button id="signUpButton">Sign Up</button>
           </form>
           <div className="login-footer">
             Already on Yup? <a href="/login">Log in</a>

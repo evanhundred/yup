@@ -66,7 +66,7 @@
 }
 
 input,
-button {
+#signUpButton {
   width: 100%;
   border-radius: 3px;
 }
@@ -79,7 +79,7 @@ input {
   font-size: 13px;
 }
 
-button {
+#signUpButton {
   width: 100%;
   color: white;
   background-color: #e34234;
