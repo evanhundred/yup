@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import "./LoginForm.css";
 import LoginImage from "./LoginImage";
+// import ErrorBox from "../ErrorBox";
 
 const LoginFormPage = () => {
   const dispatch = useDispatch();
@@ -43,16 +44,32 @@ const LoginFormPage = () => {
   // })
 
   // debugger;
+  console.log(errors);
+  // let errorsExist = errors ? true : false;
+
+  const ErrorBox = () => {
+    if (errors.length > 0) {
+      return (
+        <div id="login-errors">
+          <ul>
+            {errors.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+          <p>x</p>
+        </div>
+      );
+    } else {
+      return <></>;
+    }
+  };
+
+  // const errorBox = () => <ErrorBox />;
 
   return (
     <>
-      <div id="login-errors">
-        <ul>
-          {errors.map((error) => (
-            <li key={error}>{error}</li>
-          ))}
-        </ul>
-        <p>x</p>
+      <div>
+        <ErrorBox />
       </div>
       <div className="login-page-container">
         <div className="login-left">
