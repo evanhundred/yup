@@ -43,25 +43,34 @@ const SignupFormPage = () => {
     <>
       <div className="signup-page-container">
         <div className="signup-left">
+          <div className="top-text">
+            <h2>Sign Up for Yup</h2>
+            <h3>Connect with great local businesses</h3>
+            <p>
+              By continuing, you agree to Yup's <a href="#">Terms of Service</a>{" "}
+              and acknowledge Yup's <a href="#">Privacy Policy</a>.
+            </p>
+          </div>
           <form onSubmit={handleSubmit} className="signup-form">
             <ul>
               {errors.map((error) => (
                 <li key={error}>{error}</li>
               ))}
             </ul>
-            <label>
-              <input
-                value={email}
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </label>
+
             <label>
               <input
                 value={name}
                 placeholder="Name"
                 onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              <input
+                value={email}
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </label>
@@ -85,6 +94,9 @@ const SignupFormPage = () => {
             </label>
             <button>Sign Up</button>
           </form>
+          <div className="login-footer">
+            Already on Yup? <a href="/login">Log in</a>
+          </div>
         </div>
         <div className="signup-right">
           <LoginImage />
