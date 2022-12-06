@@ -18,7 +18,8 @@ const Navigation = () => {
       </>
     );
   }
-  if (window.location.pathname === "/") {
+
+  const HomeNav = () => {
     return (
       <ul>
         <li id="nav-bar">
@@ -32,7 +33,9 @@ const Navigation = () => {
         </li>
       </ul>
     );
-  } else {
+  };
+
+  const FormHeader = () => {
     return (
       <>
         <div id="header-bar">
@@ -46,7 +49,43 @@ const Navigation = () => {
         </div>
       </>
     );
-  }
+  };
+
+  let headerType =
+    window.location.pathname === "/" ? <HomeNav /> : <FormHeader />;
+
+  return <>{headerType}</>;
+
+  // ORIGINAL DUAL CHOICE NAV BAR
+  // if (window.location.pathname === "/") {
+  //   return (
+  //     <ul>
+  //       <li id="nav-bar">
+  //         <NavLink exact className="homeLink" to="/">
+  //           {/* <img src={HomeLogo} alt="home" /> */}
+  //           <h1 id="logo">
+  //             yup<span className="star">*</span>
+  //           </h1>
+  //         </NavLink>
+  //         <div id="session-links">{sessionLinks}</div>
+  //       </li>
+  //     </ul>
+  //   );
+  // } else {
+  //   return (
+  //     <>
+  //       <div id="header-bar">
+  //         <NavLink exact className="homeLink" to="/">
+  //           {/* <img src={HomeLogo} alt="home" /> */}
+  //           <div id="form-header-logo-container">
+  //             <h1 className="yup-logo">yup</h1>
+  //             <h1 className="star">*</h1>
+  //           </div>
+  //         </NavLink>
+  //       </div>
+  //     </>
+  //   );
+  // }
 };
 
 export default Navigation;
