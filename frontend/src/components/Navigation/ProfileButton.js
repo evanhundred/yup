@@ -36,7 +36,7 @@ const ProfileButton = ({ user }) => {
   return (
     <>
       <button onClick={openMenu}>
-        <i classnName="fa-solid fa-user-circle" />
+        <Carrot />
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
