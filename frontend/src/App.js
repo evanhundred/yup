@@ -6,13 +6,18 @@ import Navigation from "./components/Navigation";
 function App() {
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
       <Switch>
         <Route path="/login">
+          <Navigation />
           <LoginFormPage />
         </Route>
         <Route path="/signup">
+          <Navigation />
           <SignupFormPage />
+        </Route>
+        <Route exact path="/">
+          <Navigation />
         </Route>
       </Switch>
     </>

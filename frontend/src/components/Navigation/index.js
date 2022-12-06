@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
@@ -6,6 +6,7 @@ import HomeLogo from "./yelp_logo.png";
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
+  const history = useHistory();
 
   let sessionLinks;
   if (sessionUser) {
