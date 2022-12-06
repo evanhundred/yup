@@ -16,6 +16,16 @@ if (process.env.NODE_ENV !== "production") {
   window.sessionActions = sessionActions;
 }
 
+const Root = () => {
+  return (
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  );
+};
+
 const renderApplication = () => {
   ReactDOM.render(
     <React.StrictMode>
@@ -31,12 +41,11 @@ if (sessionStorage.getItem("X-CSRF-Token") === null) {
   renderApplication();
 }
 
-const Root = () => {
-  return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
-  );
-};
+if (
+  sessionStorage.getItem("currentUser") === null ||
+  sessionStorage.getItem("X-CSRF-Token") === null
+) {
+  store.dispatch(sessionActions.restoreSession()).then(renderApplication);
+} else {
+  renderApplication();
+}

@@ -9,7 +9,7 @@ const LoginFormPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = "";
+  const [errors, setErrors] = useState("");
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -57,7 +57,7 @@ const LoginFormPage = () => {
             required
           />
         </label>
-        <button value="Login" />
+        <button>Login</button>
       </form>
     </>
   );
