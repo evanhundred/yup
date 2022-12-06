@@ -1,5 +1,4 @@
 .login-form {
-  font-family: Helvetica, Arial, sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,10 +6,56 @@
 }
 
 .login-page-container {
+  font-family: Helvetica, Arial, sans-serif;
   padding: 20px 0 10px;
   display: flex;
   justify-content: center;
   gap: 20px;
+}
+
+.login-left,
+.login-right {
+  padding: 10px 26px;
+  margin: 0 8px;
+}
+
+.login-left {
+  padding-top: 60px;
+  width: 300px;
+}
+
+.login-right {
+  width: 340px;
+  padding-top: 80px;
+}
+
+.top-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.top-text h2 {
+  color: red;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.top-text h3 {
+  font-size: 15px;
+  padding: 4px 0 7px;
+}
+
+.top-text p {
+  font-size: 11px;
+  padding: 4px 0 10px;
+  line-height: 140%;
+}
+
+.top-text a {
+  color: #0073bb;
 }
 
 input,

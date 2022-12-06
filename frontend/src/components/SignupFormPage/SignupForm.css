@@ -56,8 +56,9 @@
 }
 
 .top-text p {
-  font-size: 12px;
+  font-size: 11px;
   padding: 4px 0 10px;
+  line-height: 140%;
 }
 
 .top-text a {
@@ -92,6 +93,7 @@ button {
   text-align: right;
   font-size: 11px;
   padding: 10px 0;
+  color: grey;
 }
 
 .login-footer a {

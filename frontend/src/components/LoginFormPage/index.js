@@ -48,6 +48,16 @@ const LoginFormPage = () => {
     <>
       <div className="login-page-container">
         <div className="login-left">
+          <div className="top-text">
+            <h2>Log in to Yup</h2>
+            <h3>
+              New to Yup? <a href="/signup">Sign up</a>
+            </h3>
+            <p>
+              By logging in, you agree to Yup's <a href="#">Terms of Service</a>{" "}
+              and <a href="#">Privacy Policy</a>.
+            </p>
+          </div>
           <form onSubmit={handleSubmit} className="login-form">
             <ul>
               {errors.map((error) => (
