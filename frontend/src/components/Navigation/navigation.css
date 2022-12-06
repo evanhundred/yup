@@ -1,0 +1,38 @@
+body {
+  font-family: inherit;
+}
+
+/* #root {
+
+} */
+
+.homeLink {
+  color: red;
+}
+
+#nav-bar {
+  display: flex;
+  width: 80vw;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 40px;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+#session-links {
+  display: flex;
+  gap: 15px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
+#session-links a {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  border: 2px solid black;
+  border-radius: 4px;
+}

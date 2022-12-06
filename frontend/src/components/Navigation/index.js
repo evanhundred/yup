@@ -19,11 +19,11 @@ const Navigation = () => {
   }
   return (
     <ul>
-      <li>
-        <NavLink exact to="/">
+      <li id="nav-bar">
+        <NavLink exact className="homeLink" to="/">
           Home
         </NavLink>
-        {sessionLinks}
+        <div id="session-links">{sessionLinks}</div>
       </li>
     </ul>
   );
