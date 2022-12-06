@@ -55,18 +55,18 @@ const LoginFormPage = () => {
               ))}
             </ul>
             <label>
-              Email
               <input
                 value={email}
+                placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </label>
             <label>
-              Password
               <input
                 value={password}
                 type="password"
+                placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
