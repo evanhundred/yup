@@ -44,6 +44,8 @@ const LoginFormPage = () => {
 
   const ErrorBox = () => {
     if (errors.length > 0 && !hideErrorBox) {
+      // let inputFields = Document.querySelectorAll(".input-field");
+      // inputFields.forEach((inputField) => inputField.classList.add("error"));
       return (
         <div id="login-errors">
           <ul>
@@ -60,6 +62,15 @@ const LoginFormPage = () => {
     } else {
       return <></>;
     }
+  };
+
+  const ForgotPasswordLink = () => {
+    if (errors.length > 0)
+      return (
+        <div className="forgot-password-link">
+          <a href="#">Forgot password?</a>
+        </div>
+      );
   };
 
   // const errorBox = () => <ErrorBox />;
@@ -84,6 +95,9 @@ const LoginFormPage = () => {
           <form onSubmit={handleSubmit} className="login-form">
             <label>
               <input
+                className={
+                  errors.length > 0 ? "error-input-field" : "input-field"
+                }
                 value={email}
                 placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
@@ -92,6 +106,9 @@ const LoginFormPage = () => {
             </label>
             <label>
               <input
+                className={
+                  errors.length > 0 ? "error-input-field" : "input-field"
+                }
                 value={password}
                 type="password"
                 placeholder="Password"
@@ -99,6 +116,7 @@ const LoginFormPage = () => {
                 required
               />
             </label>
+            <ForgotPasswordLink />
             <button id="login-button">Login</button>
           </form>
         </div>

@@ -76,6 +76,13 @@
   color: #0073bb;
 }
 
+div.forgot-password-link {
+  color: #0073bb;
+  font-size: 11px;
+  padding-bottom: 3px;
+  text-align: right;
+}
+
 input,
 #login-button {
   width: 100%;
@@ -87,6 +94,10 @@ input {
   border: 1px solid #ccc;
   border-radius: 3px;
   padding: 3px 0 3px 3px;
+}
+
+input.error-input-field {
+  border: 2px solid #e34234;
 }
 
 #login-button {

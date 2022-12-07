@@ -81,6 +81,9 @@ const SignupFormPage = () => {
           <form onSubmit={handleSubmit} className="signup-form">
             <label>
               <input
+                className={
+                  errors.length > 0 ? "error-input-field" : "input-field"
+                }
                 value={name}
                 placeholder="Name"
                 onChange={(e) => setName(e.target.value)}
@@ -89,6 +92,9 @@ const SignupFormPage = () => {
             </label>
             <label>
               <input
+                className={
+                  errors.length > 0 ? "error-input-field" : "input-field"
+                }
                 value={email}
                 placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
@@ -97,6 +103,9 @@ const SignupFormPage = () => {
             </label>
             <label>
               <input
+                className={
+                  errors.length > 0 ? "error-input-field" : "input-field"
+                }
                 type="password"
                 value={password}
                 placeholder="Password"
@@ -106,6 +115,9 @@ const SignupFormPage = () => {
             </label>
             <label>
               <input
+                className={
+                  errors.length > 0 ? "error-input-field" : "input-field"
+                }
                 type="password"
                 value={confirmPassword}
                 placeholder="Confirm Password"
