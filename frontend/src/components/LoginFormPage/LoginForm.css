@@ -100,7 +100,8 @@ input.error-input-field {
   border: 2px solid #e34234;
 }
 
-#login-button {
+#login-button,
+#demo-login {
   width: 100%;
   color: white;
   background-color: #e34234;

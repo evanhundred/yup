@@ -73,6 +73,13 @@ const LoginFormPage = () => {
       );
   };
 
+  const demoLoginClick = (e) => {
+    e.preventDefault();
+    return dispatch(
+      sessionActions.login({ email: "john@email.io", password: "password" })
+    );
+  };
+
   // const errorBox = () => <ErrorBox />;
 
   return (
@@ -92,7 +99,7 @@ const LoginFormPage = () => {
               and <a href="#">Privacy Policy</a>.
             </p>
           </div>
-          <form onSubmit={handleSubmit} className="login-form">
+          <form className="login-form">
             <label>
               <input
                 className={
@@ -117,7 +124,12 @@ const LoginFormPage = () => {
               />
             </label>
             <ForgotPasswordLink />
-            <button id="login-button">Login</button>
+            <button id="login-button" onClick={handleSubmit}>
+              Login
+            </button>
+            <button id="demo-login" onClick={demoLoginClick}>
+              Demo User Login
+            </button>
           </form>
         </div>
         <div className="login-right">
