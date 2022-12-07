@@ -22,17 +22,15 @@ const Navigation = () => {
 
   const HomeNav = () => {
     return (
-      <ul>
-        <li id="nav-bar">
-          <NavLink exact className="homeLink" to="/">
-            {/* <img src={HomeLogo} alt="home" /> */}
-            <h1 id="logo">
-              yup<span className="star">*</span>
-            </h1>
-          </NavLink>
-          <div id="session-links">{sessionLinks}</div>
-        </li>
-      </ul>
+      <div id="nav-bar">
+        <NavLink exact className="homeLink" to="/">
+          {/* <img src={HomeLogo} alt="home" /> */}
+          <h1 id="logo">
+            yup<span className="star">*</span>
+          </h1>
+        </NavLink>
+        <div id="session-links">{sessionLinks}</div>
+      </div>
     );
   };
 

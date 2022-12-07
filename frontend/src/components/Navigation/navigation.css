@@ -44,7 +44,10 @@ body {
   /* display: grid; */
 }
 
-.homeLink {
+#nav-bar .homeLink {
+}
+
+#form-header-logo-container .homeLink {
   /* margin: 0 auto; */
   /* position: relative; */
   width: 100%;
