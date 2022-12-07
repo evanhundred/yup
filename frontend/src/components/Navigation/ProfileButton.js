@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
+import "./ProfileButton.css";
 
 const Carrot = () => (
-  <div style={{ color: "orange", fontSize: "100px" }}>
+  <div
+    className="profile-picture"
+    style={{ color: "orange", fontSize: "50px" }}
+  >
     <i className="fa-solid fa-carrot"></i>
   </div>
 );
@@ -34,7 +38,7 @@ const ProfileButton = ({ user }) => {
     dispatch(sessionActions.logout());
   };
   return (
-    <>
+    <div id="profile-menu-button">
       <button onClick={openMenu}>
         <Carrot />
       </button>
@@ -42,12 +46,14 @@ const ProfileButton = ({ user }) => {
         <ul className="profile-dropdown">
           <li>{user.name}</li>
           <li>{user.email}</li>
+          <li className="profile-menu-seperator-top"></li>
+          <li className="profile-menu-seperator-bottom"></li>
           <li>
             <button onClick={logout}>Log Out</button>
           </li>
         </ul>
       )}
-    </>
+    </div>
   );
 };
 

@@ -2,6 +2,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { Switch, Route } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
+import IndexPage from "./components/IndexPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         </Route>
         <Route exact path="/">
           <Navigation />
+          <IndexPage />
         </Route>
       </Switch>
     </>
