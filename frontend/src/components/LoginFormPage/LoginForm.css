@@ -24,25 +24,30 @@
 .login-page-container {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 20px 0 10px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* gap: 20px; */
+  width: 100vw;
 }
 
 .login-left,
 .login-right {
   padding: 10px 26px;
   margin: 0 8px;
+  /* flex: 0 0 100%; */
+  /* width: 100%; */
 }
 
 .login-left {
   padding-top: 60px;
   width: 300px;
+  float: left;
 }
 
 .login-right {
-  width: 340px;
+  /* width: 340px; */
   padding-top: 80px;
+  margin-left: 50%;
 }
 
 .top-text {
