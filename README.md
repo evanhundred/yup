@@ -1,24 +1,19 @@
-# README
+# Welcome to Yup.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Technologies
 
-Things you may want to cover:
+#### Backend: Ruby on Rails
 
-* Ruby version
+#### Frontend: React/Redux
 
-* System dependencies
+#### Database: PostgreSQL
 
-* Configuration
+#### Design and Styling: HTML and CSS
 
-* Database creation
+# Key Features
 
-* Database initialization
+### User Auth
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Users can login or signup for an account
+- Login as a demo user
+- Errors are styled and do not persist
