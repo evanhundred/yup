@@ -12,6 +12,7 @@ const LoginFormPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [hideErrorBox, setHideErrorBox] = useState(false);
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -36,21 +37,13 @@ const LoginFormPage = () => {
     );
   };
 
-  // benchbnb phase 5-6
-  // const [errors, handleSubmit] = useSubmit({
-  //   createAction: () => {
-
-  //   }
-  // })
-
-  // debugger;
-  console.log(errors);
+  // console.log(errors);
   // let errorsExist = errors ? true : false;
 
-  const closeBox = () => {};
+  const closeBox = () => setHideErrorBox(true);
 
   const ErrorBox = () => {
-    if (errors.length > 0) {
+    if (errors.length > 0 && !hideErrorBox) {
       return (
         <div id="login-errors">
           <ul>
