@@ -1,3 +1,7 @@
+.image-height-reset {
+  height: 540px;
+}
+
 img {
   width: 100%;
   /* max-height: 600px; */
@@ -20,4 +24,11 @@ img {
   right: 0;
   bottom: 0;
   background: linear-gradient(to top, transparent 60%, black 100%);
+}
+
+.section-header {
+  font-size: 24px;
+  text-align: center;
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
 }
