@@ -13,6 +13,7 @@ const SignupFormPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [hideErrorBox, setHideErrorBox] = useState(false);
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -39,8 +40,34 @@ const SignupFormPage = () => {
     ]);
   };
 
+  // let closed = false;
+  const closeBox = () => setHideErrorBox(true);
+
+  const ErrorBox = () => {
+    if (errors.length > 0 && !hideErrorBox) {
+      return (
+        <div id="signup-errors">
+          <ul>
+            {errors.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+
+          <button id="closeBoxButton" onClick={closeBox}>
+            x
+          </button>
+        </div>
+      );
+    } else {
+      return <></>;
+    }
+  };
+
   return (
     <>
+      <div>
+        <ErrorBox />
+      </div>
       <div className="signup-page-container">
         <div className="signup-left">
           <div className="top-text">
@@ -52,12 +79,6 @@ const SignupFormPage = () => {
             </p>
           </div>
           <form onSubmit={handleSubmit} className="signup-form">
-            <ul>
-              {errors.map((error) => (
-                <li key={error}>{error}</li>
-              ))}
-            </ul>
-
             <label>
               <input
                 value={name}
