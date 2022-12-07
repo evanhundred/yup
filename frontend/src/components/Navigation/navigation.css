@@ -3,10 +3,6 @@ body {
   /* width: 960px; */
 }
 
-/* .homeLink img {
-  width: 90px; */
-/* } */
-
 #logo {
   font-family: "Roboto Mono", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 30px;
@@ -47,13 +43,13 @@ body {
 /* #nav-bar .homeLink {
 } */
 
-#session-links a.signupButton {
+#session-links.signupButton {
   color: white;
   background-color: #e34234;
   border: 2px solid #e34234;
 }
 
-#form-header-logo-container .homeLink {
+#form-header-logo-container {
   /* margin: 0 auto; */
   /* position: relative; */
   width: 100%;
