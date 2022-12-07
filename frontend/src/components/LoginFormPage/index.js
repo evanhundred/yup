@@ -16,11 +16,9 @@ const LoginFormPage = () => {
 
   if (sessionUser) return <Redirect to="/" />;
 
-  // original code
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    // debugger;
 
     return dispatch(sessionActions.login({ email, password })).catch(
       async (res) => {
@@ -37,15 +35,10 @@ const LoginFormPage = () => {
     );
   };
 
-  // console.log(errors);
-  // let errorsExist = errors ? true : false;
-
   const closeBox = () => setHideErrorBox(true);
 
   const ErrorBox = () => {
     if (errors.length > 0 && !hideErrorBox) {
-      // let inputFields = Document.querySelectorAll(".input-field");
-      // inputFields.forEach((inputField) => inputField.classList.add("error"));
       return (
         <div id="login-errors">
           <ul>
@@ -79,8 +72,6 @@ const LoginFormPage = () => {
       sessionActions.login({ email: "john@email.io", password: "password" })
     );
   };
-
-  // const errorBox = () => <ErrorBox />;
 
   return (
     <>

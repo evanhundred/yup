@@ -1,6 +1,5 @@
 body {
   font-family: inherit;
-  /* width: 960px; */
 }
 
 #logo {
@@ -31,17 +30,8 @@ body {
 
 #header-bar {
   background-color: #e34234;
-  /* display: flex; */
   width: 100%;
-  /* max-width: 960px; */
-  /* justify-content: center;
-  align-items: center; */
-  /* position: relative; */
-  /* display: grid; */
 }
-
-/* #nav-bar .homeLink {
-} */
 
 #session-links.signupButton {
   color: white;
@@ -50,46 +40,28 @@ body {
 }
 
 #form-header-logo-container {
-  /* margin: 0 auto; */
-  /* position: relative; */
   width: 100%;
   min-width: 1020px;
-
-  /* max-width: 960px; */
-
   text-align: center;
-  /* display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-basis: 100%; */
   display: inline-block;
-  /* vertical-align: middle; */
 }
 
 #header-bar h1 {
   color: white;
 
   font-family: "Roboto Mono", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  /* width: 50%; */
   display: inline-block;
   vertical-align: middle;
 }
 
-/* #header-bar h1.yup-logo */
-
 #header-bar h1.yup-logo {
   font-size: 30px;
-  /* margin-top: -10px; */
-  /* padding-bottom: 10px; */
-  /* margin-bottom: 10px; */
   height: 100%;
 }
 
 #header-bar h1.star {
   font-size: 60px;
   font-weight: 600;
-  /* margin-top: -10px; */
-  /* margin-bottom: -5px; */
   margin: -5px 0 -7px;
 }
 
@@ -111,11 +83,4 @@ a {
   border: 2px solid black;
   border-radius: 4px;
   padding: 6px 12px;
-}
-
-#form-header-logo-container {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  /* margin: 10px 0; */
 }

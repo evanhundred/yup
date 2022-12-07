@@ -40,7 +40,6 @@ const SignupFormPage = () => {
     ]);
   };
 
-  // let closed = false;
   const closeBox = () => setHideErrorBox(true);
 
   const ErrorBox = () => {
