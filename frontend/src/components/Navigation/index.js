@@ -1,7 +1,7 @@
 import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
-import "./Navigation.css";
+import "./navigation.css";
 import HomeLogo from "./yelp_logo.png";
 
 const Navigation = () => {
