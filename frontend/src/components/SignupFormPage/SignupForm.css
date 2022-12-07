@@ -126,3 +126,7 @@ input {
   /* Microsoft Edge */
   color: grey;
 }
+
+.signup-right img {
+  object-fit: contain;
+}

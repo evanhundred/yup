@@ -8,9 +8,11 @@
 ApplicationRecord.transaction do
     puts "Destroying tables..."
     User.destroy_all
+    Business.destroy_all
 
     puts "Resetting primary keys..."
     ApplicationRecord.connection.reset_pk_sequence!('users')
+    ApplicationRecord.connection.reset_pk_sequence!('businesses')
 
     puts "Creating users..."
     User.create!(
@@ -28,6 +30,18 @@ ApplicationRecord.transaction do
             password: 'password'
         })
     end
+
+
+
+    puts "Creating businesses..."
+
+    business1 = Business.create!(name: "Devocion", lat: 40.71618202634479, lng: -73.9646328800473, address: "69 Grand St", city: "Brooklyn", state: "NY", zipcode: "11249", phone: "(718) 285-6180", website: "https://www.devocion.com/", open: "8:00AM", close: "7:00PM", category: "Coffee & Tea", price: "$")
+    business1.photos.attach("../app/assets/images/iced-coffee-pastry.jpg")
+    # business1.photos.attach(io: open("https://welp-development.s3.us-west-1.amazonaws.com/MILK%2BT.jpg"), filename: 'MILK+T.jpg')
+    # business1.photos.attach(io: open('https://welp-development.s3.us-west-1.amazonaws.com/MILK%2BT2.jpg'), filename: 'MILK+T2.jpg')
+    # business1.photos.attach(io: open('https://welp-development.s3.us-west-1.amazonaws.com/MilkT3.jpg'), filename: 'MilkT3.jpg')
+    # business1.photos.attach(io: open('https://welp-development.s3.us-west-1.amazonaws.com/milktmap.png'), filename: 'milktmap.png')
+
 
     puts "Done!"
 end

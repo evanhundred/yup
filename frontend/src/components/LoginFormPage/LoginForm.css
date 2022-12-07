@@ -125,3 +125,7 @@ input.error-input-field {
   /* Microsoft Edge */
   color: grey;
 }
+
+.login-right img {
+  object-fit: contain;
+}
