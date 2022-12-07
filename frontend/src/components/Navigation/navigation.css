@@ -1,0 +1,86 @@
+body {
+  font-family: inherit;
+}
+
+#logo {
+  font-family: "Roboto Mono", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 30px;
+}
+
+#logo,
+#logo span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#logo span {
+  font-size: 50px;
+  color: red;
+  font-weight: 800;
+  margin-top: -10px;
+}
+
+#nav-bar {
+  display: flex;
+  width: 80vw;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 40px;
+}
+
+#header-bar {
+  background-color: #e34234;
+  width: 100%;
+}
+
+#session-links.signupButton {
+  color: white;
+  background-color: #e34234;
+  border: 2px solid #e34234;
+}
+
+#form-header-logo-container {
+  width: 100%;
+  min-width: 1020px;
+  text-align: center;
+  display: inline-block;
+}
+
+#header-bar h1 {
+  color: white;
+
+  font-family: "Roboto Mono", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#header-bar h1.yup-logo {
+  font-size: 30px;
+  height: 100%;
+}
+
+#header-bar h1.star {
+  font-size: 60px;
+  font-weight: 600;
+  margin: -5px 0 -7px;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+#session-links {
+  display: flex;
+  gap: 15px;
+  font-family: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#session-links a {
+  font-family: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 6px 12px;
+}
