@@ -1,5 +1,6 @@
 body {
   font-family: inherit;
+  /* width: 100%; */
 }
 
 #logo {
@@ -26,11 +27,14 @@ body {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 40px;
+  padding: 10px 40px;
+  /* margin: 10px 40px; */
   background-color: transparent;
   position: relative;
   z-index: 2;
   /* opacity: 0; */
+  /* min-width: 1020px; */
+  min-width: 600px;
 }
 
 #header-bar {
@@ -73,6 +77,8 @@ a {
   display: flex;
   gap: 15px;
   font-family: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* flex: 0 1 auto; */
+  /* flex: 0; */
 }
 
 #session-links a {
