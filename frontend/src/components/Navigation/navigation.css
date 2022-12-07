@@ -5,6 +5,7 @@ body {
 #logo {
   font-family: "Roboto Mono", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 30px;
+  color: white;
 }
 
 #logo,
@@ -26,6 +27,10 @@ body {
   justify-content: space-between;
   align-items: center;
   margin: 10px 40px;
+  background-color: transparent;
+  position: relative;
+  z-index: 2;
+  /* opacity: 0; */
 }
 
 #header-bar {

@@ -3,3 +3,18 @@ img {
   max-height: 600px;
   object-fit: cover;
 }
+
+.image-container {
+  position: absolute;
+  top: 0;
+}
+
+.image-container:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, transparent 60%, black 100%);
+}
