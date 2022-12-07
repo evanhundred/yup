@@ -40,13 +40,14 @@ const Navigation = () => {
     return (
       <>
         <div id="header-bar">
-          <NavLink exact className="homeLink" to="/">
-            {/* <img src={HomeLogo} alt="home" /> */}
-            <div id="form-header-logo-container">
+          <div id="form-header-logo-container">
+            <NavLink exact className="homeLink" to="/">
+              {/* <img src={HomeLogo} alt="home" /> */}
+
               <h1 className="yup-logo">yup</h1>
               <h1 className="star">*</h1>
-            </div>
-          </NavLink>
+            </NavLink>
+          </div>
         </div>
       </>
     );
