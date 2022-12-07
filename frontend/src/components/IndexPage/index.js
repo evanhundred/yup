@@ -1,9 +1,26 @@
 import "./IndexPage.css";
 
-const SectionHeader = () => {
+const SectionHeader = ({ title }) => {
+  const textContent = title.text;
   return (
-    <div className="section-header recent-activity">
-      <h2>Recent Activity</h2>
+    <div className="section-header">
+      <h2>{textContent}</h2>
+    </div>
+  );
+};
+
+const ActivityFeed = () => {
+  return (
+    <div className="activity-feed-container">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
   );
 };
@@ -16,7 +33,7 @@ const IndexPage = () => {
           <img src={require("../../assets/restaurant-skyline.jpg")} />
         </div>
       </div>
-      <SectionHeader />
+      <SectionHeader title={{ text: "Recent Activity" }} />
     </>
   );
 };
