@@ -12,11 +12,21 @@ const BusinessShow = () => {
     dispatch(fetchBusiness(businessId));
   }, []);
 
+  // debugger;
+
+  // const ParseAbout = () => {
+  //   const businessArray = business.about.split("+++");
+  //   // businessArray
+  //   // debugger;
+  //   return businessArray.map((paragraph) => <p>{paragraph}</p>);
+  // };
+
   return (
     <>
-      <p>{JSON.stringify(business)}</p>
-      {/* <h1>{business.name}</h1>
-      <h2>{business.about}</h2> */}
+      {/* <p>{JSON.stringify(business)}</p> */}
+      <h1>{business.name}</h1>
+      {/* <h2>{business.about}</h2> */}
+      {/* <ParseAbout /> */}
     </>
   );
 };

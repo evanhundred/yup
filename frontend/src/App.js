@@ -18,7 +18,7 @@ function App() {
           <SignupFormPage />
         </Route>
         <Route path="/businesses/:businessId">
-          {/* <Navigation /> */}
+          <Navigation />
           <BusinessShow />
         </Route>
         <Route exact path="/">
