@@ -8,7 +8,6 @@ import BusinessShow from "./components/BusinessShow";
 function App() {
   return (
     <>
-      {/* <Navigation /> */}
       <Switch>
         <Route path="/login">
           <Navigation />
@@ -19,6 +18,7 @@ function App() {
           <SignupFormPage />
         </Route>
         <Route path="/businesses/:businessId">
+          {/* <Navigation /> */}
           <BusinessShow />
         </Route>
         <Route exact path="/">

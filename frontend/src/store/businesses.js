@@ -9,7 +9,7 @@ export const receiveBusinesses = (businesses) => ({
 });
 
 export const receiveBusiness = (business) => ({
-  type: RECEIVE_BUSINESSES,
+  type: RECEIVE_BUSINESS,
   business
 });
 

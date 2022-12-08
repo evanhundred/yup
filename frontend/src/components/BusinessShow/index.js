@@ -10,12 +10,13 @@ const BusinessShow = () => {
 
   useEffect(() => {
     dispatch(fetchBusiness(businessId));
-  }, [businessId]);
+  }, []);
 
   return (
     <>
-      <h1>{business.name}</h1>
-      <h2>{business.about}</h2>
+      <p>{JSON.stringify(business)}</p>
+      {/* <h1>{business.name}</h1>
+      <h2>{business.about}</h2> */}
     </>
   );
 };
