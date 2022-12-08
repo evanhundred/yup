@@ -33,11 +33,27 @@ ApplicationRecord.transaction do
         })
     end
 
-    io: URI.open("https://benchbnb-seeds.s3.amazonaws.com/bench_#{index + 1}.jpg")
-
     puts "Creating businesses..."
 
-    business1 = Business.create!(name: "Devocion", lat: 40.71618202634479, lng: -73.9646328800473, address: "69 Grand St", city: "Brooklyn", state: "NY", zipcode: "11249", phone: "(718) 285-6180", website: "https://www.devocion.com/", open: "8:00AM", close: "7:00PM", category: "Coffee & Tea", price: "$")
+    business1 = Business.create!(
+        name: "Devocion",
+        latitude: 40.71618202634479,
+        longitude: -73.9646328800473,
+        address: "69 Grand St",
+        city: "Brooklyn",
+        state: "NY",
+        zipcode: "11249",
+        phone: "(718) 285-6180",
+        website: "https://www.devocion.com/",
+        open_at: "8:00AM",
+        closed_at: "7:00PM",
+        about: "Specialties\n
+        Farm-to-table coffee roasters. We average 10 days from origin to roast, serving the freshest imaginable.\n
+        History\n
+        Established in 2006.\n\n
+        Devoción was Launched in 2006 to produce the freshest coffee imaginable -- roasting provides only half of coffee's flavor, while the mere freshness of the beans does the rest of the work. And yet, most coffee beans sit around for months, losing flavor every day. That's why the Devoción team does everything short of picking the cherry, and do it faster than anyone else -- we hand-select our 1,000+ farm partners, dry-mill at our Bogotá facility, control the export process, and freshly roast in Brooklyn. You will taste the difference in a single sip.",
+        category: "Coffee & Tea",
+        price: "$")
     # business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/1-devocion/flatbread.jpg"), filename: "flatbread.jpg")
     # business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/1-devocion/iced-coffee-outside.jpg"), filename: "iced-coffee-outside.jpg")
     # business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/1-devocion/iced-coffee-pastry.jpg"), filename: "iced-coffee-pastry.jpg")
