@@ -1,7 +1,11 @@
 class Api::BusinessesController < ApplicationController
     def index
         @businesses = Business.all
-        render :index
+        if @businesses
+            render :index
+        else
+            render json: @businesses.errors.full_messages, status: 404
+        end
     end
 
     def show

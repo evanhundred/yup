@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
 import IndexPage from "./components/IndexPage";
+import BusinessShow from "./components/BusinessShow";
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
         <Route path="/signup">
           <Navigation />
           <SignupFormPage />
+        </Route>
+        <Route path="/businesses/:businessId">
+          <BusinessShow />
         </Route>
         <Route exact path="/">
           <Navigation />
