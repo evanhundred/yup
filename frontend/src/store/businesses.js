@@ -13,12 +13,14 @@ export const receiveBusiness = (business) => ({
   business
 });
 
-export const getBusiness = (businessId) => (state) => {
-  console.log(state);
+export const getBusiness =
+  (businessId) =>
+  ({ businesses }) => {
+    console.log(businesses);
 
-  // debugger;
-  return state.businesses ? state.businesses[businessId] : null;
-};
+    // debugger;
+    return businesses[businessId] ? businesses[businessId] : {};
+  };
 
 export const getBusinesses = (state) =>
   state.businesses ? Object.values(state.businesses) : [];
