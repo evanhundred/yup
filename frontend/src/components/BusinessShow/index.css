@@ -187,7 +187,7 @@ div.star-box span {
 }
 
 .hours-range-div {
-  padding: 0 18px;
+  padding: 0 10px 0 18px;
 }
 
 .open-text {
@@ -196,4 +196,30 @@ div.star-box span {
 
 .closed-text {
   color: red;
+}
+
+.see-hours-button-container {
+  width: 100px;
+  height: 20px;
+  /* margin-top: 3px; */
+}
+
+.fourth-line .button-box {
+  width: 89px;
+  height: 29px;
+
+  background: grey;
+  opacity: 30%;
+  border-radius: 5px;
+  margin: 0 12px;
+  position: relative;
+}
+
+.fourth-line .see-hours-text {
+  color: white;
+  position: relative;
+  left: 21%;
+  top: -108%;
+  min-height: 100%;
+  font-size: 15px;
 }

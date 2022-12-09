@@ -50,6 +50,12 @@ const BusinessShow = () => {
           <h3>{openText}</h3>
         </div>
         <div className="hours-range-div">{hoursRange}</div>
+        <a href="#">
+          <div class="see-hours-button-container">
+            <div className="button-box"> </div>
+            <div className="see-hours-text">See hours</div>
+          </div>
+        </a>
       </>
     );
   };
