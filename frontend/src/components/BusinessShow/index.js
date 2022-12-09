@@ -55,6 +55,12 @@ const BusinessShow = () => {
           </div>
           <div className="review-count">561 reviews</div>
         </div>
+        <div className="third-line">
+          <div className="check-circle">
+            <span className="check-symbol">&lowast;</span>
+          </div>
+          <p>Claimed</p>
+        </div>
       </div>
 
       {/* <h2>{business.about}</h2> */}

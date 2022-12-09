@@ -7,8 +7,8 @@ div.business-image {
 }
 
 #business-title-card {
-  /* position: fixed; */
-  position: absolute;
+  position: fixed;
+  /* position: absolute; */
   top: 55%;
   width: 100%;
   display: flex;
@@ -69,4 +69,40 @@ div.star-box span {
   font-weight: 600;
   font-size: 20px;
   letter-spacing: 0.05rem;
+}
+
+.third-line {
+  /* padding: 15px 0;
+  color: #5797ff;
+  font-weight: 500;
+  font-size: 23px;
+  margin: -12px 0 0; */
+  display: flex;
+  /* top: 40%; */
+  margin: 10px 0 0;
+  position: relative;
+}
+
+.third-line .check-circle {
+  /* background-color: #5797ff; */
+  /* margin: -10px -3px -8px; */
+  padding-top: -5px;
+  /* top: 40%;
+  position: relative; */
+}
+
+.third-line .check-symbol {
+  /* font-size: 90px; */
+  /* opacity: 0; */
+  background-color: #5797ff;
+  position: relative;
+  top: 10%;
+}
+
+.third-line p {
+  padding: 15px 0;
+  color: #5797ff;
+  font-weight: 500;
+  font-size: 23px;
+  margin: -12px 0 0;
 }
