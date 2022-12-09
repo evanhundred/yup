@@ -111,3 +111,23 @@ div.star-box span {
   font-size: 23px;
   margin: -12px 0 0;
 }
+
+.third-line .button-box {
+  width: 60px;
+  height: 40px;
+
+  /* background: grey; */
+  /* opacity: 35%; */
+  border-radius: 8px;
+  font-size: 15px;
+  margin: 0 12px;
+  /* text-align: center; */
+  /* padding: 3px; */
+  position: relative;
+}
+
+.third-line span {
+  color: white;
+  /* opacity: 100%; */
+  /* z-index: 2; */
+}

@@ -31,7 +31,10 @@ const BusinessShow = () => {
     <>
       {/* <p>{JSON.stringify(business)}</p> */}
       <div class="business-image">
-        <img src={require("../../assets/images/1-devocion/indoor.jpg")} />
+        <img
+          src={require("../../assets/images/1-devocion/indoor.jpg")}
+          alt="cafe - inside"
+        />
       </div>
       <div id="business-title-card">
         <h1>{business.name}</h1>
@@ -60,11 +63,22 @@ const BusinessShow = () => {
             <img
               src={require("../../assets/images/blue-check.png")}
               className="check-symbol"
+              alt="claimed - check mark"
             />
           </div>
           <p>Claimed</p>
           <p>· {business.price} ·</p>
           <p>{business.category}</p>
+          <a href="#">
+            <div>
+              <img
+                src={require("../../assets/images/box-transparency-and-translucency-glass-color-text-box.png")}
+                alt="edit button"
+                className="button-box"
+              />
+              <span>Edit</span>
+            </div>
+          </a>
         </div>
       </div>
 
