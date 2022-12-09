@@ -14,20 +14,14 @@ div.business-image {
   display: flex;
   flex-direction: column;
   padding-left: 4em;
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: white;
 }
 
 #business-title-card h1 {
   font-size: 55px;
   font-weight: 700;
-  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-  display: flex;
-}
-
-#business-title-card h1,
-div.star-box {
-  color: white;
-  /* padding-left: 1.3em; */
+  /* letter-spacing: 0.0003rem; */
 }
 
 div.star-box {
@@ -60,7 +54,19 @@ div.star-box div.box-5 {
 }
 
 div.star-box span {
+  font-weight: 600;
   position: relative;
   top: -10%;
-  margin: -4px -1px -10px;
+  margin: -12px -3px -8px;
+}
+
+#ratings-reviews {
+  display: flex;
+}
+
+.review-count {
+  margin: 1.1em 0 0 0.85em;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.05rem;
 }

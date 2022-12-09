@@ -35,22 +35,25 @@ const BusinessShow = () => {
       </div>
       <div id="business-title-card">
         <h1>{business.name}</h1>
-        <div className="star-box">
-          <div className="box-1">
-            <span>&lowast;</span>
+        <div id="ratings-reviews">
+          <div className="star-box">
+            <div className="box-1">
+              <span>&lowast;</span>
+            </div>
+            <div className="box-2">
+              <span>&lowast;</span>
+            </div>
+            <div className="box-3">
+              <span>&lowast;</span>
+            </div>
+            <div className="box-4">
+              <span>&lowast;</span>
+            </div>
+            <div className="box-5">
+              <span>&lowast;</span>
+            </div>
           </div>
-          <div className="box-2">
-            <span>&lowast;</span>
-          </div>
-          <div className="box-3">
-            <span>&lowast;</span>
-          </div>
-          <div className="box-4">
-            <span>&lowast;</span>
-          </div>
-          <div className="box-5">
-            <span>&lowast;</span>
-          </div>
+          <div className="review-count">561 reviews</div>
         </div>
       </div>
 
