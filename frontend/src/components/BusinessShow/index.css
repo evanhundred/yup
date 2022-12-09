@@ -19,8 +19,9 @@ div.business-image {
 }
 
 #business-title-card h1 {
-  font-size: 55px;
+  font-size: 70px;
   font-weight: 700;
+  padding-bottom: 4px;
   /* letter-spacing: 0.0003rem; */
 }
 
@@ -114,12 +115,11 @@ div.star-box span {
 
 .third-line .button-box {
   width: 50px;
-  height: 40px;
+  height: 29px;
 
   background: grey;
   opacity: 30%;
-  border-radius: 8px;
-  font-size: 15px;
+  border-radius: 5px;
   margin: 0 12px;
   /* text-align: center; */
   /* padding: 3px; */
@@ -128,6 +128,7 @@ div.star-box span {
 .edit-button-container {
   width: 60px;
   height: 50px;
+  margin-top: 2px;
   /* margin-top: 0px; */
   /* opacity: 20%; */
 }
@@ -135,7 +136,10 @@ div.star-box span {
   color: white;
   position: relative;
   left: 38%;
-  bottom: 57%;
+  bottom: 45%;
+  min-height: 100%;
+  font-size: 15px;
+
   /* opacity: 100%; */
   /* z-index: 2; */
 }
