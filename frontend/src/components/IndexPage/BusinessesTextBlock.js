@@ -8,7 +8,7 @@ const BusinessesTextBlock = () => {
 
   useEffect(() => {
     dispatch(fetchBusinesses());
-  }, []);
+  }, [dispatch]);
 
   return (
     // <>

@@ -4,20 +4,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
 
 const BusinessShow = () => {
+  // debugger;
   const dispatch = useDispatch();
   const { businessId } = useParams();
   const business = useSelector(getBusiness(businessId));
 
   useEffect(() => {
+    // debugger;
     dispatch(fetchBusiness(businessId));
-  }, []);
+  }, [businessId, dispatch]);
 
-  // debugger;
+  // ;
 
   // const ParseAbout = () => {
   //   const businessArray = business.about.split("+++");
   //   // businessArray
-  //   // debugger;
+  //   // ;
   //   return businessArray.map((paragraph) => <p>{paragraph}</p>);
   // };
 
