@@ -57,9 +57,14 @@ const BusinessShow = () => {
         </div>
         <div className="third-line">
           <div className="check-circle">
-            <span className="check-symbol">&lowast;</span>
+            <img
+              src={require("../../assets/images/blue-check.png")}
+              className="check-symbol"
+            />
           </div>
           <p>Claimed</p>
+          <p>· {business.price} ·</p>
+          <p>{business.category}</p>
         </div>
       </div>
 

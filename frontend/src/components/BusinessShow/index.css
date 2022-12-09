@@ -80,7 +80,7 @@ div.star-box span {
   display: flex;
   /* top: 40%; */
   margin: 10px 0 0;
-  position: relative;
+  /* position: relative; */
 }
 
 .third-line .check-circle {
@@ -91,18 +91,23 @@ div.star-box span {
   position: relative; */
 }
 
-.third-line .check-symbol {
+.check-symbol {
   /* font-size: 90px; */
   /* opacity: 0; */
-  background-color: #5797ff;
-  position: relative;
-  top: 10%;
+  background-color: none;
+  /* position: relative; */
+  /* top: 10%; */
+  filter: brightness(180%);
+  /* width: 100px; */
+  object-fit: contain;
+  height: 30px;
 }
 
+/* "Claimed" */
 .third-line p {
-  padding: 15px 0;
-  color: #5797ff;
-  font-weight: 500;
+  padding: 16px 4px;
+  color: #47b9e6;
+  font-weight: 400;
   font-size: 23px;
   margin: -12px 0 0;
 }
