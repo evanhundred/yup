@@ -11,11 +11,56 @@ div.business-image {
   position: absolute;
   top: 55%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 4em;
 }
 
 #business-title-card h1 {
-  font-size: 50px;
+  font-size: 55px;
   font-weight: 700;
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: red;
+
+  display: flex;
+}
+
+#business-title-card h1,
+div.star-box {
+  color: white;
+  /* padding-left: 1.3em; */
+}
+
+div.star-box {
+  padding-top: 12px;
+  font-size: 30px;
+  display: flex;
+  gap: 5px;
+  /* align-items: center; */
+}
+
+div.star-box div {
+  text-align: center;
+  /* vertical-align: middle; */
+  /* max-width: 25px; */
+  padding: 0px 10px;
+
+  font-size: 60px;
+  display: flex;
+  background-color: orange;
+  vertical-align: sub;
+  position: relative;
+  border-radius: 10px;
+  /* gap: 10px; */
+}
+
+div.star-box div.box-4,
+div.star-box div.box-5 {
+  background: grey;
+  opacity: 85%;
+}
+
+div.star-box span {
+  position: relative;
+  top: -10%;
+  margin: -4px -1px -10px;
 }

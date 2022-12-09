@@ -7,6 +7,7 @@ img {
   /* max-height: 600px; */
   object-fit: cover;
   height: 600px;
+  filter: brightness(50%);
 }
 
 .image-container {

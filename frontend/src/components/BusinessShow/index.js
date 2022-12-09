@@ -31,10 +31,27 @@ const BusinessShow = () => {
     <>
       {/* <p>{JSON.stringify(business)}</p> */}
       <div class="business-image">
-        <img src={require("../../assets/images/1-devocion/storefront.jpg")} />
+        <img src={require("../../assets/images/1-devocion/indoor.jpg")} />
       </div>
       <div id="business-title-card">
         <h1>{business.name}</h1>
+        <div className="star-box">
+          <div className="box-1">
+            <span>&lowast;</span>
+          </div>
+          <div className="box-2">
+            <span>&lowast;</span>
+          </div>
+          <div className="box-3">
+            <span>&lowast;</span>
+          </div>
+          <div className="box-4">
+            <span>&lowast;</span>
+          </div>
+          <div className="box-5">
+            <span>&lowast;</span>
+          </div>
+        </div>
       </div>
 
       {/* <h2>{business.about}</h2> */}
