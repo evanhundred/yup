@@ -98,10 +98,20 @@ a {
   border: 2px solid white;
   color: white;
   border-radius: 4px;
-  padding: 6px 12px;
+  padding: 10px 12px;
+  margin: 10px 0 0;
 }
 
 #session-links .signupButton {
   background-color: #e34234;
   border: 2px solid #e34234;
+}
+
+#session-links.business-show a {
+  color: black;
+  border: 1px solid #ccc;
+}
+
+#session-links.business-show a.signupButton {
+  color: white;
 }

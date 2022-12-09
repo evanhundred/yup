@@ -2,7 +2,20 @@
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
 } */
 
-h1 {
-  font-size: 30px;
+div.business-image {
+  position: relative;
+}
+
+#business-title-card {
+  /* position: fixed; */
+  position: absolute;
+  top: 55%;
+  width: 100%;
+}
+
+#business-title-card h1 {
+  font-size: 50px;
+  font-weight: 700;
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: red;
 }

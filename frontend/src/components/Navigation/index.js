@@ -34,7 +34,9 @@ const Navigation = () => {
             yup<span className="star">*</span>
           </h1>
         </NavLink>
-        <div id="session-links">{sessionLinks}</div>
+        <div id="session-links" className={pageType}>
+          {sessionLinks}
+        </div>
       </div>
     );
   };

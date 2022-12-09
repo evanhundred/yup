@@ -33,7 +33,10 @@ const BusinessShow = () => {
       <div class="business-image">
         <img src={require("../../assets/images/1-devocion/storefront.jpg")} />
       </div>
-      <h1>{business.name}</h1>
+      <div id="business-title-card">
+        <h1>{business.name}</h1>
+      </div>
+
       {/* <h2>{business.about}</h2> */}
       {/* <ParseAbout /> */}
     </>

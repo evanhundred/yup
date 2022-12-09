@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusinesses, fetchBusinesses } from "../../store/businesses";
+import "./IndexPage.css";
 
 const BusinessesTextBlock = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,9 @@ const BusinessesTextBlock = () => {
 
   return (
     // <>
-    <p>{JSON.stringify(businesses)}</p>
+    <div id="text-block">
+      <p>{JSON.stringify(businesses)}</p>
+    </div>
     // </>
   );
 };

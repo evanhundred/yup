@@ -36,7 +36,7 @@ ApplicationRecord.transaction do
     puts "Creating businesses..."
 
     business1 = Business.create!(
-        name: "Devocion",
+        name: "Devoción",
         latitude: 40.71618202634479,
         longitude: -73.9646328800473,
         address: "69 Grand St",
