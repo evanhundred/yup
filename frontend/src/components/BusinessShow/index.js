@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
 import "./index.css";
+
 // debugger;
 const BusinessShow = () => {
   // debugger;
@@ -24,9 +25,14 @@ const BusinessShow = () => {
   //   return businessArray.map((paragraph) => <p>{paragraph}</p>);
   // };
 
+  // const businessImage =
+
   return (
     <>
       {/* <p>{JSON.stringify(business)}</p> */}
+      <div class="business-image">
+        <img src={require("../../assets/images/1-devocion/storefront.jpg")} />
+      </div>
       <h1>{business.name}</h1>
       {/* <h2>{business.about}</h2> */}
       {/* <ParseAbout /> */}

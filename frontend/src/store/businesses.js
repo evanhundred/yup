@@ -22,8 +22,8 @@ export const getBusiness =
     return businesses[businessId] ? businesses[businessId] : {};
   };
 
-export const getBusinesses = (state) =>
-  state.businesses ? Object.values(state.businesses) : [];
+export const getBusinesses = ({ businesses }) =>
+  businesses ? Object.values(businesses) : [];
 
 export const fetchBusinesses = () => async (dispatch) => {
   const res = await csrfFetch("/api/businesses");

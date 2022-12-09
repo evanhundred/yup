@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import "./navigation.css";
 // import HomeLogo from "./yelp_logo.png";
@@ -22,11 +23,14 @@ const Navigation = () => {
   }
 
   const HomeNav = () => {
+    let pageType = window.location.pathname.match(regPath)
+      ? "business-show"
+      : "root-index";
     return (
       <div id="nav-bar">
         <NavLink exact className="homeLink" to="/">
           {/* <img src={HomeLogo} alt="home" /> */}
-          <h1 id="logo">
+          <h1 id="logo" className={pageType}>
             yup<span className="star">*</span>
           </h1>
         </NavLink>
@@ -50,8 +54,16 @@ const Navigation = () => {
     );
   };
 
+  let { businessId } = useParams();
+  let regPath = /\/businesses\/\d*/;
+
   let headerType =
-    window.location.pathname === "/" ? <HomeNav /> : <FormHeader />;
+    window.location.pathname === "/" ||
+    window.location.pathname.match(regPath) ? (
+      <HomeNav />
+    ) : (
+      <FormHeader />
+    );
 
   return <>{headerType}</>;
 };

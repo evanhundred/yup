@@ -1,7 +1,8 @@
-#header-bar {
+/* #header-bar {
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
+} */
 
 h1 {
   font-size: 30px;
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

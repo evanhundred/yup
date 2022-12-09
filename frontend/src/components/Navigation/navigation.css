@@ -15,7 +15,15 @@ body {
   vertical-align: middle;
 }
 
-#logo span {
+#logo.business-show {
+  color: black;
+}
+
+#logo.business-show span.star {
+  color: #e34234;
+}
+
+#logo span.star {
   font-size: 50px;
   /* color: red; */
   font-weight: 800;
@@ -55,6 +63,8 @@ body {
   font-family: "Roboto Mono", "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: inline-block;
   vertical-align: middle;
+
+  padding: 4px 0;
 }
 
 #header-bar h1.yup-logo {
@@ -63,7 +73,7 @@ body {
 }
 
 #header-bar h1.star {
-  font-size: 60px;
+  font-size: 50px;
   font-weight: 600;
   margin: -5px 0 -7px;
 }
