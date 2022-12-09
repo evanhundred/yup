@@ -68,6 +68,29 @@ const BusinessShow = () => {
     );
   };
 
+  const ContentNavBar = () => {
+    return (
+      <div className="content-nav-bar-container">
+        <div className="write-review-button">
+          <div className="star-icon"></div>
+          <div className="write-review-text">Write a review</div>
+        </div>
+        <div className="add-photo-button">
+          <div className="camera-icon"></div>
+          <div className="add-photo-text">Add Photo</div>
+        </div>
+        <div className="share-button">
+          <div className="share-icon"></div>
+          <div className="share-text">Share</div>
+        </div>
+        <div className="save-bookmark-button">
+          <div className="bookmark-button"></div>
+          <div className="save-bookmark-text">Save</div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
       {/* <p>{JSON.stringify(business)}</p> */}
@@ -124,6 +147,7 @@ const BusinessShow = () => {
         </div>
         <FourthLine />
       </div>
+      <ContentNavBar />
 
       {/* <h2>{business.about}</h2> */}
       {/* <ParseAbout /> */}

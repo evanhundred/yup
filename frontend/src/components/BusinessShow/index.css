@@ -223,3 +223,33 @@ div.star-box span {
   min-height: 100%;
   font-size: 15px;
 }
+
+.content-nav-bar-container {
+  padding: 20px 0;
+  top: 55%;
+  width: 100%;
+  display: flex;
+  gap: 13px;
+  padding-left: 4em;
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: black;
+}
+
+.content-nav-bar-container > div {
+  height: 50px;
+  border: solid #ccc 1px;
+  border-radius: 4px;
+  padding: 4px 19px;
+  font-size: 22px;
+  /* vertical-align: center; */
+}
+
+.write-review-button {
+  color: white;
+  background-color: #e34234;
+}
+
+.content-nav-bar-container > div > div {
+  /* text-align: center; */
+  margin-top: 0.8rem;
+}
