@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
@@ -16,6 +16,8 @@ const BusinessShow = () => {
     dispatch(fetchBusiness(businessId));
   }, [businessId, dispatch]);
 
+  const [isOpen, setIsOpen] = useState(true);
+
   // ;
 
   // const ParseAbout = () => {
@@ -26,6 +28,35 @@ const BusinessShow = () => {
   // };
 
   // const businessImage =
+
+  // const isOpen = () => {};
+  const HoursDiv = () => {
+    let openText;
+    let openTextColor;
+    if (isOpen) {
+      openText = "Open";
+      openTextColor = "open-text";
+    } else {
+      openText = "Closed";
+      openTextColor = "closed-text";
+    }
+
+    return (
+      <div>
+        <h3 className={openTextColor}>{openText}</h3>
+      </div>
+    );
+  };
+
+  const FourthLine = () => {
+    return (
+      <div className="fourth-line">
+        <HoursDiv />
+        <p>· {business.price} ·</p>
+        <p>{business.category}</p>
+      </div>
+    );
+  };
 
   return (
     <>
@@ -76,11 +107,12 @@ const BusinessShow = () => {
                 alt="edit button"
                 className="button-box"
               /> */}
-              <div className="button-box"></div>
-              <span>Edit</span>
+              <div className="button-box"> </div>
+              <div className="edit-text">Edit</div>
             </div>
           </a>
         </div>
+        <FourthLine />
       </div>
 
       {/* <h2>{business.about}</h2> */}

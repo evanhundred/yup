@@ -18,7 +18,7 @@ div.business-image:after {
 
 div.business-image img {
   /* position: relative; */
-  filter: brightness(50%);
+  filter: brightness(60%);
 }
 
 #business-title-card {
@@ -143,19 +143,36 @@ div.star-box span {
 }
 .edit-button-container {
   width: 60px;
-  height: 50px;
-  margin-top: 2px;
+  height: 20px;
+  margin-top: 3px;
+  /* padding-top: -10px; */
+
   /* margin-top: 0px; */
   /* opacity: 20%; */
 }
-.third-line span {
+.third-line .edit-text {
   color: white;
   position: relative;
   left: 38%;
-  bottom: 45%;
+  /* bottom: 35%; */
+  top: -108%;
   min-height: 100%;
   font-size: 15px;
 
+  /* vertical-align: center; */
   /* opacity: 100%; */
   /* z-index: 2; */
+}
+
+.fourth-line {
+  /* padding: 15px 0;
+  color: #5797ff;
+  font-weight: 500;
+  font-size: 23px;
+  margin: -12px 0 0; */
+  display: flex;
+  /* top: 40%; */
+  margin: 10px 0 0;
+  padding: 12px 0;
+  /* position: relative; */
 }
