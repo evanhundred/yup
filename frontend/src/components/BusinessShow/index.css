@@ -96,7 +96,7 @@ div.star-box span {
   display: flex;
   /* top: 40%; */
   margin: 10px 0 0;
-  padding: 12px 0;
+  padding: 12px 0 0;
   /* position: relative; */
 }
 
@@ -175,6 +175,7 @@ div.star-box span {
   /* margin: 10px 0 0; */
   /* padding: 12px 0; */
   /* position: relative; */
+  height: 25px;
 }
 
 .fourth-line div.open-text {

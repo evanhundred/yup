@@ -41,10 +41,16 @@ const BusinessShow = () => {
       openTextColor = "closed-text";
     }
 
+    const hoursRange = business.openAt + " - " + business.closedAt;
+    // console.log(business.openAt);
+
     return (
-      <div className={openTextColor}>
-        <h3>{openText}</h3>
-      </div>
+      <>
+        <div className={openTextColor}>
+          <h3>{openText}</h3>
+        </div>
+        <div className="hoursRangeDiv">{hoursRange}</div>
+      </>
     );
   };
 
