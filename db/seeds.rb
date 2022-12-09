@@ -45,8 +45,8 @@ ApplicationRecord.transaction do
         zipcode: "11249",
         phone: "(718) 285-6180",
         website: "https://www.devocion.com/",
-        open_at: "8:00AM",
-        closed_at: "7:00PM",
+        open_at: "8:00 AM",
+        closed_at: "7:00 PM",
         about: "Specialties123
         Farm-to-table coffee roasters. We average 10 days from origin to roast, serving the freshest imaginable.\n
         History123

@@ -49,7 +49,7 @@ const BusinessShow = () => {
         <div className={openTextColor}>
           <h3>{openText}</h3>
         </div>
-        <div className="hoursRangeDiv">{hoursRange}</div>
+        <div className="hours-range-div">{hoursRange}</div>
       </>
     );
   };
@@ -58,8 +58,6 @@ const BusinessShow = () => {
     return (
       <div className="fourth-line">
         <HoursDiv />
-        <p>· {business.price} ·</p>
-        <p>{business.category}</p>
       </div>
     );
   };

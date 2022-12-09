@@ -176,10 +176,24 @@ div.star-box span {
   /* padding: 12px 0; */
   /* position: relative; */
   height: 25px;
+  font-size: 24px;
 }
 
-.fourth-line div.open-text {
+.fourth-line div.open-text,
+.hours-range-div {
   /* vertical-align: center; */
   display: flex;
   align-items: center;
+}
+
+.hours-range-div {
+  padding: 0 18px;
+}
+
+.open-text {
+  color: rgb(24, 220, 122);
+}
+
+.closed-text {
+  color: red;
 }
