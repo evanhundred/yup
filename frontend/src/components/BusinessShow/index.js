@@ -42,8 +42,8 @@ const BusinessShow = () => {
     }
 
     return (
-      <div>
-        <h3 className={openTextColor}>{openText}</h3>
+      <div className={openTextColor}>
+        <h3>{openText}</h3>
       </div>
     );
   };

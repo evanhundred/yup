@@ -172,7 +172,13 @@ div.star-box span {
   margin: -12px 0 0; */
   display: flex;
   /* top: 40%; */
-  margin: 10px 0 0;
-  padding: 12px 0;
+  /* margin: 10px 0 0; */
+  /* padding: 12px 0; */
   /* position: relative; */
+}
+
+.fourth-line div.open-text {
+  /* vertical-align: center; */
+  display: flex;
+  align-items: center;
 }
