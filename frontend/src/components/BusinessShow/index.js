@@ -70,12 +70,13 @@ const BusinessShow = () => {
           <p>· {business.price} ·</p>
           <p>{business.category}</p>
           <a href="#">
-            <div>
-              <img
+            <div class="edit-button-container">
+              {/* <img
                 src={require("../../assets/images/box-transparency-and-translucency-glass-color-text-box.png")}
                 alt="edit button"
                 className="button-box"
-              />
+              /> */}
+              <div className="button-box"></div>
               <span>Edit</span>
             </div>
           </a>
