@@ -6,6 +6,21 @@ div.business-image {
   position: relative;
 }
 
+div.business-image:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 70%, black 100%);
+}
+
+div.business-image img {
+  /* position: relative; */
+  filter: brightness(50%);
+}
+
 #business-title-card {
   position: fixed;
   /* position: absolute; */
