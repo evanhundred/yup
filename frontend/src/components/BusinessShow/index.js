@@ -72,7 +72,9 @@ const BusinessShow = () => {
     return (
       <div className="content-nav-bar-container">
         <div className="write-review-button">
-          <div className="star-icon"></div>
+          <div className="star-icon">
+            <i class="fa-regular fa-star"></i>
+          </div>
           <div className="write-review-text">Write a review</div>
         </div>
         <div className="add-photo-button">

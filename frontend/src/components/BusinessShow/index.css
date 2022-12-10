@@ -228,7 +228,7 @@ div.star-box span {
 .content-nav-bar-container {
   position: relative;
   padding: 20px 0;
-  top: -55px;
+  top: -200px;
   width: 100%;
   display: flex;
   gap: 13px;
@@ -243,7 +243,15 @@ div.star-box span {
   border-radius: 4px;
   padding: 4px 19px;
   font-size: 22px;
+  width: 100%;
+  white-space: nowrap;
+  /* min-width: 225px; */
+  display: flex;
   /* vertical-align: center; */
+}
+
+.content-nav-bar-container > div > div:first-child {
+  padding-right: 8px;
 }
 
 .write-review-button {
