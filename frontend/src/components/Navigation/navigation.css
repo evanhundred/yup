@@ -50,6 +50,7 @@ body {
 #header-bar {
   background-color: #e34234;
   width: 100%;
+  padding: 10px 0;
 }
 
 #form-header-logo-container {

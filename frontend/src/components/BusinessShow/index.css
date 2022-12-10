@@ -22,9 +22,10 @@ div.business-image img {
 }
 
 #business-title-card {
-  position: fixed;
+  position: relative;
   /* position: absolute; */
-  top: 55%;
+  top: -280px;
+  left: 10px;
   width: 100%;
   display: flex;
   flex-direction: column;
