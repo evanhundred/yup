@@ -225,6 +225,10 @@ div.star-box span {
   font-size: 15px;
 }
 
+.main-content-container {
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 .content-nav-bar-container {
   position: relative;
   padding: 20px 0 0;
@@ -278,4 +282,24 @@ div.star-box span {
   position: relative;
   margin: 2.6em 0 1em 4em;
   padding: 2.9em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.main-content-container .main-title {
+  font-size: 27px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.main-content-container .subtitle {
+  font-size: 21px;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.menu-items-bar {
+  font-size: 18px;
 }

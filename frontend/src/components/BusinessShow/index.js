@@ -128,7 +128,12 @@ const BusinessShow = () => {
         <div className="subtitle">
           <h3>Popular dishes</h3>
         </div>
-        <div className="menu-items-bar">items</div>
+        <div className="menu-items-bar">
+          <div className="popular-item-subcard"></div>
+          <div className="popular-item-subcard"></div>
+          <div className="popular-item-subcard"></div>
+          items
+        </div>
 
         {/* subtitle
     menu-items-bar */}
@@ -192,20 +197,22 @@ const BusinessShow = () => {
         </div>
         <FourthLine />
       </div>
-      <ContentNavBar />
+      <div className="main-content-container">
+        <ContentNavBar />
 
-      {/* menu */}
-      <MenuCard />
-      {/* Location & hours */}
-      {/* Other xxx nearby */}
-      {/* Amenities and more */}
-      {/* Help improve yelp */}
-      {/* about the business */}
-      {/* ask the community */}
-      {/* recommended reviews */}
-      {/* collections containing */}
-      {/* {/* people also view */}
-      {/* footer */}
+        {/* menu */}
+        <MenuCard />
+        {/* Location & hours */}
+        {/* Other xxx nearby */}
+        {/* Amenities and more */}
+        {/* Help improve yelp */}
+        {/* about the business */}
+        {/* ask the community */}
+        {/* recommended reviews */}
+        {/* collections containing */}
+        {/* {/* people also view */}
+        {/* footer */}
+      </div>
     </>
   );
 };
