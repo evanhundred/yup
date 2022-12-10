@@ -226,8 +226,9 @@ div.star-box span {
 }
 
 .content-nav-bar-container {
+  position: relative;
   padding: 20px 0;
-  top: 55%;
+  top: -55px;
   width: 100%;
   display: flex;
   gap: 13px;
