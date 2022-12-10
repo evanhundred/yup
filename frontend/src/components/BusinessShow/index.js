@@ -128,8 +128,15 @@ const BusinessShow = () => {
         <div className="subtitle">
           <h3>Popular dishes</h3>
         </div>
-        <div className="menu-items-bar">
-          <div className="popular-item-subcard"></div>
+        <div className="popular-items-bar">
+          <div className="popular-item-subcard">
+            <div className="popular-item-image">
+              <img
+                src={require("../../assets/images/1-devocion/popular-items/choc-croissant-coffee.jpg")}
+                alt="chocolate croissant"
+              />
+            </div>
+          </div>
           <div className="popular-item-subcard"></div>
           <div className="popular-item-subcard"></div>
           items
