@@ -118,6 +118,24 @@ const BusinessShow = () => {
     );
   };
 
+  const MenuCard = () => {
+    return (
+      <div className="menu-bar card-container">
+        {/* main title */}
+        <div className="main-title">
+          <h2>Menu</h2>{" "}
+        </div>
+        <div className="subtitle">
+          <h3>Popular dishes</h3>
+        </div>
+        <div className="menu-items-bar">items</div>
+
+        {/* subtitle
+    menu-items-bar */}
+      </div>
+    );
+  };
+
   return (
     <>
       {/* <p>{JSON.stringify(business)}</p> */}
@@ -176,8 +194,18 @@ const BusinessShow = () => {
       </div>
       <ContentNavBar />
 
-      {/* <h2>{business.about}</h2> */}
-      {/* <ParseAbout /> */}
+      {/* menu */}
+      <MenuCard />
+      {/* Location & hours */}
+      {/* Other xxx nearby */}
+      {/* Amenities and more */}
+      {/* Help improve yelp */}
+      {/* about the business */}
+      {/* ask the community */}
+      {/* recommended reviews */}
+      {/* collections containing */}
+      {/* {/* people also view */}
+      {/* footer */}
     </>
   );
 };

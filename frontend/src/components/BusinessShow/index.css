@@ -227,12 +227,12 @@ div.star-box span {
 
 .content-nav-bar-container {
   position: relative;
-  padding: 20px 0;
+  padding: 20px 0 0;
   top: -200px;
   width: 100%;
   display: flex;
   gap: 13px;
-  padding-left: 4em;
+  margin-left: 4em;
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: black;
 }
@@ -249,16 +249,16 @@ div.star-box span {
   /* vertical-align: center; */
 }
 
-div.content > div:first-child {
+.content-nav-bar-container div.content > div:first-child {
   padding-right: 8px;
 }
 
-.write-review-button:first-child {
+.content-nav-bar-container .write-review-button:first-child {
   color: white;
   background-color: #e34234;
 }
 
-div.content {
+.content-nav-bar-container div.content {
   margin-top: 0.8rem;
   width: 100%;
   display: flex;
@@ -268,6 +268,14 @@ div.content {
   /* min-width: 225px; */
 }
 
-/* .icon {
-  padding-top: 1px;
+/* .container {
+  border-bottom: #ccc solid 1px;
 } */
+
+.card-container {
+  border-top: #ccc solid 1px;
+  top: -200px;
+  position: relative;
+  margin: 2.6em 0 1em 4em;
+  padding: 2.9em 0;
+}
