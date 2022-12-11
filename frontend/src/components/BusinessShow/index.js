@@ -90,7 +90,9 @@ const BusinessShow = () => {
               <div className="camera-icon icon">
                 <i class="fa-solid regular fa-camera"></i>
               </div>
-              <div className="add-photo-text">Add Photo</div>
+              <div className="add-photo-text">
+                <h2>Add Photo</h2>
+              </div>
             </div>
           </a>
         </div>
@@ -101,7 +103,9 @@ const BusinessShow = () => {
               <div className="share-icon icon">
                 <i class="fa-solid fa-arrow-up-from-bracket"></i>
               </div>
-              <div className="share-text">Share</div>
+              <div className="share-text">
+                <h2>Share</h2>
+              </div>
             </div>
           </a>
         </div>
@@ -112,7 +116,9 @@ const BusinessShow = () => {
               <div className="bookmark-button icon">
                 <i class="fa-regular fa-bookmark"></i>
               </div>
-              <div className="save-bookmark-text">Save</div>
+              <div className="save-bookmark-text">
+                <h2>Save</h2>
+              </div>
             </div>
           </a>
         </div>
@@ -140,7 +146,8 @@ const BusinessShow = () => {
               />
             </div>
             <div className="popular-item-name">
-              <h2>{business.name}</h2>
+              <h2>Chocolate Croissant</h2>
+              <h3>1 Photo · 6 Reviews</h3>
             </div>
           </div>
 
@@ -153,6 +160,10 @@ const BusinessShow = () => {
     menu-items-bar */}
       </div>
     );
+  };
+
+  const LocationAndHours = () => {
+    return <div className="location card-container">Location and Hours</div>;
   };
 
   return (
@@ -211,40 +222,42 @@ const BusinessShow = () => {
         </div>
         <FourthLine />
       </div>
-      <div className="main-content-container">
-        <ContentNavBar />
+      <div className="reset-height">
+        <div className="main-content-container">
+          <ContentNavBar />
 
-        {/* menu */}
-        <MenuCard />
+          {/* menu */}
+          <MenuCard />
 
-        {/* Location & hours */}
-        {/* <LocationAndHours /> */}
+          {/* Location & hours */}
+          <LocationAndHours />
 
-        {/* Other xxx nearby - AD*/}
+          {/* Other xxx nearby - AD*/}
 
-        {/* Amenities and more */}
-        {/* <Amenities /> */}
+          {/* Amenities and more */}
+          {/* <Amenities /> */}
 
-        {/* Help improve yelp */}
-        {/* <HelpImprove /> */}
+          {/* Help improve yelp */}
+          {/* <HelpImprove /> */}
 
-        {/* about the business */}
-        {/* <AboutCard /> */}
+          {/* about the business */}
+          {/* <AboutCard /> */}
 
-        {/* ask the community */}
-        {/* <QuestionsCard /> */}
+          {/* ask the community */}
+          {/* <QuestionsCard /> */}
 
-        {/* recommended reviews */}
-        {/* <Recommended /> */}
+          {/* recommended reviews */}
+          {/* <Recommended /> */}
 
-        {/* collections containing */}
-        {/* <Collections /> */}
+          {/* collections containing */}
+          {/* <Collections /> */}
 
-        {/* {/* people also view */}
-        {/* <AlsoViewed /> */}
+          {/* {/* people also view */}
+          {/* <AlsoViewed /> */}
 
-        {/* footer */}
-        {/* <Footer /> */}
+          {/* footer */}
+          {/* <Footer /> */}
+        </div>
       </div>
     </>
   );

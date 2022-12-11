@@ -225,21 +225,32 @@ div.star-box span {
   font-size: 15px;
 }
 
+.reset-height {
+  position: relative;
+
+  top: -216px;
+  /* height: 500px; */
+}
+
 .main-content-container {
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* top: -100px; */
+  position: relative;
 }
 
 .content-nav-bar-container {
-  position: relative;
-  padding: 20px 0 0;
-  top: -200px;
+  /* position: relative;
+  top: -200px; */
+  padding: 20px 0 20px;
+
   width: 100%;
   display: flex;
   gap: 13px;
   margin-left: 4em;
-  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif; */
   /* color: black; */
   /* color: white; */
+  border-bottom: #ccc solid 1px;
 }
 
 .content-nav-bar-container > div {
@@ -264,6 +275,12 @@ div.star-box span {
   background-color: #e34234;
 }
 
+.content-nav-bar-container div.container div > i,
+.content-nav-bar-container div.container h2 {
+  color: black;
+  background-color: white;
+}
+
 .content-nav-bar-container div.write-review-button.content {
   color: #e34234;
 }
@@ -285,10 +302,10 @@ div.star-box span {
 } */
 
 .card-container {
-  border-top: #ccc solid 1px;
-  top: -200px;
-  position: relative;
-  margin: 2.6em 0 1em 4em;
+  border-bottom: #ccc solid 1px;
+  /* top: -200px;
+  position: relative; */
+  margin: 0 0 0 4em;
   padding: 2.9em 0;
   display: flex;
   flex-direction: column;
@@ -310,14 +327,7 @@ div.star-box span {
 
 .popular-items-bar {
   font-size: 18px;
-}
-
-.popular-item-subcard {
-  height: 250px;
-  width: 300px;
-  /* border-radius: 6px; */
-  /* overflow: hidden; */
-  /* color: black; */
+  display: flex;
 }
 
 .popular-item-image {
@@ -346,5 +356,21 @@ div.star-box span {
 /* 750x1000 */
 
 .popular-item-name {
-  padding: 25px 0;
+  padding: 15px 0 10px 2px;
 }
+
+.popular-item-name > h2 {
+  font-weight: 500;
+  padding: 10px 0;
+  font-size: 21px;
+}
+
+.popular-item-name > h3 {
+  color: gray;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+/* .location.card-container {
+
+} */
