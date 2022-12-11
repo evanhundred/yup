@@ -21,5 +21,8 @@
   "homepage": "https://github.com/evanhundred/yelp-clone#readme",
   "engines": {
     "node": "16.x"
+  },
+  "dependencies": {
+    "sass": "^1.56.2"
   }
 }

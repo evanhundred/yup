@@ -163,7 +163,11 @@ const BusinessShow = () => {
   };
 
   const LocationAndHours = () => {
-    return <div className="location card-container">Location and Hours</div>;
+    return (
+      <div className="location card-container">
+        <h2>Location and Hours</h2>
+      </div>
+    );
   };
 
   return (
