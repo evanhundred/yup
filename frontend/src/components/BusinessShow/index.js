@@ -155,9 +155,6 @@ const BusinessShow = () => {
 
           <div className="popular-item-subcard"></div>
         </div>
-
-        {/* subtitle
-    menu-items-bar */}
       </div>
     );
   };
