@@ -297,7 +297,7 @@ div.star-box span {
 .main-content-container .subtitle {
   font-size: 21px;
   font-weight: 600;
-  margin: 10px 0;
+  margin: 10px 0 20px;
 }
 
 .popular-items-bar {
@@ -305,9 +305,43 @@ div.star-box span {
 }
 
 .popular-item-subcard {
-  object-fit: cover;
-  height: 200px;
-  width: 250px;
-  border-radius: 6px;
+  height: 250px;
+  width: 300px;
+  /* border-radius: 6px; */
   overflow: hidden;
+  color: black;
 }
+
+.popular-item-image {
+  position: relative;
+  border-radius: 6px;
+}
+
+.popular-item-image img {
+  /* object-fit: fill; */
+  height: 200px;
+  width: 300px;
+  /* margin-bottom: 50px; */
+  border-radius: 6px;
+
+  /* float: left; */
+  /* padding-bottom: 50px; */
+  /* background-position-y: 20%px; */
+  /* /* bottom: 20px; */
+  position: absolute;
+}
+
+/* 750x1000 */
+
+.menu-bar-card-container h2 {
+  color: black;
+}
+
+.popular-item-name {
+  position: relative;
+  top: 91%;
+}
+
+/* .popular-item-name h2 {
+  position: relative;
+} */

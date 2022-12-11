@@ -121,13 +121,14 @@ const BusinessShow = () => {
   const MenuCard = () => {
     return (
       <div className="menu-bar card-container">
-        {/* main title */}
         <div className="main-title">
           <h2>Menu</h2>{" "}
         </div>
+
         <div className="subtitle">
           <h3>Popular dishes</h3>
         </div>
+
         <div className="popular-items-bar">
           <div className="popular-item-subcard">
             <div className="popular-item-image">
@@ -136,10 +137,14 @@ const BusinessShow = () => {
                 alt="chocolate croissant"
               />
             </div>
+            <div className="popular-item-name">
+              <h2>{business.name}</h2>
+            </div>
           </div>
+
           <div className="popular-item-subcard"></div>
+
           <div className="popular-item-subcard"></div>
-          items
         </div>
 
         {/* subtitle
