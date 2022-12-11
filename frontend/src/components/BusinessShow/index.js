@@ -209,6 +209,7 @@ const BusinessShow = () => {
 
         {/* menu */}
         <MenuCard />
+
         {/* Location & hours */}
         {/* <LocationAndHours /> */}
 

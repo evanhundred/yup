@@ -303,3 +303,11 @@ div.star-box span {
 .popular-items-bar {
   font-size: 18px;
 }
+
+.popular-item-subcard {
+  object-fit: cover;
+  height: 200px;
+  width: 250px;
+  border-radius: 6px;
+  overflow: hidden;
+}
