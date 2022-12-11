@@ -238,7 +238,8 @@ div.star-box span {
   gap: 13px;
   margin-left: 4em;
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: black;
+  /* color: black; */
+  /* color: white; */
 }
 
 .content-nav-bar-container > div {
@@ -257,9 +258,14 @@ div.star-box span {
   padding-right: 8px;
 }
 
-.content-nav-bar-container .write-review-button:first-child {
+.content-nav-bar-container div.write-review-button.container div > i,
+.content-nav-bar-container div.write-review-button.container h2 {
   color: white;
   background-color: #e34234;
+}
+
+.content-nav-bar-container div.write-review-button.content {
+  color: #e34234;
 }
 
 .content-nav-bar-container div.content {
@@ -267,11 +273,13 @@ div.star-box span {
   width: 100%;
   display: flex;
   white-space: nowrap;
-  color: black;
+  /* color: black; */
   padding-top: 1px;
   /* min-width: 225px; */
 }
-
+.content-nav-bar-container div.write-review-button.container {
+  background-color: #e34234;
+}
 /* .container {
   border-bottom: #ccc solid 1px;
 } */
@@ -308,13 +316,14 @@ div.star-box span {
   height: 250px;
   width: 300px;
   /* border-radius: 6px; */
-  overflow: hidden;
-  color: black;
+  /* overflow: hidden; */
+  /* color: black; */
 }
 
 .popular-item-image {
   position: relative;
   border-radius: 6px;
+  background-size: auto 20px;
 }
 
 .popular-item-image img {
@@ -323,25 +332,15 @@ div.star-box span {
   width: 300px;
   /* margin-bottom: 50px; */
   border-radius: 6px;
-
+  /* top: -20px; */
+  /* margin-bottom: 20px; */
   /* float: left; */
   /* padding-bottom: 50px; */
   /* background-position-y: 20%px; */
   /* /* bottom: 20px; */
-  position: absolute;
+  /* position: relative; */
+  /* position: absolute; */
+  /* clip-path: inset(30px 0 0 0); */
 }
 
 /* 750x1000 */
-
-.menu-bar-card-container h2 {
-  color: black;
-}
-
-.popular-item-name {
-  position: relative;
-  top: 91%;
-}
-
-/* .popular-item-name h2 {
-  position: relative;
-} */

@@ -77,7 +77,9 @@ const BusinessShow = () => {
               <div className="star-icon icon">
                 <i class="fa-regular fa-star"></i>
               </div>
-              <div className="write-review-text">Write a review</div>
+              <div className="write-review-text">
+                <h2>Write a review</h2>
+              </div>
             </div>
           </a>
         </div>
