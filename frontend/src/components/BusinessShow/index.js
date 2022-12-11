@@ -210,15 +210,33 @@ const BusinessShow = () => {
         {/* menu */}
         <MenuCard />
         {/* Location & hours */}
-        {/* Other xxx nearby */}
+        {/* <LocationAndHours /> */}
+
+        {/* Other xxx nearby - AD*/}
+
         {/* Amenities and more */}
+        {/* <Amenities /> */}
+
         {/* Help improve yelp */}
+        {/* <HelpImprove /> */}
+
         {/* about the business */}
+        {/* <AboutCard /> */}
+
         {/* ask the community */}
+        {/* <QuestionsCard /> */}
+
         {/* recommended reviews */}
+        {/* <Recommended /> */}
+
         {/* collections containing */}
+        {/* <Collections /> */}
+
         {/* {/* people also view */}
+        {/* <AlsoViewed /> */}
+
         {/* footer */}
+        {/* <Footer /> */}
       </div>
     </>
   );
