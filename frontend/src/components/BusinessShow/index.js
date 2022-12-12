@@ -119,48 +119,6 @@ const BusinessShow = () => {
     );
   };
 
-  const MainContent = () => {
-    return (
-      <div className="reset-height">
-        <div className="main-content-container">
-          <ContentNavBar />
-
-          {/* menu */}
-          <MenuCard />
-
-          {/* Location & hours */}
-          <LocationAndHours />
-
-          {/* Other xxx nearby - AD*/}
-
-          {/* Amenities and more */}
-          {/* <Amenities /> */}
-
-          {/* Help improve yelp */}
-          {/* <HelpImprove /> */}
-
-          {/* about the business */}
-          {/* <AboutCard /> */}
-
-          {/* ask the community */}
-          {/* <QuestionsCard /> */}
-
-          {/* recommended reviews */}
-          {/* <Recommended /> */}
-
-          {/* collections containing */}
-          {/* <Collections /> */}
-
-          {/* {/* people also view */}
-          {/* <AlsoViewed /> */}
-
-          {/* footer */}
-          {/* <Footer /> */}
-        </div>
-      </div>
-    );
-  };
-
   const ContentNavBar = () => {
     return (
       <div className="content-nav-bar-container">
@@ -260,6 +218,48 @@ const BusinessShow = () => {
           src={require("../../assets/images/1-devocion/google-map.png")}
           alt="google maps"
         />
+      </div>
+    );
+  };
+
+  const MainContent = () => {
+    return (
+      <div className="reset-height">
+        <div className="main-content-container">
+          <ContentNavBar />
+
+          {/* menu */}
+          <MenuCard />
+
+          {/* Location & hours */}
+          <LocationAndHours />
+
+          {/* Other xxx nearby - AD*/}
+
+          {/* Amenities and more */}
+          {/* <Amenities /> */}
+
+          {/* Help improve yelp */}
+          {/* <HelpImprove /> */}
+
+          {/* about the business */}
+          {/* <AboutCard /> */}
+
+          {/* ask the community */}
+          {/* <QuestionsCard /> */}
+
+          {/* recommended reviews */}
+          {/* <Recommended /> */}
+
+          {/* collections containing */}
+          {/* <Collections /> */}
+
+          {/* {/* people also view */}
+          {/* <AlsoViewed /> */}
+
+          {/* footer */}
+          {/* <Footer /> */}
+        </div>
       </div>
     );
   };
