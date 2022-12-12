@@ -312,9 +312,12 @@ const BusinessShow = () => {
               <div className="day-name">Sun</div>
               <div className="time-range">{`${business.openAt} - ${business.closedAt}`}</div>
             </div>
-            <div className="edit-info-button">
-              <div>Edit Business info</div>
-            </div>
+            <a href="#">
+              <div className="edit-info-button">
+                <i class="fa-solid fa-pencil"></i>
+                <div>Edit Business info</div>
+              </div>
+            </a>
           </div>
         </div>
       </div>

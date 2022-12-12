@@ -6,7 +6,13 @@
 .main-content-div {
   display: flex;
 }
-
+.left-side-map {
+  /* width: 100%; */
+  /* width: 314px; */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 .location.card-container img {
   opacity: 1;
   height: 147px;
@@ -28,6 +34,20 @@
 
 .bottom-left-side {
   display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  width: 100%;
+}
+
+/* .get-directionds-container {
+  width: 100%;
+  /* text-align: right; */
+
+.get-directions-button {
+  padding: 10px;
+  font-size: 20px;
+  border: solid #ccc 1px;
+  border-radius: 4px;
 }
 
 .hours-div {
@@ -53,7 +73,14 @@
 }
 
 .edit-info-button {
+  display: flex;
   color: #11709c;
   padding-top: 4px;
   font-weight: 500;
+}
+
+.edit-info-button i {
+  font-size: 16px;
+  padding-right: 10px;
+  margin-top: 3px;
 }
