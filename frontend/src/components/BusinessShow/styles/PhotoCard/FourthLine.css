@@ -1,0 +1,48 @@
+.fourth-line {
+  display: flex;
+  height: 25px;
+  font-size: 24px;
+}
+
+.fourth-line div.open-text,
+.hours-range-div {
+  display: flex;
+  align-items: center;
+}
+
+.hours-range-div {
+  padding: 0 10px 0 18px;
+}
+
+.open-text {
+  color: rgb(24, 220, 122);
+}
+
+.closed-text {
+  color: red;
+}
+
+.see-hours-button-container {
+  width: 100px;
+  height: 20px;
+}
+
+.fourth-line .button-box {
+  width: 89px;
+  height: 29px;
+
+  background: grey;
+  opacity: 30%;
+  border-radius: 5px;
+  margin: 0 12px;
+  position: relative;
+}
+
+.fourth-line .see-hours-text {
+  color: white;
+  position: relative;
+  left: 21%;
+  top: -108%;
+  min-height: 100%;
+  font-size: 15px;
+}

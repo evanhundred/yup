@@ -1,0 +1,32 @@
+.popular-items-bar {
+  font-size: 18px;
+  display: flex;
+}
+
+.popular-item-image {
+  position: relative;
+  border-radius: 6px;
+  background-size: auto 20px;
+}
+
+.popular-item-image img {
+  height: 200px;
+  width: 300px;
+  border-radius: 6px;
+}
+
+.popular-item-name {
+  padding: 15px 0 10px 2px;
+}
+
+.popular-item-name > h2 {
+  font-weight: 500;
+  padding: 10px 0;
+  font-size: 21px;
+}
+
+.popular-item-name > h3 {
+  color: gray;
+  font-weight: 300;
+  font-size: 18px;
+}

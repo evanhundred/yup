@@ -1,0 +1,31 @@
+@import "ContentNavBar.css";
+@import "Location.css";
+@import "MenuCard.css";
+
+.main-content-container {
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  position: relative;
+}
+
+.card-container {
+  border-bottom: #ccc solid 1px;
+  margin: 0 0 0 4em;
+  padding: 2.9em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.main-content-container .main-title {
+  font-size: 27px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.main-content-container .subtitle {
+  font-size: 21px;
+  font-weight: 600;
+  margin: 10px 0 20px;
+}

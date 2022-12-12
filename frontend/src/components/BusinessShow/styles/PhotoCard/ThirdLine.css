@@ -1,0 +1,48 @@
+.third-line {
+  display: flex;
+  margin: 10px 0 0;
+  padding: 12px 0 0;
+}
+
+.third-line .check-circle {
+  padding-top: -5px;
+}
+
+.check-symbol {
+  background-color: none;
+  filter: brightness(180%);
+  object-fit: contain;
+  height: 30px;
+}
+
+/* "Claimed" */
+.third-line p {
+  padding: 16px 4px;
+  color: #47b9e6;
+  font-weight: 400;
+  font-size: 23px;
+  margin: -12px 0 0;
+}
+
+.third-line .button-box {
+  width: 50px;
+  height: 29px;
+  background: grey;
+  opacity: 30%;
+  border-radius: 5px;
+  margin: 0 12px;
+  position: relative;
+}
+.edit-button-container {
+  width: 60px;
+  height: 20px;
+  margin-top: 3px;
+}
+.third-line .edit-text {
+  color: white;
+  position: relative;
+  left: 38%;
+  top: -108%;
+  min-height: 100%;
+  font-size: 15px;
+}

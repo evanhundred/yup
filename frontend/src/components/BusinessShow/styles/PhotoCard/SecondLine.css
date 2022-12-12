@@ -1,0 +1,42 @@
+div.star-box {
+  padding-top: 12px;
+  font-size: 30px;
+  display: flex;
+  gap: 5px;
+}
+
+div.star-box div {
+  text-align: center;
+  padding: 0px 10px;
+
+  font-size: 60px;
+  display: flex;
+  background-color: orange;
+  vertical-align: sub;
+  position: relative;
+  border-radius: 10px;
+}
+
+div.star-box div.box-4,
+div.star-box div.box-5 {
+  background: grey;
+  opacity: 85%;
+}
+
+div.star-box span {
+  font-weight: 600;
+  position: relative;
+  top: -10%;
+  margin: -12px -3px -8px;
+}
+
+#ratings-reviews {
+  display: flex;
+}
+
+.review-count {
+  margin: 1.1em 0 0 0.85em;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.05rem;
+}

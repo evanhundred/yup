@@ -1,0 +1,50 @@
+.content-nav-bar-container {
+  padding: 30px 0 35px;
+  width: 100%;
+  display: flex;
+  gap: 13px;
+  margin-left: 4em;
+  border-bottom: #ccc solid 1px;
+}
+
+.content-nav-bar-container > div {
+  height: 50px;
+  border: solid #ccc 1px;
+  border-radius: 4px;
+  padding: 4px 19px;
+  font-size: 22px;
+  width: 100%;
+  white-space: nowrap;
+  display: flex;
+}
+
+.content-nav-bar-container div.content > div:first-child {
+  padding-right: 8px;
+}
+
+.content-nav-bar-container div.write-review-button.container div > i,
+.content-nav-bar-container div.write-review-button.container h2 {
+  color: white;
+  background-color: #e34234;
+}
+
+.content-nav-bar-container div.container div > i,
+.content-nav-bar-container div.container h2 {
+  color: black;
+  background-color: white;
+}
+
+.content-nav-bar-container div.write-review-button.content {
+  color: #e34234;
+}
+
+.content-nav-bar-container div.content {
+  margin-top: 0.8rem;
+  width: 100%;
+  display: flex;
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.content-nav-bar-container div.write-review-button.container {
+  background-color: #e34234;
+}

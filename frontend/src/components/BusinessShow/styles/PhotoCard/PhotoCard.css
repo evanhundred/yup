@@ -1,0 +1,44 @@
+@import "SecondLine.css";
+@import "ThirdLine.css";
+@import "FourthLine.css";
+
+div.business-image {
+  position: relative;
+}
+
+div.business-image:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 70%, black 100%);
+}
+
+div.business-image img {
+  filter: brightness(60%);
+}
+
+#business-title-card {
+  position: relative;
+  top: -280px;
+  left: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 4em;
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: white;
+}
+
+#business-title-card h1 {
+  font-size: 70px;
+  font-weight: 700;
+  padding-bottom: 4px;
+}
+
+.reset-height {
+  position: relative;
+  top: -216px;
+}
