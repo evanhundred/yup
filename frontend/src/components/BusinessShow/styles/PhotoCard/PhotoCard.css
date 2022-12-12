@@ -18,6 +18,10 @@ div.business-image:after {
 
 div.business-image img {
   filter: brightness(60%);
+  width: 100%;
+  /* max-height: 600px; */
+  object-fit: cover;
+  height: 600px;
 }
 
 #business-title-card {
