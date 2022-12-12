@@ -163,6 +163,10 @@ const BusinessShow = () => {
     return (
       <div className="location card-container">
         <h2>Location and Hours</h2>
+        <img
+          src={require("../../assets/images/1-devocion/google-map.png")}
+          alt="google maps"
+        />
       </div>
     );
   };

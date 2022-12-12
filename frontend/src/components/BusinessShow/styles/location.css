@@ -2,3 +2,9 @@
   font-size: 22px;
   font-weight: 500;
 }
+
+.location.card-container img {
+  opacity: 1;
+  height: 147px;
+  width: 314px;
+}
