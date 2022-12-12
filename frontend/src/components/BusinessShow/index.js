@@ -262,6 +262,7 @@ const BusinessShow = () => {
         <div className="main-title">
           <h2>Location and Hours</h2>
         </div>
+
         <div className="main-content-div">
           <div className="left-side-map">
             <img
@@ -270,11 +271,49 @@ const BusinessShow = () => {
             />
             <div className="bottom-left-side">
               <div className="address">
-                <h3 className="street-address">276 Livingston St</h3>
-                <h4>Brooklyn, NY 11201</h4>
+                <h3 className="street-address">{business.address}</h3>
+                <h4 className="city-state-zip">Brooklyn, NY 11201</h4>
                 <p>Boerum Hill,</p>
                 <p>Downtown Brooklyn</p>
               </div>
+
+              <div className="get-directions-container">
+                <div className="get-directions-button">Get directions</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="hours-div">
+            <div className="day-container">
+              <div className="day-name">Mon</div>
+              <div className="time-range">{`${business.openAt} - ${business.closedAt}`}</div>
+            </div>
+            <div className="day-container">
+              <div className="day-name">Tue</div>
+              <div className="time-range">{`${business.openAt} - ${business.closedAt}`}</div>
+            </div>
+            <div className="day-container">
+              <div className="day-name">Wed</div>
+              <div className="time-range">{`${business.openAt} - ${business.closedAt}`}</div>
+            </div>
+            <div className="day-container">
+              <div className="day-name">Thu</div>
+              <div className="time-range">{`${business.openAt} - ${business.closedAt}`}</div>
+            </div>
+            <div className="day-container">
+              <div className="day-name">Fri</div>
+              <div className="time-range">{`${business.openAt} - ${business.closedAt}`}</div>
+            </div>
+            <div className="day-container">
+              <div className="day-name">Sat</div>
+              <div className="time-range">{`${business.openAt} - ${business.closedAt}`}</div>
+            </div>
+            <div className="day-container">
+              <div className="day-name">Sun</div>
+              <div className="time-range">{`${business.openAt} - ${business.closedAt}`}</div>
+            </div>
+            <div className="edit-info-button">
+              <div>Edit Business info</div>
             </div>
           </div>
         </div>

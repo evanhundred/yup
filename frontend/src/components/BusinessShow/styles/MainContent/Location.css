@@ -3,8 +3,57 @@
   font-weight: 500;
 } */
 
+.main-content-div {
+  display: flex;
+}
+
 .location.card-container img {
   opacity: 1;
   height: 147px;
   width: 314px;
+}
+
+.address {
+  font-size: 16px;
+}
+
+.street-address,
+.city-state-zip {
+  font-weight: 600;
+}
+
+.street-address {
+  color: #11709c;
+}
+
+.bottom-left-side {
+  display: flex;
+}
+
+.hours-div {
+  display: flex;
+  flex-direction: column;
+  padding-left: 35px;
+  gap: 17px;
+  font-size: 18px;
+}
+
+.day-container {
+  display: flex;
+  /* padding: 7px 0; */
+  /* font-size: 18px; */
+}
+
+.day-name {
+  width: 100px;
+}
+
+.time-range {
+  width: 200px;
+}
+
+.edit-info-button {
+  color: #11709c;
+  padding-top: 4px;
+  font-weight: 500;
 }
