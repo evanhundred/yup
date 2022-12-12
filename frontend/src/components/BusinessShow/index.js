@@ -259,11 +259,25 @@ const BusinessShow = () => {
   const LocationAndHours = () => {
     return (
       <div className="location card-container">
-        <h2>Location and Hours</h2>
-        <img
-          src={require("../../assets/images/1-devocion/google-map.png")}
-          alt="google maps"
-        />
+        <div className="main-title">
+          <h2>Location and Hours</h2>
+        </div>
+        <div className="main-content-div">
+          <div className="left-side-map">
+            <img
+              src={require("../../assets/images/1-devocion/google-map.png")}
+              alt="google maps"
+            />
+            <div className="bottom-left-side">
+              <div className="address">
+                <h3 className="street-address">276 Livingston St</h3>
+                <h4>Brooklyn, NY 11201</h4>
+                <p>Boerum Hill,</p>
+                <p>Downtown Brooklyn</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   };
