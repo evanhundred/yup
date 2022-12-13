@@ -252,6 +252,12 @@ const BusinessShow = () => {
 
           <div className="popular-item-subcard"></div>
         </div>
+        <div className="website-menu-link">
+          <a href={business.website}>
+            <i class="fa-solid fa-up-right-from-square"></i>
+            <h2>Website menu</h2>
+          </a>
+        </div>
       </div>
     );
   };
@@ -266,15 +272,16 @@ const BusinessShow = () => {
         <div className="main-content-div">
           <div className="left-side-map">
             <img
-              src={require("../../assets/images/1-devocion/google-map.png")}
+              src={require("../../assets/images/1-devocion/google-map.jpg")}
               alt="google maps"
             />
             <div className="bottom-left-side">
               <div className="address">
                 <h3 className="street-address">{business.address}</h3>
-                <h4 className="city-state-zip">Brooklyn, NY 11201</h4>
-                <p>Boerum Hill,</p>
-                <p>Downtown Brooklyn</p>
+                <h4 className="city-state-zip">
+                  {business.city}, {business.state} {business.zipcode}
+                </h4>
+                <p>Williamsburg - North Side</p>
               </div>
 
               <div className="get-directions-container">

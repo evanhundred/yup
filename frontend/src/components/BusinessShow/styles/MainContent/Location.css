@@ -15,8 +15,8 @@
 }
 .location.card-container img {
   opacity: 1;
-  height: 147px;
-  width: 314px;
+  /* height: 149px; */
+  width: 340px;
 }
 
 .address {
@@ -44,10 +44,11 @@
   /* text-align: right; */
 
 .get-directions-button {
-  padding: 10px;
-  font-size: 20px;
+  /* font-family: */
+  padding: 14px;
+  font-size: 19px;
   border: solid #ccc 1px;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .hours-div {
