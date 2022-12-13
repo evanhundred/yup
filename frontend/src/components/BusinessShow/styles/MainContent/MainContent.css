@@ -4,6 +4,7 @@
 
 .main-content-container {
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: black;
 
   /* reset height to bottom of photo card */
   top: -216px;

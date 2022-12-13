@@ -252,12 +252,12 @@ const BusinessShow = () => {
 
           <div className="popular-item-subcard"></div>
         </div>
-        <div className="website-menu-link">
-          <a href={business.website}>
+        <a href={business.website}>
+          <div className="website-menu-link">
             <i class="fa-solid fa-up-right-from-square"></i>
             <h2>Website menu</h2>
-          </a>
-        </div>
+          </div>
+        </a>
       </div>
     );
   };
