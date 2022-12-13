@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import "./navigation.css";
+import githubLogo from "../../assets/images/github.png";
+import linkedinLogo from "../../assets/images/linkedin.png";
 // import HomeLogo from "./yelp_logo.png";
 
 const Navigation = () => {
@@ -28,14 +30,33 @@ const Navigation = () => {
       : "root-index";
     return (
       <div id="nav-bar">
-        <NavLink exact className="homeLink" to="/">
-          {/* <img src={HomeLogo} alt="home" /> */}
-          <h1 id="logo" className={pageType}>
-            yup<span className="star">*</span>
-          </h1>
-        </NavLink>
-        <div id="session-links" className={pageType}>
-          {sessionLinks}
+        <div className="left-side">
+          <NavLink exact className="homeLink" to="/">
+            {/* <img src={HomeLogo} alt="home" /> */}
+            <h1 id="logo" className={pageType}>
+              yup<span className="star">*</span>
+            </h1>
+          </NavLink>
+        </div>
+        <div className="right-side">
+          <div className="socials">
+            <div id="github">
+              <a href="https://www.github.com/evanhundred/yup">
+                {/* <p>gh</p> */}
+                {/* <img src="../../assets/images/github-mark.png" /> */}
+                <img src={githubLogo} alt="GitHub" />
+              </a>
+            </div>
+            <div id="linkedin">
+              <a href="https://www.linkedin.com/in/evan-ryan-1a2b07131/">
+                {/* <p>li</p> */}
+                <img src={linkedinLogo} alt="LinkedIn" />
+              </a>
+            </div>
+          </div>
+          <div id="session-links" className={pageType}>
+            {sessionLinks}
+          </div>
         </div>
       </div>
     );

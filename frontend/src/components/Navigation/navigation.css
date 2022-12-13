@@ -47,6 +47,24 @@ body {
   min-width: 750px;
 }
 
+#nav-bar .right-side {
+  display: flex;
+  align-items: center;
+}
+
+.socials {
+  display: flex;
+  gap: 15px;
+  padding: 12px 20px 0;
+  align-items: center;
+  /* color: blue; */
+}
+
+.socials img {
+  /* color: black; */
+  width: 25px;
+}
+
 #header-bar {
   background-color: #e34234;
   width: 100%;
@@ -90,6 +108,7 @@ a {
 }
 
 #session-links {
+  float: right;
   display: flex;
   gap: 15px;
   font-family: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
