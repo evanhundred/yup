@@ -140,12 +140,14 @@ const BusinessShow = () => {
           {/* Amenities and more */}
           <Amenities />
 
+          {/* FUTURE */}
           {/* Help improve yelp */}
           {/* <HelpImprove /> */}
 
           {/* about the business */}
-          {/* <AboutCard /> */}
+          <AboutCard />
 
+          {/* FUTURE */}
           {/* ask the community */}
           {/* <QuestionsCard /> */}
 
@@ -285,7 +287,9 @@ const BusinessShow = () => {
               </div>
 
               <div className="get-directions-container">
-                <div className="get-directions-button">Get directions</div>
+                <div className="get-directions-button">
+                  <a href="#">Get directions</a>
+                </div>
               </div>
             </div>
           </div>
@@ -337,8 +341,78 @@ const BusinessShow = () => {
         <div className="main-title">
           <h2>Amenities & more</h2>
         </div>
+        <div className="amenities-content">
+          <div className="amenities-item">
+            <div className="cross-symbol">
+              <img src={require("../../assets/images/cross.png")}></img>
+            </div>
+
+            <div className="health-score-box">
+              <div className="health-score">
+                <div className="blue">
+                  <h3>Health Score</h3>
+                </div>
+                <div>
+                  <h3>A</h3>
+                </div>
+              </div>
+              <div className="caption">Powered by Hazel Analytics</div>
+            </div>
+          </div>
+
+          <div className="amenities-item gray">
+            <div className="x-symbol">
+              <i class="fa-solid fa-xmark"></i>
+            </div>
+            <h3>No Reservations</h3>
+          </div>
+          <div className="amenities-item gray">
+            <div className="x-symbol">
+              <i class="fa-solid fa-xmark"></i>
+            </div>{" "}
+            <h3>No Delivery</h3>
+          </div>
+          <div className="amenities-item gray">
+            <div className="x-symbol">
+              <i class="fa-solid fa-xmark"></i>
+            </div>
+            <h3>No Takeout</h3>
+          </div>
+        </div>
+        <div className="more-attributes-container">
+          <div className="get-directions-container">
+            <div className="get-directions-button">
+              <a href="#">
+                <h3>26 More Attributes</h3>
+              </a>
+            </div>
+          </div>
+        </div>
         <div className="main-content-div"></div>
       </div>
+    );
+  };
+
+  const ParsedAbout = () => {
+    const paragraphs = business.about.split(123);
+    return paragraphs.map((paragraph) => <p>{paragraph}</p>);
+  };
+
+  const AboutCard = () => {
+    return (
+      <>
+        <div className="about card-container">
+          <div className="main-title">
+            <h2>About the business</h2>
+          </div>
+          <p>{<ParsedAbout />}</p>
+          <div className="read-more-button">
+            <h3>
+              <a href="#">Read more</a>
+            </h3>
+          </div>
+        </div>
+      </>
     );
   };
 

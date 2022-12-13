@@ -1,0 +1,67 @@
+.amenities-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 771px;
+}
+
+div.amenities-item {
+  display: flex;
+  /* width: 500px; */
+  flex: 1 0 50%;
+  width: 400px;
+  gap: 20px;
+  height: 50px;
+  padding: 6px 0;
+}
+div.health-score {
+  display: flex;
+  gap: 8px;
+  /* width: 500px; */
+}
+div.amenities-item h3 {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.blue {
+  color: #11709c;
+}
+.cross-symbol {
+  width: 40px;
+}
+
+.health-score-box {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.caption {
+  color: gray;
+  font-size: 13px;
+}
+div.amenities-item img {
+  width: 30px;
+}
+
+div.amenities-item i {
+  font-size: 30px;
+  width: 40px;
+}
+
+.amenities-item div {
+  text-align: center;
+}
+
+.gray h3,
+.gray i {
+  color: #696969;
+}
+
+.more-attributes-container {
+  width: 200px;
+  text-align: center;
+}
+.get-directions-button a {
+  color: black;
+}
