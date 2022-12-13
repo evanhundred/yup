@@ -2,6 +2,7 @@
   padding: 30px 0 35px;
   width: 100%;
   display: flex;
+  justify-content: left;
   gap: 13px;
   margin-left: 4em;
   border-bottom: #ccc solid 1px;
@@ -13,7 +14,7 @@
   border-radius: 4px;
   padding: 4px 19px;
   font-size: 22px;
-  width: 100%;
+  /* width: 100%; */
   white-space: nowrap;
   display: flex;
   /* min-width: 200px; */
@@ -43,7 +44,7 @@
   margin-top: 0.8rem;
   width: 100%;
   display: flex;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   padding-top: 1px;
 }
 .content-nav-bar-container div.write-review-button.container {
