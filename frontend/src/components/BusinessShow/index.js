@@ -125,7 +125,7 @@ const BusinessShow = () => {
 
   const MainContent = () => {
     return (
-      <div className="reset-height">
+      <>
         <div className="main-content-container">
           <ContentNavBar />
 
@@ -161,7 +161,7 @@ const BusinessShow = () => {
           {/* footer */}
           {/* <Footer /> */}
         </div>
-      </div>
+      </>
     );
   };
 
