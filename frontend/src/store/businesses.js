@@ -19,7 +19,8 @@ export const getBusiness =
     console.log(businesses);
 
     // debugger;
-    return businesses[businessId] ? businesses[businessId] : {};
+    // return businesses[businessId] ? businesses[businessId] : {};
+    return businesses[businessId];
   };
 
 export const getBusinesses = ({ businesses }) =>

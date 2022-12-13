@@ -2,6 +2,7 @@
 @import "MenuCard.css";
 @import "Location.css";
 @import "Amenities.css";
+@import "AboutCard.css";
 
 .main-content-container {
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
