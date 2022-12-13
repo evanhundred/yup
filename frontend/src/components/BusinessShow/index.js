@@ -138,7 +138,7 @@ const BusinessShow = () => {
           {/* Other xxx nearby - AD*/}
 
           {/* Amenities and more */}
-          {/* <Amenities /> */}
+          <Amenities />
 
           {/* Help improve yelp */}
           {/* <HelpImprove /> */}
@@ -327,6 +327,17 @@ const BusinessShow = () => {
             </a>
           </div>
         </div>
+      </div>
+    );
+  };
+
+  const Amenities = () => {
+    return (
+      <div className="amenitites card-container">
+        <div className="main-title">
+          <h2>Amenities & more</h2>
+        </div>
+        <div className="main-content-div"></div>
       </div>
     );
   };
