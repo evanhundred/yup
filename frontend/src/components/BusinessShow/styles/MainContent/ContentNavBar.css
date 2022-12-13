@@ -16,6 +16,7 @@
   width: 100%;
   white-space: nowrap;
   display: flex;
+  /* min-width: 200px; */
 }
 
 .content-nav-bar-container div.content > div:first-child {
