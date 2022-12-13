@@ -3,11 +3,25 @@ import { useState } from "react";
 const PhotoCard = ({ business = null }) => {
   return (
     <>
-      <div className="business-image">
-        <img
-          src={require("../../../assets/images/1-devocion/indoor.jpg")}
-          alt="cafe - inside"
-        />
+      <div className="business-image-container">
+        <div className="business-image one">
+          <img
+            src={require("../../../assets/images/1-devocion/iced-coffee-outside.jpg")}
+            alt="iced coffee held in front of store sign"
+          />
+        </div>
+        <div className="business-image two">
+          <img
+            src={require("../../../assets/images/1-devocion/indoor.jpg")}
+            alt="cafe - inside"
+          />
+        </div>
+        <div className="business-image three">
+          <img
+            src={require("../../../assets/images/1-devocion/iced-coffee-pastry.jpg")}
+            alt="cafe - inside"
+          />
+        </div>
       </div>
       <div id="business-title-card">
         <h1>{business.name}</h1>

@@ -59,16 +59,16 @@ const ContentNavBar = () => {
       </div>
 
       <div className="add-photo-button container">
-        <a href="#">
-          <div className="add-photo-button content">
+        <div className="add-photo-button content">
+          <a href="#">
             <div className="camera-icon icon">
               <i className="fa-solid regular fa-camera"></i>
             </div>
             <div className="add-photo-text">
               <h2>Add Photo</h2>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
 
       <div className="share-button container">

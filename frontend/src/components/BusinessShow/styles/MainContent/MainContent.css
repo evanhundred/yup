@@ -24,14 +24,19 @@
   color: black;
 }
 
+.main-content-container .main-title,
+.main-content-container .subtitle {
+  width: 1000px;
+  font-weight: 600;
+}
+
 .main-content-container .main-title {
   font-size: 27px;
-  font-weight: 600;
+
   margin-bottom: 20px;
 }
 
 .main-content-container .subtitle {
   font-size: 21px;
-  font-weight: 600;
   margin: 10px 0 20px;
 }

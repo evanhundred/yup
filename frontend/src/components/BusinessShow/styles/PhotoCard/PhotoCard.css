@@ -2,8 +2,19 @@
 @import "ThirdLine.css";
 @import "FourthLine.css";
 
+.business-image-container {
+  /* width: 100%; */
+  display: flex;
+  justify-content: center;
+  min-width: 1144px;
+  max-width: 1272px;
+}
+
 div.business-image {
   position: relative;
+  /* display: flex; */
+  /* width: 1080;
+  height: 1920; */
 }
 
 div.business-image:after {
@@ -16,19 +27,54 @@ div.business-image:after {
   background: linear-gradient(to bottom, transparent 70%, black 100%);
 }
 
-div.business-image img {
+div.business-image.one img {
   filter: brightness(60%);
-  width: 100%;
+  /* width: 100vw; */
   /* max-height: 600px; */
   object-fit: cover;
+  position: center;
   height: 600px;
+  /* background-position: center top; */
+  /* background: url("../../../../assets/images/1-devocion/indoor.jpg"); */
+  position: relative;
+  aspect-ratio: auto;
+  max-width: 400px;
+  margin-left: 400px;
+}
+
+div.business-image.two img {
+  filter: brightness(60%);
+  /* width: 100vw; */
+  /* max-height: 600px; */
+  object-fit: cover;
+  position: center;
+  height: 600px;
+  /* background-position: center top; */
+  /* background: url("../../../../assets/images/1-devocion/indoor.jpg"); */
+  position: relative;
+  aspect-ratio: auto;
+  max-width: 1000px;
+}
+
+div.business-image.three img {
+  filter: brightness(60%);
+  /* width: 100vw; */
+  /* max-height: 600px; */
+  object-fit: cover;
+  position: center;
+  height: 600px;
+  /* background-position: center top; */
+  /* background: url("../../../../assets/images/1-devocion/indoor.jpg"); */
+  position: relative;
+  aspect-ratio: auto;
+  max-width: 400px;
 }
 
 #business-title-card {
   position: relative;
   top: -280px;
   left: 10px;
-  width: 100%;
+  width: 1000px;
   display: flex;
   flex-direction: column;
   padding-left: 4em;
