@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const PhotoCard = ({ business }) => {
+const PhotoCard = ({ business = null }) => {
   return (
     <>
       <div className="business-image">

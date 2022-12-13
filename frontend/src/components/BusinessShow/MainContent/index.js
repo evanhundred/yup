@@ -1,26 +1,26 @@
-const MainContent = ({ business }) => {
+const MainContent = ({ business = null }) => {
   return (
     <>
       <div className="main-content-container">
         <ContentNavBar />
 
         {/* menu */}
-        <MenuCard />
+        <MenuCard business={business} />
 
         {/* Location & hours */}
-        <LocationAndHours />
+        <LocationAndHours business={business} />
 
         {/* Other xxx nearby - AD*/}
 
         {/* Amenities and more */}
-        <Amenities />
+        <Amenities business={business} />
 
         {/* FUTURE */}
         {/* Help improve yelp */}
         {/* <HelpImprove /> */}
 
         {/* about the business */}
-        <AboutCard />
+        <AboutCard business={business} />
 
         {/* FUTURE */}
         {/* ask the community */}
@@ -100,7 +100,7 @@ const ContentNavBar = () => {
   );
 };
 
-const MenuCard = () => {
+const MenuCard = ({ business }) => {
   return (
     <div className="menu-bar card-container">
       <div className="main-title">
@@ -115,7 +115,7 @@ const MenuCard = () => {
         <div className="popular-item-subcard">
           <div className="popular-item-image">
             <img
-              src={require("../../assets/images/1-devocion/popular-items/choc-croissant-coffee.jpg")}
+              src={require("../../../assets/images/1-devocion/popular-items/choc-croissant-coffee.jpg")}
               alt="chocolate croissant"
             />
           </div>
@@ -139,7 +139,7 @@ const MenuCard = () => {
   );
 };
 
-const LocationAndHours = () => {
+const LocationAndHours = ({ business }) => {
   return (
     <div className="location card-container">
       <div className="main-title">
@@ -149,7 +149,7 @@ const LocationAndHours = () => {
       <div className="main-content-div">
         <div className="left-side-map">
           <img
-            src={require("../../assets/images/1-devocion/google-map.jpg")}
+            src={require("../../../assets/images/1-devocion/google-map.jpg")}
             alt="google maps"
           />
           <div className="bottom-left-side">
@@ -210,7 +210,7 @@ const LocationAndHours = () => {
   );
 };
 
-const Amenities = () => {
+const Amenities = ({ business }) => {
   return (
     <div className="amenitites card-container">
       <div className="main-title">
@@ -219,7 +219,7 @@ const Amenities = () => {
       <div className="amenities-content">
         <div className="amenities-item">
           <div className="cross-symbol">
-            <img src={require("../../assets/images/cross.png")}></img>
+            <img src={require("../../../assets/images/cross.png")}></img>
           </div>
 
           <div className="health-score-box">
@@ -268,23 +268,25 @@ const Amenities = () => {
   );
 };
 
-const ParsedAbout = () => {
+const ParsedAbout = ({ business }) => {
   const paragraphs = business.about.split(123);
   return paragraphs.map((paragraph, idx) => <p key={idx}>{paragraph}</p>);
 };
 
-const AboutCard = () => {
+const AboutCard = ({ business }) => {
   return (
     <>
       <div className="about card-container">
         <div className="main-title">
           <h2>About the business</h2>
         </div>
-        <div className="about-text">{<ParsedAbout />}</div>
-        <div className="read-more-button get-directions-button">
-          <h3>
-            <a href="#">Read more</a>
-          </h3>
+        <div className="about-text">{<ParsedAbout business={business} />}</div>
+        <div className="read-more-button-container">
+          <div className="read-more-button get-directions-button">
+            <h3>
+              <a href="#">Read more</a>
+            </h3>
+          </div>
         </div>
       </div>
     </>

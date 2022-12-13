@@ -4,6 +4,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
 import IndexPage from "./components/IndexPage";
 import BusinessShow from "./components/BusinessShow";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <IndexPage />
         </Route>
       </Switch>
+      <Footer />
     </>
   );
 }

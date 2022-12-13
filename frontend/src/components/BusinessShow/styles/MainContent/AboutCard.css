@@ -3,6 +3,11 @@
   font-weight: 300;
 }
 
-.read-more-button {
+.read-more-button-container {
   /* width: 300px; */
+  display: flex;
+}
+
+.about.card-container {
+  border: none;
 }

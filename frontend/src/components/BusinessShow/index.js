@@ -15,10 +15,7 @@ const BusinessShow = () => {
     dispatch(fetchBusiness(businessId));
   }, [businessId, dispatch]);
 
-  // Photo + Business title card
   if (!business) return null;
-
-  // Main Content
 
   return (
     <>
