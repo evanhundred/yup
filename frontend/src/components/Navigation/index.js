@@ -72,6 +72,21 @@ const Navigation = () => {
               <h1 className="star">*</h1>
             </NavLink>
           </div>
+          <div className="socials">
+            <div id="github">
+              <a href="https://www.github.com/evanhundred/yup">
+                {/* <p>gh</p> */}
+                {/* <img src="../../assets/images/github-mark.png" /> */}
+                <img src={githubLogo} alt="GitHub" />
+              </a>
+            </div>
+            <div id="linkedin">
+              <a href="https://www.linkedin.com/in/evan-ryan-1a2b07131/">
+                {/* <p>li</p> */}
+                <img src={linkedinLogo} alt="LinkedIn" />
+              </a>
+            </div>
+          </div>
         </div>
       </>
     );

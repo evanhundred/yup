@@ -58,6 +58,9 @@ body {
   padding: 12px 20px 0;
   align-items: center;
   /* color: blue; */
+  /* float: right; */
+  left: 2%;
+  position: absolute;
 }
 
 .socials img {
@@ -69,13 +72,16 @@ body {
   background-color: #e34234;
   width: 100%;
   padding: 10px 0;
+  display: flex;
+  justify-content: center;
 }
 
 #form-header-logo-container {
-  width: 100%;
-  min-width: 1020px;
-  text-align: center;
-  display: inline-block;
+  /* width: 100%; */
+  /* min-width: 820px; */
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
 }
 
 #header-bar h1 {
@@ -92,14 +98,14 @@ body {
 #logo {
   font-size: 30px;
   height: 100%;
-  margin: 10px 0 0 0;
+  /* margin: 10px 0 0 0; */
 }
 
 #header-bar h1.star,
 #nav-bar span.star {
-  font-size: 50px;
+  font-size: 55px;
   font-weight: 600;
-  margin: -5px 0 -7px;
+  margin: -15px 0 -7px;
 }
 
 button,
