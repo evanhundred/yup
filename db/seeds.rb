@@ -35,30 +35,53 @@ ApplicationRecord.transaction do
 
     puts "Creating businesses..."
 
-    business1 = Business.create!(
-        name: "Devoción",
-        latitude: 40.71618202634479,
-        longitude: -73.9646328800473,
-        address: "69 Grand St",
-        city: "Brooklyn",
-        state: "NY",
-        zipcode: "11249",
-        phone: "(718) 285-6180",
-        website: "https://www.devocion.com/",
-        open_at: "8:00 AM",
-        closed_at: "7:00 PM",
-        about: "Specialties123
-        Farm-to-table coffee roasters. We average 10 days from origin to roast, serving the freshest imaginable.\n
-        History123
-        Established in 2006.123
-        Devoción was Launched in 2006 to produce the freshest coffee imaginable -- roasting provides only half of coffee's flavor, while the mere freshness of the beans does the rest of the work. And yet, most coffee beans sit around for months, losing flavor every day. That's why the Devoción team does everything short of picking the cherry, and do it faster than anyone else -- we hand-select our 1,000+ farm partners, dry-mill at our Bogotá facility, control the export process, and freshly roast in Brooklyn. You will taste the difference in a single sip.",
-        category: "Coffee & Tea",
-        price: "$")
+        business1 = Business.create!(
+            name: "Devoción",
+            latitude: 40.71618202634479,
+            longitude: -73.9646328800473,
+            address: "69 Grand St",
+            city: "Brooklyn",
+            state: "NY",
+            zipcode: "11249",
+            phone: "(718) 285-6180",
+            website: "https://www.devocion.com/",
+            open_at: "8:00 AM",
+            closed_at: "7:00 PM",
+            about: "Specialties123
+            Farm-to-table coffee roasters. We average 10 days from origin to roast, serving the freshest imaginable.\n
+            History123
+            Established in 2006.123
+            Devoción was Launched in 2006 to produce the freshest coffee imaginable -- roasting provides only half of coffee's flavor, while the mere freshness of the beans does the rest of the work. And yet, most coffee beans sit around for months, losing flavor every day. That's why the Devoción team does everything short of picking the cherry, and do it faster than anyone else -- we hand-select our 1,000+ farm partners, dry-mill at our Bogotá facility, control the export process, and freshly roast in Brooklyn. You will taste the difference in a single sip.",
+            category: "Coffee & Tea",
+            price: "$"),
+
+        business2 = Business.create!(
+            name: "El Paso Mexican Grill",
+            latitude: 40.63611637171446,
+            longitude: -73.96209191552944,
+            address: "1610 Newkirk Ave",
+            city: "Brooklyn",
+            state: "NY",
+            zipcode: "11226",
+            phone: "(917) 966-1555",
+            website: "https://elpasomexicangrillbrooklyn.bestcafes.online/",
+            open_at: "8:00 AM",
+            closed_at: "10:45 PM",
+            about: "Tex Mex Southern Food with a bit of American. We are now serving breakfast!",
+            category: "Tex Mex, Mexican",
+            price: "$")
+
     # business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/1-devocion/flatbread.jpg"), filename: "flatbread.jpg")
     # business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/1-devocion/iced-coffee-outside.jpg"), filename: "iced-coffee-outside.jpg")
     # business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/1-devocion/iced-coffee-pastry.jpg"), filename: "iced-coffee-pastry.jpg")
     # business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/1-devocion/indoor.jpg"), filename: "indoor.jpg")
     # business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/1-devocion/storefront.jpg"), filename: "storefront.jpg")
+
+    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/1-devocion/flatbread.jpg"), filename: "flatbread.jpg")
+    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/1-devocion/iced-coffee-outside.jpg"), filename: "iced-coffee-outside.jpg")
+    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/1-devocion/iced-coffee-pastry.jpg"), filename: "iced-coffee-pastry.jpg")
+    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/1-devocion/indoor.jpg"), filename: "indoor.jpg")
+    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/1-devocion/storefront.jpg"), filename: "storefront.jpg")
 
 
 

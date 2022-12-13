@@ -154,7 +154,10 @@ const LocationAndHours = ({ business }) => {
           />
           <div className="bottom-left-side">
             <div className="address">
-              <h3 className="street-address">{business.address}</h3>
+              <a href="https://google.com" target="_blank">
+                <h3 className="street-address">{business.address}</h3>
+              </a>
+
               <h4 className="city-state-zip">
                 {business.city}, {business.state} {business.zipcode}
               </h4>
