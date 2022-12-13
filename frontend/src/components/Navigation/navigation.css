@@ -52,7 +52,7 @@ body {
   align-items: center;
 }
 
-.socials {
+#header-bar .socials {
   display: flex;
   gap: 15px;
   padding: 12px 20px 0;
@@ -61,6 +61,17 @@ body {
   /* float: right; */
   left: 2%;
   position: absolute;
+}
+
+#nav-bar .socials {
+  display: flex;
+  gap: 15px;
+  padding: 12px 25px 0;
+  align-items: center;
+  /* color: blue; */
+  /* float: right; */
+  /* left: 2%;
+  position: absolute; */
 }
 
 .socials img {
