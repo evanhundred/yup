@@ -7,7 +7,7 @@ const PhotoCard = ({ business = null }) => {
         <div className="business-image one">
           <img
             // src={require("../../../assets/images/1-devocion/iced-coffee-outside.jpg")}
-            src={business.photos[1]}
+            src={business.imageUrls[1]}
             alt="iced coffee held in front of store sign"
           />
         </div>

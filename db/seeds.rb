@@ -53,7 +53,7 @@ require "open-uri"
             Established in 2006.123
             Devoción was Launched in 2006 to produce the freshest coffee imaginable -- roasting provides only half of coffee's flavor, while the mere freshness of the beans does the rest of the work. And yet, most coffee beans sit around for months, losing flavor every day. That's why the Devoción team does everything short of picking the cherry, and do it faster than anyone else -- we hand-select our 1,000+ farm partners, dry-mill at our Bogotá facility, control the export process, and freshly roast in Brooklyn. You will taste the difference in a single sip.",
             category: "Coffee & Tea",
-            price: "$"),
+            price: "$")
 
         business2 = Business.create!(
             name: "El Paso Mexican Grill",
@@ -119,23 +119,25 @@ require "open-uri"
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/store_photo_1.jpg"), filename: "store_photo_1.jpg")
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/store_photo_2.jpg"), filename: "store_photo_2.jpg")
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/popular-items/pop-item.jpg"), filename: "pop-item.jpg")
-    business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/google_map.jpg"), filename: "pop-item.jpg")
+    business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/google-map.jpg"), filename: "pop-item.jpg")
 
-    business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_1.jpg"), filename: "photo_1.jpg")
-    business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_2.jpg"), filename: "photo_2.jpg")
-    business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_3.jpg"), filename: "photo_3.jpg")
-    business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_1.jpg"), filename: "store_photo_1.jpg")
-    business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_2.jpg"), filename: "store_photo_2.jpg")
-    business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/popular-items/pop-item"), filename: "pop-item.jpg")
-    business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/google_map.jpg"), filename: "pop-item.jpg")
+    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_1.jpg"), filename: "photo_1.jpg")
+    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_2.jpg"), filename: "photo_2.jpg")
+    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_3.jpg"), filename: "photo_3.jpg")
+    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_1.jpg"), filename: "store_photo_1.jpg")
+    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_2.jpg"), filename: "store_photo_2.jpg")
+    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/popular-items/pop-item"), filename: "pop-item.jpg")
+    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/google_map.jpg"), filename: "pop-item.jpg")
 
-    business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_1.jpg"), filename: "photo_1.jpg")
-    business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_2.jpg"), filename: "photo_2.jpg")
-    business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_3.jpg"), filename: "photo_3.jpg")
-    business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_1.jpg"), filename: "store_photo_1.jpg")
-    business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_2.jpg"), filename: "store_photo_2.jpg")
-    business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/popular-items/pop-item"), filename: "pop-item.jpg")
-    business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/google_map.jpg"), filename: "pop-item.jpg")
+    # business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_1.jpg"), filename: "photo_1.jpg")
+    # business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_2.jpg"), filename: "photo_2.jpg")
+    # business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_3.jpg"), filename: "photo_3.jpg")
+    # business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_1.jpg"), filename: "store_photo_1.jpg")
+    # business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_2.jpg"), filename: "store_photo_2.jpg")
+    # business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/popular-items/pop-item"), filename: "pop-item.jpg")
+    # business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/google_map.jpg"), filename: "pop-item.jpg")
+
+# ------------------- END
 
     # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_1.jpg"), filename: "photo_1.jpg")
     # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_2.jpg"), filename: "photo_2.jpg")
@@ -215,5 +217,7 @@ require "open-uri"
 
     puts "Done!"
 # end
+
+
 # first = Faker::Name.first_name
 # first.concat(Faker::Creature::Animal.name)
