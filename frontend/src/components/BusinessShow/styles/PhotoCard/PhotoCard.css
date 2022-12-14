@@ -7,7 +7,10 @@
   display: flex;
   justify-content: center;
   min-width: 1144px;
-  max-width: 1272px;
+  /* max-width: 1272px; */
+  /* position: fixed; */
+  /* margin: 0; */
+  /* overflow: auto; */
 }
 
 div.business-image {
@@ -39,7 +42,7 @@ div.business-image.one img {
   position: relative;
   aspect-ratio: auto;
   max-width: 400px;
-  margin-left: 300px;
+  /* margin-left: 300px; */
 }
 
 div.business-image.two img {
@@ -57,6 +60,20 @@ div.business-image.two img {
 }
 
 div.business-image.three img {
+  filter: brightness(60%);
+  /* width: 100vw; */
+  /* max-height: 600px; */
+  object-fit: cover;
+  position: center;
+  height: 600px;
+  /* background-position: center top; */
+  /* background: url("../../../../assets/images/1-devocion/indoor.jpg"); */
+  position: relative;
+  aspect-ratio: auto;
+  max-width: 400px;
+}
+
+div.business-image.four img {
   filter: brightness(60%);
   /* width: 100vw; */
   /* max-height: 600px; */

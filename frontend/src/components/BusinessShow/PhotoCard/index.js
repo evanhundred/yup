@@ -6,7 +6,8 @@ const PhotoCard = ({ business = null }) => {
       <div className="business-image-container">
         <div className="business-image one">
           <img
-            src={require("../../../assets/images/1-devocion/iced-coffee-outside.jpg")}
+            // src={require("../../../assets/images/1-devocion/iced-coffee-outside.jpg")}
+            src={business.photos.1}
             alt="iced coffee held in front of store sign"
           />
         </div>
@@ -20,6 +21,12 @@ const PhotoCard = ({ business = null }) => {
           <img
             src={require("../../../assets/images/1-devocion/iced-coffee-pastry.jpg")}
             alt="cafe - inside"
+          />
+        </div>
+        <div className="business-image four">
+          <img
+            src={require("../../../assets/images/1-devocion/flatbread.jpg")}
+            alt="delicious flatbread"
           />
         </div>
       </div>

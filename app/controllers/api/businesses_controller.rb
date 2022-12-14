@@ -11,6 +11,7 @@ class Api::BusinessesController < ApplicationController
     def show
         @business = Business.find(params[:id])
         if @business
+            # render "views/api/businesses/show.json.jbuilder"
             render :show
         else
             render json: @business.errors.full_messages, status: 404
