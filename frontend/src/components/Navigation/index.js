@@ -41,7 +41,11 @@ const Navigation = () => {
         <div className="right-side">
           <div className="socials">
             <div id="github">
-              <a href="https://www.github.com/evanhundred/yup" target="_blank">
+              <a
+                href="https://www.github.com/evanhundred/yup"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {/* <p>gh</p> */}
                 {/* <img src="../../assets/images/github-mark.png" /> */}
                 <img src={githubLogo} alt="GitHub" />
@@ -51,6 +55,7 @@ const Navigation = () => {
               <a
                 href="https://www.linkedin.com/in/evan-ryan-1a2b07131/"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 {/* <p>li</p> */}
                 <img src={linkedinLogo} alt="LinkedIn" />
@@ -77,7 +82,11 @@ const Navigation = () => {
           </div>
           <div className="socials">
             <div id="github">
-              <a href="https://www.github.com/evanhundred/yup" target="_blank">
+              <a
+                href="https://www.github.com/evanhundred/yup"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {/* <p>gh</p> */}
                 {/* <img src="../../assets/images/github-mark.png" /> */}
                 <img src={githubLogo} alt="GitHub" />
@@ -87,6 +96,7 @@ const Navigation = () => {
               <a
                 href="https://www.linkedin.com/in/evan-ryan-1a2b07131/"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 {/* <p>li</p> */}
                 <img src={linkedinLogo} alt="LinkedIn" />
