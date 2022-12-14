@@ -84,6 +84,13 @@ require "open-uri"
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/store_photo_2.jpg"), filename: "store_photo_2.jpg")
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/popular-items.photo_1.jpg"), filename: "pop-item.jpg")
 
+    business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/photo_1.jpg"), filename: "photo_1.jpg")
+    business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/photo_2.jpg"), filename: "photo_2.jpg")
+    business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/photo_3.jpg"), filename: "photo_3.jpg")
+    business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/store_photo_1.jpg"), filename: "store_photo_1.jpg")
+    business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/store_photo_2.jpg"), filename: "store_photo_2.jpg")
+    business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/popular-items.photo_1.jpg"), filename: "pop-item.jpg")
+
     # business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/flatbread.jpg"), filename: "flatbread.jpg")
     # business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/seeds-1-devocion/iced-coffee-outside.jpg"), filename: "iced-coffee-outside.jpg")
     # business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/seeds-1-devocion/iced-coffee-pastry.jpg"), filename: "iced-coffee-pastry.jpg")

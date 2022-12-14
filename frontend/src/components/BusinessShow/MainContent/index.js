@@ -154,7 +154,11 @@ const LocationAndHours = ({ business }) => {
           />
           <div className="bottom-left-side">
             <div className="address">
-              <a href="https://google.com" target="_blank">
+              <a
+                href="https://google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <h3 className="street-address">{business.address}</h3>
               </a>
 
