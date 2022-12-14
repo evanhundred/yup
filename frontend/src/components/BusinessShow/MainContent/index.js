@@ -115,7 +115,7 @@ const MenuCard = ({ business }) => {
         <div className="popular-item-subcard">
           <div className="popular-item-image">
             <img
-              src={require("../../../assets/images/1-devocion/popular-items/choc-croissant-coffee.jpg")}
+              src={require("../../../assets/images/1-devocion/popular-items/pop-item.jpg")}
               alt="chocolate croissant"
             />
           </div>
