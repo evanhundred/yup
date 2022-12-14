@@ -8,26 +8,22 @@ const PhotoCard = ({ business = null }) => {
           <img
             // src={require("../../../assets/images/1-devocion/iced-coffee-outside.jpg")}
             src={business.imageUrls[1]}
-            alt="iced coffee held in front of store sign"
+            alt="delicious items"
           />
         </div>
+        {/* store photo 1 */}
         <div className="business-image two">
           <img
-            src={require("../../../assets/images/1-devocion/store_photo_1.jpg")}
-            alt="cafe - inside"
+            src={business.imageUrls[4]}
+            // src={require("../../../assets/images/1-devocion/store_photo_1.jpg")}
+            alt="fantastic store"
           />
         </div>
         <div className="business-image three">
-          <img
-            src={require("../../../assets/images/1-devocion/photo_1.jpg")}
-            alt="cafe - inside"
-          />
+          <img src={business.imageUrls[2]} alt="more delicious items" />
         </div>
         <div className="business-image four">
-          <img
-            src={require("../../../assets/images/1-devocion/photo_2.jpg")}
-            alt="delicious flatbread"
-          />
+          <img src={business.imageUrls[3]} alt="more delicious deliciousness" />
         </div>
       </div>
       <div id="business-title-card">
