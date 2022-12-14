@@ -30,22 +30,7 @@ div.business-image:after {
   background: linear-gradient(to bottom, transparent 70%, black 100%);
 }
 
-div.business-image.one img {
-  filter: brightness(60%);
-  /* width: 100vw; */
-  /* max-height: 600px; */
-  object-fit: cover;
-  position: center;
-  height: 600px;
-  /* background-position: center top; */
-  /* background: url("../../../../assets/images/1-devocion/indoor.jpg"); */
-  position: relative;
-  aspect-ratio: auto;
-  max-width: 400px;
-  /* margin-left: 300px; */
-}
-
-div.business-image.two img {
+div.business-image img {
   filter: brightness(60%);
   /* width: 100vw; */
   /* max-height: 600px; */
@@ -57,35 +42,18 @@ div.business-image.two img {
   position: relative;
   aspect-ratio: auto;
   max-width: 1000px;
+  /* margin-left: 300px; */
 }
 
-div.business-image.three img {
+/* div.business-image.two img {
   filter: brightness(60%);
-  /* width: 100vw; */
-  /* max-height: 600px; */
   object-fit: cover;
   position: center;
   height: 600px;
-  /* background-position: center top; */
-  /* background: url("../../../../assets/images/1-devocion/indoor.jpg"); */
   position: relative;
   aspect-ratio: auto;
-  max-width: 400px;
-}
-
-div.business-image.four img {
-  filter: brightness(60%);
-  /* width: 100vw; */
-  /* max-height: 600px; */
-  object-fit: cover;
-  position: center;
-  height: 600px;
-  /* background-position: center top; */
-  /* background: url("../../../../assets/images/1-devocion/indoor.jpg"); */
-  position: relative;
-  aspect-ratio: auto;
-  max-width: 400px;
-}
+  max-width: 1000px;
+} */
 
 #business-title-card {
   position: relative;

@@ -25,6 +25,15 @@ const PhotoCard = ({ business = null }) => {
         <div className="business-image four">
           <img src={business.imageUrls[2]} alt="more delicious deliciousness" />
         </div>
+        <div className="business-image five">
+          <img
+            src={business.imageUrls[4]}
+            alt="more more delicious deliciousness"
+          />
+        </div>
+        {/* <div className="business-image six">
+          <img src={business.imageUrls[1]} alt="familiar item" />
+        </div> */}
       </div>
       <div id="business-title-card">
         <h1>{business.name}</h1>

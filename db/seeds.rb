@@ -88,31 +88,6 @@ require "open-uri"
             category: "Caribbean",
             price: "$")
 
-        # business3 = Business.create!(
-        #     name: "Golden Krust Bakery & Grill",
-        #     latitude: 40.63611637171446,
-        #     longitude: -73.96209191552944,
-        #     address: "2846 Church Ave",
-        #     city: "Brooklyn",
-        #     state: "NY",
-        #     zipcode: "11226",
-        #     phone: "(718) 469-3400",
-        #     website: "https://www.goldenkrust.com/",
-        #     open_at: "7:00 AM",
-        #     closed_at: "8:00 PM",
-        #     about: "In 1989, Lowell Hawthorne, along with his wife Lorna, four of his siblings and their spouses, pooled all of their resources to open the first Golden Krust restaurant on East Gun Hill Road in the Bronx, New York. The pivotal year of 1993 signified Golden Krust’s relocation of its manufacturing operations to the South Bronx, eventually purchasing nearly the entire block from 172nd Street to Claremont Parkway on Park Avenue.123
-        #     The business became so successful that the Hawthornes were encouraged to create franchises, and they seized the opportunity to do just that. Golden Krust became the first Caribbean-owned business in the U.S to be granted a franchise license. By 1996, they owned 17 restaurants throughout New York City. Today, Golden Krust Caribbean Restaurants operates over 125 restaurants in North America.",
-        #     category: "Caribbean",
-        #     price: "$")
-
-
-
-    # https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/flatbread.jpg
-    # http://localhost:3000/static/media/google-map.27a3ee3e37c848523a45.jpg
-
-    # business1.photos.
-
-
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/photo_1.jpg"), filename: "photo_1.jpg")
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/photo_2.jpg"), filename: "photo_2.jpg")
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/photo_3.jpg"), filename: "photo_3.jpg")
@@ -121,9 +96,7 @@ require "open-uri"
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/popular-items/pop-item.jpg"), filename: "pop-item.jpg")
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/google-map.jpg"), filename: "google-map.jpg")
 
-
     business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_1.jpg"), filename: "photo_1.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_1.jpg"), filename: "photo_1.jpg")
     business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_2.jpg"), filename: "photo_2.jpg")
     business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_3.jpg"), filename: "photo_3.jpg")
     business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_1.jpg"), filename: "store_photo_1.jpg")
@@ -131,95 +104,13 @@ require "open-uri"
     business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/popular-items/pop-item.jpg"), filename: "pop-item.jpg")
     business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/google-map.jpg"), filename: "google-map.jpg")
 
-    # business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_1.jpg"), filename: "photo_1.jpg")
-    # business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_2.jpg"), filename: "photo_2.jpg")
-    # business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_3.jpg"), filename: "photo_3.jpg")
-    # business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_1.jpg"), filename: "store_photo_1.jpg")
-    # business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_2.jpg"), filename: "store_photo_2.jpg")
-    # business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/popular-items/pop-item"), filename: "pop-item.jpg")
-    # business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/google-map.jpg"), filename: "pop-item.jpg")
+    business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/3-golden-krust/photo_1.jpg"), filename: "photo_1.jpg")
+    business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/3-golden-krust/photo_2.jpg"), filename: "photo_2.jpg")
+    business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/3-golden-krust/photo_3.jpg"), filename: "photo_3.jpg")
+    business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/3-golden-krust/store_photo_1.jpg"), filename: "store_photo_1.jpg")
+    business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/3-golden-krust/store_photo_2.jpg"), filename: "store_photo_2.jpg")
+    business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/3-golden-krust/popular-items/pop-item.jpg"), filename: "pop-item.jpg")
+    business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/3-golden-krust/google-map.jpg"), filename: "google-map.jpg")
 
-# ------------------- END
-
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_1.jpg"), filename: "photo_1.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_2.jpg"), filename: "photo_2.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_3.jpg"), filename: "photo_3.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_1.jpg"), filename: "store_photo_1.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_2.jpg"), filename: "store_photo_2.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/popular-items/pop-item"), filename: "pop-item.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/google_map.jpg"), filename: "pop-item.jpg")
-
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_1.jpg"), filename: "photo_1.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_2.jpg"), filename: "photo_2.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_3.jpg"), filename: "photo_3.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_1.jpg"), filename: "store_photo_1.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_2.jpg"), filename: "store_photo_2.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/popular-items/pop-item"), filename: "pop-item.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/google_map.jpg"), filename: "pop-item.jpg")
-
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_1.jpg"), filename: "photo_1.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_2.jpg"), filename: "photo_2.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_3.jpg"), filename: "photo_3.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_1.jpg"), filename: "store_photo_1.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_2.jpg"), filename: "store_photo_2.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/popular-items/pop-item"), filename: "pop-item.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/google_map.jpg"), filename: "pop-item.jpg")
-
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_1.jpg"), filename: "photo_1.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_2.jpg"), filename: "photo_2.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_3.jpg"), filename: "photo_3.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_1.jpg"), filename: "store_photo_1.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_2.jpg"), filename: "store_photo_2.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/popular-items/pop-item"), filename: "pop-item.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/google_map.jpg"), filename: "pop-item.jpg")
-
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_1.jpg"), filename: "photo_1.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_2.jpg"), filename: "photo_2.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_3.jpg"), filename: "photo_3.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_1.jpg"), filename: "store_photo_1.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_2.jpg"), filename: "store_photo_2.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/popular-items/pop-item"), filename: "pop-item.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/google_map.jpg"), filename: "pop-item.jpg")
-
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_1.jpg"), filename: "photo_1.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_2.jpg"), filename: "photo_2.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_3.jpg"), filename: "photo_3.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_1.jpg"), filename: "store_photo_1.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_2.jpg"), filename: "store_photo_2.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/popular-items/pop-item"), filename: "pop-item.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/google_map.jpg"), filename: "pop-item.jpg")
-
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_1.jpg"), filename: "photo_1.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_2.jpg"), filename: "photo_2.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/photo_3.jpg"), filename: "photo_3.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_1.jpg"), filename: "store_photo_1.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/store_photo_2.jpg"), filename: "store_photo_2.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/popular-items/pop-item"), filename: "pop-item.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/2-el-paso/google_map.jpg"), filename: "pop-item.jpg")
-
-
-
-    # OLD---------------------
-
-    # business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/flatbread.jpg"), filename: "flatbread.jpg")
-    # business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/seeds-1-devocion/iced-coffee-outside.jpg"), filename: "iced-coffee-outside.jpg")
-    # business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/seeds-1-devocion/iced-coffee-pastry.jpg"), filename: "iced-coffee-pastry.jpg")
-    # business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/seeds-1-devocion/indoor.jpg"), filename: "indoor.jpg")
-    # business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/seeds-1-devocion/storefront.jpg"), filename: "storefront.jpg")
-    # business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/google-map.jpg"), filename: "google-map.jpg")
-    # business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/popular-items/choc-croissant-coffee.jpg"), filename: "choc-croissant-coffee.jpg")
-
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/1-devocion/flatbread.jpg"), filename: "flatbread.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/1-devocion/iced-coffee-outside.jpg"), filename: "iced-coffee-outside.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/1-devocion/iced-coffee-pastry.jpg"), filename: "iced-coffee-pastry.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/1-devocion/indoor.jpg"), filename: "indoor.jpg")
-    # business2.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/images/1-devocion/storefront.jpg"), filename: "storefront.jpg")
-
-
-
-    puts "Done!"
+    # puts "Done!"https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/3-golden-krust/popular-items/pop-item.jpg
 # end
-
-
-# first = Faker::Name.first_name
-# first.concat(Faker::Creature::Animal.name)

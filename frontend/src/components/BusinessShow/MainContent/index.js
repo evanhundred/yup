@@ -117,7 +117,7 @@ const MenuCard = ({ business }) => {
             <img src={business.imageUrls[5]} alt="chocolate croissant" />
           </div>
           <div className="popular-item-name">
-            <h2>Chocolate Croissant</h2>
+            <h2>Delicious Item</h2>
             <h3>1 Photo · 6 Reviews</h3>
           </div>
         </div>
