@@ -114,10 +114,7 @@ const MenuCard = ({ business }) => {
       <div className="popular-items-bar">
         <div className="popular-item-subcard">
           <div className="popular-item-image">
-            <img
-              src={require("../../../assets/images/1-devocion/popular-items/pop-item.jpg")}
-              alt="chocolate croissant"
-            />
+            <img src={business.imageUrls[5]} alt="chocolate croissant" />
           </div>
           <div className="popular-item-name">
             <h2>Chocolate Croissant</h2>
@@ -148,10 +145,7 @@ const LocationAndHours = ({ business }) => {
 
       <div className="main-content-div">
         <div className="left-side-map">
-          <img
-            src={require("../../../assets/images/1-devocion/google-map.jpg")}
-            alt="google maps"
-          />
+          <img src={business.imageUrls[6]} alt="google maps" />
           <div className="bottom-left-side">
             <div className="address">
               <a
