@@ -41,14 +41,17 @@ const Navigation = () => {
         <div className="right-side">
           <div className="socials">
             <div id="github">
-              <a href="https://www.github.com/evanhundred/yup">
+              <a href="https://www.github.com/evanhundred/yup" target="_blank">
                 {/* <p>gh</p> */}
                 {/* <img src="../../assets/images/github-mark.png" /> */}
                 <img src={githubLogo} alt="GitHub" />
               </a>
             </div>
             <div id="linkedin">
-              <a href="https://www.linkedin.com/in/evan-ryan-1a2b07131/">
+              <a
+                href="https://www.linkedin.com/in/evan-ryan-1a2b07131/"
+                target="_blank"
+              >
                 {/* <p>li</p> */}
                 <img src={linkedinLogo} alt="LinkedIn" />
               </a>
@@ -74,14 +77,17 @@ const Navigation = () => {
           </div>
           <div className="socials">
             <div id="github">
-              <a href="https://www.github.com/evanhundred/yup">
+              <a href="https://www.github.com/evanhundred/yup" target="_blank">
                 {/* <p>gh</p> */}
                 {/* <img src="../../assets/images/github-mark.png" /> */}
                 <img src={githubLogo} alt="GitHub" />
               </a>
             </div>
             <div id="linkedin">
-              <a href="https://www.linkedin.com/in/evan-ryan-1a2b07131/">
+              <a
+                href="https://www.linkedin.com/in/evan-ryan-1a2b07131/"
+                target="_blank"
+              >
                 {/* <p>li</p> */}
                 <img src={linkedinLogo} alt="LinkedIn" />
               </a>
