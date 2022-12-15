@@ -300,6 +300,9 @@ const AboutCard = ({ business }) => {
 
 const Reviews = ({ business }) => {
   // const currentUser = useSelector();
+  // const deleteButton = () => {
+  //   if review.author_id
+  // }
 
   const reviewItems = business.reviews.map((review, idx) => (
     <div key={idx} className="review-item-container">
@@ -311,9 +314,6 @@ const Reviews = ({ business }) => {
       </div>
       <div key={idx} className="review-rating">
         <span>{review.rating}</span>/5
-      </div>
-      <div key={idx} className="delete-button">
-        <a href="#">Delete Post</a>
       </div>
     </div>
   ));

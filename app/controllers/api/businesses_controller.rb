@@ -2,6 +2,8 @@ class Api::BusinessesController < ApplicationController
     wrap_parameters include: Business.attribute_names + ['openAt'] + ['closedAt']
     def index
         @businesses = Business.all
+        @users = Users.all
+        @current_user = current_user
         if @businesses
             render :index
         else

@@ -15,8 +15,10 @@ const EditReviewForm = () => {
   const { businessId } = useParams();
   const business = useSelector(getBusiness(businessId));
   const { id } = useParams();
+  const reviewId = id;
+  // debugger;
   // const review = useSelector(getReview(id));
-  const review = id && business ? business.reviews[id] : {};
+  const review = reviewId && business ? business.reviews[reviewId - 1] : {};
 
   const [body, setBody] = useState(review ? review.body : "");
   const [rating, setRating] = useState(review ? review.rating : "");
@@ -26,9 +28,9 @@ const EditReviewForm = () => {
     dispatch(fetchBusiness(businessId));
   }, [businessId, dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(fetchReview(reviewId));
-  // }, [reviewId, dispatch]);
+  useEffect(() => {
+    dispatch(fetchReview(reviewId));
+  }, [reviewId, dispatch]);
 
   // const handleSubmit = (e) => {
   //   e.preventDefault();
@@ -48,7 +50,7 @@ const EditReviewForm = () => {
 
   const clickDelete = (e) => {
     e.preventDefault();
-    dispatch(deleteReview(review.id));
+    dispatch(deleteReview(reviewId, businessId));
   };
 
   return (
@@ -58,7 +60,10 @@ const EditReviewForm = () => {
         <form>
           <label>
             Body
-            <textarea value={body} onChange={(e) => setBody(e.target.value)} />
+            <textarea
+              value={`${review ? review.body : ""}`}
+              onChange={(e) => setBody(e.target.value)}
+            />
           </label>
           <label>
             Rating
