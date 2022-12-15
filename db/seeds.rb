@@ -127,6 +127,22 @@ require "open-uri"
             category: "Noodles, Cantonese, Hong Kong Style Cafe",
             price: "$$")
 
+        business6 = Business.create!(
+            name: "Beverly Pizza & Cafe",
+            latitude: 40.64278291552419,
+            longitude: -73.97830437791043,
+            address: "358 E 2nd St",
+            city: "Brooklyn",
+            state: "NY",
+            zipcode: "11218",
+            phone: "(718) 431-0222",
+            website: "https://beverlypizzacafe.com",
+            open_at: "11:00 AM",
+            closed_at: "10:30 PM",
+            about: "Order your favorite pizza, pasta, salad, wings and more with Beverley Pizza & Cafe located at 358 E 2nd St in New York, NY. Beverley Pizza & Cafe is accepting orders online for delivery and takeout. To begin your order simply click on any menu category. Enjoy!",
+            category: "Cafes, Italian, Pizza",
+            price: "$")
+
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/photo_1.jpg"), filename: "photo_1.jpg")
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/photo_2.jpg"), filename: "photo_2.jpg")
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/photo_3.jpg"), filename: "photo_3.jpg")
@@ -166,6 +182,14 @@ require "open-uri"
     business5.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/5-e-noodle/store_photo_2.jpg"), filename: "store_photo_2.jpg")
     business5.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/5-e-noodle/popular-items/pop-item.jpg"), filename: "pop-item.jpg")
     business5.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/5-e-noodle/google-map.jpg"), filename: "google-map.jpg")
+
+    business6.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/6-beverley-pizza/photo_1.jpg"), filename: "photo_1.jpg")
+    business6.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/6-beverley-pizza/photo_2.jpg"), filename: "photo_2.jpg")
+    business6.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/6-beverley-pizza/photo_3.jpg"), filename: "photo_3.jpg")
+    business6.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/6-beverley-pizza/store_photo_1.jpg"), filename: "store_photo_1.jpg")
+    business6.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/6-beverley-pizza/store_photo_2.jpg"), filename: "store_photo_2.jpg")
+    business6.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/6-beverley-pizza/popular-items/pop-item.jpg"), filename: "pop-item.jpg")
+    business6.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/6-beverley-pizza/google-map.jpg"), filename: "google-map.jpg")
 
     # puts "Done!"https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/3-golden-krust/popular-items/pop-item.jpg
 # end
