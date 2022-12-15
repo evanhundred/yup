@@ -1,4 +1,5 @@
 class Api::BusinessesController < ApplicationController
+    wrap_parameters include: Business.attribute_names + ['openAt'] + ['closedAt']
     def index
         @businesses = Business.all
         if @businesses

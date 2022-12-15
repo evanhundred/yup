@@ -1,5 +1,12 @@
 class Api::ReviewsController < ApplicationController
-    before_action :require_logged_in
+    wrap_parameters include: Review.attribute_names + ['authorId'] + ['businessId']
+    before_action :require_logged_in, only: [:new, :create, :edit, :update, :destroy]
+
+    def index
+        # @reviews = Review.all
+        @reviews = Review.all.where(business_id: params[:business_id])
+        render :index
+    end
 
     def new
     end
@@ -31,7 +38,7 @@ class Api::ReviewsController < ApplicationController
     def update
         @review = Review.find(params[:id])
         if current_user == User.find_by(id: @review.author_id) && @review.update(review_params)
-            render json: { 'Success.'}
+            render json: 'Success.'
             # redirect_to '/'
         else
             render json: { errors: ['Something went wrong.'] }
