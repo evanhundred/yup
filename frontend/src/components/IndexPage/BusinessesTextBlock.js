@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getBusinesses, fetchBusinesses } from "../../store/businesses";
 import "./IndexPage.css";
 
@@ -14,17 +15,23 @@ const BusinessesTextBlock = () => {
   const businessBlock = businesses.map((business, idx) => {
     return (
       <div className="business-card">
-        <h3>{business.name}</h3>
+        <div className="card-image">
+          <Link to={`/businesses/${business.id}`}>
+            <img src={business.imageUrls[1]} alt="delicious business" />
+          </Link>
+        </div>
+
+        <div className="info-section">
+          <h3>{business.name}</h3>
+        </div>
       </div>
     );
   });
 
   return (
     // <>
-    <div id="text-block">
-      {/* <p>{JSON.stringify(businesses)}</p> */}
-      {businessBlock}
-    </div>
+    <div id="business-block">{businessBlock}</div>
+
     // </>
   );
 };

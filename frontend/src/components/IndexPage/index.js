@@ -34,8 +34,10 @@ const IndexPage = () => {
           <img src={require("../../assets/restaurant-skyline.jpg")} />
         </div>
       </div>
-      <SectionHeader title={{ text: "Recent Activity" }} />
-      <BusinessesTextBlock />
+      <div className="business-block-container">
+        <SectionHeader title={{ text: "Wonderful Restaurants" }} />
+        <BusinessesTextBlock />
+      </div>
     </>
   );
 };
