@@ -21,8 +21,8 @@ class User < ApplicationRecord
   validates :password, length: { in: 6..255 }, allow_nil: true
 
   has_many :reviews,
-    foreign_key :author_id,
-    inverse_of :author
+    foreign_key: :author_id,
+    inverse_of: :author
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)

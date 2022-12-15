@@ -14,8 +14,9 @@ class Review < ApplicationRecord
     validates :rating, :body, presence: true
 
     belongs_to :author,
-        class_name :User,
-        inverse_of :reviews
-    belongs_to :business
-        inverse_of :reviews
+        class_name: :User,
+        inverse_of: :reviews
+    belongs_to :business,
+        class_name: :Business,
+        inverse_of: :reviews
 end
