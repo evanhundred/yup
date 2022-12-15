@@ -3,21 +3,13 @@
 @import "FourthLine.css";
 
 .business-image-container {
-  /* width: 100%; */
   display: flex;
   justify-content: center;
   min-width: 1144px;
-  /* max-width: 1272px; */
-  /* position: fixed; */
-  /* margin: 0; */
-  /* overflow: auto; */
 }
 
 div.business-image {
   position: relative;
-  /* display: flex; */
-  /* width: 1080;
-  height: 1920; */
 }
 
 div.business-image:after {
@@ -32,28 +24,13 @@ div.business-image:after {
 
 div.business-image img {
   filter: brightness(60%);
-  /* width: 100vw; */
-  /* max-height: 600px; */
   object-fit: cover;
   position: center;
   height: 600px;
-  /* background-position: center top; */
-  /* background: url("../../../../assets/images/1-devocion/indoor.jpg"); */
   position: relative;
   aspect-ratio: auto;
   max-width: 1000px;
-  /* margin-left: 300px; */
 }
-
-/* div.business-image.two img {
-  filter: brightness(60%);
-  object-fit: cover;
-  position: center;
-  height: 600px;
-  position: relative;
-  aspect-ratio: auto;
-  max-width: 1000px;
-} */
 
 #business-title-card {
   position: relative;

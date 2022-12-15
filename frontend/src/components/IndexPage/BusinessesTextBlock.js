@@ -28,12 +28,7 @@ const BusinessesTextBlock = () => {
     );
   });
 
-  return (
-    // <>
-    <div id="business-block">{businessBlock}</div>
-
-    // </>
-  );
+  return <div id="business-block">{businessBlock}</div>;
 };
 
 export default BusinessesTextBlock;

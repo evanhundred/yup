@@ -4,7 +4,6 @@
 
 .image-container img {
   width: 100%;
-  /* max-height: 600px; */
   object-fit: cover;
   height: 600px;
   filter: brightness(50%);
@@ -14,7 +13,6 @@
   position: absolute;
   top: 0;
   width: 100%;
-  /* max-height: 600px; */
 }
 
 .image-container:after {
@@ -47,17 +45,14 @@ div#business-block {
   margin: 1em 0 0 45px;
   display: flex;
   justify-content: center;
-  /* min-width: 1000px; */
   flex-wrap: wrap;
   gap: 30px;
 }
 
 .business-card {
   width: 45%;
-  /* height: 100px; */
   border: #ccc solid 1px;
   max-width: 600px;
-  /* min-width: 200px; */
   border-radius: 5px;
   display: flex;
 }

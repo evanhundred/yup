@@ -1,5 +1,3 @@
-/* @import "MainContent.css"; */
-
 .popular-items-bar {
   font-size: 18px;
   display: flex;
@@ -36,8 +34,6 @@
 
 div.website-menu-link {
   border: 1px solid #ccc;
-  /* width: 0; */
-  /* display: inline-block; */
   display: flex;
   color: black;
   gap: 10px;

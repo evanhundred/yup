@@ -36,9 +36,6 @@ const MainContent = ({ business = null }) => {
 
         {/* {/* people also view */}
         {/* <AlsoViewed /> */}
-
-        {/* footer */}
-        {/* <Footer /> */}
       </div>
     </>
   );

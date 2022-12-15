@@ -7,7 +7,6 @@
 
 div.amenities-item {
   display: flex;
-  /* width: 500px; */
   flex: 1 0 50%;
   width: 400px;
   gap: 20px;
@@ -17,7 +16,6 @@ div.amenities-item {
 div.health-score {
   display: flex;
   gap: 8px;
-  /* width: 500px; */
 }
 div.amenities-item h3 {
   font-weight: 500;
