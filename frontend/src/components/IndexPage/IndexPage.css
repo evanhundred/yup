@@ -47,12 +47,14 @@ div#business-block {
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
+  min-width: 900px;
 }
 
 .business-card {
   width: 45%;
   border: #ccc solid 1px;
-  max-width: 600px;
+  max-width: 500px;
+  min-width: 400px;
   border-radius: 5px;
   display: flex;
 }
