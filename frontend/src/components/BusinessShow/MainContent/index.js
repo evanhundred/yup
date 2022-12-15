@@ -159,7 +159,7 @@ const LocationAndHours = ({ business }) => {
               <h4 className="city-state-zip">
                 {business.city}, {business.state} {business.zipcode}
               </h4>
-              <p>Williamsburg - North Side</p>
+              <p>Delicious Neighborhood</p>
             </div>
 
             <div className="get-directions-container">
