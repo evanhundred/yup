@@ -6,6 +6,8 @@ class ApplicationController < ActionController::API
 
     protect_from_forgery with: :exception
 
+    helper_method :current_user, :require_logged_in
+
     before_action :snake_case_params, :attach_authenticity_token
 
     def current_user
