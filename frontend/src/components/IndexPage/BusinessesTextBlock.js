@@ -14,7 +14,7 @@ const BusinessesTextBlock = () => {
 
   const businessBlock = businesses.map((business, idx) => {
     return (
-      <div className="business-card">
+      <div className="business-card" key={idx}>
         <div className="card-image">
           <Link to={`/businesses/${business.id}`}>
             <img src={business.imageUrls[1]} alt="delicious business" />
