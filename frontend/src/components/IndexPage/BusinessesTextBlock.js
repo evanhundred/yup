@@ -16,9 +16,9 @@ const BusinessesTextBlock = () => {
     return (
       <div className="business-card">
         <div className="card-image">
-          <Link to={`/businesses/${business.id}`}>
-            <img src={business.imageUrls[1]} alt="delicious business" />
-          </Link>
+          {/* <Link to={`/businesses/${business.id}`}> */}
+          <img src={business.imageUrls[1]} alt="delicious business" />
+          {/* </Link> */}
         </div>
 
         <div className="info-section">

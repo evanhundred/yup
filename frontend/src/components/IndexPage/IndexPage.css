@@ -62,9 +62,9 @@ div#business-block {
   display: flex;
 }
 
-/* div#business-block .card-image {
-  margin: 0;
-} */
+div#business-block .card-image {
+  display: flex;
+}
 
 .business-card img {
   width: 250px;

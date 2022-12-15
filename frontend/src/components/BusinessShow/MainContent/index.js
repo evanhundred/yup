@@ -22,6 +22,8 @@ const MainContent = ({ business = null }) => {
         {/* about the business */}
         <AboutCard business={business} />
 
+        <div id="pre-footer-height-reset"></div>
+
         {/* FUTURE */}
         {/* ask the community */}
         {/* <QuestionsCard /> */}

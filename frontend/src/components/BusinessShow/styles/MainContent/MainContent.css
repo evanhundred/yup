@@ -40,3 +40,7 @@
   font-size: 21px;
   margin: 10px 0 20px;
 }
+
+#pre-footer-height-reset {
+  margin: -230px;
+}
