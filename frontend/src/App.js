@@ -29,9 +29,11 @@ function App() {
           <IndexPage />
         </Route>
         <Route path="/businesses/:businessId/reviews/new">
+          <Navigation />
           <NewReviewForm />
         </Route>
         <Route path="/businesses/:businessId/reviews/:id/edit">
+          <Navigation />
           <EditReviewForm />
         </Route>
       </Switch>

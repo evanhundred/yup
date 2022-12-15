@@ -2,19 +2,16 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
-import { getReview, fetchReview, updateReview } from "../../store/reviews";
+import { createReview } from "../../store/reviews";
 import "./index.css";
 
-const EditReviewForm = () => {
+const CreateReviewForm = () => {
   const dispatch = useDispatch();
   const { businessId } = useParams();
   const business = useSelector(getBusiness(businessId));
-  const { id } = useParams();
-  // const review = useSelector(getReview(id));
-  const review = id && business ? business.reviews[id] : {};
 
-  const [body, setBody] = useState(review ? review.body : "");
-  const [rating, setRating] = useState(review ? review.rating : "");
+  const [body, setBody] = useState("");
+  const [rating, setRating] = useState("");
   // const { reviewId } = useSelector()
 
   useEffect(() => {
@@ -27,14 +24,14 @@ const EditReviewForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = { ...review, body: body, rating: rating };
-    dispatch(updateReview(data));
+    const data = { body: body, rating: rating };
+    dispatch(createReview(data));
   };
 
   return (
     <div id="edit-review-form-container">
-      <h3>Edit Review for {`${business ? business.name : ""}`}</h3>
-      <div className="edit-form">
+      <h3>Create Review for {`${business ? business.name : ""}`}</h3>
+      <div className="create-form">
         <form onSubmit={handleSubmit}>
           <label>
             Body
@@ -51,4 +48,4 @@ const EditReviewForm = () => {
   );
 };
 
-export default EditReviewForm;
+export default CreateReviewForm;

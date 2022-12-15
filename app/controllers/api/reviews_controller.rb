@@ -1,6 +1,6 @@
 class Api::ReviewsController < ApplicationController
     wrap_parameters include: Review.attribute_names + ['authorId'] + ['businessId']
-    before_action :require_logged_in, only: [:new, :create, :edit, :update, :destroy]
+    before_action :require_logged_in, except: :index
 
     def index
         # @reviews = Review.all
@@ -18,6 +18,7 @@ class Api::ReviewsController < ApplicationController
         unless @review.save
             render json: { errors: @review.errors.full_messages }, status: 422 # :unprocessable_entity
         end
+        redirect_to api_business_path(params[:business_id])
     end
 
     def destroy
@@ -25,6 +26,7 @@ class Api::ReviewsController < ApplicationController
         unless review.destroy
             render json: { errors: @review.errors.full_messages }, status: 422 # :unprocessable_entity
         end
+        redirect_to api_business_path(params[:business_id])
     end
 
     def edit
@@ -47,6 +49,6 @@ class Api::ReviewsController < ApplicationController
     end
 
     def review_params
-        params.require[:review].permit(:rating, :body, :author_id, :user_id)
+        params.require[:review].permit(:rating, :body)
     end
 end
