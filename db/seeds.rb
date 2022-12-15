@@ -88,6 +88,23 @@ require "open-uri"
             category: "Caribbean",
             price: "$")
 
+        business4 = Business.create!(
+            name: "Mirna's Pupuseria",
+            latitude: 40.63741449262,
+            longitude: -73.95262801534074,
+            address: "1350 Flatbush Ave",
+            city: "Brooklyn",
+            state: "NY",
+            zipcode: "11210",
+            phone: "(347) 624-7935",
+            website: "https://www.yelp.com/menu/mirnas-pupuseria-brooklyn",
+            open_at: "7:00 AM",
+            closed_at: "9:00 PM",
+            about: "Specialties123
+            Our business specializes in making the best Salvadorean Cuisine in town by choosing the best quality ingredients and our own family recipes that takes all those flavors to the next level. We provide a wide range of the best and most popular Salvadorean dishes which are specially prepared so YOU can visit our country and get close to our warm culture without even leaving your table. We go above and beyond your expectations to deliver on time and always with a lovely smile.",
+            category: "Salvadoran",
+            price: "$")
+
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/photo_1.jpg"), filename: "photo_1.jpg")
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/photo_2.jpg"), filename: "photo_2.jpg")
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/photo_3.jpg"), filename: "photo_3.jpg")
@@ -111,6 +128,14 @@ require "open-uri"
     business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/3-golden-krust/store_photo_2.jpg"), filename: "store_photo_2.jpg")
     business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/3-golden-krust/popular-items/pop-item.jpg"), filename: "pop-item.jpg")
     business3.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/3-golden-krust/google-map.jpg"), filename: "google-map.jpg")
+
+    business4.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/4-mirnas-pupuseria/photo_1.jpg"), filename: "photo_1.jpg")
+    business4.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/4-mirnas-pupuseria/photo_2.jpg"), filename: "photo_2.jpg")
+    business4.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/4-mirnas-pupuseria/photo_3.jpg"), filename: "photo_3.jpg")
+    business4.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/4-mirnas-pupuseria/store_photo_1.jpg"), filename: "store_photo_1.jpg")
+    business4.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/4-mirnas-pupuseria/store_photo_2.jpg"), filename: "store_photo_2.jpg")
+    business4.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/4-mirnas-pupuseria/popular-items/pop-item.jpg"), filename: "pop-item.jpg")
+    business4.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/4-mirnas-pupuseria/google-map.jpg"), filename: "google-map.jpg")
 
     # puts "Done!"https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/3-golden-krust/popular-items/pop-item.jpg
 # end
