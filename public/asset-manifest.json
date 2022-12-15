@@ -1,12 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.31d6cfe0.css",
-    "main.js": "/static/js/main.1602a9e3.js",
+    "main.css": "/static/css/main.666d303b.css",
+    "main.js": "/static/js/main.2ca973c4.js",
+    "static/media/restaurant-skyline.jpg": "/static/media/restaurant-skyline.8bf32f86f4e3c2a6b61d.jpg",
+    "static/media/blue-check.png": "/static/media/blue-check.6bfe1811986d93c17429.png",
+    "static/media/signup_illustration.png": "/static/media/signup_illustration.bdd16e60564afab57258.png",
+    "static/media/linkedin.png": "/static/media/linkedin.f2e3a3aed1040d0c25df.png",
     "index.html": "/index.html",
-    "main.1602a9e3.js.map": "/static/js/main.1602a9e3.js.map"
+    "main.666d303b.css.map": "/static/css/main.666d303b.css.map",
+    "main.2ca973c4.js.map": "/static/js/main.2ca973c4.js.map"
   },
   "entrypoints": [
-    "static/css/main.31d6cfe0.css",
-    "static/js/main.1602a9e3.js"
+    "static/css/main.666d303b.css",
+    "static/js/main.2ca973c4.js"
   ]
 }
