@@ -11,7 +11,8 @@
 #  updated_at  :datetime         not null
 #
 class Review < ApplicationRecord
-    validates :rating, :body, presence: true
+    validates :rating, presence: true, numericality: { only_integer: true }, inclusion: 1..10
+    validates :body, presence: true
 
     belongs_to :author,
         class_name: :User,

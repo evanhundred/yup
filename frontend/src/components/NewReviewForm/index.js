@@ -29,17 +29,21 @@ const CreateReviewForm = () => {
   };
 
   return (
-    <div id="edit-review-form-container">
+    <div id="create-review-form-container">
       <h3>Create Review for {`${business ? business.name : ""}`}</h3>
       <div className="create-form">
         <form onSubmit={handleSubmit}>
           <label>
             Body
-            <input value={body} onChange={(e) => setBody(e.target.value)} />
+            <textarea value={body} onChange={(e) => setBody(e.target.value)} />
           </label>
           <label>
             Rating
-            <input value={rating} onChange={(e) => setRating(e.target.value)} />
+            <input
+              type="number"
+              value={rating}
+              onChange={(e) => setRating(e.target.value)}
+            />
           </label>
           <button>Create Review</button>
         </form>

@@ -10,6 +10,7 @@ const BusinessShow = () => {
   const dispatch = useDispatch();
   const { businessId } = useParams();
   const business = useSelector(getBusiness(businessId));
+  // const users = useSelector(getUsers;
 
   useEffect(() => {
     dispatch(fetchBusiness(businessId));

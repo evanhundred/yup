@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 const MainContent = ({ business = null }) => {
   return (
     <>
@@ -292,17 +294,26 @@ const AboutCard = ({ business }) => {
   );
 };
 
+// const deleteButton = () => {
+//   if ()
+// }
+
 const Reviews = ({ business }) => {
+  // const currentUser = useSelector();
+
   const reviewItems = business.reviews.map((review, idx) => (
     <div key={idx} className="review-item-container">
       <div key={idx} className="author subtitle">
-        <h2>Author</h2>
+        <h2>Author ID: {review.author_id}</h2>
       </div>
       <div key={idx} className="review-text">
         {review.body}
       </div>
       <div key={idx} className="review-rating">
         <span>{review.rating}</span>/5
+      </div>
+      <div key={idx} className="delete-button">
+        <a href="#">Delete Post</a>
       </div>
     </div>
   ));
