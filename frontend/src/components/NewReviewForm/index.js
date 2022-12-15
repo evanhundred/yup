@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
 import { createReview } from "../../store/reviews";
@@ -7,6 +7,7 @@ import "./index.css";
 
 const CreateReviewForm = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { businessId } = useParams();
   const business = useSelector(getBusiness(businessId));
 
@@ -25,7 +26,9 @@ const CreateReviewForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = { body: body, rating: rating };
-    dispatch(createReview(data, businessId));
+    dispatch(createReview(data, businessId)).then(() => {
+      history.push(`/businesses/${businessId}`);
+    });
   };
 
   return (

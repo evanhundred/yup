@@ -1,5 +1,5 @@
 class Api::ReviewsController < ApplicationController
-    wrap_parameters include: Review.attribute_names + ['authorId'] + ['businessId']
+    wrap_parameters include: Review.attribute_names + ['authorId', 'businessId']
     before_action :require_logged_in, except: :index
 
     def index
@@ -14,7 +14,8 @@ class Api::ReviewsController < ApplicationController
 
     def create
         @review = Review.new(review_params)
-        @review.author_id = params[:user_id]
+        @review.author_id = current_user.id
+        @review.business_id = params[:business_id]
         unless @review.save
             render json: { errors: @review.errors.full_messages }, status: 422 # :unprocessable_entity
         end
@@ -49,6 +50,6 @@ class Api::ReviewsController < ApplicationController
     end
 
     def review_params
-        params.require[:review].permit(:rating, :body)
+        params.require(:review).permit(:rating, :body)
     end
 end
