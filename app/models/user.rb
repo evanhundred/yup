@@ -20,6 +20,10 @@ class User < ApplicationRecord
   validates :email, length: {in: 3..255}, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, length: { in: 6..255 }, allow_nil: true
 
+  has_many :reviews,
+    foreign_key :author_id,
+    inverse_of :author
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     return user&.authenticate(password) ? user : nil
