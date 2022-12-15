@@ -191,5 +191,5 @@ require "open-uri"
     business6.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/6-beverley-pizza/popular-items/pop-item.jpg"), filename: "pop-item.jpg")
     business6.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/6-beverley-pizza/google-map.jpg"), filename: "google-map.jpg")
 
-    # puts "Done!"https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/3-golden-krust/popular-items/pop-item.jpg
+    puts "Done!"
 # end
