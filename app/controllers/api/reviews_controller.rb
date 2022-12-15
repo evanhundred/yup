@@ -9,6 +9,7 @@ class Api::ReviewsController < ApplicationController
     end
 
     def new
+        @business = Business.find(params([:id]))
     end
 
     def create
