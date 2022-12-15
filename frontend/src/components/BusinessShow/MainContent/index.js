@@ -22,20 +22,19 @@ const MainContent = ({ business = null }) => {
         {/* about the business */}
         <AboutCard business={business} />
 
-        <div id="pre-footer-height-reset"></div>
-
         {/* FUTURE */}
         {/* ask the community */}
         {/* <QuestionsCard /> */}
 
         {/* recommended reviews */}
-        {/* <Recommended /> */}
+        <Reviews business={business} />
 
         {/* collections containing */}
         {/* <Collections /> */}
 
         {/* {/* people also view */}
         {/* <AlsoViewed /> */}
+        <div id="pre-footer-height-reset"></div>
       </div>
     </>
   );
@@ -290,6 +289,32 @@ const AboutCard = ({ business }) => {
         </div>
       </div>
     </>
+  );
+};
+
+const Reviews = ({ business }) => {
+  const reviewItems = business.reviews.map((review, idx) => (
+    <div key={idx} className="review-item-container">
+      <div key={idx} className="author subtitle">
+        <h2>Author</h2>
+      </div>
+      <div key={idx} className="review-text">
+        {review.body}
+      </div>
+      <div key={idx} className="review-rating">
+        <span>{review.rating}</span>/5
+      </div>
+    </div>
+  ));
+
+  return (
+    <div id="reviews-container" className="card-container">
+      <div className="main-title review">
+        <h2>Reviews</h2>
+      </div>
+      <h3>Write your review.</h3>
+      <div className="reviews-content">{reviewItems}</div>
+    </div>
   );
 };
 

@@ -3,6 +3,7 @@
 @import "Location.css";
 @import "Amenities.css";
 @import "AboutCard.css";
+@import "Reviews.css";
 
 .main-content-container {
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
