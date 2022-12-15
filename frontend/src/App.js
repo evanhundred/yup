@@ -6,18 +6,7 @@ import IndexPage from "./components/IndexPage";
 import BusinessShow from "./components/BusinessShow";
 import Footer from "./components/Footer";
 
-// import { useState, useEffect } from "react";
-
 function App() {
-  // const [businesses, setBusinesses] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchBusinesses = async () => {
-  //     const res = await fetch("/api/businesses");
-  //     setBusinesses(await res.json());
-  //   };
-  //   fetchBusinesses();
-  // }, []);
   return (
     <>
       <Switch>
