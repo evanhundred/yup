@@ -59,23 +59,22 @@ export const fetchReview =
     console.log(data);
   };
 
-export const createReview =
-  ({ review, businessId }) =>
-  async (dispatch) => {
-    const res = await csrfFetch(`/api/businesses/${businessId}/reviews`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(review)
-    });
-    let data;
-    if (res.ok) {
-      data = await res.json();
-      dispatch(receiveReview(data));
-    } else {
-      data = res.errors;
-    }
-    console.log(data);
-  };
+export const createReview = (review, businessId) => async (dispatch) => {
+  // debugger;
+  const res = await csrfFetch(`/api/businesses/${businessId}/reviews`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(review)
+  });
+  let data;
+  if (res.ok) {
+    data = await res.json();
+    dispatch(receiveReview(data));
+  } else {
+    data = res.errors;
+  }
+  console.log(data);
+};
 
 export const updateReview = (review, businessId) => async (dispatch) => {
   const res = await csrfFetch(`/api/${businessId}/reviews/${review.id}`, {

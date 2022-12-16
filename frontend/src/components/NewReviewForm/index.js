@@ -5,7 +5,7 @@ import { getBusiness, fetchBusiness } from "../../store/businesses";
 import { createReview } from "../../store/reviews";
 import "./index.css";
 
-const CreateReviewForm = () => {
+const NewReviewForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { businessId } = useParams();
@@ -26,24 +26,18 @@ const CreateReviewForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = { body: body, rating: rating };
+    console.log(businessId);
+    console.log(data);
     dispatch(createReview(data, businessId)).then(() => {
       history.push(`/businesses/${businessId}`);
     });
   };
 
-  // const businessLink = () => {
-  //   return (
-  //     <>
-  //       <Link to={business ? {`/businesses/${business.id}`}>{business.name}!</Link>
-  //     </>
-  //   );
-  // };
-
   return (
     <div id="create-review-form-container">
       <h3>
         Create Review for{" "}
-        <Link to={`/businesses/${business.id}`}>{`${
+        <Link to={business ? `/businesses/${business.id}` : "/"}>{`${
           business ? business.name : ""
         }`}</Link>
       </h3>
@@ -68,7 +62,7 @@ const CreateReviewForm = () => {
   );
 };
 
-export default CreateReviewForm;
+export default NewReviewForm;
 
 // OLD
 

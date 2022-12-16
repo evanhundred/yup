@@ -307,13 +307,11 @@ const Reviews = ({ business }) => {
 
   const reviewItems = business.reviews.map((review, idx) => (
     <div key={idx} className="review-item-container">
-      <div key={idx} className="author subtitle">
+      <div className="author subtitle">
         <h2>Author ID: {review.author_id}</h2>
       </div>
-      <div key={idx} className="review-text">
-        {review.body}
-      </div>
-      <div key={idx} className="review-rating">
+      <div className="review-text">{review.body}</div>
+      <div className="review-rating">
         <span>{review.rating}</span>/5
       </div>
       <div className="edit-link">
