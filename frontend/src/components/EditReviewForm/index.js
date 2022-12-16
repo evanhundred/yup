@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
 import {
@@ -55,13 +55,18 @@ const EditReviewForm = () => {
 
   return (
     <div id="edit-review-form-container">
-      <h3>Edit Review for {`${business ? business.name : ""}`}</h3>
+      <h3>
+        Edit Review for{" "}
+        <Link to={business ? `/businesses/${business.id}` : "/"}>{`${
+          business ? business.name : ""
+        }`}</Link>
+      </h3>
       <div className="edit-form">
         <form>
           <label>
             Body
             <textarea
-              value={`${review ? review.body : ""}`}
+              value={`${body}`}
               onChange={(e) => setBody(e.target.value)}
             />
           </label>
