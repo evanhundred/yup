@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const MainContent = ({ business = null }) => {
   return (
@@ -315,6 +316,11 @@ const Reviews = ({ business }) => {
       <div key={idx} className="review-rating">
         <span>{review.rating}</span>/5
       </div>
+      <div className="edit-link">
+        <Link to={`/businesses/${business.id}/reviews/${review.id}/edit`}>
+          <h4>Edit Review</h4>
+        </Link>
+      </div>
     </div>
   ));
 
@@ -323,7 +329,10 @@ const Reviews = ({ business }) => {
       <div className="main-title review">
         <h2>Reviews</h2>
       </div>
-      <h3>Write your review.</h3>
+      <Link to={`/businesses/${business.id}/reviews/new`}>
+        <h3>Write your review.</h3>
+      </Link>
+
       <div className="reviews-content">{reviewItems}</div>
     </div>
   );

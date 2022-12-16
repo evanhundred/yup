@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
 import { createReview } from "../../store/reviews";
@@ -31,9 +31,22 @@ const CreateReviewForm = () => {
     });
   };
 
+  // const businessLink = () => {
+  //   return (
+  //     <>
+  //       <Link to={business ? {`/businesses/${business.id}`}>{business.name}!</Link>
+  //     </>
+  //   );
+  // };
+
   return (
     <div id="create-review-form-container">
-      <h3>Create Review for {`${business ? business.name : ""}`}</h3>
+      <h3>
+        Create Review for{" "}
+        <Link to={`/businesses/${business.id}`}>{`${
+          business ? business.name : ""
+        }`}</Link>
+      </h3>
       <div className="create-form">
         <form onSubmit={handleSubmit}>
           <label>

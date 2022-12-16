@@ -8,12 +8,14 @@ import "./IndexPage.css";
 const BusinessesTextBlock = () => {
   const dispatch = useDispatch();
   const businesses = useSelector(getBusinesses);
-  const users = useSelector(getUsers);
+  // const users = useSelector(getUsers);
 
   useEffect(() => {
     dispatch(fetchBusinesses());
   }, [dispatch]);
-
+  // debugger;
+  // console.log(businesses);
+  // console.log(businesses[0].imageUrls[1]);
   const businessBlock = businesses.map((business, idx) => {
     return (
       <div className="business-card" key={idx}>
