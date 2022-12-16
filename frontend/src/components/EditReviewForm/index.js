@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
 import {
@@ -11,14 +11,26 @@ import {
 import "./index.css";
 
 const EditReviewForm = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
-  const { businessId } = useParams();
+  const { businessId, id } = useParams();
   const business = useSelector(getBusiness(businessId));
-  const { id } = useParams();
-  const reviewId = id;
+  // const review = useSelector(getReview(id));
+  // const { id } = useParams();
+  let reviewId = id;
+  let review;
+  let i;
+  if (business && business.reviews) {
+    for (i = 0; i < business.reviews.length; i++) {
+      if (business.reviews[i].id === parseInt(reviewId))
+        review = business.reviews[i];
+    }
+  }
+
+  // const reviewId = review ? review.id : "";
   // debugger;
   // const review = useSelector(getReview(id));
-  const review = reviewId && business ? business.reviews[reviewId - 1] : {};
+  // const review = reviewId && business ? business.reviews[reviewId - 1] : {};
 
   const [body, setBody] = useState(review ? review.body : "");
   const [rating, setRating] = useState(review ? review.rating : "");
@@ -44,13 +56,17 @@ const EditReviewForm = () => {
 
   const clickUpdate = (e) => {
     e.preventDefault();
-    const data = { body: body, rating: rating };
-    dispatch(updateReview(data));
+    const data = { ...review, body: body, rating: rating };
+    dispatch(updateReview(data, businessId)).then(() => {
+      history.push(`/businesses/${businessId}`);
+    });
   };
 
   const clickDelete = (e) => {
     e.preventDefault();
-    dispatch(deleteReview(reviewId, businessId));
+    dispatch(deleteReview(reviewId, businessId)).then(() => {
+      history.push(`/businesses/${businessId}`);
+    });
   };
 
   return (

@@ -23,7 +23,7 @@ export const getReview =
   (reviewId) =>
   ({ reviews }) => {
     console.log(reviews);
-    return reviews ? reviews[reviewId] : {};
+    return reviews[reviewId];
   };
 
 export const getReviews = ({ reviews }) =>
@@ -77,11 +77,14 @@ export const createReview = (review, businessId) => async (dispatch) => {
 };
 
 export const updateReview = (review, businessId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/${businessId}/reviews/${review.id}`, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: review
-  });
+  const res = await csrfFetch(
+    `/api/businesses/${businessId}/reviews/${review.id}`,
+    {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(review)
+    }
+  );
   let data;
   if (res.ok) {
     data = await res.json();

@@ -42,7 +42,7 @@ class Api::ReviewsController < ApplicationController
     def update
         @review = Review.find(params[:id])
         if current_user == User.find_by(id: @review.author_id) && @review.update(review_params)
-            render json: 'Success.'
+            render json: { message: 'Success.' }
             # redirect_to '/'
         else
             render json: { errors: ['Something went wrong.'] }
