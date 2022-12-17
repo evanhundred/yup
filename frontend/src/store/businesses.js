@@ -16,10 +16,6 @@ export const receiveBusiness = (business) => ({
 export const getBusiness =
   (businessId) =>
   ({ businesses }) => {
-    console.log(businesses);
-
-    // debugger;
-    // return businesses[businessId] ? businesses[businessId] : {};
     return businesses[businessId];
   };
 
@@ -35,12 +31,10 @@ export const fetchBusinesses = () => async (dispatch) => {
   } else {
     data = res.errors;
   }
-  console.log(data);
 };
 
 export const fetchBusiness = (businessId) => async (dispatch) => {
   const res = await csrfFetch(`/api/businesses/${businessId}`);
-  // debugger;
   let data;
   if (res.ok) {
     data = await res.json();
@@ -48,7 +42,6 @@ export const fetchBusiness = (businessId) => async (dispatch) => {
   } else {
     data = res.errors;
   }
-  console.log(data);
 };
 
 const businessesReducer = (preloadedState = {}, action) => {

@@ -2,12 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
-import {
-  getReview,
-  fetchReview,
-  updateReview,
-  deleteReview
-} from "../../store/reviews";
+import { fetchReview, updateReview, deleteReview } from "../../store/reviews";
 import "./index.css";
 
 const EditReviewForm = () => {
@@ -15,8 +10,6 @@ const EditReviewForm = () => {
   const dispatch = useDispatch();
   const { businessId, id } = useParams();
   const business = useSelector(getBusiness(businessId));
-  // const review = useSelector(getReview(id));
-  // const { id } = useParams();
   let reviewId = id;
   let review;
   let i;
@@ -27,14 +20,8 @@ const EditReviewForm = () => {
     }
   }
 
-  // const reviewId = review ? review.id : "";
-  // debugger;
-  // const review = useSelector(getReview(id));
-  // const review = reviewId && business ? business.reviews[reviewId - 1] : {};
-
   const [body, setBody] = useState(review ? review.body : "");
   const [rating, setRating] = useState(review ? review.rating : "");
-  // const { reviewId } = useSelector()
 
   useEffect(() => {
     dispatch(fetchBusiness(businessId));
@@ -43,16 +30,6 @@ const EditReviewForm = () => {
   useEffect(() => {
     dispatch(fetchReview(reviewId));
   }, [reviewId, dispatch]);
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (e.target.className === "update") {
-  //     const data = { body: body, rating: rating };
-  //     dispatch(updateReview(data));
-  //   } else if (e.target.className === "delete") {
-  //     dispatch(deleteReview(review.id));
-  //   }
-  // };
 
   const clickUpdate = (e) => {
     e.preventDefault();

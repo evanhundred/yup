@@ -22,7 +22,6 @@ export const removeReview = (reviewId) => ({
 export const getReview =
   (reviewId) =>
   ({ reviews }) => {
-    console.log(reviews);
     return reviews[reviewId];
   };
 
@@ -34,14 +33,12 @@ export const fetchReviews =
   async (dispatch) => {
     const res = await csrfFetch(`/api/businesses/${businessId}/reviews`);
     let data;
-    console.log(data);
     if (res.ok) {
       data = await res.json();
       dispatch(receiveReviews(data));
     } else {
       data = res.errors;
     }
-    console.log(data);
   };
 
 export const fetchReview =
@@ -51,16 +48,13 @@ export const fetchReview =
     let data;
     if (res.ok) {
       data = await res.json();
-      console.log(data);
       dispatch(receiveReview(data));
     } else {
       data = res.errors;
     }
-    console.log(data);
   };
 
 export const createReview = (review, businessId) => async (dispatch) => {
-  // debugger;
   const res = await csrfFetch(`/api/businesses/${businessId}/reviews`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -73,7 +67,6 @@ export const createReview = (review, businessId) => async (dispatch) => {
   } else {
     data = res.errors;
   }
-  console.log(data);
 };
 
 export const updateReview = (review, businessId) => async (dispatch) => {
@@ -92,7 +85,6 @@ export const updateReview = (review, businessId) => async (dispatch) => {
   } else {
     data = res.errors;
   }
-  console.log();
 };
 
 export const deleteReview = (reviewId, businessId) => async (dispatch) => {

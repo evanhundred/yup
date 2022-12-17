@@ -3,7 +3,6 @@ class Api::ReviewsController < ApplicationController
     before_action :require_logged_in, except: :index
 
     def index
-        # @reviews = Review.all
         @reviews = Review.all.where(business_id: params[:business_id])
         render :index
     end
@@ -23,11 +22,10 @@ class Api::ReviewsController < ApplicationController
     end
 
     def destroy
-        review = Review.find(params[:id])
-        unless review.destroy
+        @review = Review.find(params[:id])
+        unless @review && @review.destroy
             render json: { errors: @review.errors.full_messages }, status: 422 # :unprocessable_entity
         end
-        redirect_to api_business_path(params[:business_id])
     end
 
     def edit
@@ -43,7 +41,6 @@ class Api::ReviewsController < ApplicationController
         @review = Review.find(params[:id])
         if current_user == User.find_by(id: @review.author_id) && @review.update(review_params)
             render json: { message: 'Success.' }
-            # redirect_to '/'
         else
             render json: { errors: ['Something went wrong.'] }
         end

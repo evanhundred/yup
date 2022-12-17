@@ -1,11 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import "./navigation.css";
 import githubLogo from "../../assets/images/github.png";
 import linkedinLogo from "../../assets/images/linkedin.png";
-// import HomeLogo from "./yelp_logo.png";
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -108,7 +106,6 @@ const Navigation = () => {
     );
   };
 
-  let { businessId } = useParams();
   let regPath = /\/businesses\/\d*/;
 
   let headerType =

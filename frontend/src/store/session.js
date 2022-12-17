@@ -1,10 +1,7 @@
 import csrfFetch from "./csrf";
-import { useDispatch } from "react-redux";
 
 const SET_CURRENT_USER = "session/setCurrentUser";
 const REMOVE_CURRENT_USER = "session/removeCurrentUser";
-
-// const dispatch = useDispatch();
 
 const setCurrentUser = (user) => ({
   type: SET_CURRENT_USER,
@@ -28,7 +25,6 @@ const storeCurrentUser = (user) => {
 export const login =
   ({ email, password }) =>
   async (dispatch) => {
-    // const { email, password } = user;
     const res = await csrfFetch("/api/session", {
       method: "POST",
       body: JSON.stringify({

@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const MainContent = ({ business = null }) => {
@@ -221,7 +220,7 @@ const Amenities = ({ business }) => {
       <div className="amenities-content">
         <div className="amenities-item">
           <div className="cross-symbol">
-            <img src={require("../../../assets/images/cross.png")}></img>
+            <img src={require("../../../assets/images/cross.png")} alt="amenities"></img>
           </div>
 
           <div className="health-score-box">
@@ -295,16 +294,7 @@ const AboutCard = ({ business }) => {
   );
 };
 
-// const deleteButton = () => {
-//   if ()
-// }
-
 const Reviews = ({ business }) => {
-  // const currentUser = useSelector();
-  // const deleteButton = () => {
-  //   if review.author_id
-  // }
-
   const reviewItems = business.reviews.map((review, idx) => (
     <div key={idx} className="review-item-container">
       <div className="author subtitle">

@@ -3,8 +3,6 @@ import csrfFetch from "./csrf";
 export const RECEIVE_USERS = "users/RECEIVE_USERS";
 export const RECEIVE_CURRENT_USER = "users/RECEIVE_USER";
 
-// export const getUsers = ({ users }) => (users ? Object.values(users) : []);
-
 export const receiveUsers = (users) => ({
   type: RECEIVE_USERS,
   users
@@ -26,7 +24,6 @@ export const fetchUsers = () => async (dispatch) => {
   } else {
     data = res.errors;
   }
-  console.log(data);
 };
 const usersReducer = (preloadedState = {}, action) => {
   const newState = { ...preloadedState };

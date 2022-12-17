@@ -13,21 +13,14 @@ const NewReviewForm = () => {
 
   const [body, setBody] = useState("");
   const [rating, setRating] = useState("");
-  // const { reviewId } = useSelector()
 
   useEffect(() => {
     dispatch(fetchBusiness(businessId));
   }, [businessId, dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(fetchReview(reviewId));
-  // }, [reviewId, dispatch]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = { body: body, rating: rating };
-    console.log(businessId);
-    console.log(data);
     dispatch(createReview(data, businessId)).then(() => {
       history.push(`/businesses/${businessId}`);
     });
@@ -63,11 +56,3 @@ const NewReviewForm = () => {
 };
 
 export default NewReviewForm;
-
-// OLD
-
-// const NewReviewForm = () => {
-//   return <div id="new-review-form-container">New Review</div>;
-// };
-
-// export default NewReviewForm;

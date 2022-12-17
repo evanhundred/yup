@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import "./LoginForm.css";
 import LoginImage from "./LoginImage";
-// import ErrorBox from "../ErrorBox";
 
 const LoginFormPage = () => {
   const dispatch = useDispatch();

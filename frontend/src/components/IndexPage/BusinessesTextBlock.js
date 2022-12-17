@@ -2,20 +2,16 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getBusinesses, fetchBusinesses } from "../../store/businesses";
-import { getUsers } from "../../store/users";
 import "./IndexPage.css";
 
 const BusinessesTextBlock = () => {
   const dispatch = useDispatch();
   const businesses = useSelector(getBusinesses);
-  // const users = useSelector(getUsers);
 
   useEffect(() => {
     dispatch(fetchBusinesses());
   }, [dispatch]);
-  // debugger;
-  // console.log(businesses);
-  // console.log(businesses[0].imageUrls[1]);
+
   const businessBlock = businesses.map((business, idx) => {
     return (
       <div className="business-card" key={idx}>

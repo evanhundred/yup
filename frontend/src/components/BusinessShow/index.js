@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
@@ -10,7 +10,6 @@ const BusinessShow = () => {
   const dispatch = useDispatch();
   const { businessId } = useParams();
   const business = useSelector(getBusiness(businessId));
-  // const users = useSelector(getUsers;
 
   useEffect(() => {
     dispatch(fetchBusiness(businessId));
