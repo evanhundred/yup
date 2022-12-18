@@ -28,6 +28,7 @@ Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up 
 
 &nbsp;
 ![current site](./app/assets/auth.gif)
+&nbsp;
 
 ### Create, Edit, and Delete Reviews
 
