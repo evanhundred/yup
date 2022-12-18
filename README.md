@@ -26,7 +26,8 @@ Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up 
 - Login as a demo user
 - Errors are styled and do not persist
   &nbsp;
-  ![current site](./app/assets/auth.gif)
+
+![current site](./app/assets/auth.gif)
 
 ### Create, Edit, and Delete Reviews
 
@@ -34,12 +35,13 @@ Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up 
 
   - create a review through the new review form
     &nbsp;
-    ![create](./app/assets/crud-1.gif)
-    &nbsp;
 
-  - update their own reviews through the edit form, linked to in the review displayed in the business (show) page
-  - delete a review, also through the edit form
-    &nbsp;
+![create](./app/assets/crud-1.gif)
+&nbsp;
+
+- update their own reviews through the edit form, linked to in the review displayed in the business (show) page
+- delete a review, also through the edit form
+  &nbsp;
 
 ![edit/delete](./app/assets/crud-2.gif)
 &nbsp;
