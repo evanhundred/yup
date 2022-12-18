@@ -1,6 +1,10 @@
 # Welcome to Yup.
 
+![yup-logo](./app/assets/yup-logo.png)
+
 Yup is a clone of Yelp.com. It allows users to browse local businesses and leave reviews.
+
+Live deployment on [render.com](https://yup-z7t1.onrender.com/).
 
 # Technologies
 
@@ -12,9 +16,13 @@ Yup is a clone of Yelp.com. It allows users to browse local businesses and leave
 
 #### Design and Styling: HTML and CSS
 
+#### Image hosting: AWS S3
+
 # Key Features
 
 ### User Auth
+
+![current site](./app/assets/auth-demo.gif)
 
 - Users can login or signup for an account
 - Login as a demo user
@@ -22,9 +30,60 @@ Yup is a clone of Yelp.com. It allows users to browse local businesses and leave
 
 ### Create, Edit, and Delete Reviews
 
-- if a user is logged in, they may create a review through the new review form
-- all reviews are visible, being logged in allows edit and delete
+(create/view/edit/destroy gif)
 
-### Business Index
+- if a user is logged in, they may:
 
-- A list of all businesses
+  - create a review through the new review form
+    ![create](./app/assets/crud.gif)
+
+  - update their own reviews through the edit form, linked to in the review displayed in the business (show) page
+  - delete a review, also through the edit form
+
+  ![edit/delete](./app/assets/crud.gif)
+
+- if a user is not logged in, all reviews are visible, but not editable.
+
+### Splash / Business Index
+
+(show navigation of initial state of logged-in homepage, including going to and from different business pages)
+
+- Splash page with nav bar containing login links
+- Simple list of businesses, click to navigate to show page
+
+### React Mysteries
+
+The biggest challenge for me was navigating the several asynchronous functions called through each stack, through multiple files. A simple example of my inconsistent implementation of this logic:
+
+- Here is a link component which throws a `cannot read undefined` error unless I place a ternary conditional, for it to load an empty string/target on default.
+- Following it is a link component from the `IndexPage`, in which no conditional is necessary for the business object to load.
+
+`components/EditReviewForm`
+
+```js
+<h3>
+  Edit Review for <Link to={business ? `/businesses/${business.id}` : "/"}>{`${
+    business ? business.name : ""
+  }`}</Link>
+</h3>
+```
+
+`components/IndexPage`
+
+```js
+<div className="card-image">
+  <Link to={`/businesses/${business.id}`}>
+    <img src={business.imageUrls[1]} alt="delicious business" />
+  </Link>
+</div>
+```
+
+### Upcoming / Bonus Features
+
+- Search bar on home page
+- Proper styling for review CRUD functionality:
+  - create link redirects to login page if user is not logged in
+  - edit/delete link is only visible if the review belongs to logged-in user
+- User show/profile page, with links to their reviews
+- Splash page displays featured businesses or reviews, rather than an index of businesses
+- download yelp api response, to reformat and seed a larger resource

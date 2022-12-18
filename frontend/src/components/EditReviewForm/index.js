@@ -27,10 +27,6 @@ const EditReviewForm = () => {
     dispatch(fetchBusiness(businessId));
   }, [businessId, dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(fetchReview(reviewId));
-  // }, [reviewId, dispatch]);
-
   const clickUpdate = (e) => {
     e.preventDefault();
     const data = { ...review, body: body, rating: rating };
