@@ -22,12 +22,12 @@ Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up 
 
 ### User Auth
 
-\
+&nbsp;
 
 - Users can login or signup for an account
 - Login as a demo user
 - Errors are styled and do not persist
-  \
+  &nbsp;
   ![current site](./app/assets/auth.gif)
 
 ### Create, Edit, and Delete Reviews
@@ -35,19 +35,19 @@ Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up 
 - if a user is logged in, they may:
 
   - create a review through the new review form
-    \
+    &nbsp;
     ![create](./app/assets/crud-1.gif)
-    \
+    &nbsp;
 
   - update their own reviews through the edit form, linked to in the review displayed in the business (show) page
   - delete a review, also through the edit form
-    \
+    &nbsp;
 
   ![edit/delete](./app/assets/crud-2.gif)
-  \
+  &nbsp;
 
 - if a user is not logged in, all reviews are visible, but not editable.
-  \
+  &nbsp;
 
 ### Splash / Business Index
 
@@ -55,7 +55,7 @@ Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up 
 
 - Splash page with nav bar containing login links
 - Simple list of businesses, click to navigate to show page
-  \
+  &nbsp;
 
 ### React Mysteries
 
@@ -84,7 +84,7 @@ The biggest challenge for me was navigating the several asynchronous functions c
 </div>
 ```
 
-\
+&nbsp;
 
 ### Upcoming / Bonus Features
 
@@ -95,10 +95,10 @@ The biggest challenge for me was navigating the several asynchronous functions c
 - User show/profile page, with links to their reviews
 - Splash page displays featured businesses or reviews, rather than an index of businesses
 - download yelp api response, to reformat and seed a larger resource
-  \
+  &nbsp;
 
 ### See you soon!
 
 Thank you for checking out Yup. May the Schwartz be with you.
-\
+&nbsp;
 `ER 2022`
