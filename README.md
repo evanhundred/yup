@@ -64,6 +64,7 @@ The biggest challenge for me was navigating the several asynchronous functions c
 
 - Here is a link component which throws a `cannot read undefined` error unless I place a ternary conditional, for it to load an empty string/target on default.
 - Following it is a link component from the `IndexPage`, in which no conditional is necessary for the business object to load.
+  &nbsp;
 
 &nbsp;
 `components/EditReviewForm`
