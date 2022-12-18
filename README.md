@@ -22,8 +22,6 @@ Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up 
 
 ### User Auth
 
-&nbsp;
-
 - Users can login or signup for an account
 - Login as a demo user
 - Errors are styled and do not persist
