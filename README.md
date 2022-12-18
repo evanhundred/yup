@@ -41,8 +41,8 @@ Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up 
   - delete a review, also through the edit form
     &nbsp;
 
-  ![edit/delete](./app/assets/crud-2.gif)
-  &nbsp;
+![edit/delete](./app/assets/crud-2.gif)
+&nbsp;
 
 - if a user is not logged in, all reviews are visible, but not editable.
   &nbsp;
