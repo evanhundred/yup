@@ -65,6 +65,7 @@ The biggest challenge for me was navigating the several asynchronous functions c
 - Here is a link component which throws a `cannot read undefined` error unless I place a ternary conditional, for it to load an empty string/target on default.
 - Following it is a link component from the `IndexPage`, in which no conditional is necessary for the business object to load.
 
+&nbsp;
 `components/EditReviewForm`
 
 ```js
@@ -75,6 +76,9 @@ The biggest challenge for me was navigating the several asynchronous functions c
 </h3>
 ```
 
+&nbsp;
+
+&nbsp;
 `components/IndexPage`
 
 ```js
@@ -101,5 +105,6 @@ The biggest challenge for me was navigating the several asynchronous functions c
 ### See you soon!
 
 Thank you for checking out Yup. May the Schwartz be with you.
+
 &nbsp;
 `ER 2022`
