@@ -50,7 +50,7 @@ Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up 
 - if a user is not logged in, all reviews are visible, but not editable.
   &nbsp;
 
-### Splash / Business Index
+### Splash / Business Index / Business Show
 
 (show navigation of initial state of logged-in homepage, including going to and from different business pages)
 
