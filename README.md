@@ -1,5 +1,6 @@
 # Welcome to Yup.
 
+&nbsp;
 ![yup-logo](./app/assets/yup-logo.png)
 
 Yup is a clone of Yelp.com. It allows users to browse local businesses and leave reviews.
@@ -9,6 +10,8 @@ Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up 
 &nbsp;
 
 # Technologies
+
+&nbsp;
 
 #### Backend: Ruby on Rails
 
@@ -23,6 +26,8 @@ Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up 
 &nbsp;
 
 # Key Features
+
+&nbsp;
 
 ### User Auth
 
@@ -64,6 +69,7 @@ Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up 
 
 # React Mysteries
 
+&nbsp;
 The biggest challenge for me was navigating the several asynchronous functions called through each stack, through multiple files. A simple example of my inconsistent implementation of this logic:
 
 - Here is a link component which throws a `cannot read undefined` error unless I place a ternary conditional, for it to load an empty string/target on default.
