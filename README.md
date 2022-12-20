@@ -99,6 +99,7 @@ The biggest challenge for me was navigating the several asynchronous functions c
 - Splash page displays featured businesses or reviews, rather than an index of businesses
 - download yelp api response, to reformat and seed a larger resource
   &nbsp;
+  &nbsp;
 
 # See you soon!
 
