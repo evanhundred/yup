@@ -73,8 +73,6 @@ The biggest challenge for me was navigating the several asynchronous functions c
 
 &nbsp;
 
-&nbsp;
-
 `components/EditReviewForm`
 
 ```js
