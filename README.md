@@ -107,6 +107,8 @@ The biggest challenge for me was navigating the several asynchronous functions c
 
 # Upcoming / Bonus Features
 
+&nbsp;
+
 - Search bar on home page
 - Proper styling for review CRUD functionality:
   - create link redirects to login page if user is not logged in
@@ -118,6 +120,8 @@ The biggest challenge for me was navigating the several asynchronous functions c
 &nbsp;
 
 # See you soon!
+
+&nbsp;
 
 Thank you for checking out Yup. May the Schwartz be with you.
 
