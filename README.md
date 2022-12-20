@@ -70,6 +70,7 @@ The biggest challenge for me was navigating the several asynchronous functions c
 - Following it is a link component from the `IndexPage`, in which no conditional is necessary for the business object to load.
 
 &nbsp;
+
 `components/EditReviewForm`
 
 ```js
