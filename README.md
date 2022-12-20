@@ -87,8 +87,6 @@ The biggest challenge for me was navigating the several asynchronous functions c
 </div>
 ```
 
-&nbsp;
-
 # Upcoming / Bonus Features
 
 - Search bar on home page
