@@ -52,8 +52,6 @@ Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up 
 
 ### Splash / Business Index / Business Show
 
-(show navigation of initial state of logged-in homepage, including going to and from different business pages)
-
 - Splash page with nav bar containing login links
 - Simple list of businesses, click to navigate to show page
   &nbsp;
