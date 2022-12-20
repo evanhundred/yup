@@ -56,7 +56,7 @@ Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up 
 - Simple list of businesses, click to navigate to show page
   &nbsp;
 
-### React Mysteries
+# React Mysteries
 
 The biggest challenge for me was navigating the several asynchronous functions called through each stack, through multiple files. A simple example of my inconsistent implementation of this logic:
 
@@ -89,7 +89,7 @@ The biggest challenge for me was navigating the several asynchronous functions c
 
 &nbsp;
 
-### Upcoming / Bonus Features
+# Upcoming / Bonus Features
 
 - Search bar on home page
 - Proper styling for review CRUD functionality:
@@ -100,7 +100,7 @@ The biggest challenge for me was navigating the several asynchronous functions c
 - download yelp api response, to reformat and seed a larger resource
   &nbsp;
 
-### See you soon!
+# See you soon!
 
 Thank you for checking out Yup. May the Schwartz be with you.
 
