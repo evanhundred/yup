@@ -70,7 +70,14 @@ The biggest challenge for me was navigating the several asynchronous functions c
 - Following it is a link component from the `IndexPage`, in which no conditional is necessary for the business object to load.
 
 &nbsp;
+
+```
+
 &nbsp;
+```
+
+&nbsp;
+
 `components/EditReviewForm`
 
 ```js
@@ -112,5 +119,6 @@ The biggest challenge for me was navigating the several asynchronous functions c
 
 Thank you for checking out Yup. May the Schwartz be with you.
 
+&nbsp;
 &nbsp;
 `ER 2022`
