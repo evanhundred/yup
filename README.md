@@ -71,6 +71,7 @@ Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up 
 # React Mysteries
 
 &nbsp;
+&nbsp;
 The biggest challenge for me was navigating the several asynchronous functions called through each stack, through multiple files. A simple example of my inconsistent implementation of this logic:
 
 - Here is a link component which throws a `cannot read undefined` error unless I place a ternary conditional, for it to load an empty string/target on default.
