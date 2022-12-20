@@ -75,8 +75,8 @@ Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up 
 
 The biggest challenge for me was navigating the several asynchronous functions called through each stack, through multiple files. A simple example of my inconsistent implementation of this logic:
 
-- (1) is a link component which throws a `cannot read undefined` error unless I place a ternary conditional, for it to load an empty string/target on default.
-- (2) is a link component from the `IndexPage`, in which no conditional is necessary for the business object to load.
+- `(1)` is a link component which throws a `cannot read undefined` error unless I place a ternary conditional, for it to load an empty string/target on default.
+- `(2)` is a link component from the `IndexPage`, in which no conditional is necessary for the business object to load.
 
 &nbsp;
 
