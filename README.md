@@ -6,6 +6,8 @@ Yup is a clone of Yelp.com. It allows users to browse local businesses and leave
 
 Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up to 60 seconds for render.com to load page - thanks for waiting, future updates will include acceptable loading times.
 
+&nbsp;
+
 # Technologies
 
 #### Backend: Ruby on Rails
@@ -17,6 +19,8 @@ Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up 
 #### Design and Styling: HTML and CSS
 
 #### Image hosting: AWS S3
+
+&nbsp;
 
 # Key Features
 
@@ -56,6 +60,8 @@ Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up 
 - Simple list of businesses, click to navigate to show page
   &nbsp;
 
+&nbsp;
+
 # React Mysteries
 
 The biggest challenge for me was navigating the several asynchronous functions called through each stack, through multiple files. A simple example of my inconsistent implementation of this logic:
@@ -63,6 +69,7 @@ The biggest challenge for me was navigating the several asynchronous functions c
 - Here is a link component which throws a `cannot read undefined` error unless I place a ternary conditional, for it to load an empty string/target on default.
 - Following it is a link component from the `IndexPage`, in which no conditional is necessary for the business object to load.
 
+&nbsp;
 &nbsp;
 `components/EditReviewForm`
 
@@ -86,6 +93,8 @@ The biggest challenge for me was navigating the several asynchronous functions c
   </Link>
 </div>
 ```
+
+&nbsp;
 
 # Upcoming / Bonus Features
 
