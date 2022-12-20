@@ -1,5 +1,6 @@
 # Welcome to Yup.
 
+&nbsp;
 ![yup-logo](./app/assets/yup-logo.png)
 &nbsp;
 
