@@ -13,9 +13,11 @@
   /* float right; */
 }
 
-.first-row {
+.first-row,
+.second-row {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .profile-icon {

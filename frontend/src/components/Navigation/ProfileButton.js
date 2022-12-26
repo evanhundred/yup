@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./ProfileButton.css";
 import profileIcon from "../../assets/images/profile.png";
+import logoutButton from "../../assets/images/logout.png";
 
 const Carrot = () => (
   <div
@@ -49,7 +50,7 @@ const ProfileButton = ({ user }) => {
             <a href="#">
               <div className="first-row">
                 <div className="profile-icon">
-                  <img src={profileIcon} />
+                  <img src={profileIcon} alt="your profile" />
                 </div>
                 <div className="profile-dropdown-option">
                   {" "}
@@ -62,12 +63,15 @@ const ProfileButton = ({ user }) => {
           <li className="profile-menu-seperator-top"></li>
           <li className="profile-menu-seperator-bottom"></li>
           <li>
-            <div
-              className="logout-button profile-dropdown-option"
-              onClick={logout}
-            >
-              {" "}
-              <p>Log Out</p>
+            <div className="logout-button" onClick={logout}>
+              <div className="second-row">
+                <div className="profile-icon">
+                  <img src={logoutButton} alt="logout" />
+                </div>
+                <div className="profile-dropdown-option">
+                  <p>Log Out</p>
+                </div>
+              </div>
             </div>
           </li>
         </ul>
