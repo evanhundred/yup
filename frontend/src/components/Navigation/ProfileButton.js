@@ -48,7 +48,7 @@ const ProfileButton = ({ user }) => {
         <ul className="profile-dropdown">
           <li>
             <a href="#">
-              <div className="first-row">
+              <div className="first-row profile-dropdown-row">
                 <div className="profile-icon">
                   <img src={profileIcon} alt="your profile" />
                 </div>
@@ -64,7 +64,7 @@ const ProfileButton = ({ user }) => {
           <li className="profile-menu-seperator-bottom"></li>
           <li>
             <div className="logout-button" onClick={logout}>
-              <div className="second-row">
+              <div className="second-row profile-dropdown-row">
                 <div className="profile-icon">
                   <img src={logoutButton} alt="logout" />
                 </div>
