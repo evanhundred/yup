@@ -5,7 +5,7 @@
 .profile-dropdown {
   position: absolute;
   background-color: white;
-  padding: 10px 20px;
+  padding: 25px;
   min-width: 180px;
   line-height: 1.7;
   border-radius: 5px;
@@ -20,11 +20,13 @@
 
 .first-row {
   display: flex;
+  align-items: center;
 }
 
 .profile-icon {
   margin-right: 10px;
-  display: block;
+  display: flex;
+  align-items: center;
 }
 
 .profile-icon img {
@@ -34,4 +36,22 @@
 .profile-dropdown p {
   color: black;
   margin: 3px 10px;
+  font-weight: 500;
+}
+
+.profile-menu-seperator-top {
+  padding: 8px 0;
+  border-bottom: 1px solid #cdcdcd;
+}
+
+.profile-menu-seperator-bottom {
+  padding: 8px 0;
+  /* border-bottom: 1px solid #cdcdcd; */
+}
+
+.profile-dropdown-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: -3px;
+  font-size: 18px;
 }

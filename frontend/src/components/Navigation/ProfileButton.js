@@ -51,8 +51,10 @@ const ProfileButton = ({ user }) => {
                 <div className="profile-icon">
                   <img src={profileIcon} />
                 </div>
-
-                <p>{user.name}</p>
+                <div className="profile-dropdown-option">
+                  {" "}
+                  <p>{user.name}</p>
+                </div>
               </div>
             </a>
           </li>
