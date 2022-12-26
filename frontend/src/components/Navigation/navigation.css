@@ -131,6 +131,7 @@ a {
   font-family: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
   /* flex: 0 1 auto; */
   /* flex: 0; */
+  /* position: fixed; */
 }
 
 #session-links a {

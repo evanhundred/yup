@@ -30,7 +30,6 @@ const Navigation = () => {
       <div id="nav-bar">
         <div className="left-side">
           <NavLink exact className="homeLink" to="/">
-            {/* <img src={HomeLogo} alt="home" /> */}
             <h1 id="logo" className={pageType}>
               yup<span className="star">*</span>
             </h1>
@@ -44,8 +43,6 @@ const Navigation = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {/* <p>gh</p> */}
-                {/* <img src="../../assets/images/github-mark.png" /> */}
                 <img src={githubLogo} alt="GitHub" />
               </a>
             </div>
@@ -55,7 +52,6 @@ const Navigation = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {/* <p>li</p> */}
                 <img src={linkedinLogo} alt="LinkedIn" />
               </a>
             </div>

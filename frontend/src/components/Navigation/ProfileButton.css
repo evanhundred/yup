@@ -1,17 +1,19 @@
-/* .profile-picture {
-  width: 10px;
-} */
-.profile-dropdown {
+.profile-menu-button {
+  /* display: flex; */
+  /* flex-direction: column; */
   position: fixed;
+}
+
+.profile-dropdown {
+  position: absolute;
   background-color: white;
   padding: 10px 20px;
   min-width: 180px;
   line-height: 1.7;
   border-radius: 3px;
+  right: 46px;
+  /* float right; */
 }
-
-/* .profile-dropdown li {
-} */
 
 .profile-menu-seperator-top {
   padding: 8px 0;
