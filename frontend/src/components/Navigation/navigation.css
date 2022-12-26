@@ -35,7 +35,7 @@ body {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 45px 20px;
+  padding: 18px 45px 20px;
   /* margin: 10px 40px; */
   background-color: transparent;
   position: relative;
@@ -66,7 +66,7 @@ body {
 #nav-bar .socials {
   display: flex;
   gap: 15px;
-  padding: 12px 25px 0;
+  padding: 0 25px 0;
   align-items: center;
   /* color: blue; */
   /* float: right; */

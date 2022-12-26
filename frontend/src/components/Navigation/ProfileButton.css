@@ -1,11 +1,17 @@
-#profile-menu-button button {
+#profile-menu-button div {
+  margin-top: -5px;
+}
+
+.profile-image-container {
+  border: 1px solid rgba(241, 241, 241, 0.1);
+  background-color: rgba(241, 241, 241, 0.1);
   border-radius: 50px;
 }
 
 .profile-dropdown {
   position: absolute;
   background-color: white;
-  margin-top: 1px;
+  margin-top: 2px;
   padding: 10px;
   min-width: 180px;
   line-height: 1.7;

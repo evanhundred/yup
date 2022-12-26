@@ -8,7 +8,7 @@ import logoutButton from "../../assets/images/logout.png";
 const Carrot = () => (
   <div
     className="profile-picture"
-    style={{ color: "orange", fontSize: "35px" }}
+    style={{ color: "orange", fontSize: "40px" }}
   >
     <i className="fa-solid fa-carrot"></i>
   </div>
@@ -41,7 +41,7 @@ const ProfileButton = ({ user }) => {
   };
   return (
     <div id="profile-menu-button">
-      <div onClick={openMenu}>
+      <div className="profile-image-container" onClick={openMenu}>
         <Carrot />
       </div>
       {showMenu && (
