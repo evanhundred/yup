@@ -129,9 +129,6 @@ a {
   display: flex;
   gap: 15px;
   font-family: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  /* flex: 0 1 auto; */
-  /* flex: 0; */
-  /* position: fixed; */
 }
 
 #session-links .session-link a {
