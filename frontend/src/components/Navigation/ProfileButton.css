@@ -13,11 +13,6 @@
   /* float right; */
 }
 
-#session-links .profile-dropdown a {
-  padding: 0;
-  margin: 0;
-}
-
 .first-row {
   display: flex;
   align-items: center;
@@ -54,4 +49,8 @@
   align-items: center;
   margin-bottom: -3px;
   font-size: 18px;
+}
+
+.logout-button {
+  margin: 10px 0 5px;
 }

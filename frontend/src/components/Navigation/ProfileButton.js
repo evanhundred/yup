@@ -62,7 +62,13 @@ const ProfileButton = ({ user }) => {
           <li className="profile-menu-seperator-top"></li>
           <li className="profile-menu-seperator-bottom"></li>
           <li>
-            <button onClick={logout}>Log Out</button>
+            <div
+              className="logout-button profile-dropdown-option"
+              onClick={logout}
+            >
+              {" "}
+              <p>Log Out</p>
+            </div>
           </li>
         </ul>
       )}
