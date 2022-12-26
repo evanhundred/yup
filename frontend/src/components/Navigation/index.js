@@ -14,10 +14,14 @@ const Navigation = () => {
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup" className="signupButton">
-          Sign Up
-        </NavLink>
+        <div className="session-link">
+          <NavLink to="/login">Log In</NavLink>
+        </div>
+        <div className="session-link signupButton">
+          <NavLink to="/signup" className="signupButton">
+            Sign Up
+          </NavLink>
+        </div>
       </>
     );
   }

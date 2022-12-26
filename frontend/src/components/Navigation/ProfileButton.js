@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./ProfileButton.css";
+import profileIcon from "../../assets/images/profile.png";
 
 const Carrot = () => (
   <div
     className="profile-picture"
-    style={{ color: "orange", fontSize: "50px" }}
+    style={{ color: "orange", fontSize: "45px" }}
   >
     <i className="fa-solid fa-carrot"></i>
   </div>
@@ -44,8 +45,18 @@ const ProfileButton = ({ user }) => {
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
-          <li>{user.name}</li>
-          <li>{user.email}</li>
+          <li>
+            <a href="#">
+              <div className="first-row">
+                <div className="profile-icon">
+                  <img src={profileIcon} />
+                </div>
+
+                <p>{user.name}</p>
+              </div>
+            </a>
+          </li>
+          {/* <li>{user.email}</li> */}
           <li className="profile-menu-seperator-top"></li>
           <li className="profile-menu-seperator-bottom"></li>
           <li>
