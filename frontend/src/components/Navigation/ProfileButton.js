@@ -46,31 +46,28 @@ const ProfileButton = ({ user }) => {
       </div>
       {showMenu && (
         <ul className="profile-dropdown">
-          <li>
+          <li className="user-options">
             <a href="#">
               <div className="first-row profile-dropdown-row">
                 <div className="profile-icon">
                   <img src={profileIcon} alt="your profile" />
                 </div>
                 <div className="profile-dropdown-option">
-                  {" "}
                   <p>{user.name}</p>
                 </div>
               </div>
             </a>
           </li>
-          {/* <li>{user.email}</li> */}
-          <li className="profile-menu-seperator-top"></li>
-          <li className="profile-menu-seperator-bottom"></li>
           <li>
-            <div className="logout-button" onClick={logout}>
-              <div className="second-row profile-dropdown-row">
-                <div className="profile-icon">
-                  <img src={logoutButton} alt="logout" />
-                </div>
-                <div className="profile-dropdown-option">
-                  <p>Log Out</p>
-                </div>
+            <div
+              className="logout-button profile-dropdown-row"
+              onClick={logout}
+            >
+              <div className="profile-icon">
+                <img src={logoutButton} alt="logout" />
+              </div>
+              <div className="profile-dropdown-option">
+                <p>Log Out</p>
               </div>
             </div>
           </li>
