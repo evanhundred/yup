@@ -46,7 +46,7 @@ const ProfileButton = ({ user }) => {
       </div>
       {showMenu && (
         <ul className="profile-dropdown">
-          <li className="user-options">
+          <li className="user-options-container">
             <a href="#">
               <div className="first-row profile-dropdown-row">
                 <div className="profile-icon">
@@ -58,7 +58,7 @@ const ProfileButton = ({ user }) => {
               </div>
             </a>
           </li>
-          <li>
+          <li className="logout-button-container">
             <div
               className="logout-button profile-dropdown-row"
               onClick={logout}
