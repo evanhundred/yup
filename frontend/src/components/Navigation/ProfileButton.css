@@ -1,4 +1,4 @@
-#profile-menu-button div {
+#profile-menu-button > div {
   margin-top: -5px;
 }
 
@@ -12,19 +12,18 @@
   position: absolute;
   background-color: white;
   margin-top: 2px;
-  padding: 10px;
+  padding: 5px;
   min-width: 180px;
   line-height: 1.7;
   border-radius: 5px;
   right: 46px;
-  /* float right; */
 }
 
 .profile-dropdown-row {
   display: flex;
   align-items: center;
   cursor: pointer;
-  padding: 10px 8px;
+  padding: 0 8px;
   border-radius: 4px;
 }
 
@@ -49,7 +48,6 @@
 }
 
 .profile-menu-seperator-top {
-  padding: 3px 0;
   border-bottom: 1px solid #cdcdcd;
 }
 
