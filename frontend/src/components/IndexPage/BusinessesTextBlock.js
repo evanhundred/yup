@@ -1,18 +1,13 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import { useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getBusinesses, fetchBusinesses } from "../../store/businesses";
+// import { getBusinesses, fetchBusinesses } from "../../store/businesses";
 import "./IndexPage.css";
 
-const BusinessesTextBlock = () => {
-  const dispatch = useDispatch();
-  const businesses = useSelector(getBusinesses);
-
-  useEffect(() => {
-    dispatch(fetchBusinesses());
-  }, [dispatch]);
-
+const BusinessesTextBlock = ({ businesses }) => {
   const businessBlock = businesses.map((business, idx) => {
+    if (!businesses) return null;
+
     return (
       <div className="business-card" key={idx}>
         <div className="card-image">
@@ -28,7 +23,7 @@ const BusinessesTextBlock = () => {
     );
   });
 
-  return <div id="business-block">{businessBlock}</div>;
+  return <div id="business-block">{businesses ? businessBlock : ""}</div>;
 };
 
 export default BusinessesTextBlock;

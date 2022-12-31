@@ -19,14 +19,18 @@ export const getBusiness =
     return businesses[businessId];
   };
 
-export const getBusinesses = ({ businesses }) =>
-  businesses ? Object.values(businesses) : [];
+export const getBusinesses = ({ businesses }) => {
+  // debugger;
+  return businesses ? Object.values(businesses) : [];
+};
 
 export const fetchBusinesses = () => async (dispatch) => {
+  debugger;
   const res = await csrfFetch("/api/businesses");
   let data;
   if (res.ok) {
     data = await res.json();
+    debugger;
     dispatch(receiveBusinesses(data));
   } else {
     data = res.errors;
