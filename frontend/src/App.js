@@ -11,29 +11,24 @@ import EditReviewForm from "./components/EditReviewForm";
 function App() {
   return (
     <>
+      <Navigation />
       <Switch>
         <Route path="/login">
-          <Navigation />
           <LoginFormPage />
         </Route>
         <Route path="/signup">
-          <Navigation />
           <SignupFormPage />
         </Route>
         <Route exact path="/businesses/:businessId">
-          <Navigation />
           <BusinessShow />
         </Route>
         <Route exact path="/">
-          <Navigation />
           <IndexPage />
         </Route>
         <Route path="/businesses/:businessId/reviews/new">
-          <Navigation />
           <NewReviewForm />
         </Route>
         <Route path="/businesses/:businessId/reviews/:id/edit">
-          <Navigation />
           <EditReviewForm />
         </Route>
       </Switch>

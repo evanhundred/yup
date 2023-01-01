@@ -18,11 +18,13 @@ const SectionHeader = ({ title }) => {
 const IndexPage = () => {
   const dispatch = useDispatch();
   const businesses = useSelector((state) => state.businesses);
-
+  debugger;
   useEffect(() => {
     debugger;
     dispatch(fetchBusinesses());
   }, [dispatch]);
+
+  if (!businesses) return null;
 
   return (
     <>
