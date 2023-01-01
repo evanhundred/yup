@@ -17,13 +17,13 @@ const SectionHeader = ({ title }) => {
 
 const IndexPage = () => {
   const dispatch = useDispatch();
-  const businesses = useSelector((state) => state.businesses);
+  const businesses = useSelector((state) => Object.values(state.businesses));
   // debugger;
   useEffect(() => {
     // debugger;
     dispatch(fetchBusinesses());
   }, [dispatch]);
-
+  // debugger;
   // if (!businesses) return null;
   if (!businesses.length)
     return (

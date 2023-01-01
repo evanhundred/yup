@@ -4,10 +4,11 @@ import { useState } from "react";
 import BlueCheck from "../../assets/images/blue-check.png";
 
 const BusinessTitleCard = ({ businesses }) => {
-  const randomNum = Math.floor(Math.random * businesses.length);
-  const businessIdx = businesses[randomNum];
-  const business = businesses[businessIdx];
-
+  const randomNum = Math.floor(Math.random() * businesses.length);
+  // const businessIdx = businesses[randomNum];
+  // const business = businesses[businessIdx];
+  const business = businesses ? businesses[randomNum] : {};
+  debugger;
   // if (!businesses) return null;
   if (!businesses.length)
     return (
@@ -42,6 +43,7 @@ const BusinessTitleCard = ({ businesses }) => {
   };
 
   const ThirdLine = ({ business }) => {
+    debugger;
     return (
       <div className="third-line">
         <div className="check-circle">
@@ -65,6 +67,7 @@ const BusinessTitleCard = ({ businesses }) => {
   };
 
   const FourthLine = ({ business }) => {
+    debugger;
     const [isOpen, setIsOpen] = useState(true);
     let openText;
     let openTextColor;
