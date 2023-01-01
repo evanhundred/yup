@@ -18,13 +18,19 @@ const SectionHeader = ({ title }) => {
 const IndexPage = () => {
   const dispatch = useDispatch();
   const businesses = useSelector((state) => state.businesses);
-  debugger;
+  // debugger;
   useEffect(() => {
-    debugger;
+    // debugger;
     dispatch(fetchBusinesses());
   }, [dispatch]);
 
-  if (!businesses) return null;
+  // if (!businesses) return null;
+  if (!businesses.length)
+    return (
+      <div>
+        <h1>loading...</h1>
+      </div>
+    );
 
   return (
     <>

@@ -6,7 +6,13 @@ import "./IndexPage.css";
 
 const BusinessesTextBlock = ({ businesses }) => {
   const businessBlock = businesses.map((business, idx) => {
-    if (!businesses) return null;
+    // if (!businesses) return null;
+    if (!businesses.length)
+      return (
+        <div>
+          <h1>loading BusinessesTextBlock...</h1>
+        </div>
+      );
 
     return (
       <div className="business-card" key={idx}>

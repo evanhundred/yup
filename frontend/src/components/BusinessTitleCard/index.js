@@ -8,7 +8,13 @@ const BusinessTitleCard = ({ businesses }) => {
   const businessIdx = businesses[randomNum];
   const business = businesses[businessIdx];
 
-  if (!businesses) return null;
+  // if (!businesses) return null;
+  if (!businesses.length)
+    return (
+      <div>
+        <h1>loading BusinessTitleCard...</h1>
+      </div>
+    );
 
   const SecondLine = () => {
     return (
