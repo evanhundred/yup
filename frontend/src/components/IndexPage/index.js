@@ -1,4 +1,4 @@
-import "./IndexPage.css";
+import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinesses, getBusinesses } from "../../store/businesses";
 import { useEffect } from "react";
