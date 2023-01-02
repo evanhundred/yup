@@ -1,22 +1,7 @@
 import { useState } from "react";
-// import { useSelector } from "react-redux";
-// import { getBusiness } from "../../store/businesses";
-import BlueCheck from "../../assets/images/blue-check.png";
+import BlueCheck from "../../../assets/images/blue-check.png";
 
-const BusinessTitleCard = ({ businesses }) => {
-  const randomNum = Math.floor(Math.random() * businesses.length);
-  // const businessIdx = businesses[randomNum];
-  // const business = businesses[businessIdx];
-  const business = businesses ? businesses[randomNum] : {};
-  debugger;
-  // if (!businesses) return null;
-  if (!businesses.length)
-    return (
-      <div>
-        <h1>loading BusinessTitleCard...</h1>
-      </div>
-    );
-
+const TitleCardContent = ({ business }) => {
   const SecondLine = () => {
     return (
       <div id="ratings-reviews">
@@ -43,7 +28,6 @@ const BusinessTitleCard = ({ businesses }) => {
   };
 
   const ThirdLine = ({ business }) => {
-    debugger;
     return (
       <div className="third-line">
         <div className="check-circle">
@@ -67,7 +51,6 @@ const BusinessTitleCard = ({ businesses }) => {
   };
 
   const FourthLine = ({ business }) => {
-    debugger;
     const [isOpen, setIsOpen] = useState(true);
     let openText;
     let openTextColor;
@@ -96,15 +79,16 @@ const BusinessTitleCard = ({ businesses }) => {
       </div>
     );
   };
+
   return (
     <>
-      <SecondLine />
-      <ThirdLine business={business} />
-      <FourthLine business={business} />
-      {/* <ThirdLine business={business} />
-      <FourthLine business={business} /> */}
+      <div id="business-title-card">
+        <h1>{business.name}</h1>
+        <SecondLine />
+        <ThirdLine business={business} />
+        <FourthLine business={business} />
+      </div>
     </>
   );
 };
-
-export default BusinessTitleCard;
+export default TitleCardContent;

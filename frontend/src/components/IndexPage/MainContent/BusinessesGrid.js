@@ -2,18 +2,16 @@
 // import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 // import { getBusinesses, fetchBusinesses } from "../../store/businesses";
-import "./IndexPage.css";
 
-const BusinessesTextBlock = ({ businesses }) => {
-  const businessBlock = businesses.map((business, idx) => {
-    // if (!businesses) return null;
-    if (!businesses.length)
-      return (
-        <div>
-          <h1>loading BusinessesTextBlock...</h1>
-        </div>
-      );
+const BusinessesGrid = ({ businesses }) => {
+  if (!businesses.length)
+    return (
+      <div>
+        <h1>loading BusinessesGrid...</h1>
+      </div>
+    );
 
+  const businessesBlock = businesses.map((business, idx) => {
     return (
       <div className="business-card" key={idx}>
         <div className="card-image">
@@ -29,7 +27,7 @@ const BusinessesTextBlock = ({ businesses }) => {
     );
   });
 
-  return <div id="business-block">{businesses ? businessBlock : ""}</div>;
+  return <div id="business-block">{businesses ? businessesBlock : ""}</div>;
 };
 
-export default BusinessesTextBlock;
+export default BusinessesGrid;

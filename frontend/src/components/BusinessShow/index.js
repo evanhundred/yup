@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
 import "./index.css";
-import PhotoCard from "./PhotoCard";
+import TitleCard from "./TitleCard";
 import MainContent from "./MainContent";
 
 const BusinessShow = () => {
@@ -19,7 +19,7 @@ const BusinessShow = () => {
 
   return (
     <>
-      <PhotoCard business={business} />
+      <TitleCard business={business} />
       <MainContent business={business} />
     </>
   );
