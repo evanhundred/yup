@@ -1,0 +1,26 @@
+.image-height-reset {
+  height: 400px;
+}
+
+.image-container img {
+  width: 100%;
+  object-fit: cover;
+  height: 600px;
+  filter: brightness(50%);
+}
+
+.image-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.image-container:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, transparent 60%, black 100%);
+}
