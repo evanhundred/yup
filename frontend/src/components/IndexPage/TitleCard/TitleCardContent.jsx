@@ -1,51 +1,29 @@
 import { useState } from "react";
-import BlueCheck from "../../../assets/images/blue-check.png";
 
 const TitleCardContent = ({ business }) => {
-  const SecondLine = () => {
+  const FirstLine = () => {
     return (
-      <div id="ratings-reviews">
-        <div className="star-box">
-          <div className="box-1">
-            <span>&lowast;</span>
-          </div>
-          <div className="box-2">
-            <span>&lowast;</span>
-          </div>
-          <div className="box-3">
-            <span>&lowast;</span>
-          </div>
-          <div className="box-4">
-            <span>&lowast;</span>
-          </div>
-          <div className="box-5">
-            <span>&lowast;</span>
-          </div>
-        </div>
-        <div className="review-count">561 reviews</div>
-      </div>
+      <>
+        <h1>Mind-blowing coffee</h1>
+      </>
     );
+  };
+  const SecondLine = () => {
+    return <div id="second-line"></div>;
   };
 
   const ThirdLine = ({ business }) => {
     return (
       <div className="third-line">
-        <div className="check-circle">
-          <img
-            src={BlueCheck}
-            className="check-symbol"
-            alt="claimed - check mark"
-          />
-        </div>
         <p>Claimed</p>
         <p>· {business?.price || ""} ·</p>
         <p>{business?.category || ""}</p>
-        <a href="#">
+        <span className="fake-link">
           <div className="edit-button-container">
             <div className="button-box"> </div>
             <div className="edit-text">Edit</div>
           </div>
-        </a>
+        </span>
       </div>
     );
   };
@@ -83,7 +61,7 @@ const TitleCardContent = ({ business }) => {
   return (
     <>
       <div id="business-title-card">
-        <h1>{business.name}</h1>
+        <FirstLine />
         <SecondLine />
         <ThirdLine business={business} />
         <FourthLine business={business} />

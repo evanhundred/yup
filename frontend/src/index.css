@@ -2,3 +2,6 @@
 /* root {
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
 } */
+span.fake-link {
+  cursor: pointer;
+}
