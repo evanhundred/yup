@@ -1,6 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useState } from "react";
 import ProfileButton from "./ProfileButton";
 import "./navigation.css";
 import githubLogo from "../../assets/images/github.png";

@@ -25,10 +25,38 @@
   background: linear-gradient(to top, transparent 60%, black 100%);
 }
 
-.second-line p {
+.business-title-card {
+  position: relative;
+  top: -280px;
+  left: 10px;
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 4em;
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: white;
+}
+
+.business-title-card h1 {
+  font-size: 50px;
+  font-weight: 500;
+  padding-bottom: 4px;
+}
+
+.second-line {
   padding: 16px 4px;
   /* color: #47b9e6; */
   font-weight: 400;
   font-size: 23px;
-  margin: -12px 0 0;
+  /* margin: -12px 0 0; */
+  display: flex;
+  padding: 10px 20px;
+  background-color: red;
+  color: white;
+  width: max-content;
+  border-radius: 5px;
+}
+
+.second-line img {
+  width: 25px;
 }

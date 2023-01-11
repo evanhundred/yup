@@ -1,4 +1,4 @@
-import { useState } from "react";
+import SearchIcon from "../../../assets/images/search.png";
 
 const TitleCardContent = ({ business }) => {
   const FirstLine = () => {
@@ -11,18 +11,15 @@ const TitleCardContent = ({ business }) => {
   const SecondLine = () => {
     return (
       <div className="second-line">
-        <p>Sip on the freshest grinds at {`${business.name}`}</p>
-        <p>
-          Explore more top-notch{" "}
-          <span className="fake-link">coffee houses in NYC</span>
-        </p>
+        <img src={SearchIcon} alt="" />
+        <h3>Coffee</h3>
       </div>
     );
   };
 
   return (
     <>
-      <div id="business-title-card">
+      <div className="business-title-card">
         <FirstLine />
         <SecondLine />
       </div>
