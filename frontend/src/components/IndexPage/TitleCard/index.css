@@ -32,6 +32,7 @@
   width: 1000px;
   display: flex;
   flex-direction: column;
+  gap: 15px;
   padding-left: 4em;
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: white;
@@ -45,12 +46,13 @@
 
 .second-line {
   padding: 16px 4px;
-  /* color: #47b9e6; */
   font-weight: 400;
-  font-size: 23px;
-  /* margin: -12px 0 0; */
+  font-size: 18px;
   display: flex;
-  padding: 10px 20px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 30px;
   background-color: red;
   color: white;
   width: max-content;
@@ -58,5 +60,5 @@
 }
 
 .second-line img {
-  width: 25px;
+  width: 20px;
 }
