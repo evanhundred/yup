@@ -1,5 +1,6 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 import ProfileButton from "./ProfileButton";
 import "./navigation.css";
 import githubLogo from "../../assets/images/github.png";
@@ -7,6 +8,11 @@ import linkedinLogo from "../../assets/images/linkedin.png";
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
+
+  const regPath = /\/businesses\/\d*/;
+
+  const location = useLocation();
+  console.log(location);
 
   let sessionLinks;
   if (sessionUser) {
@@ -83,10 +89,8 @@ const Navigation = () => {
               <a
                 href="https://www.github.com/evanhundred/yup"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
               >
-                {/* <p>gh</p> */}
-                {/* <img src="../../assets/images/github-mark.png" /> */}
                 <img src={githubLogo} alt="GitHub" />
               </a>
             </div>
@@ -94,9 +98,8 @@ const Navigation = () => {
               <a
                 href="https://www.linkedin.com/in/evan-ryan-1a2b07131/"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
               >
-                {/* <p>li</p> */}
                 <img src={linkedinLogo} alt="LinkedIn" />
               </a>
             </div>
@@ -105,8 +108,6 @@ const Navigation = () => {
       </>
     );
   };
-
-  let regPath = /\/businesses\/\d*/;
 
   let headerType =
     window.location.pathname === "/" ||
