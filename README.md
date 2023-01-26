@@ -128,4 +128,4 @@ Thank you for checking out Yup. May the Schwartz be with you.
 &nbsp;
 &nbsp;
 
-`Evan <3`
+`evan <3`
