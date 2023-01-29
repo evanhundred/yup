@@ -27,7 +27,7 @@
 
 .business-title-card {
   position: relative;
-  top: -280px;
+  top: -340px;
   left: 10px;
   width: 1000px;
   display: flex;
@@ -62,4 +62,17 @@
 
 .second-line img {
   width: 20px;
+}
+
+.title-card-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* height: 100px; */
+}
+
+.title-card-footer h2 {
+  position: relative;
+  top: 200px;
+  font-weight: 500;
 }

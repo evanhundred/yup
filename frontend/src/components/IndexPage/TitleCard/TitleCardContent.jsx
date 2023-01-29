@@ -17,11 +17,20 @@ const TitleCardContent = ({ business }) => {
     );
   };
 
+  const TitleCardFooter = () => {
+    return (
+      <div className="title-card-footer">
+        <h2>Devoción</h2>
+      </div>
+    );
+  };
+
   return (
     <>
       <div className="business-title-card">
         <FirstLine />
         <SecondLine />
+        <TitleCardFooter />
       </div>
     </>
   );
