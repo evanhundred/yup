@@ -32,7 +32,7 @@ function App() {
         <Route path="/businesses/:businessId/reviews/:id/edit">
           <EditReviewForm />
         </Route>
-        <Route path="/businesses/search">
+        <Route path="/search">
           <SearchResults />
         </Route>
       </Switch>

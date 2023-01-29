@@ -11,7 +11,7 @@ const TitleCardContent = ({ business }) => {
   };
   const SecondLine = () => {
     return (
-      <Link to="/businesses/search?category=coffee">
+      <Link to="/search?category=coffee">
         <div className="second-line">
           <img src={SearchIcon} alt="" />
           <h3>Coffee</h3>
