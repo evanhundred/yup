@@ -10,8 +10,8 @@ const Navigation = () => {
 
   const regPath = /\/businesses\/\d*/;
 
-  const location = useLocation();
-  console.log(location);
+  // const location = useLocation();
+  // console.log(location);
 
   let sessionLinks;
   if (sessionUser) {

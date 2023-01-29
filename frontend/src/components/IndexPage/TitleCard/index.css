@@ -47,17 +47,20 @@
 
 .second-line {
   padding: 16px 4px;
-  font-weight: 400;
-  font-size: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   padding: 13px 30px;
   background-color: red;
-  color: white;
   width: max-content;
   border-radius: 5px;
+}
+
+.second-line h3 {
+  font-weight: 400;
+  font-size: 18px;
+  color: white;
 }
 
 .second-line img {

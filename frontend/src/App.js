@@ -7,6 +7,7 @@ import BusinessShow from "./components/BusinessShow";
 import Footer from "./components/Footer";
 import NewReviewForm from "./components/NewReviewForm";
 import EditReviewForm from "./components/EditReviewForm";
+import SearchResults from "./components/SearchResults";
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
         </Route>
         <Route path="/businesses/:businessId/reviews/:id/edit">
           <EditReviewForm />
+        </Route>
+        <Route path="/businesses/search">
+          <SearchResults />
         </Route>
       </Switch>
       <Footer />

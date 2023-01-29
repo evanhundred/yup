@@ -1,4 +1,5 @@
 import SearchIcon from "../../../assets/images/search.png";
+import { Link } from "react-router-dom";
 
 const TitleCardContent = ({ business }) => {
   const FirstLine = () => {
@@ -10,10 +11,12 @@ const TitleCardContent = ({ business }) => {
   };
   const SecondLine = () => {
     return (
-      <div className="second-line">
-        <img src={SearchIcon} alt="" />
-        <h3>Coffee</h3>
-      </div>
+      <Link to="/businesses/search?category=coffee">
+        <div className="second-line">
+          <img src={SearchIcon} alt="" />
+          <h3>Coffee</h3>
+        </div>
+      </Link>
     );
   };
 
