@@ -15,11 +15,11 @@ body {
   vertical-align: middle;
 }
 
-#logo.business-show {
+#logo.business-result {
   color: black;
 }
 
-#logo.business-show span.star {
+#logo.business-result span.star {
   color: #e34234;
 }
 
@@ -147,11 +147,11 @@ a {
   border: 2px solid #e34234;
 }
 
-#session-links.business-show a {
+#session-links.business-result a {
   color: black;
   border: 1px solid #ccc;
 }
 
-#session-links.business-show a.signupButton {
+#session-links.business-result a.signupButton {
   color: white;
 }

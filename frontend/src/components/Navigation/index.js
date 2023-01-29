@@ -8,7 +8,7 @@ import linkedinLogo from "../../assets/images/linkedin.png";
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
 
-  const regPath = /\/businesses\/\d*/;
+  const regPaths = [/\/businesses\/\d*/, /\/search/];
 
   // const location = useLocation();
   // console.log(location);
@@ -32,8 +32,12 @@ const Navigation = () => {
   }
 
   const HomeNav = () => {
-    let pageType = window.location.pathname.match(regPath)
-      ? "business-show"
+    let pageType = regPaths.some((regPath) =>
+      window.location.pathname.match(regPath)
+    )
+      ? // regPaths.some((regPath) => window.location.pathname.match(regPath)) ||
+        // window.location.pathname === "/"
+        "business-result"
       : "root-index";
     return (
       <div id="nav-bar">
@@ -108,13 +112,11 @@ const Navigation = () => {
     );
   };
 
-  let headerType =
-    window.location.pathname === "/" ||
-    window.location.pathname.match(regPath) ? (
-      <HomeNav />
-    ) : (
-      <FormHeader />
-    );
+  let headerType = ["/login", "/signup"].includes(window.location.pathname) ? (
+    <FormHeader />
+  ) : (
+    <HomeNav />
+  );
 
   return <>{headerType}</>;
 };
