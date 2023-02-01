@@ -1,9 +1,11 @@
+import { useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./navigation.css";
 import githubLogo from "../../assets/images/github.png";
 import linkedinLogo from "../../assets/images/linkedin.png";
+import { renderBusinessNav, renderIndexNav } from "../../store/navigation";
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -32,6 +34,8 @@ const Navigation = () => {
   }
 
   const HomeNav = () => {
+    // const dispatch = useDispatch();
+    // const statePageType = useSelector((state) => state.navType);
     let pageType = regPaths.some((regPath) =>
       window.location.pathname.match(regPath)
     )
@@ -39,6 +43,11 @@ const Navigation = () => {
         // window.location.pathname === "/"
         "business-result"
       : "root-index";
+    // useEffect(() => {
+    //   dispatch(
+    //     pageType === "root-index" ? renderIndexNav() : renderBusinessNav()
+    //   );
+    // });
     return (
       <div id="nav-bar">
         <div className="left-side">

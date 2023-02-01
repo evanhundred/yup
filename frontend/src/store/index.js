@@ -4,12 +4,14 @@ import session from "./session";
 import businesses from "./businesses";
 import reviews from "./reviews";
 import users from "./users";
+import navType from "./navigation";
 
 const rootReducer = combineReducers({
   session,
   businesses,
   reviews,
-  users
+  users,
+  navType
 });
 
 let enhancer;
