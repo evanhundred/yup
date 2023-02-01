@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { NavLink, useLocation, useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./navigation.css";
@@ -7,13 +7,74 @@ import githubLogo from "../../assets/images/github.png";
 import linkedinLogo from "../../assets/images/linkedin.png";
 import { renderBusinessNav, renderIndexNav } from "../../store/navigation";
 
-const Navigation = () => {
+const Navigation = ({ navType }) => {
   const sessionUser = useSelector((state) => state.session.user);
+
+  const location = useLocation();
+  const [pageType, setPageType] = useState(
+    location.pathname.includes("businesses") ? "business" : "index"
+  );
+  // console.log(`location:`, location);
+
+  useEffect(() => {
+    // console.log(location.pathname);
+    // regPaths.some((regPath) =>
+    //   location.pathname.match(regPath)
+    // )
+    //   ? "business"
+    //   : "index"
+    if (location.pathname.includes("businesses")) {
+      setPageType("business");
+    } else {
+      setPageType("index");
+    }
+  }, [location]);
 
   const regPaths = [/\/businesses\/\d*/, /\/search/];
 
-  // const location = useLocation();
-  // console.log(location);
+  // let pageType;
+  // useEffect(() => {
+  //   pageType = regPaths.some((regPath) =>
+  //     location.pathname.match(regPath)
+  //   )
+  //     ? "business"
+  //     : "index";
+  // }, [regPaths]);
+
+  // useEffect(() => {
+  //   dispatch(pageType === "index" ? renderIndexNav() : renderBusinessNav());
+  // }, [dispatch, pageType]);
+
+  // const [loca, setLoca] = useState(window.location.href);
+
+  // const handleLocationChange = () => {
+  //   setLoca(window.location.href);
+  // };
+
+  // useEffect(() => {
+  //   window.addEventListener("hashchange", handleLocationChange);
+  //   return () => {
+  //     window.removeEventListener("hashchange", handleLocationChange);
+  //   };
+  // }, []);
+
+  // console.log(loca);
+
+  // const regPaths = useMemo(() => {
+  //   return [/\/businesses\/\d*/, /\/search/];
+  // }, []);
+  // const [navType
+
+  // const pageType = regPaths.some((regPath) =>
+  //   window.location.pathname.match(regPath)
+  // )
+  //   ? "business"
+  //   : "index";
+
+  // const dispatch = useDispatch();
+  // const selectorNavType = useSelector((state) => state.navType.navType);
+  // // setStateNavType(pageType);
+  // const [stateNavType, setStateNavType] = useState("");
 
   let sessionLinks;
   if (sessionUser) {
@@ -34,25 +95,11 @@ const Navigation = () => {
   }
 
   const HomeNav = ({ navType }) => {
-    // const dispatch = useDispatch();
-    // const statePageType = useSelector((state) => state.navType.navType);
-
-    // useEffect(() => {
-    //   let pageType = regPaths.some((regPath) =>
-    //     window.location.pathname.match(regPath)
-    //   )
-    //     ? "business-result"
-    //     : "root-index";
-    //   dispatch(
-    //     pageType === "root-index" ? renderIndexNav() : renderBusinessNav()
-    //   );
-    // }, [dispatch]);
-
     return (
       <div id="nav-bar">
         <div className="left-side">
           <NavLink exact className="homeLink" to="/">
-            <h1 id="logo" className={navType}>
+            <h1 id="logo" className={pageType}>
               yup<span className="star">*</span>
             </h1>
           </NavLink>
@@ -78,7 +125,7 @@ const Navigation = () => {
               </a>
             </div>
           </div>
-          <div id="session-links" className={navType}>
+          <div id="session-links" className={pageType}>
             {sessionLinks}
           </div>
         </div>
