@@ -33,26 +33,26 @@ const Navigation = () => {
     );
   }
 
-  const HomeNav = () => {
+  const HomeNav = ({ navType }) => {
     // const dispatch = useDispatch();
-    // const statePageType = useSelector((state) => state.navType);
-    let pageType = regPaths.some((regPath) =>
-      window.location.pathname.match(regPath)
-    )
-      ? // regPaths.some((regPath) => window.location.pathname.match(regPath)) ||
-        // window.location.pathname === "/"
-        "business-result"
-      : "root-index";
+    // const statePageType = useSelector((state) => state.navType.navType);
+
     // useEffect(() => {
+    //   let pageType = regPaths.some((regPath) =>
+    //     window.location.pathname.match(regPath)
+    //   )
+    //     ? "business-result"
+    //     : "root-index";
     //   dispatch(
     //     pageType === "root-index" ? renderIndexNav() : renderBusinessNav()
     //   );
-    // });
+    // }, [dispatch]);
+
     return (
       <div id="nav-bar">
         <div className="left-side">
           <NavLink exact className="homeLink" to="/">
-            <h1 id="logo" className={pageType}>
+            <h1 id="logo" className={navType}>
               yup<span className="star">*</span>
             </h1>
           </NavLink>
@@ -78,7 +78,7 @@ const Navigation = () => {
               </a>
             </div>
           </div>
-          <div id="session-links" className={pageType}>
+          <div id="session-links" className={navType}>
             {sessionLinks}
           </div>
         </div>
@@ -121,11 +121,23 @@ const Navigation = () => {
     );
   };
 
-  let headerType = ["/login", "/signup"].includes(window.location.pathname) ? (
-    <FormHeader />
-  ) : (
-    <HomeNav />
-  );
+  let headerType;
+  if (["/login", "/signup"].includes(window.location.pathname)) {
+    headerType = <FormHeader />;
+  } else {
+    let navType = regPaths.some((regPath) =>
+      window.location.pathname.match(regPath)
+    )
+      ? "business"
+      : "index";
+    headerType = <HomeNav navType={navType} />;
+  }
+
+  // let headerType = ["/login", "/signup"].includes(window.location.pathname) ? (
+  //   <FormHeader />
+  // ) : (
+  //   <HomeNav />
+  // );
 
   return <>{headerType}</>;
 };
