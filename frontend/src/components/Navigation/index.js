@@ -1,24 +1,15 @@
-import { useEffect, useMemo, useState } from "react";
-import { NavLink, useLocation, useParams, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./navigation.css";
 import githubLogo from "../../assets/images/github.png";
 import linkedinLogo from "../../assets/images/linkedin.png";
-import { renderBusinessNav, renderIndexNav } from "../../store/navigation";
 
-const Navigation = ({ navType }) => {
+const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
 
   const location = useLocation();
-  // const whiteTypes = ["businesses", "search"];
-  // const [pageType, setPageType] = useState(
-  //   whiteTypes.some((url) => {
-  //     return location.pathname.includes(url);
-  //   })
-  //     ? "business"
-  //     : "index"
-  // );
   const [pageType, setPageType] = useState(
     location.pathname.includes("businesses") ||
       location.pathname.includes("search")
@@ -36,8 +27,6 @@ const Navigation = ({ navType }) => {
       setPageType("index");
     }
   }, [location]);
-
-  const regPaths = [/\/businesses\/\d*/, /\/search/];
 
   let sessionLinks;
   if (sessionUser) {
@@ -135,19 +124,8 @@ const Navigation = ({ navType }) => {
   if (["/login", "/signup"].includes(window.location.pathname)) {
     headerType = <FormHeader />;
   } else {
-    let navType = regPaths.some((regPath) =>
-      window.location.pathname.match(regPath)
-    )
-      ? "business"
-      : "index";
-    headerType = <HomeNav navType={navType} />;
+    headerType = <HomeNav />;
   }
-
-  // let headerType = ["/login", "/signup"].includes(window.location.pathname) ? (
-  //   <FormHeader />
-  // ) : (
-  //   <HomeNav />
-  // );
 
   return <>{headerType}</>;
 };
