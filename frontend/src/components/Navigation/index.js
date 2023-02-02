@@ -11,19 +11,26 @@ const Navigation = ({ navType }) => {
   const sessionUser = useSelector((state) => state.session.user);
 
   const location = useLocation();
+  // const whiteTypes = ["businesses", "search"];
+  // const [pageType, setPageType] = useState(
+  //   whiteTypes.some((url) => {
+  //     return location.pathname.includes(url);
+  //   })
+  //     ? "business"
+  //     : "index"
+  // );
   const [pageType, setPageType] = useState(
-    location.pathname.includes("businesses") ? "business" : "index"
+    location.pathname.includes("businesses") ||
+      location.pathname.includes("search")
+      ? "business"
+      : "index"
   );
-  // console.log(`location:`, location);
 
   useEffect(() => {
-    // console.log(location.pathname);
-    // regPaths.some((regPath) =>
-    //   location.pathname.match(regPath)
-    // )
-    //   ? "business"
-    //   : "index"
-    if (location.pathname.includes("businesses")) {
+    if (
+      location.pathname.includes("businesses") ||
+      location.pathname.includes("search")
+    ) {
       setPageType("business");
     } else {
       setPageType("index");
@@ -31,50 +38,6 @@ const Navigation = ({ navType }) => {
   }, [location]);
 
   const regPaths = [/\/businesses\/\d*/, /\/search/];
-
-  // let pageType;
-  // useEffect(() => {
-  //   pageType = regPaths.some((regPath) =>
-  //     location.pathname.match(regPath)
-  //   )
-  //     ? "business"
-  //     : "index";
-  // }, [regPaths]);
-
-  // useEffect(() => {
-  //   dispatch(pageType === "index" ? renderIndexNav() : renderBusinessNav());
-  // }, [dispatch, pageType]);
-
-  // const [loca, setLoca] = useState(window.location.href);
-
-  // const handleLocationChange = () => {
-  //   setLoca(window.location.href);
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener("hashchange", handleLocationChange);
-  //   return () => {
-  //     window.removeEventListener("hashchange", handleLocationChange);
-  //   };
-  // }, []);
-
-  // console.log(loca);
-
-  // const regPaths = useMemo(() => {
-  //   return [/\/businesses\/\d*/, /\/search/];
-  // }, []);
-  // const [navType
-
-  // const pageType = regPaths.some((regPath) =>
-  //   window.location.pathname.match(regPath)
-  // )
-  //   ? "business"
-  //   : "index";
-
-  // const dispatch = useDispatch();
-  // const selectorNavType = useSelector((state) => state.navType.navType);
-  // // setStateNavType(pageType);
-  // const [stateNavType, setStateNavType] = useState("");
 
   let sessionLinks;
   if (sessionUser) {
