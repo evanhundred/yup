@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./navigation.css";
@@ -8,29 +9,48 @@ import linkedinLogo from "../../assets/images/linkedin.png";
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
 
+  const location = useLocation();
+  const [pageType, setPageType] = useState(
+    location.pathname.includes("businesses") ||
+      location.pathname.includes("search")
+      ? "business"
+      : "index"
+  );
+
+  useEffect(() => {
+    if (
+      location.pathname.includes("businesses") ||
+      location.pathname.includes("search")
+    ) {
+      setPageType("business");
+    } else {
+      setPageType("index");
+    }
+  }, [location]);
+
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = <ProfileButton user={sessionUser} />;
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup" className="signupButton">
-          Sign Up
-        </NavLink>
+        <div className="session-link">
+          <NavLink to="/login">Log In</NavLink>
+        </div>
+        <div className="session-link signupButton">
+          <NavLink to="/signup" className="signupButton">
+            Sign Up
+          </NavLink>
+        </div>
       </>
     );
   }
 
-  const HomeNav = () => {
-    let pageType = window.location.pathname.match(regPath)
-      ? "business-show"
-      : "root-index";
+  const HomeNav = ({ navType }) => {
     return (
       <div id="nav-bar">
         <div className="left-side">
           <NavLink exact className="homeLink" to="/">
-            {/* <img src={HomeLogo} alt="home" /> */}
             <h1 id="logo" className={pageType}>
               yup<span className="star">*</span>
             </h1>
@@ -44,8 +64,6 @@ const Navigation = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {/* <p>gh</p> */}
-                {/* <img src="../../assets/images/github-mark.png" /> */}
                 <img src={githubLogo} alt="GitHub" />
               </a>
             </div>
@@ -55,7 +73,6 @@ const Navigation = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {/* <p>li</p> */}
                 <img src={linkedinLogo} alt="LinkedIn" />
               </a>
             </div>
@@ -83,10 +100,8 @@ const Navigation = () => {
               <a
                 href="https://www.github.com/evanhundred/yup"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
               >
-                {/* <p>gh</p> */}
-                {/* <img src="../../assets/images/github-mark.png" /> */}
                 <img src={githubLogo} alt="GitHub" />
               </a>
             </div>
@@ -94,9 +109,8 @@ const Navigation = () => {
               <a
                 href="https://www.linkedin.com/in/evan-ryan-1a2b07131/"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
               >
-                {/* <p>li</p> */}
                 <img src={linkedinLogo} alt="LinkedIn" />
               </a>
             </div>
@@ -106,15 +120,12 @@ const Navigation = () => {
     );
   };
 
-  let regPath = /\/businesses\/\d*/;
-
-  let headerType =
-    window.location.pathname === "/" ||
-    window.location.pathname.match(regPath) ? (
-      <HomeNav />
-    ) : (
-      <FormHeader />
-    );
+  let headerType;
+  if (["/login", "/signup"].includes(window.location.pathname)) {
+    headerType = <FormHeader />;
+  } else {
+    headerType = <HomeNav />;
+  }
 
   return <>{headerType}</>;
 };

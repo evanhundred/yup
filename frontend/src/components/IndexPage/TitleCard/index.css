@@ -1,0 +1,81 @@
+.image-height-reset {
+  height: 400px;
+}
+
+.image-container img {
+  width: 100%;
+  object-fit: cover;
+  height: 600px;
+  filter: brightness(50%);
+}
+
+.image-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.image-container:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, transparent 60%, black 100%);
+}
+
+.business-title-card {
+  position: relative;
+  top: -340px;
+  left: 10px;
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-left: 4em;
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: white;
+}
+
+.business-title-card h1 {
+  font-size: 50px;
+  font-weight: 500;
+  padding-bottom: 4px;
+  width: 400px;
+}
+
+.second-line {
+  padding: 16px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 30px;
+  background-color: red;
+  width: max-content;
+  border-radius: 5px;
+}
+
+.second-line h3 {
+  font-weight: 400;
+  font-size: 18px;
+  color: white;
+}
+
+.second-line img {
+  width: 20px;
+}
+
+.title-card-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* height: 100px; */
+}
+
+.title-card-footer h2 {
+  position: relative;
+  top: 200px;
+  font-weight: 500;
+}

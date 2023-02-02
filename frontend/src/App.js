@@ -7,34 +7,33 @@ import BusinessShow from "./components/BusinessShow";
 import Footer from "./components/Footer";
 import NewReviewForm from "./components/NewReviewForm";
 import EditReviewForm from "./components/EditReviewForm";
+import SearchResults from "./components/SearchResults";
 
 function App() {
   return (
     <>
+      <Navigation />
       <Switch>
         <Route path="/login">
-          <Navigation />
           <LoginFormPage />
         </Route>
         <Route path="/signup">
-          <Navigation />
           <SignupFormPage />
         </Route>
         <Route exact path="/businesses/:businessId">
-          <Navigation />
           <BusinessShow />
         </Route>
         <Route exact path="/">
-          <Navigation />
           <IndexPage />
         </Route>
         <Route path="/businesses/:businessId/reviews/new">
-          <Navigation />
           <NewReviewForm />
         </Route>
         <Route path="/businesses/:businessId/reviews/:id/edit">
-          <Navigation />
           <EditReviewForm />
+        </Route>
+        <Route path="/search">
+          <SearchResults />
         </Route>
       </Switch>
       <Footer />

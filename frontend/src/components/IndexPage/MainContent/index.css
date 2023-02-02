@@ -1,0 +1,52 @@
+.section-header {
+  font-size: 30px;
+  text-align: center;
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  padding: 15px 0;
+}
+
+.business-block-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 1em;
+}
+
+div#business-block {
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 1em 0 0 45px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  min-width: 900px;
+}
+
+.business-card {
+  width: 45%;
+  border: #ccc solid 1px;
+  max-width: 500px;
+  min-width: 400px;
+  border-radius: 5px;
+  display: flex;
+}
+
+div#business-block .card-image {
+  display: flex;
+}
+
+.business-card img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.business-card .info-section {
+  padding: 30px 18px;
+}
+
+.business-card h3 {
+  font-size: 24px;
+  font-weight: 700;
+}

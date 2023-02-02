@@ -15,11 +15,11 @@ body {
   vertical-align: middle;
 }
 
-#logo.business-show {
+#logo.business {
   color: black;
 }
 
-#logo.business-show span.star {
+#logo.business span.star {
   color: #e34234;
 }
 
@@ -35,7 +35,7 @@ body {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 45px 20px;
+  padding: 18px 45px 20px;
   /* margin: 10px 40px; */
   background-color: transparent;
   position: relative;
@@ -66,7 +66,7 @@ body {
 #nav-bar .socials {
   display: flex;
   gap: 15px;
-  padding: 12px 25px 0;
+  padding: 0 30px 0;
   align-items: center;
   /* color: blue; */
   /* float: right; */
@@ -129,11 +129,9 @@ a {
   display: flex;
   gap: 15px;
   font-family: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  /* flex: 0 1 auto; */
-  /* flex: 0; */
 }
 
-#session-links a {
+#session-links .session-link a {
   font-family: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 800;
   font-size: 16px;
@@ -144,16 +142,16 @@ a {
   margin: 10px 0 0;
 }
 
-#session-links .signupButton {
+#session-links .signupButton a {
   background-color: #e34234;
   border: 2px solid #e34234;
 }
 
-#session-links.business-show a {
+#session-links.business-result a {
   color: black;
   border: 1px solid #ccc;
 }
 
-#session-links.business-show a.signupButton {
+#session-links.business-result a.signupButton {
   color: white;
 }

@@ -4,8 +4,16 @@ const Footer = () => {
   return (
     <div className="footer">
       <p>
-        Copyright © 2004–2022 Yelp Inc. Yelp, Yelp logo, Yelp burst and related
-        marks are registered trademarks of Yelp.
+        Copyright © 2023 Yup Inc. and{" "}
+        <a
+          href="https://www.github.com/evanhundred"
+          rel="noreferrer"
+          target="_blank"
+        >
+          Evan Ryan
+        </a>
+        . Ruby, Rails, PostgreSQL, JavaScript, React, Redux, and related
+        languages and frameworks are implemented by Yup.
       </p>
     </div>
   );
