@@ -9,3 +9,4 @@ rails db:migrate
 rails db:seed #if needed
 cd frontend
 npm run build
+cd ..
