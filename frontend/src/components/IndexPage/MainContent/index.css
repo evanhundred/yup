@@ -36,10 +36,14 @@ div#business-block .card-image {
   display: flex;
 }
 
-.business-card img {
+.card-image img {
+  object-fit: cover;
+}
+
+.card-image a,
+.card-image img {
   width: 250px;
   height: 250px;
-  object-fit: cover;
 }
 
 .business-card .info-section {
