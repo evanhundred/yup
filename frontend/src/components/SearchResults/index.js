@@ -21,6 +21,10 @@ import { useEffect } from "react";
 
 // need to load all businesses into state
 
+// 02/27
+
+// need to add neighborhood (location) to component call
+
 const SearchResults = () => {
   const dispatch = useDispatch();
   const businesses = useSelector((state) => Object.values(state.businesses));
@@ -40,18 +44,29 @@ const SearchResults = () => {
       </div>
     );
 
-  const categoryString = location.search.slice(10);
+  // searchString
+  const searchString = location.search.slice(1);
+
+  // need to split this search string at &
+  const searchStringParts = searchString.split("&");
+
+  // coffee&find_loc=new-york
+  // ["coffee", "find_loc=new-york"]
+
+  const categoryString = searchStringParts[0];
+  const findLocString = searchStringParts[1];
+
   let categoryRegExp = new RegExp(categoryString);
   const matchingBusinesses = businesses.filter((business) =>
     business.category.toLowerCase().match(categoryRegExp)
   );
   // debugger;
-  // ?category=coffee
+  // ?category=coffee&find_loc=new-york
   // now this string has been reduced to the actual search terms
 
   return (
     <div id="search-results-container">
-      <h2>test</h2>
+      <h2>{`All "${categoryString}" results in`}</h2>
       <ul>
         {matchingBusinesses.map((business) => {
           return <li key={business.name}>{business.name}</li>;
