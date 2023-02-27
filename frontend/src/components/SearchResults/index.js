@@ -57,10 +57,24 @@ const SearchResults = () => {
   const findLocString = searchStringParts[1];
 
   let categoryRegExp = new RegExp(categoryString);
+  let findLocRegExp = new RegExp(findLocString);
+
   const matchingBusinesses = businesses.filter((business) =>
     business.category.toLowerCase().match(categoryRegExp)
   );
-  // debugger;
+
+  // regExp works to search categories, or other keywords that can be searched
+  // as text
+  // location search is dual staged:
+  // 1. determine type of search term
+  // list of cities, states and nabes
+
+  // source: https://github.com/grammakov/USA-cities-and-states
+  // 60K + list of cities, sorted by:
+  // City|State short name|State full name|County|City Alias Mixed Case
+
+  //
+
   // ?category=coffee&find_loc=new-york
   // now this string has been reduced to the actual search terms
 
