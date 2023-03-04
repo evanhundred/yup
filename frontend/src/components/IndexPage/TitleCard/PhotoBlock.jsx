@@ -1,11 +1,11 @@
-import StockPhoto from "../../../assets/restaurant-skyline.jpg";
+import CoffeeShop from "../../../assets/devocion_bar.jpeg";
 
 const PhotoBlock = ({ business }) => {
   return (
     <>
       <div className="image-height-reset" />
       <div className="image-container">
-        <img src={StockPhoto} alt="outdoor dining" />
+        <img src={CoffeeShop} alt="espresso bar at Devoción café" />
       </div>
     </>
   );

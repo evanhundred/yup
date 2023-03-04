@@ -12,9 +12,11 @@ const TitleCardContent = ({ business }) => {
   // SecondLine: I have copied the variable name used by yelp.
   // is this plagiarism? is it acceptable ettiquete?
 
+  // https://www.yelp.com/search?find_desc=coffee&find_loc=New+York%2C+NY+11226
+
   const SecondLine = () => {
     return (
-      <Link to="/search?category=coffee&find_loc=new-york">
+      <Link to="/search?category=coffee&find_loc=new-york%2C+ny">
         <div className="second-line">
           <img src={SearchIcon} alt="" />
           <h3>Coffee</h3>
@@ -22,7 +24,6 @@ const TitleCardContent = ({ business }) => {
       </Link>
     );
   };
-
   const TitleCardFooter = () => {
     return (
       <div className="title-card-footer">

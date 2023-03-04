@@ -6,7 +6,7 @@
   width: 100%;
   object-fit: cover;
   height: 600px;
-  filter: brightness(50%);
+  filter: brightness(65%);
 }
 
 .image-container {

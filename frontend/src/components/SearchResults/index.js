@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { fetchBusinesses } from "../../store/businesses";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import Papa from "papaparse";
 
 // iterate through all businesses, check category for match with search string
 
@@ -45,13 +46,13 @@ const SearchResults = () => {
     );
 
   // searchString
-  const searchString = location.search.slice(1);
+  const searchString = location.search.slice(10);
 
   // need to split this search string at &
-  const searchStringParts = searchString.split("&");
+  const searchStringParts = searchString.split("&find_loc=");
 
   // coffee&find_loc=new-york
-  // ["coffee", "find_loc=new-york"]
+  // ["category=coffee", "find_loc=new-york"]
 
   const categoryString = searchStringParts[0];
   const findLocString = searchStringParts[1];
@@ -59,8 +60,10 @@ const SearchResults = () => {
   let categoryRegExp = new RegExp(categoryString);
   let findLocRegExp = new RegExp(findLocString);
 
-  const matchingBusinesses = businesses.filter((business) =>
-    business.category.toLowerCase().match(categoryRegExp)
+  const matchingBusinesses = businesses.filter(
+    (business) =>
+      business.category.toLowerCase().match(categoryRegExp) &&
+      business.city.toLowerCase().match(findLocRegExp)
   );
 
   // regExp works to search categories, or other keywords that can be searched
@@ -70,17 +73,40 @@ const SearchResults = () => {
   // list of cities, states and nabes
 
   // source: https://github.com/grammakov/USA-cities-and-states
-  // 60K + list of cities, sorted by:
+  // 60K+ list of cities, sorted by:
   // City|State short name|State full name|County|City Alias Mixed Case
+  // this can be searched to determine if the search term is a state or major
+  //  city
+  //  - if yes, determine city, state, or neighborhood from the 60k list
+  //   at this stage of Yup's growth, business locations are limited to
+  //   the NYC metro area
+  // we need to determine an arbitrary geographical area to limit search results
+
+  // Rather than go in this expansive direction, which anticipates a fully fleshed out map of business
+  //  entities;
+  // Choose a set amount of neighborhoods, so that you can only search for businesses in those areas.
+  // this makes more sense with the scale of the project. we can have ten businesses per borough.
+  // a challenge I want to process is statically created seed data, versus an automated way of gathering
+  // entities from the internet or other sources of data.
+  // creating seed data feels like a time suck. I have spent multiple hours generating data by hand, and it seems
+  // like wasted time and energy.
+
+  // one possible solution is to choose ten entities per boro, and limit all search functionality to
+  // NYC. this is also what Welp creator Amanda Chen (https://github.com/amandac3600/Welp) chose to do,
+  // and it seems sufficient.
+
+  //
 
   //
 
   // ?category=coffee&find_loc=new-york
   // now this string has been reduced to the actual search terms
 
+  const formattedFindLocString = findLocString;
+
   return (
     <div id="search-results-container">
-      <h2>{`All "${categoryString}" results in`}</h2>
+      <h2>{`All ${categoryString} results near ${findLocString}`}</h2>
       <ul>
         {matchingBusinesses.map((business) => {
           return <li key={business.name}>{business.name}</li>;
