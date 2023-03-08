@@ -5,11 +5,52 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 // import Papa from "papaparse";
 import csvFile from "../../assets/us_cities_states_counties.csv";
+import * as fs from "fs";
+import * as readline from "readline";
+// import * as Stream from "stream";
 
 let giganticString;
 fetch(csvFile)
   .then((response) => response.text())
   .then((text) => (giganticString = text));
+
+// const f = require("fs");
+// const readline = require("readline");
+const userFile = "../../assets/us_cities_states_counties.csv";
+const rl = readline.createInterface({
+  input: fs.createReadstream(userFile)
+});
+rl.on("line", (text) => {
+  console.log(text);
+});
+
+// const readableStream = new Stream.Readable();
+
+// const makeTextFileLineIterator = async (fileURL) => {
+//   const utf8Decoder = new TextDecoder("utf-8");
+//   const response = await fetch(fileURL);
+//   const reader = response.body.getReader();
+//   let { value: chunk, done: readerDone } = await reader.read();
+//   chunk = chunk ? utf8Decoder.decode(chunk) : "";
+
+//   const newline = /\r?\n/gm;
+//   let startIndex = 0;
+//   let result;
+
+//   while (true) {
+//     const result = newline.exec(chunk);
+//     if (!result) {
+//       if (readerDone) break;
+//       const remainder = chunk.substr(startIndex);
+//       ({ value: chunk, done: readerDone } = await reader.read());
+//       chunk = remainder + (chunk ? utf8Decoder.decode(chunk) : "");
+//       startIndex = newline.lastIndex = 0;
+//       continue;
+//     }
+//     yield chunk.substring(startIndex, result.index);
+//     startIndex = newline.lastIndex;
+//   }
+// };
 
 // iterate through all businesses, check category for match with search string
 
