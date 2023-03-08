@@ -2,8 +2,14 @@ import "./index.css";
 import { useLocation } from "react-router-dom";
 import { fetchBusinesses } from "../../store/businesses";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import Papa from "papaparse";
+import { useEffect, useState } from "react";
+// import Papa from "papaparse";
+import csvFile from "../../assets/us_cities_states_counties.csv";
+
+let giganticString;
+fetch(csvFile)
+  .then((response) => response.text())
+  .then((text) => (giganticString = text));
 
 // iterate through all businesses, check category for match with search string
 
@@ -33,6 +39,50 @@ const SearchResults = () => {
   useEffect(() => {
     dispatch(fetchBusinesses());
   }, [dispatch]);
+
+  // const file = require("../../assets/us_cities_states_counties.csv");
+  // const textFromFile = this.readTextFile(file);
+  // console.log(textFromFile);
+
+  // useEffect(() => {
+  //   fetch("../../assets/us_cities_states_counties.csv")
+  //     .then((response) => response.text())
+  //     .then((text) => {
+  //       console.log(text);
+  //     });
+  // });
+
+  // let giganticString;
+  // useEffect(() => {
+  //   fetch("/src/assets/us_cities_states_counties.csv")
+  //     .then((response) => response.text())
+  //     .then((text) => (giganticString = text));
+  // }, []);
+
+  // const showFile = async (e) => {
+  //   e.preventDefault();
+  //   const reader = new FileReader();
+  //   reader.onload = async (e) => {
+  //     const text = e.target.result;
+  //     console.log(text);
+  //     alert(text);
+  //   };
+  //   reader.readAsText(e.target.files[0]);
+  // };
+
+  // useEffect(
+  //   () => async () => {
+  //     const response = await fetch(
+  //       "../../assets/us_cities_states_counties.csv"
+  //     );
+  //     const reader = response.body.getReader();
+  //     const result = await reader.read();
+  //     const decoder = new TextDecoder("utf-8");
+  //   },
+  //   []
+  // );
+
+  // const [rows, setRows] = useState([]);
 
   const location = useLocation();
   if (!location.search.includes("category"))
@@ -104,14 +154,33 @@ const SearchResults = () => {
 
   const formattedFindLocString = findLocString;
 
+  // const changeHandler = (event) => {
+  //   Papa.parse(event.target.files[0], {
+  //     header: true,
+  //     skipEmptyLines: true,
+  //     complete: function(results) {
+  //       console.log(results.data);
+  //     }
+  //   });
+  // };
+
+  // const mainCsvFile = require("../../assets/us_cities_states_counties.csv");
+  // fetch(mainCsvFile)
+  //   .then((response) => response.text())
+  //   .then((text) => this.setState({ text }));
+  // console.log(csvFile);
+
   return (
-    <div id="search-results-container">
-      <h2>{`All ${categoryString} results near ${findLocString}`}</h2>
-      <ul>
-        {matchingBusinesses.map((business) => {
-          return <li key={business.name}>{business.name}</li>;
-        })}
-      </ul>
+    <div>
+      <div id="search-results-container">
+        <h2>{`All ${categoryString} results near ${findLocString}`}</h2>
+        <ul>
+          {matchingBusinesses.map((business) => {
+            return <li key={business.name}>{business.name}</li>;
+          })}
+        </ul>
+      </div>
+      <div className="csv-dump">{giganticString}</div>
     </div>
   );
 };
