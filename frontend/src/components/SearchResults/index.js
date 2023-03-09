@@ -4,25 +4,26 @@ import { fetchBusinesses } from "../../store/businesses";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 // import Papa from "papaparse";
-import csvFile from "../../assets/us_cities_states_counties.csv";
-import * as fs from "fs";
-import * as readline from "readline";
+import csvFile from "../../assets/us_cities_states_counties_exp.csv";
+// import * as fs from "fs";
+// import * as readline from "readline";
 // import * as Stream from "stream";
-
-let giganticString;
-fetch(csvFile)
-  .then((response) => response.text())
-  .then((text) => (giganticString = text));
+// import {
+//   fileOpen,
+//   diretoryOpen,
+//   fileSave,
+//   supported
+// } from "https://unpkg.com/browser-fs-access";
+// import * as readline from "readline";
 
 // const f = require("fs");
 // const readline = require("readline");
-const userFile = "../../assets/us_cities_states_counties.csv";
-const rl = readline.createInterface({
-  input: fs.createReadstream(userFile)
-});
-rl.on("line", (text) => {
-  console.log(text);
-});
+// const rl = readline.createInterface({
+//   input: fs.createReadstream(userFile)
+// });
+// rl.on("line", (text) => {
+//   console.log(text);
+// });
 
 // const readableStream = new Stream.Readable();
 
@@ -72,7 +73,10 @@ rl.on("line", (text) => {
 // 02/27
 
 // need to add neighborhood (location) to component call
-
+let giganticString;
+fetch(csvFile)
+  .then((response) => response.text())
+  .then((text) => (giganticString = text));
 const SearchResults = () => {
   const dispatch = useDispatch();
   const businesses = useSelector((state) => Object.values(state.businesses));
@@ -80,6 +84,33 @@ const SearchResults = () => {
   useEffect(() => {
     dispatch(fetchBusinesses());
   }, [dispatch]);
+
+  // if (supported) {
+  //   console.log("Using the File System Access API.");
+  // } else {
+  //   console.log("Using the fallback implementation.");
+  // }
+
+  // const citiesArray = giganticString.split("%%%");
+  // console.log(citiesArray);
+
+  const userFile = "../../assets/us_cities_states_counties.csv";
+
+  // const getFile = async () => {
+  //   const blob = await fileOpen({
+  //     mimeTypes: ["image/*"]
+  //   });
+  // };
+  // const csvLines = [];
+
+  // const rl = readline(csvLines);
+  // rl.on("line", (line, lineCount, byteCount) => {
+  //   csvLines.push(line);
+  // }).on("error", (e) => {
+  //   console.log(e);
+  // });
+
+  // console.log(csvLines);
 
   // const file = require("../../assets/us_cities_states_counties.csv");
   // const textFromFile = this.readTextFile(file);
@@ -128,13 +159,6 @@ const SearchResults = () => {
   const location = useLocation();
   if (!location.search.includes("category"))
     return <div class="search-error">Incorrect seach terms.</div>;
-
-  if (!businesses.length)
-    return (
-      <div>
-        <h1>loading...</h1>
-      </div>
-    );
 
   // searchString
   const searchString = location.search.slice(10);
@@ -209,7 +233,15 @@ const SearchResults = () => {
   // fetch(mainCsvFile)
   //   .then((response) => response.text())
   //   .then((text) => this.setState({ text }));
-  // console.log(csvFile);
+  console.log(csvFile);
+  // debugger;
+
+  if (!businesses.length || !giganticString)
+    return (
+      <div>
+        <h1>loading...</h1>
+      </div>
+    );
 
   return (
     <div>

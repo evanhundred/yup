@@ -21,5 +21,9 @@
   "homepage": "https://github.com/evanhundred/yup#readme",
   "engines": {
     "node": "16.x"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "util": "^0.12.5"
   }
 }
