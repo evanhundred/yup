@@ -2,79 +2,8 @@ import "./index.css";
 import { useLocation } from "react-router-dom";
 import { fetchBusinesses } from "../../store/businesses";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-// import Papa from "papaparse";
-import { getCsvData } from "./util";
+import { useEffect } from "react";
 import csvFile from "../../assets/us_cities_states_counties.csv";
-// import * as fs from "fs";
-// import * as readline from "readline";
-// import * as Stream from "stream";
-// import {
-//   fileOpen,
-//   diretoryOpen,
-//   fileSave,
-//   supported
-// } from "https://unpkg.com/browser-fs-access";
-// import * as readline from "readline";
-
-// const f = require("fs");
-// const readline = require("readline");
-// const rl = readline.createInterface({
-//   input: fs.createReadstream(userFile)
-// });
-// rl.on("line", (text) => {
-//   console.log(text);
-// });
-
-// const readableStream = new Stream.Readable();
-
-// const makeTextFileLineIterator = async (fileURL) => {
-//   const utf8Decoder = new TextDecoder("utf-8");
-//   const response = await fetch(fileURL);
-//   const reader = response.body.getReader();
-//   let { value: chunk, done: readerDone } = await reader.read();
-//   chunk = chunk ? utf8Decoder.decode(chunk) : "";
-
-//   const newline = /\r?\n/gm;
-//   let startIndex = 0;
-//   let result;
-
-//   while (true) {
-//     const result = newline.exec(chunk);
-//     if (!result) {
-//       if (readerDone) break;
-//       const remainder = chunk.substr(startIndex);
-//       ({ value: chunk, done: readerDone } = await reader.read());
-//       chunk = remainder + (chunk ? utf8Decoder.decode(chunk) : "");
-//       startIndex = newline.lastIndex = 0;
-//       continue;
-//     }
-//     yield chunk.substring(startIndex, result.index);
-//     startIndex = newline.lastIndex;
-//   }
-// };
-
-// iterate through all businesses, check category for match with search string
-
-// 1. category or title
-// 2. location / neighborhood - optional
-//  if neighborhood does not match up with any businesses, show all matching businesses
-//  if neighborhood matches, show the associated businesses first,
-//  then other businesses in nearby neighborhoods
-// keep it simple: show all category / name matching businesses that match neighborhood. else,
-
-// to do this properly, i should take the neighborhood or any location parameters,
-// and run a true location based search
-
-// simple solution: show businesses matching neighborhood, then a divider line, then all other businesses that match category string
-//  if no neighborhood match is found, display 'no results found / other matches' and show other businesses matching category
-
-// need to load all businesses into state
-
-// 02/27
-
-// need to add neighborhood (location) to component call
-
 // THIS WORKS (outside component definition):
 let giganticString;
 // when declared within SearchResults, the empty declaration leads to the variable evaluating to `undefined` when the code hits return;
@@ -97,85 +26,6 @@ const SearchResults = () => {
     splitGiganticString = giganticString.split("\n");
   }
   console.log(splitGiganticString);
-  // const getData = async () => {
-  //   const response = await fetch(csvFile);
-  //   const data = await response.text();
-  //   return data;
-  // };
-
-  // const giganticString = getCsvData(csvFile);
-  // console.log(giganticString);
-
-  // if (supported) {
-  //   console.log("Using the File System Access API.");
-  // } else {
-  //   console.log("Using the fallback implementation.");
-  // }
-
-  // const citiesArray = giganticString.split("%%%");
-  // console.log(citiesArray);
-
-  const userFile = "../../assets/us_cities_states_counties.csv";
-
-  // const getFile = async () => {
-  //   const blob = await fileOpen({
-  //     mimeTypes: ["image/*"]
-  //   });
-  // };
-  // const csvLines = [];
-
-  // const rl = readline(csvLines);
-  // rl.on("line", (line, lineCount, byteCount) => {
-  //   csvLines.push(line);
-  // }).on("error", (e) => {
-  //   console.log(e);
-  // });
-
-  // console.log(csvLines);
-
-  // const file = require("../../assets/us_cities_states_counties.csv");
-  // const textFromFile = this.readTextFile(file);
-  // console.log(textFromFile);
-
-  // useEffect(() => {
-  //   fetch("../../assets/us_cities_states_counties.csv")
-  //     .then((response) => response.text())
-  //     .then((text) => {
-  //       console.log(text);
-  //     });
-  // });
-
-  // let giganticString;
-  // useEffect(() => {
-  //   fetch("/src/assets/us_cities_states_counties.csv")
-  //     .then((response) => response.text())
-  //     .then((text) => (giganticString = text));
-  // }, []);
-
-  // const showFile = async (e) => {
-  //   e.preventDefault();
-  //   const reader = new FileReader();
-  //   reader.onload = async (e) => {
-  //     const text = e.target.result;
-  //     console.log(text);
-  //     alert(text);
-  //   };
-  //   reader.readAsText(e.target.files[0]);
-  // };
-
-  // useEffect(
-  //   () => async () => {
-  //     const response = await fetch(
-  //       "../../assets/us_cities_states_counties.csv"
-  //     );
-  //     const reader = response.body.getReader();
-  //     const result = await reader.read();
-  //     const decoder = new TextDecoder("utf-8");
-  //   },
-  //   []
-  // );
-
-  // const [rows, setRows] = useState([]);
 
   const location = useLocation();
   if (!location.search.includes("category"))
@@ -187,7 +37,7 @@ const SearchResults = () => {
   // need to split this search string at &
   const searchStringParts = searchString.split("&find_loc=");
 
-  // coffee&find_loc=new-york
+  // ?category=coffee&find_loc=new-york
   // ["category=coffee", "find_loc=new-york"]
 
   const categoryString = searchStringParts[0];
@@ -231,31 +81,7 @@ const SearchResults = () => {
   // NYC. this is also what Welp creator Amanda Chen (https://github.com/amandac3600/Welp) chose to do,
   // and it seems sufficient.
 
-  //
-
-  //
-
-  // ?category=coffee&find_loc=new-york
-  // now this string has been reduced to the actual search terms
-
   const formattedFindLocString = findLocString;
-
-  // const changeHandler = (event) => {
-  //   Papa.parse(event.target.files[0], {
-  //     header: true,
-  //     skipEmptyLines: true,
-  //     complete: function(results) {
-  //       console.log(results.data);
-  //     }
-  //   });
-  // };
-
-  // const mainCsvFile = require("../../assets/us_cities_states_counties.csv");
-  // fetch(mainCsvFile)
-  //   .then((response) => response.text())
-  //   .then((text) => this.setState({ text }));
-  console.log(csvFile);
-  // debugger;
 
   if (
     !businesses.length ||
@@ -267,9 +93,6 @@ const SearchResults = () => {
         <h1>loading...</h1>
       </div>
     );
-
-  // const dividedCSV = {};
-  // const citiesCSVLines =
 
   return (
     <div>
