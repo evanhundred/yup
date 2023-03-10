@@ -4,7 +4,8 @@ import { fetchBusinesses } from "../../store/businesses";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 // import Papa from "papaparse";
-import csvFile from "../../assets/us_cities_states_counties_exp.csv";
+import { getCsvData } from "./util";
+import csvFile from "../../assets/us_cities_states_counties.csv";
 // import * as fs from "fs";
 // import * as readline from "readline";
 // import * as Stream from "stream";
@@ -73,10 +74,11 @@ import csvFile from "../../assets/us_cities_states_counties_exp.csv";
 // 02/27
 
 // need to add neighborhood (location) to component call
+
+// THIS WORKS (outside component definition):
 let giganticString;
-fetch(csvFile)
-  .then((response) => response.text())
-  .then((text) => (giganticString = text));
+// when declared within SearchResults, the empty declaration leads to the variable evaluating to `undefined` when the code hits return;
+
 const SearchResults = () => {
   const dispatch = useDispatch();
   const businesses = useSelector((state) => Object.values(state.businesses));
@@ -84,6 +86,25 @@ const SearchResults = () => {
   useEffect(() => {
     dispatch(fetchBusinesses());
   }, [dispatch]);
+
+  fetch(csvFile)
+    .then((response) => response.text())
+    .then((text) => (giganticString = text));
+
+  console.log(giganticString);
+  let splitGiganticString;
+  if (giganticString) {
+    splitGiganticString = giganticString.split("\n");
+  }
+  console.log(splitGiganticString);
+  // const getData = async () => {
+  //   const response = await fetch(csvFile);
+  //   const data = await response.text();
+  //   return data;
+  // };
+
+  // const giganticString = getCsvData(csvFile);
+  // console.log(giganticString);
 
   // if (supported) {
   //   console.log("Using the File System Access API.");
@@ -236,12 +257,19 @@ const SearchResults = () => {
   console.log(csvFile);
   // debugger;
 
-  if (!businesses.length || !giganticString)
+  if (
+    !businesses.length ||
+    !giganticString ||
+    typeof giganticString !== "string"
+  )
     return (
       <div>
         <h1>loading...</h1>
       </div>
     );
+
+  // const dividedCSV = {};
+  // const citiesCSVLines =
 
   return (
     <div>
@@ -253,7 +281,7 @@ const SearchResults = () => {
           })}
         </ul>
       </div>
-      <div className="csv-dump">{giganticString}</div>
+      <div className="csv-dump">{splitGiganticString[1]}</div>
     </div>
   );
 };
