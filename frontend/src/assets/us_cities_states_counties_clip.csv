@@ -28,3 +28,21 @@ Aguadilla|PR|Puerto Rico|AGUADILLA|Vista Alegre
 Aguadilla|PR|Puerto Rico|AGUADILLA|URB San Carlos
 Aguadilla|PR|Puerto Rico|AGUADILLA|Bda Caban
 Aguadilla|PR|Puerto Rico|AGUADILLA|Ext El Prado
+
+// what I want to do
+// isolate each 'word' from search input
+for each word:
+    search each row of the csv for a match
+    if match is found:
+        if match is city or city alias, set matchedLocString to "city=New York" (for example)
+        if match is state, set matchedLocString to "state=NY"
+    if no match found:
+        present 'sorry, no matching locations found.'
+            show option 'search in New York, NY'
+
+This version of search makes no material contribution to Yup. It serves as an implementation of
+basic city/state searching, for the purpose of personal practice and demonstration.
+In the future, I will focus strictly on features that contribute to the project.
+
+future version of search:
+    connect to google API

@@ -20,12 +20,22 @@ const SearchResults = () => {
     .then((response) => response.text())
     .then((text) => (giganticString = text));
 
-  console.log(giganticString);
+  // console.log(giganticString);
   let splitGiganticString;
   if (giganticString) {
     splitGiganticString = giganticString.split("\n");
   }
-  console.log(splitGiganticString);
+  // console.log(splitGiganticString);
+
+  const usCitiesList = [];
+  if (giganticString) {
+    for (let i = 1; i < splitGiganticString.length; i++) {
+      const newRow = splitGiganticString[i].split("|");
+      usCitiesList.push(newRow);
+    }
+  }
+
+  // console.log(usCitiesList.slice(0, 10));
 
   const location = useLocation();
   if (!location.search.includes("category"))
@@ -46,10 +56,27 @@ const SearchResults = () => {
   let categoryRegExp = new RegExp(categoryString);
   let findLocRegExp = new RegExp(findLocString);
 
-  const matchingBusinesses = businesses.filter(
-    (business) =>
-      business.category.toLowerCase().match(categoryRegExp) &&
-      business.city.toLowerCase().match(findLocRegExp)
+  // search usCitiesList for match with findLocRegExp
+  let matchedCity;
+  let matchedState;
+  if (giganticString) {
+    for (let i = 0; i < usCitiesList.length; i++) {
+      for (let j = 0; j < usCitiesList[i].length; j++) {
+        if (usCitiesList[i][j].toLowerCase().match(findLocRegExp)) {
+          matchedCity = usCitiesList[i][0];
+          matchedState = usCitiesList[i][1];
+        }
+      }
+    }
+  }
+
+  // const matchingBusinesses = businesses.filter(
+  //   (business) =>
+  //     business.category.toLowerCase().match(categoryRegExp) &&
+  //     business.city.toLowerCase().match(findLocRegExp)
+  // );
+  const matchingBusinesses = businesses.filter((business) =>
+    business.category.toLowerCase().match(categoryRegExp)
   );
 
   // regExp works to search categories, or other keywords that can be searched
@@ -80,8 +107,6 @@ const SearchResults = () => {
   // one possible solution is to choose ten entities per boro, and limit all search functionality to
   // NYC. this is also what Welp creator Amanda Chen (https://github.com/amandac3600/Welp) chose to do,
   // and it seems sufficient.
-
-  const formattedFindLocString = findLocString;
 
   if (
     !businesses.length ||
