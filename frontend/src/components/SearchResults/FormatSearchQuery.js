@@ -1,9 +1,15 @@
-import StateAbbreviations from "./states.txt";
+import stateAbbreviations from "./states.txt";
 
-const FormatSearchQuery = () => {
-  // const stateAbbreviations = () => {
-  //   "";
-  // };
+let statesTextBlob;
+export const getStatesArray = () => {
+  fetch(stateAbbreviations)
+    .then((response) => response.text())
+    .then((text) => (statesTextBlob = text));
+
+  let stateAbbrevArray;
+  if (statesTextBlob) {
+    stateAbbrevArray = statesTextBlob.split("\t");
+  }
+
+  return stateAbbrevArray;
 };
-
-export default FormatSearchQuery;

@@ -4,6 +4,8 @@ import { fetchBusinesses } from "../../store/businesses";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import csvFile from "../../assets/us_cities_states_counties.csv";
+import { getStatesArray } from "./FormatSearchQuery";
+
 // THIS WORKS (outside component definition):
 let giganticString;
 // when declared within SearchResults, the empty declaration leads to the variable evaluating to `undefined` when the code hits return;
@@ -26,6 +28,9 @@ const SearchResults = () => {
     splitGiganticString = giganticString.split("\n");
   }
   // console.log(splitGiganticString);
+
+  const statesArray = getStatesArray();
+  console.log(statesArray);
 
   const usCitiesList = [];
   if (giganticString) {
@@ -117,6 +122,10 @@ const SearchResults = () => {
   }
   // debugger;
   // constole.log(findLoc"string)
+
+  // const statesArray = StatesArray;
+  // console.log(statesArray);
+
   console.log(matchedCity ? matchedCity : "no match found");
 
   const matchedCityRegExp = new RegExp(matchedCity);
