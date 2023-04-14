@@ -8,7 +8,7 @@ export const getStatesArray = () => {
 
   let stateAbbrevArray;
   if (statesTextBlob) {
-    stateAbbrevArray = statesTextBlob.split("\t");
+    stateAbbrevArray = statesTextBlob.replace(/\n/g, "\t").split("\t");
   }
 
   return stateAbbrevArray;

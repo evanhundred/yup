@@ -22,12 +22,10 @@ const SearchResults = () => {
     .then((response) => response.text())
     .then((text) => (giganticString = text));
 
-  // console.log(giganticString);
   let splitGiganticString;
   if (giganticString) {
     splitGiganticString = giganticString.split("\n");
   }
-  // console.log(splitGiganticString);
 
   const statesArray = getStatesArray();
   console.log(statesArray);
@@ -40,16 +38,11 @@ const SearchResults = () => {
     }
   }
 
-  // console.log(usCitiesList.slice(0, 10));
-
   const location = useLocation();
   if (!location.search.includes("category"))
     return <div class="search-error">Incorrect seach terms.</div>;
 
-  // searchString
   const searchString = location.search.slice(10);
-
-  // need to split this search string at &
   const searchStringParts = searchString.split("&find_loc=");
 
   // ?category=coffee&find_loc=new-york%2C+ny
@@ -58,46 +51,29 @@ const SearchResults = () => {
   const categoryString = searchStringParts[0];
   const findLocString = searchStringParts[1];
 
+  const findLocArray = findLocString.split("&2C+");
+  const cityString = findLocArray[0];
+  const stateString = findLocArray[1];
+
   let categoryRegExp = new RegExp(categoryString);
 
   // format findLocString on search:
   //  look for last three characters to match /^[]
 
   // let findLocRegExp = new RegExp(findLocString);
-  // debugger;
   // search usCitiesList for match with findLocRegExp
+
   let matchedCity;
   let matchedState;
-  // if (giganticString) {
-  //   for (let i = 0; !matchedCity && i < usCitiesList.length; i++) {
-  //     for (let j = 0; j < usCitiesList[i].length; j++) {
-  //       if (j === 1) j = 3;
-  //       // assume that search string is formatted correctly
-  //       // formatting should separate all words by dash
-  //       // entire city name must be matched in search string
-  //       const currentEntryString = usCitiesList[i][j]
-  //         .toLowerCase()
-  //         .split(" ")
-  //         .join("-");
 
-  //       const currentEntryRegExp = new RegExp(currentEntryString);
-
-  //       if (findLocString.match(currentEntryRegExp)) {
-  //         matchedCity = usCitiesList[i][0];
-  //         matchedState = usCitiesList[i][1];
-  //         break;
-  //       }
-  //     }
-  //   }
-  // }
   if (giganticString && findLocString) {
     for (let i = 0; !matchedCity && i < usCitiesList.length; i++) {
       const currentCityRegExp = new RegExp(
         usCitiesList[i][0].toLowerCase().split(" ").join("-")
       );
 
-      if (findLocString.match(currentCityRegExp)) {
-      }
+      // if (findLocString.match(currentCityRegExp)) {
+      // }
 
       if (findLocString)
         for (let j = 0; j < usCitiesList[i].length; j++) {
@@ -113,18 +89,20 @@ const SearchResults = () => {
           const currentEntryRegExp = new RegExp(currentEntryString);
 
           if (findLocString.match(currentEntryRegExp)) {
-            matchedCity = usCitiesList[i][0];
-            matchedState = usCitiesList[i][1];
-            break;
+            const currentState = usCitiesList[i][1];
+            const currentStateRegExp = new RegExp(currentState.toLowerCase());
+
+            if (stateString.match(currentStateRegExp)) {
+              matchedState = currentState;
+              matchedCity = usCitiesList[i][0];
+              break;
+            }
           }
         }
     }
   }
-  // debugger;
-  // constole.log(findLoc"string)
 
-  // const statesArray = StatesArray;
-  // console.log(statesArray);
+  // TODO 4/12: complete matchedCity, State logic
 
   console.log(matchedCity ? matchedCity : "no match found");
 
@@ -139,51 +117,6 @@ const SearchResults = () => {
   );
 
   // http://localhost:3000/search?category=coffee&find_loc=new-york%2C+ny
-
-  // const matchingBusinesses = businesses.filter(
-  //   (business) =>
-  //     business.category.toLowerCase().match(categoryRegExp) &&
-  //     business.city.toLowerCase().match(findLocRegExp)
-  // );
-  // const matchingCategoryBusinesses = businesses.filter((business) =>
-  //   business.category.toLowerCase().match(categoryRegExp)
-  // );
-  // split string into city and state
-
-  // business findLoc RegExp
-
-  // const matchingLocBusinesses = businesses.filter((business) => (
-
-  // ));
-
-  // regExp works to search categories, or other keywords that can be searched
-  // as text
-  // location search is dual staged:
-  // 1. determine type of search term
-  // list of cities, states and nabes
-
-  // source: https://github.com/grammakov/USA-cities-and-states
-  // 60K+ list of cities, sorted by:
-  // City|State short name|State full name|County|City Alias Mixed Case
-  // this can be searched to determine if the search term is a state or major
-  //  city
-  //  - if yes, determine city, state, or neighborhood from the 60k list
-  //   at this stage of Yup's growth, business locations are limited to
-  //   the NYC metro area
-  // we need to determine an arbitrary geographical area to limit search results
-
-  // Rather than go in this expansive direction, which anticipates a fully fleshed out map of business
-  //  entities;
-  // Choose a set amount of neighborhoods, so that you can only search for businesses in those areas.
-  // this makes more sense with the scale of the project. we can have ten businesses per borough.
-  // a challenge I want to process is statically created seed data, versus an automated way of gathering
-  // entities from the internet or other sources of data.
-  // creating seed data feels like a time suck. I have spent multiple hours generating data by hand, and it seems
-  // like wasted time and energy.
-
-  // one possible solution is to choose ten entities per boro, and limit all search functionality to
-  // NYC. this is also what Welp creator Amanda Chen (https://github.com/amandac3600/Welp) chose to do,
-  // and it seems sufficient.
 
   if (
     !businesses.length ||
