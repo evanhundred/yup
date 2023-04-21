@@ -51,9 +51,16 @@ const SearchResults = () => {
   const categoryString = searchStringParts[0];
   const findLocString = searchStringParts[1];
 
-  const findLocArray = findLocString.split("&2C+");
+  const findLocArray = findLocString.split("%2C+");
   const cityString = findLocArray[0];
   const stateString = findLocArray[1];
+
+  console.log("findLocArray:");
+  console.log(findLocArray); // ['new-york', 'ny']
+  console.log("cityString:");
+  console.log(cityString); // new-york
+  console.log("stateString:");
+  console.log(stateString); // ny
 
   let categoryRegExp = new RegExp(categoryString);
 
@@ -75,39 +82,54 @@ const SearchResults = () => {
       // if (findLocString.match(currentCityRegExp)) {
       // }
 
-      if (findLocString)
-        for (let j = 0; j < usCitiesList[i].length; j++) {
-          if (j === 1) j = 3;
-          // assume that search string is formatted correctly
-          // formatting should separate all words by dash
-          // entire city name must be matched in search string
-          const currentEntryString = usCitiesList[i][j]
-            .toLowerCase()
-            .split(" ")
-            .join("-");
+      if (findLocString) {
+        // for (let j = 0; j < usCitiesList[i].length; j++) {
+        // use loop to cycle through indexes 0 and 3, to use for match
+        // if (j === 1) j = 3;
 
-          const currentEntryRegExp = new RegExp(currentEntryString);
+        // assume that search string is formatted correctly
+        // formatting should separate all words by dash
+        // entire city name must be matched in search string
+        const currentEntryString = usCitiesList[i][0]
+          .toLowerCase()
+          .split(" ")
+          .join("-");
 
-          if (findLocString.match(currentEntryRegExp)) {
-            const currentState = usCitiesList[i][1];
-            const currentStateRegExp = new RegExp(currentState.toLowerCase());
+        const currentEntryRegExp = new RegExp(currentEntryString);
 
-            if (stateString.match(currentStateRegExp)) {
-              matchedState = currentState;
-              matchedCity = usCitiesList[i][0];
-              break;
-            }
+        // console.log("currentEntryString:");
+        // console.log(currentEntryString);
+        // console.log("findLocString:");
+        // console.log(findLocString);
+
+        if (findLocString.match(currentEntryRegExp)) {
+          console.log(currentEntryString);
+          console.log(i);
+          // console.log(currentEntryRegExp);
+          const currentState = usCitiesList[i][1];
+          const currentStateRegExp = new RegExp(currentState.toLowerCase());
+
+          if (stateString.match(currentStateRegExp)) {
+            console.log(currentEntryString);
+            console.log(currentState);
+            console.log(i);
+            matchedState = currentState;
+            matchedCity = usCitiesList[i][0];
+            break;
           }
         }
+      }
     }
   }
 
-  // TODO 4/12: complete matchedCity, State logic
+  console.log(matchedCity ? matchedCity : "no match found"); // GPO
 
-  console.log(matchedCity ? matchedCity : "no match found");
-
-  const matchedCityRegExp = new RegExp(matchedCity);
+  const matchedCityRegExp = matchedCity
+    ? new RegExp(matchedCity.toLowerCase())
+    : null;
   const matchedStateRegExp = new RegExp(matchedState);
+
+  console.log(businesses);
 
   const matchingBusinesses = businesses.filter(
     (business) =>
@@ -115,6 +137,25 @@ const SearchResults = () => {
       business.city.toLowerCase().match(matchedCityRegExp) &&
       business.category.toLowerCase().match(categoryRegExp)
   );
+
+  if ("new york".match(matchedCityRegExp)) {
+    const borosArray = [
+      /bronx/,
+      /brooklyn/,
+      /manhattan/,
+      /queens/,
+      /staten island/
+    ];
+    const nyBusinesses = businesses.filter((business) =>
+      borosArray.some((boro) => business.city.toLowerCase().match(boro))
+    );
+
+    for (let i = 0; i < nyBusinesses.length; i++) {
+      matchingBusinesses.push(nyBusinesses[i]);
+    }
+  }
+
+  console.log(matchingBusinesses);
 
   // http://localhost:3000/search?category=coffee&find_loc=new-york%2C+ny
 
@@ -139,7 +180,7 @@ const SearchResults = () => {
           })}
         </ul>
       </div>
-      <div className="csv-dump">{splitGiganticString[1]}</div>
+      {/* <div className="csv-dump">{splitGiganticString[1]}</div> */}
     </div>
   );
 };
