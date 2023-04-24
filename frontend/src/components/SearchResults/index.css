@@ -1,0 +1,8 @@
+#search-results-container {
+  margin-left: 4em;
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#search-results-container h2 {
+  margin: 10px 0 20px;
+}
