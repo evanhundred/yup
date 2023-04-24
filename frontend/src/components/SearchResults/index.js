@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import csvFile from "../../assets/us_cities_states_counties.csv";
 import { getStatesArray } from "./FormatSearchQuery";
+import BusinessResultCard from "./BusinessResultCard";
 
 // THIS WORKS (outside component definition):
 let giganticString;
@@ -176,7 +177,11 @@ const SearchResults = () => {
         <h2>{`All ${categoryString} results near ${findLocString}`}</h2>
         <ul>
           {matchingBusinesses.map((business) => {
-            return <li key={business.name}>{business.name}</li>;
+            return (
+              <li key={business.name}>
+                <BusinessResultCard business={business} />
+              </li>
+            );
           })}
         </ul>
       </div>

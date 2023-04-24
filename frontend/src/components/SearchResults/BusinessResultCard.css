@@ -1,0 +1,6 @@
+.business-photo-container img {
+  object-fit: cover;
+  height: 225px;
+  width: 225px;
+  border-radius: 6px;
+}
