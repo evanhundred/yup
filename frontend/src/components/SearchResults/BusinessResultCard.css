@@ -1,3 +1,8 @@
+.business-card-container {
+  display: flex;
+  gap: 20px;
+}
+
 .business-photo-container img {
   object-fit: cover;
   height: 225px;

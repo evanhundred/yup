@@ -7,7 +7,9 @@ const BusinessResultCard = ({ business }) => {
       <div className="business-photo-container">
         <img src={business.imageUrls[5]} alt="delicious item" />
       </div>
-      <p>{business.name}</p>
+      <div className="business-info">
+        <p>{business.name}</p>
+      </div>
     </div>
   );
 };

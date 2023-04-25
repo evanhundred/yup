@@ -80,14 +80,7 @@ const SearchResults = () => {
         usCitiesList[i][0].toLowerCase().split(" ").join("-")
       );
 
-      // if (findLocString.match(currentCityRegExp)) {
-      // }
-
       if (findLocString) {
-        // for (let j = 0; j < usCitiesList[i].length; j++) {
-        // use loop to cycle through indexes 0 and 3, to use for match
-        // if (j === 1) j = 3;
-
         // assume that search string is formatted correctly
         // formatting should separate all words by dash
         // entire city name must be matched in search string
@@ -97,11 +90,6 @@ const SearchResults = () => {
           .join("-");
 
         const currentEntryRegExp = new RegExp(currentEntryString);
-
-        // console.log("currentEntryString:");
-        // console.log(currentEntryString);
-        // console.log("findLocString:");
-        // console.log(findLocString);
 
         if (findLocString.match(currentEntryRegExp)) {
           console.log(currentEntryString);
@@ -171,10 +159,12 @@ const SearchResults = () => {
       </div>
     );
 
+  const formattedLoc = findLocString.split;
+
   return (
     <div>
       <div id="search-results-container">
-        <h2>{`All ${categoryString} results near ${findLocString}`}</h2>
+        <h2>{`All "${categoryString}" results near ${findLocString}`}</h2>
         <ul>
           {matchingBusinesses.map((business) => {
             return (
