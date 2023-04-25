@@ -9,3 +9,12 @@
   width: 225px;
   border-radius: 6px;
 }
+
+.business-card-container .business-info {
+  margin-top: 10px;
+}
+
+.business-card-container .business-info p {
+  font-size: 23px;
+  font-weight: 500;
+}

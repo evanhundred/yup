@@ -1,6 +1,6 @@
 import "./BusinessResultCard.css";
 
-const BusinessResultCard = ({ business }) => {
+const BusinessResultCard = ({ business, idx }) => {
   // if (!business) return null;
   return (
     <div className="business-card-container">
@@ -8,7 +8,9 @@ const BusinessResultCard = ({ business }) => {
         <img src={business.imageUrls[5]} alt="delicious item" />
       </div>
       <div className="business-info">
-        <p>{business.name}</p>
+        <p>
+          {idx}. {business.name}
+        </p>
       </div>
     </div>
   );

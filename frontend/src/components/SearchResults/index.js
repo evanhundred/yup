@@ -166,10 +166,10 @@ const SearchResults = () => {
       <div id="search-results-container">
         <h2>{`All "${categoryString}" results near ${findLocString}`}</h2>
         <ul>
-          {matchingBusinesses.map((business) => {
+          {matchingBusinesses.map((business, idx) => {
             return (
               <li key={business.name}>
-                <BusinessResultCard business={business} />
+                <BusinessResultCard business={business} idx={idx} />
               </li>
             );
           })}
