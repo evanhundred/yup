@@ -20,6 +20,7 @@
 }
 
 .stars-and-count-container {
+  margin-top: 5px;
   display: flex;
 }
 
@@ -29,8 +30,16 @@ div.star-rating .rendered-stars {
   margin: 5px 0;
 }
 
+div.star-rating .review-count {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  margin: 0 0 0 8px;
+}
+
 div.star-rating .review-count p {
   font-size: 18px;
-  color: rgb(85, 84, 84);
+  color: rgb(105, 104, 104);
   font-weight: 400;
+  margin-top: 3px;
 }
