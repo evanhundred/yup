@@ -4,7 +4,7 @@ import PresentStars from "./PresentStars";
 
 const BusinessResultCard = ({ business, idx }) => {
   // if (!business) return null;
-  debugger;
+  // debugger;
   return (
     <Link to={`/businesses/${business.id}`}>
       <div className="business-card-container">
