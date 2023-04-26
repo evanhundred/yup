@@ -1,0 +1,1 @@
+several times today, after making a change (which ended up being functional), the app crashes in browser (both macbooks, tried restarting system). Only solution I found is to close the browser window and reload.

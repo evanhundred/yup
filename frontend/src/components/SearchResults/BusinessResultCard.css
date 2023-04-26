@@ -7,7 +7,7 @@
 
 .business-card-container.unhovered {
   border-bottom: 2px solid rgb(0, 0, 0, 0.2);
-  margin: 2px 2px 0;
+  /* browswer behaves erratically with shadow on/off */
 }
 
 .business-card-container.hovered {

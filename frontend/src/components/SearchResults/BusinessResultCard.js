@@ -3,14 +3,11 @@ import "./BusinessResultCard.css";
 import PresentStars from "./PresentStars";
 
 const BusinessResultCard = ({ business, idx }) => {
-  // if (!business) return null;
-  // debugger;
-
+  // browser behaves erratically on mouseover
   const addHoverShadow = (card) => {
     card.classList.remove("unhovered");
     card.classList.add("hovered");
   };
-
   const removeHoverShadow = (card) => {
     card.classList.remove("hovered");
     card.classList.add("unhovered");

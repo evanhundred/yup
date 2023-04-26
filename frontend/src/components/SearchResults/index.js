@@ -159,12 +159,24 @@ const SearchResults = () => {
       </div>
     );
 
-  const formattedLoc = findLocString.split;
+  const formattedLocArray = findLocString.split("%2C+");
+  console.log(formattedLocArray);
+
+  // debugger;
+  let locCityArray = formattedLocArray.shift().split("-");
+  locCityArray = locCityArray.map((word) =>
+    word.slice(0, 1).toUpperCase().concat(word.slice(1))
+  );
+  let locState = formattedLocArray.shift().toUpperCase();
+  // formattedLocArray.push(formattedLocArray[1].pop().toUpperCase());
+  const formattedLocString = locCityArray.join(" ").concat(", ", locState);
+  console.log(formattedLocString);
+  //new-york%2C+ny
 
   return (
     <div>
       <div id="search-results-container">
-        <h2>{`All "${categoryString}" results near ${findLocString}`}</h2>
+        <h2>{`All "${categoryString}" results near ${formattedLocString}`}</h2>
         <ul>
           {matchingBusinesses.map((business, idx) => {
             return (
