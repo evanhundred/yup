@@ -13,6 +13,7 @@ const BusinessResultCard = ({ business, idx }) => {
     card.classList.add("unhovered");
   };
 
+
   return (
     <Link to={`/businesses/${business.id}`}>
       <div

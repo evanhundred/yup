@@ -16,6 +16,10 @@
   border-radius: 6px;
 }
 
+.business-photo-container {
+  border-radius: 6px;
+}
+
 .business-photo-container img {
   border-radius: 4px;
   object-fit: cover;

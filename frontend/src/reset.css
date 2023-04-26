@@ -91,8 +91,8 @@ video {
   font: inherit;
   font-family: inherit;
   vertical-align: baseline;
+  text-align: center;
   text-decoration: none;
-  /* text-align: center; */
 }
 /* HTML5 display-role reset for older browsers */
 article,
