@@ -10,7 +10,9 @@
   object-fit: cover;
   height: 225px;
   width: 225px;
-  border-radius: 6px;
+  border-radius: 5px;
+  /* border-top-left-radius: unset;
+  border-top-right-radius: unset; */
 }
 
 .business-card-container .business-info {
