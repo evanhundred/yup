@@ -34,7 +34,7 @@ div.star-box span {
   display: flex;
 }
 
-.review-count {
+#ratings-reviews.review-count {
   margin: 1.1em 0 0 0.85em;
   font-weight: 600;
   font-size: 20px;

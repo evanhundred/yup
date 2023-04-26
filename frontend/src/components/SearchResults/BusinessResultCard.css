@@ -18,3 +18,19 @@
   font-size: 23px;
   font-weight: 500;
 }
+
+.stars-and-count-container {
+  display: flex;
+}
+
+div.star-rating .rendered-stars {
+  color: rgb(244, 90, 38);
+  font-size: 23px;
+  margin: 5px 0;
+}
+
+div.star-rating .review-count p {
+  font-size: 18px;
+  color: rgb(85, 84, 84);
+  font-weight: 400;
+}

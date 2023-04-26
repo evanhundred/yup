@@ -42,9 +42,18 @@ const PresentStars = ({ business }) => {
     return starText;
   };
 
+  const reviewCount = business.reviews.length;
+
   // debugger;
 
-  return <div>{renderStars()}</div>;
+  return (
+    <div className="stars-and-count-container">
+      <div className="rendered-stars">{renderStars()}</div>
+      <div className="review-count">
+        <p>{reviewCount}</p>
+      </div>
+    </div>
+  );
 };
 
 export default PresentStars;
