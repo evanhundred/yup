@@ -28,13 +28,23 @@ const PresentStars = ({ business }) => {
   // TODO: use this tool to calculate business ratings, and format output to be presented
   // as stars. 04-25-23
 
-  // const renderStars = () => {
-  //   if ()
-  // }
+  const renderStars = () => {
+    let starText;
+    if (reducedAvg === 1) starText = "★";
+    if (reducedAvg === 1.5) starText = "★☆";
+    if (reducedAvg === 2) starText = "★★";
+    if (reducedAvg === 2.5) starText = "★★☆";
+    if (reducedAvg === 3) starText = "★★★";
+    if (reducedAvg === 3.5) starText = "★★★☆";
+    if (reducedAvg === 4) starText = "★★★★";
+    if (reducedAvg === 4.5) starText = "★★★★☆";
+    if (reducedAvg === 5) starText = "★★★★★";
+    return starText;
+  };
 
   // debugger;
 
-  return <div>{reducedAvg}</div>;
+  return <div>{renderStars()}</div>;
 };
 
 export default PresentStars;
