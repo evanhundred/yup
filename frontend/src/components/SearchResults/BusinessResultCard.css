@@ -8,12 +8,18 @@
 .business-card-container.unhovered {
   border-bottom: 2px solid rgb(0, 0, 0, 0.2);
   /* browswer behaves erratically with shadow on/off */
+  /* margin-bottom: -1px; */
 }
 
 .business-card-container.hovered {
-  box-shadow: 0 6px 20px 0 rgb(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* padding-top: -10px; */
+  box-shadow: 0 0 20px 0 rgb(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.19);
   /* border: 2px solid rgb(105, 104, 104); */
   border-radius: 6px;
+}
+
+.business-card-container div.shadow-reset {
+  margin: 1px;
 }
 
 .business-photo-container {

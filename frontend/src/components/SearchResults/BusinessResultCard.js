@@ -7,6 +7,9 @@ const BusinessResultCard = ({ business, idx }) => {
   const addHoverShadow = (card) => {
     card.classList.remove("unhovered");
     card.classList.add("hovered");
+    // const verticalResetDiv = document.createElement("div");
+    // verticalResetDiv.className = "shadow-reset";
+    // card.appendChild(verticalResetDiv);
   };
   const removeHoverShadow = (card) => {
     card.classList.remove("hovered");
