@@ -36,12 +36,23 @@ const PresentStars = ({ business }) => {
     if (reducedAvg === 1.5)
       starText = (
         <div className="star-text">
-          ★<span className="half-star">☆</span>
+          ★
+          <span data-title-text="★" className="half-star">
+            ★
+          </span>
         </div>
       );
     // if (reducedAvg === 1.5) starText = "★☆";
     if (reducedAvg === 2) starText = "★★";
-    if (reducedAvg === 2.5) starText = "★★☆";
+    if (reducedAvg === 2.5)
+      starText = (
+        <div className="star-text">
+          ★★
+          <span data-title-text="★" className="half-star">
+            ★
+          </span>
+        </div>
+      );
     if (reducedAvg === 3) starText = "★★★";
     if (reducedAvg === 3.5)
       starText = (
@@ -53,7 +64,15 @@ const PresentStars = ({ business }) => {
         </div>
       );
     if (reducedAvg === 4) starText = "★★★★";
-    if (reducedAvg === 4.5) starText = "★★★★☆";
+    if (reducedAvg === 4.5)
+      starText = (
+        <div className="star-text">
+          ★★★★
+          <span data-title-text="★" className="half-star">
+            ★
+          </span>
+        </div>
+      );
     if (reducedAvg === 5) starText = "★★★★★";
     return starText;
   };
