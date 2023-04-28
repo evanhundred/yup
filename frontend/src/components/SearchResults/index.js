@@ -133,7 +133,7 @@ const SearchResults = () => {
       /brooklyn/,
       /manhattan/,
       /queens/,
-      /staten island/
+      /staten island/,
     ];
     const nyBusinesses = businesses.filter((business) =>
       borosArray.some((boro) => business.city.toLowerCase().match(boro))
