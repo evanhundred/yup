@@ -1,7 +1,7 @@
 span.half-star {
   position: relative;
   display: inline-block;
-  color: black;
+  color: white;
   overflow: hidden;
   white-space: pre;
 }
@@ -12,7 +12,8 @@ span.half-star::after {
   position: absolute;
   top: 0;
   left: 0;
-  color: gf00;
+  color: rgb(244, 90, 38);
+  /* clip: rect(20px, 20px, 0px, 20px); */
   clip: rect(0, 0.4504em, 19px, 0);
   /* clip: rect(500px, 500px, 500px, 500px); */
 }

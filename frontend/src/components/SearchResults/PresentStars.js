@@ -48,7 +48,7 @@ const PresentStars = ({ business }) => {
         <div className="star-text">
           ★★★
           <span data-title-text="★" className="half-star">
-            ☆
+            ★
           </span>
         </div>
       );
