@@ -1,3 +1,5 @@
+import "./PresentStars.css";
+
 const PresentStars = ({ business }) => {
   // debugger;
   if (business.reviews.length === 0) return <div>No reviews yet!</div>;
@@ -31,11 +33,25 @@ const PresentStars = ({ business }) => {
   const renderStars = () => {
     let starText;
     if (reducedAvg === 1) starText = "★";
-    if (reducedAvg === 1.5) starText = "★☆";
+    if (reducedAvg === 1.5)
+      starText = (
+        <div className="star-text">
+          ★<span className="half-star">☆</span>
+        </div>
+      );
+    // if (reducedAvg === 1.5) starText = "★☆";
     if (reducedAvg === 2) starText = "★★";
     if (reducedAvg === 2.5) starText = "★★☆";
     if (reducedAvg === 3) starText = "★★★";
-    if (reducedAvg === 3.5) starText = "★★★☆";
+    if (reducedAvg === 3.5)
+      starText = (
+        <div className="star-text">
+          ★★★
+          <span data-title-text="★" className="half-star">
+            ☆
+          </span>
+        </div>
+      );
     if (reducedAvg === 4) starText = "★★★★";
     if (reducedAvg === 4.5) starText = "★★★★☆";
     if (reducedAvg === 5) starText = "★★★★★";

@@ -35,6 +35,7 @@ const BusinessResultCard = ({ business, idx }) => {
           <div className="star-rating">
             <PresentStars business={business} />
           </div>
+          {/* <div className="category-tags"></div> */}
         </div>
       </div>
     </Link>
