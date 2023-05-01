@@ -55,6 +55,14 @@ const BusinessResultCard = ({ business, idx }) => {
     // }
   };
 
+  const PriceRating = () => {
+    return (
+      <div className="price-rating">
+        <p className="price-rating-text">{business.price}</p>
+      </div>
+    );
+  };
+
   return (
     <Link to={`/businesses/${business.id}`}>
       <div
@@ -74,8 +82,10 @@ const BusinessResultCard = ({ business, idx }) => {
           {/* <div className="star-rating"> */}
           <PresentStars business={business} />
           {/* </div> */}
-          <div className="third-line">
+          <div className="third-line-search-results">
             <CategoryTags />
+            <PriceRating />
+            <p className="dot">•</p>
           </div>
         </div>
       </div>

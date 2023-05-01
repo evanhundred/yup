@@ -39,14 +39,16 @@
 }
 
 .business-card-container .business-info p {
-  font-size: 23px;
   font-weight: 500;
-  color: black;
   text-decoration: none;
 }
 
+.business-info .business-title p {
+  color: black;
+  font-size: 23px;
+}
+
 .stars-and-count-container {
-  margin-top: 5px;
   display: flex;
 }
 
@@ -70,8 +72,9 @@ div.star-rating .review-count p {
   margin-top: 3px;
 }
 
-div.third-line {
+div.third-line-search-results {
   display: flex;
+  gap: 5px;
 }
 
 div.category-tags {
@@ -85,4 +88,24 @@ div.category-tags {
   color: #6a6a6a;
   font-size: 16px;
   padding: 4px 5px;
+}
+
+.price-rating {
+  display: flex;
+  align-items: center;
+}
+
+.price-rating p.price-rating-text,
+.dot {
+  color: #6a6a6a;
+  font-weight: 400;
+}
+
+.price-rating p.price-rating-text {
+  font-size: 14px;
+}
+
+.third-line-search-results p.dot {
+  margin-top: 3.2px;
+  font-weight: 300;
 }
