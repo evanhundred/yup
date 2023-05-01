@@ -86,6 +86,7 @@ const BusinessResultCard = ({ business, idx }) => {
             <CategoryTags />
             <PriceRating />
             <p className="dot">•</p>
+            <p className="city">{business.city}</p>
           </div>
         </div>
       </div>

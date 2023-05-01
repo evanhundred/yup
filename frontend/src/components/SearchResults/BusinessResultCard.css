@@ -96,16 +96,18 @@ div.category-tags {
 }
 
 .price-rating p.price-rating-text,
-.dot {
+.dot,
+.city {
   color: #6a6a6a;
-  font-weight: 400;
 }
 
 .price-rating p.price-rating-text {
   font-size: 14px;
+  font-weight: 400;
 }
 
-.third-line-search-results p.dot {
+.third-line-search-results p.dot,
+.third-line-search-results p.city {
   margin-top: 3.2px;
   font-weight: 300;
 }
