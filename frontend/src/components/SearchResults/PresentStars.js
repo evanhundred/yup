@@ -82,7 +82,7 @@ const PresentStars = ({ business }) => {
   // debugger;
 
   return (
-    <div className="stars-and-count-container">
+    <div className="stars-and-count-container star-rating">
       <div className="rendered-stars">{renderStars()}</div>
       <div className="review-count">
         <p>{reviewCount}</p>

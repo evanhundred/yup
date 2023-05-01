@@ -35,7 +35,7 @@ require "open-uri"
 
     puts "Creating businesses..."
 
-        business1 = Business.create!(
+    business1 = Business.create!(
             name: "Devoción",
             latitude: 40.71618202634479,
             longitude: -73.9646328800473,

@@ -16,6 +16,45 @@ const BusinessResultCard = ({ business, idx }) => {
     card.classList.add("unhovered");
   };
 
+  // categoryTags logic:
+  // check if business.category is a string or an array
+  // if array, make a tag for each element (category)
+  // if string, make one tag
+  // this works with the current format of businesses, which is a string containing a single
+  // category entry. it also allows future entities to be added, or any to be changed,
+  // to match the array + multiple category format.
+
+  // two approaches:
+  // 1. simple, hacky approach. separate categories out by comma, this is how I initialized the seeds
+  // 2. thorough, dynamic approach. convert seed files to have category as array.
+  // I will take the first approach in the interests of time at this point.
+  // This is a common decision to make when producing this clone. What features shall be implemented,
+  // how, and how to deal with the complexity.
+  // the first approach adds technical debt,and is more messy and confusing. However, at this point
+  // it is much easier to apply, and I have to choose my battles so I can complete the clone.
+  const CategoryTags = () => {
+    const tagsArray = business.category.split(",");
+
+    return (
+      <div className="category-tags">
+        {tagsArray.map((cat) => (
+          <p key={cat} className="tag-bubble">
+            {cat}
+          </p>
+        ))}
+      </div>
+    );
+
+    // if (typeof business.category === "string") {
+    //   const categoryText = business.category;
+    //   return (
+    //     <div className="category-tags">
+    //       <p>{categoryText}</p>
+    //     </div>
+    //   );
+    // }
+  };
+
   return (
     <Link to={`/businesses/${business.id}`}>
       <div
@@ -32,10 +71,12 @@ const BusinessResultCard = ({ business, idx }) => {
               {idx}. {business.name}
             </p>
           </div>
-          <div className="star-rating">
-            <PresentStars business={business} />
+          {/* <div className="star-rating"> */}
+          <PresentStars business={business} />
+          {/* </div> */}
+          <div className="third-line">
+            <CategoryTags />
           </div>
-          {/* <div className="category-tags"></div> */}
         </div>
       </div>
     </Link>

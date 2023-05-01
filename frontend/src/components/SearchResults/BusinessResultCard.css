@@ -69,3 +69,20 @@ div.star-rating .review-count p {
   font-weight: 400;
   margin-top: 3px;
 }
+
+div.third-line {
+  display: flex;
+}
+
+div.category-tags {
+  display: flex;
+  gap: 8px;
+}
+
+.category-tags p.tag-bubble {
+  background: rgb(240, 239, 239);
+  border-radius: 3px;
+  color: #6a6a6a;
+  font-size: 16px;
+  padding: 4px 5px;
+}
