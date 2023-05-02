@@ -76,22 +76,27 @@ const BusinessResultCard = ({ business, idx }) => {
 
       for (let i = 0; i < timeString.length; i++) {
         if (timeString[i] === ":") {
-          bizHourNumber = parseInt(timeString.slice(0, i), 10);
-          bizMinuteNumber = parseInt(timeString.slice(i + 1, i + 3), 10);
+          bizHourNumber = timeString.slice(0, i);
+          bizMinuteNumber = timeString.slice(i + 1, i + 3);
         }
       }
 
       const amOrPm = timeString.slice(timeString.length - 2);
       if (amOrPm === "PM") bizHourNumber += 12;
 
-      return bizHourNumber + bizMinuteNumber;
+      // debugger;
+      return parseInt(bizHourNumber.concat(bizMinuteNumber), 10);
     };
 
     const date = new Date();
     const currentHour = date.getHours();
     const currentMinute = date.getMinutes();
-    const currentTime = currentHour + currentMinute;
+    const currentTime = parseInt(
+      currentHour.toString().concat(currentMinute),
+      10
+    );
 
+    // debugger;
     // scenarios
     // 1. before open
     // 2. after open, before close
@@ -115,13 +120,25 @@ const BusinessResultCard = ({ business, idx }) => {
       }
     }
 
+    // ? NEED TO ACCOUNT FOR TIME ZONE DIFFERENCE
+
+    // TEST: ENSURE CALCS ARE CORRECT, PREDICT ACCURACY OF ALL SCENARIOS.
+    debugger;
     return (
-      <p>
-        <span className="first-word">{openOrClosed}</span>
+      <p className="open-or-closed">
+        <span
+          className={`first-word ${
+            openOrClosed === "Open" ? "open" : "closed"
+          }`}
+        >
+          {openOrClosed}
+        </span>
         {untilString}
       </p>
     );
   };
+
+  // debugger;
 
   return (
     <Link to={`/businesses/${business.id}`}>
@@ -148,6 +165,7 @@ const BusinessResultCard = ({ business, idx }) => {
             <p className="dot">•</p>
             <p className="city">{business.city}</p>
           </div>
+          <OpenOrClosed />
         </div>
       </div>
     </Link>

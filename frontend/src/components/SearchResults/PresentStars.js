@@ -2,7 +2,8 @@ import "./PresentStars.css";
 
 const PresentStars = ({ business }) => {
   // debugger;
-  if (business.reviews.length === 0) return <div>No reviews yet!</div>;
+  if (business.reviews.length === 0)
+    return <div className="no-reviews-yet">No reviews yet!</div>;
 
   let avgRating;
   let reducedAvg; // average ratings "rounded" to the nearest .5

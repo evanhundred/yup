@@ -52,10 +52,14 @@
   display: flex;
 }
 
+div.star-rating .rendered-stars,
+div.no-reviews-yet {
+  margin: 5px 0;
+}
+
 div.star-rating .rendered-stars {
   color: rgb(244, 90, 38);
   font-size: 23px;
-  margin: 5px 0;
 }
 
 div.star-rating .review-count {
@@ -110,4 +114,16 @@ div.category-tags {
 .third-line-search-results p.city {
   margin-top: 3.2px;
   font-weight: 300;
+}
+
+.open-or-closed {
+  color: black;
+}
+
+.open-or-closed span.first-word.open {
+  color: green;
+}
+
+.open-or-closed span.first-word.closed {
+  color: red;
 }
