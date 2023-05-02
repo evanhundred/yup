@@ -70,6 +70,7 @@ const BusinessResultCard = ({ business, idx }) => {
     // time difference between the business' location and the user's
     // location.
 
+    // timeString = "7:00 PM" (closedAt)
     const extractTimeNumber = (timeString) => {
       let bizHourNumber;
       let bizMinuteNumber;
@@ -84,7 +85,7 @@ const BusinessResultCard = ({ business, idx }) => {
       const amOrPm = timeString.slice(timeString.length - 2);
       if (amOrPm === "PM") bizHourNumber += 12;
 
-      // debugger;
+      debugger;
       return parseInt(bizHourNumber.concat(bizMinuteNumber), 10);
     };
 
@@ -97,6 +98,7 @@ const BusinessResultCard = ({ business, idx }) => {
     );
 
     // debugger;
+
     // scenarios
     // 1. before open
     // 2. after open, before close
@@ -104,8 +106,8 @@ const BusinessResultCard = ({ business, idx }) => {
 
     let openOrClosed;
     let untilString;
+    // scenario 1
     if (currentTime < extractTimeNumber(business.openAt)) {
-      // scenario 1
       openOrClosed = "Closed";
       untilString = `until ${business.openAt}`;
     } else {
@@ -124,6 +126,7 @@ const BusinessResultCard = ({ business, idx }) => {
 
     // TEST: ENSURE CALCS ARE CORRECT, PREDICT ACCURACY OF ALL SCENARIOS.
     debugger;
+
     return (
       <p className="open-or-closed">
         <span
