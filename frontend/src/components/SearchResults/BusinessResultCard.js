@@ -90,7 +90,12 @@ const BusinessResultCard = ({ business, idx }) => {
     };
 
     const date = new Date();
-    const currentHour = date.getHours();
+    let currentHour = date.getHours();
+    if (currentHour > 12) {
+      currentHour -= 12;
+    } else if (currentHour < 1) {
+      currentHour += 12;
+    }
     const currentMinute = date.getMinutes();
     const currentTime = parseInt(
       currentHour.toString().concat(currentMinute),
