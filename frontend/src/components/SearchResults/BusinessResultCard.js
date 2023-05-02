@@ -63,6 +63,66 @@ const BusinessResultCard = ({ business, idx }) => {
     );
   };
 
+  const OpenOrClosed = () => {
+    // const currentTime =
+    // this is a key function
+    // we need to calculate the business' open/close time based on the
+    // time difference between the business' location and the user's
+    // location.
+
+    const extractTimeNumber = (timeString) => {
+      let bizHourNumber;
+      let bizMinuteNumber;
+
+      for (let i = 0; i < timeString.length; i++) {
+        if (timeString[i] === ":") {
+          bizHourNumber = parseInt(timeString.slice(0, i), 10);
+          bizMinuteNumber = parseInt(timeString.slice(i + 1, i + 3), 10);
+        }
+      }
+
+      const amOrPm = timeString.slice(timeString.length - 2);
+      if (amOrPm === "PM") bizHourNumber += 12;
+
+      return bizHourNumber + bizMinuteNumber;
+    };
+
+    const date = new Date();
+    const currentHour = date.getHours();
+    const currentMinute = date.getMinutes();
+    const currentTime = currentHour + currentMinute;
+
+    // scenarios
+    // 1. before open
+    // 2. after open, before close
+    // 3. after close
+
+    let openOrClosed;
+    let untilString;
+    if (currentTime < extractTimeNumber(business.openAt)) {
+      // scenario 1
+      openOrClosed = "Closed";
+      untilString = `until ${business.openAt}`;
+    } else {
+      // scenario 2
+      if (currentTime < extractTimeNumber(business.closedAt)) {
+        openOrClosed = "Open";
+        untilString = `until ${business.closedAt}`;
+      } else {
+        // scenario 3
+        openOrClosed = "Closed";
+        untilString = ` until ${business.openAt} tomorrow`;
+      }
+    }
+
+    return (
+      <p>
+        <span className="first-word">{openOrClosed}</span>
+        {untilString}
+      </p>
+    );
+  };
+
   return (
     <Link to={`/businesses/${business.id}`}>
       <div
