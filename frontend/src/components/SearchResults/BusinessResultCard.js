@@ -8,9 +8,6 @@ const BusinessResultCard = ({ business, idx }) => {
   const addHoverShadow = (card) => {
     card.classList.remove("unhovered");
     card.classList.add("hovered");
-    // const verticalResetDiv = document.createElement("div");
-    // verticalResetDiv.className = "shadow-reset";
-    // card.appendChild(verticalResetDiv);
   };
   const removeHoverShadow = (card) => {
     card.classList.remove("hovered");
@@ -45,15 +42,6 @@ const BusinessResultCard = ({ business, idx }) => {
         ))}
       </div>
     );
-
-    // if (typeof business.category === "string") {
-    //   const categoryText = business.category;
-    //   return (
-    //     <div className="category-tags">
-    //       <p>{categoryText}</p>
-    //     </div>
-    //   );
-    // }
   };
 
   const PriceRating = () => {
@@ -94,24 +82,7 @@ const BusinessResultCard = ({ business, idx }) => {
     const date = new Date();
     const currentHour = date.getHours();
     const currentMinute = date.getMinutes();
-
     const currentTime = currentHour * 100 + currentMinute;
-    const currentAMorPM = currentHour < 12 ? "AM" : "PM";
-
-    // if (currentHour > 12) {
-    //   currentHour -= 12;
-    // } else if (currentHour < 1) {
-    //   currentHour += 12;
-    // }
-
-    // const currentTime = currentHour * 100 + currentMinute;
-
-    // const currentTime = parseInt(
-    //   currentHour.toString().concat(currentMinute),
-    //   10
-    // );
-
-    // debugger;
 
     // scenarios
     // 1. before open
@@ -153,12 +124,23 @@ const BusinessResultCard = ({ business, idx }) => {
   };
 
   const SelectedComment = () => {
+    const getTopComment = () => {
+      if (!business.reviews.length) return <p>no reviews</p>;
+      const review = business.reviews[0];
+      return review.body;
+    };
+
+    // debugger;
+    // getTopComment();
+
+    if (!business) return null;
+
     return (
       <div className="selected-comment-container">
         <div className="selected-comment-bubble-icon">
           <img src={CommentIcon} alt="featured review" />
         </div>
-        <p className="selected-comment-text">sample comment</p>
+        <p className="selected-comment-text">{getTopComment()}</p>
       </div>
     );
   };
