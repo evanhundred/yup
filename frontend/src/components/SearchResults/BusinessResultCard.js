@@ -83,14 +83,15 @@ const BusinessResultCard = ({ business, idx }) => {
       }
 
       const amOrPm = timeString.slice(timeString.length - 2);
-      if (amOrPm === "PM") bizHourNumber += 12;
+      let hourInteger = parseInt(bizHourNumber, 10);
+      if (amOrPm === "PM") hourInteger += 12;
 
-      debugger;
-      return parseInt(bizHourNumber.concat(bizMinuteNumber), 10);
+      // debugger;
+      return hourInteger * 100 + parseInt(bizMinuteNumber, 10);
     };
 
     const date = new Date();
-    let currentHour = date.getHours();
+    const currentHour = date.getHours();
     const currentMinute = date.getMinutes();
 
     const currentTime = currentHour * 100 + currentMinute;
@@ -137,7 +138,7 @@ const BusinessResultCard = ({ business, idx }) => {
     // ? NEED TO ACCOUNT FOR TIME ZONE DIFFERENCE
 
     // TEST: ENSURE CALCS ARE CORRECT, PREDICT ACCURACY OF ALL SCENARIOS.
-    debugger;
+    // debugger;
 
     return (
       <p className="open-or-closed">
