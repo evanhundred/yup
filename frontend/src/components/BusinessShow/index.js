@@ -6,7 +6,7 @@ import "./index.css";
 import TitleCard from "./TitleCard";
 import MainContent from "./MainContent";
 
-const BusinessShow = () => {
+const BusinessShow = ({ props }) => {
   const dispatch = useDispatch();
   const { businessId } = useParams();
   const business = useSelector(getBusiness(businessId));
@@ -16,11 +16,16 @@ const BusinessShow = () => {
   }, [businessId, dispatch]);
 
   if (!business) return null;
+  if (props === "goToReviews") {
+  }
 
   return (
     <>
       <TitleCard business={business} />
-      <MainContent business={business} />
+      <MainContent
+        business={business}
+        props={props === "goToReviews" ? "goToReviews" : "none"}
+      />
     </>
   );
 };

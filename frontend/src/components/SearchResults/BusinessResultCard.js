@@ -2,8 +2,23 @@ import { Link } from "react-router-dom";
 import "./BusinessResultCard.css";
 import PresentStars from "./PresentStars";
 import CommentIcon from "../../assets/images/message.png";
+import { useHistory, useLocation } from "react-router-dom";
 
 const BusinessResultCard = ({ business, idx }) => {
+  const history = useHistory();
+
+  const location = useLocation();
+
+  if (location.search === "?goToReviews") {
+    const reviewsElement = document.getElementById("reviews-container");
+    reviewsElement.scrollIntoView({
+      behavior: "smooth"
+    });
+    // this.targetRef.scrollIntoView({
+    //   behavior: "smooth"
+    // });
+  }
+
   // browser behaves erratically on mouseover
   const addHoverShadow = (card) => {
     card.classList.remove("unhovered");
@@ -141,9 +156,14 @@ const BusinessResultCard = ({ business, idx }) => {
     //     https://www.yelp.com/biz/coffee-project-new-york-east-village-new-york?hrid=GK4Ua8tItCVFInW6z8fR9w&osq=Coffee
 
     return (
-      <div className="selected-comment-container">
+      <div
+        className="selected-comment-container"
+        onClick={(e) => {
+          handleReviewsClick(e);
+        }}
+      >
         <div className="selected-comment-bubble-icon">
-          <img src={CommentIcon} alt="featufired review" />
+          <img src={CommentIcon} alt="featured review" />
         </div>
         <p className="selected-comment-text">
           "{getTopComment()}"<span className="more-text"> more</span>
@@ -152,7 +172,30 @@ const BusinessResultCard = ({ business, idx }) => {
     );
   };
 
-  // debugger;
+  const handleReviewsClick = (e) => {
+    e.preventDefault();
+    history.push(`/businesses/${business.id}`, {
+      scrollToReviews: true
+    });
+  };
+
+  // const handleClick = (e) => {
+  //   if ((e.target.className = "more-text")) {
+  //     history.push(`/businesses/${business.id}`);
+  //     // else history.push
+  //     // return (
+  //     //   <Link
+  //     //     className="more-link"
+  //     //     to={{
+  //     //       pathname: `/businesses/${business.id}`,
+  //     //       state: {
+  //     //         fromSearch: true
+  //     //       }
+  //     //     }}
+  //     //   ></Link>
+  //     // );
+  //   }
+  // };
 
   return (
     <Link to={`/businesses/${business.id}`}>
@@ -160,6 +203,7 @@ const BusinessResultCard = ({ business, idx }) => {
         className="business-card-container unhovered"
         onMouseEnter={(e) => addHoverShadow(e.target)}
         onMouseLeave={(e) => removeHoverShadow(e.target)}
+        // onClick={(e) => handleClick(e.target)}
       >
         <div className="business-photo-container">
           <img src={business.imageUrls[5]} alt="delicious item" />

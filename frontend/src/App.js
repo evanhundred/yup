@@ -22,6 +22,9 @@ function App() {
         </Route>
         <Route exact path="/businesses/:businessId">
           <BusinessShow />
+          <Route path="/businesses/:businessId/search">
+            <BusinessShow props="loadFromReviews" />
+          </Route>
         </Route>
         <Route exact path="/">
           <IndexPage />

@@ -1,6 +1,20 @@
-import { Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
-const MainContent = ({ business = null }) => {
+const MainContent = ({ business = null, props }) => {
+  // debugger;
+  const location = useLocation();
+  console.log(location);
+  const reviewsComponent = document.getElementById("reviews-container");
+
+  if (reviewsComponent && location.state.scrollToReviews) {
+    reviewsComponent.scrollIntoView({ behavior: "smooth" });
+  }
+
+  if (props === "goToReviews") {
+    const reviewsComponent = document.getElementById("reviews-container");
+    reviewsComponent.scrollIntoView({ behavior: "smooth" });
+  }
+  // debugger;
   return (
     <>
       <div className="main-content-container">
@@ -29,7 +43,7 @@ const MainContent = ({ business = null }) => {
         {/* <QuestionsCard /> */}
 
         {/* recommended reviews */}
-        <Reviews business={business} />
+        <Reviews business={business} props={props} />
 
         {/* collections containing */}
         {/* <Collections /> */}
@@ -220,7 +234,10 @@ const Amenities = ({ business }) => {
       <div className="amenities-content">
         <div className="amenities-item">
           <div className="cross-symbol">
-            <img src={require("../../../assets/images/cross.png")} alt="amenities"></img>
+            <img
+              src={require("../../../assets/images/cross.png")}
+              alt="amenities"
+            ></img>
           </div>
 
           <div className="health-score-box">
@@ -294,9 +311,11 @@ const AboutCard = ({ business }) => {
   );
 };
 
-const Reviews = ({ business }) => {
+// if ()
+
+const Reviews = ({ business, props }) => {
   const reviewItems = business.reviews.map((review, idx) => (
-    <div key={idx} className="review-item-container">
+    <div key={idx} className="review-item-container" id="reviews-container">
       <div className="author subtitle">
         <h2>Author ID: {review.author_id}</h2>
       </div>
