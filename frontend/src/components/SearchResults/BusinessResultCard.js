@@ -129,20 +129,25 @@ const BusinessResultCard = ({ business, idx }) => {
     const getTopComment = () => {
       if (!business.reviews.length) return <p>no reviews</p>;
       const review = business.reviews[0];
+
       return review.body;
     };
 
     // debugger;
-    // getTopComment();
 
     if (!business) return null;
+
+    // "more" link":
+    //     https://www.yelp.com/biz/coffee-project-new-york-east-village-new-york?hrid=GK4Ua8tItCVFInW6z8fR9w&osq=Coffee
 
     return (
       <div className="selected-comment-container">
         <div className="selected-comment-bubble-icon">
-          <img src={CommentIcon} alt="featured review" />
+          <img src={CommentIcon} alt="featufired review" />
         </div>
-        <p className="selected-comment-text">{getTopComment()}</p>
+        <p className="selected-comment-text">
+          "{getTopComment()}"<span className="more-text"> more</span>
+        </p>
       </div>
     );
   };

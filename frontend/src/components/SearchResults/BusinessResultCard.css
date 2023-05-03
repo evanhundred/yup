@@ -148,3 +148,8 @@ div.selected-comment-container {
   font-weight: 300;
   color: rgb(98, 97, 97);
 }
+
+p.selected-comment-text span.more-text {
+  font-weight: 500;
+  color: rgb(65, 130, 196);
+}
