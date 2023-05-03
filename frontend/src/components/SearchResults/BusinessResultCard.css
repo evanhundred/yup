@@ -55,6 +55,7 @@
 div.star-rating .rendered-stars,
 div.no-reviews-yet {
   margin: 5px 0;
+  color: rgb(92, 92, 92);
 }
 
 div.star-rating .rendered-stars {
@@ -116,8 +117,14 @@ div.category-tags {
   font-weight: 300;
 }
 
-.open-or-closed {
+.business-info p.open-or-closed {
   color: black;
+  margin: 10px 0;
+  font-weight: 300;
+}
+
+.open-or-closed span.first-word {
+  font-weight: 500;
 }
 
 .open-or-closed span.first-word.open {

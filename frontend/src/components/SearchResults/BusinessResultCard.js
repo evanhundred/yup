@@ -122,12 +122,12 @@ const BusinessResultCard = ({ business, idx }) => {
     // scenario 1
     if (currentTime < extractTimeNumber(business.openAt)) {
       openOrClosed = "Closed";
-      untilString = `until ${business.openAt}`;
+      untilString = ` until ${business.openAt}`;
     } else {
       // scenario 2
       if (currentTime < extractTimeNumber(business.closedAt)) {
         openOrClosed = "Open";
-        untilString = `until ${business.closedAt}`;
+        untilString = ` until ${business.closedAt}`;
       } else {
         // scenario 3
         openOrClosed = "Closed";
