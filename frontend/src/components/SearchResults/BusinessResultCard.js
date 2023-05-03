@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./BusinessResultCard.css";
 import PresentStars from "./PresentStars";
+import CommentIcon from "../../assets/images/message.png";
 
 const BusinessResultCard = ({ business, idx }) => {
   // browser behaves erratically on mouseover
@@ -137,9 +138,6 @@ const BusinessResultCard = ({ business, idx }) => {
 
     // ? NEED TO ACCOUNT FOR TIME ZONE DIFFERENCE
 
-    // TEST: ENSURE CALCS ARE CORRECT, PREDICT ACCURACY OF ALL SCENARIOS.
-    // debugger;
-
     return (
       <p className="open-or-closed">
         <span
@@ -151,6 +149,17 @@ const BusinessResultCard = ({ business, idx }) => {
         </span>
         {untilString}
       </p>
+    );
+  };
+
+  const SelectedComment = () => {
+    return (
+      <div className="selected-comment-container">
+        <div className="selected-comment-bubble-icon">
+          <img src={CommentIcon} alt="featured review" />
+        </div>
+        <p className="selected-comment-text">sample comment</p>
+      </div>
     );
   };
 
@@ -182,6 +191,7 @@ const BusinessResultCard = ({ business, idx }) => {
             <p className="city">{business.city}</p>
           </div>
           <OpenOrClosed />
+          <SelectedComment />
         </div>
       </div>
     </Link>

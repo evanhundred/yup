@@ -134,3 +134,17 @@ div.category-tags {
 .open-or-closed span.first-word.closed {
   color: red;
 }
+
+div.selected-comment-container {
+  display: flex;
+  gap: 5px;
+}
+
+.selected-comment-container div.selected-comment-bubble-icon img {
+  width: 16px;
+}
+
+.selected-comment-container p.selected-comment-text {
+  font-weight: 300;
+  color: rgb(98, 97, 97);
+}
