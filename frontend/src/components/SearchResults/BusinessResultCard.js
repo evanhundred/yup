@@ -91,16 +91,23 @@ const BusinessResultCard = ({ business, idx }) => {
 
     const date = new Date();
     let currentHour = date.getHours();
-    if (currentHour > 12) {
-      currentHour -= 12;
-    } else if (currentHour < 1) {
-      currentHour += 12;
-    }
     const currentMinute = date.getMinutes();
-    const currentTime = parseInt(
-      currentHour.toString().concat(currentMinute),
-      10
-    );
+
+    const currentTime = currentHour * 100 + currentMinute;
+    const currentAMorPM = currentHour < 12 ? "AM" : "PM";
+
+    // if (currentHour > 12) {
+    //   currentHour -= 12;
+    // } else if (currentHour < 1) {
+    //   currentHour += 12;
+    // }
+
+    // const currentTime = currentHour * 100 + currentMinute;
+
+    // const currentTime = parseInt(
+    //   currentHour.toString().concat(currentMinute),
+    //   10
+    // );
 
     // debugger;
 
