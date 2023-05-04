@@ -120,6 +120,8 @@ const SearchResults = () => {
 
   console.log(businesses);
 
+  // debugger;
+
   const matchingBusinesses = businesses.filter(
     (business) =>
       business.state.toLowerCase().match(matchedStateRegExp) &&
@@ -127,16 +129,20 @@ const SearchResults = () => {
       business.category.toLowerCase().match(categoryRegExp)
   );
 
+  // debugger;
+
   if ("new york".match(matchedCityRegExp)) {
     const borosArray = [
       /bronx/,
       /brooklyn/,
       /manhattan/,
       /queens/,
-      /staten island/,
+      /staten island/
     ];
-    const nyBusinesses = businesses.filter((business) =>
-      borosArray.some((boro) => business.city.toLowerCase().match(boro))
+    const nyBusinesses = businesses.filter(
+      (business) =>
+        business.category.toLowerCase().match(categoryRegExp) &&
+        borosArray.some((boro) => business.city.toLowerCase().match(boro))
     );
 
     for (let i = 0; i < nyBusinesses.length; i++) {
