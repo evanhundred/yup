@@ -1,0 +1,15 @@
+### 5/4/2023
+
+complete search bar + search results page
+
+1. basic search page complete. needed features include:
+  - breadcrumbs
+  - option selector bubbles
+  - sort: recommended / highest rated / most reviewed
+
+2. implement search bar component into nav bar
+  - input box 1: category
+  - input box 2: location
+  - search button
+  - category select menu tree
+  - also: add 'Write a Review' link to right side of nav bar
