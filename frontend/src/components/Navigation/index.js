@@ -5,6 +5,7 @@ import ProfileButton from "./ProfileButton";
 import "./navigation.css";
 import githubLogo from "../../assets/images/github.png";
 import linkedinLogo from "../../assets/images/linkedin.png";
+import SearchIcon from "../../assets/images/search.png";
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -55,6 +56,15 @@ const Navigation = () => {
               yup<span className="star">*</span>
             </h1>
           </NavLink>
+          <div className="search-bar-container">
+            <form>
+              <input />
+              <input />
+              <button>
+                <img src={SearchIcon} alt="find businesses" />
+              </button>
+            </form>
+          </div>
         </div>
         <div className="right-side">
           <div className="socials">

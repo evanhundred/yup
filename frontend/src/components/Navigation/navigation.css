@@ -3,6 +3,31 @@ body {
   /* width: 100%; */
 }
 
+#nav-bar div.left-side {
+  display: flex;
+  width: 400px;
+}
+
+.left-side h1#logo {
+  width: 130px;
+}
+
+.left-side .search-bar-container form {
+  height: 45px;
+}
+
+.search-bar-container button {
+  background: red;
+  border: none;
+  border-radius: 3px;
+}
+
+.search-bar-container img {
+  width: 20px;
+  padding: 5px;
+  background: red;
+}
+
 #logo {
   font-family: "Roboto Mono", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 30px;
@@ -45,6 +70,14 @@ body {
   /* opacity: 0; */
   /* min-width: 1020px; */
   min-width: 750px;
+}
+
+.search-bar-container {
+  width: 100px;
+}
+
+.search-bar-container form {
+  display: flex;
 }
 
 #nav-bar .right-side {
