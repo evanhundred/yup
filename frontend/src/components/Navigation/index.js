@@ -99,12 +99,14 @@ const Navigation = () => {
     return (
       <>
         <div id="header-bar">
-          <div id="form-header-logo-container">
-            <NavLink exact className="homeLink" to="/">
-              <h1 className="yup-logo">yup</h1>
-              <h1 className="star">*</h1>
-            </NavLink>
-          </div>
+          <NavLink exact className="homeLink" to="/">
+            <div id="form-header-logo-container">
+              <h1 id="logo">
+                yup
+                <span className="star">*</span>
+              </h1>
+            </div>
+          </NavLink>
           <div className="socials">
             <div id="github">
               <a
@@ -117,7 +119,7 @@ const Navigation = () => {
             </div>
             <div id="linkedin">
               <a
-                href="https://www.linkedin.com/in/evan-ryan-1a2b07131/"
+                href="https://www.linkedin.com/in/evan-ryan-dev/"
                 target="_blank"
                 rel="noreferrer"
               >

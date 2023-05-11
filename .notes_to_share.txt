@@ -1,0 +1,3 @@
+1. center 'yup' logo in #header-bar version of the nav-bar: login/signup pages
+	- it seems to be closer to the left
+	- I want to be able to calculate these things properly
