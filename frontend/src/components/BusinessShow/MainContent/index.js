@@ -6,10 +6,14 @@ const MainContent = ({ business = null, props }) => {
   console.log(location);
   const reviewsComponent = document.getElementById("reviews-container");
 
-  if (reviewsComponent && location.state.scrollToReviews) {
+  if (location.state && reviewsComponent && location.state.scrollToReviews) {
     reviewsComponent.scrollIntoView({ behavior: "smooth" });
+  } else {
+    const rootElement = document.getElementById("root");
+    rootElement.scrollIntoView(true);
   }
 
+  // REDUNDANT-- CLEAN
   if (props === "goToReviews") {
     const reviewsComponent = document.getElementById("reviews-container");
     reviewsComponent.scrollIntoView({ behavior: "smooth" });
