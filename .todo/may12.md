@@ -1,8 +1,22 @@
-### todo - May 12
+## `todo - May 12`
+
+### Open issues
+
+1. window resize beyond .75% breaks page rendering
+
+#### Auth
 
 1. Sign up fails to render error messages and the site breaks when providing validation failing data. Also, input width is not aligned with form submitting buttons.
 
 2. profile button on nav bar opens the dropdown that is out of the screen when the site is opened on 11 inches wide screen.
+
+#### Business Show
+
+1. For visiting 'Website menu', should have it open a new tab instead of replacing current open window.
+
+2. Visiting a show page where business id doesn't exist should display appropriate message (this would be considered as error handling for this feature).
+
+3. You can set cursor css attribute to not-allowed for dead links. (you can follow this for any pages that has inaccessible links)
 
 &nbsp;
 
