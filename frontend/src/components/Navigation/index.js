@@ -4,7 +4,9 @@ import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./navigation.css";
 import githubLogo from "../../assets/images/github.png";
+import githubLogoBlack from "../../assets/images/github-black.png";
 import linkedinLogo from "../../assets/images/linkedin.png";
+import linkedinLogoBlack from "../../assets/images/linkedin-black.png";
 import SearchIcon from "../../assets/images/search.png";
 
 const Navigation = () => {
@@ -74,7 +76,10 @@ const Navigation = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={githubLogo} alt="GitHub" />
+                <img
+                  src={pageType === "business" ? githubLogoBlack : githubLogo}
+                  alt="GitHub"
+                />
               </a>
             </div>
             <div id="linkedin">
@@ -83,7 +88,12 @@ const Navigation = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={linkedinLogo} alt="LinkedIn" />
+                <img
+                  src={
+                    pageType === "business" ? linkedinLogoBlack : linkedinLogo
+                  }
+                  alt="LinkedIn"
+                />
               </a>
             </div>
           </div>
