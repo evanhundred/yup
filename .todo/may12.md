@@ -10,7 +10,7 @@
 
 1. signup page error rendering.
    1. after clicking 'x' on errors, errors after that are not rendered
-      - FIX -- SignupFormPage - setHideErrorBox(true) on handleSubmit
+      - FIX -- SignupFormPage & LoginFormPage - setHideErrorBox(true) on handleSubmit
    2. tested signup. site break not reproduced.
    3. 'sign up' button is too narrow
       - FIX -- SignupForm.css - added box-sizing value to input tag
@@ -18,6 +18,10 @@
       box-sizing: border-box;
       -moz-box-sizing: border-box;
       ```
+   4. complete error styling
+      1. 'x' box
+      2. line spacing for messages
+      3. FIXED - `border-radius`
 
 ---
 
