@@ -19,6 +19,7 @@ const SignupFormPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setHideErrorBox(false);
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(sessionActions.signup({ name, email, password })).catch(
@@ -124,7 +125,7 @@ const SignupFormPage = () => {
                 required
               />
             </label>
-            <button id="signUpButton">Sign Up</button>
+            <button id="sign-up-button">Sign Up</button>
           </form>
           <div className="login-footer">
             Already on Yup? <a href="/login">Log in</a>
