@@ -144,7 +144,8 @@ const MenuCard = ({ business }) => {
 
         <div className="popular-item-subcard"></div>
       </div>
-      <a href={business.website}>
+
+      <a href={business.website} target="_blank" rel="noreferrer">
         <div className="website-menu-link">
           <i className="fa-solid fa-up-right-from-square"></i>
           <h2>Website menu</h2>

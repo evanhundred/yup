@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
 import "./index.css";
@@ -7,9 +7,16 @@ import TitleCard from "./TitleCard";
 import MainContent from "./MainContent";
 
 const BusinessShow = ({ props }) => {
+  console.log(useParams());
   const dispatch = useDispatch();
+  const history = useHistory();
+  // const location = useLocation();
   const { businessId } = useParams();
+
   const business = useSelector(getBusiness(businessId));
+  console.log(business);
+  // if !business, redirect to home
+  if (!business) history.push(`/`);
 
   useEffect(() => {
     dispatch(fetchBusiness(businessId));

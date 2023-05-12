@@ -22,6 +22,8 @@
 
 ### PROCESS
 
+#### Login + SignUp
+
 1. signup page error rendering.
    1. after clicking 'x' on errors, errors after that are not rendered
       - FIX -- SignupFormPage & LoginFormPage - setHideErrorBox(true) on handleSubmit
@@ -36,6 +38,11 @@
       1. 'x' box -- FIXED
       2. line spacing for messages
       3. FIXED - `border-radius`
+
+#### BusinessShow
+
+1. MenuCard - FIXED - 'website menu' link now opens in new window/tab
+2. URL linking to invalid biz redirects to homepage
 
 ---
 
