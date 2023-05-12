@@ -4,6 +4,10 @@
 
 1. window resize beyond .75% breaks page rendering
 
+&nbsp;
+
+---
+
 #### Auth
 
 1. Sign up fails to render error messages and the site breaks when providing validation failing data. Also, input width is not aligned with form submitting buttons.
@@ -18,7 +22,9 @@
 
 3. You can set cursor css attribute to not-allowed for dead links. (you can follow this for any pages that has inaccessible links)
 
-&nbsp;
+## &nbsp;
+
+---
 
 ### PROCESS
 
@@ -43,6 +49,7 @@
 
 1. MenuCard - FIXED - 'website menu' link now opens in new window/tab
 2. URL linking to invalid biz redirects to homepage
+3. Dead links.
 
 ---
 

@@ -10,11 +10,10 @@ const BusinessShow = ({ props }) => {
   console.log(useParams());
   const dispatch = useDispatch();
   const history = useHistory();
-  // const location = useLocation();
   const { businessId } = useParams();
 
   const business = useSelector(getBusiness(businessId));
-  console.log(business);
+
   // if !business, redirect to home
   if (!business) history.push(`/`);
 
@@ -23,8 +22,9 @@ const BusinessShow = ({ props }) => {
   }, [businessId, dispatch]);
 
   if (!business) return null;
-  if (props === "goToReviews") {
-  }
+
+  // if (props === "goToReviews") {
+  // }
 
   return (
     <>
