@@ -3,6 +3,10 @@
 ### Open issues
 
 1. window resize beyond .75% breaks page rendering
+2. reviews count on index splash needs to be centered
+3. BusinessShow - scrollIntoView
+   - on refresh, don't scroll to top (maintain scroll position)
+   - try: location object
 
 &nbsp;
 
@@ -49,7 +53,9 @@
 
 1. MenuCard - FIXED - 'website menu' link now opens in new window/tab
 2. URL linking to invalid biz redirects to homepage
-3. Dead links.
+3. Dead links:
+   1. ` ContentNavBar`
+      - `write a review`&nbsp; button scrolls to reviews component
 
 ---
 

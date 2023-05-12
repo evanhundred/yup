@@ -1,10 +1,11 @@
-import { useLocation, Link } from "react-router-dom";
+import { useHistory, useLocation, Link } from "react-router-dom";
+// import { useState } from "react";
 
 const MainContent = ({ business = null, props }) => {
   // debugger;
   const location = useLocation();
   console.log(location);
-  const reviewsComponent = document.getElementById("reviews-container");
+  let reviewsComponent = document.getElementById("reviews-container");
 
   if (location.state && reviewsComponent && location.state.scrollToReviews) {
     reviewsComponent.scrollIntoView({ behavior: "smooth" });
@@ -22,7 +23,7 @@ const MainContent = ({ business = null, props }) => {
   return (
     <>
       <div className="main-content-container">
-        <ContentNavBar />
+        <ContentNavBar business={business} />
 
         {/* menu */}
         <MenuCard business={business} />
@@ -60,23 +61,57 @@ const MainContent = ({ business = null, props }) => {
   );
 };
 
-const ContentNavBar = () => {
+const ContentNavBar = ({ business }) => {
+  const location = useLocation();
+  const history = useHistory();
+
+  // console.log(location);
+
+  // let reviewsComponent = document.getElementById("reviews-container");
+  // if (location.state.scrollToReviews) {
+  //   reviewsComponent.scrollIntoView({ behavior: "smooth" });
+  // }
+
+  // if (location.state && reviewsComponent && location.state.scrollToReviews) {
+  //   reviewsComponent.scrollIntoView({ behavior: "smooth" });
+  // } else {
+  //   const rootElement = document.getElementById("root");
+  //   rootElement.scrollIntoView(true);
+  // }
+
+  const handleAddReviewClick = (e) => {
+    e.preventDefault();
+    history.push(`/businesses/${business.id}`, {
+      scrollToReviews: true
+    });
+    // goToReviews = true;
+    // history.push(location.pathname.concat("?goToReviews"));
+  };
+  const handleNavButtonClick = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="content-nav-bar-container">
-      <div className="write-review-button container">
-        <a href="#">
-          <div className="write-review-button content">
-            <div className="star-icon icon">
-              <i className="fa-regular fa-star"></i>
-            </div>
-            <div className="write-review-text">
-              <h2>Write a review</h2>
-            </div>
+      <div
+        className="write-review-button container"
+        onClick={(e) => handleAddReviewClick(e)}
+      >
+        {/* <a href="#"> */}
+        <div className="write-review-button content">
+          <div className="star-icon icon">
+            <i className="fa-regular fa-star"></i>
           </div>
-        </a>
+          <div className="write-review-text">
+            <h2>Write a review</h2>
+          </div>
+        </div>
+        {/* </a> */}
       </div>
 
-      <div className="add-photo-button container">
+      <div
+        className="add-photo-button container"
+        onClick={(e) => handleNavButtonClick(e)}
+      >
         <a href="#">
           <div className="add-photo-button content">
             <div className="camera-icon icon">
@@ -122,7 +157,7 @@ const MenuCard = ({ business }) => {
   return (
     <div className="menu-bar card-container">
       <div className="main-title">
-        <h2>Menu</h2>{" "}
+        <h2>Menu</h2>
       </div>
 
       <div className="subtitle">

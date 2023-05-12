@@ -23,6 +23,7 @@ function App() {
         <Route exact path="/businesses/:businessId">
           <BusinessShow />
           <Route path="/businesses/:businessId/search">
+            {/* REMOVE PROPS - REDUNDANT */}
             <BusinessShow props="loadFromReviews" />
           </Route>
         </Route>
