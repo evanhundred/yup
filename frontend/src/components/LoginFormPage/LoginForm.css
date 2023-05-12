@@ -10,9 +10,12 @@
   border-radius: 3px;
 }
 
-#closeBoxButton {
-  color: #666666;
-  font-size: 20px;
+#login-errors button#closeBoxButton {
+  color: #8d8d8d;
+  font-size: 18px;
+  background: transparent;
+  border: none;
+  font-family: sans-serif;
 }
 
 .login-form {

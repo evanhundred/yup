@@ -19,7 +19,7 @@
       -moz-box-sizing: border-box;
       ```
    4. complete error styling
-      1. 'x' box
+      1. 'x' box -- FIXED
       2. line spacing for messages
       3. FIXED - `border-radius`
 
