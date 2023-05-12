@@ -35,7 +35,7 @@ const Navigation = () => {
   } else {
     sessionLinks = (
       <>
-        <div className="session-link">
+        <div className="session-link log-in-button">
           <NavLink to="/login">Log In</NavLink>
         </div>
         <div className="session-link signupButton">

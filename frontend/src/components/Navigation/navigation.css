@@ -95,10 +95,21 @@ a {
   margin: 10px 0 0;
 }
 
+#session-links.business .session-link.log-in-button a {
+  color: black;
+  border: solid black 2px;
+  border-radius: 4px;
+}
+
 #session-links .signupButton a {
   background-color: #e34234;
   border: 2px solid #e34234;
 }
+
+/* #session-links.business .signupButton a {
+  background-color: #e34234;
+  border: 2px solid #e34234;
+} */
 
 #session-links.business-result a {
   color: black;
@@ -142,6 +153,7 @@ a {
 #nav-bar .right-side {
   display: flex;
   align-items: center;
+  min-width: 400px;
 }
 
 #nav-bar .socials {

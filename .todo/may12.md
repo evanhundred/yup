@@ -3,10 +3,12 @@
 ### Open issues
 
 1. window resize beyond .75% breaks page rendering
+   - **SOLVED**&nbsp;(double check) - adjust css to stop right side of nav bar from shrinking too far
 2. reviews count on index splash needs to be centered
 3. BusinessShow - scrollIntoView
    - on refresh, don't scroll to top (maintain scroll position)
    - try: location object
+4. `BusinessShow` - render dynamic star count in `title card`
 
 &nbsp;
 
@@ -45,18 +47,26 @@
       -moz-box-sizing: border-box;
       ```
    4. complete error styling
-      1. 'x' box -- FIXED
+      1. 'x' box -- **FIXED**
       2. line spacing for messages
-         - FIXED - add 1px padding
-      3. FIXED - `border-radius`
+         - **FIXED** - add 1px padding
+      3. **FIXED** - `border-radius`
 
 #### BusinessShow
 
-1. MenuCard - FIXED - 'website menu' link now opens in new window/tab
-2. URL linking to invalid biz redirects to homepage
-3. Dead links:
+0. `Log In` button not showing
+1. refresh redirects to `/`
+
+2. MenuCard - **FIXED** - 'website menu' link now opens in new window/tab
+3. **FIXED** - URL linking to invalid biz redirects to homepage
+4. Dead links:
    1. ` ContentNavBar`
-      - `write a review`&nbsp; button scrolls to reviews component
+      - **FIXED:**&nbsp; `write a review`&nbsp; button scrolls to reviews component
+
+### index
+
+1. stop nav bar right side from shrinking to avoid collision with search bar
+   - **solved:**&nbsp; `min-width` and `justify-content`
 
 ---
 
