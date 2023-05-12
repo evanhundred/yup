@@ -47,6 +47,7 @@
    4. complete error styling
       1. 'x' box -- FIXED
       2. line spacing for messages
+         - FIXED - add 1px padding
       3. FIXED - `border-radius`
 
 #### BusinessShow

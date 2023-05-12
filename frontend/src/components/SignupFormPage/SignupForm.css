@@ -18,6 +18,10 @@
   font-family: sans-serif;
 }
 
+.error-line {
+  padding: 1px 0;
+}
+
 .signup-form {
   display: flex;
   flex-direction: column;
