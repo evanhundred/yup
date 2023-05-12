@@ -55,13 +55,15 @@
 #### BusinessShow
 
 0. `Log In` button not showing
+   - **FIXED** - conditional css
 1. refresh redirects to `/`
-
 2. MenuCard - **FIXED** - 'website menu' link now opens in new window/tab
 3. **FIXED** - URL linking to invalid biz redirects to homepage
 4. Dead links:
    1. ` ContentNavBar`
       - **FIXED:**&nbsp; `write a review`&nbsp; button scrolls to reviews component
+
+_current branch - fixDeadLinks - 1358.0512_
 
 ### index
 

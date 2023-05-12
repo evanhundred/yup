@@ -15,7 +15,9 @@ const BusinessShow = ({ props }) => {
   const business = useSelector(getBusiness(businessId));
 
   // if !business, redirect to home
-  if (!business) history.push(`/`);
+  //  incorrect: this redirects on every refresh
+  //  if (!business) history.push(`/`);
+  // if ()
 
   useEffect(() => {
     dispatch(fetchBusiness(businessId));
