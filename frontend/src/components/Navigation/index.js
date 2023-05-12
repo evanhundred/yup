@@ -79,7 +79,7 @@ const Navigation = () => {
             </div>
             <div id="linkedin">
               <a
-                href="https://www.linkedin.com/in/evan-ryan-1a2b07131/"
+                href="https://www.linkedin.com/in/evan-ryan-dev/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
