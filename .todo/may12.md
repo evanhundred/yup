@@ -10,6 +10,11 @@
    - try: location object
 4. `BusinessShow` - render dynamic star count in `title card`
 
+---
+
+1. business show share button links to social
+2. business show redirect to home on bad url
+
 &nbsp;
 
 ---
