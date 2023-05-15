@@ -142,7 +142,7 @@ a {
   window to be resized much more without losing nav bar
   functionality.
   */
-  min-width: 950px;
+  min-width: 865px;
 }
 
 #nav-bar div.left-side {
@@ -157,7 +157,7 @@ a {
 #nav-bar .right-side {
   display: flex;
   align-items: center;
-  min-width: 400px;
+  /* min-width: 400px; */
 }
 
 #nav-bar .socials {
