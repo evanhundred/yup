@@ -1,5 +1,15 @@
 ## `todo - May 15`
 
+1. add photo button - click
+   bring to business CRUD page - add photo
+   - create simple biz crud landing page
+   - 2 options:
+     1. yelp.com - separate hash files/folders for each business,
+        to intercept user photos
+     2. businesses / addPhotos
+   - not sure why this is done by yelp. if I implement it simply,
+     I can port it over to method 1 if necessary later on.
+
 ### from may 12
 
 1. **SOLVED** (window resize beyond .75% breaks page rendering)

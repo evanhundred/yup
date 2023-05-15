@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import NewReviewForm from "./components/NewReviewForm";
 import EditReviewForm from "./components/EditReviewForm";
 import SearchResults from "./components/SearchResults";
+import BusinessAddUserPhotos from "./components/BusinessAddUserPhotos";
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
             {/* REMOVE PROPS - REDUNDANT */}
             <BusinessShow props="loadFromReviews" />
           </Route>
+        </Route>
+        <Route path="/businesses/:businessId/edit">
+          <BusinessAddUserPhotos />
         </Route>
         <Route exact path="/">
           <IndexPage />

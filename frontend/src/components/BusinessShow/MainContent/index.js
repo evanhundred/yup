@@ -109,45 +109,39 @@ const ContentNavBar = ({ business }) => {
       </div>
 
       <div
-        className="add-photo-button container"
+        className="add-photo-button button-container container"
         onClick={(e) => handleNavButtonClick(e)}
       >
-        <a href="#">
-          <div className="add-photo-button content">
-            <div className="camera-icon icon">
-              <i className="fa-solid regular fa-camera"></i>
-            </div>
-            <div className="add-photo-text">
-              <h2>Add Photo</h2>
-            </div>
+        <div className="add-photo-button content">
+          <div className="camera-icon icon">
+            <i className="fa-solid regular fa-camera"></i>
           </div>
-        </a>
+          <div className="add-photo-text">
+            <h2>Add Photo</h2>
+          </div>
+        </div>
       </div>
 
-      <div className="share-button container">
-        <a href="#">
-          <div className="share-button content">
-            <div className="share-icon icon">
-              <i className="fa-solid fa-arrow-up-from-bracket"></i>
-            </div>
-            <div className="share-text">
-              <h2>Share</h2>
-            </div>
+      <div className="share-button container button-container">
+        <div className="share-button content">
+          <div className="share-icon icon">
+            <i className="fa-solid fa-arrow-up-from-bracket"></i>
           </div>
-        </a>
+          <div className="share-text">
+            <h2>Share</h2>
+          </div>
+        </div>
       </div>
 
-      <div className="save-bookmark-button container">
-        <a href="#">
-          <div className="save-bookmark-button content">
-            <div className="bookmark-button icon">
-              <i className="fa-regular fa-bookmark"></i>
-            </div>
-            <div className="save-bookmark-text">
-              <h2>Save</h2>
-            </div>
+      <div className="save-bookmark-button container button-container">
+        <div className="save-bookmark-button content">
+          <div className="bookmark-button icon">
+            <i className="fa-regular fa-bookmark"></i>
           </div>
-        </a>
+          <div className="save-bookmark-text">
+            <h2>Save</h2>
+          </div>
+        </div>
       </div>
     </div>
   );
