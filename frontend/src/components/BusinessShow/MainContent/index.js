@@ -108,19 +108,18 @@ const ContentNavBar = ({ business }) => {
         {/* </a> */}
       </div>
 
-      <div
-        className="add-photo-button button-container container"
-        onClick={(e) => handleNavButtonClick(e)}
-      >
-        <div className="add-photo-button content">
-          <div className="camera-icon icon">
-            <i className="fa-solid regular fa-camera"></i>
-          </div>
-          <div className="add-photo-text">
-            <h2>Add Photo</h2>
+      <Link to="/biz-user-photos">
+        <div className="add-photo-button button-container container">
+          <div className="add-photo-button content">
+            <div className="camera-icon icon">
+              <i className="fa-solid regular fa-camera"></i>
+            </div>
+            <div className="add-photo-text">
+              <h2>Add Photo</h2>
+            </div>
           </div>
         </div>
-      </div>
+      </Link>
 
       <div className="share-button container button-container">
         <div className="share-button content">

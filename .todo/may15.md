@@ -9,6 +9,11 @@
      2. businesses / addPhotos
    - not sure why this is done by yelp. if I implement it simply,
      I can port it over to method 1 if necessary later on.
+   - _update_ because user submitted images may be problematic to link with a business, and because associating images with a given business may cause bandwidth issues for that entity: make photo upload a separate component.
+   - each container can max out at 50 photos, or a certain
+   - when 'add photo' button is clicked, app asks database if container is full
+   - if not full, use latest container hash to add photos
+   - if full, create new container hash
 
 ### from may 12
 
