@@ -28,7 +28,7 @@ function App() {
             <BusinessShow props="loadFromReviews" />
           </Route>
         </Route>
-        <Route path="/biz-user-photos">
+        <Route path="/biz-user-photos/:businessId">
           <BusinessAddUserPhotos />
         </Route>
         <Route exact path="/">
