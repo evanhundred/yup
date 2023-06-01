@@ -81,9 +81,7 @@ const ContentNavBar = ({ business }) => {
 
   const handleAddReviewClick = (e) => {
     e.preventDefault();
-    history.push(`/businesses/${business.id}`, {
-      scrollToReviews: true
-    });
+    history.push(`/businesses/${business.id}/reviews/new`);
     // goToReviews = true;
     // history.push(location.pathname.concat("?goToReviews"));
   };

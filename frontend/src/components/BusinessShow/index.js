@@ -11,7 +11,6 @@ import TitleCard from "./TitleCard";
 import MainContent from "./MainContent";
 
 const BusinessShow = ({ props }) => {
-  // console.log(useParams());
   const dispatch = useDispatch();
   const history = useHistory();
   const { businessId } = useParams();
@@ -32,9 +31,6 @@ const BusinessShow = ({ props }) => {
   if (businessCount > 1 && businessCount < parseInt(businessId))
     history.push(`/`);
   if (!business) return <div className="loading">loading...</div>;
-
-  // if (props === "goToReviews") {
-  // }
 
   return (
     <>

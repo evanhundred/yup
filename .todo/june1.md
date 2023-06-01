@@ -9,6 +9,9 @@ business show:
 1. _(complete)_ redirect to "/" on incoming invalid business id's
    - compare params number to businesses.length; if too high, load `business not found`
    - **FIXED**: redirect to index. no errors should be presented to the user, because it results from an invalid url, which may result from various circumstances.
+   - fetch all businesses, compare count to params number
+   - if count is 0 or 1, full array has not yet loaded
+   - this will not work at scale, only for small set of entities.
 2. fix dead links - enumerated in previous todo's
 
 ---
