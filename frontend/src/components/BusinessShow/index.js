@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getBusiness,
+  getBusinesses,
   fetchBusiness,
   receiveErrors
 } from "../../store/businesses";
@@ -17,7 +18,10 @@ const BusinessShow = ({ props }) => {
   const { businessId } = useParams();
 
   const business = useSelector(getBusiness(businessId));
-  const errors = useSelector((state) => state.errors);
+  const businessCount = useSelector(
+    (state) => Object.values(state.businesses).length
+  );
+  // const errors = useSelector((state) => state.errors);
 
   // if !business, redirect to home
   //  incorrect: this redirects on every refresh
@@ -42,8 +46,10 @@ const BusinessShow = ({ props }) => {
   // }, [businessId, dispatch]);
 
   // debugger;
-  if (errors) return <div className="errors">{errors}</div>;
-  if (!business) return <div className="loading">loading...{`${errors}`}</div>;
+  // if (errors) return <div className="errors">{errors}</div>;
+  if (businessCount < businessId) history.push(`/`);
+  // return <div className="not-found">business not found</div>;
+  if (!business) return <div className="loading">loading...</div>;
 
   // if (props === "goToReviews") {
   // }

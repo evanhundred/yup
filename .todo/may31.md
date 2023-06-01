@@ -1,8 +1,14 @@
-## `todo - may 31`
+### `notes + bugs`
+
+1. resize window - navbar right side collides with left side when sizing window down.
+
+## `todo - june 1`
 
 business show:
 
 1. redirect to "/" on incoming invalid business id's
+   - compare params number to businesses.length; if too high, load `business not found`
+   - **FIXED**: redirect to index. no errors should be presented to the user, because it results from an invalid url, which may result from various circumstances.
 2. fix dead links - enumerated in previous todo's
 
 ---
