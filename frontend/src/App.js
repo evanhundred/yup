@@ -9,6 +9,7 @@ import NewReviewForm from "./components/NewReviewForm";
 import EditReviewForm from "./components/EditReviewForm";
 import SearchResults from "./components/SearchResults";
 import BusinessAddUserPhotos from "./components/BusinessAddUserPhotos";
+import BusinessPhotos from "./components/BusinessPhotos";
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
         </Route>
         <Route path="/biz-user-photos/:businessId">
           <BusinessAddUserPhotos />
+        </Route>
+        <Route path="/biz-photos/:businessId">
+          <BusinessPhotos />
         </Route>
         <Route exact path="/">
           <IndexPage />

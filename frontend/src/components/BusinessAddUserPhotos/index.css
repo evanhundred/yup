@@ -1,0 +1,21 @@
+div.everything-container {
+  margin-left: 4em;
+  border-top: 1px solid rgb(214, 214, 214);
+  padding-top: 30px;
+
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: black;
+}
+
+div.everything-continer a {
+  color: rgb(22, 131, 137);
+}
+
+p.add-photos-title {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+a {
+  color: rgb(22, 131, 137);
+}
