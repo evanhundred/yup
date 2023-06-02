@@ -51,9 +51,12 @@ const BusinessPhotos = () => {
   };
 
   return (
-    <div className="biz-photos-container">
-      <h2 className="biz-photos-title">{`Photos for ${business.name}`}</h2>
-      <PhotosGrid business={business} />
+    <div className="overall-page-container">
+      <div className="left-side-margin" />
+      <div className="biz-photos-container">
+        <h2 className="biz-photos-title">{`Photos for ${business.name}`}</h2>
+        <PhotosGrid business={business} />
+      </div>
     </div>
   );
 };
