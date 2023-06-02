@@ -20,6 +20,8 @@ const BusinessPhotos = () => {
 
   if (!business) return null;
 
+  // photos grid stays at 6 across, regardless of window size
+
   const PhotosGrid = ({ business }) => {
     return (
       <ul className="photos-grid-ul">
@@ -34,6 +36,7 @@ const BusinessPhotos = () => {
 
   return (
     <div className="biz-photos-container">
+      <h2 className="biz-photos-title">{`Photos for ${business.name}`}</h2>
       <PhotosGrid business={business} />
     </div>
   );

@@ -1,0 +1,26 @@
+div.biz-photos-container {
+  margin-left: 1.5em;
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: black;
+}
+
+div.biz-photos-container h2 {
+  font-size: 30px;
+  font-weight: 500;
+  margin: 20px 0;
+}
+
+ul.photos-grid-ul {
+  padding-top: 10px;
+  /* display: flex;
+  flex-wrap: wrap; */
+  display: grid;
+  grid-template-rows: repeat(6, auto);
+  gap: 10px;
+}
+
+ul.photos-grid-ul img {
+  width: 150px;
+  height: 150px;
+  border-radius: 3px;
+}
