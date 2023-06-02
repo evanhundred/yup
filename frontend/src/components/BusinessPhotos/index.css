@@ -8,6 +8,7 @@ div.biz-photos-container h2 {
   font-size: 30px;
   font-weight: 500;
   margin: 20px 0;
+  min-width: max-content;
 }
 
 ul.photos-grid-ul {
@@ -17,6 +18,10 @@ ul.photos-grid-ul {
   display: grid;
   grid-template-rows: repeat(6, auto);
   gap: 10px;
+}
+
+li.biz-photo {
+  width: 160px;
 }
 
 ul.photos-grid-ul img {
