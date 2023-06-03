@@ -13,23 +13,28 @@ const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
 
   const location = useLocation();
+  const blackTextOnWhite = ["businesses", "search", "biz-photos"];
   const [pageType, setPageType] = useState(
-    location.pathname.includes("businesses") ||
-      location.pathname.includes("search")
+    blackTextOnWhite.some((pageType) => location.pathname.includes(pageType))
       ? "business"
       : "index"
   );
+  // const [pageType, setPageType] = useState(
+  //   location.pathname.includes("businesses") ||
+  //     location.pathname.includes("search")
+  //     ? "business"
+  //     : "index"
+  // );
 
   useEffect(() => {
     if (
-      location.pathname.includes("businesses") ||
-      location.pathname.includes("search")
+      blackTextOnWhite.some((pageType) => location.pathname.includes(pageType))
     ) {
       setPageType("business");
     } else {
       setPageType("index");
     }
-  }, [location]);
+  }, [location, blackTextOnWhite]);
 
   let sessionLinks;
   if (sessionUser) {
