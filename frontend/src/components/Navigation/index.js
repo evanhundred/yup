@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
@@ -13,7 +13,9 @@ const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
 
   const location = useLocation();
-  const blackTextOnWhite = ["businesses", "search", "biz-photos"];
+  const blackTextOnWhite = useMemo(() => {
+    return ["businesses", "search", "biz-photos"];
+  }, []);
   const [pageType, setPageType] = useState(
     blackTextOnWhite.some((pageType) => location.pathname.includes(pageType))
       ? "business"
