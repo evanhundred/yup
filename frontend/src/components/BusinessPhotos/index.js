@@ -1,8 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
 import "./index.css";
+
+import { ShowPhotoModal } from "../../context/Modal";
+import x from "../../assets/images/close.png";
 
 const BusinessPhotos = () => {
   const dispatch = useDispatch();
@@ -11,6 +14,9 @@ const BusinessPhotos = () => {
   useEffect(() => {
     dispatch(fetchBusiness(businessId));
   }, [businessId, dispatch]);
+
+  const [showPhotoModal, setShowPhotoModal] = useState(false);
+  const [chosenPhoto, setChosenPhoto] = useState(null);
 
   // show grid of all photos
   // next stage: add tags to photos (outside, inside, food) and navigate
@@ -23,9 +29,15 @@ const BusinessPhotos = () => {
   // photos grid stays at 6 across, regardless of window size
 
   const PhotosGrid = ({ business }) => {
-    // let rowCount = 0;
-    let colIdx = 0;
+    const handlePhotoClick = (e) => {
+      e.preventDefault();
+      // launch modal with pic
+      console.log(e.target);
+      setChosenPhoto(e.target);
+      setShowPhotoModal(true);
+    };
 
+    let colIdx = 0;
     return (
       <ul className="photos-grid-ul">
         {business.imageUrls.map((photo, idx) => {
@@ -38,6 +50,7 @@ const BusinessPhotos = () => {
                 key={`image${idx}`}
                 className={`biz-photo`}
                 style={{ gridColumn: colIdx }}
+                onClick={(e) => handlePhotoClick(e)}
               >
                 <img src={photo} alt="delicious item" />
               </li>
@@ -49,14 +62,35 @@ const BusinessPhotos = () => {
   };
 
   return (
-    <div className="overall-page-container">
-      <div className="left-side-margin" />
-      <div className="biz-photos-container">
-        <h2 className="biz-photos-title">{`Photos for ${business.name}`}</h2>
-        <PhotosGrid business={business} />
+    <>
+      <div className="overall-page-container">
+        <div className="left-side-margin" />
+        <div className="biz-photos-container">
+          <h2 className="biz-photos-title">{`Photos for ${business.name}`}</h2>
+          <PhotosGrid business={business} />
+        </div>
+        <div className="right-side-margin" />
       </div>
-      <div className="right-side-margin" />
-    </div>
+      {showPhotoModal && (
+        <ShowPhotoModal onClose={() => setShowPhotoModal(false)}>
+          <img
+            onClick={() => setShowPhotoModal(false)}
+            src={x}
+            className="photo-modal-x"
+            alt="close modal"
+          />
+          <div className="modal-card">
+            <div className="left-side">
+              <div className="left-margin" />
+              <div className="photo-container">
+                <img src={chosenPhoto} alt="delicious food item" />
+              </div>
+            </div>
+            <div className="right-side"></div>
+          </div>
+        </ShowPhotoModal>
+      )}
+    </>
   );
 };
 

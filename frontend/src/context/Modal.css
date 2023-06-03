@@ -1,0 +1,51 @@
+#modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(50, 50, 50, 0.5);
+}
+
+.form-x {
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+}
+
+.modal-title {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  margin: 16px 0px;
+}
+
+#show-biz-photo-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+#show-biz-photo-modal-content {
+  position: absolute;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  font-size: 12px;
+  height: 600px;
+  width: 800px;
+  color: black;
+  font-weight: 700;
+  padding: 50px;
+  top: 410px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+}
