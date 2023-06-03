@@ -23,28 +23,26 @@ const BusinessPhotos = () => {
   // photos grid stays at 6 across, regardless of window size
 
   const PhotosGrid = ({ business }) => {
-    let rowCount = 0;
-    let rowIdx = 1;
+    // let rowCount = 0;
+    let colIdx = 0;
 
     return (
       <ul className="photos-grid-ul">
         {business.imageUrls.map((photo, idx) => {
-          if (rowCount === 6) {
-            rowIdx += 1;
-            rowCount = 0;
-          }
-          rowCount += 1;
+          colIdx += 1;
+          if (colIdx === 7) colIdx = 1;
 
           if (idx !== business.imageUrls.length - 1)
             return (
               <li
                 key={`image${idx}`}
                 className={`biz-photo`}
-                style={{ gridRow: rowIdx }}
+                style={{ gridColumn: colIdx }}
               >
                 <img src={photo} alt="delicious item" />
               </li>
             );
+          else return null;
         })}
       </ul>
     );
@@ -57,6 +55,7 @@ const BusinessPhotos = () => {
         <h2 className="biz-photos-title">{`Photos for ${business.name}`}</h2>
         <PhotosGrid business={business} />
       </div>
+      <div className="right-side-margin" />
     </div>
   );
 };

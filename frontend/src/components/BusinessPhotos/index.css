@@ -1,15 +1,17 @@
 div.overall-page-container {
   display: flex;
   width: 100vm;
+  justify-content: center;
 }
 
-div.left-side-margin {
+div.left-side-margin,
+div.right-side-margin {
   min-width: 30px;
-  max-width: 60px;
+  flex: 1;
 }
 
 div.biz-photos-container {
-  width: 100vw;
+  /* width: 100vw; */
   /* margin-left: 1.5em; */
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: black;
@@ -19,7 +21,7 @@ div.biz-photos-container h2 {
   font-size: 30px;
   font-weight: 500;
   margin: 20px 0;
-  min-width: max-content;
+  width: max-content;
 }
 
 ul.photos-grid-ul {
@@ -27,11 +29,12 @@ ul.photos-grid-ul {
   /* display: flex;
   flex-wrap: wrap; */
   display: grid;
-  grid-template-rows: repeat(6, auto);
+  grid-template-columns: repeat(6, 1fr);
   gap: 10px;
   /* margin-block: 0;
   padding-inline: 0; */
-  max-width: min-content;
+  width: min-content;
+  /* margin-block: 0; */
 }
 
 li.biz-photo {
