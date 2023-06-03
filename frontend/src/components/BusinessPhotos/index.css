@@ -1,7 +1,7 @@
 div.overall-page-container {
   display: flex;
-  width: 100vm;
   justify-content: center;
+  min-width: min-content;
 }
 
 div.left-side-margin,
@@ -11,8 +11,6 @@ div.right-side-margin {
 }
 
 div.biz-photos-container {
-  /* width: 100vw; */
-  /* margin-left: 1.5em; */
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: black;
 }
@@ -26,15 +24,10 @@ div.biz-photos-container h2 {
 
 ul.photos-grid-ul {
   padding-top: 10px;
-  /* display: flex;
-  flex-wrap: wrap; */
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 10px;
-  /* margin-block: 0;
-  padding-inline: 0; */
   width: min-content;
-  /* margin-block: 0; */
 }
 
 li.biz-photo {

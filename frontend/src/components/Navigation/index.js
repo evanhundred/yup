@@ -19,12 +19,6 @@ const Navigation = () => {
       ? "business"
       : "index"
   );
-  // const [pageType, setPageType] = useState(
-  //   location.pathname.includes("businesses") ||
-  //     location.pathname.includes("search")
-  //     ? "business"
-  //     : "index"
-  // );
 
   useEffect(() => {
     if (
