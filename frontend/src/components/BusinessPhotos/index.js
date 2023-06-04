@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
 import "./index.css";
+import "./modal.css";
 
-import { ShowPhotoModal } from "../../context/Modal";
+// import { ShowPhotoModal } from "../../context/Modal";
 import x from "../../assets/images/close.png";
 
 const BusinessPhotos = () => {
@@ -32,7 +33,7 @@ const BusinessPhotos = () => {
     const handlePhotoClick = (e) => {
       e.preventDefault();
       // launch modal with pic
-      console.log(e.target);
+      console.log(e.target.src);
       setChosenPhoto(e.target);
       setShowPhotoModal(true);
     };
@@ -61,6 +62,30 @@ const BusinessPhotos = () => {
     );
   };
 
+  const Modal = () => {
+    return (
+      <div className="modal-container">
+        <div className="overlay"></div>
+
+        <div className="modal-content">
+          <img
+            onClick={() => setShowPhotoModal(false)}
+            src={x}
+            className="photo-modal-x"
+            alt="close modal"
+          />
+          <div className="left-side">
+            <div className="left-margin" />
+            <div className="photo-container">
+              <img src={chosenPhoto.src} alt="delicious food item" />
+            </div>
+          </div>
+          <div className="right-side"></div>
+        </div>
+      </div>
+    );
+  };
+  // debugger;
   return (
     <>
       <div className="overall-page-container">
@@ -71,27 +96,29 @@ const BusinessPhotos = () => {
         </div>
         <div className="right-side-margin" />
       </div>
-      {showPhotoModal && (
-        <ShowPhotoModal onClose={() => setShowPhotoModal(false)}>
-          <img
-            onClick={() => setShowPhotoModal(false)}
-            src={x}
-            className="photo-modal-x"
-            alt="close modal"
-          />
-          <div className="modal-card">
-            <div className="left-side">
-              <div className="left-margin" />
-              <div className="photo-container">
-                <img src={chosenPhoto} alt="delicious food item" />
-              </div>
-            </div>
-            <div className="right-side"></div>
-          </div>
-        </ShowPhotoModal>
-      )}
+      {showPhotoModal && <Modal />}
     </>
   );
 };
 
 export default BusinessPhotos;
+
+// {showPhotoModal && (
+//   <ShowPhotoModal onClose={() => setShowPhotoModal(false)}>
+//     <img
+//       onClick={() => setShowPhotoModal(false)}
+//       src={x}
+//       className="photo-modal-x"
+//       alt="close modal"
+//     />
+//     <div className="modal-card">
+//       <div className="left-side">
+//         <div className="left-margin" />
+//         <div className="photo-container">
+//           <img src={chosenPhoto} alt="delicious food item" />
+//         </div>
+//       </div>
+//       <div className="right-side"></div>
+//     </div>
+//   </ShowPhotoModal>
+// )}
