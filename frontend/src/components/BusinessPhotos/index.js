@@ -63,6 +63,17 @@ const BusinessPhotos = () => {
   };
 
   const Modal = () => {
+    // const imageNode = document.createElement("img");
+    // imageNode.src = chosenPhoto.src;
+    // imageNode.alt = "delicious item of food";
+    // imageNode.className=`photo-box`;
+
+    const getImageWidth = (e) => {
+      console.log(e.target);
+      // find image dimensions to determine how margins will be constructed
+      // to fit page + modal
+    };
+
     return (
       <div className="modal-container">
         <div className="overlay"></div>
@@ -77,8 +88,14 @@ const BusinessPhotos = () => {
           <div className="left-side">
             <div className="left-margin" />
             <div className="photo-container">
-              <img src={chosenPhoto.src} alt="delicious food item" />
+              <img
+                src={chosenPhoto.src}
+                alt="delicious food item"
+                className="photo-image"
+                onLoad={(e) => getImageWidth(e)}
+              />
             </div>
+            <div className="right-margin" />
           </div>
           <div className="right-side"></div>
         </div>
