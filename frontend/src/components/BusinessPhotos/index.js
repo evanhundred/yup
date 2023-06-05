@@ -85,14 +85,12 @@ const BusinessPhotos = () => {
 
     return (
       <div className="modal-container">
-        <div className="overlay" />
+        <div className="overlay" onClick={(e) => handleCloseModal(e)} />
         <div className="modal-content">
-          <img
-            onClick={(e) => handleCloseModal(e)}
-            src={x}
-            className="photo-modal-x"
-            alt="close modal"
-          />
+          <div className="close-box" onClick={(e) => handleCloseModal(e)}>
+            <h3 className="close-text">Close</h3>
+            <img src={x} className="photo-modal-x" alt="close modal" />
+          </div>
           <div className="left-side">
             <div className="left-margin" />
             <div className="photo-container">
