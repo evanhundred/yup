@@ -125,7 +125,6 @@ a {
 /* ------- */
 
 #nav-bar {
-  /* z-index: 1; */
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -144,6 +143,10 @@ a {
   functionality.
   */
   min-width: 865px;
+}
+
+#nav-bar.backgrounded {
+  z-index: 0;
 }
 
 #nav-bar div.left-side {

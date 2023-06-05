@@ -33,9 +33,11 @@ const BusinessPhotos = () => {
     const handlePhotoClick = (e) => {
       e.preventDefault();
       // launch modal with pic
+      setShowPhotoModal(true);
       console.log(e.target.src);
       setChosenPhoto(e.target);
-      setShowPhotoModal(true);
+      const navBar = document.getElementById("nav-bar");
+      navBar.classList.add("backgrounded");
     };
 
     let colIdx = 0;
@@ -74,13 +76,19 @@ const BusinessPhotos = () => {
       // to fit page + modal
     };
 
+    const handleCloseModal = (e) => {
+      e.preventDefault();
+      setShowPhotoModal(false);
+      const navBar = document.getElementById("nav-bar");
+      navBar.classList.remove("backgrounded");
+    };
+
     return (
       <div className="modal-container">
-        <div className="overlay"></div>
-
+        <div className="overlay" />
         <div className="modal-content">
           <img
-            onClick={() => setShowPhotoModal(false)}
+            onClick={(e) => handleCloseModal(e)}
             src={x}
             className="photo-modal-x"
             alt="close modal"

@@ -1,5 +1,6 @@
 .overlay {
   background: rgba(49, 49, 49, 0.8);
+  /* z-index: ; */
 }
 
 .modal-container,
@@ -14,11 +15,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /* z-index: 0; */
 }
 
 .modal-content {
   position: absolute;
-  top: 21%;
+  top: 8%;
   /* transform: translate(50%, -50%); */
   /* line-height: 1.4; */
   background: #f1f1f1;
@@ -28,6 +30,7 @@
   min-width: 300px;
   /* width: 800px; */
   height: 30vh;
+  /* z-index: 0; */
 }
 
 .photo-modal-x {

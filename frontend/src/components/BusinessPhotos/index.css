@@ -39,6 +39,7 @@ ul.photos-grid-ul img {
   width: 150px;
   height: 150px;
   border-radius: 3px;
+  object-fit: cover;
 }
 
 .modal-card {
