@@ -104,7 +104,12 @@ const BusinessPhotos = () => {
             <div className="right-margin" />
           </div>
           <div className="modal-right-side">
-            <h3 className="biz-photos-title">{`Photos for ${business.name}`}</h3>
+            <div className="modal-right-side-content">
+              <h3 className="biz-photos-title">{`Photos for ${business.name}`}</h3>
+              <h4 className="photo-count">{`${
+                business.imageUrls.length - 1
+              }`}</h4>
+            </div>
           </div>
         </div>
       </div>

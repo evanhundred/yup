@@ -133,11 +133,16 @@ h3 {
   flex: 0 1 auto;
   /* padding: 2em 1em; */
   display: flex;
+  flex-direction: column;
+}
+
+.modal-right-side-content {
+  padding: 2.3em 2em;
 }
 
 .modal-right-side h3 {
   /* width: auto; */
   display: flex;
-  padding: 2em 1.5em;
   font-size: 20px;
+  margin-bottom: 18px;
 }
