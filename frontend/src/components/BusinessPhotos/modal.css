@@ -23,6 +23,7 @@
   background-color: white;
   top: 8%;
   display: flex;
+  justify-content: space-between;
   /* transform: translate(50%, -50%); */
   /* line-height: 1.4; */
   background: #f1f1f1;
@@ -97,6 +98,7 @@ h3 {
   justify-content: center;
   background: black;
   border-radius: 10px 0 0 10px;
+  flex: 1 1 auto;
 }
 
 /* img.photo-image {
@@ -127,5 +129,15 @@ h3 {
 
 .modal-right-side {
   position: relative;
-  width: 20vw;
+  width: 30vw;
+  flex: 0 1 auto;
+  /* padding: 2em 1em; */
+  display: flex;
+}
+
+.modal-right-side h3 {
+  /* width: auto; */
+  display: flex;
+  padding: 2em 1.5em;
+  font-size: 20px;
 }
