@@ -91,7 +91,7 @@ const BusinessPhotos = () => {
             <h3 className="close-text">Close</h3>
             <img src={x} className="photo-modal-x" alt="close modal" />
           </div>
-          <div className="left-side">
+          <div className="modal-left-side">
             <div className="left-margin" />
             <div className="photo-container">
               <img
@@ -103,12 +103,14 @@ const BusinessPhotos = () => {
             </div>
             <div className="right-margin" />
           </div>
-          <div className="right-side"></div>
+          <div className="modal-right-side">
+            <h2 className="biz-photos-title">{`Photos for ${business.name}`}</h2>
+          </div>
         </div>
       </div>
     );
   };
-  // debugger;
+
   return (
     <>
       <div className="overall-page-container">
