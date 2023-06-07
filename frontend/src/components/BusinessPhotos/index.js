@@ -19,7 +19,7 @@ const BusinessPhotos = () => {
   }, [businessId, dispatch]);
 
   const [showPhotoModal, setShowPhotoModal] = useState(false);
-  const [chosenPhoto, setChosenPhoto] = useState(null);
+  // const [chosenPhoto, setChosenPhoto] = useState(null);
   const [chosenPhotoIdx, setChosenPhotoIdx] = useState(null);
 
   // show grid of all photos
@@ -37,8 +37,8 @@ const BusinessPhotos = () => {
       e.preventDefault();
       // launch modal with pic
       setShowPhotoModal(true);
-      console.log(e.target.src);
-      setChosenPhoto(business.imageUrls[chosenPhotoIdx]);
+      // console.log(e.target.src);
+      // setChosenPhoto(business.imageUrls[chosenPhotoIdx]);
       const navBar = document.getElementById("nav-bar");
       navBar.classList.add("backgrounded");
     };
@@ -76,14 +76,18 @@ const BusinessPhotos = () => {
     // imageNode.alt = "delicious item of food";
     // imageNode.className=`photo-box`;
 
-    const getImageWidth = (e) => {
-      console.log(e.target);
-      // find image dimensions to determine how margins will be constructed
-      // to fit page + modal
-    };
+    // const getImageWidth = (e) => {
+    // console.log(e.target);
+    // find image dimensions to determine how margins will be constructed
+    // to fit page + modal
+    // };
 
     const handleNavClick = (e, direction) => {
       e.preventDefault();
+
+      console.log("og idx:");
+      console.log(chosenPhotoIdx);
+
       const amountPhotos = business.imageUrls.length;
 
       let newPhotoIdx;
@@ -97,6 +101,9 @@ const BusinessPhotos = () => {
       }
       setChosenPhotoIdx(newPhotoIdx);
 
+      console.log("next idx:");
+      console.log(newPhotoIdx);
+
       // if (chosenPhotoIdx < amountPhotos - 1 && direction === "next") {
       //   setChosenPhotoIdx(chosenPhotoIdx + 1);
       // } else if (chosenPhotoIdx === amountPhotos - 1) {
@@ -107,7 +114,7 @@ const BusinessPhotos = () => {
       //   setChosenPhotoIdx(amountPhotos - 1);
       // }
 
-      setChosenPhoto(business.imageUrls[chosenPhotoIdx]);
+      // setChosenPhoto(business.imageUrls[chosenPhotoIdx]);
     };
 
     const handleCloseModal = (e) => {
@@ -136,10 +143,9 @@ const BusinessPhotos = () => {
             </div>
             <div className="photo-container">
               <img
-                src={chosenPhoto}
+                src={business.imageUrls[chosenPhotoIdx]}
                 alt="delicious food item"
                 className="photo-image"
-                onLoad={(e) => getImageWidth(e)}
               />
             </div>
             <div className="right-margin">
