@@ -85,8 +85,8 @@ const BusinessPhotos = () => {
     const handleNavClick = (e, direction) => {
       e.preventDefault();
 
-      console.log("og idx:");
-      console.log(chosenPhotoIdx);
+      // console.log("og idx:");
+      // console.log(chosenPhotoIdx);
 
       const amountPhotos = business.imageUrls.length;
 
@@ -101,8 +101,8 @@ const BusinessPhotos = () => {
       }
       setChosenPhotoIdx(newPhotoIdx);
 
-      console.log("next idx:");
-      console.log(newPhotoIdx);
+      // console.log("next idx:");
+      // console.log(newPhotoIdx);
 
       // if (chosenPhotoIdx < amountPhotos - 1 && direction === "next") {
       //   setChosenPhotoIdx(chosenPhotoIdx + 1);

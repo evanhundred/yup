@@ -99,7 +99,9 @@ h3 {
   justify-content: center;
   background: black;
   border-radius: 10px 0 0 10px;
-  flex: 1 1 auto;
+  flex: 1;
+  min-width: 60vw;
+  /* flex: 1 1 auto; */
 }
 
 /* img.photo-image {
@@ -110,24 +112,32 @@ h3 {
 .photo-container {
   /* top: 1.5px;
   position: relative; */
-  height: 100%;
   display: flex;
+  /* max-width: 60vm; */
+  height: 100%;
+  /* flex: 0; */
+  /* max-height: 100%; */
+  /* object-fit: cover; */
 }
+
+/* .photo-container img {
+  height: 100%;
+} */
 
 .left-margin,
 .right-margin {
   /* background: black; */
   width: 100%;
   display: flex;
-
+  /* flex: 0; */
   /* height: contain;
   position: relative; */
 }
 
 .modal-right-side {
-  position: relative;
+  /* position: relative; */
   width: 30vw;
-  flex: 0 1 auto;
+  flex: none;
   /* padding: 2em 1em; */
   display: flex;
   flex-direction: column;
@@ -156,6 +166,7 @@ h3 {
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
+  cursor: pointer;
   /* flex: 1; */
 }
 
