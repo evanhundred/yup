@@ -61,7 +61,8 @@
 }
 
 h2,
-h3 {
+h3,
+h4 {
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -145,4 +146,9 @@ h3 {
   display: flex;
   font-size: 20px;
   margin-bottom: 18px;
+}
+
+.photo-count {
+  border-bottom: 1px solid rgb(188, 188, 188);
+  padding-bottom: 1em;
 }

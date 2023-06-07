@@ -18,6 +18,7 @@ const BusinessPhotos = () => {
 
   const [showPhotoModal, setShowPhotoModal] = useState(false);
   const [chosenPhoto, setChosenPhoto] = useState(null);
+  const [chosenPhotoIdx, setChosenPhotoIdx] = useState(null);
 
   // show grid of all photos
   // next stage: add tags to photos (outside, inside, food) and navigate
@@ -53,7 +54,10 @@ const BusinessPhotos = () => {
                 key={`image${idx}`}
                 className={`biz-photo`}
                 style={{ gridColumn: colIdx }}
-                onClick={(e) => handlePhotoClick(e)}
+                onClick={(e) => {
+                  setChosenPhotoIdx(idx);
+                  handlePhotoClick(e);
+                }}
               >
                 <img src={photo} alt="delicious item" />
               </li>
@@ -106,7 +110,7 @@ const BusinessPhotos = () => {
           <div className="modal-right-side">
             <div className="modal-right-side-content">
               <h3 className="biz-photos-title">{`Photos for ${business.name}`}</h3>
-              <h4 className="photo-count">{`${
+              <h4 className="photo-count">{`${chosenPhotoIdx + 1} of ${
                 business.imageUrls.length - 1
               }`}</h4>
             </div>
