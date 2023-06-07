@@ -38,7 +38,7 @@ const BusinessPhotos = () => {
       // launch modal with pic
       setShowPhotoModal(true);
       console.log(e.target.src);
-      setChosenPhoto(e.target);
+      setChosenPhoto(business.imageUrls[chosenPhotoIdx]);
       const navBar = document.getElementById("nav-bar");
       navBar.classList.add("backgrounded");
     };
@@ -82,6 +82,34 @@ const BusinessPhotos = () => {
       // to fit page + modal
     };
 
+    const handleNavClick = (e, direction) => {
+      e.preventDefault();
+      const amountPhotos = business.imageUrls.length;
+
+      let newPhotoIdx;
+      if (direction === "next") {
+        if (chosenPhotoIdx < amountPhotos - 2) newPhotoIdx = chosenPhotoIdx + 1;
+        else newPhotoIdx = 0;
+      } else {
+        // direction === "prev"
+        if (chosenPhotoIdx > 0) newPhotoIdx = chosenPhotoIdx - 1;
+        else newPhotoIdx = amountPhotos - 2;
+      }
+      setChosenPhotoIdx(newPhotoIdx);
+
+      // if (chosenPhotoIdx < amountPhotos - 1 && direction === "next") {
+      //   setChosenPhotoIdx(chosenPhotoIdx + 1);
+      // } else if (chosenPhotoIdx === amountPhotos - 1) {
+      //   setChosenPhotoIdx(0);
+      // } else if (chosenPhotoIdx > 0 && direction === "prev") {
+      //   setChosenPhotoIdx(chosenPhotoIdx - 1);
+      // } else if (chosenPhotoIdx === 0 && direction === "prev") {
+      //   setChosenPhotoIdx(amountPhotos - 1);
+      // }
+
+      setChosenPhoto(business.imageUrls[chosenPhotoIdx]);
+    };
+
     const handleCloseModal = (e) => {
       e.preventDefault();
       setShowPhotoModal(false);
@@ -103,11 +131,12 @@ const BusinessPhotos = () => {
                 src={leftArrowCircle}
                 className="photo-modal-nav-button"
                 alt="previous visualization"
+                onClick={(e) => handleNavClick(e, "prev")}
               />
             </div>
             <div className="photo-container">
               <img
-                src={chosenPhoto.src}
+                src={chosenPhoto}
                 alt="delicious food item"
                 className="photo-image"
                 onLoad={(e) => getImageWidth(e)}
@@ -118,6 +147,7 @@ const BusinessPhotos = () => {
                 src={rightArrowCircle}
                 className="photo-modal-nav-button"
                 alt="next visualization"
+                onClick={(e) => handleNavClick(e, "next")}
               />
             </div>
           </div>
