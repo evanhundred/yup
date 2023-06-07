@@ -123,7 +123,9 @@ h3 {
 .left-margin,
 .right-margin {
   /* background: black; */
-  width: 1rem;
+  width: 100%;
+  display: flex;
+
   /* height: contain;
   position: relative; */
 }
@@ -151,4 +153,22 @@ h3 {
 .photo-count {
   border-bottom: 1px solid rgb(188, 188, 188);
   padding-bottom: 1em;
+}
+
+.left-margin img,
+.right-margin img {
+  width: 2.5em;
+  /* flex: 1; */
+}
+
+.left-margin img {
+  margin-left: 25px;
+}
+
+.right-margin img {
+  margin-right: 25px;
+}
+
+.right-margin {
+  justify-content: flex-end;
 }

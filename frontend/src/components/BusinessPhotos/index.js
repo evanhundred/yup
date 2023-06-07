@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
 import "./index.css";
 import "./modal.css";
+import rightArrowCircle from "../../assets/images/right-arrow-circle.png";
+import leftArrowCircle from "../../assets/images/left-arrow-circle.png";
 
 // import { ShowPhotoModal } from "../../context/Modal";
 import x from "../../assets/images/close.png";
@@ -96,7 +98,9 @@ const BusinessPhotos = () => {
             <img src={x} className="photo-modal-x" alt="close modal" />
           </div>
           <div className="modal-left-side">
-            <div className="left-margin" />
+            <div className="left-margin">
+              <img src={leftArrowCircle} alt="previous visualization" />
+            </div>
             <div className="photo-container">
               <img
                 src={chosenPhoto.src}
@@ -105,7 +109,9 @@ const BusinessPhotos = () => {
                 onLoad={(e) => getImageWidth(e)}
               />
             </div>
-            <div className="right-margin" />
+            <div className="right-margin">
+              <img src={rightArrowCircle} alt="next visualization" />
+            </div>
           </div>
           <div className="modal-right-side">
             <div className="modal-right-side-content">
