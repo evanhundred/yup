@@ -155,10 +155,14 @@ h3 {
   padding-bottom: 1em;
 }
 
-.left-margin img,
-.right-margin img {
+.photo-modal-nav-button {
   width: 2.5em;
+  filter: brightness(85%);
   /* flex: 1; */
+}
+
+.photo-modal-nav-button:hover {
+  filter: brightness(140%);
 }
 
 .left-margin img {

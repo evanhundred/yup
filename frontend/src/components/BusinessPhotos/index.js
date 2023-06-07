@@ -99,7 +99,11 @@ const BusinessPhotos = () => {
           </div>
           <div className="modal-left-side">
             <div className="left-margin">
-              <img src={leftArrowCircle} alt="previous visualization" />
+              <img
+                src={leftArrowCircle}
+                className="photo-modal-nav-button"
+                alt="previous visualization"
+              />
             </div>
             <div className="photo-container">
               <img
@@ -110,7 +114,11 @@ const BusinessPhotos = () => {
               />
             </div>
             <div className="right-margin">
-              <img src={rightArrowCircle} alt="next visualization" />
+              <img
+                src={rightArrowCircle}
+                className="photo-modal-nav-button"
+                alt="next visualization"
+              />
             </div>
           </div>
           <div className="modal-right-side">
