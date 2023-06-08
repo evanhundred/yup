@@ -81,15 +81,30 @@ const ContentNavBar = ({ business }) => {
 
   const handleAddReviewClick = (e) => {
     e.preventDefault();
-    history.push(`/businesses/${business.id}`, {
-      scrollToReviews: true
-    });
+    history.push(`/businesses/${business.id}/reviews/new`);
     // goToReviews = true;
     // history.push(location.pathname.concat("?goToReviews"));
   };
-  const handleNavButtonClick = (e) => {
+
+  // need to come up with a hash for each biz entity, to use for this
+  // likely this is a feature made necessary by yelp's scale and links to real
+  // world entities, not necessary
+  // if I can make a simple hashing function, it would have no functional value,
+  // but would not be a sacrifice, and would be a handy place to expand if
+  // necessary due to scale.
+  // this feature could have the benefit of keeping user-added photos in a
+  // 'sandbox', where they can be inspected and copied to the database where appropriate
+  // this should result in  upload to a aws folder for each of these sandboxes
+  // in contrast, user uploaded user photos, or business owner uploaded business
+  // photos, can be added directly to the related aws folder
+
+  // for now, I will use just the business number
+
+  const handleAddPhotoClick = (e) => {
     e.preventDefault();
+    history.push(`/biz-user-photos/${business.id}`);
   };
+
   return (
     <div className="content-nav-bar-container">
       <div
@@ -108,46 +123,42 @@ const ContentNavBar = ({ business }) => {
         {/* </a> */}
       </div>
 
+      {/* <Link to="/biz-user-photos"> */}
       <div
-        className="add-photo-button container"
-        onClick={(e) => handleNavButtonClick(e)}
+        className="add-photo-button button-container container"
+        onClick={(e) => handleAddPhotoClick(e)}
       >
-        <a href="#">
-          <div className="add-photo-button content">
-            <div className="camera-icon icon">
-              <i className="fa-solid regular fa-camera"></i>
-            </div>
-            <div className="add-photo-text">
-              <h2>Add Photo</h2>
-            </div>
+        <div className="add-photo-button content">
+          <div className="camera-icon icon">
+            <i className="fa-solid regular fa-camera"></i>
           </div>
-        </a>
+          <div className="add-photo-text">
+            <h2>Add Photo</h2>
+          </div>
+        </div>
+      </div>
+      {/* </Link> */}
+
+      <div className="share-button container button-container">
+        <div className="share-button content">
+          <div className="share-icon icon">
+            <i className="fa-solid fa-arrow-up-from-bracket"></i>
+          </div>
+          <div className="share-text">
+            <h2>Share</h2>
+          </div>
+        </div>
       </div>
 
-      <div className="share-button container">
-        <a href="#">
-          <div className="share-button content">
-            <div className="share-icon icon">
-              <i className="fa-solid fa-arrow-up-from-bracket"></i>
-            </div>
-            <div className="share-text">
-              <h2>Share</h2>
-            </div>
+      <div className="save-bookmark-button container button-container">
+        <div className="save-bookmark-button content">
+          <div className="bookmark-button icon">
+            <i className="fa-regular fa-bookmark"></i>
           </div>
-        </a>
-      </div>
-
-      <div className="save-bookmark-button container">
-        <a href="#">
-          <div className="save-bookmark-button content">
-            <div className="bookmark-button icon">
-              <i className="fa-regular fa-bookmark"></i>
-            </div>
-            <div className="save-bookmark-text">
-              <h2>Save</h2>
-            </div>
+          <div className="save-bookmark-text">
+            <h2>Save</h2>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   );

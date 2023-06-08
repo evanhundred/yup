@@ -1,0 +1,51 @@
+div.overall-page-container {
+  display: flex;
+  justify-content: center;
+  min-width: min-content;
+}
+
+div.left-side-margin,
+div.right-side-margin {
+  min-width: 30px;
+  flex: 1;
+}
+
+div.biz-photos-container {
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: black;
+}
+
+div.biz-photos-container h2 {
+  font-size: 30px;
+  font-weight: 500;
+  margin: 20px 0;
+  width: max-content;
+}
+
+ul.photos-grid-ul {
+  padding-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  width: min-content;
+}
+
+li.biz-photo {
+  width: 160px;
+  cursor: pointer;
+}
+
+ul.photos-grid-ul img {
+  width: 150px;
+  height: 150px;
+  border-radius: 3px;
+  object-fit: cover;
+}
+
+.modal-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}

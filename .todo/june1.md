@@ -1,9 +1,48 @@
-## `todo - May 12`
+### `notes + bugs`
 
-### Open issues
+1. resize window - navbar right side collides with left side when sizing window down.
 
-1. window resize beyond .75% breaks page rendering
-   - **SOLVED**&nbsp;(double check) - adjust css to stop right side of nav bar from shrinking too far
+## `todo - june 1`
+
+business show:
+
+1. _(complete)_ redirect to "/" on incoming invalid business id's
+   - compare params number to businesses.length; if too high, load `business not found`
+   - **FIXED**: redirect to index. no errors should be presented to the user, because it results from an invalid url, which may result from various circumstances.
+   - fetch all businesses, compare count to params number
+   - if count is 0 or 1, full array has not yet loaded
+   - this will not work at scale, only for small set of entities.
+2. fix dead links - enumerated in previous todo's
+
+---
+
+`previous todo's`
+
+<!-- copied from may 15 -->
+
+####`todo - May 15`
+
+`business show:`
+
+1. add photo button - click
+   bring to business CRUD page - add photo
+   - create simple biz crud landing page
+   - 2 options:
+     1. yelp.com - separate hash files/folders for each business,
+        to intercept user photos
+     2. businesses / addPhotos
+   - not sure why this is done by yelp. if I implement it simply,
+     I can port it over to method 1 if necessary later on.
+   - _update_ because user submitted images may be problematic to link with a business, and because associating images with a given business may cause bandwidth issues for that entity: make photo upload a separate component.
+   - each container can max out at 50 photos, or a certain
+   - when 'add photo' button is clicked, app asks database if container is full
+   - if not full, use latest container hash to add photos
+   - if full, create new container hash
+
+####`todo - May 12`
+
+1. **SOLVED** (window resize beyond .75% breaks page rendering)
+   - adjust css to stop right side of nav bar from shrinking too far
 2. reviews count on index splash needs to be centered
 3. BusinessShow - scrollIntoView
    - on refresh, don't scroll to top (maintain scroll position)
@@ -12,10 +51,10 @@
 
 ---
 
+## ###`previous notes`
+
 1. business show share button links to social
 2. business show redirect to home on bad url
-
-&nbsp;
 
 ---
 

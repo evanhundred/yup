@@ -1,33 +1,36 @@
-import { useEffect, useState } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./navigation.css";
 import githubLogo from "../../assets/images/github.png";
+import githubLogoBlack from "../../assets/images/github-black.png";
 import linkedinLogo from "../../assets/images/linkedin.png";
+import linkedinLogoBlack from "../../assets/images/linkedin-black.png";
 import SearchIcon from "../../assets/images/search.png";
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
 
   const location = useLocation();
+  const blackTextOnWhite = useMemo(() => {
+    return ["businesses", "search", "biz-photos", "biz-user-photos"];
+  }, []);
   const [pageType, setPageType] = useState(
-    location.pathname.includes("businesses") ||
-      location.pathname.includes("search")
+    blackTextOnWhite.some((pageType) => location.pathname.includes(pageType))
       ? "business"
       : "index"
   );
 
   useEffect(() => {
     if (
-      location.pathname.includes("businesses") ||
-      location.pathname.includes("search")
+      blackTextOnWhite.some((pageType) => location.pathname.includes(pageType))
     ) {
       setPageType("business");
     } else {
       setPageType("index");
     }
-  }, [location]);
+  }, [location, blackTextOnWhite]);
 
   let sessionLinks;
   if (sessionUser) {
@@ -35,7 +38,7 @@ const Navigation = () => {
   } else {
     sessionLinks = (
       <>
-        <div className="session-link">
+        <div className="session-link log-in-button">
           <NavLink to="/login">Log In</NavLink>
         </div>
         <div className="session-link signupButton">
@@ -74,7 +77,10 @@ const Navigation = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={githubLogo} alt="GitHub" />
+                <img
+                  src={pageType === "business" ? githubLogoBlack : githubLogo}
+                  alt="GitHub"
+                />
               </a>
             </div>
             <div id="linkedin">
@@ -83,7 +89,12 @@ const Navigation = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={linkedinLogo} alt="LinkedIn" />
+                <img
+                  src={
+                    pageType === "business" ? linkedinLogoBlack : linkedinLogo
+                  }
+                  alt="LinkedIn"
+                />
               </a>
             </div>
           </div>

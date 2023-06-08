@@ -49,4 +49,9 @@
 }
 .content-nav-bar-container div.write-review-button.container {
   background-color: #e34234;
+  cursor: pointer;
+}
+
+.content-nav-bar-container div.button-container {
+  cursor: pointer;
 }

@@ -1,30 +1,36 @@
 import { useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getBusiness, fetchBusiness } from "../../store/businesses";
+import {
+  getBusiness,
+  fetchBusiness,
+  fetchBusinesses
+} from "../../store/businesses";
 import "./index.css";
 import TitleCard from "./TitleCard";
 import MainContent from "./MainContent";
 
 const BusinessShow = ({ props }) => {
-  console.log(useParams());
   const dispatch = useDispatch();
   const history = useHistory();
   const { businessId } = useParams();
 
   const business = useSelector(getBusiness(businessId));
-
-  // if !business, redirect to home
-  if (!business) history.push(`/`);
+  const businessCount = useSelector(
+    (state) => Object.values(state.businesses).length
+  );
 
   useEffect(() => {
     dispatch(fetchBusiness(businessId));
   }, [businessId, dispatch]);
 
-  if (!business) return null;
+  useEffect(() => {
+    dispatch(fetchBusinesses());
+  }, [dispatch]);
 
-  // if (props === "goToReviews") {
-  // }
+  if (businessCount > 1 && businessCount < parseInt(businessId))
+    history.push(`/`);
+  if (!business) return <div className="loading">loading...</div>;
 
   return (
     <>

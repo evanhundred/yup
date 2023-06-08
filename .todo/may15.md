@@ -1,9 +1,24 @@
-## `todo - May 12`
+## `todo - May 15`
 
-### Open issues
+1. add photo button - click
+   bring to business CRUD page - add photo
+   - create simple biz crud landing page
+   - 2 options:
+     1. yelp.com - separate hash files/folders for each business,
+        to intercept user photos
+     2. businesses / addPhotos
+   - not sure why this is done by yelp. if I implement it simply,
+     I can port it over to method 1 if necessary later on.
+   - _update_ because user submitted images may be problematic to link with a business, and because associating images with a given business may cause bandwidth issues for that entity: make photo upload a separate component.
+   - each container can max out at 50 photos, or a certain
+   - when 'add photo' button is clicked, app asks database if container is full
+   - if not full, use latest container hash to add photos
+   - if full, create new container hash
 
-1. window resize beyond .75% breaks page rendering
-   - **SOLVED**&nbsp;(double check) - adjust css to stop right side of nav bar from shrinking too far
+### from may 12
+
+1. **SOLVED** (window resize beyond .75% breaks page rendering)
+   - adjust css to stop right side of nav bar from shrinking too far
 2. reviews count on index splash needs to be centered
 3. BusinessShow - scrollIntoView
    - on refresh, don't scroll to top (maintain scroll position)
