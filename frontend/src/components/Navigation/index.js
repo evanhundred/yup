@@ -14,7 +14,7 @@ const Navigation = () => {
 
   const location = useLocation();
   const blackTextOnWhite = useMemo(() => {
-    return ["businesses", "search", "biz-photos"];
+    return ["businesses", "search", "biz-photos", "biz-user-photos"];
   }, []);
   const [pageType, setPageType] = useState(
     blackTextOnWhite.some((pageType) => location.pathname.includes(pageType))

@@ -96,6 +96,8 @@ h3 {
   background: black;
   border-radius: 10px 0 0 10px;
   flex: 1;
+  /* flex: 0; */
+
   /* min-width: 60vw; */
   /* flex: 1 1 auto; */
 }
@@ -116,7 +118,6 @@ h3 {
 .photo-container img {
   /* height: */
   max-height: 80vh;
-
   max-width: 50vw;
   width: auto;
   height: auto;
@@ -127,7 +128,6 @@ h3 {
   /* background: black; */
   width: 100%;
   display: flex;
-  /* flex: 0; */
   /* height: contain;
   position: relative; */
 }
@@ -135,7 +135,10 @@ h3 {
 .modal-right-side {
   /* position: relative; */
   width: 30vw;
-  flex: none;
+  min-width: 30vw;
+  /* flex: none; */
+  flex: 0;
+
   /* padding: 2em 1em; */
   display: flex;
   flex-direction: column;
