@@ -62,7 +62,7 @@ const MainContent = ({ business = null, props }) => {
 };
 
 const ContentNavBar = ({ business }) => {
-  const location = useLocation();
+  // const location = useLocation();
   const history = useHistory();
 
   // console.log(location);
