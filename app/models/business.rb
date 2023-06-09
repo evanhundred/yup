@@ -27,5 +27,9 @@ class Business < ApplicationRecord
         foreign_key: :business_id,
         inverse_of: :business
 
+    has_one :biz_photo_box,
+        foreign_key: :business_id,
+        inverse_of: :business
+
     has_many_attached :photos
 end
