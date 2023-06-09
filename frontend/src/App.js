@@ -10,6 +10,7 @@ import EditReviewForm from "./components/EditReviewForm";
 import SearchResults from "./components/SearchResults";
 import BusinessAddUserPhotos from "./components/BusinessAddUserPhotos";
 import BusinessPhotos from "./components/BusinessPhotos";
+import BizPhotoBoxIndex from "./components/BizPhotoBoxIndex";
 
 function App() {
   return (
@@ -46,6 +47,9 @@ function App() {
         </Route>
         <Route path="/search">
           <SearchResults />
+        </Route>
+        <Route path="/biz-photo-boxes">
+          <BizPhotoBoxIndex />
         </Route>
       </Switch>
       <Footer />
