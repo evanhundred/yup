@@ -15,25 +15,24 @@ export const receiveBizPhotoBox = (bizPhotoBox) => ({
 });
 
 export const getBizPhotoBox =
-  (bizPhotoBoxId) =>
+  (businessId) =>
   ({ bizPhotoBoxes }) => {
-    return bizPhotoBoxes[bizPhotoBoxId];
+    // debugger;
+    return bizPhotoBoxes[businessId];
   };
 
-export const fetchBizPhotoBox =
-  ({ businessId }) =>
-  async (dispatch) => {
-    const res = await csrfFetch(
-      `/api/businesses/${businessId}/biz-photo-boxes/1`
-    );
-    let data;
-    if (res.ok) {
-      data = await res.json();
-      dispatch(receiveBizPhotoBox(data));
-    } else {
-      data = res.errors;
-    }
-  };
+export const fetchBizPhotoBox = (businessId) => async (dispatch) => {
+  const res = await csrfFetch(
+    `/api/businesses/${businessId}/biz-photo-boxes/1`
+  );
+  let data;
+  if (res.ok) {
+    data = await res.json();
+    dispatch(receiveBizPhotoBox(data));
+  } else {
+    data = res.errors;
+  }
+};
 
 const bizPhotoBoxesReducer = (preloadedState = {}, action) => {
   const newState = { ...preloadedState };
