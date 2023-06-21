@@ -49,7 +49,7 @@ function App() {
         <Route path="/search">
           <SearchResults />
         </Route>
-        <Route path="/businesses/:business_id/biz-photo-boxes/1">
+        <Route path="/businesses/:businessId/biz-photo-boxes/1">
           <BizPhotoBoxShow />
         </Route>
       </Switch>

@@ -56,23 +56,6 @@ export const fetchBusiness = (businessId) => async (dispatch) => {
     const errors = await res.statusText;
     dispatch(receiveErrors(errors));
   }
-
-  // {"title":"Server Error",
-  // "message":"ActiveRecord::RecordNotFound - Couldn't find Business with 'id'=22",
-  // "stack":["app/controllers/api/businesses_controller.rb:15:in `show'"]}
-
-  // Response {
-  // type: "basic",
-  // url: "http://localhost:3000/api/businesses/22",
-  // redirected: false,
-  // status: 500,
-  // ok: false,
-  // statusText: "Internal Server Error",
-  // headers: Headers(21),
-  // body: ReadableStream, bodyUsed: false
-  // }
-
-  // dispatch(receiveErrors(data));
 };
 
 const businessesReducer = (preloadedState = {}, action) => {

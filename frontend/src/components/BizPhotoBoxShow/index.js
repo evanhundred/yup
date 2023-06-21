@@ -4,13 +4,24 @@ import { useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBizPhotoBox, fetchBizPhotoBox } from "../../store/bizPhotoBoxes";
+import { getBusiness, fetchBusiness } from "../../store/businesses";
 
 const BizPhotoBoxShow = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { businessId } = useParams();
 
-  const bizPhotoBox = useSelector(getBizPhotoBox(businessId));
+  // const business = useSelector(getBusiness(businessId));
+
+  // useEffect(() => {
+  //   dispatch(fetchBusiness(businessId));
+  // }, [businessId, dispatch]);
+
+  console.log(useParams());
+  console.log();
+  // debugger;
+  // const bizPhotoBox = useSelector(getBizPhotoBox(businessId));
+  // const bizPhotoBox = useSelector((state) => state.bizPhotoBoxes[0]);
 
   useEffect(() => {
     dispatch(fetchBizPhotoBox(businessId));
