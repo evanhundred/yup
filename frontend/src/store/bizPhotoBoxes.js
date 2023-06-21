@@ -31,7 +31,7 @@ export const fetchBizPhotoBox = (businessId) => async (dispatch) => {
   const res = await csrfFetch(
     `/api/businesses/${businessId}/biz_photo_boxes/1`
   ).catch((errors) => receiveErrors(errors));
-  console.log(res);
+  // console.log(res);
   let data;
   if (res.ok) {
     data = await res.json();
@@ -49,7 +49,7 @@ const bizPhotoBoxesReducer = (preloadedState = {}, action) => {
     case RECEIVE_BIZ_PHOTO_BOXES:
       return { ...newState, ...action.bizPhotoBoxes };
     case RECEIVE_BIZ_PHOTO_BOX:
-      newState[action.bizBhotoBoxes.id] = action.bizPhotoBox;
+      newState[action.bizPhotoBox.id] = action.bizPhotoBox;
       return newState;
     case RECEIVE_ERRORS:
       return { ...newState, ...action.errors };

@@ -20,7 +20,7 @@ const BusinessShow = ({ props }) => {
     (state) => Object.values(state.businesses).length
   );
 
-  console.log(useParams());
+  // console.log(useParams());
   // debugger;
   useEffect(() => {
     dispatch(fetchBusiness(businessId));

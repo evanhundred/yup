@@ -11,16 +11,14 @@ const BizPhotoBoxShow = () => {
   const history = useHistory();
   const { businessId } = useParams();
 
-  // const business = useSelector(getBusiness(businessId));
+  const business = useSelector(getBusiness(businessId));
 
-  // useEffect(() => {
-  //   dispatch(fetchBusiness(businessId));
-  // }, [businessId, dispatch]);
+  useEffect(() => {
+    dispatch(fetchBusiness(businessId));
+  }, [businessId, dispatch]);
 
-  console.log(useParams());
-  console.log();
-  // debugger;
-  // const bizPhotoBox = useSelector(getBizPhotoBox(businessId));
+  const bizPhotoBox = useSelector(getBizPhotoBox(businessId));
+//   console.log(bizPhotoBox);
   // const bizPhotoBox = useSelector((state) => state.bizPhotoBoxes[0]);
 
   useEffect(() => {
@@ -30,7 +28,14 @@ const BizPhotoBoxShow = () => {
   return (
     <>
       <div className="biz-photo-box-container">
-        <h1>Welcome to biz photo box.</h1>
+        <h2>Photos for {bizPhotoBox.name}</h2>
+        <ul className="bpb-grid">
+          {bizPhotoBox.imageUrls.map((photo, idx) => (
+            <li key={`${bizPhotoBox.name}Photo${idx}`} className="user-photo">
+              <img src={photo} alt="delicious splendor" />
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );
