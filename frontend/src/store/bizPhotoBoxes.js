@@ -29,7 +29,7 @@ export const getBizPhotoBox =
 
 export const fetchBizPhotoBox = (businessId) => async (dispatch) => {
   const res = await csrfFetch(
-    `/api/businesses/${businessId}/biz_photo_boxes/1`
+    `/api/businesses/${businessId}/biz_photo_box`
   ).catch((errors) => receiveErrors(errors));
   // console.log(res);
   let data;

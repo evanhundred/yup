@@ -18,12 +18,19 @@ const BizPhotoBoxShow = () => {
   }, [businessId, dispatch]);
 
   const bizPhotoBox = useSelector(getBizPhotoBox(businessId));
-//   console.log(bizPhotoBox);
+  //   console.log(bizPhotoBox);
   // const bizPhotoBox = useSelector((state) => state.bizPhotoBoxes[0]);
 
   useEffect(() => {
     dispatch(fetchBizPhotoBox(businessId));
   }, [businessId, dispatch]);
+
+  if (!bizPhotoBox || !business)
+    return (
+      <>
+        <div className="loading-text">loading...</div>
+      </>
+    );
 
   return (
     <>
