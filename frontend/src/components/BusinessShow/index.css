@@ -30,6 +30,10 @@
   padding-left: 30px;
 }
 
+#invalid-business-container .right-side.narrow-size {
+  padding-top: 35px;
+}
+
 #invalid-business-container .right-side img {
   padding: 0 30px 0;
   display: block;
