@@ -3,7 +3,12 @@
 
 #invalid-business-container {
   padding-left: 45px;
+  padding-top: 60px;
   display: flex;
+}
+
+#invalid-business-container.narrow-size {
+  flex-direction: column;
 }
 
 /* #invalid-business-container > * { */
@@ -14,14 +19,15 @@
   flex: 1; */
 /* } */
 
-#invalid-business-container .left-side {
+#invalid-business-container .left-side.full-size {
   width: 30%;
   display: flex;
   flex-direction: column;
 }
 
-#invalid-business-container .right-side {
+#invalid-business-container .right-side.full-size {
   width: 60%;
+  padding-left: 30px;
 }
 
 #invalid-business-container .right-side img {
@@ -34,9 +40,12 @@
 #invalid-business-container h2 {
   font-size: 30px;
   font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
 }
 
 #invalid-business-container h3 {
+  padding-top: 20px;
   font-size: 22px;
   font-weight: 400;
 }
