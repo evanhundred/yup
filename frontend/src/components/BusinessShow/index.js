@@ -17,6 +17,8 @@ const BusinessShow = ({ props }) => {
     dispatch(fetchBusiness(businessId)); // .catch((errors) => console.log(errors));
   }, [businessId, dispatch]);
 
+  if (!business) return <div className="loading">loading...</div>;
+
   if (business.status === 500)
     return (
       <div id="invalid-business-container">
@@ -31,8 +33,6 @@ const BusinessShow = ({ props }) => {
         </div>
       </div>
     );
-
-  if (!business) return <div className="loading">loading...</div>;
 
   return (
     <>
