@@ -1,37 +1,37 @@
 import { useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getBusiness,
-  fetchBusiness,
-  fetchBusinesses
-} from "../../store/businesses";
+import { getBusiness, fetchBusiness } from "../../store/businesses";
 import "./index.css";
 import TitleCard from "./TitleCard";
 import MainContent from "./MainContent";
+import webSpider from "../../assets/images/web-spider.jpg";
 
 const BusinessShow = ({ props }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const { businessId } = useParams();
 
   const business = useSelector(getBusiness(businessId));
-  const businessCount = useSelector(
-    (state) => Object.values(state.businesses).length
-  );
 
-  // console.log(useParams());
-  // debugger;
   useEffect(() => {
-    dispatch(fetchBusiness(businessId));
+    dispatch(fetchBusiness(businessId)); // .catch((errors) => console.log(errors));
   }, [businessId, dispatch]);
 
-  useEffect(() => {
-    dispatch(fetchBusinesses());
-  }, [dispatch]);
+  if (business.status === 500)
+    return (
+      <div id="invalid-business-container">
+        <div className="left-side">
+          <h2>We're sorry. We can't find the page you're looking for.</h2>
+          <h3>
+            Please try a new <Link to="/search">search</Link>.
+          </h3>
+        </div>
+        <div className="right-side">
+          <img src={webSpider} alt="web spider" />
+        </div>
+      </div>
+    );
 
-  if (businessCount > 1 && businessCount < parseInt(businessId))
-    history.push(`/`);
   if (!business) return <div className="loading">loading...</div>;
 
   return (

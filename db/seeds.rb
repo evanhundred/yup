@@ -197,6 +197,10 @@ require "open-uri"
         name: "Devoción",
         business_id: 1
     )
+
+    # biz_photo_box_1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/yup-prod/"))
+
+
     biz_photo_box_2 = BizPhotoBox.create!(
         name: "El Paso Mexican Grill",
         business_id: 2

@@ -23,6 +23,7 @@ export const receiveErrors = (errors) => ({
 export const getBusiness =
   (businessId) =>
   ({ businesses }) => {
+    if (businesses.errors) return businesses.errors;
     return businesses[businessId];
   };
 
@@ -46,16 +47,16 @@ export const fetchBusinesses = () => async (dispatch) => {
 
 export const fetchBusiness = (businessId) => async (dispatch) => {
   const res = await csrfFetch(`/api/businesses/${businessId}`).catch((errors) =>
-    receiveErrors(errors)
+    dispatch(receiveErrors(errors))
   );
   let data;
   if (res.ok) {
     data = await res.json();
     dispatch(receiveBusiness(data));
-  } else {
-    const errors = await res.statusText;
-    dispatch(receiveErrors(errors));
-  }
+  } // else {
+  // const errors = await res.statusText;
+  //dispatch(receiveErrors(errors));
+  // }
 };
 
 const businessesReducer = (preloadedState = {}, action) => {
@@ -70,6 +71,7 @@ const businessesReducer = (preloadedState = {}, action) => {
       // newState[]
       return newState;
     case RECEIVE_ERRORS:
+      newState.errors = action.errors;
       return { ...newState, ...action.errors };
     default:
       return preloadedState;

@@ -1,2 +1,29 @@
 @import "./styles/MainContent/MainContent.css";
 @import "./styles/PhotoCard/PhotoCard.css";
+
+#invalid-business-container {
+  padding-left: 45px;
+  display: flex;
+}
+
+#invalid-business-container > * {
+  /* flex-shrink: 1;
+  flex-grow: 0;
+  flex-basis: auto; */
+  flex: 1;
+}
+
+#invalid-business-container .left-side {
+  display: flex;
+  flex-direction: column;
+}
+
+#invalid-business-container h2 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+#invalid-business-container h3 {
+  font-size: 22px;
+  font-weight: 400;
+}
