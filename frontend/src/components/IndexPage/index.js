@@ -24,7 +24,7 @@ const IndexPage = () => {
     return null;
   }
 
-  if (!businesses.length || !businesses[0])
+  if (!businesses.length || !businesses[0].imageUrls)
     return (
       <div>
         <h1>loading...</h1>

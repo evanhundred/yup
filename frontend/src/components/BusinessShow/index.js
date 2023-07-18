@@ -13,30 +13,15 @@ const BusinessShow = ({ props }) => {
   const { businessId } = useParams();
 
   const business = useSelector(getBusiness(businessId));
+
   location.state = null;
-  // console.log(location);
-
-  const imageAttribution = "spider image from freepik.";
-
-  // let layoutWidth;
-  // useEffect(() => {
-  //   if (window.innerWidth >= 932) layoutWidth = "full-size";
-  //   else layoutWidth = "narrow-size";
-  // }, []);
 
   useEffect(() => {
     dispatch(fetchBusiness(businessId)); // .catch((errors) => console.log(errors));
   }, [businessId, dispatch]);
 
-  // console.log("innerWidth:");
-  // console.log(window.innerWidth);
-
-  // const windowWidth = window.innerWidth; // 932 min size for full render
-  // if (windowWidth < 932)
-  const [windowSize, setWindowSize] = useState(0);
   let layoutWidth;
   const updateSize = () => {
-    setWindowSize(window.innerWidth);
     layoutWidth = window.innerWidth >= 600 ? "full-size" : "narrow-size";
   };
   window.addEventListener("resize", updateSize);
