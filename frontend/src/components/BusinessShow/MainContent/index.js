@@ -4,7 +4,7 @@ import { useHistory, useLocation, Link } from "react-router-dom";
 const MainContent = ({ business = null, props }) => {
   // debugger;
   const location = useLocation();
-  // console.log(location);
+  console.log(location);
   let reviewsComponent = document.getElementById("reviews-container");
 
   if (location.state && reviewsComponent && location.state.scrollToReviews) {

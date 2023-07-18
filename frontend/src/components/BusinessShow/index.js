@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
 import "./index.css";
@@ -9,9 +9,14 @@ import webSpider from "../../assets/images/web-spider.jpg";
 
 const BusinessShow = ({ props }) => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const { businessId } = useParams();
 
   const business = useSelector(getBusiness(businessId));
+
+  console.log(location);
+
+  const imageAttribution = "spider image from freepik.";
 
   // let layoutWidth;
   // useEffect(() => {
@@ -23,8 +28,8 @@ const BusinessShow = ({ props }) => {
     dispatch(fetchBusiness(businessId)); // .catch((errors) => console.log(errors));
   }, [businessId, dispatch]);
 
-  console.log("innerWidth:");
-  console.log(window.innerWidth);
+  // console.log("innerWidth:");
+  // console.log(window.innerWidth);
 
   // const windowWidth = window.innerWidth; // 932 min size for full render
   // if (windowWidth < 932)
@@ -36,6 +41,8 @@ const BusinessShow = ({ props }) => {
   };
   window.addEventListener("resize", updateSize);
   layoutWidth = window.innerWidth >= 600 ? "full-size" : "narrow-size";
+
+  location.state = "404";
 
   if (!business) return <div className="loading">loading...</div>;
 

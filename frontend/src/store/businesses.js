@@ -4,6 +4,7 @@ export const RECEIVE_BUSINESSES = "businesses/RECEIVE_BUSINESSES";
 export const RECEIVE_BUSINESS = "businesses/RECEIVE_BUSINESS";
 
 export const RECEIVE_ERRORS = "businesses/RECEIVE_ERRORS";
+export const CLEAR_ERRORS = "businesses/CLEAR_ERRORS";
 
 export const receiveBusinesses = (businesses) => ({
   type: RECEIVE_BUSINESSES,
@@ -18,6 +19,10 @@ export const receiveBusiness = (business) => ({
 export const receiveErrors = (errors) => ({
   type: RECEIVE_ERRORS,
   errors
+});
+
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS
 });
 
 export const getBusiness =
@@ -73,6 +78,8 @@ const businessesReducer = (preloadedState = {}, action) => {
     case RECEIVE_ERRORS:
       newState.errors = action.errors;
       return { ...newState, ...action.errors };
+    case CLEAR_ERRORS:
+      return {};
     default:
       return preloadedState;
   }

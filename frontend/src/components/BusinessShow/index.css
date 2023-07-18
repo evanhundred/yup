@@ -53,3 +53,7 @@
   font-size: 22px;
   font-weight: 400;
 }
+
+#invalid-business-container h3 a {
+  font-weight: 500;
+}

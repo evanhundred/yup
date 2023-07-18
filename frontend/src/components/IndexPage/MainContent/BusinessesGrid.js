@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // import { getBusinesses, fetchBusinesses } from "../../store/businesses";
 
 const BusinessesGrid = ({ businesses }) => {
-  if (!businesses.length)
+  if (!businesses.length || !businesses[0])
     return (
       <div>
         <h1>loading BusinessesGrid...</h1>
