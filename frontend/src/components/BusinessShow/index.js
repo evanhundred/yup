@@ -56,7 +56,7 @@ const BusinessShow = ({ props }) => {
           </h3>
         </div>
         <div className={`right-side ${layoutWidth}`}>
-          <img src={webSpider} alt="web spider" title="image by freepik" />
+          <img src={webSpider} alt="web spider" />
         </div>
       </div>
     );

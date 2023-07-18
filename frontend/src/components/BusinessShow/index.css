@@ -2,8 +2,9 @@
 @import "./styles/PhotoCard/PhotoCard.css";
 
 #invalid-business-container {
-  padding-left: 45px;
-  padding-top: 60px;
+  padding: 60px 45px 0;
+  /* padding-left: 45px;
+  padding-top: 60px; */
   display: flex;
 }
 
@@ -35,10 +36,18 @@
 }
 
 #invalid-business-container .right-side img {
-  padding: 0 30px 0;
+  /* padding: 0 30px 0; */
   display: block;
   width: 100%;
   /* position: cover; */
+}
+
+#invalid-business-container .right-side.full-size img {
+  padding: 0 30px 0;
+}
+
+#invalid-business-container .right-side.narrow-size img {
+  padding: 0;
 }
 
 #invalid-business-container h2 {
