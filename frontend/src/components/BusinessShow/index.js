@@ -13,8 +13,8 @@ const BusinessShow = ({ props }) => {
   const { businessId } = useParams();
 
   const business = useSelector(getBusiness(businessId));
-
-  console.log(location);
+  location.state = null;
+  // console.log(location);
 
   const imageAttribution = "spider image from freepik.";
 
@@ -42,11 +42,11 @@ const BusinessShow = ({ props }) => {
   window.addEventListener("resize", updateSize);
   layoutWidth = window.innerWidth >= 600 ? "full-size" : "narrow-size";
 
-  location.state = "404";
-
   if (!business) return <div className="loading">loading...</div>;
 
-  if (business.status === 500)
+  if (business.status === 500) {
+    location.state = "404";
+
     return (
       <div id="invalid-business-container" className={layoutWidth}>
         <div className={`left-side ${layoutWidth}`}>
@@ -60,6 +60,7 @@ const BusinessShow = ({ props }) => {
         </div>
       </div>
     );
+  }
 
   return (
     <>
