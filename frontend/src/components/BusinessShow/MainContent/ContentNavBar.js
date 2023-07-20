@@ -1,6 +1,8 @@
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
+import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
+
 const ContentNavBar = ({ business }) => {
   const history = useHistory();
 
@@ -25,10 +27,13 @@ const ContentNavBar = ({ business }) => {
         />
         <div className="share-modal-box">
           <div className="share-modal-content">
-            <h2 className="share-modal-title">Share business</h2>
-            <div className="close-x" onClick={(e) => handleCloseModal(e)}>
-              X
+            <div className="share-modal-line-1">
+              <h2 className="share-modal-title">Share business</h2>
+              <div className="close-x" onClick={(e) => handleCloseModal(e)}>
+                X
+              </div>
             </div>
+            <div className="share-modal-line-2"></div>
           </div>
         </div>
       </div>

@@ -29,14 +29,23 @@
 
 .share-modal-content {
   width: 100%;
+  /* display: flex;
+  justify-content: space-between; */
+  padding: 7vh 6vh;
+}
+
+.share-modal-line-1 {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 5vh 4vh;
 }
 
 h2.share-modal-title,
 .close-x {
-  font-size: 30px;
+  font-size: 34px;
+}
+h2.share-modal-title {
+  font-weight: 600;
 }
 
 .close-x {
