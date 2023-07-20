@@ -1,5 +1,6 @@
 import { useHistory, useLocation, Link } from "react-router-dom";
-// import { useState } from "react";
+import { useState } from "react";
+import "./share-modal.css";
 
 const MainContent = ({ business = null, props }) => {
   // debugger;
@@ -19,7 +20,7 @@ const MainContent = ({ business = null, props }) => {
     const reviewsComponent = document.getElementById("reviews-container");
     reviewsComponent.scrollIntoView({ behavior: "smooth" });
   }
-  // debugger;
+
   return (
     <>
       <div className="main-content-container">
@@ -62,22 +63,31 @@ const MainContent = ({ business = null, props }) => {
 };
 
 const ContentNavBar = ({ business }) => {
-  // const location = useLocation();
   const history = useHistory();
 
-  // console.log(location);
+  const [showShareModal, setShowShareModal] = useState(false);
 
-  // let reviewsComponent = document.getElementById("reviews-container");
-  // if (location.state.scrollToReviews) {
-  //   reviewsComponent.scrollIntoView({ behavior: "smooth" });
-  // }
+  const html = document.querySelector("html");
 
-  // if (location.state && reviewsComponent && location.state.scrollToReviews) {
-  //   reviewsComponent.scrollIntoView({ behavior: "smooth" });
-  // } else {
-  //   const rootElement = document.getElementById("root");
-  //   rootElement.scrollIntoView(true);
-  // }
+  const ShareModal = () => {
+    const handleCloseModal = (e) => {
+      e.preventDefault();
+      if (html) html.style.overflow = "auto";
+      setShowShareModal(false);
+      const navBar = document.getElementById("nav-bar");
+      navBar.classList.remove("backgrounded");
+    };
+
+    return (
+      <div className="share-modal-container">
+        <div
+          className="share-modal-overlay"
+          onClick={(e) => handleCloseModal(e)}
+        />
+        <div className="share-modal-content"></div>
+      </div>
+    );
+  };
 
   const handleAddReviewClick = (e) => {
     e.preventDefault();
@@ -86,23 +96,14 @@ const ContentNavBar = ({ business }) => {
     // history.push(location.pathname.concat("?goToReviews"));
   };
 
-  // need to come up with a hash for each biz entity, to use for this
-  // likely this is a feature made necessary by yelp's scale and links to real
-  // world entities, not necessary
-  // if I can make a simple hashing function, it would have no functional value,
-  // but would not be a sacrifice, and would be a handy place to expand if
-  // necessary due to scale.
-  // this feature could have the benefit of keeping user-added photos in a
-  // 'sandbox', where they can be inspected and copied to the database where appropriate
-  // this should result in  upload to a aws folder for each of these sandboxes
-  // in contrast, user uploaded user photos, or business owner uploaded business
-  // photos, can be added directly to the related aws folder
+  // const handleAddPhotoClick = (e) => {
+  //   e.preventDefault();
+  //   history.push(`/biz-user-photos/${business.id}`);
+  // };
 
-  // for now, I will use just the business number
-
-  const handleAddPhotoClick = (e) => {
-    e.preventDefault();
-    history.push(`/biz-user-photos/${business.id}`);
+  const handleShareClick = (e) => {
+    if (html) html.style.overflow = "hidden";
+    setShowShareModal(true);
   };
 
   return (
@@ -111,7 +112,6 @@ const ContentNavBar = ({ business }) => {
         className="write-review-button container"
         onClick={(e) => handleAddReviewClick(e)}
       >
-        {/* <a href="#"> */}
         <div className="write-review-button content">
           <div className="star-icon icon">
             <i className="fa-regular fa-star"></i>
@@ -120,11 +120,12 @@ const ContentNavBar = ({ business }) => {
             <h2>Write a review</h2>
           </div>
         </div>
-        {/* </a> */}
       </div>
 
+      {showShareModal && <ShareModal />}
+
       {/* <Link to="/biz-user-photos"> */}
-      <div
+      {/* <div
         className="add-photo-button button-container container"
         onClick={(e) => handleAddPhotoClick(e)}
       >
@@ -136,10 +137,13 @@ const ContentNavBar = ({ business }) => {
             <h2>Add Photo</h2>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* </Link> */}
 
-      <div className="share-button container button-container">
+      <div
+        className="share-button container button-container"
+        onClick={(e) => handleShareClick(e)}
+      >
         <div className="share-button content">
           <div className="share-icon icon">
             <i className="fa-solid fa-arrow-up-from-bracket"></i>

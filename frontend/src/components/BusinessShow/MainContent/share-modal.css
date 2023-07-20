@@ -1,0 +1,31 @@
+.share-modal-overlay {
+  background: rgba(49, 49, 49, 0.8);
+}
+
+.share-modal-container,
+.share-modal-overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.share-modal-container {
+  z-index: 1;
+}
+
+.share-modal-content {
+  position: absolute;
+  /* background-color: white; */
+  background: #f1f1f1;
+  top: 10px;
+  display: flex;
+  border-radius: 10px;
+  width: 50vw;
+  height: 90vh;
+  /* z-index: 2; */
+}

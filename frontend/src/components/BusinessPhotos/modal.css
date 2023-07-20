@@ -20,7 +20,7 @@
 
 .modal-content {
   position: absolute;
-  background-color: white;
+  /* background-color: white; */
   top: 8%;
   display: flex;
   justify-content: space-between;
