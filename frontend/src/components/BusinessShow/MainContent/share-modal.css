@@ -18,13 +18,27 @@
   z-index: 1;
 }
 
-.share-modal-content {
+.share-modal-box {
   position: absolute;
   background: #f1f1f1;
-  /* top: 10px; */
-  /* bottom: 10px; */
   display: flex;
   border-radius: 10px;
   width: 700px;
   height: 98.5vh;
+}
+
+.share-modal-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5vh 4vh;
+}
+
+h2.share-modal-title,
+.close-x {
+  font-size: 30px;
+}
+
+.close-x {
+  cursor: pointer;
 }

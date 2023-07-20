@@ -23,7 +23,14 @@ const ContentNavBar = ({ business }) => {
           className="share-modal-overlay"
           onClick={(e) => handleCloseModal(e)}
         />
-        <div className="share-modal-content"></div>
+        <div className="share-modal-box">
+          <div className="share-modal-content">
+            <h2 className="share-modal-title">Share business</h2>
+            <div className="close-x" onClick={(e) => handleCloseModal(e)}>
+              X
+            </div>
+          </div>
+        </div>
       </div>
     );
   };
