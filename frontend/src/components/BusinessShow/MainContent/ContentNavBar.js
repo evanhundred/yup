@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 
 import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
 
@@ -10,55 +10,55 @@ const ContentNavBar = ({ business }) => {
 
   const html = document.querySelector("html");
 
-  const handleCloseModal = useCallback(
-    (e) => {
-      e.preventDefault();
-      if (html) html.style.overflow = "auto";
-      setShowShareModal(false);
-      // const navBar = document.getElementById("nav-bar");
-      // navBar.classList.remove("backgrounded");
-      unBackgroundNavBar();
-      // stopListeningForEsc();
-      // const containerDiv = document.querySelector(".share-modal-container");
-      // containerDiv.removeEventListener("keydown", closeOnPressEsc);
-    },
-    [html]
-  );
-  const closeOnPressEsc = useCallback(
-    (e) => {
-      if (e.key === "Escape") {
-        handleCloseModal(e);
-      }
-    },
-    [handleCloseModal]
-  );
-  // const stopListeningForEsc = useCallback(() => {
-  //   const containerDiv = document.querySelector(".share-modal-container");
-  //   containerDiv.removeEventListener("keydown", closeOnPressEsc);
-  // }, [closeOnPressEsc]);
-
-  const listenForEsc = useCallback(() => {
-    // alert("listening for Esc.");
-
+  // const setSetShow = (value) => setShowShareModal(value);
+  const handleCloseModal = (e) => {
+    e.preventDefault();
+    if (html) html.style.overflow = "auto";
+    // setShowShareModal(false);
+    setShowShareModal(false);
+    // const navBar = document.getElementById("nav-bar");
+    // navBar.classList.remove("backgrounded");
+    unBackgroundNavBar();
+    // stopListeningForEsc();
     // const containerDiv = document.querySelector(".share-modal-container");
-    document.addEventListener("keydown", (e) => closeOnPressEsc(e));
-  }, [closeOnPressEsc]);
+    // html.removeEventListener("keydown", callback);
+  };
+  const closeOnPressEsc = (e) => {
+    if (e.key === "Escape") {
+      handleCloseModal(e);
+      html.removeEventListener("keydown", closeOnPressEsc);
+      console.log(e);
+    }
+  };
 
-  // useEffect(() => {
-  //   listenForEsc();
-  // }, [listenForEsc]);
+  const listenForEsc = () => {
+    // const containerDiv = document.querySelector(".share-modal-container");
+
+    html.addEventListener("keydown", closeOnPressEsc, { once: true });
+    // console.log("hi");
+
+    // html.addEventListener("keydown", (e) => closeOnPressEsc(e));
+    // document.addEventListener("keydown", (e) => closeOnPressEsc(e));
+  };
+
+  // const stopListeningForEsc = () => {
+  //   // const containerDiv = document.querySelector(".share-modal-container");
+  //   html.removeEventListener("keydown", closeOnPressEsc);
+  //   // document.removeEventListener("keydown", (e) => closeOnPressEsc(e));
+  //   // console.log("hi");
+  // };
 
   const ShareModal = () => {
-    // const listenForEsc = (e) => {
-    //   e.preventDefault();
-    //   alert("hi.");
-
-    //   const containerDiv = document.querySelector(".share-modal-container");
-    //   containerDiv.addEventListener("keydown", (e) => closeOnPressEsc(e));
-    // };
+    // listenForEsc();
 
     return (
-      <div className="share-modal-container" onLoad={listenForEsc()}>
+      <div
+        className="share-modal-container"
+        // onKeyDown={(e) => {
+        //   closeOnPressEsc(e);
+        // }}
+        onLoad={listenForEsc()}
+      >
         <div
           className="share-modal-overlay"
           onClick={(e) => handleCloseModal(e)}
@@ -78,6 +78,11 @@ const ContentNavBar = ({ business }) => {
     );
   };
 
+  // useEffect(() => {
+  //   if (!document.querySelector(".share-modal-container"))
+  //     stopListeningForEsc();
+  // }, [stopListeningForEsc]);
+
   const handleAddReviewClick = (e) => {
     e.preventDefault();
     history.push(`/businesses/${business.id}/reviews/new`);
@@ -96,6 +101,8 @@ const ContentNavBar = ({ business }) => {
     backgroundNavBar();
   };
 
+  // if (!showShareModal) stopListeningForEsc();
+
   return (
     <div className="content-nav-bar-container">
       <div
@@ -113,6 +120,7 @@ const ContentNavBar = ({ business }) => {
       </div>
 
       {showShareModal && <ShareModal />}
+      {/* {!showShareModal && stopListeningForEsc()} */}
 
       {/* <Link to="/biz-user-photos"> */}
       {/* <div

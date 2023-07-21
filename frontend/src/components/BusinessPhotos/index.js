@@ -110,8 +110,18 @@ const BusinessPhotos = () => {
       // navBar.classList.remove("backgrounded");
     };
 
+    const closeOnPressEsc = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal(e);
+      }
+    };
+
+    const listenForEsc = () => {
+      document.addEventListener("keydown", (e) => closeOnPressEsc(e));
+    };
+
     return (
-      <div className="modal-container">
+      <div className="modal-container" onLoad={listenForEsc()}>
         <div className="overlay" onClick={(e) => handleCloseModal(e)} />
         <div className="modal-content">
           <div className="close-box" onClick={(e) => handleCloseModal(e)}>
