@@ -15,8 +15,9 @@ const ContentNavBar = ({ business }) => {
       e.preventDefault();
       if (html) html.style.overflow = "auto";
       setShowShareModal(false);
-      const navBar = document.getElementById("nav-bar");
-      navBar.classList.remove("backgrounded");
+      // const navBar = document.getElementById("nav-bar");
+      // navBar.classList.remove("backgrounded");
+      unBackgroundNavBar();
     };
 
     return (
@@ -55,6 +56,7 @@ const ContentNavBar = ({ business }) => {
   const handleShareClick = (e) => {
     if (html) html.style.overflow = "hidden";
     setShowShareModal(true);
+    backgroundNavBar();
   };
 
   return (

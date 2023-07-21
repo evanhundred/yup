@@ -7,6 +7,8 @@ import "./modal.css";
 import rightArrowCircle from "../../assets/images/right-arrow-circle.png";
 import leftArrowCircle from "../../assets/images/left-arrow-circle.png";
 
+import { backgroundNavBar, unBackgroundNavBar } from "../../utils/modal";
+
 // import { ShowPhotoModal } from "../../context/Modal";
 import x from "../../assets/images/close.png";
 
@@ -39,8 +41,9 @@ const BusinessPhotos = () => {
       setShowPhotoModal(true);
       // console.log(e.target.src);
       // setChosenPhoto(business.imageUrls[chosenPhotoIdx]);
-      const navBar = document.getElementById("nav-bar");
-      navBar.classList.add("backgrounded");
+      backgroundNavBar();
+      // const navBar = document.getElementById("nav-bar");
+      // navBar.classList.add("backgrounded");
     };
 
     let colIdx = 0;
@@ -85,9 +88,6 @@ const BusinessPhotos = () => {
     const handleNavClick = (e, direction) => {
       e.preventDefault();
 
-      // console.log("og idx:");
-      // console.log(chosenPhotoIdx);
-
       const amountPhotos = business.imageUrls.length;
 
       let newPhotoIdx;
@@ -100,28 +100,14 @@ const BusinessPhotos = () => {
         else newPhotoIdx = amountPhotos - 2;
       }
       setChosenPhotoIdx(newPhotoIdx);
-
-      // console.log("next idx:");
-      // console.log(newPhotoIdx);
-
-      // if (chosenPhotoIdx < amountPhotos - 1 && direction === "next") {
-      //   setChosenPhotoIdx(chosenPhotoIdx + 1);
-      // } else if (chosenPhotoIdx === amountPhotos - 1) {
-      //   setChosenPhotoIdx(0);
-      // } else if (chosenPhotoIdx > 0 && direction === "prev") {
-      //   setChosenPhotoIdx(chosenPhotoIdx - 1);
-      // } else if (chosenPhotoIdx === 0 && direction === "prev") {
-      //   setChosenPhotoIdx(amountPhotos - 1);
-      // }
-
-      // setChosenPhoto(business.imageUrls[chosenPhotoIdx]);
     };
 
     const handleCloseModal = (e) => {
       e.preventDefault();
       setShowPhotoModal(false);
-      const navBar = document.getElementById("nav-bar");
-      navBar.classList.remove("backgrounded");
+      unBackgroundNavBar();
+      // const navBar = document.getElementById("nav-bar");
+      // navBar.classList.remove("backgrounded");
     };
 
     return (
