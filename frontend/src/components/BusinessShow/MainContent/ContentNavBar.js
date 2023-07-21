@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import { useCallback, useState, useEffect } from "react";
+import { useCallback, useState } from "react";
 
 import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
 
@@ -38,10 +38,10 @@ const ContentNavBar = ({ business }) => {
   // }, [closeOnPressEsc]);
 
   const listenForEsc = useCallback(() => {
-    alert("listening for Esc.");
+    // alert("listening for Esc.");
 
-    const containerDiv = document.querySelector(".share-modal-container");
-    containerDiv.addEventListener("keydown", (e) => closeOnPressEsc(e));
+    // const containerDiv = document.querySelector(".share-modal-container");
+    document.addEventListener("keydown", (e) => closeOnPressEsc(e));
   }, [closeOnPressEsc]);
 
   // useEffect(() => {
@@ -58,7 +58,7 @@ const ContentNavBar = ({ business }) => {
     // };
 
     return (
-      <div className="share-modal-container">
+      <div className="share-modal-container" onLoad={listenForEsc()}>
         <div
           className="share-modal-overlay"
           onClick={(e) => handleCloseModal(e)}
