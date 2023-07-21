@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 
 import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
 
@@ -10,15 +10,52 @@ const ContentNavBar = ({ business }) => {
 
   const html = document.querySelector("html");
 
-  const ShareModal = () => {
-    const handleCloseModal = (e) => {
+  const handleCloseModal = useCallback(
+    (e) => {
       e.preventDefault();
       if (html) html.style.overflow = "auto";
       setShowShareModal(false);
       // const navBar = document.getElementById("nav-bar");
       // navBar.classList.remove("backgrounded");
       unBackgroundNavBar();
-    };
+      // stopListeningForEsc();
+      // const containerDiv = document.querySelector(".share-modal-container");
+      // containerDiv.removeEventListener("keydown", closeOnPressEsc);
+    },
+    [html]
+  );
+  const closeOnPressEsc = useCallback(
+    (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal(e);
+      }
+    },
+    [handleCloseModal]
+  );
+  // const stopListeningForEsc = useCallback(() => {
+  //   const containerDiv = document.querySelector(".share-modal-container");
+  //   containerDiv.removeEventListener("keydown", closeOnPressEsc);
+  // }, [closeOnPressEsc]);
+
+  const listenForEsc = useCallback(() => {
+    alert("listening for Esc.");
+
+    const containerDiv = document.querySelector(".share-modal-container");
+    containerDiv.addEventListener("keydown", (e) => closeOnPressEsc(e));
+  }, [closeOnPressEsc]);
+
+  // useEffect(() => {
+  //   listenForEsc();
+  // }, [listenForEsc]);
+
+  const ShareModal = () => {
+    // const listenForEsc = (e) => {
+    //   e.preventDefault();
+    //   alert("hi.");
+
+    //   const containerDiv = document.querySelector(".share-modal-container");
+    //   containerDiv.addEventListener("keydown", (e) => closeOnPressEsc(e));
+    // };
 
     return (
       <div className="share-modal-container">
