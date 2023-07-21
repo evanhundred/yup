@@ -117,7 +117,9 @@ const BusinessPhotos = () => {
     };
 
     const listenForEsc = () => {
-      document.addEventListener("keydown", (e) => closeOnPressEsc(e));
+      document.addEventListener("keydown", (e) => closeOnPressEsc(e), {
+        once: true
+      });
     };
 
     return (
