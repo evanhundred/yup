@@ -28,6 +28,7 @@ const ContentNavBar = ({ business }) => {
 
   const [copySuccess, setCopySuccess] = useState("");
   const textAreaRef = useRef(null);
+  const contactFieldRef = useRef(null);
 
   const copyToClipboard = (e) => {
     textAreaRef.current.select();
@@ -92,6 +93,19 @@ const ContentNavBar = ({ business }) => {
               <div className="left-side-line" />
               <h4>OR</h4>
               <div className="right-side-line" />
+            </div>
+            <div className="share-modal-line-5">
+              <div className="share-to-input">
+                <h4>To</h4>
+                <div className="share-to-field-input-container">
+                  <input
+                    ref={contactFieldRef}
+                    className="contact-input-field"
+                  />
+                </div>
+
+                <p className="info-text">Yup user names or email addresses</p>
+              </div>
             </div>
           </div>
         </div>

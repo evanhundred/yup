@@ -49,7 +49,8 @@
   margin-bottom: 10px;
 }
 
-.share-modal-line-3 {
+.share-modal-line-3,
+.share-to-field-input-container {
   padding: 14px;
   display: flex;
 }
@@ -69,11 +70,17 @@ input.share-link {
   flex-grow: 1;
 }
 
-.share-modal-line-3 {
+.share-modal-line-3,
+.share-to-field-input-container {
   border: 0.1em solid rgb(189, 189, 189);
   border-radius: 5px;
   /* padding: 14px; */
   justify-content: flex-start;
+}
+
+.share-modal-line-3:focus-within,
+.share-to-field-input-container:focus-within {
+  border: 0.1em solid rgb(58, 104, 221);
 }
 
 .link-icon-container img {
@@ -137,6 +144,11 @@ h2.share-modal-title {
   justify-content: space-between;
   margin-top: 20px;
 }
+
+.share-to-field-input-container:focus-within {
+  outline: 1px solid blue;
+  /* border */
+}
 .share-modal-line-4 > div {
   width: 40%;
   margin-top: 20px;
@@ -146,4 +158,29 @@ h2.share-modal-title {
 }
 .share-modal-line-4 > h4 {
   font-size: 36px;
+}
+
+/* .share-to-field-input-container {
+  border: 1.5px solid gray;
+} */
+
+.share-to-field-input-container input {
+  border: none;
+  background: inherit;
+}
+input:focus {
+  outline: none;
+}
+.share-to-input p.info-text {
+  color: rgb(105, 105, 105);
+  font-size: 20px;
+}
+
+p.info-text {
+  padding: 8px;
+  font-weight: 300;
+}
+
+.share-modal-content input {
+  width: 100%;
 }

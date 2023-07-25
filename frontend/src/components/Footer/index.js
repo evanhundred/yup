@@ -49,6 +49,7 @@ const Footer = () => {
           rel="noreferrer"
           target="_blank"
         >
+          {" "}
           Evan Ryan
         </a>
         . Ruby, Rails, PostgreSQL, JavaScript, React, Redux, and related
