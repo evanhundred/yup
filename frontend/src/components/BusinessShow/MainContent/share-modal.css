@@ -36,6 +36,7 @@
 
 .share-modal-line-1,
 .share-modal-line-2,
+.share-modal-line-4,
 .share-fb,
 .share-twitter {
   width: 100%;
@@ -131,4 +132,18 @@ h2.share-modal-title {
   to {
     color: white;
   }
+}
+.share-modal-line-4 {
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.share-modal-line-4 > div {
+  width: 40%;
+  margin-top: 20px;
+  border-top: 1.5px solid rgb(218, 218, 218);
+  display: flex;
+  align-items: center;
+}
+.share-modal-line-4 > h4 {
+  font-size: 36px;
 }

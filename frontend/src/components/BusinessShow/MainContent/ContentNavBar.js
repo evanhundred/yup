@@ -88,6 +88,11 @@ const ContentNavBar = ({ business }) => {
                 />
               </div>
             </div>
+            <div className="share-modal-line-4">
+              <div className="left-side-line" />
+              <h4>OR</h4>
+              <div className="right-side-line" />
+            </div>
           </div>
         </div>
       </div>
