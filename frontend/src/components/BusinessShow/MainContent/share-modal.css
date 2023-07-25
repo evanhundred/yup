@@ -36,7 +36,6 @@
 
 .share-modal-line-1,
 .share-modal-line-2,
-.share-modal-line-3,
 .share-fb,
 .share-twitter {
   width: 100%;
@@ -47,6 +46,11 @@
 .share-modal-line-2 {
   justify-content: space-between;
   margin-bottom: 10px;
+}
+
+.share-modal-line-3 {
+  padding: 14px;
+  display: flex;
 }
 
 input.share-link {
@@ -65,7 +69,8 @@ input.share-link {
 }
 
 .share-modal-line-3 {
-  border: 1px solid gray;
+  border: 0.1em solid rgb(189, 189, 189);
+  border-radius: 5px;
   /* padding: 14px; */
   justify-content: flex-start;
 }
