@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 
 import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
 
@@ -26,7 +26,28 @@ const ContentNavBar = ({ business }) => {
     html.addEventListener("keydown", closeOnPressEsc, { once: true });
   };
 
+  const [copySuccess, setCopySuccess] = useState("");
+  const textAreaRef = useRef(null);
+
+  const copyToClipboard = (e) => {
+    textAreaRef.current.select();
+    document.execCommand("copy");
+
+    e.target.focus();
+    setCopySuccess("Copied!");
+    setTimeout(() => {
+      setCopySuccess("");
+    }, 5000);
+  };
+
+  const CopySuccessDiv = () => {
+    return <div className="copySuccessDiv">{copySuccess}</div>;
+  };
+
   const ShareModal = () => {
+    // setTimeout(()=>{
+    //   const div = document.querySelector(".copySuccessDiv");
+    // })
     return (
       <div className="share-modal-container" onLoad={listenForEsc()}>
         <div
@@ -52,11 +73,16 @@ const ContentNavBar = ({ business }) => {
               </div>
             </div>
             <div className="share-modal-line-3">
-              <div className="link-icon-container">
+              <div
+                className="link-icon-container"
+                onClick={(e) => copyToClipboard(e)}
+              >
                 <img src={CopyIcon} alt="copy this link" />
+                {copySuccess === "Copied!" && <CopySuccessDiv />}
               </div>
               <div className="share-link-input-container">
                 <input
+                  ref={textAreaRef}
                   className="share-link"
                   defaultValue={`https://yup.evanryan.dev/businesses/${business.id}`}
                 />
