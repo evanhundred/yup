@@ -98,3 +98,37 @@ h2.share-modal-title {
 .close-x {
   cursor: pointer;
 }
+
+.copy-success-div {
+  color: red;
+  /* transition: color 4s ease-in; */
+  position: absolute;
+  animation: fadeout 5s;
+  -moz-animation: fadeout 5s;
+  -webkit-animation: fadeout 5s;
+}
+
+@keyframes fadeout {
+  from {
+    color: red;
+  }
+  to {
+    color: transparent;
+  }
+}
+@-moz-keyframes fadeout {
+  from {
+    color: red;
+  }
+  to {
+    color: white;
+  }
+}
+@-webkit-keyframes fadeout {
+  from {
+    color: red;
+  }
+  to {
+    color: white;
+  }
+}

@@ -37,11 +37,11 @@ const ContentNavBar = ({ business }) => {
     setCopySuccess("Copied!");
     setTimeout(() => {
       setCopySuccess("");
-    }, 5000);
+    }, 4000);
   };
 
   const CopySuccessDiv = () => {
-    return <div className="copySuccessDiv">{copySuccess}</div>;
+    return <div className="copy-success-div">{copySuccess}</div>;
   };
 
   const ShareModal = () => {
