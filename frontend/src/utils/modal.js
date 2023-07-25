@@ -1,5 +1,3 @@
-import { useCallback } from "react";
-
 export const backgroundNavBar = () => {
   const navBar = document.getElementById("nav-bar");
   navBar.classList.add("backgrounded");

@@ -42,8 +42,6 @@ const BusinessPhotos = () => {
       // console.log(e.target.src);
       // setChosenPhoto(business.imageUrls[chosenPhotoIdx]);
       backgroundNavBar();
-      // const navBar = document.getElementById("nav-bar");
-      // navBar.classList.add("backgrounded");
     };
 
     let colIdx = 0;
@@ -106,8 +104,6 @@ const BusinessPhotos = () => {
       e.preventDefault();
       setShowPhotoModal(false);
       unBackgroundNavBar();
-      // const navBar = document.getElementById("nav-bar");
-      // navBar.classList.remove("backgrounded");
     };
 
     const closeOnPressEsc = (e) => {

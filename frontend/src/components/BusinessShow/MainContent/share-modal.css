@@ -29,16 +29,58 @@
 
 .share-modal-content {
   width: 100%;
-  /* display: flex;
-  justify-content: space-between; */
+  display: flex;
+  flex-direction: column;
   padding: 7vh 6vh;
 }
 
-.share-modal-line-1 {
+.share-modal-line-1,
+.share-modal-line-2,
+.share-modal-line-3,
+.share-fb,
+.share-twitter {
   width: 100%;
   display: flex;
-  justify-content: space-between;
 }
+
+.share-modal-line-1,
+.share-modal-line-2 {
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+input.share-link {
+  /* outline: none; */
+  font-size: 20px;
+  width: inherit;
+  /* font-family: Arial; */
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: inherit;
+  border: none;
+  width: 100%;
+}
+
+.share-link-input-container {
+  flex-grow: 1;
+}
+
+.share-modal-line-3 {
+  border: 1px solid gray;
+  /* padding: 14px; */
+  justify-content: flex-start;
+}
+
+.link-icon-container img {
+  width: 33px;
+}
+.link-icon-container {
+  flex-grow: 0;
+}
+
+/* .share-modal-line-2,
+.share-fb .share-twitter {
+  display: flex;
+} */
 
 h2.share-modal-title,
 .close-x {

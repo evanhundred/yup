@@ -1,7 +1,9 @@
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
+
+import CopyIcon from "../../../assets/icons/copy-icon.png";
 
 const ContentNavBar = ({ business }) => {
   const history = useHistory();
@@ -39,7 +41,27 @@ const ContentNavBar = ({ business }) => {
                 X
               </div>
             </div>
-            <div className="share-modal-line-2"></div>
+            <div className="share-modal-line-2">
+              <div className="share-fb">
+                <div className="fb-logo-container">f</div>
+                <h3>Share on Facebook</h3>
+              </div>
+              <div className="share-twitter">
+                <div className="twitter-logo-container">t</div>
+                <h3>Share on Twitter</h3>
+              </div>
+            </div>
+            <div className="share-modal-line-3">
+              <div className="link-icon-container">
+                <img src={CopyIcon} alt="copy this link" />
+              </div>
+              <div className="share-link-input-container">
+                <input
+                  className="share-link"
+                  defaultValue={`https://yup.evanryan.dev/businesses/${business.id}`}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
