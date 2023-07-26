@@ -76,19 +76,22 @@ const ContentNavBar = ({ business }) => {
               </div>
             </div>
             <div className="share-modal-line-3">
-              <div
-                className="link-icon-container"
-                onClick={(e) => copyToClipboard(e)}
-              >
-                <img src={CopyIcon} alt="copy this link" />
-                {copySuccess === "Copied!" && <CopySuccessDiv />}
-              </div>
-              <div className="share-link-input-container">
-                <input
-                  ref={textAreaRef}
-                  className="share-link"
-                  defaultValue={`https://yup.evanryan.dev/businesses/${business.id}`}
-                />
+              <div className="border-holder">
+                {" "}
+                <div
+                  className="link-icon-container"
+                  onClick={(e) => copyToClipboard(e)}
+                >
+                  <img src={CopyIcon} alt="copy this link" />
+                  {copySuccess === "Copied!" && <CopySuccessDiv />}
+                </div>
+                <div className="share-link-input-container">
+                  <input
+                    ref={textAreaRef}
+                    className="share-link"
+                    defaultValue={`https://yup.evanryan.dev/businesses/${business.id}`}
+                  />
+                </div>
               </div>
             </div>
             <div className="share-modal-line-4">

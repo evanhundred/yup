@@ -100,6 +100,13 @@
   display: flex;
 }
 
+.share-modal-line-3 .border-holder {
+  width: 100%;
+  display: flex;
+  /* padding: 14px; */
+  border-radius: 5px;
+}
+
 input.share-link {
   /* outline: none; */
   /* font-size: 20px; */
@@ -113,6 +120,8 @@ input.share-link {
 
 .share-link-input-container {
   flex-grow: 1;
+  display: flex;
+  align-items: center;
 }
 
 .share-modal-line-3,
@@ -127,13 +136,14 @@ input.share-link {
 .share-modal-line-3:focus-within,
 .share-to-field-input-container:focus-within,
 .share-add-note-textarea-container:focus-within {
-  border: 0.2em solid rgb(27, 109, 137);
+  border: 0.1em solid rgb(27, 109, 137);
 }
 
 .link-icon-container img {
   width: 33px;
 }
 .link-icon-container {
+  width: max-content;
   flex-grow: 0;
   cursor: pointer;
   padding: 0 15px 0 6px;
@@ -278,6 +288,7 @@ p.info-text {
   border-radius: 5px;
   font-size: 30px;
   width: max-content;
+  cursor: pointer;
 }
 
 .share-modal-line-6 {
