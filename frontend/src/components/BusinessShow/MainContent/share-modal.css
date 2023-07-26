@@ -203,6 +203,10 @@ h2.share-modal-title {
   color: gray;
 }
 
+.share-to-input h4 {
+  padding: 3px 0 3px 5px;
+}
+
 /* .share-to-field-input-container {
   border: 1.5px solid gray;
 } */
