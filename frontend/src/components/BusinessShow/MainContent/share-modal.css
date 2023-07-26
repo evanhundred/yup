@@ -57,6 +57,7 @@
   color: white;
   gap: 0.8em;
   padding-bottom: 2vh;
+  letter-spacing: 0.03em;
 }
 
 .share-modal-line-3,
@@ -73,7 +74,7 @@
 }
 
 .share-modal-line-2 h3 {
-  font-size: 29px;
+  font-size: 28px;
   font-weight: 400;
 }
 
@@ -113,7 +114,8 @@ input.share-link {
 }
 
 .share-modal-line-3,
-.share-to-field-input-container {
+.share-to-field-input-container,
+.share-add-note-textarea-container {
   border: 0.1em solid rgb(189, 189, 189);
   border-radius: 5px;
   /* padding: 14px; */
@@ -121,8 +123,9 @@ input.share-link {
 }
 
 .share-modal-line-3:focus-within,
-.share-to-field-input-container:focus-within {
-  border: 0.1em solid rgb(58, 104, 221);
+.share-to-field-input-container:focus-within,
+.share-add-note-textarea-container:focus-within {
+  border: 0.2em solid rgb(27, 109, 137);
 }
 
 .link-icon-container img {
@@ -196,10 +199,9 @@ h2.share-modal-title {
   margin-top: 20px;
 }
 
-.share-to-field-input-container:focus-within {
+/* .share-to-field-input-container:focus-within {
   outline: 1px solid blue;
-  /* border */
-}
+} */
 .share-modal-line-4 > div {
   width: 40%;
   margin-top: 0.8em;
@@ -220,10 +222,10 @@ h2.share-modal-title {
   border: 1.5px solid gray;
 } */
 
-.share-to-field-input-container input {
+/* .share-to-field-input-container input {
   border: none;
   background: inherit;
-}
+} */
 input:focus {
   outline: none;
 }
@@ -237,11 +239,25 @@ p.info-text {
   font-weight: 300;
 }
 
-.share-modal-content input {
+.share-modal-content input,
+.share-modal-content textarea {
   width: 100%;
   font-size: 20px;
+  background: inherit;
+  border: none;
 }
 
-.share-modal-line-5 {
+.share-modal-line-5,
+.share-modal-line-6 {
   margin: 0.5vh 0;
+}
+.share-add-note-textarea-container textarea {
+  /* width: 50%; */
+  padding: 26px;
+  resize: both;
+  outline: none;
+}
+.share-add-note-container {
+  /* border: 1px solid blue; */
+  border-radius: 5px;
 }

@@ -85,16 +85,16 @@
   color: #0073bb;
 }
 
-input,
+.signup-page-container input,
 #sign-up-button,
-label {
+.signup-page-container label {
   width: 400px;
   border-radius: 3px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
 
-input {
+.signup-page-container input {
   /* display: block; */
   size: 100px;
   border: 1px solid #ccc;

@@ -29,6 +29,7 @@ const ContentNavBar = ({ business }) => {
   const [copySuccess, setCopySuccess] = useState("");
   const textAreaRef = useRef(null);
   const contactFieldRef = useRef(null);
+  const addANoteFieldRef = useRef(null);
 
   const copyToClipboard = (e) => {
     textAreaRef.current.select();
@@ -49,6 +50,7 @@ const ContentNavBar = ({ business }) => {
     // setTimeout(()=>{
     //   const div = document.querySelector(".copySuccessDiv");
     // })
+
     return (
       <div className="share-modal-container" onLoad={listenForEsc()}>
         <div
@@ -105,6 +107,16 @@ const ContentNavBar = ({ business }) => {
                 </div>
 
                 <p className="info-text">Yup user names or email addresses</p>
+              </div>
+            </div>
+            <div className="share-modal-line-6">
+              <div className="share-add-note-container">
+                <div className="share-add-note-textarea-container">
+                  <textarea
+                    ref={addANoteFieldRef}
+                    className="add-a-note-field"
+                  />
+                </div>
               </div>
             </div>
           </div>
