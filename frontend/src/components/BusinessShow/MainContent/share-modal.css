@@ -254,10 +254,15 @@ p.info-text {
 .share-add-note-textarea-container textarea {
   /* width: 50%; */
   padding: 26px;
-  resize: both;
+  /* resize: both; */
   outline: none;
+  box-sizing: border-box;
 }
 .share-add-note-container {
   /* border: 1px solid blue; */
   border-radius: 5px;
+}
+
+.share-add-note-textarea-container {
+  display: flex;
 }
