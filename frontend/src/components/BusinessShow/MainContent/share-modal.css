@@ -20,10 +20,10 @@
 
 .share-modal-box {
   position: absolute;
-  background: #f1f1f1;
+  background: #f9f9f9;
   display: flex;
   border-radius: 10px;
-  width: 700px;
+  width: 55em;
   height: 98.5vh;
 }
 
@@ -31,7 +31,11 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 7vh 6vh;
+  padding: 7vh 3.5em;
+}
+
+.share-modal-line-1 {
+  padding-bottom: 5vh;
 }
 
 .share-modal-line-1,
@@ -49,6 +53,44 @@
   margin-bottom: 10px;
 }
 
+.share-modal-line-2 {
+  color: white;
+  gap: 0.8em;
+  padding-bottom: 2vh;
+}
+
+.share-modal-line-3,
+.share-modal-line-4 {
+  margin-bottom: 3.5vh;
+}
+
+.share-modal-line-2 > div {
+  padding: 15px 40px;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.share-modal-line-2 h3 {
+  font-size: 29px;
+  font-weight: 400;
+}
+
+.fb-logo-container,
+.twitter-logo-container {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.share-fb {
+  background: #1878f3;
+}
+
+.share-twitter {
+  background: #74bcf4;
+}
+
 .share-modal-line-3,
 .share-to-field-input-container {
   padding: 14px;
@@ -57,13 +99,13 @@
 
 input.share-link {
   /* outline: none; */
-  font-size: 20px;
+  /* font-size: 20px; */
   width: inherit;
   /* font-family: Arial; */
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
   background: inherit;
   border: none;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .share-link-input-container {
@@ -151,13 +193,14 @@ h2.share-modal-title {
 }
 .share-modal-line-4 > div {
   width: 40%;
-  margin-top: 20px;
+  margin-top: 0.8em;
   border-top: 1.5px solid rgb(218, 218, 218);
   display: flex;
   align-items: center;
 }
 .share-modal-line-4 > h4 {
-  font-size: 36px;
+  font-size: 28px;
+  color: gray;
 }
 
 /* .share-to-field-input-container {
@@ -183,4 +226,9 @@ p.info-text {
 
 .share-modal-content input {
   width: 100%;
+  font-size: 20px;
+}
+
+.share-modal-line-5 {
+  margin: 0.5vh 0;
 }
