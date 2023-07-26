@@ -130,6 +130,7 @@ input.share-link {
 }
 .link-icon-container {
   flex-grow: 0;
+  cursor: pointer;
 }
 
 /* .share-modal-line-2,
@@ -149,10 +150,18 @@ h2.share-modal-title {
   cursor: pointer;
 }
 
+:root {
+  --copy-success-text-color: rgb(226, 0, 0);
+}
+
 .copy-success-div {
-  color: red;
+  color: var(--copy-success-text-color, red);
   /* transition: color 4s ease-in; */
   position: absolute;
+  margin-top: -65px;
+  left: 0.6em;
+  font-size: 40px;
+  /* padding-left: -10px; */
   animation: fadeout 5s;
   -moz-animation: fadeout 5s;
   -webkit-animation: fadeout 5s;
@@ -160,7 +169,7 @@ h2.share-modal-title {
 
 @keyframes fadeout {
   from {
-    color: red;
+    color: var(--copy-success-text-color, red);
   }
   to {
     color: transparent;
@@ -168,18 +177,18 @@ h2.share-modal-title {
 }
 @-moz-keyframes fadeout {
   from {
-    color: red;
+    color: var(--copy-success-text-color, red);
   }
   to {
-    color: white;
+    color: transparent;
   }
 }
 @-webkit-keyframes fadeout {
   from {
-    color: red;
+    color: var(--copy-success-text-color, red);
   }
   to {
-    color: white;
+    color: transparent;
   }
 }
 .share-modal-line-4 {
