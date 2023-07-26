@@ -119,6 +119,9 @@ const ContentNavBar = ({ business }) => {
                 </div>
               </div>
             </div>
+            <div className="share-modal-line-7">
+              <h3 className="share-submit-button">Share</h3>
+            </div>
           </div>
         </div>
       </div>
