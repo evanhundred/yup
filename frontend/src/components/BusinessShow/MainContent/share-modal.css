@@ -43,17 +43,22 @@
 .share-modal-line-2,
 .share-modal-line-4,
 .share-fb,
-.share-fb a,
 .share-twitter {
   width: 100%;
   display: flex;
 }
 
-.share-fb a,
-.share-twitter a {
+.share-modal-line-2 a {
+  display: flex;
+  width: 100%;
+}
+
+/* .share-fb,
+.share-twitter {
   justify-content: space-between;
   align-items: center;
-}
+  width: 100%;
+} */
 
 .share-modal-line-1,
 .share-modal-line-2 {
@@ -73,7 +78,7 @@
   margin-bottom: 3.5vh;
 }
 
-.share-modal-line-2 > div {
+.share-modal-line-2 > a > div {
   padding: 15px 40px;
   gap: 20px;
   justify-content: center;

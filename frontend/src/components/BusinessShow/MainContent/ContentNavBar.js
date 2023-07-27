@@ -66,21 +66,32 @@ const ContentNavBar = ({ business }) => {
               </div>
             </div>
             <div className="share-modal-line-2">
-              <div className="share-fb">
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fyup.evanryan.dev%2Fbusinesses%2F1&amp;src=sdkpreparse"
-                  class="fb-xfbml-parse-ignore"
-                >
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={`https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fyup.evanryan.dev%2Fbusinesses%2F${business.id}&amp;src=sdkpreparse`}
+                class="fb-xfbml-parse-ignore"
+              >
+                <div className="share-fb">
                   <div className="fb-logo-container">f</div>
                   <h3>Share on Facebook</h3>
-                </a>
-              </div>
-              <div className="share-twitter">
-                <div className="twitter-logo-container">t</div>
-                <h3>Share on Twitter</h3>
-              </div>
+                </div>
+              </a>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                href={`https://twitter.com/intent/tweet?text=Check out this amazing business on Yup.&url=https://yup.evanryan.dev/businesses/${business.id}`}
+                // href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                // data-text="Check out this amazing business on Yup."
+                // data-url="http://yup.evanryan.dev/businesses/1"
+                class="twitter-share-button"
+                data-show-count="false"
+              >
+                <div className="share-twitter">
+                  <div className="twitter-logo-container">t</div>
+                  <h3>Share on Twitter</h3>
+                </div>
+              </a>
             </div>
             <div className="share-modal-line-3">
               <div className="border-holder">
