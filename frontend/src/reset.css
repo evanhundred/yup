@@ -132,3 +132,7 @@ table {
 a {
   width: min-content;
 }
+input {
+  padding: 0;
+  margin: 0;
+}

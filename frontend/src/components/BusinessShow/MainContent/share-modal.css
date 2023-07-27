@@ -72,6 +72,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .share-modal-line-2 h3,
@@ -98,6 +99,10 @@
 .share-to-field-input-container {
   padding: 14px;
   display: flex;
+}
+
+.share-to-field-input-container {
+  padding-left: 26px;
 }
 
 .share-modal-line-3 .border-holder {
@@ -228,8 +233,11 @@ h2.share-modal-title {
   color: gray;
 }
 
-.share-to-input h4 {
-  padding: 3px 0 3px 5px;
+.share-to-input h4,
+.share-add-note-container h4 {
+  padding: 3px 0 4px 7px;
+  color: rgb(105, 105, 105);
+  font-size: 20px;
 }
 
 /* .share-to-field-input-container {
@@ -245,20 +253,22 @@ input:focus {
 }
 .share-to-input p.info-text {
   color: rgb(105, 105, 105);
-  font-size: 20px;
+  font-size: 17px;
 }
 
 p.info-text {
-  padding: 8px;
+  padding: 8px 13px;
   font-weight: 300;
 }
 
 .share-modal-content input,
 .share-modal-content textarea {
   width: 100%;
-  font-size: 20px;
+  font-size: 22px;
   background: inherit;
   border: none;
+  /* font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300; */
 }
 
 .share-modal-line-5,
@@ -267,11 +277,20 @@ p.info-text {
 }
 .share-add-note-textarea-container textarea {
   /* width: 50%; */
-  padding: 26px;
+  padding: 15px 26px;
   /* resize: both; */
   outline: none;
   box-sizing: border-box;
+  height: 7em;
 }
+
+.share-add-note-textarea-container textarea,
+.share-to-field-input-container input {
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  /* font-weight: 300; */
+}
+
 .share-add-note-container {
   /* border: 1px solid blue; */
   border-radius: 5px;
@@ -296,7 +315,7 @@ p.info-text {
 }
 
 .share-modal-line-7 {
-  margin: 2.5vh 0;
+  margin: 4vh 0;
   display: flex;
   justify-content: center;
   width: 100%;

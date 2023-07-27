@@ -77,7 +77,6 @@ const ContentNavBar = ({ business }) => {
             </div>
             <div className="share-modal-line-3">
               <div className="border-holder">
-                {" "}
                 <div
                   className="link-icon-container"
                   onClick={(e) => copyToClipboard(e)}
@@ -114,6 +113,7 @@ const ContentNavBar = ({ business }) => {
             </div>
             <div className="share-modal-line-6">
               <div className="share-add-note-container">
+                <h4>Add a note (optional)</h4>
                 <div className="share-add-note-textarea-container">
                   <textarea
                     ref={addANoteFieldRef}
