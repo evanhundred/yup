@@ -67,8 +67,15 @@ const ContentNavBar = ({ business }) => {
             </div>
             <div className="share-modal-line-2">
               <div className="share-fb">
-                <div className="fb-logo-container">f</div>
-                <h3>Share on Facebook</h3>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fyup.evanryan.dev%2Fbusinesses%2F1&amp;src=sdkpreparse"
+                  class="fb-xfbml-parse-ignore"
+                >
+                  <div className="fb-logo-container">f</div>
+                  <h3>Share on Facebook</h3>
+                </a>
               </div>
               <div className="share-twitter">
                 <div className="twitter-logo-container">t</div>

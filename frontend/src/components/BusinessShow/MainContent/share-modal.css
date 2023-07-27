@@ -43,9 +43,16 @@
 .share-modal-line-2,
 .share-modal-line-4,
 .share-fb,
+.share-fb a,
 .share-twitter {
   width: 100%;
   display: flex;
+}
+
+.share-fb a,
+.share-twitter a {
+  justify-content: space-between;
+  align-items: center;
 }
 
 .share-modal-line-1,
@@ -278,7 +285,7 @@ p.info-text {
 .share-add-note-textarea-container textarea {
   /* width: 50%; */
   padding: 15px 26px;
-  /* resize: both; */
+  resize: vertical;
   outline: none;
   box-sizing: border-box;
   height: 7em;
