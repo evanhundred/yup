@@ -1,36 +1,51 @@
-import { useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getBusiness,
-  fetchBusiness,
-  fetchBusinesses
-} from "../../store/businesses";
+import { getBusiness, fetchBusiness } from "../../store/businesses";
 import "./index.css";
 import TitleCard from "./TitleCard";
 import MainContent from "./MainContent";
+import webSpider from "../../assets/images/web-spider.jpg";
 
 const BusinessShow = ({ props }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const location = useLocation();
   const { businessId } = useParams();
 
   const business = useSelector(getBusiness(businessId));
-  const businessCount = useSelector(
-    (state) => Object.values(state.businesses).length
-  );
+
+  location.state = null;
 
   useEffect(() => {
-    dispatch(fetchBusiness(businessId));
+    dispatch(fetchBusiness(businessId)); // .catch((errors) => console.log(errors));
   }, [businessId, dispatch]);
 
-  useEffect(() => {
-    dispatch(fetchBusinesses());
-  }, [dispatch]);
+  let layoutWidth;
+  const updateSize = () => {
+    layoutWidth = window.innerWidth >= 600 ? "full-size" : "narrow-size";
+  };
+  window.addEventListener("resize", updateSize);
+  layoutWidth = window.innerWidth >= 600 ? "full-size" : "narrow-size";
 
-  if (businessCount > 1 && businessCount < parseInt(businessId))
-    history.push(`/`);
   if (!business) return <div className="loading">loading...</div>;
+
+  if (business.status === 500) {
+    location.state = "404";
+
+    return (
+      <div id="invalid-business-container" className={layoutWidth}>
+        <div className={`left-side ${layoutWidth}`}>
+          <h2>We're sorry. We can't find the page you're looking for.</h2>
+          <h3>
+            Please try a new <Link to="/search">search</Link>.
+          </h3>
+        </div>
+        <div className={`right-side ${layoutWidth}`}>
+          <img src={webSpider} alt="web spider" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>

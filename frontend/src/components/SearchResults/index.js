@@ -41,7 +41,7 @@ const SearchResults = () => {
 
   const location = useLocation();
   if (!location.search.includes("category"))
-    return <div class="search-error">Incorrect seach terms.</div>;
+    return <div className="search-error">Incorrect seach terms.</div>;
 
   const searchString = location.search.slice(10);
   const searchStringParts = searchString.split("&find_loc=");

@@ -191,5 +191,36 @@ require "open-uri"
     business6.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/6-beverley-pizza/popular-items/pop-item.jpg"), filename: "pop-item.jpg")
     business6.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/6-beverley-pizza/google-map.jpg"), filename: "google-map.jpg")
 
+    # create biz photo boxes
+
+    biz_photo_box_1 = BizPhotoBox.create!(
+        name: "Devoción",
+        business_id: 1
+    )
+
+    # biz_photo_box_1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/yup-prod/"))
+
+
+    biz_photo_box_2 = BizPhotoBox.create!(
+        name: "El Paso Mexican Grill",
+        business_id: 2
+    )
+    biz_photo_box_3 = BizPhotoBox.create!(
+        name: "Golden Krust Bakery & Grill",
+        business_id: 3
+    )
+    biz_photo_box_4 = BizPhotoBox.create!(
+        name: "Mirna's Pupuseria",
+        business_id: 4
+    )
+    biz_photo_box_5 = BizPhotoBox.create!(
+        name: "E Noodle",
+        business_id: 5
+    )
+    biz_photo_box_6 = BizPhotoBox.create!(
+        name: "Beverly Pizza & Cafe",
+        business_id: 6
+    )
+
     puts "Done!"
 # end

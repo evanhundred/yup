@@ -4,6 +4,7 @@ export const RECEIVE_BUSINESSES = "businesses/RECEIVE_BUSINESSES";
 export const RECEIVE_BUSINESS = "businesses/RECEIVE_BUSINESS";
 
 export const RECEIVE_ERRORS = "businesses/RECEIVE_ERRORS";
+export const CLEAR_ERRORS = "businesses/CLEAR_ERRORS";
 
 export const receiveBusinesses = (businesses) => ({
   type: RECEIVE_BUSINESSES,
@@ -20,9 +21,14 @@ export const receiveErrors = (errors) => ({
   errors
 });
 
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS
+});
+
 export const getBusiness =
   (businessId) =>
   ({ businesses }) => {
+    if (businesses.errors) return businesses.errors;
     return businesses[businessId];
   };
 
@@ -46,33 +52,16 @@ export const fetchBusinesses = () => async (dispatch) => {
 
 export const fetchBusiness = (businessId) => async (dispatch) => {
   const res = await csrfFetch(`/api/businesses/${businessId}`).catch((errors) =>
-    receiveErrors(errors)
+    dispatch(receiveErrors(errors))
   );
   let data;
   if (res.ok) {
     data = await res.json();
     dispatch(receiveBusiness(data));
-  } else {
-    const errors = await res.statusText;
-    dispatch(receiveErrors(errors));
-  }
-
-  // {"title":"Server Error",
-  // "message":"ActiveRecord::RecordNotFound - Couldn't find Business with 'id'=22",
-  // "stack":["app/controllers/api/businesses_controller.rb:15:in `show'"]}
-
-  // Response {
-  // type: "basic",
-  // url: "http://localhost:3000/api/businesses/22",
-  // redirected: false,
-  // status: 500,
-  // ok: false,
-  // statusText: "Internal Server Error",
-  // headers: Headers(21),
-  // body: ReadableStream, bodyUsed: false
+  } // else {
+  // const errors = await res.statusText;
+  //dispatch(receiveErrors(errors));
   // }
-
-  // dispatch(receiveErrors(data));
 };
 
 const businessesReducer = (preloadedState = {}, action) => {
@@ -87,7 +76,10 @@ const businessesReducer = (preloadedState = {}, action) => {
       // newState[]
       return newState;
     case RECEIVE_ERRORS:
+      newState.errors = action.errors;
       return { ...newState, ...action.errors };
+    case CLEAR_ERRORS:
+      return {};
     default:
       return preloadedState;
   }

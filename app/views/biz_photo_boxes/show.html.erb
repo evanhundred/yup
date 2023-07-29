@@ -1,0 +1,10 @@
+<%# json.extract! @biz_photo_box, :id, :name
+json.image_urls @biz_photo_box.photos.map {|imagefile| url_for(imagefile)} %>
+
+<%# app/views/biz_photo_boxes/show.html.erb %>
+
+<h1><%= @biz_photo_box.name %></h1>
+
+<% @biz_photo_box.photos.map do |photo| %>
+  <img src="<%= url_for(photo) %>" alt="">
+<% end %>

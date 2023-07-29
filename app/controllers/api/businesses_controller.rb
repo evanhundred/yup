@@ -20,4 +20,8 @@ class Api::BusinessesController < ApplicationController
             render json: @business.errors.full_messages, status: 404
         end
     end
+
+    def search
+
+    end
 end

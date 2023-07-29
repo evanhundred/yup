@@ -9,6 +9,7 @@ import configureStore from "./store";
 import csrfFetch, { restoreCSRF } from "./store/csrf";
 import * as sessionActions from "./store/session";
 import * as businessActions from "./store/businesses";
+import * as bizPhotoBoxActions from "./store/bizPhotoBoxes";
 
 const store = configureStore();
 
@@ -17,6 +18,7 @@ if (process.env.NODE_ENV !== "production") {
   window.csrfFetch = csrfFetch;
   window.sessionActions = sessionActions;
   window.businessActions = businessActions;
+  window.bizPhotoBoxActions = bizPhotoBoxActions;
 }
 
 const Root = () => {

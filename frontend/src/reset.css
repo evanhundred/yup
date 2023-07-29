@@ -92,6 +92,7 @@ video {
   font-family: inherit;
   vertical-align: baseline;
   text-decoration: none;
+  color: inherit;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -131,4 +132,8 @@ table {
 }
 a {
   width: min-content;
+}
+input {
+  padding: 0;
+  margin: 0;
 }
