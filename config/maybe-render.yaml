@@ -1,0 +1,18 @@
+databases:
+  - name: yup
+    databaseName: yup
+    user: yup
+
+services:
+  - type: web
+    name: yup
+    runtime: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "buncle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: yup
+          property: connectionString
+        - key: RAILS_MASTER_KEY
+          sync: false
