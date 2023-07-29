@@ -1,0 +1,24 @@
+{
+  "name": "yup",
+  "version": "1.0.0",
+  "description": "yup ![yup-logo](./app/assets/yup-logo.png) &nbsp;",
+  "directories": {
+    "lib": "lib"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "scripts": {
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evanhundred/yup.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evanhundred/yup/issues"
+  },
+  "homepage": "https://github.com/evanhundred/yup#readme"
+}
