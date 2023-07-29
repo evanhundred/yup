@@ -1,3 +1,7 @@
+:root {
+  --originalHeight: 98.5vh;
+}
+
 .share-modal-overlay {
   background: rgba(49, 49, 49, 0.8);
 }
@@ -19,24 +23,33 @@
 }
 
 .share-modal-box {
+  /* position: fixed; */
   position: absolute;
   background: #f9f9f9;
   display: flex;
+  /* align-items: center; */
   border-radius: 10px;
   width: 55em;
   height: 98.5vh;
+  /* height: var(--originalHeight); */
+  /* top: 0; */
 }
+/* .share-modal-box::after {
+  height: var(--originalHeight);
+} */
 
 .share-modal-content {
   width: 100%;
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  padding: 7vh 3.5em;
+  padding: 46px 3.5em;
+  /* padding: 7vh 3.5em; */
 }
 
 .share-modal-line-1 {
-  padding-bottom: 5vh;
+  padding-bottom: 50px;
+  /* padding-bottom: 5vh; */
 }
 
 .share-modal-line-1,
@@ -63,23 +76,28 @@
 .share-modal-line-1,
 .share-modal-line-2 {
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 17px;
+  /* margin-bottom: 1em; */
 }
 
 .share-modal-line-2 {
   color: white;
   gap: 0.8em;
-  padding-bottom: 2vh;
+  padding-bottom: 23px;
+  /* padding-bottom: 2vh; */
   letter-spacing: 0.03em;
 }
 
 .share-modal-line-3,
 .share-modal-line-4 {
-  margin-bottom: 3.5vh;
+  margin-bottom: 30px;
+  /* margin-bottom: 3.5vh; */
 }
 
 .share-modal-line-2 > a > div {
-  padding: 15px 40px;
+  padding: 18px 40px;
+  /* padding: 1.2em 40px; */
+  /* padding: 15px 40px; */
   gap: 20px;
   justify-content: center;
   align-items: center;
@@ -235,7 +253,8 @@ h2.share-modal-title {
 } */
 .share-modal-line-4 > div {
   width: 40%;
-  margin-top: 0.8em;
+  margin-top: 12px;
+  /* margin-top: 0.8em; */
   border-top: 1.5px solid rgb(218, 218, 218);
   display: flex;
   align-items: center;
@@ -285,7 +304,8 @@ p.info-text {
 
 .share-modal-line-5,
 .share-modal-line-6 {
-  margin: 0.5vh 0;
+  margin: 7px 0;
+  /* margin: 0.5vh 0; */
 }
 .share-add-note-textarea-container textarea {
   /* width: 50%; */
@@ -293,7 +313,8 @@ p.info-text {
   resize: vertical;
   outline: none;
   box-sizing: border-box;
-  height: 7em;
+  height: 130px;
+  /* height: 7em; */
 }
 
 .share-add-note-textarea-container textarea,
@@ -315,7 +336,8 @@ p.info-text {
 .share-submit-button {
   color: white;
   background: rgb(228, 0, 0);
-  padding: 2vh 4em;
+  padding: 22px 4em;
+  /* padding: 2vh 4em; */
   border-radius: 5px;
   font-size: 30px;
   width: max-content;
@@ -323,11 +345,13 @@ p.info-text {
 }
 
 .share-modal-line-6 {
-  margin-bottom: 1vh;
+  margin-bottom: 11px;
+  /* margin-bottom: 1vh; */
 }
 
 .share-modal-line-7 {
-  margin: 4vh 0;
+  margin: 42px 0;
+  /* margin: 4vh 0; */
   display: flex;
   justify-content: center;
   width: 100%;

@@ -46,13 +46,34 @@ const ContentNavBar = ({ business }) => {
     return <div className="copy-success-div">{copySuccess}</div>;
   };
 
+  const startingWindowHeight = window.innerHeight;
+  const originalModalHeight = (startingWindowHeight * 98.5) / 100;
+  console.log(originalModalHeight);
+
+  // const whitespaceHeight = startingWindowHeight - originalModalHeight;
+
+  const getWindowHeight = () => {
+    const thisDiv = document.querySelector("div.share-modal-box");
+    thisDiv.style.height = `${originalModalHeight}px`;
+    // thisDiv.style.top = `${whitespaceHeight / 2}`;
+
+    // thisDiv.style.setProperty(`height`, `${originalModalHeight}px`);
+    // thisDiv.style.setProperty(`top`, `${whitespaceHeight / 2}`);
+  };
+
   const ShareModal = () => {
     // setTimeout(()=>{
     //   const div = document.querySelector(".copySuccessDiv");
     // })
 
     return (
-      <div className="share-modal-container" onLoad={listenForEsc()}>
+      <div
+        className="share-modal-container"
+        onLoad={() => {
+          listenForEsc();
+          getWindowHeight();
+        }}
+      >
         <div
           className="share-modal-overlay"
           onClick={(e) => handleCloseModal(e)}
