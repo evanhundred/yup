@@ -224,12 +224,13 @@ h2.share-modal-title {
 .copy-success-div {
   color: var(--copy-success-text-color, red);
   /* transition: color 4s ease-in; */
-  position: fixed;
-  /* position: absolute; */
-  margin-top: -7em;
+  /* position: relative; */
+  position: absolute;
+  margin-top: -2.6em;
+  margin-left: -1em;
   /* margin-top: -73px; */
-  left: 0.6em;
-  font-size: 3em;
+  /* left: 0.6em; */
+  font-size: 1.6em;
   /* font-size: 40px; */
   /* padding-left: -10px; */
   animation: fadeout 5s;
