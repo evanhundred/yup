@@ -55,10 +55,6 @@ const ContentNavBar = ({ business }) => {
   const getWindowHeight = () => {
     const thisDiv = document.querySelector("div.share-modal-box");
     thisDiv.style.height = `${originalModalHeight}px`;
-    // thisDiv.style.top = `${whitespaceHeight / 2}`;
-
-    // thisDiv.style.setProperty(`height`, `${originalModalHeight}px`);
-    // thisDiv.style.setProperty(`top`, `${whitespaceHeight / 2}`);
   };
 
   const ShareModal = () => {
