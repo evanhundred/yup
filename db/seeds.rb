@@ -220,7 +220,7 @@ require "open-uri"
     # biz_photo_box_6 = BizPhotoBox.create!(
     #     name: "Beverly Pizza & Cafe",
     #     business_id: 6
-    )
+    # )
 
     puts "Done!"
 # end
