@@ -11,7 +11,7 @@ import SearchResults from "./components/SearchResults";
 import BusinessAddUserPhotos from "./components/BusinessAddUserPhotos";
 import BusinessPhotos from "./components/BusinessPhotos";
 // import BizPhotoBoxIndex from "./components/BizPhotoBoxIndex";
-import BizPhotoBoxShow from "./components/BizPhotoBoxShow";
+// import BizPhotoBoxShow from "./components/BizPhotoBoxShow";
 
 function App() {
   return (
@@ -49,9 +49,9 @@ function App() {
         <Route path="/search">
           <SearchResults />
         </Route>
-        <Route path="/businesses/:businessId/biz-photo-box">
+        {/* <Route path="/businesses/:businessId/biz-photo-box">
           <BizPhotoBoxShow />
-        </Route>
+        </Route> */}
       </Switch>
       <Footer />
     </>
