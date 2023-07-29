@@ -6,6 +6,6 @@ set -o errexit
 bundle install
 rails db:migrate
 rails db:seed #if needed
-cd frontend
+# cd frontend
 npm run build
-cd ..
+# cd ..
