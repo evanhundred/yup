@@ -46,16 +46,16 @@ const ContentNavBar = ({ business }) => {
     return <div className="copy-success-div">{copySuccess}</div>;
   };
 
-  const startingWindowHeight = window.innerHeight;
-  const originalModalHeight = (startingWindowHeight * 98.5) / 100;
-  console.log(originalModalHeight);
+  // const startingWindowHeight = window.innerHeight;
+  // const originalModalHeight = (startingWindowHeight * 98.5) / 100;
+  // console.log(originalModalHeight);
 
   // const whitespaceHeight = startingWindowHeight - originalModalHeight;
 
-  const getWindowHeight = () => {
-    const thisDiv = document.querySelector("div.share-modal-box");
-    thisDiv.style.height = `${originalModalHeight}px`;
-  };
+  // const getWindowHeight = () => {
+  //   const thisDiv = document.querySelector("div.share-modal-box");
+  //   thisDiv.style.height = `${originalModalHeight}px`;
+  // };
 
   const ShareModal = () => {
     // setTimeout(()=>{
@@ -67,7 +67,7 @@ const ContentNavBar = ({ business }) => {
         className="share-modal-container"
         onLoad={() => {
           listenForEsc();
-          getWindowHeight();
+          // getWindowHeight();
         }}
       >
         <div

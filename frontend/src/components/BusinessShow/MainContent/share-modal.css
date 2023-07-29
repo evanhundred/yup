@@ -24,14 +24,17 @@
 
 .share-modal-box {
   /* position: fixed; */
-  position: absolute;
+  position: relative;
   background: #f9f9f9;
   display: flex;
   /* align-items: center; */
   border-radius: 10px;
-  width: 55em;
-  /* height: 880px; */
-  height: 98.5vh;
+  width: 680px;
+  height: 800px;
+  /* width: 55em;
+  height: 65em; */
+  /* min-height: 74em; */
+  /* min-height: 98.5vh; */
   /* height: var(--originalHeight); */
   /* top: 0; */
 }
@@ -41,16 +44,17 @@
 
 .share-modal-content {
   width: 100%;
-  /* height: 100%; */
+  /* min-height: 100%; */
   display: flex;
   flex-direction: column;
   /* padding: 46px 3.5em; */
-  padding: 4vh 3.5em;
+  padding: 2.5em 3.5em 2.5em;
+  /* padding: 4.9em 3.5em 5em; */
 }
 
 .share-modal-line-1 {
   /* padding-bottom: 50px; */
-  padding-bottom: 3vh;
+  padding-bottom: 1.2em;
 }
 
 .share-modal-line-1,
@@ -78,32 +82,34 @@
 .share-modal-line-2 {
   justify-content: space-between;
   /* margin-bottom: 17px; */
-  margin-bottom: 1em;
+  margin-bottom: 1.2em;
 }
 
 .share-modal-line-2 {
   color: white;
   gap: 0.8em;
   /* padding-bottom: 23px; */
-  padding-bottom: 2vh;
+  padding-bottom: 1.2em;
   letter-spacing: 0.03em;
 }
 
 .share-modal-line-3 {
   /* margin-bottom: 30px; */
-  margin-bottom: 3.5vh;
+  margin-bottom: 2.2em;
 }
 
 .share-modal-line-4 {
   /* margin-bottom: 25px; */
-  margin-bottom: 3vh;
+  margin-bottom: 1.7em;
+  justify-content: space-between;
+  margin-top: 1.7em;
 }
 
 .share-modal-line-2 > a > div {
   /* padding: 18px 40px; */
-  padding: 1.2em 1.6em;
+  padding: 0.8em 1em;
   /* padding: 1.2em 40px; */
-  gap: 1.7em;
+  gap: 1.4em;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
@@ -119,7 +125,7 @@
 
 .fb-logo-container,
 .twitter-logo-container {
-  font-size: 3em;
+  font-size: 2em;
   /* font-size: 40px; */
   font-weight: 600;
 }
@@ -183,7 +189,8 @@ input.share-link {
 }
 
 .link-icon-container img {
-  width: 33px;
+  width: 2.2em;
+  /* width: 33px; */
 }
 .link-icon-container {
   width: max-content;
@@ -199,7 +206,7 @@ input.share-link {
 
 h2.share-modal-title,
 .close-x {
-  font-size: 2em;
+  font-size: 1.5em;
   /* font-size: 34px; */
 }
 h2.share-modal-title {
@@ -254,11 +261,6 @@ h2.share-modal-title {
     color: transparent;
   }
 }
-.share-modal-line-4 {
-  justify-content: space-between;
-  margin-top: 2em;
-  /* margin-top: 20px; */
-}
 
 /* .share-to-field-input-container:focus-within {
   outline: 1px solid blue;
@@ -273,7 +275,7 @@ h2.share-modal-title {
   align-items: center;
 }
 .share-modal-line-4 > h4 {
-  font-size: 2em;
+  font-size: 1.3em;
   /* font-size: 28px; */
   color: gray;
 }
@@ -283,7 +285,7 @@ h2.share-modal-title {
   padding: 0.2em 0 0.5em 7px;
   /* padding: 3px 0 4px 7px; */
   color: rgb(105, 105, 105);
-  font-size: 1.4em;
+  font-size: 1em;
   /* font-size: 20px; */
 }
 
@@ -300,20 +302,23 @@ input:focus {
 }
 .share-to-input p.info-text {
   color: rgb(105, 105, 105);
-  font-size: 0.6em;
+  font-size: 0.8em;
   /* font-size: 17px; */
 }
 
 p.info-text {
-  padding: 0.6em 13px;
+  padding: 0.4em 9px;
   /* padding: 8px 13px; */
   font-weight: 300;
+}
+
+.share-modal-content input {
+  font-size: 1.2em;
 }
 
 .share-modal-content input,
 .share-modal-content textarea {
   width: 100%;
-  font-size: 1.2em;
   /* font-size: 22px; */
   background: inherit;
   border: none;
@@ -329,12 +334,12 @@ p.info-text {
 }
 .share-add-note-textarea-container textarea {
   /* width: 50%; */
-  padding: 1em 26px;
+  padding: 0.6em 15px;
   /* padding: 15px 26px; */
   resize: vertical;
   outline: none;
   box-sizing: border-box;
-  height: 13em;
+  height: 100px;
   /* height: 130px; */
   /* height: 7em; */
 }
@@ -342,8 +347,8 @@ p.info-text {
 .share-add-note-textarea-container textarea,
 .share-to-field-input-container input {
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 1.2em;
-  /* font-size: 22px; */
+  /* font-size: 1.5em; */
+  font-size: 22px;
   /* font-weight: 300; */
 }
 
@@ -360,12 +365,15 @@ p.info-text {
   color: white;
   background: rgb(228, 0, 0);
   /* padding: 22px 4em; */
-  padding: 2vh 4em;
+  padding: 1em 4em;
+  margin: 0.6em 0;
   border-radius: 5px;
   font-size: 1.8em;
   /* font-size: 30px; */
-  width: max-content;
+  /* width: max-content; */
   cursor: pointer;
+  /* flex-shrink: 1; */
+  /* display: flex; */
 }
 
 .share-modal-line-6 {
@@ -375,7 +383,7 @@ p.info-text {
 
 .share-modal-line-7 {
   /* margin: 42px 0; */
-  margin: 4vh 0;
+  margin: 1.2em 0;
   display: flex;
   justify-content: center;
   width: 100%;
