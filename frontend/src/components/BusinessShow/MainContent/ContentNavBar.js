@@ -70,7 +70,7 @@ const ContentNavBar = ({ business }) => {
                 target="_blank"
                 rel="noreferrer"
                 href={`https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fyup.evanryan.dev%2Fbusinesses%2F${business.id}&amp;src=sdkpreparse`}
-                class="fb-xfbml-parse-ignore"
+                className="fb-xfbml-parse-ignore"
               >
                 <div className="share-fb">
                   <div className="fb-logo-container">f</div>
@@ -84,7 +84,7 @@ const ContentNavBar = ({ business }) => {
                 // href="https://twitter.com/share?ref_src=twsrc%5Etfw"
                 // data-text="Check out this amazing business on Yup."
                 // data-url="http://yup.evanryan.dev/businesses/1"
-                class="twitter-share-button"
+                className="twitter-share-button"
                 data-show-count="false"
               >
                 <div className="share-twitter">
