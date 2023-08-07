@@ -6,6 +6,8 @@ export const RECEIVE_BUSINESS = "businesses/RECEIVE_BUSINESS";
 export const RECEIVE_ERRORS = "businesses/RECEIVE_ERRORS";
 export const CLEAR_ERRORS = "businesses/CLEAR_ERRORS";
 
+export const SHARE_BUSINESS = "businesses/SHARE_BUSINESS";
+
 export const receiveBusinesses = (businesses) => ({
   type: RECEIVE_BUSINESSES,
   businesses
@@ -23,6 +25,11 @@ export const receiveErrors = (errors) => ({
 
 export const clearErrors = () => ({
   type: CLEAR_ERRORS
+});
+
+export const shareBusiness = (data) => ({
+  type: SHARE_BUSINESS,
+  data
 });
 
 export const getBusiness =

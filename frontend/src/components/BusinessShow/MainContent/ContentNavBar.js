@@ -62,6 +62,12 @@ const ContentNavBar = ({ business }) => {
     //   const div = document.querySelector(".copySuccessDiv");
     // })
 
+    // const handleSubmitShare = (e) => {
+    //   const payload = {
+    //     recepient:
+    //   }
+    // }
+
     return (
       <div
         className="share-modal-container"
@@ -128,12 +134,12 @@ const ContentNavBar = ({ business }) => {
                 </div>
               </div>
             </div>
-            <div className="share-modal-line-4">
+            {/* <div className="share-modal-line-4">
               <div className="left-side-line" />
               <h4>OR</h4>
               <div className="right-side-line" />
-            </div>
-            <div className="share-modal-line-5">
+            </div> */}
+            {/* <div className="share-modal-line-5">
               <div className="share-to-input">
                 <h4>To</h4>
                 <div className="share-to-field-input-container">
@@ -145,8 +151,8 @@ const ContentNavBar = ({ business }) => {
 
                 <p className="info-text">Yup user names or email addresses</p>
               </div>
-            </div>
-            <div className="share-modal-line-6">
+            </div> */}
+            {/* <div className="share-modal-line-6">
               <div className="share-add-note-container">
                 <h4>Add a note (optional)</h4>
                 <div className="share-add-note-textarea-container">
@@ -156,10 +162,10 @@ const ContentNavBar = ({ business }) => {
                   />
                 </div>
               </div>
-            </div>
-            <div className="share-modal-line-7">
-              <h3 className="share-submit-button">Share</h3>
-            </div>
+            </div> */}
+            {/* <div className="share-modal-line-7">
+              <h3 className="share-submit-button" onClick={e=>handleSubmitShare(e)}>Share</h3>
+            </div> */}
           </div>
         </div>
       </div>

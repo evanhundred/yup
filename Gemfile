@@ -57,4 +57,6 @@ group :development do
   gem "binding_of_caller"
 end
 
+gem "erb_lint"
+
 # gem "date", "~> 3.3.3"

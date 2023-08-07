@@ -21,7 +21,17 @@ class Api::BusinessesController < ApplicationController
         end
     end
 
-    def search
-
+    def share
+        @recepient = params[:recepient]
     end
+
+    def search
+    end
+
+    private
+
+    def share_biz_params
+        params.require()
+    end
+
 end
