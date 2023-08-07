@@ -1,7 +1,7 @@
-class Api::MailerControllers < ApplicationController
+class Api::MailersController < ApplicationController
     def share
         if @current_user
-            @mail = 
+            @mail =
             @user = @current_user
             @sender.email = @user.email
             @sender.name = @user.name
