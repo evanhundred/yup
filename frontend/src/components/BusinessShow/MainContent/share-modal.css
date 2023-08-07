@@ -23,20 +23,13 @@
 }
 
 .share-modal-box {
-  /* position: fixed; */
   position: relative;
   background: #f9f9f9;
   display: flex;
-  /* align-items: center; */
   border-radius: 10px;
   width: 680px;
-  height: 725px;
-  /* width: 55em;
-  height: 65em; */
-  /* min-height: 74em; */
-  /* min-height: 98.5vh; */
-  /* height: var(--originalHeight); */
-  /* top: 0; */
+  height: 310px;
+  /* height: 725px; */
 }
 /* .share-modal-box::after {
   height: var(--originalHeight);
@@ -45,6 +38,7 @@
 .share-modal-content {
   width: 100%;
   /* min-height: 100%; */
+  justify-content: center;
   display: flex;
   flex-direction: column;
   /* padding: 46px 3.5em; */
