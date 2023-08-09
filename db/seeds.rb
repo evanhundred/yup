@@ -10,6 +10,7 @@ require "open-uri"
 # ApplicationRecord.transaction do
     puts "Destroying tables..."
     User.destroy_all
+    BizPhotoBox.destroy_all
     Business.destroy_all
 
     puts "Resetting primary keys..."
@@ -43,6 +44,7 @@ require "open-uri"
             city: "Brooklyn",
             state: "NY",
             zipcode: "11249",
+            neighborhood: "Williamsburg",
             phone: "(718) 285-6180",
             website: "https://www.devocion.com/",
             open_at: "8:00 AM",
@@ -60,6 +62,7 @@ require "open-uri"
             city: "Brooklyn",
             state: "NY",
             zipcode: "11226",
+            neighborhood: "Flatbush",
             phone: "(917) 966-1555",
             website: "https://elpasomexicangrillbrooklyn.bestcafes.online/",
             open_at: "8:00 AM",
@@ -76,6 +79,7 @@ require "open-uri"
             city: "Brooklyn",
             state: "NY",
             zipcode: "11226",
+            neighborhood: "Flatbush",
             phone: "(718) 469-3400",
             website: "https://www.goldenkrust.com/",
             open_at: "7:00 AM",
@@ -93,6 +97,7 @@ require "open-uri"
             city: "Brooklyn",
             state: "NY",
             zipcode: "11210",
+            neighborhood: "Flatbush",
             phone: "(347) 624-7935",
             website: "https://www.yelp.com/menu/mirnas-pupuseria-brooklyn",
             open_at: "7:00 AM",
@@ -110,6 +115,7 @@ require "open-uri"
             city: "Brooklyn",
             state: "NY",
             zipcode: "11209",
+            neighborhood: "Bay Ridge",
             phone: "(718) 238-3303",
             website: "https://www.enoodle.nyc/",
             open_at: "11:00 AM",
@@ -132,6 +138,7 @@ require "open-uri"
             city: "Brooklyn",
             state: "NY",
             zipcode: "11218",
+            neighborhood: "Kensington",
             phone: "(718) 431-0222",
             website: "https://beverlypizzacafe.com",
             open_at: "11:00 AM",

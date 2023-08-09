@@ -1,4 +1,7 @@
 const LocationAndHours = ({ business }) => {
+  const mapSearchUrl = `https://maps.google.com/?ll=${business.latitude},${business.longitude}`;
+  const neighborhoodString = business.neighborhood;
+  // const neighborhoodString = business ? business.neighborhood : "text";
   return (
     <div className="location card-container">
       <div className="main-title">
@@ -10,23 +13,22 @@ const LocationAndHours = ({ business }) => {
           <img src={business.imageUrls[6]} alt="google maps" />
           <div className="bottom-left-side">
             <div className="address">
-              <a
-                href="https://google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={mapSearchUrl} target="_blank" rel="noopener noreferrer">
                 <h3 className="street-address">{business.address}</h3>
               </a>
 
               <h4 className="city-state-zip">
                 {business.city}, {business.state} {business.zipcode}
               </h4>
-              <p>Delicious Neighborhood</p>
+              {/* <p>{business.neighborhood}</p> */}
+              <p>{neighborhoodString}</p>
             </div>
 
             <div className="get-directions-container">
               <div className="get-directions-button">
-                <a href="#">Get directions</a>
+                <a target="_blank" rel="noreferrer" href={mapSearchUrl}>
+                  Get directions
+                </a>
               </div>
             </div>
           </div>
