@@ -30,3 +30,7 @@ div.subtitle.author {
 .review-rating span {
   color: orange;
 }
+
+.write-review-link {
+  cursor: pointer;
+}

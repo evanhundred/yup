@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Reviews = ({ business, props }) => {
+const Reviews = ({ business, handleWriteReview }) => {
   const reviewItems = business.reviews.map((review, idx) => (
     <div key={idx} className="review-item-container" id="reviews-container">
       <div className="author subtitle">
@@ -23,9 +23,11 @@ const Reviews = ({ business, props }) => {
       <div className="main-title review">
         <h2>Reviews</h2>
       </div>
-      <Link to={`/businesses/${business.id}/reviews/new`}>
+      <div className="write-review-link" onClick={(e) => handleWriteReview(e)}>
+        {/* <Link to={`/businesses/${business.id}/reviews/new`}> */}
         <h3>Write your review.</h3>
-      </Link>
+        {/* </Link> */}
+      </div>
 
       <div className="reviews-content">{reviewItems}</div>
     </div>

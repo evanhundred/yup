@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useParams, Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { useParams, Link, useLocation, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
 import "./index.css";
@@ -10,9 +10,18 @@ import webSpider from "../../assets/images/web-spider.jpg";
 const BusinessShow = ({ props }) => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const { businessId } = useParams();
+  const history = useHistory();
 
+  const { businessId } = useParams();
   const business = useSelector(getBusiness(businessId));
+
+  const currentUser = useSelector((state) => state.session.user);
+
+  const handleWriteReview = (e) => {
+    e.preventDefault();
+    if (currentUser) history.push(`/businesses/${business.id}/reviews/new`);
+    else history.push("/login");
+  };
 
   location.state = null;
 
@@ -53,6 +62,7 @@ const BusinessShow = ({ props }) => {
       <MainContent
         business={business}
         props={props === "goToReviews" ? "goToReviews" : "none"}
+        handleWriteReview={handleWriteReview}
       />
     </>
   );

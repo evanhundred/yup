@@ -47,11 +47,8 @@ require "open-uri"
             website: "https://www.devocion.com/",
             open_at: "8:00 AM",
             closed_at: "7:00 PM",
-            about: "Specialties123
-            Farm-to-table coffee roasters. We average 10 days from origin to roast, serving the freshest imaginable.123
-            History123
-            Established in 2006.123
-            Devoción was Launched in 2006 to produce the freshest coffee imaginable -- roasting provides only half of coffee's flavor, while the mere freshness of the beans does the rest of the work. And yet, most coffee beans sit around for months, losing flavor every day. That's why the Devoción team does everything short of picking the cherry, and do it faster than anyone else -- we hand-select our 1,000+ farm partners, dry-mill at our Bogotá facility, control the export process, and freshly roast in Brooklyn. You will taste the difference in a single sip.",
+            about: "Farm-to-table coffee roasters. We average 10 days from origin to roast, serving the freshest coffee
+            imaginable.",
             category: "Coffee & Tea",
             price: "$")
 

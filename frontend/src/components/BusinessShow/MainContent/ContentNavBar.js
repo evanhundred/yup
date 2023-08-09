@@ -1,14 +1,19 @@
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { useState, useRef } from "react";
+// import { useSelector } from "react-redux";
 
 import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
-
+// import { handleWriteReview } from "./handleWriteReview";
 import CopyIcon from "../../../assets/icons/copy-icon.png";
 
-const ContentNavBar = ({ business }) => {
-  const history = useHistory();
+const ContentNavBar = ({ business, handleWriteReview }) => {
+  // const history = useHistory();
   const [showShareModal, setShowShareModal] = useState(false);
   const html = document.querySelector("html");
+  // const currentUser = useSelector((state) => state.session.user);
+
+  // console.log("currentUser:");
+  // console.log(currentUser);
 
   const handleCloseModal = (e) => {
     e.preventDefault();
@@ -28,8 +33,8 @@ const ContentNavBar = ({ business }) => {
 
   const [copySuccess, setCopySuccess] = useState("");
   const textAreaRef = useRef(null);
-  const contactFieldRef = useRef(null);
-  const addANoteFieldRef = useRef(null);
+  // const contactFieldRef = useRef(null);
+  // const addANoteFieldRef = useRef(null);
 
   const copyToClipboard = (e) => {
     textAreaRef.current.select();
@@ -172,13 +177,6 @@ const ContentNavBar = ({ business }) => {
     );
   };
 
-  const handleAddReviewClick = (e) => {
-    e.preventDefault();
-    history.push(`/businesses/${business.id}/reviews/new`);
-    // goToReviews = true;
-    // history.push(location.pathname.concat("?goToReviews"));
-  };
-
   // const handleAddPhotoClick = (e) => {
   //   e.preventDefault();
   //   history.push(`/biz-user-photos/${business.id}`);
@@ -190,11 +188,13 @@ const ContentNavBar = ({ business }) => {
     backgroundNavBar();
   };
 
+  const handleSaveClick = (e) => {};
+
   return (
     <div className="content-nav-bar-container">
       <div
         className="write-review-button container"
-        onClick={(e) => handleAddReviewClick(e)}
+        onClick={(e) => handleWriteReview(e)}
       >
         <div className="write-review-button content">
           <div className="star-icon icon">
@@ -239,7 +239,10 @@ const ContentNavBar = ({ business }) => {
         </div>
       </div>
 
-      <div className="save-bookmark-button container button-container">
+      <div
+        className="save-bookmark-button container button-container"
+        onClick={(e) => handleSaveClick(e)}
+      >
         <div className="save-bookmark-button content">
           <div className="bookmark-button icon">
             <i className="fa-regular fa-bookmark"></i>

@@ -6,7 +6,7 @@ import LocationAndHours from "./LocationAndHours";
 import Amenities from "./Amenities";
 import AboutCard from "./AboutCard";
 import Reviews from "./Reviews";
-const MainContent = ({ business = null, props }) => {
+const MainContent = ({ business = null, props, handleWriteReview }) => {
   const location = useLocation();
 
   let reviewsComponent = document.getElementById("reviews-container");
@@ -27,7 +27,10 @@ const MainContent = ({ business = null, props }) => {
   return (
     <>
       <div className="main-content-container">
-        <ContentNavBar business={business} />
+        <ContentNavBar
+          business={business}
+          handleWriteReview={handleWriteReview}
+        />
 
         {/* menu */}
         <MenuCard business={business} />
@@ -38,7 +41,7 @@ const MainContent = ({ business = null, props }) => {
         {/* Other xxx nearby - AD*/}
 
         {/* Amenities and more */}
-        <Amenities business={business} />
+        {/* <Amenities business={business} /> */}
 
         {/* FUTURE */}
         {/* Help improve yelp */}
@@ -52,7 +55,11 @@ const MainContent = ({ business = null, props }) => {
         {/* <QuestionsCard /> */}
 
         {/* recommended reviews */}
-        <Reviews business={business} props={props} />
+        <Reviews
+          business={business}
+          props={props}
+          handleWriteReview={handleWriteReview}
+        />
 
         {/* collections containing */}
         {/* <Collections /> */}
