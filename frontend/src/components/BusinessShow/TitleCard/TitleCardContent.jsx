@@ -7,6 +7,13 @@ const TitleCardContent = ({ business }) => {
     reviewsComponent.scrollIntoView({ behavior: "smooth" });
   };
 
+  const handleSeeHoursClick = () => {
+    const hoursComponent = document.querySelector(
+      "div.location.card-container"
+    );
+    hoursComponent.scrollIntoView({ behavior: "smooth" });
+  };
+
   const ratingsSum = business.reviews.reduce(
     (sum, review) => sum + review.rating,
     0
@@ -140,12 +147,13 @@ const TitleCardContent = ({ business }) => {
           <h3>{openText}</h3>
         </div>
         <div className="hours-range-div">{hoursRange}</div>
-        <a href="#">
-          <div className="see-hours-button-container">
-            <div className="button-box"> </div>
-            <div className="see-hours-text">See hours</div>
-          </div>
-        </a>
+        <div
+          className="see-hours-button-container"
+          onClick={handleSeeHoursClick}
+        >
+          <div className="button-box"> </div>
+          <div className="see-hours-text">See hours</div>
+        </div>
       </div>
     );
   };

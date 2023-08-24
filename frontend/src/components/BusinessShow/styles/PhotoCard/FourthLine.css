@@ -23,6 +23,7 @@
 }
 
 .see-hours-button-container {
+  cursor: pointer;
   width: 100px;
   height: 20px;
 }
