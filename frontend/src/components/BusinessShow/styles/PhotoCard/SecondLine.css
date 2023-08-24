@@ -34,7 +34,7 @@ div.star-box span {
   margin: -12px -3px -8px;
 }
 
-div.star-box div.half-star {
+div.star-box div.grey.half-star {
   background: linear-gradient(to right, orange, grey);
 }
 
@@ -42,6 +42,14 @@ div.star-box div.half-star {
   /* position: relative; */
   display: flex;
   align-items: center;
+}
+
+div.star-box div.orange {
+  background: orange;
+}
+
+div.star-box div.grey {
+  background: grey;
 }
 
 #ratings-reviews .review-count {

@@ -15,7 +15,7 @@ const TitleCardContent = ({ business }) => {
     Math.round((ratingsSum / business.reviews.length) * 10) / 10;
 
   const lastRatingDigit = (ratingsAvg * 10) % 10;
-  const firstRatingDigit = Math.floor(ratingsAvg) + 1;
+  const firstRatingDigit = Math.floor(ratingsAvg);
   let isHalfStar;
   if (lastRatingDigit >= 2.5 && lastRatingDigit <= 7.5) isHalfStar = true;
   else isHalfStar = false;
@@ -29,43 +29,68 @@ const TitleCardContent = ({ business }) => {
     targetDiv.setAttribute("data-title-text", "&lowast;");
   }
 
-  console.log(ratingsAvg, firstRatingDigit + 1);
+  console.log(ratingsAvg, firstRatingDigit);
 
   // ratingsAvgHalves / 10
 
   const reviewString = business.reviews.length === 1 ? "review" : "reviews";
 
-  const starBoxClassNames = [
-    `box-1 ${isHalfStar && firstRatingDigit === 1 ? "half-star" : ""}`,
-    `box-2 ${isHalfStar && firstRatingDigit === 2 ? "half-star" : ""}`,
-    `box-3 ${isHalfStar && firstRatingDigit === 3 ? "half-star" : ""}`,
-    `box-4 ${isHalfStar && firstRatingDigit === 4 ? "half-star" : ""}`,
-    `box-5 ${isHalfStar && firstRatingDigit === 5 ? "half-star" : ""}`
-  ];
+  let twoThings = (boxIdx) => {
+    return `box-${boxIdx}${boxIdx <= firstRatingDigit ? " orange" : " grey"}${
+      isHalfStar && firstRatingDigit + 1 === boxIdx ? " half-star" : ""
+    }`;
+  };
+
+  const countToFive = [1, 2, 3, 4, 5];
+  const myStarBox = countToFive.map((num) => {
+    return (
+      <div className={`${twoThings(num)}`}>
+        <span>&lowast;</span>
+      </div>
+    );
+  });
+
+  // const starBoxClassNames = [
+  //   ,
+  //   `box-2 ${isHalfStar && firstRatingDigit === 2 ? "half-star" : ""}`,
+  //   `box-3 ${isHalfStar && firstRatingDigit === 3 ? "half-star" : ""}`,
+  //   `box-4 ${isHalfStar && firstRatingDigit === 4 ? "half-star" : ""}`,
+  //   `box-5 ${isHalfStar && firstRatingDigit === 5 ? "half-star" : ""}`
+  // ];
+
+  const ratingsStarBox = () => {
+    for (let i = 1; i <= 5; i++) {
+      return (
+        <div className={`${twoThings(i)}`}>
+          <span>&lowast;</span>
+        </div>
+      );
+    }
+  };
+
+  // return {
+  /* <div className={starBoxClassNames[1]}>
+      <span>&lowast;</span>
+      </div>
+      <div className={starBoxClassNames[2]}>
+      <span>&lowast;</span>
+      </div>
+      <div className={starBoxClassNames[3]}>
+      <span>&lowast;</span>
+      </div>
+      <div className={starBoxClassNames[4]}>
+      <span>&lowast;</span>
+    </div> */
+  // };
 
   const SecondLine = () => {
     return (
       <div id="ratings-reviews">
-        <div className="star-box">
-          <div className={starBoxClassNames[0]}>
-            <span>&lowast;</span>
-          </div>
-          <div className={starBoxClassNames[1]}>
-            <span>&lowast;</span>
-          </div>
-          <div className={starBoxClassNames[2]}>
-            <span>&lowast;</span>
-          </div>
-          <div className={starBoxClassNames[3]}>
-            <span>&lowast;</span>
-          </div>
-          <div className={starBoxClassNames[4]}>
-            <span>&lowast;</span>
-          </div>
-        </div>
+        <div className="star-box">{myStarBox}</div>
+
         <div className="review-count" onClick={handleReviewCountClick}>
           <p>
-            {ratingsAvg} ({business.reviews.length} {reviewString})
+            {ratingsAvg || ""} ({business.reviews.length} {reviewString})
           </p>
         </div>
       </div>
