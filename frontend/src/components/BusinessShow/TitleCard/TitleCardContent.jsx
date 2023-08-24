@@ -6,6 +6,9 @@ const TitleCardContent = ({ business }) => {
     const reviewsComponent = document.getElementById("reviews-container");
     reviewsComponent.scrollIntoView({ behavior: "smooth" });
   };
+
+  const reviewString = business.reviews.length === 1 ? "review" : "reviews";
+
   const SecondLine = () => {
     return (
       <div id="ratings-reviews">
@@ -27,7 +30,9 @@ const TitleCardContent = ({ business }) => {
           </div>
         </div>
         <div className="review-count" onClick={handleReviewCountClick}>
-          <p>{business.reviews.length} reviews</p>
+          <p>
+            {business.reviews.length} {reviewString}
+          </p>
         </div>
       </div>
     );
