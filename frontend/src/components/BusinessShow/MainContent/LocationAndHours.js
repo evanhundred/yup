@@ -63,12 +63,12 @@ const LocationAndHours = ({ business }) => {
             <div className="day-name">Sun</div>
             <div className="time-range">{`${business.openAt} - ${business.closedAt}`}</div>
           </div>
-          <a href="#">
+          {/* <a href="#">
             <div className="edit-info-button">
               <i className="fa-solid fa-pencil"></i>
               <div>Edit Business info</div>
             </div>
-          </a>
+          </a> */}
         </div>
       </div>
     </div>

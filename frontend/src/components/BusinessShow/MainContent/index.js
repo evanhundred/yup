@@ -3,20 +3,31 @@ import "./share-modal.css";
 import ContentNavBar from "./ContentNavBar";
 import MenuCard from "./MenuCard";
 import LocationAndHours from "./LocationAndHours";
-import Amenities from "./Amenities";
 import AboutCard from "./AboutCard";
 import Reviews from "./Reviews";
 const MainContent = ({ business = null, props, handleWriteReview }) => {
   const location = useLocation();
 
+  // if (location.search.includes("reviews") {
+
+  // }
+
   let reviewsComponent = document.getElementById("reviews-container");
 
-  if (location.state && reviewsComponent && location.state.scrollToReviews) {
+  console.log(location);
+
+  if (reviewsComponent && location.search.includes("reviews")) {
     reviewsComponent.scrollIntoView({ behavior: "smooth" });
   } else {
     const rootElement = document.getElementById("root");
     rootElement.scrollIntoView(true);
   }
+  // if (location.state && reviewsComponent && location.state.scrollToReviews) {
+  //   reviewsComponent.scrollIntoView({ behavior: "smooth" });
+  // } else {
+  //   const rootElement = document.getElementById("root");
+  //   rootElement.scrollIntoView(true);
+  // }
 
   // REDUNDANT-- CLEAN
   if (props === "goToReviews") {

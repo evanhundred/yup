@@ -12,6 +12,14 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
+  def patch
+
+  end
+
   private
 
   def user_params

@@ -2,6 +2,10 @@ import { useState } from "react";
 import BlueCheck from "../../../assets/images/blue-check.png";
 
 const TitleCardContent = ({ business }) => {
+  const handleReviewCountClick = () => {
+    const reviewsComponent = document.getElementById("reviews-container");
+    reviewsComponent.scrollIntoView({ behavior: "smooth" });
+  };
   const SecondLine = () => {
     return (
       <div id="ratings-reviews">
@@ -22,7 +26,9 @@ const TitleCardContent = ({ business }) => {
             <span>&lowast;</span>
           </div>
         </div>
-        <div className="review-count">561 reviews</div>
+        <div className="review-count" onClick={handleReviewCountClick}>
+          <p>{business.reviews.length} reviews</p>
+        </div>
       </div>
     );
   };
@@ -40,12 +46,12 @@ const TitleCardContent = ({ business }) => {
         <p>Claimed</p>
         <p>· {business?.price || ""} ·</p>
         <p>{business?.category || ""}</p>
-        <a href="#">
+        {/* <a href="#">
           <div className="edit-button-container">
             <div className="button-box"> </div>
             <div className="edit-text">Edit</div>
           </div>
-        </a>
+        </a> */}
       </div>
     );
   };

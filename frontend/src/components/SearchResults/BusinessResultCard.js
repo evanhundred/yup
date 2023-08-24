@@ -9,15 +9,15 @@ const BusinessResultCard = ({ business, idx }) => {
 
   const location = useLocation();
 
-  if (location.search === "?goToReviews") {
-    const reviewsElement = document.getElementById("reviews-container");
-    reviewsElement.scrollIntoView({
-      behavior: "smooth"
-    });
-    // this.targetRef.scrollIntoView({
-    //   behavior: "smooth"
-    // });
-  }
+  // if (location.search === "?goToReviews") {
+  //   const reviewsElement = document.getElementById("reviews-container");
+  //   reviewsElement.scrollIntoView({
+  //     behavior: "smooth"
+  //   });
+  // this.targetRef.scrollIntoView({
+  //   behavior: "smooth"
+  // });
+  // }
 
   // browser behaves erratically on mouseover
   const addHoverShadow = (card) => {
@@ -174,8 +174,10 @@ const BusinessResultCard = ({ business, idx }) => {
 
   const handleReviewsClick = (e) => {
     e.preventDefault();
-    history.push(`/businesses/${business.id}`, {
-      scrollToReviews: true
+    history.push({
+      pathname: `/businesses/${business.id}`,
+      search: "?reviews",
+      state: { scrollToReviews: true }
     });
   };
 

@@ -31,12 +31,28 @@ div.star-box span {
 }
 
 #ratings-reviews {
+  /* position: relative; */
   display: flex;
+  align-items: center;
 }
 
-#ratings-reviews.review-count {
-  margin: 1.1em 0 0 0.85em;
-  font-weight: 600;
-  font-size: 20px;
+#ratings-reviews .review-count {
+  margin: 0.6em 0 0 0.85em;
+  font-weight: 400;
+  font-size: 22px;
   letter-spacing: 0.05rem;
+  cursor: pointer;
+  /* top: 10px;
+  position: relative; */
+  /* display: flex;
+  align-items: center; */
 }
+
+/* #ratings-reviews.review-count p {
+  top: 10px;
+  position: relative;
+  margin-top: 10px;
+  padding-top: 10px;
+  vertical-align: center;
+  font-size: 30px;
+} */
