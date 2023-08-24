@@ -7,31 +7,65 @@ const TitleCardContent = ({ business }) => {
     reviewsComponent.scrollIntoView({ behavior: "smooth" });
   };
 
+  const ratingsSum = business.reviews.reduce(
+    (sum, review) => sum + review.rating,
+    0
+  );
+  const ratingsAvg =
+    Math.round((ratingsSum / business.reviews.length) * 10) / 10;
+
+  const lastRatingDigit = (ratingsAvg * 10) % 10;
+  const firstRatingDigit = Math.floor(ratingsAvg) + 1;
+  let isHalfStar;
+  if (lastRatingDigit >= 2.5 && lastRatingDigit <= 7.5) isHalfStar = true;
+  else isHalfStar = false;
+
+  console.log(isHalfStar);
+  // const ratingsAvgHalves = Math.round(ratingsAvg);
+  const targetDiv = document.querySelector(`.box-${firstRatingDigit + 1}`);
+  if (targetDiv && isHalfStar) {
+    console.log(targetDiv);
+    targetDiv.classList.add("half-star");
+    targetDiv.setAttribute("data-title-text", "&lowast;");
+  }
+
+  console.log(ratingsAvg, firstRatingDigit + 1);
+
+  // ratingsAvgHalves / 10
+
   const reviewString = business.reviews.length === 1 ? "review" : "reviews";
+
+  const starBoxClassNames = [
+    `box-1 ${isHalfStar && firstRatingDigit === 1 ? "half-star" : ""}`,
+    `box-2 ${isHalfStar && firstRatingDigit === 2 ? "half-star" : ""}`,
+    `box-3 ${isHalfStar && firstRatingDigit === 3 ? "half-star" : ""}`,
+    `box-4 ${isHalfStar && firstRatingDigit === 4 ? "half-star" : ""}`,
+    `box-5 ${isHalfStar && firstRatingDigit === 5 ? "half-star" : ""}`
+  ];
 
   const SecondLine = () => {
     return (
       <div id="ratings-reviews">
         <div className="star-box">
-          <div className="box-1">
+          <div className={starBoxClassNames[0]}>
             <span>&lowast;</span>
           </div>
-          <div className="box-2">
+          <div className={starBoxClassNames[1]}>
             <span>&lowast;</span>
           </div>
-          <div className="box-3">
+          <div className={starBoxClassNames[2]}>
             <span>&lowast;</span>
           </div>
-          <div className="box-4">
+          <div className={starBoxClassNames[3]}>
             <span>&lowast;</span>
           </div>
-          <div className="box-5">
+          <div className={starBoxClassNames[4]}>
             <span>&lowast;</span>
           </div>
         </div>
         <div className="review-count" onClick={handleReviewCountClick}>
           <p>
-            {business.reviews.length} {reviewString}
+            {ratingsAvg} ({business.reviews.length} {reviewString})
           </p>
         </div>
       </div>

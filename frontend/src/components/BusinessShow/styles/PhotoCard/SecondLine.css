@@ -17,7 +17,11 @@ div.star-box div {
   border-radius: 10px;
 }
 
-div.star-box div.box-4,
+div.star-box div.box-4 {
+  background: grey;
+  opacity: 85%;
+}
+
 div.star-box div.box-5 {
   background: grey;
   opacity: 85%;
@@ -28,6 +32,10 @@ div.star-box span {
   position: relative;
   top: -10%;
   margin: -12px -3px -8px;
+}
+
+div.star-box div.half-star {
+  background: linear-gradient(to right, orange, grey);
 }
 
 #ratings-reviews {

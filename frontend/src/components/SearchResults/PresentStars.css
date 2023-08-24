@@ -1,4 +1,4 @@
-span.half-star {
+.rendered-stars span.half-star {
   position: relative;
   display: inline-block;
   color: white;
@@ -6,7 +6,7 @@ span.half-star {
   white-space: pre;
 }
 
-span.half-star::after {
+.rendered-stars span.half-star::after {
   content: attr(data-title-text);
   display: block;
   position: absolute;
