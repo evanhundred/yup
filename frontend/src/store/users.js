@@ -3,6 +3,8 @@ import csrfFetch from "./csrf";
 export const RECEIVE_USERS = "users/RECEIVE_USERS";
 export const RECEIVE_CURRENT_USER = "users/RECEIVE_USER";
 
+// export const SAVE_BUSINESS = "users/SAVE_BUSINESS";
+
 export const receiveUsers = (users) => ({
   type: RECEIVE_USERS,
   users
@@ -12,6 +14,11 @@ export const receiveUser = (user) => ({
   type: RECEIVE_CURRENT_USER,
   user
 });
+
+// export const saveBusiness = (businessId) => ({
+//   type: SAVE_BUSINESS,
+//   businessId
+// });
 
 export const getUsers = ({ users }) => (users ? Object.values(users) : []);
 
@@ -25,12 +32,29 @@ export const fetchUsers = () => async (dispatch) => {
     data = res.errors;
   }
 };
+
+export const saveBusiness = (businessId) => async () => {
+  const res = await csrfFetch(`/api/save_business/${businessId}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      businessId
+    })
+  });
+  const data = await res.json();
+
+  return data;
+};
+
 const usersReducer = (preloadedState = {}, action) => {
   const newState = { ...preloadedState };
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       newState[action.user.id] = action.user;
       return newState;
+    // case SAVE_BUSINESS:
+    //   newState[action.business_id] = action.business_id;
+    //   return newState;
     default:
       return preloadedState;
   }

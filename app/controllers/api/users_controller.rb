@@ -12,6 +12,15 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def save_business
+    @user = current_user
+    @business = Business.find(params[:business_id])
+
+    if @user && @business
+      @user.save_business(@business.id)
+    end
+  end
+
   def edit
 
   end

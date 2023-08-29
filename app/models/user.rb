@@ -25,6 +25,23 @@ class User < ApplicationRecord
     inverse_of: :author,
     dependent: :destroy
 
+  has_many :saved_businesses,
+    class_name: :Business,
+    inverse_of: :savers,
+    dependent: :destroy
+
+  def save_business(business_id)
+    @user = current_user
+    @business = Business.find(business_id)
+
+    if @business && @user
+      @user.saved_businesses.push(@business)
+      render json: { message: 'success'}
+    else
+      render json: { errors: @user.errors.full_messages}, status: 422
+    end
+  end
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     return user&.authenticate(password) ? user : nil

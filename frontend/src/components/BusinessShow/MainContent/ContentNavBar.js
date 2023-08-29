@@ -1,13 +1,21 @@
 // import { useHistory } from "react-router-dom";
 import { useState, useRef } from "react";
-// import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
 // import { handleWriteReview } from "./handleWriteReview";
+
+import { saveBusiness } from "../../../store/users";
+
 import CopyIcon from "../../../assets/icons/copy-icon.png";
 
 const ContentNavBar = ({ business, handleWriteReview }) => {
-  // const history = useHistory();
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const [errors, setErrors] = useState([]);
+
   const [showShareModal, setShowShareModal] = useState(false);
   const html = document.querySelector("html");
   // const currentUser = useSelector((state) => state.session.user);
@@ -188,7 +196,21 @@ const ContentNavBar = ({ business, handleWriteReview }) => {
     backgroundNavBar();
   };
 
-  const handleSaveClick = (e) => {};
+  const handleSaveClick = () => {
+    dispatch(saveBusiness(business.id))
+      // .catch(async (res) => {
+      //   let data;
+      //   try {
+      //     data = await res.clone().json();
+      //   } catch {
+      //     data = await res.text();
+      //   }
+      //   if (data?.errors) setErrors(data.errors);
+      //   else if (data) setErrors([data]);
+      //   else setErrors([res.statusText]);
+      // })
+      .then(() => console.log("success! business saved."));
+  };
 
   return (
     <div className="content-nav-bar-container">
@@ -241,7 +263,7 @@ const ContentNavBar = ({ business, handleWriteReview }) => {
 
       <div
         className="save-bookmark-button container button-container"
-        onClick={(e) => handleSaveClick(e)}
+        onClick={handleSaveClick}
       >
         <div className="save-bookmark-button content">
           <div className="bookmark-button icon">
