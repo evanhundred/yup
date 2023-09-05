@@ -7,16 +7,21 @@ export const receiveSavedBusiness = (savedBusiness) => ({
   savedBusiness
 });
 
-export const createSavedBusiness = (savedBusiness) => async (dispatch) => {
-  const res = await csrfFetch("/api/savedBusinesses", {
+export const createSavedBusiness = (businessId) => async (dispatch) => {
+  const res = await csrfFetch("/api/saved_businesses", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(savedBusiness)
+    // body: { businessId }
+    body: JSON.stringify({ businessId })
   });
   let data;
   if (res.ok) {
     data = await res.json();
-    dispatch(receiveSavedBusiness(savedBusiness));
+    // savedBusiness = {
+    //   businessId: businessId,
+    //   saverId: saverId
+    // }
+    dispatch(receiveSavedBusiness(data));
   } else {
     data = await res.errors;
   }

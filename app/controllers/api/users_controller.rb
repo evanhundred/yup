@@ -40,7 +40,7 @@ class Api::UsersController < ApplicationController
   #   else
   #     render json: @user.errors
   #   end
-  end
+  # end
 
   def edit
 

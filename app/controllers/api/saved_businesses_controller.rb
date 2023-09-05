@@ -9,10 +9,12 @@ class Api::SavedBusinessesController < ApplicationController
         @saved_business = SavedBusiness.new
         # @saved_business = SavedBusiness.new(saved_business_params)
         @saved_business.saver_id = current_user.id
-        @saved_business.business_id = params[:business_id]
+        @business = Business.find(params[:business_id])
+        @saved_business.business_id = @business.id
         if @saved_business.save
             render json: { message: "success" }, status: 200
         else
+        #     if !
             render json: { errors: @saved_business.errors.full_messages }, status: 422
         end
     end

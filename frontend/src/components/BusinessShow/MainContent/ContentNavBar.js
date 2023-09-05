@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
 // import { handleWriteReview } from "./handleWriteReview";
 
-import { saveBusiness } from "../../../store/users";
+import { createSavedBusiness } from "../../../store/savedBusinesses.js";
 
 import CopyIcon from "../../../assets/icons/copy-icon.png";
 
@@ -197,8 +197,8 @@ const ContentNavBar = ({ business, handleWriteReview }) => {
   };
 
   const handleSaveClick = async () => {
-    const data = { businessId: business.id };
-    const res = await dispatch(saveBusiness(data));
+    // const data = { businessId: business.id ;
+    const res = await dispatch(createSavedBusiness(business.id));
     // .catch(async (res) => {
     //   let data;
     //   try {
