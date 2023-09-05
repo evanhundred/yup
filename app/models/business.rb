@@ -32,11 +32,9 @@ class Business < ApplicationRecord
         foreign_key: :business_id,
         inverse_of: :business
 
-    has_many :savers,
-        class_name: :User,
-        foreign_key: :saver_id,
-        inverse_of: :saved_businesses
-
+    has_many :saves,
+        inverse_of: :business,
+        class_name: :SavedBusiness
 
     has_many_attached :photos
 end

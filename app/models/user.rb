@@ -26,8 +26,9 @@ class User < ApplicationRecord
     dependent: :destroy
 
   has_many :saved_businesses,
-    class_name: :Business,
-    inverse_of: :savers,
+    class_name: :SavedBusiness,
+    foreign_key: :saver_id,
+    inverse_of: :saver,
     dependent: :destroy
 
   def save_business(business_id)

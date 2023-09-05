@@ -1,7 +1,7 @@
 // import { useHistory } from "react-router-dom";
 import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
 // import { handleWriteReview } from "./handleWriteReview";
@@ -11,10 +11,10 @@ import { saveBusiness } from "../../../store/users";
 import CopyIcon from "../../../assets/icons/copy-icon.png";
 
 const ContentNavBar = ({ business, handleWriteReview }) => {
-  const history = useHistory();
+  // const history = useHistory();
   const dispatch = useDispatch();
 
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
 
   const [showShareModal, setShowShareModal] = useState(false);
   const html = document.querySelector("html");
@@ -196,20 +196,23 @@ const ContentNavBar = ({ business, handleWriteReview }) => {
     backgroundNavBar();
   };
 
-  const handleSaveClick = () => {
-    dispatch(saveBusiness(business.id))
-      // .catch(async (res) => {
-      //   let data;
-      //   try {
-      //     data = await res.clone().json();
-      //   } catch {
-      //     data = await res.text();
-      //   }
-      //   if (data?.errors) setErrors(data.errors);
-      //   else if (data) setErrors([data]);
-      //   else setErrors([res.statusText]);
-      // })
-      .then(() => console.log("success! business saved."));
+  const handleSaveClick = async () => {
+    const data = { businessId: business.id };
+    const res = await dispatch(saveBusiness(data));
+    // .catch(async (res) => {
+    //   let data;
+    //   try {
+    //     data = await res.clone().json();
+    //   } catch {
+    //     data = await res.text();
+    //   }
+    //   if (data?.errors) setErrors(data.errors);
+    //   else if (data) setErrors([data]);
+    //   else setErrors([res.statusText]);
+    // })
+    // .then(() => console.log(data));
+    // const data = await res.json();
+    console.log(res);
   };
 
   return (

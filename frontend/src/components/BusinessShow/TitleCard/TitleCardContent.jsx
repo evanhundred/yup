@@ -51,7 +51,7 @@ const TitleCardContent = ({ business }) => {
   const countToFive = [1, 2, 3, 4, 5];
   const myStarBox = countToFive.map((num) => {
     return (
-      <div className={`${twoThings(num)}`}>
+      <div className={`${twoThings(num)}`} key={num}>
         <span>&lowast;</span>
       </div>
     );
