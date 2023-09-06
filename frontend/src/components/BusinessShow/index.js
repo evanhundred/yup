@@ -61,6 +61,7 @@ const BusinessShow = ({ props }) => {
       <TitleCard business={business} />
       <MainContent
         business={business}
+        currentUser={currentUser}
         props={props === "goToReviews" ? "goToReviews" : "none"}
         handleWriteReview={handleWriteReview}
       />

@@ -1,16 +1,17 @@
 // import { useHistory } from "react-router-dom";
 import { useState, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { useHistory } from "react-router-dom";
 
 import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
 // import { handleWriteReview } from "./handleWriteReview";
 
 import { createSavedBusiness } from "../../../store/savedBusinesses.js";
+import { fetchUser } from "../../../store/users";
 
 import CopyIcon from "../../../assets/icons/copy-icon.png";
 
-const ContentNavBar = ({ business, handleWriteReview }) => {
+const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   // const history = useHistory();
   const dispatch = useDispatch();
 
@@ -214,6 +215,19 @@ const ContentNavBar = ({ business, handleWriteReview }) => {
     // const data = await res.json();
     console.log(res);
   };
+
+  // console.log("currentUser.savedBusinesses:");
+  // console.log(currentUser.savedBusinesses);
+  // console.log("currentUser.reviews:");
+  // console.log(currentUser.reviews);
+
+  const fetchedUser = useSelector((state) => state.users[currentUser.id]);
+  console.log(fetchedUser);
+
+  if (currentUser) {
+    dispatch(fetchUser(currentUser.id));
+    console.log("fetching...");
+  }
 
   return (
     <div className="content-nav-bar-container">

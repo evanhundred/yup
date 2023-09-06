@@ -33,6 +33,18 @@ export const fetchUsers = () => async (dispatch) => {
   }
 };
 
+export const fetchUser = (userId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/users/${userId}`);
+  let data;
+  if (res.ok) {
+    data = await res.json();
+    dispatch(receiveUser(data));
+  } else {
+    data = res.errors;
+  }
+  return data;
+};
+
 export const saveBusiness = (businessId) => async (dispatch) => {
   const res = await csrfFetch(`/api/saved_businesses/`, {
     method: "POST",

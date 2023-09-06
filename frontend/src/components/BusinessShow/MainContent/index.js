@@ -5,7 +5,12 @@ import MenuCard from "./MenuCard";
 import LocationAndHours from "./LocationAndHours";
 import AboutCard from "./AboutCard";
 import Reviews from "./Reviews";
-const MainContent = ({ business = null, props, handleWriteReview }) => {
+const MainContent = ({
+  business = null,
+  currentUser = null,
+  props,
+  handleWriteReview
+}) => {
   const location = useLocation();
 
   // if (location.search.includes("reviews") {
@@ -40,6 +45,7 @@ const MainContent = ({ business = null, props, handleWriteReview }) => {
       <div className="main-content-container">
         <ContentNavBar
           business={business}
+          currentUser={currentUser}
           handleWriteReview={handleWriteReview}
         />
 
