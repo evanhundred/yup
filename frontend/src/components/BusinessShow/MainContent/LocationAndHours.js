@@ -1,5 +1,11 @@
 const LocationAndHours = ({ business }) => {
-  const mapSearchUrl = `https://maps.google.com/?ll=${business.latitude},${business.longitude}`;
+  // const urlifiedBizName = business.name;
+  const urlifiedBizCoords = `${business.latitude}%2C${business.longitude}`;
+  // let googleMapParams = `query=${urlifiedBizName}&query_place_id=${business.placeId}`;
+  let googleMapParams = `query=${urlifiedBizCoords}&query_place_id=${business.placeId}`;
+  const mapSearchUrl = `https://www.google.com/maps/search/?api=1&${googleMapParams}`;
+
+  // const mapSearchUrl = `https://maps.google.com/?ll=${business.latitude},${business.longitude}`;
   const neighborhoodString = business.neighborhood;
   // const neighborhoodString = business ? business.neighborhood : "text";
   return (

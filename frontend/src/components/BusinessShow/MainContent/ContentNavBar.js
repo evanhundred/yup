@@ -221,13 +221,20 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   // console.log("currentUser.reviews:");
   // console.log(currentUser.reviews);
 
-  const fetchedUser = useSelector((state) => state.users[currentUser.id]);
-  console.log(fetchedUser);
+  // const fetchedUser = useSelector((state) => state.users[currentUser.id]);
+  // console.log(fetchedUser);
 
-  if (currentUser) {
-    dispatch(fetchUser(currentUser.id));
-    console.log("fetching...");
-  }
+  // if (currentUser) {
+  //   dispatch(fetchUser(currentUser.id));
+  //   console.log("fetching...");
+  // }
+
+  // if (fetchedUser) {
+  //   const businessIsSaved = (businessId) => {
+  //     business.id === businessId;
+  //   }
+  //   fetchedUser.savedBusinesses.some(businessIsSaved);
+  // }
 
   return (
     <div className="content-nav-bar-container">

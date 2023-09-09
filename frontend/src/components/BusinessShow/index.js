@@ -24,7 +24,6 @@ const BusinessShow = ({ props }) => {
   };
 
   location.state = null;
-
   useEffect(() => {
     dispatch(fetchBusiness(businessId)); // .catch((errors) => console.log(errors));
   }, [businessId, dispatch]);

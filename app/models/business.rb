@@ -20,6 +20,7 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  neighborhood :string
+#  place_id     :string
 #
 class Business < ApplicationRecord
     validates :name, :address, :zipcode, :city, :state, :phone, :open_at, :closed_at, :about, :category, :price, :neighborhood, presence: true

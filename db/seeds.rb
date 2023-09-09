@@ -52,7 +52,8 @@ require "open-uri"
             about: "Farm-to-table coffee roasters. We average 10 days from origin to roast, serving the freshest coffee
             imaginable.",
             category: "Coffee & Tea",
-            price: "$")
+            price: "$",
+            place_id: "ChIJi7flemFZwokRDpIJuxfOGek")
 
         business2 = Business.create!(
             name: "El Paso Mexican Grill",
@@ -69,7 +70,8 @@ require "open-uri"
             closed_at: "10:45 PM",
             about: "Tex Mex Southern Food with a bit of American. We are now serving breakfast!",
             category: "Tex Mex, Mexican",
-            price: "$")
+            price: "$",
+            place_id: "ChIJL0SyADVbwokRx1rSo2ilrZM")
 
         business3 = Business.create!(
             name: "Golden Krust Bakery & Grill",
@@ -87,7 +89,8 @@ require "open-uri"
             about: "In 1989, Lowell Hawthorne, along with his wife Lorna, four of his siblings and their spouses, pooled all of their resources to open the first Golden Krust restaurant on East Gun Hill Road in the Bronx, New York. The pivotal year of 1993 signified Golden Krust’s relocation of its manufacturing operations to the South Bronx, eventually purchasing nearly the entire block from 172nd Street to Claremont Parkway on Park Avenue.123
             The business became so successful that the Hawthornes were encouraged to create franchises, and they seized the opportunity to do just that. Golden Krust became the first Caribbean-owned business in the U.S to be granted a franchise license. By 1996, they owned 17 restaurants throughout New York City. Today, Golden Krust Caribbean Restaurants operates over 125 restaurants in North America.",
             category: "Caribbean",
-            price: "$")
+            price: "$",
+            place_id: "ChIJdf3GsD5bwokR8sWJFinChw4")
 
         business4 = Business.create!(
             name: "Mirna's Pupuseria",
@@ -105,7 +108,8 @@ require "open-uri"
             about: "Specialties123
             Our business specializes in making the best Salvadorean Cuisine in town by choosing the best quality ingredients and our own family recipes that takes all those flavors to the next level. We provide a wide range of the best and most popular Salvadorean dishes which are specially prepared so YOU can visit our country and get close to our warm culture without even leaving your table. We go above and beyond your expectations to deliver on time and always with a lovely smile.",
             category: "Salvadoran",
-            price: "$")
+            price: "$",
+            place_id: "ChIJJ8XhtEdbwokR44t91MZmCaM")
 
         business5 = Business.create!(
             name: "E Noodle",
@@ -128,7 +132,8 @@ require "open-uri"
 
             Well known Chinese Cantonese/Hong Kong Cafe cuisine (廣東菜) restaurants, #eNoodle restaurants span NYC 3 boroughs is one of the your best bets for Chinese take-out, and quick casual eat in dining. This restaurant offers modern interpretations of classic dishes, with a particularly diverse noodle menu. Besides noodle, we are known for soup dumpling, fried dumpling and steamed dumping as made by hands by staff in house using most fresh ingredients. #eNoodle",
             category: "Noodles, Cantonese, Hong Kong Style Cafe",
-            price: "$$")
+            price: "$$",
+            place_id: "ChIJwwql-mBFwokRfMa2YHqiR-Y")
 
         business6 = Business.create!(
             name: "Beverly Pizza & Cafe",
@@ -145,7 +150,8 @@ require "open-uri"
             closed_at: "10:30 PM",
             about: "Order your favorite pizza, pasta, salad, wings and more with Beverley Pizza & Cafe located at 358 E 2nd St in New York, NY. Beverley Pizza & Cafe is accepting orders online for delivery and takeout. To begin your order simply click on any menu category. Enjoy!",
             category: "Cafes, Italian, Pizza",
-            price: "$")
+            price: "$",
+            place_id: "ChIJSR5FIylbwokRtOH1ehlLY9c")
 
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/photo_1.jpg"), filename: "photo_1.jpg")
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/photo_2.jpg"), filename: "photo_2.jpg")
