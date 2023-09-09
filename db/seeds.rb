@@ -10,12 +10,16 @@ require "open-uri"
 # ApplicationRecord.transaction do
     puts "Destroying tables..."
     User.destroy_all
-    BizPhotoBox.destroy_all
+    Review.destroy_all
+    SavedBusiness.destroy_all
     Business.destroy_all
+    # BizPhotoBox.destroy_all
 
     puts "Resetting primary keys..."
     ApplicationRecord.connection.reset_pk_sequence!('users')
     ApplicationRecord.connection.reset_pk_sequence!('businesses')
+    ApplicationRecord.connection.reset_pk_sequence!('reviews')
+    ApplicationRecord.connection.reset_pk_sequence!('saved_businesses')
 
     puts "Creating users..."
     User.create!(

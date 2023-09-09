@@ -2,10 +2,11 @@
 #
 # Table name: saved_businesses
 #
-#  business_id :bigint           not null
-#  saver_id    :bigint           not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  saved_business_id :bigint           not null
+#  saver_id          :bigint           not null
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  id                :bigint           not null, primary key
 #
 class SavedBusiness < ApplicationRecord
     belongs_to :saver,
@@ -14,6 +15,6 @@ class SavedBusiness < ApplicationRecord
         inverse_of: :saved_businesses
 
     belongs_to :business,
-        foreign_key: :business_id,
+        foreign_key: :saved_business_id,
         inverse_of: :saves
 end

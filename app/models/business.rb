@@ -29,13 +29,15 @@ class Business < ApplicationRecord
         foreign_key: :business_id,
         inverse_of: :business
 
-    has_one :biz_photo_box,
-        foreign_key: :business_id,
-        inverse_of: :business
+    # has_one :biz_photo_box,
+    #     foreign_key: :business_id,
+    #     inverse_of: :business
 
     has_many :saves,
         inverse_of: :business,
-        class_name: :SavedBusiness
+        foreign_key: :saved_business_id,
+        class_name: :SavedBusiness,
+        dependent: :destroy
 
     has_many_attached :photos
 end
