@@ -9,6 +9,8 @@
 #  id                :bigint           not null, primary key
 #
 class SavedBusiness < ApplicationRecord
+    validates :saved_business_id, uniqueness: { scope: :saver_id, message: "only one save per user + business combination" }
+
     belongs_to :saver,
         class_name: :User,
         foreign_key: :saver_id,
