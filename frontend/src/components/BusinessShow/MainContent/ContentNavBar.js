@@ -1,6 +1,6 @@
-// import { useHistory } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { useState, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 // import { useHistory } from "react-router-dom";
 
 import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
@@ -10,15 +10,29 @@ import { createSavedBusiness } from "../../../store/savedBusinesses.js";
 
 import CopyIcon from "../../../assets/icons/copy-icon.png";
 
-const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
+const ContentNavBar = ({
+  business,
+  currentUser,
+  // fetchedUser,
+  handleWriteReview
+}) => {
+  // {business, currentUser, fetchedUser, handleWriteReview} = props;
   // const history = useHistory();
   const dispatch = useDispatch();
+  // const params = useParams();
+  // console.log(params);
 
   // const [errors, setErrors] = useState([]);
   const [showShareModal, setShowShareModal] = useState(false);
   const html = document.querySelector("html");
 
+  const fetchedUser = useSelector((state) => state.users[currentUser.id]);
+
   console.log(currentUser);
+  console.log(fetchedUser);
+
+  // console.log(props);
+  // if (fetchedUser) console.log(fetchedUser);
 
   const handleCloseModal = (e) => {
     e.preventDefault();

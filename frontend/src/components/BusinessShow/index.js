@@ -18,7 +18,7 @@ const BusinessShow = ({ props }) => {
 
   const currentUser = useSelector((state) => state.session.user);
 
-  const fetchedUser = useSelector((state) => state.user);
+  // console.log()
 
   const handleWriteReview = (e) => {
     e.preventDefault();
@@ -31,6 +31,7 @@ const BusinessShow = ({ props }) => {
     dispatch(fetchBusiness(businessId)); // .catch((errors) => console.log(errors));
     dispatch(fetchUser(currentUser.id));
   }, [businessId, currentUser, dispatch]);
+  // const fetchedUser = useSelector((state) => state.users[currentUser.id]);
 
   let layoutWidth;
   const updateSize = () => {
@@ -65,6 +66,7 @@ const BusinessShow = ({ props }) => {
       <MainContent
         business={business}
         currentUser={currentUser}
+        // fetchedUser={fetchedUser}
         props={props === "goToReviews" ? "goToReviews" : "none"}
         handleWriteReview={handleWriteReview}
       />
