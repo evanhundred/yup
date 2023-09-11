@@ -1,13 +1,12 @@
 // import { useHistory } from "react-router-dom";
 import { useState, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 // import { useHistory } from "react-router-dom";
 
 import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
 // import { handleWriteReview } from "./handleWriteReview";
 
 import { createSavedBusiness } from "../../../store/savedBusinesses.js";
-import { fetchUser } from "../../../store/users";
 
 import CopyIcon from "../../../assets/icons/copy-icon.png";
 
@@ -16,13 +15,10 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   const dispatch = useDispatch();
 
   // const [errors, setErrors] = useState([]);
-
   const [showShareModal, setShowShareModal] = useState(false);
   const html = document.querySelector("html");
-  // const currentUser = useSelector((state) => state.session.user);
 
-  // console.log("currentUser:");
-  // console.log(currentUser);
+  console.log(currentUser);
 
   const handleCloseModal = (e) => {
     e.preventDefault();
@@ -72,16 +68,6 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   // };
 
   const ShareModal = () => {
-    // setTimeout(()=>{
-    //   const div = document.querySelector(".copySuccessDiv");
-    // })
-
-    // const handleSubmitShare = (e) => {
-    //   const payload = {
-    //     recepient:
-    //   }
-    // }
-
     return (
       <div
         className="share-modal-container"
@@ -198,43 +184,9 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   };
 
   const handleSaveClick = async () => {
-    // const data = { businessId: business.id ;
     const res = await dispatch(createSavedBusiness(business.id));
-    // .catch(async (res) => {
-    //   let data;
-    //   try {
-    //     data = await res.clone().json();
-    //   } catch {
-    //     data = await res.text();
-    //   }
-    //   if (data?.errors) setErrors(data.errors);
-    //   else if (data) setErrors([data]);
-    //   else setErrors([res.statusText]);
-    // })
-    // .then(() => console.log(data));
-    // const data = await res.json();
     console.log(res);
   };
-
-  // console.log("currentUser.savedBusinesses:");
-  // console.log(currentUser.savedBusinesses);
-  // console.log("currentUser.reviews:");
-  // console.log(currentUser.reviews);
-
-  // const fetchedUser = useSelector((state) => state.users[currentUser.id]);
-  // console.log(fetchedUser);
-
-  // if (currentUser) {
-  //   dispatch(fetchUser(currentUser.id));
-  //   console.log("fetching...");
-  // }
-
-  // if (fetchedUser) {
-  //   const businessIsSaved = (businessId) => {
-  //     business.id === businessId;
-  //   }
-  //   fetchedUser.savedBusinesses.some(businessIsSaved);
-  // }
 
   return (
     <div className="content-nav-bar-container">

@@ -18,6 +18,8 @@ const BusinessShow = ({ props }) => {
 
   const currentUser = useSelector((state) => state.session.user);
 
+  const fetchedUser = useSelector((state) => state.user);
+
   const handleWriteReview = (e) => {
     e.preventDefault();
     if (currentUser) history.push(`/businesses/${business.id}/reviews/new`);
