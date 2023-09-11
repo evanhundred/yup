@@ -14,7 +14,8 @@ class SavedBusiness < ApplicationRecord
         foreign_key: :saver_id,
         inverse_of: :saved_businesses
 
-    belongs_to :business,
+    belongs_to :saved_business,
+        class_name: :Business,
         foreign_key: :saved_business_id,
         inverse_of: :saves
 end

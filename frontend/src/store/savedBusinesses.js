@@ -33,6 +33,7 @@ const savedBusinessesReducer = (preloadedState = {}, action) => {
   switch (action.type) {
     case RECEIVE_SAVED_BUSINESS:
       newState[action.savedBusiness.id] = action.savedBusiness;
+      // newState[user.savedBusinesses]
       return newState;
     default:
       return newState;

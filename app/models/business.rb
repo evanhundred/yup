@@ -34,7 +34,7 @@ class Business < ApplicationRecord
     #     inverse_of: :business
 
     has_many :saves,
-        inverse_of: :business,
+        inverse_of: :saved_business,
         foreign_key: :saved_business_id,
         class_name: :SavedBusiness,
         dependent: :destroy
