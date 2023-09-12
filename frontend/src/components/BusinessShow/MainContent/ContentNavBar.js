@@ -32,7 +32,25 @@ const ContentNavBar = ({
   console.log(fetchedUser);
 
   // console.log(props);
-  // if (fetchedUser) console.log(fetchedUser);
+  const compareBizToSavedBiz = (businessId, savedBizId) =>
+    businessId === savedBizId;
+  // console.log(compareBizToSavedBiz(1, 1));
+  // console.log(compareBizToSavedBiz(1, 2));
+
+  console.log(fetchedUser.savedBusinesses[0].savedBusinessId);
+  let businessIsSaved;
+  if (
+    fetchedUser.savedBusinesses &&
+    fetchedUser.savedBusinesses.some((savedBiz) =>
+      compareBizToSavedBiz(business.id, savedBiz.savedBusinessId)
+    )
+  ) {
+    businessIsSaved = true;
+  } else {
+    businessIsSaved = false;
+  }
+
+  console.log(businessIsSaved);
 
   const handleCloseModal = (e) => {
     e.preventDefault();
