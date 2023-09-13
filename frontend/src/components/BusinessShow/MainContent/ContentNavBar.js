@@ -2,7 +2,10 @@ import { useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
-import { createSavedBusiness } from "../../../store/savedBusinesses.js";
+import {
+  createSavedBusiness,
+  deleteSavedBusiness
+} from "../../../store/savedBusinesses.js";
 import CopyIcon from "../../../assets/icons/copy-icon.png";
 
 const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
@@ -18,17 +21,29 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   const compareBizToSavedBiz = (businessId, savedBizId) =>
     businessId === savedBizId;
 
-  let businessIsSaved;
-  if (
-    fetchedUser &&
-    fetchedUser.savedBusinesses.some((savedBiz) =>
-      compareBizToSavedBiz(business.id, savedBiz.savedBusinessId)
-    )
+  let savedBizId;
+  let businessIsSaved = false;
+  for (
+    let i = 0;
+    !businessIsSaved && i < fetchedUser.savedBusinesses.length;
+    i++
   ) {
-    businessIsSaved = true;
-  } else {
-    businessIsSaved = false;
+    if (fetchedUser.savedBusinesses[i].saved_business_id === business.id) {
+      businessIsSaved = true;
+      savedBizId = fetchedUser.savedBusinesses[i].id;
+    }
   }
+
+  // if (
+  //   fetchedUser &&
+  //   fetchedUser.savedBusinesses.some((savedBiz) =>
+  //     compareBizToSavedBiz(business.id, savedBiz.savedBusinessId)
+  //   )
+  // ) {
+  //   businessIsSaved = true;
+  // } else {
+  //   businessIsSaved = false;
+  // }
 
   // console.log(businessIsSaved);
 
@@ -142,9 +157,14 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   };
 
   const handleSaveClick = async () => {
-    const res = await dispatch(createSavedBusiness(business.id));
-    console.log(res);
-    if (res.body) console.log(res.status);
+    if (!businessIsSaved) {
+      const res = await dispatch(createSavedBusiness(business.id));
+      console.log(res);
+      if (res.body) console.log(res.status);
+    } else {
+      const res = await dispatch(deleteSavedBusiness(savedBizId));
+      console.log(res);
+    }
     // console.log(res.body.status);
   };
 
