@@ -27,7 +27,7 @@ const TitleCardContent = ({ business }) => {
   if (lastRatingDigit >= 2.5 && lastRatingDigit <= 7.5) isHalfStar = true;
   else isHalfStar = false;
 
-  console.log(isHalfStar);
+  // console.log(isHalfStar);
   // const ratingsAvgHalves = Math.round(ratingsAvg);
   const targetDiv = document.querySelector(`.box-${firstRatingDigit + 1}`);
   if (targetDiv && isHalfStar) {
@@ -36,7 +36,7 @@ const TitleCardContent = ({ business }) => {
     targetDiv.setAttribute("data-title-text", "&lowast;");
   }
 
-  console.log(ratingsAvg, firstRatingDigit);
+  // console.log(ratingsAvg, firstRatingDigit);
 
   // ratingsAvgHalves / 10
 

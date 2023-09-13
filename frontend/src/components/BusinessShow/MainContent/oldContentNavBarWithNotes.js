@@ -1,22 +1,41 @@
+// import { useParams } from "react-router-dom";
 import { useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+// import { useHistory } from "react-router-dom";
 
 import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
+// import { handleWriteReview } from "./handleWriteReview";
+
 import { createSavedBusiness } from "../../../store/savedBusinesses.js";
+
 import CopyIcon from "../../../assets/icons/copy-icon.png";
 
-const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
+const ContentNavBar = ({
+  business,
+  currentUser,
+  // fetchedUser,
+  handleWriteReview
+}) => {
+  // {business, currentUser, fetchedUser, handleWriteReview} = props;
+  // const history = useHistory();
   const dispatch = useDispatch();
+  // const params = useParams();
+  // console.log(params);
 
+  // const [errors, setErrors] = useState([]);
   const [showShareModal, setShowShareModal] = useState(false);
   const html = document.querySelector("html");
 
   const fetchedUser = useSelector((state) => state.users[currentUser.id]);
 
-  // console.log(fetchedUser);
+  // console.log(currentUser);
+  console.log(fetchedUser);
 
+  // console.log(props);
   const compareBizToSavedBiz = (businessId, savedBizId) =>
     businessId === savedBizId;
+  // console.log(compareBizToSavedBiz(1, 1));
+  // console.log(compareBizToSavedBiz(1, 2));
 
   let businessIsSaved;
   if (
@@ -30,7 +49,7 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
     businessIsSaved = false;
   }
 
-  // console.log(businessIsSaved);
+  console.log(businessIsSaved);
 
   const handleCloseModal = (e) => {
     e.preventDefault();
@@ -50,6 +69,8 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
 
   const [copySuccess, setCopySuccess] = useState("");
   const textAreaRef = useRef(null);
+  // const contactFieldRef = useRef(null);
+  // const addANoteFieldRef = useRef(null);
 
   const copyToClipboard = (e) => {
     textAreaRef.current.select();
@@ -66,12 +87,24 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
     return <div className="copy-success-div">{copySuccess}</div>;
   };
 
+  // const startingWindowHeight = window.innerHeight;
+  // const originalModalHeight = (startingWindowHeight * 98.5) / 100;
+  // console.log(originalModalHeight);
+
+  // const whitespaceHeight = startingWindowHeight - originalModalHeight;
+
+  // const getWindowHeight = () => {
+  //   const thisDiv = document.querySelector("div.share-modal-box");
+  //   thisDiv.style.height = `${originalModalHeight}px`;
+  // };
+
   const ShareModal = () => {
     return (
       <div
         className="share-modal-container"
         onLoad={() => {
           listenForEsc();
+          // getWindowHeight();
         }}
       >
         <div
@@ -102,6 +135,9 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
                 rel="noreferrer"
                 target="_blank"
                 href={`https://twitter.com/intent/tweet?text=Check out this amazing business on Yup.&url=https://yup.evanryan.dev/businesses/${business.id}`}
+                // href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                // data-text="Check out this amazing business on Yup."
+                // data-url="http://yup.evanryan.dev/businesses/1"
                 className="twitter-share-button"
                 data-show-count="false"
               >
@@ -129,11 +165,48 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
                 </div>
               </div>
             </div>
+            {/* <div className="share-modal-line-4">
+              <div className="left-side-line" />
+              <h4>OR</h4>
+              <div className="right-side-line" />
+            </div> */}
+            {/* <div className="share-modal-line-5">
+              <div className="share-to-input">
+                <h4>To</h4>
+                <div className="share-to-field-input-container">
+                  <input
+                    ref={contactFieldRef}
+                    className="contact-input-field"
+                  />
+                </div>
+
+                <p className="info-text">Yup user names or email addresses</p>
+              </div>
+            </div> */}
+            {/* <div className="share-modal-line-6">
+              <div className="share-add-note-container">
+                <h4>Add a note (optional)</h4>
+                <div className="share-add-note-textarea-container">
+                  <textarea
+                    ref={addANoteFieldRef}
+                    className="add-a-note-field"
+                  />
+                </div>
+              </div>
+            </div> */}
+            {/* <div className="share-modal-line-7">
+              <h3 className="share-submit-button" onClick={e=>handleSubmitShare(e)}>Share</h3>
+            </div> */}
           </div>
         </div>
       </div>
     );
   };
+
+  // const handleAddPhotoClick = (e) => {
+  //   e.preventDefault();
+  //   history.push(`/biz-user-photos/${business.id}`);
+  // };
 
   const handleShareClick = (e) => {
     if (html) html.style.overflow = "hidden";
@@ -144,11 +217,7 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   const handleSaveClick = async () => {
     const res = await dispatch(createSavedBusiness(business.id));
     console.log(res);
-    if (res.body) console.log(res.status);
-    // console.log(res.body.status);
   };
-
-  const savedTextString = (saved) => (saved ? "Saved" : "Save");
 
   return (
     <div className="content-nav-bar-container">
@@ -167,6 +236,23 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
       </div>
 
       {showShareModal && <ShareModal />}
+      {/* {!showShareModal && stopListeningForEsc()} */}
+
+      {/* <Link to="/biz-user-photos"> */}
+      {/* <div
+        className="add-photo-button button-container container"
+        onClick={(e) => handleAddPhotoClick(e)}
+      >
+        <div className="add-photo-button content">
+          <div className="camera-icon icon">
+            <i className="fa-solid regular fa-camera"></i>
+          </div>
+          <div className="add-photo-text">
+            <h2>Add Photo</h2>
+          </div>
+        </div>
+      </div> */}
+      {/* </Link> */}
 
       <div
         className="share-button container button-container"
@@ -183,17 +269,15 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
       </div>
 
       <div
-        className={`save-bookmark-button container button-container ${
-          businessIsSaved ? "saved" : "unsaved"
-        }`}
+        className="save-bookmark-button container button-container"
         onClick={handleSaveClick}
       >
-        <div className={`save-bookmark-button content `}>
+        <div className="save-bookmark-button content">
           <div className="bookmark-button icon">
             <i className="fa-regular fa-bookmark"></i>
           </div>
           <div className="save-bookmark-text">
-            <h2>{savedTextString(businessIsSaved)}</h2>
+            <h2>Save</h2>
           </div>
         </div>
       </div>

@@ -19,7 +19,7 @@ const MainContent = ({
 
   let reviewsComponent = document.getElementById("reviews-container");
 
-  console.log(location);
+  // console.log(location);
 
   if (reviewsComponent && location.search.includes("reviews")) {
     reviewsComponent.scrollIntoView({ behavior: "smooth" });

@@ -12,8 +12,8 @@ class Api::SavedBusinessesController < ApplicationController
         @business = Business.find(params[:business_id])
         @saved_business.saved_business_id = @business.id
         if @saved_business.save
-            redirect_to api_business_path(params[:business_id])
-            # render json: { message: "success" }, status: 200
+            # redirect_to api_business_path(params[:business_id])
+            render json: { message: "success", status: 200 }
         else
             render json: { body: { errors: @saved_business.errors.full_messages }, status: 422 }
         end

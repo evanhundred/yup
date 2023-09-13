@@ -21,6 +21,7 @@ export const createSavedBusiness = (businessId) => async (dispatch) => {
     //   businessId: businessId,
     //   saverId: saverId
     // }
+    // data.status = 200;
     dispatch(receiveSavedBusiness(data));
   } else {
     data = await res.errors;
@@ -32,7 +33,9 @@ const savedBusinessesReducer = (preloadedState = {}, action) => {
   const newState = { ...preloadedState };
   switch (action.type) {
     case RECEIVE_SAVED_BUSINESS:
-      newState[action.savedBusiness.id] = action.savedBusiness;
+      if (action.savedBusiness.id)
+        newState[action.savedBusiness.id] = action.savedBusiness;
+
       // newState[user.savedBusinesses]
       return newState;
     default:
