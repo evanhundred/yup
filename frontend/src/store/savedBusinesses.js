@@ -30,7 +30,7 @@ export const createSavedBusiness = (businessId) => async (dispatch) => {
 };
 
 export const deleteSavedBusiness = (savedBusinessId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/saved_business/${savedBusinessId}`, {
+  const res = await csrfFetch(`/api/saved_businesses/${savedBusinessId}`, {
     method: "DELETE"
   });
   let data;

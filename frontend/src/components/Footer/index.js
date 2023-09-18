@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 const Footer = () => {
   const location = useLocation();
 
-  console.log(location);
+  // console.log(location);
   const BizShowErrorCopy = () => {
     return <p className="image-attribution">Spider image by freepik.</p>;
   };

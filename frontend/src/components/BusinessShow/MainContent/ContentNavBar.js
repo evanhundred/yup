@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
@@ -12,27 +12,53 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   const dispatch = useDispatch();
 
   const [showShareModal, setShowShareModal] = useState(false);
-  const html = document.querySelector("html");
-
+  // const [businessIsSaved, setBusinessIsSaved] = useState(false);
+  let businessIsSaved = false;
   const fetchedUser = useSelector((state) => state.users[currentUser.id]);
+
+  const determineIfSaved = () => {
+    for (let i = 0; i < fetchedUser.savedBusinesses.length; i++) {
+      // console.log(i);
+      if (fetchedUser.savedBusinesses[i].savedBusinessId === business.id) {
+        businessIsSaved = true;
+        // setBusinessIsSaved(true);
+        // setSavedBizId(fetchedUser.savedBusinesses[i].id);
+        return fetchedUser.savedBusinesses[i].id;
+      }
+    }
+  };
+
+  let savedBizId;
+  useEffect(() => {
+    savedBizId = determineIfSaved();
+  });
+
+  // if (fetchedUser) {
+  //   for (let i = 0; i < fetchedUser.savedBusinesses.length; i++) {
+  //     // console.log(i);
+  //     if (fetchedUser.savedBusinesses[i].savedBusinessId === business.id) {
+  //       businessIsSaved = true;
+  //       // setBusinessIsSaved(true);
+  //       // setSavedBizId(fetchedUser.savedBusinesses[i].id);
+  //       savedBizId = fetchedUser.savedBusinesses[i].id;
+  //     }
+  //   }
+  // }
+  // const [savedBizId, setSavedBizId] = useState(
+  //   fetchedUser ? determineIfSaved() : null
+  // );
+  const html = document.querySelector("html");
 
   // console.log(fetchedUser);
 
-  const compareBizToSavedBiz = (businessId, savedBizId) =>
-    businessId === savedBizId;
+  // const compareBizToSavedBiz = (businessId, savedBizId) =>
+  //   businessId === savedBizId;
 
-  let savedBizId;
-  let businessIsSaved = false;
-  for (
-    let i = 0;
-    !businessIsSaved && i < fetchedUser.savedBusinesses.length;
-    i++
-  ) {
-    if (fetchedUser.savedBusinesses[i].saved_business_id === business.id) {
-      businessIsSaved = true;
-      savedBizId = fetchedUser.savedBusinesses[i].id;
-    }
-  }
+  // let savedBizId;
+
+  // console.log(fetchedUser);
+  console.log(businessIsSaved);
+  console.log(savedBizId);
 
   // if (
   //   fetchedUser &&
@@ -157,18 +183,35 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   };
 
   const handleSaveClick = async () => {
+    const savedDiv = document.querySelector(
+      "div.save-bookmark-button.button-container"
+    );
+    const savedH2 = document.querySelector("save-bookmark-button h2");
+
     if (!businessIsSaved) {
       const res = await dispatch(createSavedBusiness(business.id));
       console.log(res);
-      if (res.body) console.log(res.status);
+      businessIsSaved = true;
+      savedBizId = res.savedBusinessId;
+      savedDiv.classList.remove("unsaved");
+      savedDiv.classList.add("saved");
+      savedH2.innerText = "Saved";
+      // setBusinessIsSaved(true);
+      // if (res.body) console.log(res.status);
     } else {
       const res = await dispatch(deleteSavedBusiness(savedBizId));
       console.log(res);
+      businessIsSaved = false;
+      savedDiv.classList.remove("saved");
+      savedDiv.classList.add("unsaved");
+      savedH2.innerText = "Save";
+      // setBusinessIsSaved(false);
     }
-    // console.log(res.body.status);
   };
 
   const savedTextString = (saved) => (saved ? "Saved" : "Save");
+
+  // console.log(savedBizId);
 
   return (
     <div className="content-nav-bar-container">

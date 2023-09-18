@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   Rails.application.routes.draw do
     namespace :api, defaults: { format: :json } do
       # post 'save_business', to: 'users#save_business'
-      resources :saved_businesses, only: [:create]
+      resources :saved_businesses, only: [:create, :destroy]
       resources :users, only: [:create, :show]
       # resources :users, do
       #   post :save_business

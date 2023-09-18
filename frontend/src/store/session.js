@@ -33,8 +33,9 @@ export const login =
       })
     });
     const data = await res.json();
-    storeCurrentUser(data.user);
-    dispatch(setCurrentUser(data.user));
+    console.log(data);
+    storeCurrentUser(data);
+    dispatch(setCurrentUser(data));
     return res;
   };
 
