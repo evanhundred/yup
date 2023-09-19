@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import { useHistory } from "react-router-dom";
 import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
 import {
   createSavedBusiness,
@@ -10,39 +10,60 @@ import CopyIcon from "../../../assets/icons/copy-icon.png";
 
 const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // let businessIsSaved = false;
   const currentUserId = currentUser ? currentUser.id : null;
   const fetchedUser = useSelector((state) => state.users[currentUserId]);
+  console.log(fetchedUser);
+
+  const defaultSavedBizState = {
+    businessIsSaved: false,
+    savedBizId: null
+  };
 
   const determineIfSaved = () => {
-    console.log("determineIfSaved()");
+    // console.log("determineIfSaved()");
+    console.log(business.id);
     for (let i = 0; i < fetchedUser.savedBusinesses.length; i++) {
-      // console.log(i);
+      console.log(i);
+      console.log(fetchedUser.savedBusinesses[i]);
       if (fetchedUser.savedBusinesses[i].savedBusinessId === business.id) {
         // businessIsSaved = true;
         // setBusinessIsSaved(true);
         // setSavedBizId(fetchedUser.savedBusinesses[i].id);
         // return fetchedUser.savedBusinesses[i].id;
+        console.log("match found.");
         return {
           businessIsSaved: true,
           savedBizId: fetchedUser.savedBusinesses[i].id
         };
       }
     }
+    console.log("failed match.");
     return {
       businessIsSaved: false,
       savedBizId: null
     };
   };
 
+  const savedStateData = fetchedUser
+    ? determineIfSaved()
+    : defaultSavedBizState;
+
+  console.log(savedStateData);
+
   const [showShareModal, setShowShareModal] = useState(false);
   const [businessIsSaved, setBusinessIsSaved] = useState(
-    fetchedUser ? determineIfSaved().businessIsSaved : false
+    savedStateData.businessIsSaved
   );
-  const [savedBizId, setSavedBizId] = useState(
-    fetchedUser ? determineIfSaved().savedBizId : null
-  );
+  const [savedBizId, setSavedBizId] = useState(savedStateData.savedBizId);
+  // const [businessIsSaved, setBusinessIsSaved] = useState(
+  //   fetchedUser ? determineIfSaved().businessIsSaved : false
+  // );
+  // const [savedBizId, setSavedBizId] = useState(
+  //   fetchedUser ? determineIfSaved().savedBizId : null
+  // );
 
   // if (fetchedUser) determineIfSaved();
 
@@ -220,7 +241,9 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
         // setBusinessIsSaved(true);
         // if (res.body) console.log(res.status);
       } else {
-        const res = await dispatch(deleteSavedBusiness(savedBizId));
+        const res = await dispatch(
+          deleteSavedBusiness(savedBizId || savedStateData.savedBizId)
+        );
         console.log(res);
         // businessIsSaved = false;
         setBusinessIsSaved(false);
@@ -232,10 +255,12 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
       }
     } else {
       console.log("no user logged in error.");
+      history.push("/login");
     }
   };
 
-  const savedTextString = (saved) => (saved ? "Saved" : "Save");
+  const savedTextString = () =>
+    businessIsSaved || savedStateData.businessIsSaved ? "Saved" : "Save";
 
   // console.log(savedBizId);
 
@@ -273,7 +298,9 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
 
       <div
         className={`save-bookmark-button container button-container ${
-          businessIsSaved ? "saved" : "unsaved"
+          businessIsSaved || savedStateData.businessIsSaved
+            ? "saved"
+            : "unsaved"
         }`}
         onClick={handleSaveClick}
       >
@@ -282,7 +309,7 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
             <i className="fa-regular fa-bookmark"></i>
           </div>
           <div className="save-bookmark-text">
-            <h2>{savedTextString(businessIsSaved)}</h2>
+            <h2>{savedTextString()}</h2>
           </div>
         </div>
       </div>
