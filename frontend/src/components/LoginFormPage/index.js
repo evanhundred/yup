@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -12,6 +12,10 @@ const LoginFormPage = () => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [hideErrorBox, setHideErrorBox] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (sessionUser) return <Redirect to="/" />;
 
