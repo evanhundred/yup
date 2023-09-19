@@ -12,7 +12,8 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   const dispatch = useDispatch();
 
   // let businessIsSaved = false;
-  const fetchedUser = useSelector((state) => state.users[currentUser.id]);
+  const currentUserId = currentUser ? currentUser.id : null;
+  const fetchedUser = useSelector((state) => state.users[currentUserId]);
 
   const determineIfSaved = () => {
     console.log("determineIfSaved()");
@@ -200,33 +201,37 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   };
 
   const handleSaveClick = async () => {
-    const savedDiv = document.querySelector(
-      "div.save-bookmark-button.button-container"
-    );
-    const savedH2 = document.querySelector(".save-bookmark-button h2");
+    if (currentUser) {
+      const savedDiv = document.querySelector(
+        "div.save-bookmark-button.button-container"
+      );
+      const savedH2 = document.querySelector(".save-bookmark-button h2");
 
-    if (!businessIsSaved) {
-      const res = await dispatch(createSavedBusiness(business.id));
-      console.log(res);
-      // businessIsSaved = true;
-      setBusinessIsSaved(true);
-      // savedBizId = res.savedBusinessId;
-      setSavedBizId(res.saved_business_id);
-      savedDiv.classList.remove("unsaved");
-      savedDiv.classList.add("saved");
-      savedH2.innerText = "Saved";
-      // setBusinessIsSaved(true);
-      // if (res.body) console.log(res.status);
+      if (!businessIsSaved) {
+        const res = await dispatch(createSavedBusiness(business.id));
+        console.log(res);
+        // businessIsSaved = true;
+        setBusinessIsSaved(true);
+        // savedBizId = res.savedBusinessId;
+        setSavedBizId(res.saved_business_id);
+        savedDiv.classList.remove("unsaved");
+        savedDiv.classList.add("saved");
+        savedH2.innerText = "Saved";
+        // setBusinessIsSaved(true);
+        // if (res.body) console.log(res.status);
+      } else {
+        const res = await dispatch(deleteSavedBusiness(savedBizId));
+        console.log(res);
+        // businessIsSaved = false;
+        setBusinessIsSaved(false);
+        setSavedBizId(null);
+        savedDiv.classList.remove("saved");
+        savedDiv.classList.add("unsaved");
+        savedH2.innerText = "Save";
+        // setBusinessIsSaved(false);
+      }
     } else {
-      const res = await dispatch(deleteSavedBusiness(savedBizId));
-      console.log(res);
-      // businessIsSaved = false;
-      setBusinessIsSaved(false);
-      setSavedBizId(null);
-      savedDiv.classList.remove("saved");
-      savedDiv.classList.add("unsaved");
-      savedH2.innerText = "Save";
-      // setBusinessIsSaved(false);
+      console.log("no user logged in error.");
     }
   };
 
