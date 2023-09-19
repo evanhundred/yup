@@ -24,8 +24,8 @@ const LoginFormPage = () => {
     setHideErrorBox(false);
     setErrors([]);
 
-    console.log(email);
-    console.log(password);
+    // console.log(email);
+    // console.log(password);
 
     return dispatch(sessionActions.login({ email, password })).catch(
       async (res) => {

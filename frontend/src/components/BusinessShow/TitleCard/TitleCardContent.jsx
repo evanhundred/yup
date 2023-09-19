@@ -31,7 +31,7 @@ const TitleCardContent = ({ business }) => {
   // const ratingsAvgHalves = Math.round(ratingsAvg);
   const targetDiv = document.querySelector(`.box-${firstRatingDigit + 1}`);
   if (targetDiv && isHalfStar) {
-    console.log(targetDiv);
+    // console.log(targetDiv);
     targetDiv.classList.add("half-star");
     targetDiv.setAttribute("data-title-text", "&lowast;");
   }
