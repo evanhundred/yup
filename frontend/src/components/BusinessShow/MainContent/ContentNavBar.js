@@ -12,26 +12,30 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   const dispatch = useDispatch();
 
   const [showShareModal, setShowShareModal] = useState(false);
-  // const [businessIsSaved, setBusinessIsSaved] = useState(false);
-  let businessIsSaved = false;
+  const [businessIsSaved, setBusinessIsSaved] = useState(false);
+  const [savedBizId, setSavedBizId] = useState(null);
+  // let businessIsSaved = false;
   const fetchedUser = useSelector((state) => state.users[currentUser.id]);
 
   const determineIfSaved = () => {
+    console.log("determineIfSaved()");
     for (let i = 0; i < fetchedUser.savedBusinesses.length; i++) {
       // console.log(i);
       if (fetchedUser.savedBusinesses[i].savedBusinessId === business.id) {
-        businessIsSaved = true;
-        // setBusinessIsSaved(true);
-        // setSavedBizId(fetchedUser.savedBusinesses[i].id);
+        // businessIsSaved = true;
+        setBusinessIsSaved(true);
+        setSavedBizId(fetchedUser.savedBusinesses[i].id);
         return fetchedUser.savedBusinesses[i].id;
       }
     }
   };
 
-  let savedBizId;
-  useEffect(() => {
-    savedBizId = determineIfSaved();
-  });
+  if (fetchedUser) determineIfSaved();
+
+  // let savedBizId;
+  // useEffect(() => {
+  //   savedBizId = determineIfSaved();
+  // },[]);
 
   // if (fetchedUser) {
   //   for (let i = 0; i < fetchedUser.savedBusinesses.length; i++) {
@@ -186,13 +190,15 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
     const savedDiv = document.querySelector(
       "div.save-bookmark-button.button-container"
     );
-    const savedH2 = document.querySelector("save-bookmark-button h2");
+    const savedH2 = document.querySelector(".save-bookmark-button h2");
 
     if (!businessIsSaved) {
       const res = await dispatch(createSavedBusiness(business.id));
       console.log(res);
-      businessIsSaved = true;
-      savedBizId = res.savedBusinessId;
+      // businessIsSaved = true;
+      setBusinessIsSaved(true);
+      // savedBizId = res.savedBusinessId;
+      setSavedBizId(res.saved_business_id);
       savedDiv.classList.remove("unsaved");
       savedDiv.classList.add("saved");
       savedH2.innerText = "Saved";
@@ -201,7 +207,9 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
     } else {
       const res = await dispatch(deleteSavedBusiness(savedBizId));
       console.log(res);
-      businessIsSaved = false;
+      // businessIsSaved = false;
+      setBusinessIsSaved(false);
+      setSavedBizId(null);
       savedDiv.classList.remove("saved");
       savedDiv.classList.add("unsaved");
       savedH2.innerText = "Save";
