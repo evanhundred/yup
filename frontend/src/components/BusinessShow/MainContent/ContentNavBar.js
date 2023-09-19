@@ -11,9 +11,6 @@ import CopyIcon from "../../../assets/icons/copy-icon.png";
 const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   const dispatch = useDispatch();
 
-  const [showShareModal, setShowShareModal] = useState(false);
-  const [businessIsSaved, setBusinessIsSaved] = useState(false);
-  const [savedBizId, setSavedBizId] = useState(null);
   // let businessIsSaved = false;
   const fetchedUser = useSelector((state) => state.users[currentUser.id]);
 
@@ -23,14 +20,30 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
       // console.log(i);
       if (fetchedUser.savedBusinesses[i].savedBusinessId === business.id) {
         // businessIsSaved = true;
-        setBusinessIsSaved(true);
-        setSavedBizId(fetchedUser.savedBusinesses[i].id);
-        return fetchedUser.savedBusinesses[i].id;
+        // setBusinessIsSaved(true);
+        // setSavedBizId(fetchedUser.savedBusinesses[i].id);
+        // return fetchedUser.savedBusinesses[i].id;
+        return {
+          businessIsSaved: true,
+          savedBizId: fetchedUser.savedBusinesses[i].id
+        };
       }
     }
+    return {
+      businessIsSaved: false,
+      savedBizId: null
+    };
   };
 
-  if (fetchedUser) determineIfSaved();
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [businessIsSaved, setBusinessIsSaved] = useState(
+    fetchedUser ? determineIfSaved().businessIsSaved : false
+  );
+  const [savedBizId, setSavedBizId] = useState(
+    fetchedUser ? determineIfSaved().savedBizId : null
+  );
+
+  // if (fetchedUser) determineIfSaved();
 
   // let savedBizId;
   // useEffect(() => {
