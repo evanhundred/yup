@@ -20,13 +20,14 @@
   height: 130%;
 }
 
-.address * {
+/* .address * {
   margin: 0;
-}
+} */
 
 .street-address,
 .city-state-zip {
   font-weight: 600;
+  width: max-content;
 }
 
 h3.street-address {

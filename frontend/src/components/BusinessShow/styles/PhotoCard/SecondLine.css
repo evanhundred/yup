@@ -17,7 +17,11 @@ div.star-box div {
   border-radius: 10px;
 }
 
-div.star-box div.box-4,
+div.star-box div.box-4 {
+  background: grey;
+  opacity: 85%;
+}
+
 div.star-box div.box-5 {
   background: grey;
   opacity: 85%;
@@ -30,13 +34,41 @@ div.star-box span {
   margin: -12px -3px -8px;
 }
 
-#ratings-reviews {
-  display: flex;
+div.star-box div.grey.half-star {
+  background: linear-gradient(to right, orange, grey);
 }
 
-#ratings-reviews.review-count {
-  margin: 1.1em 0 0 0.85em;
-  font-weight: 600;
-  font-size: 20px;
-  letter-spacing: 0.05rem;
+#ratings-reviews {
+  /* position: relative; */
+  display: flex;
+  align-items: center;
 }
+
+div.star-box div.orange {
+  background: orange;
+}
+
+div.star-box div.grey {
+  background: grey;
+}
+
+#ratings-reviews .review-count {
+  margin: 0.6em 0 0 0.85em;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: 0.05rem;
+  cursor: pointer;
+  /* top: 10px;
+  position: relative; */
+  /* display: flex;
+  align-items: center; */
+}
+
+/* #ratings-reviews.review-count p {
+  top: 10px;
+  position: relative;
+  margin-top: 10px;
+  padding-top: 10px;
+  vertical-align: center;
+  font-size: 30px;
+} */

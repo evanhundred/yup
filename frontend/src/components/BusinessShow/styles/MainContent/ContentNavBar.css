@@ -55,3 +55,15 @@
 .content-nav-bar-container div.button-container {
   cursor: pointer;
 }
+
+/* .save-bookmark-button.saved * */
+/* .content-nav-bar-container div.saved h2 */
+div.content-nav-bar-container div.save-bookmark-button.saved,
+div.content-nav-bar-container div.save-bookmark-button.saved * {
+  background: #e34234;
+}
+
+div.save-bookmark-button.saved h2,
+.content-nav-bar-container div.save-bookmark-button.saved div > i {
+  color: white;
+}

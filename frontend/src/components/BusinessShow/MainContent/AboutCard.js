@@ -11,13 +11,13 @@ const AboutCard = ({ business }) => {
           <h2>About the business</h2>
         </div>
         <div className="about-text">{<ParsedAbout business={business} />}</div>
-        <div className="read-more-button-container">
+        {/* <div className="read-more-button-container">
           <div className="read-more-button get-directions-button">
             <h3>
               <a href="#">Read more</a>
             </h3>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

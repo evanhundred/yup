@@ -30,8 +30,8 @@ class Api::BusinessesController < ApplicationController
 
     private
 
-    def share_biz_params
-        params.require()
-    end
+    # def share_biz_params
+    #     params.require()
+    # end
 
 end

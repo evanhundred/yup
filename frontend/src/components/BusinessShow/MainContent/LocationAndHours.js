@@ -1,4 +1,13 @@
 const LocationAndHours = ({ business }) => {
+  // const urlifiedBizName = business.name;
+  const urlifiedBizCoords = `${business.latitude}%2C${business.longitude}`;
+  // let googleMapParams = `query=${urlifiedBizName}&query_place_id=${business.placeId}`;
+  let googleMapParams = `query=${urlifiedBizCoords}&query_place_id=${business.placeId}`;
+  const mapSearchUrl = `https://www.google.com/maps/search/?api=1&${googleMapParams}`;
+
+  // const mapSearchUrl = `https://maps.google.com/?ll=${business.latitude},${business.longitude}`;
+  const neighborhoodString = business.neighborhood;
+  // const neighborhoodString = business ? business.neighborhood : "text";
   return (
     <div className="location card-container">
       <div className="main-title">
@@ -10,23 +19,22 @@ const LocationAndHours = ({ business }) => {
           <img src={business.imageUrls[6]} alt="google maps" />
           <div className="bottom-left-side">
             <div className="address">
-              <a
-                href="https://google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={mapSearchUrl} target="_blank" rel="noopener noreferrer">
                 <h3 className="street-address">{business.address}</h3>
               </a>
 
               <h4 className="city-state-zip">
                 {business.city}, {business.state} {business.zipcode}
               </h4>
-              <p>Delicious Neighborhood</p>
+              {/* <p>{business.neighborhood}</p> */}
+              <p>{neighborhoodString}</p>
             </div>
 
             <div className="get-directions-container">
               <div className="get-directions-button">
-                <a href="#">Get directions</a>
+                <a target="_blank" rel="noreferrer" href={mapSearchUrl}>
+                  Get directions
+                </a>
               </div>
             </div>
           </div>
@@ -61,12 +69,12 @@ const LocationAndHours = ({ business }) => {
             <div className="day-name">Sun</div>
             <div className="time-range">{`${business.openAt} - ${business.closedAt}`}</div>
           </div>
-          <a href="#">
+          {/* <a href="#">
             <div className="edit-info-button">
               <i className="fa-solid fa-pencil"></i>
               <div>Edit Business info</div>
             </div>
-          </a>
+          </a> */}
         </div>
       </div>
     </div>

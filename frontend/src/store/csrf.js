@@ -14,6 +14,8 @@ const csrfFetch = async (url, options = {}) => {
     throw res;
   }
 
+  // console.log("res:");
+  // console.log(res);
   return res;
 };
 

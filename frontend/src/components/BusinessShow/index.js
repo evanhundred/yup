@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useParams, Link, useLocation, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
+import { fetchUser } from "../../store/users";
 import "./index.css";
 import TitleCard from "./TitleCard";
 import MainContent from "./MainContent";
@@ -17,6 +18,8 @@ const BusinessShow = ({ props }) => {
 
   const currentUser = useSelector((state) => state.session.user);
 
+  // console.log()
+
   const handleWriteReview = (e) => {
     e.preventDefault();
     if (currentUser) history.push(`/businesses/${business.id}/reviews/new`);
@@ -24,10 +27,11 @@ const BusinessShow = ({ props }) => {
   };
 
   location.state = null;
-
   useEffect(() => {
     dispatch(fetchBusiness(businessId)); // .catch((errors) => console.log(errors));
-  }, [businessId, dispatch]);
+    dispatch(fetchUser(currentUser.id));
+  }, [businessId, currentUser, dispatch]);
+  // const fetchedUser = useSelector((state) => state.users[currentUser.id]);
 
   let layoutWidth;
   const updateSize = () => {
@@ -61,6 +65,8 @@ const BusinessShow = ({ props }) => {
       <TitleCard business={business} />
       <MainContent
         business={business}
+        currentUser={currentUser}
+        // fetchedUser={fetchedUser}
         props={props === "goToReviews" ? "goToReviews" : "none"}
         handleWriteReview={handleWriteReview}
       />

@@ -1,94 +1,55 @@
-import { useState, useRef, useEffect } from "react";
+// import { useParams } from "react-router-dom";
+import { useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+// import { useHistory } from "react-router-dom";
 
 import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
-import {
-  createSavedBusiness,
-  deleteSavedBusiness
-} from "../../../store/savedBusinesses.js";
+// import { handleWriteReview } from "./handleWriteReview";
+
+import { createSavedBusiness } from "../../../store/savedBusinesses.js";
+
 import CopyIcon from "../../../assets/icons/copy-icon.png";
 
-const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
+const ContentNavBar = ({
+  business,
+  currentUser,
+  // fetchedUser,
+  handleWriteReview
+}) => {
+  // {business, currentUser, fetchedUser, handleWriteReview} = props;
+  // const history = useHistory();
   const dispatch = useDispatch();
+  // const params = useParams();
+  // console.log(params);
 
-  // let businessIsSaved = false;
-  const fetchedUser = useSelector((state) => state.users[currentUser.id]);
-
-  const determineIfSaved = () => {
-    console.log("determineIfSaved()");
-    for (let i = 0; i < fetchedUser.savedBusinesses.length; i++) {
-      // console.log(i);
-      if (fetchedUser.savedBusinesses[i].savedBusinessId === business.id) {
-        // businessIsSaved = true;
-        // setBusinessIsSaved(true);
-        // setSavedBizId(fetchedUser.savedBusinesses[i].id);
-        // return fetchedUser.savedBusinesses[i].id;
-        return {
-          businessIsSaved: true,
-          savedBizId: fetchedUser.savedBusinesses[i].id
-        };
-      }
-    }
-    return {
-      businessIsSaved: false,
-      savedBizId: null
-    };
-  };
-
+  // const [errors, setErrors] = useState([]);
   const [showShareModal, setShowShareModal] = useState(false);
-  const [businessIsSaved, setBusinessIsSaved] = useState(
-    fetchedUser ? determineIfSaved().businessIsSaved : false
-  );
-  const [savedBizId, setSavedBizId] = useState(
-    fetchedUser ? determineIfSaved().savedBizId : null
-  );
-
-  // if (fetchedUser) determineIfSaved();
-
-  // let savedBizId;
-  // useEffect(() => {
-  //   savedBizId = determineIfSaved();
-  // },[]);
-
-  // if (fetchedUser) {
-  //   for (let i = 0; i < fetchedUser.savedBusinesses.length; i++) {
-  //     // console.log(i);
-  //     if (fetchedUser.savedBusinesses[i].savedBusinessId === business.id) {
-  //       businessIsSaved = true;
-  //       // setBusinessIsSaved(true);
-  //       // setSavedBizId(fetchedUser.savedBusinesses[i].id);
-  //       savedBizId = fetchedUser.savedBusinesses[i].id;
-  //     }
-  //   }
-  // }
-  // const [savedBizId, setSavedBizId] = useState(
-  //   fetchedUser ? determineIfSaved() : null
-  // );
   const html = document.querySelector("html");
 
-  // console.log(fetchedUser);
+  const fetchedUser = useSelector((state) => state.users[currentUser.id]);
 
-  // const compareBizToSavedBiz = (businessId, savedBizId) =>
-  //   businessId === savedBizId;
+  // console.log(currentUser);
+  console.log(fetchedUser);
 
-  // let savedBizId;
+  // console.log(props);
+  const compareBizToSavedBiz = (businessId, savedBizId) =>
+    businessId === savedBizId;
+  // console.log(compareBizToSavedBiz(1, 1));
+  // console.log(compareBizToSavedBiz(1, 2));
 
-  // console.log(fetchedUser);
+  let businessIsSaved;
+  if (
+    fetchedUser &&
+    fetchedUser.savedBusinesses.some((savedBiz) =>
+      compareBizToSavedBiz(business.id, savedBiz.savedBusinessId)
+    )
+  ) {
+    businessIsSaved = true;
+  } else {
+    businessIsSaved = false;
+  }
+
   console.log(businessIsSaved);
-  console.log(savedBizId);
-
-  // if (
-  //   fetchedUser &&
-  //   fetchedUser.savedBusinesses.some((savedBiz) =>
-  //     compareBizToSavedBiz(business.id, savedBiz.savedBusinessId)
-  //   )
-  // ) {
-  //   businessIsSaved = true;
-  // } else {
-  //   businessIsSaved = false;
-  // }
-
-  // console.log(businessIsSaved);
 
   const handleCloseModal = (e) => {
     e.preventDefault();
@@ -108,6 +69,8 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
 
   const [copySuccess, setCopySuccess] = useState("");
   const textAreaRef = useRef(null);
+  // const contactFieldRef = useRef(null);
+  // const addANoteFieldRef = useRef(null);
 
   const copyToClipboard = (e) => {
     textAreaRef.current.select();
@@ -124,12 +87,24 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
     return <div className="copy-success-div">{copySuccess}</div>;
   };
 
+  // const startingWindowHeight = window.innerHeight;
+  // const originalModalHeight = (startingWindowHeight * 98.5) / 100;
+  // console.log(originalModalHeight);
+
+  // const whitespaceHeight = startingWindowHeight - originalModalHeight;
+
+  // const getWindowHeight = () => {
+  //   const thisDiv = document.querySelector("div.share-modal-box");
+  //   thisDiv.style.height = `${originalModalHeight}px`;
+  // };
+
   const ShareModal = () => {
     return (
       <div
         className="share-modal-container"
         onLoad={() => {
           listenForEsc();
+          // getWindowHeight();
         }}
       >
         <div
@@ -160,6 +135,9 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
                 rel="noreferrer"
                 target="_blank"
                 href={`https://twitter.com/intent/tweet?text=Check out this amazing business on Yup.&url=https://yup.evanryan.dev/businesses/${business.id}`}
+                // href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                // data-text="Check out this amazing business on Yup."
+                // data-url="http://yup.evanryan.dev/businesses/1"
                 className="twitter-share-button"
                 data-show-count="false"
               >
@@ -187,11 +165,48 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
                 </div>
               </div>
             </div>
+            {/* <div className="share-modal-line-4">
+              <div className="left-side-line" />
+              <h4>OR</h4>
+              <div className="right-side-line" />
+            </div> */}
+            {/* <div className="share-modal-line-5">
+              <div className="share-to-input">
+                <h4>To</h4>
+                <div className="share-to-field-input-container">
+                  <input
+                    ref={contactFieldRef}
+                    className="contact-input-field"
+                  />
+                </div>
+
+                <p className="info-text">Yup user names or email addresses</p>
+              </div>
+            </div> */}
+            {/* <div className="share-modal-line-6">
+              <div className="share-add-note-container">
+                <h4>Add a note (optional)</h4>
+                <div className="share-add-note-textarea-container">
+                  <textarea
+                    ref={addANoteFieldRef}
+                    className="add-a-note-field"
+                  />
+                </div>
+              </div>
+            </div> */}
+            {/* <div className="share-modal-line-7">
+              <h3 className="share-submit-button" onClick={e=>handleSubmitShare(e)}>Share</h3>
+            </div> */}
           </div>
         </div>
       </div>
     );
   };
+
+  // const handleAddPhotoClick = (e) => {
+  //   e.preventDefault();
+  //   history.push(`/biz-user-photos/${business.id}`);
+  // };
 
   const handleShareClick = (e) => {
     if (html) html.style.overflow = "hidden";
@@ -200,39 +215,9 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   };
 
   const handleSaveClick = async () => {
-    const savedDiv = document.querySelector(
-      "div.save-bookmark-button.button-container"
-    );
-    const savedH2 = document.querySelector(".save-bookmark-button h2");
-
-    if (!businessIsSaved) {
-      const res = await dispatch(createSavedBusiness(business.id));
-      console.log(res);
-      // businessIsSaved = true;
-      setBusinessIsSaved(true);
-      // savedBizId = res.savedBusinessId;
-      setSavedBizId(res.saved_business_id);
-      savedDiv.classList.remove("unsaved");
-      savedDiv.classList.add("saved");
-      savedH2.innerText = "Saved";
-      // setBusinessIsSaved(true);
-      // if (res.body) console.log(res.status);
-    } else {
-      const res = await dispatch(deleteSavedBusiness(savedBizId));
-      console.log(res);
-      // businessIsSaved = false;
-      setBusinessIsSaved(false);
-      setSavedBizId(null);
-      savedDiv.classList.remove("saved");
-      savedDiv.classList.add("unsaved");
-      savedH2.innerText = "Save";
-      // setBusinessIsSaved(false);
-    }
+    const res = await dispatch(createSavedBusiness(business.id));
+    console.log(res);
   };
-
-  const savedTextString = (saved) => (saved ? "Saved" : "Save");
-
-  // console.log(savedBizId);
 
   return (
     <div className="content-nav-bar-container">
@@ -251,6 +236,23 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
       </div>
 
       {showShareModal && <ShareModal />}
+      {/* {!showShareModal && stopListeningForEsc()} */}
+
+      {/* <Link to="/biz-user-photos"> */}
+      {/* <div
+        className="add-photo-button button-container container"
+        onClick={(e) => handleAddPhotoClick(e)}
+      >
+        <div className="add-photo-button content">
+          <div className="camera-icon icon">
+            <i className="fa-solid regular fa-camera"></i>
+          </div>
+          <div className="add-photo-text">
+            <h2>Add Photo</h2>
+          </div>
+        </div>
+      </div> */}
+      {/* </Link> */}
 
       <div
         className="share-button container button-container"
@@ -267,17 +269,15 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
       </div>
 
       <div
-        className={`save-bookmark-button container button-container ${
-          businessIsSaved ? "saved" : "unsaved"
-        }`}
+        className="save-bookmark-button container button-container"
         onClick={handleSaveClick}
       >
-        <div className={`save-bookmark-button content `}>
+        <div className="save-bookmark-button content">
           <div className="bookmark-button icon">
             <i className="fa-regular fa-bookmark"></i>
           </div>
           <div className="save-bookmark-text">
-            <h2>{savedTextString(businessIsSaved)}</h2>
+            <h2>Save</h2>
           </div>
         </div>
       </div>

@@ -5,13 +5,15 @@ import businesses from "./businesses";
 import reviews from "./reviews";
 import users from "./users";
 import bizPhotoBoxes from "./bizPhotoBoxes";
+import savedBusinesses from "./savedBusinesses";
 
 const rootReducer = combineReducers({
   session,
   businesses,
   bizPhotoBoxes,
   reviews,
-  users
+  users,
+  savedBusinesses
 });
 
 let enhancer;

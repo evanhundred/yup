@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_09_013533) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_11_162742) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,6 +67,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_013533) do
     t.string "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "neighborhood"
+    t.string "place_id"
     t.index ["address"], name: "index_businesses_on_address"
     t.index ["city"], name: "index_businesses_on_city"
     t.index ["name"], name: "index_businesses_on_name"
@@ -82,6 +84,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_013533) do
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_reviews_on_author_id"
     t.index ["business_id"], name: "index_reviews_on_business_id"
+  end
+
+  create_table "saved_businesses", force: :cascade do |t|
+    t.bigint "saved_business_id", null: false
+    t.bigint "saver_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["saved_business_id"], name: "index_saved_businesses_on_saved_business_id"
+    t.index ["saver_id", "saved_business_id"], name: "index_saved_businesses_on_saver_id_and_saved_business_id"
+    t.index ["saver_id"], name: "index_saved_businesses_on_saver_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -100,4 +112,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_013533) do
   add_foreign_key "biz_photo_boxes", "businesses"
   add_foreign_key "reviews", "businesses"
   add_foreign_key "reviews", "users", column: "author_id"
+  add_foreign_key "saved_businesses", "businesses", column: "saved_business_id"
+  add_foreign_key "saved_businesses", "users", column: "saver_id"
 end
