@@ -29,7 +29,7 @@ const BusinessShow = ({ props }) => {
   location.state = null;
   useEffect(() => {
     dispatch(fetchBusiness(businessId)); // .catch((errors) => console.log(errors));
-    dispatch(fetchUser(currentUser.id));
+    if (currentUser) dispatch(fetchUser(currentUser.id));
   }, [businessId, currentUser, dispatch]);
   // const fetchedUser = useSelector((state) => state.users[currentUser.id]);
 
