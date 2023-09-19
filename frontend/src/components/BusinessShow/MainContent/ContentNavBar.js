@@ -15,7 +15,7 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   // let businessIsSaved = false;
   const currentUserId = currentUser ? currentUser.id : null;
   const fetchedUser = useSelector((state) => state.users[currentUserId]);
-  console.log(fetchedUser);
+  // console.log(fetchedUser);
 
   const defaultSavedBizState = {
     businessIsSaved: false,
@@ -24,23 +24,23 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
 
   const determineIfSaved = () => {
     // console.log("determineIfSaved()");
-    console.log(business.id);
+    // console.log(business.id);
     for (let i = 0; i < fetchedUser.savedBusinesses.length; i++) {
-      console.log(i);
-      console.log(fetchedUser.savedBusinesses[i]);
+      // console.log(i);
+      // console.log(fetchedUser.savedBusinesses[i]);
       if (fetchedUser.savedBusinesses[i].savedBusinessId === business.id) {
         // businessIsSaved = true;
         // setBusinessIsSaved(true);
         // setSavedBizId(fetchedUser.savedBusinesses[i].id);
         // return fetchedUser.savedBusinesses[i].id;
-        console.log("match found.");
+        // console.log("match found.");
         return {
           businessIsSaved: true,
           savedBizId: fetchedUser.savedBusinesses[i].id
         };
       }
     }
-    console.log("failed match.");
+    // console.log("failed match.");
     return {
       businessIsSaved: false,
       savedBizId: null
@@ -51,7 +51,7 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
     ? determineIfSaved()
     : defaultSavedBizState;
 
-  console.log(savedStateData);
+  // console.log(savedStateData);
 
   const [showShareModal, setShowShareModal] = useState(false);
   const [businessIsSaved, setBusinessIsSaved] = useState(
@@ -96,8 +96,8 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   // let savedBizId;
 
   // console.log(fetchedUser);
-  console.log(businessIsSaved);
-  console.log(savedBizId);
+  // console.log(businessIsSaved);
+  // console.log(savedBizId);
 
   // if (
   //   fetchedUser &&
@@ -230,7 +230,7 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
 
       if (!businessIsSaved) {
         const res = await dispatch(createSavedBusiness(business.id));
-        console.log(res);
+        // console.log(res);
         // businessIsSaved = true;
         setBusinessIsSaved(true);
         // savedBizId = res.savedBusinessId;
@@ -244,7 +244,7 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
         const res = await dispatch(
           deleteSavedBusiness(savedBizId || savedStateData.savedBizId)
         );
-        console.log(res);
+        // console.log(res);
         // businessIsSaved = false;
         setBusinessIsSaved(false);
         setSavedBizId(null);
@@ -254,7 +254,7 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
         // setBusinessIsSaved(false);
       }
     } else {
-      console.log("no user logged in error.");
+      // console.log("no user logged in error.");
       history.push("/login");
     }
   };

@@ -29,7 +29,7 @@ const SearchResults = () => {
   }
 
   const statesArray = getStatesArray();
-  console.log(statesArray);
+  // console.log(statesArray);
 
   const usCitiesList = [];
   if (giganticString) {
@@ -56,12 +56,12 @@ const SearchResults = () => {
   const cityString = findLocArray[0];
   const stateString = findLocArray[1];
 
-  console.log("findLocArray:");
-  console.log(findLocArray); // ['new-york', 'ny']
-  console.log("cityString:");
-  console.log(cityString); // new-york
-  console.log("stateString:");
-  console.log(stateString); // ny
+  // console.log("findLocArray:");
+  // console.log(findLocArray); // ['new-york', 'ny']
+  // console.log("cityString:");
+  // console.log(cityString); // new-york
+  // console.log("stateString:");
+  // console.log(stateString); // ny
 
   let categoryRegExp = new RegExp(categoryString);
 
@@ -92,16 +92,16 @@ const SearchResults = () => {
         const currentEntryRegExp = new RegExp(currentEntryString);
 
         if (findLocString.match(currentEntryRegExp)) {
-          console.log(currentEntryString);
-          console.log(i);
+          // console.log(currentEntryString);
+          // console.log(i);
           // console.log(currentEntryRegExp);
           const currentState = usCitiesList[i][1];
           const currentStateRegExp = new RegExp(currentState.toLowerCase());
 
           if (stateString.match(currentStateRegExp)) {
-            console.log(currentEntryString);
-            console.log(currentState);
-            console.log(i);
+            // console.log(currentEntryString);
+            // console.log(currentState);
+            // console.log(i);
             matchedState = currentState;
             matchedCity = usCitiesList[i][0];
             break;
@@ -111,14 +111,14 @@ const SearchResults = () => {
     }
   }
 
-  console.log(matchedCity ? matchedCity : "no match found"); // GPO
+  // console.log(matchedCity ? matchedCity : "no match found"); // GPO
 
   const matchedCityRegExp = matchedCity
     ? new RegExp(matchedCity.toLowerCase())
     : null;
   const matchedStateRegExp = new RegExp(matchedState);
 
-  console.log(businesses);
+  // console.log(businesses);
 
   // debugger;
 
@@ -150,7 +150,7 @@ const SearchResults = () => {
     }
   }
 
-  console.log(matchingBusinesses);
+  // console.log(matchingBusinesses);
 
   // http://localhost:3000/search?category=coffee&find_loc=new-york%2C+ny
 
@@ -166,7 +166,7 @@ const SearchResults = () => {
     );
 
   const formattedLocArray = findLocString.split("%2C+");
-  console.log(formattedLocArray);
+  // console.log(formattedLocArray);
 
   // debugger;
   let locCityArray = formattedLocArray.shift().split("-");
@@ -176,7 +176,7 @@ const SearchResults = () => {
   let locState = formattedLocArray.shift().toUpperCase();
   // formattedLocArray.push(formattedLocArray[1].pop().toUpperCase());
   const formattedLocString = locCityArray.join(" ").concat(", ", locState);
-  console.log(formattedLocString);
+  // console.log(formattedLocString);
   //new-york%2C+ny
 
   return (
