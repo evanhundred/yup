@@ -1,0 +1,28 @@
+#create-review-form-container {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgb(204, 204, 204);
+  padding: 2em 0 0 4em;
+
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#create-review-form-container .top-line {
+  width: 80vw;
+  padding: 5px 0 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#create-review-form-container .top-line h3 {
+  font-size: 28.5px;
+  font-weight: 600;
+}
+
+p.review-guidelines-link {
+  color: teal;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 1px;
+  cursor: pointer;
+}

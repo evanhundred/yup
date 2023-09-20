@@ -22,6 +22,8 @@ const EditReviewForm = () => {
 
   const [body, setBody] = useState(review ? review.body : "");
   const [rating, setRating] = useState(review ? review.rating : "");
+  const [errors, setErrors] = useState([]);
+  const [hideErrorBox, setHideErrorBox] = useState(false);
 
   useEffect(() => {
     dispatch(fetchBusiness(businessId));
@@ -29,10 +31,15 @@ const EditReviewForm = () => {
 
   const clickUpdate = (e) => {
     e.preventDefault();
-    const data = { ...review, body: body, rating: rating };
-    dispatch(updateReview(data, businessId)).then(() => {
-      history.push(`/businesses/${businessId}`);
-    });
+    if (rating < 1 || rating > 5) {
+      errors.push("Please select a rating between 1 and 5.");
+      console.log(errors);
+    } else {
+      const data = { ...review, body: body, rating: rating };
+      dispatch(updateReview(data, businessId)).then(() => {
+        history.push(`/businesses/${businessId}`);
+      });
+    }
   };
 
   const clickDelete = (e) => {
@@ -42,8 +49,33 @@ const EditReviewForm = () => {
     });
   };
 
+  const closeBox = () => setHideErrorBox(true);
+
+  const ErrorBox = () => {
+    if (errors.length > 0 && !hideErrorBox) {
+      return (
+        <div id="update-review-errors">
+          <ul>
+            {errors.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+
+          <button id="closeBoxButton" onClick={closeBox}>
+            x
+          </button>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  };
+
   return (
     <div id="edit-review-form-container">
+      <div className="error-box-container">
+        <ErrorBox />
+      </div>
       <h3>
         Edit Review for{" "}
         <Link to={business ? `/businesses/${business.id}` : "/"}>{`${

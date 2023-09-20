@@ -26,14 +26,25 @@ const NewReviewForm = () => {
     });
   };
 
+  const handleGuidelinesClick = () => {
+    console.log("review guidelines link.");
+    // open modal
+  };
+
   return (
     <div id="create-review-form-container">
-      <h3>
-        Create Review for{" "}
-        <Link to={business ? `/businesses/${business.id}` : "/"}>{`${
-          business ? business.name : ""
-        }`}</Link>
-      </h3>
+      <div className="top-line">
+        <h3>
+          <Link
+            to={business ? `/businesses/${business.id}` : "/"}
+            rel="noreferrer"
+            target="_blank"
+          >{`${business ? business.name : ""}`}</Link>
+        </h3>
+        <p className="review-guidelines-link" onClick={handleGuidelinesClick}>
+          Read our review guidelines
+        </p>
+      </div>
       <div className="create-form">
         <form onSubmit={handleSubmit}>
           <label>
