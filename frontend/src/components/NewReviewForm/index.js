@@ -45,15 +45,37 @@ const NewReviewForm = () => {
           Read our review guidelines
         </p>
       </div>
-      <div className="create-form">
+      <div className="rating-and-review-text-box">
+        <div className="rating-stars-line">
+          <div className="rating-stars">*****</div>
+          <h4>Select your rating</h4>
+        </div>
+        <div className="review-prompt-line">
+          <h5>A few things to consider in your review</h5>
+          <div className="prompt-items">
+            <p>Food</p>
+            <p>Service</p>
+            <p>Ambiance</p>
+          </div>
+        </div>
+        <textarea
+          id="review-body"
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+        />
+      </div>
+      {/* <div className="create-form">
         <form onSubmit={handleSubmit}>
-          <label>
-            Body
-            <textarea value={body} onChange={(e) => setBody(e.target.value)} />
+          <label for="review-body">
+            <textarea
+              id="review-body"
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+            />
           </label>
-          <label>
-            Rating
+          <label for="review-rating">
             <input
+              id="review-rating"
               type="number"
               value={rating}
               onChange={(e) => setRating(e.target.value)}
@@ -61,7 +83,7 @@ const NewReviewForm = () => {
           </label>
           <button>Create Review</button>
         </form>
-      </div>
+      </div> */}
     </div>
   );
 };

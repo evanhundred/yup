@@ -26,3 +26,29 @@ p.review-guidelines-link {
   padding-bottom: 1px;
   cursor: pointer;
 }
+
+.rating-and-review-text-box {
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rating-stars-line {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* .review-prompt-line {
+
+} */
+
+.review-prompt-line .prompt-items {
+  display: flex;
+  flex-direction: row;
+}
+
+.review-prompt-line .prompt-items p {
+  background: rgb(204, 204, 204);
+  border-radius: 5px;
+}
