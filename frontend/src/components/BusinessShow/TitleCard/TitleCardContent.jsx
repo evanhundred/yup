@@ -57,39 +57,6 @@ const TitleCardContent = ({ business }) => {
     );
   });
 
-  // const starBoxClassNames = [
-  //   ,
-  //   `box-2 ${isHalfStar && firstRatingDigit === 2 ? "half-star" : ""}`,
-  //   `box-3 ${isHalfStar && firstRatingDigit === 3 ? "half-star" : ""}`,
-  //   `box-4 ${isHalfStar && firstRatingDigit === 4 ? "half-star" : ""}`,
-  //   `box-5 ${isHalfStar && firstRatingDigit === 5 ? "half-star" : ""}`
-  // ];
-
-  const ratingsStarBox = () => {
-    for (let i = 1; i <= 5; i++) {
-      return (
-        <div className={`${twoThings(i)}`}>
-          <span>&lowast;</span>
-        </div>
-      );
-    }
-  };
-
-  // return {
-  /* <div className={starBoxClassNames[1]}>
-      <span>&lowast;</span>
-      </div>
-      <div className={starBoxClassNames[2]}>
-      <span>&lowast;</span>
-      </div>
-      <div className={starBoxClassNames[3]}>
-      <span>&lowast;</span>
-      </div>
-      <div className={starBoxClassNames[4]}>
-      <span>&lowast;</span>
-    </div> */
-  // };
-
   const SecondLine = () => {
     return (
       <div id="ratings-reviews">
