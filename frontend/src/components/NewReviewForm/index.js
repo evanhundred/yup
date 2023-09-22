@@ -31,6 +31,12 @@ const NewReviewForm = () => {
     // open modal
   };
 
+  const newReviewStarBox = [1, 2, 3, 4, 5].map((num) => (
+    <div className={`star-box-${num}`} key={num}>
+      <span>&lowast;</span>
+    </div>
+  ));
+
   return (
     <div id="create-review-form-container">
       <div className="top-line">
@@ -46,23 +52,31 @@ const NewReviewForm = () => {
         </p>
       </div>
       <div className="rating-and-review-text-box">
-        <div className="rating-stars-line">
-          <div className="rating-stars">*****</div>
-          <h4>Select your rating</h4>
-        </div>
-        <div className="review-prompt-line">
-          <h5>A few things to consider in your review</h5>
-          <div className="prompt-items">
-            <p>Food</p>
-            <p>Service</p>
-            <p>Ambiance</p>
+        <form onSubmit={handleSubmit}>
+          <div className="rating-stars-line">
+            <div className="rating-stars">{newReviewStarBox}</div>
+            <h4>Select your rating</h4>
           </div>
-        </div>
-        <textarea
-          id="review-body"
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-        />
+          <div className="review-prompt-line">
+            <h5>A few things to consider in your review</h5>
+            <div className="prompt-items">
+              <p>Food</p>
+              <p>Service</p>
+              <p>Ambiance</p>
+            </div>
+          </div>
+          <label for="review-body" />
+          {/* <input
+            id="review-body"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+          /> */}
+          <textarea
+            id="review-body"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+          />
+        </form>
       </div>
       {/* <div className="create-form">
         <form onSubmit={handleSubmit}>
