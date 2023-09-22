@@ -21,10 +21,15 @@ const NewReviewForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = { body: body, rating: rating };
-    dispatch(createReview(data, businessId)).then(() => {
-      history.push(`/businesses/${businessId}`);
-    });
+    if (rating && body) {
+      const data = { body: body, rating: rating };
+      dispatch(createReview(data, businessId)).then(() => {
+        history.push(`/businesses/${businessId}`);
+      });
+    } else {
+      if (!body) console.log("no review text.");
+      else if (!rating) console.log("no rating selected.");
+    }
   };
 
   const handleGuidelinesClick = () => {
@@ -51,7 +56,6 @@ const NewReviewForm = () => {
     const oldNum = rating;
     starBoxDivs.forEach((starBox, idx) => {
       if (idx < oldNum) starBox.classList.remove(`hovered-num-${oldNum}`);
-
       if (idx < num) starBox.classList.add(`hovered-num-${num}`);
     });
   };
