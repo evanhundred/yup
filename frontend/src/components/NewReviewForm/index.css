@@ -161,3 +161,62 @@ textarea#review-body {
   width: max-content;
   cursor: pointer;
 }
+
+#create-review-form-container .error-box {
+  height: 30px;
+  color: red;
+}
+
+#create-review-form-container .error-box > h2 {
+  margin-top: 10px;
+  font-size: 18px;
+
+  /* CHANGE TO WHEN UPDATES, NOT WHEN LOADS: */
+
+  /* animation: fadein 2s;
+  -webkit-animation: fadein 2s;
+  -moz-animation: fadein 2s;
+  -ms-animation: fadein 2s;
+  -o-animation: fadein 2s; */
+}
+
+/* @keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-ms-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+} */

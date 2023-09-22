@@ -5,6 +5,9 @@ import { getBusiness, fetchBusiness } from "../../store/businesses";
 import { createReview } from "../../store/reviews";
 import "./index.css";
 
+// NOTE:
+// make clicking on padding around textarea start text blinker
+
 const NewReviewForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -14,6 +17,8 @@ const NewReviewForm = () => {
   const [body, setBody] = useState("");
   const [rating, setRating] = useState("");
   const [initialRatingClicked, setInitialRatingClicked] = useState(false);
+
+  const [errors, setErrors] = useState("");
 
   useEffect(() => {
     dispatch(fetchBusiness(businessId));
@@ -27,8 +32,13 @@ const NewReviewForm = () => {
         history.push(`/businesses/${businessId}`);
       });
     } else {
-      if (!body) console.log("no review text.");
-      else if (!rating) console.log("no rating selected.");
+      if (!body) {
+        setErrors("ⓘ no review text.");
+        console.log("ⓘ no review text.");
+      } else if (!rating) {
+        setErrors("ⓘ no rating selected.");
+        console.log("no rating selected.");
+      }
     }
   };
 
@@ -103,6 +113,10 @@ const NewReviewForm = () => {
     </div>
   ));
 
+  const errorMessages = () => {
+    return <h2>{errors}</h2>;
+  };
+
   return (
     <div id="create-review-form-container">
       <div className="top-line">
@@ -144,6 +158,8 @@ const NewReviewForm = () => {
           />
         </form>
       </div>
+
+      <div className="error-box">{errorMessages()}</div>
 
       <div className="post-review-button" onClick={handleSubmit}>
         <h3>Post Review</h3>
