@@ -3,7 +3,10 @@
   flex-direction: column;
   border-top: 1px solid rgb(204, 204, 204);
   padding: 2em 0 0 4em;
+}
 
+textarea#review-body,
+#create-review-form-container {
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -125,17 +128,27 @@ p.review-guidelines-link {
   margin-right: 7px;
 }
 
+.rating-and-review-text-box form {
+  height: 100%;
+}
+
 textarea#review-body {
   resize: none;
   border: none;
   /* overflow: auto; */
   outline: none;
+  width: 100%;
+  height: 70%;
+
+  padding-top: 20px;
+  font-size: 19px;
+  font-weight: 400;
 
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
 }
 
-input#review-body {
+/* input#review-body {
   border: none;
-}
+} */
