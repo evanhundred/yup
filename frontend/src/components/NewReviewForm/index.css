@@ -50,6 +50,10 @@ p.review-guidelines-link {
   gap: 7px;
 }
 
+.rating-stars > div.hovered-num-5 {
+  background: red;
+}
+
 .rating-stars > div {
   display: flex;
   background: gray;
