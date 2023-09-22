@@ -61,6 +61,14 @@ p.review-guidelines-link {
   position: relative;
 }
 
+.rating-stars > div.orange {
+  background: orange;
+}
+
+.rating-stars > div.grey {
+  background: grey;
+}
+
 .rating-stars span {
   position: relative;
   top: -10%;

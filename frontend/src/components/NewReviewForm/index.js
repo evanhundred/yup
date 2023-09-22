@@ -31,9 +31,47 @@ const NewReviewForm = () => {
     // open modal
   };
 
+  const handleStarHover = (e, num) => {
+    e.preventDefault();
+    const starBoxDiv = document.querySelector(
+      `.rating-stars > div.star-box-${num}`
+    );
+    // console.log(num);
+    // console.log(e.target);
+    // console.log(starBoxDiv);
+    // console.log(num);
+    if (starBoxDiv.classList.contains("gray")) {
+      starBoxDiv.classList.remove("gray");
+      starBoxDiv.classList.add("orange");
+    }
+  };
+  const handleStarUnhover = (e, num) => {
+    e.preventDefault();
+    const starBoxDiv = document.querySelector(
+      `.rating-stars > div.star-box-${num}`
+    );
+    if (starBoxDiv.classList.contains("orange")) {
+      starBoxDiv.classList.remove("orange");
+      starBoxDiv.classList.add("gray");
+    }
+  };
   const newReviewStarBox = [1, 2, 3, 4, 5].map((num) => (
-    <div className={`star-box-${num}`} key={num}>
-      <span>&lowast;</span>
+    <div
+      className={`star-box-${num}`}
+      key={num}
+      onMouseEnter={(e) => {
+        handleStarHover(e, num);
+      }}
+      onMouseLeave={(e) => handleStarUnhover(e, num)}
+    >
+      <span
+        onMouseEnter={(e) => {
+          handleStarHover(e, num);
+        }}
+        onMouseLeave={(e) => handleStarUnhover(e, num)}
+      >
+        &lowast;
+      </span>
     </div>
   ));
 
@@ -65,7 +103,7 @@ const NewReviewForm = () => {
               <p>Ambiance</p>
             </div>
           </div>
-          <label for="review-body" />
+          <label htmlFor="review-body" />
           {/* <input
             id="review-body"
             value={body}
