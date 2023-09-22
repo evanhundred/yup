@@ -13,6 +13,7 @@ const NewReviewForm = () => {
 
   const [body, setBody] = useState("");
   const [rating, setRating] = useState("");
+  const [initialRatingClicked, setInitialRatingClicked] = useState(false);
 
   useEffect(() => {
     dispatch(fetchBusiness(businessId));
@@ -44,21 +45,21 @@ const NewReviewForm = () => {
     ];
 
     return ratingTextStrings[rating];
-
-    // switch (rating) {
-    //   case 0:
-    //     return;
-    //   default:
-    //     return;
-    // }
   };
 
-  // let ratingTextStringsIdx = 0;
+  const styleStarBoxes = (num) => {
+    const oldNum = rating;
+    starBoxDivs.forEach((starBox, idx) => {
+      if (idx < oldNum) starBox.classList.remove(`hovered-num-${oldNum}`);
+
+      if (idx < num) starBox.classList.add(`hovered-num-${num}`);
+    });
+  };
+
   const handleHover = (isHovered, e, num) => {
     e.preventDefault();
 
     if (isHovered) {
-      // ratingTextStringsIdx = num;
       setRating(num);
     } else {
       setRating(0);
@@ -74,14 +75,25 @@ const NewReviewForm = () => {
     });
   };
 
+  const handleStarBoxClick = (e, num) => {
+    e.preventDefault();
+    console.log(num);
+    if (!initialRatingClicked) setInitialRatingClicked(true);
+    styleStarBoxes(num);
+    setRating(num);
+  };
+
   const newReviewStarBox = [1, 2, 3, 4, 5].map((num) => (
     <div
       className={`star-box-${num}`}
       key={num}
       onMouseEnter={(e) => {
-        handleHover(true, e, num);
+        if (!initialRatingClicked) handleHover(true, e, num);
       }}
-      onMouseLeave={(e) => handleHover(false, e, num)}
+      onMouseLeave={(e) => {
+        if (!initialRatingClicked) handleHover(false, e, num);
+      }}
+      onClick={(e) => handleStarBoxClick(e, num)}
     >
       <span>&lowast;</span>
     </div>
@@ -128,6 +140,11 @@ const NewReviewForm = () => {
           />
         </form>
       </div>
+
+      <div className="post-review-button" onClick={handleSubmit}>
+        <h3>Post Review</h3>
+      </div>
+
       {/* <div className="create-form">
         <form onSubmit={handleSubmit}>
           <label for="review-body">
