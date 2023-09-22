@@ -49,7 +49,18 @@ p.review-guidelines-link {
   justify-content: flex-start;
   gap: 7px;
 }
-
+.rating-stars > div.hovered-num-1 {
+  background: rgb(255, 196, 78);
+}
+.rating-stars > div.hovered-num-2 {
+  background: rgb(255, 140, 0);
+}
+.rating-stars > div.hovered-num-3 {
+  background: rgb(255, 85, 0);
+}
+.rating-stars > div.hovered-num-4 {
+  background: rgb(255, 60, 0);
+}
 .rating-stars > div.hovered-num-5 {
   background: red;
 }

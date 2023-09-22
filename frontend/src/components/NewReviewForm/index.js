@@ -35,9 +35,13 @@ const NewReviewForm = () => {
 
   const handleHover = (isHovered, e, num) => {
     e.preventDefault();
-    starBoxDivs.forEach((starBox) => {
-      if (isHovered) starBox.classList.add(`hovered-num-${num}`);
-      else starBox.classList.remove(`hovered-num-${num}`);
+    starBoxDivs.forEach((starBox, idx) => {
+      // console.log(idx);
+
+      if (idx < num) {
+        if (isHovered) starBox.classList.add(`hovered-num-${num}`);
+        else starBox.classList.remove(`hovered-num-${num}`);
+      }
     });
   };
 
