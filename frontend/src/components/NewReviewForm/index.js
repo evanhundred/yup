@@ -33,8 +33,37 @@ const NewReviewForm = () => {
 
   const starBoxDivs = document.querySelectorAll(`.rating-stars > div`);
 
+  const ratingTextString = () => {
+    const ratingTextStrings = [
+      "Select your rating",
+      "Not good",
+      "OK",
+      "Decent",
+      "Delicious",
+      "Top-notch"
+    ];
+
+    return ratingTextStrings[rating];
+
+    // switch (rating) {
+    //   case 0:
+    //     return;
+    //   default:
+    //     return;
+    // }
+  };
+
+  // let ratingTextStringsIdx = 0;
   const handleHover = (isHovered, e, num) => {
     e.preventDefault();
+
+    if (isHovered) {
+      // ratingTextStringsIdx = num;
+      setRating(num);
+    } else {
+      setRating(0);
+    }
+
     starBoxDivs.forEach((starBox, idx) => {
       // console.log(idx);
 
@@ -76,7 +105,7 @@ const NewReviewForm = () => {
         <form onSubmit={handleSubmit}>
           <div className="rating-stars-line">
             <div className="rating-stars">{newReviewStarBox}</div>
-            <h4>Select your rating</h4>
+            <h4>{ratingTextString()}</h4>
           </div>
           <div className="review-prompt-line">
             <h5>A few things to consider in your review</h5>
