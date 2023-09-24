@@ -140,7 +140,31 @@ const NewReviewForm = () => {
     const listenForEsc = () => {
       html.addEventListener("keydown", closeOnPressEsc, { once: true });
     };
-    const reviewGuidelinesText = "Yup.";
+    const reviewGuidelinesSubheader =
+      "Please respect the following principles.";
+    const reviewGuidelinesBulletList = () => {
+      const bullets = [
+        "Relevance.",
+        "Inappropriate content.",
+        "Conflicts of interest.",
+        "Privacy.",
+        "Post your own content."
+      ];
+      return (
+        <ul className="bullet-list">
+          {bullets.map((bulletText) => {
+            return (
+              <>
+                <li>
+                  <p className="dot">·</p>
+                  <p className="bullet-text">{bulletText}</p>
+                </li>
+              </>
+            );
+          })}
+        </ul>
+      );
+    };
     return (
       <div
         className="review-guidelines-modal-container"
@@ -153,14 +177,20 @@ const NewReviewForm = () => {
           onClick={(e) => handleCloseModal(e)}
         />
         <div className="review-guidelines-modal-box">
-          <div className="review-guidelines-modal-line-1">
-            <h2 className="review-guidelines-title">Review Guidelines</h2>
-            <div className="close-x" onClick={(e) => handleCloseModal(e)}>
-              X
+          <div className="review-guidelines-modal-content">
+            <div className="review-guidelines-modal-line-1">
+              <h2 className="review-guidelines-title">
+                Review Content Guidelines
+              </h2>
+              <div className="close-x" onClick={(e) => handleCloseModal(e)}>
+                X
+              </div>
             </div>
-          </div>
-          <div className="review-guidelines-modal-line-2">
-            <p>{reviewGuidelinesText}</p>
+            <div className="review-guidelines-modal-line-2">
+              <h3>{reviewGuidelinesSubheader}</h3>
+            </div>
+            {/* <div className="intro-text">{reviewGuidelinesIntroText}</div> */}
+            {reviewGuidelinesBulletList()}
           </div>
         </div>
       </div>
