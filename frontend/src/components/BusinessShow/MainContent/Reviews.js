@@ -24,9 +24,7 @@ const Reviews = ({ business, handleWriteReview }) => {
         <h2>Reviews</h2>
       </div>
       <div className="write-review-link" onClick={(e) => handleWriteReview(e)}>
-        {/* <Link to={`/businesses/${business.id}/reviews/new`}> */}
         <h3>Write your review.</h3>
-        {/* </Link> */}
       </div>
 
       <div className="reviews-content">{reviewItems}</div>
