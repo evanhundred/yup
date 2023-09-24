@@ -189,7 +189,6 @@ const NewReviewForm = () => {
             <div className="review-guidelines-modal-line-2">
               <h3>{reviewGuidelinesSubheader}</h3>
             </div>
-            {/* <div className="intro-text">{reviewGuidelinesIntroText}</div> */}
             {reviewGuidelinesBulletList()}
           </div>
         </div>
@@ -226,11 +225,6 @@ const NewReviewForm = () => {
             </div>
           </div>
           <label htmlFor="review-body" />
-          {/* <input
-            id="review-body"
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-          /> */}
           <textarea
             id="review-body"
             value={body}
