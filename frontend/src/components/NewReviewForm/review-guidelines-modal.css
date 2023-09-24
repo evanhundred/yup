@@ -1,0 +1,46 @@
+.review-guidelines-modal-overlay {
+  background: rgba(49, 49, 49, 0.8);
+}
+
+.review-guidelines-modal-container,
+.review-guidelines-modal-overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.review-guidelines-modal-container {
+  z-index: 1;
+}
+
+.review-guidelines-modal-box {
+  position: relative;
+  background: #f9f9f9;
+  display: flex;
+  border-radius: 10px;
+  width: 680px;
+  height: 310px;
+}
+
+.review-guidelines-modal-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2.5em 3.5em 2.5em;
+}
+
+.review-guidelines-modal-line-1 {
+  padding-bottom: 1.2em;
+}
+
+.review-guidelines-modal-line-2,
+.review-guidelines-modal-line-3 {
+  width: 100%;
+  display: flex;
+}

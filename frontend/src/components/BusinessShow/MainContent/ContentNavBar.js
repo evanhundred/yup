@@ -23,24 +23,14 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   };
 
   const determineIfSaved = () => {
-    // console.log("determineIfSaved()");
-    // console.log(business.id);
     for (let i = 0; i < fetchedUser.savedBusinesses.length; i++) {
-      // console.log(i);
-      // console.log(fetchedUser.savedBusinesses[i]);
       if (fetchedUser.savedBusinesses[i].savedBusinessId === business.id) {
-        // businessIsSaved = true;
-        // setBusinessIsSaved(true);
-        // setSavedBizId(fetchedUser.savedBusinesses[i].id);
-        // return fetchedUser.savedBusinesses[i].id;
-        // console.log("match found.");
         return {
           businessIsSaved: true,
           savedBizId: fetchedUser.savedBusinesses[i].id
         };
       }
     }
-    // console.log("failed match.");
     return {
       businessIsSaved: false,
       savedBizId: null
@@ -51,66 +41,12 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
     ? determineIfSaved()
     : defaultSavedBizState;
 
-  // console.log(savedStateData);
-
   const [showShareModal, setShowShareModal] = useState(false);
   const [businessIsSaved, setBusinessIsSaved] = useState(
     savedStateData.businessIsSaved
   );
   const [savedBizId, setSavedBizId] = useState(savedStateData.savedBizId);
-  // const [businessIsSaved, setBusinessIsSaved] = useState(
-  //   fetchedUser ? determineIfSaved().businessIsSaved : false
-  // );
-  // const [savedBizId, setSavedBizId] = useState(
-  //   fetchedUser ? determineIfSaved().savedBizId : null
-  // );
-
-  // if (fetchedUser) determineIfSaved();
-
-  // let savedBizId;
-  // useEffect(() => {
-  //   savedBizId = determineIfSaved();
-  // },[]);
-
-  // if (fetchedUser) {
-  //   for (let i = 0; i < fetchedUser.savedBusinesses.length; i++) {
-  //     // console.log(i);
-  //     if (fetchedUser.savedBusinesses[i].savedBusinessId === business.id) {
-  //       businessIsSaved = true;
-  //       // setBusinessIsSaved(true);
-  //       // setSavedBizId(fetchedUser.savedBusinesses[i].id);
-  //       savedBizId = fetchedUser.savedBusinesses[i].id;
-  //     }
-  //   }
-  // }
-  // const [savedBizId, setSavedBizId] = useState(
-  //   fetchedUser ? determineIfSaved() : null
-  // );
   const html = document.querySelector("html");
-
-  // console.log(fetchedUser);
-
-  // const compareBizToSavedBiz = (businessId, savedBizId) =>
-  //   businessId === savedBizId;
-
-  // let savedBizId;
-
-  // console.log(fetchedUser);
-  // console.log(businessIsSaved);
-  // console.log(savedBizId);
-
-  // if (
-  //   fetchedUser &&
-  //   fetchedUser.savedBusinesses.some((savedBiz) =>
-  //     compareBizToSavedBiz(business.id, savedBiz.savedBusinessId)
-  //   )
-  // ) {
-  //   businessIsSaved = true;
-  // } else {
-  //   businessIsSaved = false;
-  // }
-
-  // console.log(businessIsSaved);
 
   const handleCloseModal = (e) => {
     e.preventDefault();
@@ -230,39 +166,28 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
 
       if (!businessIsSaved) {
         const res = await dispatch(createSavedBusiness(business.id));
-        // console.log(res);
-        // businessIsSaved = true;
         setBusinessIsSaved(true);
-        // savedBizId = res.savedBusinessId;
         setSavedBizId(res.saved_business_id);
         savedDiv.classList.remove("unsaved");
         savedDiv.classList.add("saved");
         savedH2.innerText = "Saved";
-        // setBusinessIsSaved(true);
-        // if (res.body) console.log(res.status);
       } else {
         const res = await dispatch(
           deleteSavedBusiness(savedBizId || savedStateData.savedBizId)
         );
-        // console.log(res);
-        // businessIsSaved = false;
         setBusinessIsSaved(false);
         setSavedBizId(null);
         savedDiv.classList.remove("saved");
         savedDiv.classList.add("unsaved");
         savedH2.innerText = "Save";
-        // setBusinessIsSaved(false);
       }
     } else {
-      // console.log("no user logged in error.");
       history.push("/login");
     }
   };
 
   const savedTextString = () =>
     businessIsSaved || savedStateData.businessIsSaved ? "Saved" : "Save";
-
-  // console.log(savedBizId);
 
   return (
     <div className="content-nav-bar-container">

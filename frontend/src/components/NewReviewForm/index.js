@@ -3,7 +3,9 @@ import { useHistory, useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
 import { createReview } from "../../store/reviews";
+import { backgroundNavBar, unBackgroundNavBar } from "../../utils/modal";
 import "./index.css";
+import "./review-guidelines-modal.css";
 
 // NOTE:
 // make clicking on padding around textarea start text blinker
@@ -19,10 +21,14 @@ const NewReviewForm = () => {
   const [initialRatingClicked, setInitialRatingClicked] = useState(false);
 
   const [errors, setErrors] = useState("");
+  const [showReviewGuidelinesModal, setShowReviewGuidelinesModal] =
+    useState(false);
 
   useEffect(() => {
     dispatch(fetchBusiness(businessId));
   }, [businessId, dispatch]);
+
+  const html = document.querySelector("html");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,8 +49,9 @@ const NewReviewForm = () => {
   };
 
   const handleGuidelinesClick = () => {
-    console.log("review guidelines link.");
-    // open modal
+    if (html) html.style.overflow = "hidden";
+    setShowReviewGuidelinesModal(true);
+    backgroundNavBar();
   };
 
   const starBoxDivs = document.querySelectorAll(`.rating-stars > div`);
@@ -117,6 +124,49 @@ const NewReviewForm = () => {
     return <h2>{errors}</h2>;
   };
 
+  const ReviewGuidelinesModal = () => {
+    const handleCloseModal = (e) => {
+      e.preventDefault();
+      if (html) html.style.overflow = "auto";
+      setShowReviewGuidelinesModal(false);
+      unBackgroundNavBar();
+    };
+    const closeOnPressEsc = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal(e);
+        html.removeEventListener("keydown", closeOnPressEsc);
+      }
+    };
+    const listenForEsc = () => {
+      html.addEventListener("keydown", closeOnPressEsc, { once: true });
+    };
+    const reviewGuidelinesText = "Yup.";
+    return (
+      <div
+        className="review-guidelines-modal-container"
+        onLoad={() => {
+          listenForEsc();
+        }}
+      >
+        <div
+          className="review-guidelines-modal-overlay"
+          onClick={(e) => handleCloseModal(e)}
+        />
+        <div className="review-guidelines-modal-box">
+          <div className="review-guidelines-modal-line-1">
+            <h2 className="review-guidelines-title">Review Guidelines</h2>
+            <div className="close-x" onClick={(e) => handleCloseModal(e)}>
+              X
+            </div>
+          </div>
+          <div className="review-guidelines-modal-line-2">
+            <p>{reviewGuidelinesText}</p>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div id="create-review-form-container">
       <div className="top-line">
@@ -164,27 +214,7 @@ const NewReviewForm = () => {
       <div className="post-review-button" onClick={handleSubmit}>
         <h3>Post Review</h3>
       </div>
-
-      {/* <div className="create-form">
-        <form onSubmit={handleSubmit}>
-          <label for="review-body">
-            <textarea
-              id="review-body"
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-            />
-          </label>
-          <label for="review-rating">
-            <input
-              id="review-rating"
-              type="number"
-              value={rating}
-              onChange={(e) => setRating(e.target.value)}
-            />
-          </label>
-          <button>Create Review</button>
-        </form>
-      </div> */}
+      {showReviewGuidelinesModal && <ReviewGuidelinesModal />}
     </div>
   );
 };
