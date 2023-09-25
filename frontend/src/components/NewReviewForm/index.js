@@ -17,7 +17,8 @@ const NewReviewForm = () => {
   const business = useSelector(getBusiness(businessId));
 
   const [body, setBody] = useState("");
-  const [rating, setRating] = useState("");
+  const [rating, setRating] = useState(0);
+  // const [rating, setRating] = useState("");
   const [initialRatingClicked, setInitialRatingClicked] = useState(false);
 
   const [errors, setErrors] = useState("");
@@ -55,6 +56,15 @@ const NewReviewForm = () => {
   };
 
   const starBoxDivs = document.querySelectorAll(`.rating-stars > div`);
+
+  const ratingTextStringObject = {
+    0: "Select you rating",
+    1: "Not good",
+    2: "OK",
+    3: "Decent",
+    4: "Delicious",
+    5: "Top-notch"
+  };
 
   const ratingTextString = () => {
     const ratingTextStrings = [
@@ -214,7 +224,8 @@ const NewReviewForm = () => {
         <form onSubmit={handleSubmit}>
           <div className="rating-stars-line">
             <div className="rating-stars">{newReviewStarBox}</div>
-            <h4>{ratingTextString()}</h4>
+            <h4>{ratingTextStringObject[rating]}</h4>
+            {/* <h4>{ratingTextString()}</h4> */}
           </div>
           <div className="review-prompt-line">
             <h5>A few things to consider in your review</h5>

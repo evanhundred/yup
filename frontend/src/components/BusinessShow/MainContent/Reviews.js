@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 const Reviews = ({ business, handleWriteReview }) => {
   const reviewItems = business.reviews.map((review, idx) => (
     <div key={idx} className="review-item-container" id="reviews-container">
-      <div className="author subtitle">
-        <h2>Author ID: {review.author_id}</h2>
+      <div className="top-card">
+        <div className="profile-image-container">C</div>
+        <h5 className="author-name">Firstname L.</h5>
       </div>
       <div className="review-text">{review.body}</div>
       <div className="review-rating">
