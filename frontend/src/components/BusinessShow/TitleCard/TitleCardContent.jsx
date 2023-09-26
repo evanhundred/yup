@@ -21,10 +21,15 @@ const TitleCardContent = ({ business }) => {
   const ratingsAvg =
     Math.round((ratingsSum / business.reviews.length) * 10) / 10;
 
+  console.log(ratingsAvg);
+
+  // HALF STAR STYLE LOGIC
+
   const lastRatingDigit = (ratingsAvg * 10) % 10;
   const firstRatingDigit = Math.floor(ratingsAvg);
   let isHalfStar;
-  if (lastRatingDigit >= 2.5 && lastRatingDigit <= 7.5) isHalfStar = true;
+  if (lastRatingDigit >= 2.5) isHalfStar = true;
+  // if (lastRatingDigit >= 2.5 && lastRatingDigit <= 7.5) isHalfStar = true;
   else isHalfStar = false;
 
   // console.log(isHalfStar);

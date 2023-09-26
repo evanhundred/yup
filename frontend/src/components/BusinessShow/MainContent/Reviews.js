@@ -41,6 +41,69 @@ const Reviews = ({ business, handleWriteReview }) => {
     );
   };
 
+  const calculateBarWidths = () => {
+    const totalReviewCount = business.reviews.length;
+
+    const ratingTotals = {};
+
+    for (let i = 5; i >= 1; i--) {
+      ratingTotals[i] = 0;
+    }
+
+    // console.log(ratingTotals);
+
+    business.reviews.forEach((review) => {
+      ratingTotals[review.rating] += 1;
+    });
+
+    const findHighestRating = () => {
+      let greatestAmount = 0;
+      const highestRatingNums = [];
+      for (let i = 5; i >= 1; i--) {
+        const currentRating = ratingTotals[i];
+        if (currentRating > greatestAmount) greatestAmount = currentRating;
+      }
+
+      for (let i = 5; i >= 1; i--) {
+        if (ratingTotals[i] === greatestAmount) highestRatingNums.push(i);
+      }
+
+      const data = {
+        greatestAmount,
+        highestRatingNums
+      };
+
+      return data;
+    };
+
+    const greatestAmount = findHighestRating().greatestAmount;
+    const ratingPercentages = {};
+    for (let i = 5; i >= 1; i--) {
+      // ratingPercentages[i] = ((ratingTotals[i] * 1.0) / greatestAmount) * 100;
+      ratingPercentages[i] = ratingTotals[i] / greatestAmount;
+    }
+
+    return ratingPercentages;
+
+    // console.log(greatestAmount);
+    // console.log(ratingTotals);
+    // console.log(ratingPercentages);
+
+    // for (let i = 5; i <= 1; i--) {
+    //   ratingPercentages[i] = ratingTotals[i] / totalReviewCount;
+    // }
+  };
+
+  const barWidthsObject = calculateBarWidths();
+  // console.log(barWidthsObject);
+
+  const stylePercentages = {};
+  for (let i = 5; i >= 1; i--) {
+    stylePercentages[i] = barWidthsObject[i] * 100;
+  }
+
+  console.log(stylePercentages);
+
   const ratingBarsDivs = () => {
     const fiver = [];
     for (let i = 5; i >= 1; i--) {
@@ -51,8 +114,8 @@ const Reviews = ({ business, handleWriteReview }) => {
         {fiver.map((num) => {
           return (
             <>
-              <div className={`bar-${num}-star`}>
-                <div className="color-bar" />
+              <div key={num} className={`bar-${num}-star`}>
+                <div className="color-bar" style={{ width: `50px` }} />
               </div>
             </>
           );

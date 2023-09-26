@@ -103,10 +103,20 @@
           height: 100%;
         }
         & .bar-5-star .color-bar {
-          background: red;
+          background: rgb(230, 0, 0);
         }
-        /* & .5-star-bar .color-bar {
-        } */
+        & .bar-4-star .color-bar {
+          background: rgb(244, 57, 0);
+        }
+        & .bar-3-star .color-bar {
+          background: rgb(248, 83, 0);
+        }
+        & .bar-2-star .color-bar {
+          background: rgb(248, 137, 0);
+        }
+        & .bar-1-star .color-bar {
+          background: rgb(255, 196, 78);
+        }
       }
     }
   }
