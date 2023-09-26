@@ -48,3 +48,10 @@ div.main-title.review {
 .write-review-link {
   cursor: pointer;
 }
+#reviews-container .overall-ratings-box {
+  display: flex;
+}
+
+#reviews-container .overall-ratings-box .left-side {
+  width: 300px;
+}

@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 
 const Reviews = ({ business, handleWriteReview }) => {
+  const reviewsIndexItemStarBox = [];
   const reviewItems = business.reviews.map((review, idx) => (
     <div key={idx} className="review-item-container" id="reviews-container">
       <div className="top-card">
         <div className="profile-image-container">C</div>
         <h5 className="author-name">Firstname L.</h5>
       </div>
+      <div className="star-rating"></div>
+
       <div className="review-text">{review.body}</div>
       <div className="review-rating">
         <span>{review.rating}</span>/5
@@ -19,6 +22,25 @@ const Reviews = ({ business, handleWriteReview }) => {
     </div>
   ));
 
+  const starsLegendsDivs = () => {
+    const legendTextStrings = [];
+    for (let i = 5; i >= 1; i--) {
+      const nextString = `${i} star${i > 1 ? "s" : ""}`;
+      legendTextStrings.push(nextString);
+    }
+    return (
+      <>
+        {legendTextStrings.map((string) => {
+          return (
+            <div className="star-rating-legend-container">
+              <h4>{string}</h4>
+            </div>
+          );
+        })}
+      </>
+    );
+  };
+
   return (
     <div id="reviews-container" className="card-container">
       <div className="main-title review">
@@ -26,6 +48,18 @@ const Reviews = ({ business, handleWriteReview }) => {
       </div>
       <div className="write-review-link" onClick={(e) => handleWriteReview(e)}>
         <h3>Write your review.</h3>
+      </div>
+      <div className="overall-ratings-box">
+        <div className="left-side">
+          <h4>Overall rating</h4>
+          <div className="overall-rating-star-box-container">*****</div>
+          <p className="review-count">{business.reviews.length} reviews</p>
+        </div>
+
+        <div className="right-side">
+          <div className="stars-legends-container">{starsLegendsDivs()}</div>
+          <div className="rating-bars-container"></div>
+        </div>
       </div>
 
       <div className="reviews-content">{reviewItems}</div>

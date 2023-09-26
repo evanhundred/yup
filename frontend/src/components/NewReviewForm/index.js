@@ -58,7 +58,7 @@ const NewReviewForm = () => {
   const starBoxDivs = document.querySelectorAll(`.rating-stars > div`);
 
   const ratingTextStringObject = {
-    0: "Select you rating",
+    0: "Select your rating",
     1: "Not good",
     2: "OK",
     3: "Decent",
@@ -66,18 +66,18 @@ const NewReviewForm = () => {
     5: "Top-notch"
   };
 
-  const ratingTextString = () => {
-    const ratingTextStrings = [
-      "Select your rating",
-      "Not good",
-      "OK",
-      "Decent",
-      "Delicious",
-      "Top-notch"
-    ];
+  // const ratingTextString = () => {
+  //   const ratingTextStrings = [
+  //     "Select your rating",
+  //     "Not good",
+  //     "OK",
+  //     "Decent",
+  //     "Delicious",
+  //     "Top-notch"
+  //   ];
 
-    return ratingTextStrings[rating];
-  };
+  //   return ratingTextStrings[rating];
+  // };
 
   const styleStarBoxes = (num) => {
     const oldNum = rating;
