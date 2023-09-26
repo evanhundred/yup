@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import { starBox } from "../../../utils/starBox";
+
 const Reviews = ({ business, handleWriteReview }) => {
   // const reviewsIndexItemStarBox = [];
   const reviewItems = business.reviews.map((review, idx) => (
@@ -102,7 +104,7 @@ const Reviews = ({ business, handleWriteReview }) => {
     stylePercentages[i] = barWidthsObject[i] * 100;
   }
 
-  console.log(stylePercentages);
+  // console.log(stylePercentages);
 
   const ratingBarsDivs = () => {
     const fiver = [];
@@ -138,7 +140,7 @@ const Reviews = ({ business, handleWriteReview }) => {
       <div className="overall-ratings-box">
         <div className="left-side">
           <h4>Overall rating</h4>
-          <div className="overall-rating-star-box-container">*****</div>
+          <div className="overall-rating-star-box-container">{starBox()}</div>
           <p className="review-count">{business.reviews.length} reviews</p>
         </div>
 

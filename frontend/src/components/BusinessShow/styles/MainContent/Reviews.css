@@ -64,6 +64,25 @@
       justify-content: center;
       gap: 8px;
       width: 300px;
+
+      & h4 {
+        font-weight: 500;
+      }
+
+      & .overall-rating-star-box-container {
+        display: flex;
+        gap: 5px;
+      }
+
+      & .overall-rating-star-box-container > div {
+        width: 15px;
+        height: 15px;
+        background: aqua;
+      }
+
+      & p {
+        color: rgb(109, 109, 109);
+      }
     }
 
     & .right-side {
