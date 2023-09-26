@@ -115,7 +115,10 @@ const Reviews = ({ business, handleWriteReview }) => {
           return (
             <>
               <div key={num} className={`bar-${num}-star`}>
-                <div className="color-bar" style={{ width: `50px` }} />
+                <div
+                  className="color-bar"
+                  style={{ width: `${stylePercentages[num]}%` }}
+                />
               </div>
             </>
           );
