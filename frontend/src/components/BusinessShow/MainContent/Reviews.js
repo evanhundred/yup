@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Reviews = ({ business, handleWriteReview }) => {
-  const reviewsIndexItemStarBox = [];
+  // const reviewsIndexItemStarBox = [];
   const reviewItems = business.reviews.map((review, idx) => (
     <div key={idx} className="review-item-container" id="reviews-container">
       <div className="top-card">
@@ -41,6 +41,26 @@ const Reviews = ({ business, handleWriteReview }) => {
     );
   };
 
+  const ratingBarsDivs = () => {
+    const fiver = [];
+    for (let i = 5; i >= 1; i--) {
+      fiver.push(i);
+    }
+    return (
+      <>
+        {fiver.map((num) => {
+          return (
+            <>
+              <div className={`bar-${num}-star`}>
+                <div className="color-bar" />
+              </div>
+            </>
+          );
+        })}
+      </>
+    );
+  };
+
   return (
     <div id="reviews-container" className="card-container">
       <div className="main-title review">
@@ -58,7 +78,7 @@ const Reviews = ({ business, handleWriteReview }) => {
 
         <div className="right-side">
           <div className="stars-legends-container">{starsLegendsDivs()}</div>
-          <div className="rating-bars-container"></div>
+          <div className="rating-bars-container">{ratingBarsDivs()}</div>
         </div>
       </div>
 

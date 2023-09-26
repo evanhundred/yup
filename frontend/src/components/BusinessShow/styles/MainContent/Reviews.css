@@ -2,9 +2,119 @@
   /* padding: 2.9em 0; */
   margin-left: 4em;
   border: none;
+
+  & h3 {
+    padding: 5px 0;
+  }
+
+  & .review-text {
+    font-size: 20px;
+    font-weight: 300;
+    padding: 20px 0;
+  }
+
+  & div.main-title.review {
+    margin: 0 0 20px 0;
+  }
+
+  & .write-review-link {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  & .top-card {
+    margin: 20px 0;
+    display: flex;
+    gap: 15px;
+  }
+
+  & .profile-image-container {
+    font-size: 50px;
+    padding: 0 8px;
+    border: solid 1px black;
+    border-radius: 100px;
+  }
+
+  & .author-name {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  &.review-rating {
+    padding: 20px 0;
+    font-weight: 600;
+  }
+
+  & .review-rating span {
+    color: orange;
+  }
+
+  & .write-review-link {
+    cursor: pointer;
+  }
+
+  & .overall-ratings-box {
+    margin-top: 15px;
+    display: flex;
+    width: 700px;
+
+    & .left-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+      width: 300px;
+    }
+
+    & .right-side {
+      width: 400px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      & .stars-legends-container,
+      .rating-bars-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      & .stars-legends-container {
+        & div {
+          height: 17px;
+          font-size: 15px;
+        }
+      }
+
+      & .rating-bars-container {
+        /* display: flex;
+        flex-direction: column;
+        gap: 6px; */
+        & div {
+          margin: 3.5px 0;
+          width: 300px;
+          height: 10px;
+          background: rgb(226, 226, 226);
+          border-radius: 10px;
+        }
+        & .color-bar {
+          margin: 0;
+          width: 20px;
+          height: 100%;
+        }
+        & .bar-5-star .color-bar {
+          background: red;
+        }
+        /* & .5-star-bar .color-bar {
+        } */
+      }
+    }
+  }
 }
 
-#reviews-container h3 {
+/* OLD WAY */
+
+/* #reviews-container h3 {
   padding: 5px 0;
 }
 
@@ -15,7 +125,12 @@
 }
 
 div.main-title.review {
-  margin: 0 0 30px 0;
+  margin: 0 0 20px 0;
+}
+
+#reviews-container .write-review-link {
+  font-size: 20px;
+  font-weight: 500;
 }
 
 #reviews-container .top-card {
@@ -49,9 +164,15 @@ div.main-title.review {
   cursor: pointer;
 }
 #reviews-container .overall-ratings-box {
+  margin-top: 15px;
   display: flex;
 }
 
 #reviews-container .overall-ratings-box .left-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
   width: 300px;
 }
+ */
