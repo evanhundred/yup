@@ -192,9 +192,37 @@
   }
   & .review-item-container {
     margin: 0 0 50px 0;
+
     & .edit-link {
       margin-left: 10px;
       color: rgb(0, 130, 217);
+      width: max-content;
+      border: 1px solid rgb(0, 130, 217);
+      background: rgb(240, 240, 240);
+      border-radius: 5px;
+      padding: 4px;
+    }
+
+    & .star-rating {
+      display: flex;
+      gap: 2.5px;
+      margin: 1px 0;
+
+      & > div {
+        text-align: center;
+        padding: 2px 5px;
+        font-size: 40px;
+        display: flex;
+        border-radius: 6px;
+
+        & span {
+          font-weight: 600;
+          position: relative;
+          top: -13%;
+          margin: -12px -3px -8px;
+          color: white;
+        }
+      }
     }
   }
 }

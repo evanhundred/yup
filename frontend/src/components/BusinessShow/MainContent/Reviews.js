@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { starBox } from "../../../utils/starBox";
+import { overallStarBox, reviewItemStarBox } from "../../../utils/starBox";
 import writeReviewIcon from "../../../assets/icons/writing.png";
 
 const Reviews = ({ business, handleWriteReview, currentUser }) => {
@@ -26,19 +26,20 @@ const Reviews = ({ business, handleWriteReview, currentUser }) => {
         </div>
         <h5 className="author-name">{getAuthorName(review)}</h5>
       </div>
-      <div className="star-rating"></div>
+      {/* <div className="star-rating"></div> */}
+      <div className="star-rating">{reviewItemStarBox(review.rating)}</div>
 
       <div className="review-text">{review.body}</div>
       {/* <div className="review-rating">
         <span>{review.rating}</span>/5
       </div> */}
-      <div className="edit-link">
-        {currentUser.id === review.author_id && (
+      {currentUser.id === review.author_id && (
+        <div className="edit-link">
           <Link to={`/businesses/${business.id}/reviews/${review.id}/edit`}>
             <h4 className="edit-review-link">Edit Review</h4>
           </Link>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   ));
 
@@ -162,7 +163,7 @@ const Reviews = ({ business, handleWriteReview, currentUser }) => {
         <div className="left-side">
           <h4>Overall rating</h4>
           <div className="overall-rating-star-box-container">
-            {starBox(business.reviews)}
+            {overallStarBox(business.reviews)}
           </div>
           <p className="review-count">{business.reviews.length} reviews</p>
         </div>

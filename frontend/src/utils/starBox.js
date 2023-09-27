@@ -1,4 +1,9 @@
-export const starBox = (reviews) => {
+// const starBoxDivs = [];
+// const getRatingInfo = () => {
+
+// }
+
+export const overallStarBox = (reviews) => {
   const ratingsSum = reviews.reduce((sum, review) => sum + review.rating, 0);
   const ratingsAvg = Math.round((ratingsSum / reviews.length) * 10) / 10;
 
@@ -54,5 +59,52 @@ export const starBox = (reviews) => {
     );
   }
 
+  return <>{starBoxDivs.map((div) => div)}</>;
+};
+
+export const reviewItemStarBox = (rating) => {
+  let ratingDigitColor;
+  switch (rating) {
+    case 1:
+      ratingDigitColor = "rgb(255, 196, 78)";
+      break;
+    case 2:
+      ratingDigitColor = "rgb(248, 137, 0)";
+      break;
+    case 3:
+      ratingDigitColor = "rgb(248, 83, 0)";
+      break;
+    case 4:
+      ratingDigitColor = "rgb(244, 57, 0)";
+      break;
+    case 5:
+      ratingDigitColor = "rgb(230, 0, 0)";
+      break;
+    default:
+      break;
+  }
+
+  const starBoxDivs = [];
+  for (let i = 1; i <= 5; i++) {
+    starBoxDivs.push(
+      <div
+        key={i}
+        className={`review-item-star-box-${i} ${rating}-rating`}
+        style={
+          i <= rating
+            ? {
+                background: ratingDigitColor
+              }
+            : {
+                background: "rgb(223, 223, 223)"
+              }
+        }
+      >
+        <span>&lowast;</span>
+      </div>
+    );
+  }
+
+  // return "starBox";
   return <>{starBoxDivs.map((div) => div)}</>;
 };
