@@ -18,7 +18,7 @@ const BusinessShow = ({ props }) => {
 
   const currentUser = useSelector((state) => state.session.user);
 
-  // console.log()
+  // console.log(currentUser);
 
   const handleWriteReview = (e) => {
     e.preventDefault();

@@ -76,6 +76,7 @@ const MainContent = ({
           business={business}
           props={props}
           handleWriteReview={handleWriteReview}
+          currentUser={currentUser}
         />
 
         {/* collections containing */}

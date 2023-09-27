@@ -10,5 +10,8 @@
 .about.card-container {
   /* border: none; */
   width: 100%;
-  /* width: 700px; */
+
+  & > * {
+    width: 740px;
+  }
 }
