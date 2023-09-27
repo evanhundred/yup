@@ -41,10 +41,8 @@ const NewReviewForm = () => {
     } else {
       if (!body) {
         setErrors("ⓘ no review text.");
-        console.log("ⓘ no review text.");
       } else if (!rating) {
         setErrors("ⓘ no rating selected.");
-        console.log("no rating selected.");
       }
     }
   };

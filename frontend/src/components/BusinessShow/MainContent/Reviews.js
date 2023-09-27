@@ -4,8 +4,6 @@ import { overallStarBox, reviewItemStarBox } from "../../../utils/starBox";
 import writeReviewIcon from "../../../assets/icons/writing.png";
 
 const Reviews = ({ business, handleWriteReview, currentUser }) => {
-  console.log(currentUser);
-  // if (!business || !currentUser) return null;
   const getAuthorName = (review) => {
     if (!review || !business || !business.authorNames) return null;
     const authorNames = business.authorNames;
@@ -28,13 +26,8 @@ const Reviews = ({ business, handleWriteReview, currentUser }) => {
         </div>
         <h5 className="author-name">{getAuthorName(review)}</h5>
       </div>
-      {/* <div className="star-rating"></div> */}
       <div className="star-rating">{reviewItemStarBox(review.rating)}</div>
-
       <div className="review-text">{review.body}</div>
-      {/* <div className="review-rating">
-        <span>{review.rating}</span>/5
-      </div> */}
       {currentUser && currentUser.id === review.author_id && (
         <div className="edit-link">
           <Link to={`/businesses/${business.id}/reviews/${review.id}/edit`}>
@@ -65,8 +58,6 @@ const Reviews = ({ business, handleWriteReview, currentUser }) => {
   };
 
   const calculateBarWidths = () => {
-    // const totalReviewCount = business.reviews.length;
-
     const ratingTotals = {};
 
     for (let i = 5; i >= 1; i--) {
@@ -76,7 +67,6 @@ const Reviews = ({ business, handleWriteReview, currentUser }) => {
     business.reviews.forEach((review) => {
       ratingTotals[review.rating] += 1;
     });
-    console.log(ratingTotals);
 
     const findHighestRating = () => {
       let greatestAmount = 0;
@@ -85,46 +75,30 @@ const Reviews = ({ business, handleWriteReview, currentUser }) => {
         const currentRating = ratingTotals[i];
         if (currentRating > greatestAmount) greatestAmount = currentRating;
       }
-
       for (let i = 5; i >= 1; i--) {
         if (ratingTotals[i] === greatestAmount) highestRatingNums.push(i);
       }
-
       const data = {
         greatestAmount,
         highestRatingNums
       };
-
       return data;
     };
 
     const greatestAmount = findHighestRating().greatestAmount;
     const ratingPercentages = {};
     for (let i = 5; i >= 1; i--) {
-      // ratingPercentages[i] = ((ratingTotals[i] * 1.0) / greatestAmount) * 100;
       ratingPercentages[i] = ratingTotals[i] / greatestAmount;
     }
 
     return ratingPercentages;
-
-    // console.log(greatestAmount);
-    // console.log(ratingTotals);
-    // console.log(ratingPercentages);
-
-    // for (let i = 5; i <= 1; i--) {
-    //   ratingPercentages[i] = ratingTotals[i] / totalReviewCount;
-    // }
   };
 
   const barWidthsObject = calculateBarWidths();
-  // console.log(barWidthsObject);
-
   const stylePercentages = {};
   for (let i = 5; i >= 1; i--) {
     stylePercentages[i] = barWidthsObject[i] * 100;
   }
-
-  console.log(stylePercentages);
 
   const ratingBarsDivs = () => {
     const fiver = [];

@@ -1,8 +1,3 @@
-// const starBoxDivs = [];
-// const getRatingInfo = () => {
-
-// }
-
 export const overallStarBox = (reviews) => {
   const ratingsSum = reviews.reduce((sum, review) => sum + review.rating, 0);
   const ratingsAvg = Math.round((ratingsSum / reviews.length) * 10) / 10;
@@ -11,9 +6,6 @@ export const overallStarBox = (reviews) => {
   const firstRatingDigit = Math.floor(ratingsAvg);
   let isHalfStar = false;
   if (lastRatingDigit >= 2.5) isHalfStar = true;
-
-  // console.log(ratingsAvg);
-  // console.log(lastRatingDigit);
   let ratingDigitColor;
   if (ratingsAvg >= 1 && ratingsAvg < 1.75) {
     ratingDigitColor = "rgb(255, 196, 78)";
@@ -50,7 +42,6 @@ export const overallStarBox = (reviews) => {
               }
             : {
                 background: "rgb(223, 223, 223)"
-                // background: "grey"
               }
         }
       >
@@ -105,6 +96,5 @@ export const reviewItemStarBox = (rating) => {
     );
   }
 
-  // return "starBox";
   return <>{starBoxDivs.map((div) => div)}</>;
 };
