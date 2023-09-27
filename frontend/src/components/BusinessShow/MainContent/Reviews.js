@@ -7,7 +7,14 @@ const Reviews = ({ business, handleWriteReview }) => {
   const reviewItems = business.reviews.map((review, idx) => (
     <div key={idx} className="review-item-container" id="reviews-container">
       <div className="top-card">
-        <div className="profile-image-container">C</div>
+        <div className="profile-image-container">
+          <div
+            className="profile-picture"
+            style={{ color: "orange", fontSize: "40px" }}
+          >
+            <i className="fa-solid fa-carrot"></i>
+          </div>
+        </div>
         <h5 className="author-name">Firstname L.</h5>
       </div>
       <div className="star-rating"></div>

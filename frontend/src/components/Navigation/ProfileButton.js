@@ -47,16 +47,16 @@ const ProfileButton = ({ user }) => {
       {showMenu && (
         <ul className="profile-dropdown">
           <li className="user-options-container">
-            <a href="#">
-              <div className="first-row profile-dropdown-row">
-                <div className="profile-icon">
-                  <img src={profileIcon} alt="your profile" />
-                </div>
-                <div className="profile-dropdown-option">
-                  <p>{user.name}</p>
-                </div>
+            {/* <a href="#"> */}
+            <div className="first-row profile-dropdown-row">
+              <div className="profile-icon">
+                <img src={profileIcon} alt="your profile" />
               </div>
-            </a>
+              <div className="profile-dropdown-option">
+                <p>{user.name}</p>
+              </div>
+            </div>
+            {/* </a> */}
           </li>
           <li className="logout-button-container">
             <div
