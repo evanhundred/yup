@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
 import { starBox } from "../../../utils/starBox";
+import writeReviewIcon from "../../../assets/icons/writing.png";
 
 const Reviews = ({ business, handleWriteReview }) => {
-  // const reviewsIndexItemStarBox = [];
   const reviewItems = business.reviews.map((review, idx) => (
     <div key={idx} className="review-item-container" id="reviews-container">
       <div className="top-card">
@@ -131,10 +131,13 @@ const Reviews = ({ business, handleWriteReview }) => {
 
   return (
     <div id="reviews-container" className="card-container">
-      <div className="main-title review">
+      <div className="reviews-title-container">
         <h2>Reviews</h2>
       </div>
       <div className="write-review-link" onClick={(e) => handleWriteReview(e)}>
+        <div className="write-review-icon">
+          <img src={writeReviewIcon} alt="write your review" />
+        </div>
         <h3>Write your review.</h3>
       </div>
       <div className="overall-ratings-box">

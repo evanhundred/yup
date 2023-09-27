@@ -21,7 +21,7 @@ const TitleCardContent = ({ business }) => {
   const ratingsAvg =
     Math.round((ratingsSum / business.reviews.length) * 10) / 10;
 
-  console.log(ratingsAvg);
+  // console.log(ratingsAvg);
 
   // HALF STAR STYLE LOGIC
 
