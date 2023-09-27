@@ -7,8 +7,8 @@ export const starBox = (reviews) => {
   let isHalfStar = false;
   if (lastRatingDigit >= 2.5) isHalfStar = true;
 
-  console.log(ratingsAvg);
-  console.log(lastRatingDigit);
+  // console.log(ratingsAvg);
+  // console.log(lastRatingDigit);
   let ratingDigitColor;
   if (ratingsAvg >= 1 && ratingsAvg < 1.75) {
     ratingDigitColor = "rgb(255, 196, 78)";
@@ -41,10 +41,11 @@ export const starBox = (reviews) => {
               }
             : isHalfStar && i === firstRatingDigit + 1
             ? {
-                background: `linear-gradient(to right, ${ratingDigitColor}, grey)`
+                background: `linear-gradient(to right, ${ratingDigitColor}, rgb(223, 223, 223))`
               }
             : {
-                background: "grey"
+                background: "rgb(223, 223, 223)"
+                // background: "grey"
               }
         }
       >

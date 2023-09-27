@@ -4,6 +4,21 @@ import { starBox } from "../../../utils/starBox";
 import writeReviewIcon from "../../../assets/icons/writing.png";
 
 const Reviews = ({ business, handleWriteReview }) => {
+  // const authorName =
+  const getAuthorName = (review) => {
+    const authorNames = business.authorNames;
+    // console.log(authorNames);
+    // if (!authorNames) return null;
+    let authorName;
+    authorNames.forEach((authorName) => {
+      console.log(authorName.reviewId === review.id);
+      if (authorName.reviewId === review.id) authorName = authorName.name;
+      console.log(authorName);
+    });
+    // console.log(authorNames);
+    // console.log(review);
+    return authorName;
+  };
   const reviewItems = business.reviews.map((review, idx) => (
     <div key={idx} className="review-item-container" id="reviews-container">
       <div className="top-card">
@@ -15,14 +30,14 @@ const Reviews = ({ business, handleWriteReview }) => {
             <i className="fa-solid fa-carrot"></i>
           </div>
         </div>
-        <h5 className="author-name">Firstname L.</h5>
+        <h5 className="author-name">{getAuthorName(review)}</h5>
       </div>
       <div className="star-rating"></div>
 
       <div className="review-text">{review.body}</div>
-      <div className="review-rating">
+      {/* <div className="review-rating">
         <span>{review.rating}</span>/5
-      </div>
+      </div> */}
       <div className="edit-link">
         <Link to={`/businesses/${business.id}/reviews/${review.id}/edit`}>
           <h4>Edit Review</h4>
@@ -41,7 +56,7 @@ const Reviews = ({ business, handleWriteReview }) => {
       <>
         {legendTextStrings.map((string) => {
           return (
-            <div className="star-rating-legend-container">
+            <div key={string} className="star-rating-legend-container">
               <h4>{string}</h4>
             </div>
           );

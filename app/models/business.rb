@@ -26,6 +26,7 @@ class Business < ApplicationRecord
     validates :name, :address, :zipcode, :city, :state, :phone, :open_at, :closed_at, :about, :category, :price, :neighborhood, presence: true
 
     has_many :reviews,
+        class_name: :Review,
         foreign_key: :business_id,
         inverse_of: :business
 
