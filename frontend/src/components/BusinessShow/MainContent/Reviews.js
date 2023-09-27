@@ -5,7 +5,9 @@ import writeReviewIcon from "../../../assets/icons/writing.png";
 
 const Reviews = ({ business, handleWriteReview, currentUser }) => {
   console.log(currentUser);
+  // if (!business || !currentUser) return null;
   const getAuthorName = (review) => {
+    if (!review || !business || !business.authorNames) return null;
     const authorNames = business.authorNames;
     let authorName;
     authorNames.forEach((name) => {
@@ -33,7 +35,7 @@ const Reviews = ({ business, handleWriteReview, currentUser }) => {
       {/* <div className="review-rating">
         <span>{review.rating}</span>/5
       </div> */}
-      {currentUser.id === review.author_id && (
+      {currentUser && currentUser.id === review.author_id && (
         <div className="edit-link">
           <Link to={`/businesses/${business.id}/reviews/${review.id}/edit`}>
             <h4 className="edit-review-link">Edit Review</h4>
@@ -71,11 +73,10 @@ const Reviews = ({ business, handleWriteReview, currentUser }) => {
       ratingTotals[i] = 0;
     }
 
-    // console.log(ratingTotals);
-
     business.reviews.forEach((review) => {
       ratingTotals[review.rating] += 1;
     });
+    console.log(ratingTotals);
 
     const findHighestRating = () => {
       let greatestAmount = 0;
@@ -123,7 +124,7 @@ const Reviews = ({ business, handleWriteReview, currentUser }) => {
     stylePercentages[i] = barWidthsObject[i] * 100;
   }
 
-  // console.log(stylePercentages);
+  console.log(stylePercentages);
 
   const ratingBarsDivs = () => {
     const fiver = [];
@@ -158,6 +159,9 @@ const Reviews = ({ business, handleWriteReview, currentUser }) => {
           <img src={writeReviewIcon} alt="write your review" />
         </div>
         <h3>Write your review.</h3>
+      </div>
+      <div className="recommended-reviews-title">
+        <h4>Recommended Reviews</h4>
       </div>
       <div className="overall-ratings-box">
         <div className="left-side">

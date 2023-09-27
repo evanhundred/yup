@@ -1,6 +1,7 @@
 #reviews-container {
   /* padding-left: 2.9em; */
-  margin-left: 4em;
+  margin: 2.9em 0 4em 4em;
+  /* margin-left: 4em; */
   border: none;
 
   & h3 {
@@ -10,7 +11,7 @@
   & .review-text {
     font-size: 20px;
     font-weight: 300;
-    padding: 20px 0 10px;
+    padding: 10px 0 15px;
   }
 
   & .reviews-title-container {
@@ -47,6 +48,12 @@
     margin: 20px 0;
     display: flex;
     gap: 15px;
+  }
+
+  & .recommended-reviews-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 20px 0 5px;
   }
 
   & .profile-image-container {
