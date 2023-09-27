@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { starBox } from "../../../utils/starBox";
 import writeReviewIcon from "../../../assets/icons/writing.png";
 
-const Reviews = ({ business, handleWriteReview }) => {
-  // const authorName =
+const Reviews = ({ business, handleWriteReview, currentUser }) => {
+  console.log(currentUser);
   const getAuthorName = (review) => {
     const authorNames = business.authorNames;
     let authorName;
@@ -14,7 +14,7 @@ const Reviews = ({ business, handleWriteReview }) => {
     return authorName;
   };
   const reviewItems = business.reviews.map((review, idx) => (
-    <div key={idx} className="review-item-container" id="reviews-container">
+    <div key={idx} className="review-item-container">
       <div className="top-card">
         <div className="profile-image-container">
           <div
@@ -33,9 +33,11 @@ const Reviews = ({ business, handleWriteReview }) => {
         <span>{review.rating}</span>/5
       </div> */}
       <div className="edit-link">
-        <Link to={`/businesses/${business.id}/reviews/${review.id}/edit`}>
-          <h4>Edit Review</h4>
-        </Link>
+        {currentUser.id === review.author_id && (
+          <Link to={`/businesses/${business.id}/reviews/${review.id}/edit`}>
+            <h4 className="edit-review-link">Edit Review</h4>
+          </Link>
+        )}
       </div>
     </div>
   ));
@@ -60,7 +62,7 @@ const Reviews = ({ business, handleWriteReview }) => {
   };
 
   const calculateBarWidths = () => {
-    const totalReviewCount = business.reviews.length;
+    // const totalReviewCount = business.reviews.length;
 
     const ratingTotals = {};
 
@@ -146,7 +148,7 @@ const Reviews = ({ business, handleWriteReview }) => {
   };
 
   return (
-    <div id="reviews-container" className="card-container">
+    <div id="reviews-container" className="reviews-card-container">
       <div className="reviews-title-container">
         <h2>Reviews</h2>
       </div>

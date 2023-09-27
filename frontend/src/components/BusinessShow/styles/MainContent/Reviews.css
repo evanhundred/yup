@@ -1,5 +1,5 @@
 #reviews-container {
-  /* padding: 2.9em 0; */
+  /* padding-left: 2.9em; */
   margin-left: 4em;
   border: none;
 
@@ -10,7 +10,7 @@
   & .review-text {
     font-size: 20px;
     font-weight: 300;
-    padding: 20px 0;
+    padding: 20px 0 10px;
   }
 
   & .reviews-title-container {
@@ -56,10 +56,14 @@
     border-radius: 50px;
     /* font-size: 50px;
     border-radius: 100px; */
+
+    & i.fa-carrot {
+      font-size: 60px;
+    }
   }
 
   & .author-name {
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 500;
   }
 
@@ -184,6 +188,13 @@
           background: rgb(255, 196, 78);
         }
       }
+    }
+  }
+  & .review-item-container {
+    margin: 0 0 50px 0;
+    & .edit-link {
+      margin-left: 10px;
+      color: rgb(0, 130, 217);
     }
   }
 }
