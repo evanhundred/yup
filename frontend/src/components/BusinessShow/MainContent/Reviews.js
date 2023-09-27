@@ -7,16 +7,10 @@ const Reviews = ({ business, handleWriteReview }) => {
   // const authorName =
   const getAuthorName = (review) => {
     const authorNames = business.authorNames;
-    // console.log(authorNames);
-    // if (!authorNames) return null;
     let authorName;
-    authorNames.forEach((authorName) => {
-      console.log(authorName.reviewId === review.id);
-      if (authorName.reviewId === review.id) authorName = authorName.name;
-      console.log(authorName);
+    authorNames.forEach((name) => {
+      if (name.reviewId === review.id) authorName = name.name;
     });
-    // console.log(authorNames);
-    // console.log(review);
     return authorName;
   };
   const reviewItems = business.reviews.map((review, idx) => (
