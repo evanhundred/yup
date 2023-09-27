@@ -72,12 +72,32 @@
       & .overall-rating-star-box-container {
         display: flex;
         gap: 5px;
-      }
 
-      & .overall-rating-star-box-container > div {
-        width: 15px;
-        height: 15px;
-        background: aqua;
+        padding-top: 12px;
+        /* font-size: 30px; */
+        & > div {
+          text-align: center;
+          padding: 0 10px;
+          font-size: 60px;
+          display: flex;
+          border-radius: 10px;
+
+          /* vertical-align: sub; */
+          /* position: relative; */
+
+          /* background: aqua; */
+          & > span {
+            font-weight: 600;
+            position: relative;
+            top: -10%;
+            margin: -12px -3px -8px;
+            color: white;
+          }
+        }
+
+        & .half-star {
+          background: linear-gradient(to right, orange, grey);
+        }
       }
 
       & p {

@@ -140,7 +140,9 @@ const Reviews = ({ business, handleWriteReview }) => {
       <div className="overall-ratings-box">
         <div className="left-side">
           <h4>Overall rating</h4>
-          <div className="overall-rating-star-box-container">{starBox()}</div>
+          <div className="overall-rating-star-box-container">
+            {starBox(business.reviews)}
+          </div>
           <p className="review-count">{business.reviews.length} reviews</p>
         </div>
 
