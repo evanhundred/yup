@@ -216,6 +216,7 @@
         border-radius: 6px;
 
         & span {
+          cursor: default;
           font-weight: 600;
           position: relative;
           top: -13%;
