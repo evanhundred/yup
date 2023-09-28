@@ -4,19 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
 import { createReview } from "../../store/reviews";
 import { backgroundNavBar, unBackgroundNavBar } from "../../utils/modal";
-import "./index.css";
-import "./review-guidelines-modal.css";
 
-// NOTE:
-// make clicking on padding around textarea start text blinker
-
-const NewReviewForm = () => {
+const ReviewForm2 = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { businessId, id } = useParams();
+  // let id;
+  // if (type === "edit") { id } = useParams();
   const business = useSelector(getBusiness(businessId));
 
-  console.log(id);
   const [body, setBody] = useState("");
   const [rating, setRating] = useState(0);
   const [initialRatingClicked, setInitialRatingClicked] = useState(false);
@@ -249,5 +245,3 @@ const NewReviewForm = () => {
     </div>
   );
 };
-
-export default NewReviewForm;

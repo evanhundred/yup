@@ -3,6 +3,7 @@ import { useParams, Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
 import { fetchReview, updateReview, deleteReview } from "../../store/reviews";
+import { backgroundNavBar, unBackgroundNavBar } from "../../utils/modal";
 import "./index.css";
 
 const EditReviewForm = () => {
@@ -25,9 +26,14 @@ const EditReviewForm = () => {
   const [errors, setErrors] = useState([]);
   const [hideErrorBox, setHideErrorBox] = useState(false);
 
+  const [showReviewGuidelinesModal, setShowReviewGuidelinesModal] =
+    useState(false);
+
   useEffect(() => {
     dispatch(fetchBusiness(businessId));
   }, [businessId, dispatch]);
+
+  const html = document.querySelector("html");
 
   const clickUpdate = (e) => {
     e.preventDefault();
@@ -49,39 +55,47 @@ const EditReviewForm = () => {
     });
   };
 
-  const closeBox = () => setHideErrorBox(true);
+  // const closeBox = () => setHideErrorBox(true);
 
-  const ErrorBox = () => {
-    if (errors.length > 0 && !hideErrorBox) {
-      return (
-        <div id="update-review-errors">
-          <ul>
-            {errors.map((error) => (
-              <li key={error}>{error}</li>
-            ))}
-          </ul>
+  // const ErrorBox = () => {
+  //   if (errors.length > 0 && !hideErrorBox) {
+  //     return (
+  //       <div id="update-review-errors">
+  //         <ul>
+  //           {errors.map((error) => (
+  //             <li key={error}>{error}</li>
+  //           ))}
+  //         </ul>
 
-          <button id="closeBoxButton" onClick={closeBox}>
-            x
-          </button>
-        </div>
-      );
-    } else {
-      return null;
-    }
+  //         <button id="closeBoxButton" onClick={closeBox}>
+  //           x
+  //         </button>
+  //       </div>
+  //     );
+  //   } else {
+  //     return null;
+  //   }
+  // };
+
+  const handleGuidelinesClick = () => {
+    if (html) html.style.overflow = "hidden";
+    setShowReviewGuidelinesModal(true);
+    backgroundNavBar();
   };
 
   return (
     <div id="edit-review-form-container">
-      <div className="error-box-container">
-        <ErrorBox />
-      </div>
+      <div className="top-line"></div>
       <h3>
-        Edit Review for{" "}
-        <Link to={business ? `/businesses/${business.id}` : "/"}>{`${
-          business ? business.name : ""
-        }`}</Link>
+        <Link
+          to={business ? `/businesses/${business.id}` : "/"}
+          rel="noreferrer"
+          target="_blank"
+        >{`${business ? business.name : ""}`}</Link>
       </h3>
+      <p className="review-guidelines-link" onClick={handleGuidelinesClick}>
+        Read our review guidelines
+      </p>
       <div className="edit-form">
         <form>
           <label>
