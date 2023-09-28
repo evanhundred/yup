@@ -12,6 +12,24 @@ const Footer = () => {
     return <p className="image-attribution">Spider image by freepik.</p>;
   };
 
+  const reviewWriteIconAttribution = (
+    <div className="review-write-icon-attribution">
+      <p>
+        Draw icons created by
+        <a
+          href="https://www.flaticon.com/free-icons/draw"
+          title="draw icons"
+          rel="noreferrer"
+          target="_blank"
+        >
+          {" "}
+          Freepik - Flaticon
+        </a>
+        .
+      </p>
+    </div>
+  );
+
   const ShareIconCopy = () => {
     return (
       <p className="image-attribution">
@@ -25,20 +43,19 @@ const Footer = () => {
           {" "}
           Catalin Fertu
         </a>{" "}
-        from{" "}
+        from
         <a
           href="https://www.flaticon.com/"
           rel="noreferrer"
           target="_blank"
           title="Flaticon"
         >
+          {" "}
           www.flaticon.com.
         </a>
       </p>
     );
   };
-
-  // console.log(location);
 
   return (
     <div className="footer">
@@ -57,7 +74,12 @@ const Footer = () => {
       </p>
       {location.state === "404" && <BizShowErrorCopy />}
       {location.state !== "404" &&
-        location.pathname.match(/businesses\/[0-9]+/) && <ShareIconCopy />}
+        location.pathname.match(/businesses\/[0-9]+/) && (
+          <div className="business-show-footer-copy">
+            <ShareIconCopy />
+            {reviewWriteIconAttribution}
+          </div>
+        )}
     </div>
   );
 };
