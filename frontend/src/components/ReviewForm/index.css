@@ -1,0 +1,227 @@
+#review-form-container {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgb(204, 204, 204);
+  padding: 2em 0 0 4em;
+}
+
+textarea#review-body,
+#review-form-container {
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#review-form-container .top-line {
+  width: 800px;
+  padding: 5px 0 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#review-form-container .top-line h3 {
+  font-size: 33px;
+  font-weight: 600;
+}
+
+p.review-guidelines-link {
+  color: rgb(0, 119, 152);
+  font-size: 17px;
+  font-weight: 500;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 1px;
+  cursor: pointer;
+}
+
+.rating-and-review-text-box {
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  height: 375px;
+  width: 750px;
+  padding: 30px;
+  margin-top: 5px;
+
+  font-weight: 400;
+  color: rgb(127, 129, 134);
+  cursor: text;
+}
+
+.rating-stars-line {
+  display: flex;
+  justify-content: flex-start;
+  gap: 7px;
+}
+.rating-stars > div.hovered-num-1 {
+  background: rgb(255, 196, 78);
+}
+.rating-stars > div.hovered-num-2 {
+  background: rgb(255, 140, 0);
+}
+.rating-stars > div.hovered-num-3 {
+  background: rgb(255, 85, 0);
+}
+.rating-stars > div.hovered-num-4 {
+  background: rgb(255, 60, 0);
+}
+.rating-stars > div.hovered-num-5 {
+  background: red;
+}
+
+.rating-stars > div {
+  display: flex;
+  background: gray;
+  border-radius: 10px;
+  font-size: 60px;
+  padding: 0 10px;
+  position: relative;
+}
+
+.rating-stars > div.orange {
+  background: orange;
+}
+
+.rating-stars > div.grey {
+  background: grey;
+}
+
+.rating-stars span {
+  position: relative;
+  top: -10%;
+  color: white;
+  font-weight: 600;
+  margin: -12px -3px -8px;
+}
+
+.rating-stars-line h4 {
+  display: flex;
+  align-items: center;
+}
+
+.rating-and-review-text-box div.rating-stars {
+  display: flex;
+  gap: 5px;
+  font-size: 30px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.review-prompt-line h5,
+.rating-stars-line {
+  padding-bottom: 20px;
+}
+
+.review-prompt-line .prompt-items {
+  display: flex;
+  flex-direction: row;
+}
+
+.review-prompt-line .prompt-items p {
+  background: rgb(241, 240, 240);
+  color: rgb(102, 102, 102);
+  border-radius: 4px;
+  padding: 3px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 7px;
+}
+
+.rating-and-review-text-box form {
+  height: 100%;
+}
+
+textarea#review-body {
+  resize: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 70%;
+
+  padding-top: 20px;
+  font-size: 19px;
+  font-weight: 400;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.post-review-button,
+.update-review-button,
+.delete-review-button {
+  background: rgb(218, 0, 0);
+  padding: 13px 40px;
+  margin-top: 45px;
+  border-radius: 3px;
+  font-size: 20px;
+  color: white;
+  width: max-content;
+  cursor: pointer;
+}
+
+#review-form-container {
+  & .edit-buttons-container {
+    display: flex;
+    gap: 30px;
+    & .delete-review-button {
+      background: rgb(255, 102, 0);
+    }
+  }
+  & .error-box {
+    height: 30px;
+    color: red;
+  }
+  & .error-box > h2 {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+
+  /* CHANGE TO WHEN UPDATES, NOT WHEN LOADS: */
+
+  /* animation: fadein 2s;
+  -webkit-animation: fadein 2s;
+  -moz-animation: fadein 2s;
+  -ms-animation: fadein 2s;
+  -o-animation: fadein 2s; */
+}
+
+/* @keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-ms-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+} */

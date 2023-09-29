@@ -1,0 +1,72 @@
+.review-guidelines-modal-overlay {
+  background: rgba(49, 49, 49, 0.8);
+}
+
+.review-guidelines-modal-container,
+.review-guidelines-modal-overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.review-guidelines-modal-container {
+  z-index: 1;
+}
+
+.review-guidelines-modal-box {
+  position: relative;
+  background: #f9f9f9;
+  display: flex;
+  border-radius: 10px;
+  width: 680px;
+  height: 310px;
+}
+
+.review-guidelines-modal-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5em 3.5em 2.5em;
+}
+
+.review-guidelines-modal-line-1 {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.9em;
+  border-bottom: 1px solid rgb(205, 205, 205);
+  margin-bottom: 10px;
+}
+
+.review-guidelines-modal-line-1 h2 {
+  font-size: 25px;
+}
+
+.review-guidelines-modal-line-2,
+.review-guidelines-modal-line-3 {
+  width: 100%;
+  display: flex;
+}
+
+.review-guidelines-modal-line-2 {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.review-guidelines-modal-content ul.bullet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.review-guidelines-modal-content .bullet-list li {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 5px;
+}

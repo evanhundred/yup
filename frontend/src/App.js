@@ -5,8 +5,9 @@ import Navigation from "./components/Navigation";
 import IndexPage from "./components/IndexPage";
 import BusinessShow from "./components/BusinessShow";
 import Footer from "./components/Footer";
+import ReviewForm from "./components/ReviewForm";
 import NewReviewForm from "./components/NewReviewForm";
-import EditReviewForm from "./components/EditReviewForm";
+// import EditReviewForm from "./components/EditReviewForm";
 import SearchResults from "./components/SearchResults";
 import BusinessAddUserPhotos from "./components/BusinessAddUserPhotos";
 import BusinessPhotos from "./components/BusinessPhotos";
@@ -41,10 +42,12 @@ function App() {
           <IndexPage />
         </Route>
         <Route path="/businesses/:businessId/reviews/new">
-          <NewReviewForm />
+          {/* <NewReviewForm /> */}
+          <ReviewForm />
         </Route>
         <Route path="/businesses/:businessId/reviews/:id/edit">
-          <EditReviewForm />
+          {/* <EditReviewForm /> */}
+          <ReviewForm />
         </Route>
         <Route path="/search">
           <SearchResults />

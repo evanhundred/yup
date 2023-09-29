@@ -1,25 +1,50 @@
 import { useEffect, useState } from "react";
-import { useHistory, useParams, Link } from "react-router-dom";
+import { useHistory, useParams, Link, useRouteMatch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
-import { createReview } from "../../store/reviews";
+import { createReview, updateReview, deleteReview } from "../../store/reviews";
 import { backgroundNavBar, unBackgroundNavBar } from "../../utils/modal";
+
 import "./index.css";
 import "./review-guidelines-modal.css";
 
-// NOTE:
-// make clicking on padding around textarea start text blinker
+const ReviewForm = () => {
+  const match = useRouteMatch();
 
-const NewReviewForm = () => {
+  let pathType;
+  switch (match.path) {
+    case "/businesses/:businessId/reviews/:id/edit":
+      pathType = "edit";
+      break;
+    case "/businesses/:businessId/reviews/new":
+      pathType = "new";
+      break;
+    default:
+      break;
+  }
+
+  const { businessId, id } = useParams();
+  let reviewId = id;
+
   const dispatch = useDispatch();
   const history = useHistory();
-  const { businessId, id } = useParams();
+
   const business = useSelector(getBusiness(businessId));
 
-  // console.log(id);
-  const [body, setBody] = useState("");
-  const [rating, setRating] = useState(0);
-  const [initialRatingClicked, setInitialRatingClicked] = useState(false);
+  let review;
+  if (pathType === "edit" && business && business.reviews) {
+    let i;
+    for (i = 0; i < business.reviews.length; i++) {
+      if (business.reviews[i].id === parseInt(reviewId))
+        review = business.reviews[i];
+    }
+  }
+
+  const [body, setBody] = useState(review ? review.body : "");
+  const [rating, setRating] = useState(review ? review.rating : 0);
+  const [initialRatingClicked, setInitialRatingClicked] = useState(
+    review ? true : false
+  );
 
   const [errors, setErrors] = useState("");
   const [showReviewGuidelinesModal, setShowReviewGuidelinesModal] =
@@ -29,9 +54,7 @@ const NewReviewForm = () => {
     dispatch(fetchBusiness(businessId));
   }, [businessId, dispatch]);
 
-  const html = document.querySelector("html");
-
-  const handleSubmit = (e) => {
+  const handleSubmitCreate = (e) => {
     e.preventDefault();
     if (rating && body) {
       const data = { body: body, rating: rating };
@@ -46,6 +69,26 @@ const NewReviewForm = () => {
       }
     }
   };
+
+  const handleSubmitUpdate = (e) => {
+    e.preventDefault();
+    if (rating && body) {
+      const data = { ...review, body: body, rating: rating };
+      dispatch(updateReview(data, businessId)).then(() => {
+        history.push(`/businesses/${businessId}`);
+      });
+    }
+    if (!body) setErrors("ⓘ no review text.");
+  };
+
+  const handleSubmitDelete = (e) => {
+    e.preventDefault();
+    dispatch(deleteReview(reviewId, businessId)).then(() => {
+      history.push(`/businesses/${businessId}`);
+    });
+  };
+
+  const html = document.querySelector("html");
 
   const handleGuidelinesClick = () => {
     if (html) html.style.overflow = "hidden";
@@ -63,19 +106,6 @@ const NewReviewForm = () => {
     4: "Delicious",
     5: "Top-notch"
   };
-
-  // const ratingTextString = () => {
-  //   const ratingTextStrings = [
-  //     "Select your rating",
-  //     "Not good",
-  //     "OK",
-  //     "Decent",
-  //     "Delicious",
-  //     "Top-notch"
-  //   ];
-
-  //   return ratingTextStrings[rating];
-  // };
 
   const styleStarBoxes = (num) => {
     const oldNum = rating;
@@ -102,15 +132,14 @@ const NewReviewForm = () => {
     });
   };
 
-  const handleStarBoxClick = (e, num) => {
-    e.preventDefault();
-    // console.log(num);
+  const handleStarBoxClick = (num, e = null) => {
+    if (e) e.preventDefault();
     if (!initialRatingClicked) setInitialRatingClicked(true);
     styleStarBoxes(num);
     setRating(num);
   };
 
-  const newReviewStarBox = [1, 2, 3, 4, 5].map((num) => (
+  const reviewStarBox = [1, 2, 3, 4, 5].map((num) => (
     <div
       className={`star-box-${num}`}
       key={num}
@@ -120,7 +149,7 @@ const NewReviewForm = () => {
       onMouseLeave={(e) => {
         if (!initialRatingClicked) handleHover(false, e, num);
       }}
-      onClick={(e) => handleStarBoxClick(e, num)}
+      onClick={(e) => handleStarBoxClick(num, e)}
     >
       <span>&lowast;</span>
     </div>
@@ -202,8 +231,12 @@ const NewReviewForm = () => {
     );
   };
 
+  if (rating) {
+    styleStarBoxes(rating);
+  }
+
   return (
-    <div id="create-review-form-container">
+    <div id="review-form-container">
       <div className="top-line">
         <h3>
           <Link
@@ -217,11 +250,10 @@ const NewReviewForm = () => {
         </p>
       </div>
       <div className="rating-and-review-text-box">
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="rating-stars-line">
-            <div className="rating-stars">{newReviewStarBox}</div>
+            <div className="rating-stars">{reviewStarBox}</div>
             <h4>{ratingTextStringObject[rating]}</h4>
-            {/* <h4>{ratingTextString()}</h4> */}
           </div>
           <div className="review-prompt-line">
             <h5>A few things to consider in your review</h5>
@@ -241,13 +273,25 @@ const NewReviewForm = () => {
       </div>
 
       <div className="error-box">{errorMessages()}</div>
+      {pathType === "new" && (
+        <div className="post-review-button" onClick={handleSubmitCreate}>
+          <h3>Post Review</h3>
+        </div>
+      )}
+      {pathType === "edit" && (
+        <div className="edit-buttons-container">
+          <div className="update-review-button" onClick={handleSubmitUpdate}>
+            <h3>Update Review</h3>
+          </div>
+          <div className="delete-review-button" onClick={handleSubmitDelete}>
+            <h3>Delete Review</h3>
+          </div>
+        </div>
+      )}
 
-      <div className="post-review-button" onClick={handleSubmit}>
-        <h3>Post Review</h3>
-      </div>
       {showReviewGuidelinesModal && <ReviewGuidelinesModal />}
     </div>
   );
 };
 
-export default NewReviewForm;
+export default ReviewForm;
