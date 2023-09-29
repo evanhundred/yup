@@ -12,7 +12,6 @@ textarea#review-body,
 
 #review-form-container .top-line {
   width: 800px;
-  /* width: 80vw; */
   padding: 5px 0 30px;
   display: flex;
   justify-content: space-between;
@@ -20,7 +19,6 @@ textarea#review-body,
 
 #review-form-container .top-line h3 {
   font-size: 33px;
-  /* font-size: 28.5px; */
   font-weight: 600;
 }
 
@@ -76,8 +74,6 @@ p.review-guidelines-link {
   border-radius: 10px;
   font-size: 60px;
   padding: 0 10px;
-  /* vertical-align: sub;
-  text-align: center; */
   position: relative;
 }
 
@@ -137,7 +133,6 @@ p.review-guidelines-link {
 textarea#review-body {
   resize: none;
   border: none;
-  /* overflow: auto; */
   outline: none;
   width: 100%;
   height: 70%;

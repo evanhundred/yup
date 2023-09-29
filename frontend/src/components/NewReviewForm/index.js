@@ -16,7 +16,7 @@ const NewReviewForm = () => {
   const { businessId, id } = useParams();
   const business = useSelector(getBusiness(businessId));
 
-  console.log(id);
+  // console.log(id);
   const [body, setBody] = useState("");
   const [rating, setRating] = useState(0);
   const [initialRatingClicked, setInitialRatingClicked] = useState(false);
@@ -104,7 +104,7 @@ const NewReviewForm = () => {
 
   const handleStarBoxClick = (e, num) => {
     e.preventDefault();
-    console.log(num);
+    // console.log(num);
     if (!initialRatingClicked) setInitialRatingClicked(true);
     styleStarBoxes(num);
     setRating(num);

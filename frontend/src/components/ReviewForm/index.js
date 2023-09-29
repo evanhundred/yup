@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { useHistory, useParams, Link } from "react-router-dom";
+import { useHistory, useParams, Link, useRouteMatch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
 import { createReview, updateReview, deleteReview } from "../../store/reviews";
 import { backgroundNavBar, unBackgroundNavBar } from "../../utils/modal";
-
-import { useRouteMatch } from "react-router-dom";
 
 import "./index.css";
 import "./review-guidelines-modal.css";
@@ -17,7 +15,6 @@ const ReviewForm = () => {
   switch (match.path) {
     case "/businesses/:businessId/reviews/:id/edit":
       pathType = "edit";
-      // console.log("edit!");
       break;
     case "/businesses/:businessId/reviews/new":
       pathType = "new";
@@ -29,18 +26,9 @@ const ReviewForm = () => {
   const { businessId, id } = useParams();
   let reviewId = id;
 
-  const [body, setBody] = useState("");
-  const [rating, setRating] = useState(0);
-  const [initialRatingClicked, setInitialRatingClicked] = useState(false);
-
-  const [errors, setErrors] = useState("");
-  const [showReviewGuidelinesModal, setShowReviewGuidelinesModal] =
-    useState(false);
-
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const html = document.querySelector("html");
   const business = useSelector(getBusiness(businessId));
 
   let review;
@@ -51,6 +39,16 @@ const ReviewForm = () => {
         review = business.reviews[i];
     }
   }
+
+  const [body, setBody] = useState(review ? review.body : "");
+  const [rating, setRating] = useState(review ? review.rating : 0);
+  const [initialRatingClicked, setInitialRatingClicked] = useState(
+    review ? true : false
+  );
+
+  const [errors, setErrors] = useState("");
+  const [showReviewGuidelinesModal, setShowReviewGuidelinesModal] =
+    useState(false);
 
   useEffect(() => {
     dispatch(fetchBusiness(businessId));
@@ -74,15 +72,13 @@ const ReviewForm = () => {
 
   const handleSubmitUpdate = (e) => {
     e.preventDefault();
-    if (rating < 1 || rating > 5) {
-      errors.push("Please select a rating between 1 and 5.");
-      console.log(errors);
-    } else {
+    if (rating && body) {
       const data = { ...review, body: body, rating: rating };
       dispatch(updateReview(data, businessId)).then(() => {
         history.push(`/businesses/${businessId}`);
       });
     }
+    if (!body) setErrors("ⓘ no review text.");
   };
 
   const handleSubmitDelete = (e) => {
@@ -91,6 +87,8 @@ const ReviewForm = () => {
       history.push(`/businesses/${businessId}`);
     });
   };
+
+  const html = document.querySelector("html");
 
   const handleGuidelinesClick = () => {
     if (html) html.style.overflow = "hidden";
@@ -134,9 +132,8 @@ const ReviewForm = () => {
     });
   };
 
-  const handleStarBoxClick = (e, num) => {
-    e.preventDefault();
-    // console.log(num);
+  const handleStarBoxClick = (num, e = null) => {
+    if (e) e.preventDefault();
     if (!initialRatingClicked) setInitialRatingClicked(true);
     styleStarBoxes(num);
     setRating(num);
@@ -152,7 +149,7 @@ const ReviewForm = () => {
       onMouseLeave={(e) => {
         if (!initialRatingClicked) handleHover(false, e, num);
       }}
-      onClick={(e) => handleStarBoxClick(e, num)}
+      onClick={(e) => handleStarBoxClick(num, e)}
     >
       <span>&lowast;</span>
     </div>
@@ -234,7 +231,9 @@ const ReviewForm = () => {
     );
   };
 
-  // return <div>review form.</div>;
+  if (rating) {
+    styleStarBoxes(rating);
+  }
 
   return (
     <div id="review-form-container">
@@ -255,7 +254,6 @@ const ReviewForm = () => {
           <div className="rating-stars-line">
             <div className="rating-stars">{reviewStarBox}</div>
             <h4>{ratingTextStringObject[rating]}</h4>
-            {/* <h4>{ratingTextString()}</h4> */}
           </div>
           <div className="review-prompt-line">
             <h5>A few things to consider in your review</h5>
