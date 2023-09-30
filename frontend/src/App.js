@@ -6,13 +6,9 @@ import IndexPage from "./components/IndexPage";
 import BusinessShow from "./components/BusinessShow";
 import Footer from "./components/Footer";
 import ReviewForm from "./components/ReviewForm";
-import NewReviewForm from "./components/NewReviewForm";
-// import EditReviewForm from "./components/EditReviewForm";
 import SearchResults from "./components/SearchResults";
 import BusinessAddUserPhotos from "./components/BusinessAddUserPhotos";
 import BusinessPhotos from "./components/BusinessPhotos";
-// import BizPhotoBoxIndex from "./components/BizPhotoBoxIndex";
-// import BizPhotoBoxShow from "./components/BizPhotoBoxShow";
 
 function App() {
   return (
@@ -42,19 +38,14 @@ function App() {
           <IndexPage />
         </Route>
         <Route path="/businesses/:businessId/reviews/new">
-          {/* <NewReviewForm /> */}
           <ReviewForm />
         </Route>
         <Route path="/businesses/:businessId/reviews/:id/edit">
-          {/* <EditReviewForm /> */}
           <ReviewForm />
         </Route>
         <Route path="/search">
           <SearchResults />
         </Route>
-        {/* <Route path="/businesses/:businessId/biz-photo-box">
-          <BizPhotoBoxShow />
-        </Route> */}
       </Switch>
       <Footer />
     </>

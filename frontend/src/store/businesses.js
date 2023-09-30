@@ -7,6 +7,7 @@ export const RECEIVE_ERRORS = "businesses/RECEIVE_ERRORS";
 export const CLEAR_ERRORS = "businesses/CLEAR_ERRORS";
 
 export const SHARE_BUSINESS = "businesses/SHARE_BUSINESS";
+// export const SEARCH_BUSINESSES = "businesses/SEARCH_BUSINESSES";
 
 export const receiveBusinesses = (businesses) => ({
   type: RECEIVE_BUSINESSES,
@@ -31,6 +32,11 @@ export const shareBusiness = (data) => ({
   type: SHARE_BUSINESS,
   data
 });
+
+// export const searchBusinesses = (query) => ({
+//   type: SEARCH_BUSINESSES,
+//   query
+// });
 
 export const getBusiness =
   (businessId) =>
@@ -69,6 +75,21 @@ export const fetchBusiness = (businessId) => async (dispatch) => {
   // const errors = await res.statusText;
   //dispatch(receiveErrors(errors));
   // }
+};
+
+export const searchBusinesses = (query) => async (dispatch) => {
+  const res = await csrfFetch(`/api/businesses/search`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(query)
+  });
+  let data;
+  if (res.ok) {
+    data = await res.json();
+    dispatch(receiveBusinesses(data));
+  } else {
+    data = res.errors;
+  }
 };
 
 const businessesReducer = (preloadedState = {}, action) => {

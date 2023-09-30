@@ -1,7 +1,12 @@
 import SearchIcon from "../../../assets/images/search.png";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { searchBusinesses } from "../../../store/businesses";
+// import { Link } from "react-router-dom";
 
 const TitleCardContent = ({ business }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const FirstLine = () => {
     return (
       <>
@@ -15,13 +20,22 @@ const TitleCardContent = ({ business }) => {
   // https://www.yelp.com/search?find_desc=coffee&find_loc=New+York%2C+NY+11226
 
   const SecondLine = () => {
+    const handleSearchClick = (e, query) => {
+      e.preventDefault();
+      dispatch(
+        searchBusinesses(query).then(() => history.push(`/search/${query}`))
+      );
+    };
+    const carouselQuery = "coffee";
     return (
-      <Link to="/search?category=coffee&find_loc=new-york%2C+ny">
-        <div className="second-line">
-          <img src={SearchIcon} alt="" />
-          <h3>Coffee</h3>
-        </div>
-      </Link>
+      // <Link to="/search?category=coffee&find_loc=new-york%2C+ny">
+      <div
+        className="second-line search-button"
+        onClick={(e) => handleSearchClick(e, carouselQuery)}
+      >
+        <img src={SearchIcon} alt="" />
+        <h3>Coffee</h3>
+      </div>
     );
   };
   const TitleCardFooter = () => {

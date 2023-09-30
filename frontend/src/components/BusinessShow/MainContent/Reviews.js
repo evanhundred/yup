@@ -109,14 +109,12 @@ const Reviews = ({ business, handleWriteReview, currentUser }) => {
       <>
         {fiver.map((num) => {
           return (
-            <>
-              <div key={num} className={`bar-${num}-star`}>
-                <div
-                  className="color-bar"
-                  style={{ width: `${stylePercentages[num]}%` }}
-                />
-              </div>
-            </>
+            <div key={num} className={`bar-${num}-star`}>
+              <div
+                className="color-bar"
+                style={{ width: `${stylePercentages[num]}%` }}
+              />
+            </div>
           );
         })}
       </>
