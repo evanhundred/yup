@@ -62,7 +62,7 @@ const Navigation = () => {
           <div className="search-bar-container">
             <form>
               <input />
-              <input />
+              <input value="New York, NY" readOnly={true} />
               <button>
                 <img src={SearchIcon} alt="find businesses" />
               </button>

@@ -1,13 +1,20 @@
 import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBusinesses, clearErrors } from "../../store/businesses";
+import {
+  fetchBusinesses,
+  getBusinesses,
+  clearErrors
+} from "../../store/businesses";
 import { useEffect } from "react";
+import { createSelector } from "reselect";
 import MainContent from "./MainContent";
 import TitleCard from "./TitleCard";
 
 const IndexPage = () => {
   const dispatch = useDispatch();
-  const businesses = useSelector((state) => Object.values(state.businesses));
+  // const businesses = useSelector((state) => Object.values(state.businesses));
+  // const businesses = useSelector(getBusinesses);
+  const businesses = createSelector((state) => Object.values(state.businesses));
 
   // useEffect(() => {
   //   const clearErrors = () => {
