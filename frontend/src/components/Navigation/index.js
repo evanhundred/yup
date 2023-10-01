@@ -64,9 +64,17 @@ const Navigation = () => {
     const handleSearchBarClick = (e) => {
       e.preventDefault();
       dispatch(clearBusinesses());
+      let data;
       dispatch(searchBusinesses(query))
-        .catch(() => history.push(`/search?${query}`))
+        .then((res) => {
+          // data = res.json();
+          console.log(res);
+        })
         .then(() => history.push(`/search?${query}`));
+      // .catch(() => history.push(`/search?${query}`));
+
+      // console.log(res);
+      // console.log(data);
     };
     return (
       <form>

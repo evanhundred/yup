@@ -37,7 +37,6 @@ export const shareBusiness = (data) => ({
 });
 
 export const clearBusinesses = () => {
-  console.log("clear");
   return {
     type: CLEAR_BUSINESSES
   };
@@ -94,20 +93,44 @@ export const fetchBusiness = (businessId) => async (dispatch) => {
 };
 
 export const searchBusinesses = (query) => async (dispatch) => {
-  // const res = await csrfFetch(`/api/businesses/search/${query}`);
+  let data;
   const res = await csrfFetch(`/api/businesses/search`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query: query })
   });
-  let data;
-  if (res.ok) {
-    data = await res.json();
-    dispatch(receiveBusinesses(data));
-  } else {
-    data = res.errors;
-  }
-  console.log(data);
+  data = await res.json();
+
+  console.log(await data);
+  return data;
+
+  // .then((response) => {
+  //   if (response.ok) data = response.json();
+  //   return data;
+  // });
+
+  // .then((data) => {
+  //   if (data.ok) {
+  //     console.log("ok");
+  //     dispatch(receiveBusinesses(data));
+  //     console.log(data);
+  //   } else {
+  //     console.log("not ok");
+  //   }
+  // });
+
+  // .then(() => {
+  // })
+  // .catch((error) => (data = { error: error }));
+
+  // .then((response) => console.log(response));
+  // if (res.ok) {
+  //   data = await res.json();
+  //   dispatch(receiveBusinesses(data));
+  // } else {
+  //   data = res.errors;
+  // }
+  // console.log(res);
 };
 
 const businessesReducer = (preloadedState = {}, action) => {

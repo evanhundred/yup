@@ -10,8 +10,6 @@ const SearchResults = () => {
 
   const searchString = location.search.slice(1);
 
-  console.log(location);
-
   if (!businesses.length)
     return (
       <div>
