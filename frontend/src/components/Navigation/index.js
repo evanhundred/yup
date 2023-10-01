@@ -1,6 +1,9 @@
 import { useMemo, useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { NavLink, useLocation, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { searchBusinesses, clearBusinesses } from "../../store/businesses";
+
 import ProfileButton from "./ProfileButton";
 import "./navigation.css";
 import githubLogo from "../../assets/images/github.png";
@@ -8,6 +11,8 @@ import githubLogoBlack from "../../assets/images/github-black.png";
 import linkedinLogo from "../../assets/images/linkedin.png";
 import linkedinLogoBlack from "../../assets/images/linkedin-black.png";
 import SearchIcon from "../../assets/images/search.png";
+
+// import SearchBar from "./";
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -50,6 +55,30 @@ const Navigation = () => {
     );
   }
 
+  const SearchBar = () => {
+    const history = useHistory();
+    const dispatch = useDispatch();
+
+    const [query, setQuery] = useState("");
+
+    const handleSearchBarClick = (e) => {
+      e.preventDefault();
+      dispatch(clearBusinesses());
+      dispatch(searchBusinesses(query))
+        .catch(() => history.push(`/search?${query}`))
+        .then(() => history.push(`/search?${query}`));
+    };
+    return (
+      <form>
+        <input value={query} onChange={(e) => setQuery(e.target.value)} />
+        <input value="New York, NY" readOnly={true} />
+        <button onClick={(e) => handleSearchBarClick(e)}>
+          <img src={SearchIcon} alt="find businesses" />
+        </button>
+      </form>
+    );
+  };
+
   const HomeNav = ({ navType }) => {
     return (
       <div id="nav-bar">
@@ -60,13 +89,7 @@ const Navigation = () => {
             </h1>
           </NavLink>
           <div className="search-bar-container">
-            <form>
-              <input />
-              <input value="New York, NY" readOnly={true} />
-              <button>
-                <img src={SearchIcon} alt="find businesses" />
-              </button>
-            </form>
+            <SearchBar />
           </div>
         </div>
         <div className="right-side">

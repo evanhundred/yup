@@ -36,9 +36,12 @@ export const shareBusiness = (data) => ({
   data
 });
 
-export const clearBusinesses = () => ({
-  type: CLEAR_BUSINESSES
-});
+export const clearBusinesses = () => {
+  console.log("clear");
+  return {
+    type: CLEAR_BUSINESSES
+  };
+};
 
 // export const searchBusinesses = (query) => ({
 //   type: SEARCH_BUSINESSES,
