@@ -45,16 +45,21 @@
   width: 400px;
 }
 
-.second-line {
-  padding: 16px 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 13px 30px;
-  background-color: red;
-  width: max-content;
-  border-radius: 5px;
+#index-page {
+  & .business-title-card {
+    & .second-line {
+      padding: 16px 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 30px;
+      background-color: red;
+      width: max-content;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
 }
 
 .second-line h3 {

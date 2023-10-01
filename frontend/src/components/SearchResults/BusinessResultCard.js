@@ -142,7 +142,7 @@ const BusinessResultCard = ({ business, idx }) => {
   //   which will show up highlighted as part of a review snippet.
   const SelectedComment = () => {
     const getTopComment = () => {
-      if (!business.reviews.length) return <p>no reviews</p>;
+      if (!business.reviews.length) return <span>no reviews</span>;
       const review = business.reviews[0];
 
       return review.body;

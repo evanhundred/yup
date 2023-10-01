@@ -1,7 +1,7 @@
 import SearchIcon from "../../../assets/images/search.png";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { searchBusinesses } from "../../../store/businesses";
+import { searchBusinesses, clearBusinesses } from "../../../store/businesses";
 // import { Link } from "react-router-dom";
 
 const TitleCardContent = ({ business }) => {
@@ -22,9 +22,13 @@ const TitleCardContent = ({ business }) => {
   const SecondLine = () => {
     const handleSearchClick = (e, query) => {
       e.preventDefault();
-      dispatch(
-        searchBusinesses(query).then(() => history.push(`/search/${query}`))
+      dispatch(clearBusinesses());
+      dispatch(searchBusinesses(query)).then(() =>
+        history.push(`/search?${query}`)
       );
+      // dispatch(clearBusinesses())
+      //   .then(() => dispatch(searchBusinesses(query)))
+      //   .then(() => history.push(`/search?${query}`));
     };
     const carouselQuery = "coffee";
     return (
