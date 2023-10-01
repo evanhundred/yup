@@ -1,3 +1,5 @@
+import { createSelector } from "@reduxjs/toolkit";
+
 import csrfFetch from "./csrf";
 
 export const RECEIVE_BUSINESSES = "businesses/RECEIVE_BUSINESSES";
@@ -7,6 +9,7 @@ export const RECEIVE_ERRORS = "businesses/RECEIVE_ERRORS";
 export const CLEAR_ERRORS = "businesses/CLEAR_ERRORS";
 
 export const SHARE_BUSINESS = "businesses/SHARE_BUSINESS";
+export const CLEAR_BUSINESSES = "businesses/CLEAR_BUSINESSES";
 // export const SEARCH_BUSINESSES = "businesses/SEARCH_BUSINESSES";
 
 export const receiveBusinesses = (businesses) => ({
@@ -33,6 +36,10 @@ export const shareBusiness = (data) => ({
   data
 });
 
+export const clearBusinesses = () => ({
+  type: CLEAR_BUSINESSES
+});
+
 // export const searchBusinesses = (query) => ({
 //   type: SEARCH_BUSINESSES,
 //   query
@@ -45,10 +52,16 @@ export const getBusiness =
     return businesses[businessId];
   };
 
-export const getBusinesses = ({ businesses }) => {
-  // debugger;
-  return businesses ? Object.values(businesses) : [];
-};
+// export const getBusinesses = ({ businesses }) => {
+//   return businesses ? Object.values(businesses) : [];
+// };
+
+export const getBusinesses = createSelector(
+  (state) => state.businesses,
+  (businesses) => {
+    return Object.values(businesses);
+  }
+);
 
 export const fetchBusinesses = () => async (dispatch) => {
   // debugger;
@@ -78,10 +91,11 @@ export const fetchBusiness = (businessId) => async (dispatch) => {
 };
 
 export const searchBusinesses = (query) => async (dispatch) => {
+  // const res = await csrfFetch(`/api/businesses/search/${query}`);
   const res = await csrfFetch(`/api/businesses/search`, {
-    method: "GET",
+    method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(query)
+    body: JSON.stringify({ query: query })
   });
   let data;
   if (res.ok) {
@@ -90,6 +104,7 @@ export const searchBusinesses = (query) => async (dispatch) => {
   } else {
     data = res.errors;
   }
+  console.log(data);
 };
 
 const businessesReducer = (preloadedState = {}, action) => {
@@ -107,6 +122,8 @@ const businessesReducer = (preloadedState = {}, action) => {
       newState.errors = action.errors;
       return { ...newState, ...action.errors };
     case CLEAR_ERRORS:
+      return {};
+    case CLEAR_BUSINESSES:
       return {};
     default:
       return preloadedState;

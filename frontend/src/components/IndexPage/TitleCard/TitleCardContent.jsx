@@ -1,8 +1,7 @@
 import SearchIcon from "../../../assets/images/search.png";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { searchBusinesses } from "../../../store/businesses";
-// import { Link } from "react-router-dom";
+import { searchBusinesses, clearBusinesses } from "../../../store/businesses";
 
 const TitleCardContent = ({ business }) => {
   const dispatch = useDispatch();
@@ -22,13 +21,13 @@ const TitleCardContent = ({ business }) => {
   const SecondLine = () => {
     const handleSearchClick = (e, query) => {
       e.preventDefault();
-      dispatch(
-        searchBusinesses(query).then(() => history.push(`/search/${query}`))
+      dispatch(clearBusinesses());
+      dispatch(searchBusinesses(query)).then(() =>
+        history.push(`/search?${query}`)
       );
     };
     const carouselQuery = "coffee";
     return (
-      // <Link to="/search?category=coffee&find_loc=new-york%2C+ny">
       <div
         className="second-line search-button"
         onClick={(e) => handleSearchClick(e, carouselQuery)}

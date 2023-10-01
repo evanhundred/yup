@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       resources :businesses, only: [:index, :show] do
         resources :reviews, only: [:index, :new, :create, :destroy, :edit, :update]
         collection do
-          get :search
+          post :search
         end
       end
     end

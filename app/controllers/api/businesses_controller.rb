@@ -27,7 +27,7 @@ class Api::BusinessesController < ApplicationController
 
     def search
         query = params[:query]
-        @businesses = Business.where("name ILIKE ? OR category ILIKE ? OR price ILIKE ?", "%#{query}", "%#{query}", "%#{query}")
+        @businesses = Business.where("name ILIKE ? OR category ILIKE ? OR price ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%")
         if (@businesses.length > 0)
             render :index
         else
