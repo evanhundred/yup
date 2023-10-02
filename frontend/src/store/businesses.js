@@ -98,39 +98,16 @@ export const searchBusinesses = (query) => async (dispatch) => {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query: query })
+  }).catch((error) => {
+    data = error;
+    console.log(error);
   });
-  data = await res.json();
+  if (res && res.ok) {
+    data = await res.json();
+    dispatch(receiveBusinesses(await data));
+  }
 
-  console.log(await data);
   return data;
-
-  // .then((response) => {
-  //   if (response.ok) data = response.json();
-  //   return data;
-  // });
-
-  // .then((data) => {
-  //   if (data.ok) {
-  //     console.log("ok");
-  //     dispatch(receiveBusinesses(data));
-  //     console.log(data);
-  //   } else {
-  //     console.log("not ok");
-  //   }
-  // });
-
-  // .then(() => {
-  // })
-  // .catch((error) => (data = { error: error }));
-
-  // .then((response) => console.log(response));
-  // if (res.ok) {
-  //   data = await res.json();
-  //   dispatch(receiveBusinesses(data));
-  // } else {
-  //   data = res.errors;
-  // }
-  // console.log(res);
 };
 
 const businessesReducer = (preloadedState = {}, action) => {

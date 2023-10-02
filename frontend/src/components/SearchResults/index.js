@@ -7,8 +7,15 @@ import "./index.css";
 const SearchResults = () => {
   const location = useLocation();
   const businesses = useSelector(getBusinesses);
-
+  console.log(location);
   const searchString = location.search.slice(1);
+
+  if (location.state && location.state.searchErrors)
+    return (
+      <div id="search-results-errors">
+        <h1>{location.state.searchErrors}</h1>
+      </div>
+    );
 
   if (!businesses.length)
     return (
