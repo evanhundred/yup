@@ -1,12 +1,34 @@
+#search-results-container,
+#search-results-errors {
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 #search-results-container {
   margin-left: 4em;
-  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
-
   & h2 {
     margin: 10px 0 20px;
   }
 }
 
 #search-results-errors {
-  font-size: 20px;
+  margin: 40px 0 10px 50px;
+  height: 60vh;
+
+  & .search-errors-content {
+    display: flex;
+
+    & h1 {
+      font-size: 50px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      padding: 0 50px 0 30px;
+    }
+
+    & .web-spider-image {
+      /* width: 70px; */
+      & img {
+        width: 400px;
+      }
+    }
+  }
 }
