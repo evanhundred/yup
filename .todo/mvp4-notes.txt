@@ -1,0 +1,19 @@
+business CRUD notes
+
+any user can submit a new business for creation, to be verified and potentially added to the yup database.
+
+you can add a business as the owner, or not. verified owners have more control over options.
+
+Businesses from non-owning users are "unclaimed". unclaimed businesses can be claimed by owners, which gives them more access to make changes.
+
+Claimed businesses can be edited. (real yelp businesses would likely have their edits approved and moderated. for Yup, it can be instant access.
+
+The ability to edit on the fly would be impossible to moderate.)
+
+** future features **
+
+user profile page
+	. links to reviews
+	. change profile pic
+	. show saved businesses
+	. show owned businesses
