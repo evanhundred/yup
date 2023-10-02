@@ -5,6 +5,11 @@ body {
 /* SEARCH BAR */
 .search-bar-container {
   width: 350px;
+
+  & input {
+    padding-left: 5px;
+    font-size: 15px;
+  }
 }
 
 .search-bar-container form {

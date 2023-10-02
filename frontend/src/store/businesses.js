@@ -36,9 +36,11 @@ export const shareBusiness = (data) => ({
   data
 });
 
-export const clearBusinesses = () => ({
-  type: CLEAR_BUSINESSES
-});
+export const clearBusinesses = () => {
+  return {
+    type: CLEAR_BUSINESSES
+  };
+};
 
 // export const searchBusinesses = (query) => ({
 //   type: SEARCH_BUSINESSES,
@@ -91,20 +93,21 @@ export const fetchBusiness = (businessId) => async (dispatch) => {
 };
 
 export const searchBusinesses = (query) => async (dispatch) => {
-  // const res = await csrfFetch(`/api/businesses/search/${query}`);
+  let data;
   const res = await csrfFetch(`/api/businesses/search`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query: query })
+  }).catch((error) => {
+    data = error;
+    console.log(error);
   });
-  let data;
-  if (res.ok) {
+  if (res && res.ok) {
     data = await res.json();
-    dispatch(receiveBusinesses(data));
-  } else {
-    data = res.errors;
+    dispatch(receiveBusinesses(await data));
   }
-  console.log(data);
+
+  return data;
 };
 
 const businessesReducer = (preloadedState = {}, action) => {
