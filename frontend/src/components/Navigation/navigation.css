@@ -151,6 +151,10 @@ a {
 
   &.index .yelp-for-business-link {
     color: white;
+  }
+
+  & .yelp-for-business-link {
+    color: black;
     margin-left: 52px;
     cursor: pointer;
     display: flex;

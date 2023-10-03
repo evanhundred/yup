@@ -8,6 +8,21 @@ const Footer = () => {
   const location = useLocation();
 
   // console.log(location);
+  const spiderImageAttribution = (
+    <span className="spider-image-attribution">
+      Spider image created by
+      <a
+        href="https://www.flaticon.com/free-icons/draw"
+        title="draw icons"
+        rel="noreferrer"
+        target="_blank"
+      >
+        {" "}
+        Freepik - Flaticon
+      </a>
+      .
+    </span>
+  );
   const BizShowErrorCopy = () => {
     return <p className="image-attribution">Spider image by freepik.</p>;
   };
@@ -85,7 +100,12 @@ const Footer = () => {
           Evan Ryan
         </a>
         . Ruby, Rails, PostgreSQL, JavaScript, React, Redux, and related
-        languages and frameworks are implemented by Yup. {navBarAttribution}
+        languages and frameworks are implemented by Yup. {
+          navBarAttribution
+        }{" "}
+        {location.state &&
+          location.state.searchErrors &&
+          spiderImageAttribution}
       </p>
       {location.state === "404" && <BizShowErrorCopy />}
       {location.state !== "404" &&
