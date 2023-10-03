@@ -11,6 +11,8 @@ import githubLogoBlack from "../../assets/images/github-black.png";
 import linkedinLogo from "../../assets/images/linkedin.png";
 import linkedinLogoBlack from "../../assets/images/linkedin-black.png";
 import SearchIcon from "../../assets/images/search.png";
+import downArrowBlack from "../../assets/icons/down-arrow-black.png";
+import downArrowWhite from "../../assets/icons/down-arrow-white.png";
 
 const Navigation = ({ props }) => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -109,6 +111,10 @@ const Navigation = ({ props }) => {
           </div>
           <div className="yelp-for-business-link">
             <h4>Yelp for Business</h4>
+            <img
+              src={pageType === "index" ? downArrowWhite : downArrowBlack}
+              alt="drop down this menu"
+            />
           </div>
         </div>
         <div className="right-side">

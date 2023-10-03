@@ -152,13 +152,17 @@ a {
   &.index .yelp-for-business-link {
     color: white;
     margin-left: 57px;
-    /* width: min-content; */
-    /* & h4 {
-    } */
+    cursor: pointer;
     display: flex;
     align-items: center;
     margin-bottom: 3px;
     width: max-content;
+    gap: 8px;
+
+    & img {
+      padding-top: 1px;
+      width: 9px;
+    }
   }
 }
 

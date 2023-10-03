@@ -59,13 +59,14 @@ const Footer = () => {
 
   const navBarAttribution = (
     <span className="nav-bar-attribution">
-      Arrow icons created by{" "}
+      Down arrow icons created by{" "}
       <a
-        href="https://www.flaticon.com/free-icons/arrow"
+        href="https://www.flaticon.com/free-icons/down-arrow"
+        title="down arrow icons"
         rel="noreferrer"
         target="_blank"
       >
-        th studio - Flaticon
+        Roundicons - Flaticon
       </a>
       .
     </span>
