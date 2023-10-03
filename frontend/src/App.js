@@ -47,7 +47,7 @@ function App() {
         <Route path="/search">
           <SearchResults />
         </Route>
-        <Route path="/writeareview">
+        <Route path="/write-a-review">
           <WriteAReviewSearch />
         </Route>
       </Switch>

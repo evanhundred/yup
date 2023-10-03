@@ -19,8 +19,15 @@ const Navigation = ({ props }) => {
 
   const history = useHistory();
   const location = useLocation();
+
   const blackTextOnWhite = useMemo(() => {
-    return ["businesses", "search", "biz-photos", "biz-user-photos"];
+    return [
+      "businesses",
+      "search",
+      "biz-photos",
+      "biz-user-photos",
+      "write-a-review"
+    ];
   }, []);
   const [pageType, setPageType] = useState(
     blackTextOnWhite.some((pageType) => location.pathname.includes(pageType))
@@ -158,10 +165,15 @@ const Navigation = ({ props }) => {
   };
 
   const writeReviewNavLink = () => {
+    const handleClick = () => {
+      history.push("/write-a-review");
+    };
     return (
       <div
         className="write-review-link"
-        onClick={() => history.push("/WriteAReview")}
+        onClick={() => {
+          handleClick();
+        }}
       >
         <h4>Write a Review</h4>
       </div>
