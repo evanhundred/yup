@@ -89,6 +89,8 @@ a {
   display: flex;
   gap: 15px;
   font-family: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  width: max-content;
 }
 
 #session-links .session-link a {
@@ -100,6 +102,7 @@ a {
   border-radius: 4px;
   padding: 10px 12px;
   margin: 10px 0 0;
+  /* width: min-content; */
 }
 
 #session-links.business .session-link.log-in-button a {
@@ -128,7 +131,7 @@ a {
 
 #nav-bar {
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   justify-content: space-between;
   align-items: center;
   padding: 18px 45px 20px;
@@ -145,6 +148,18 @@ a {
   functionality.
   */
   min-width: 865px;
+
+  &.index .yelp-for-business-link {
+    color: white;
+    margin-left: 57px;
+    /* width: min-content; */
+    /* & h4 {
+    } */
+    display: flex;
+    align-items: center;
+    margin-bottom: 3px;
+    width: max-content;
+  }
 }
 
 #nav-bar.backgrounded {
@@ -153,7 +168,7 @@ a {
 
 #nav-bar div.left-side {
   display: flex;
-  width: 500px;
+  width: 700px;
 }
 
 .left-side h1#logo {
@@ -168,7 +183,7 @@ a {
 #nav-bar .socials {
   display: flex;
   gap: 15px;
-  padding: 0 30px 0;
+  padding: 0 30px 0 25px;
   align-items: center;
 }
 

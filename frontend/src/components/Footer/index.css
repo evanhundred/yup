@@ -13,9 +13,10 @@
       margin-right: 4px;
     }
   }
-  /* & .review-write-icon-attribution {
 
-  } */
+  & p {
+    line-height: 1.1;
+  }
 }
 
 .footer,

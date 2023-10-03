@@ -97,7 +97,7 @@ const Navigation = ({ props }) => {
 
   const HomeNav = ({ navType }) => {
     return (
-      <div id="nav-bar">
+      <div id="nav-bar" className={pageType}>
         <div className="left-side">
           <NavLink exact className="homeLink" to="/">
             <h1 id="logo" className={pageType}>
@@ -106,6 +106,9 @@ const Navigation = ({ props }) => {
           </NavLink>
           <div className="search-bar-container">
             <SearchBar />
+          </div>
+          <div className="yelp-for-business-link">
+            <h4>Yelp for Business</h4>
           </div>
         </div>
         <div className="right-side">

@@ -57,6 +57,20 @@ const Footer = () => {
     );
   };
 
+  const navBarAttribution = (
+    <span className="nav-bar-attribution">
+      Arrow icons created by{" "}
+      <a
+        href="https://www.flaticon.com/free-icons/arrow"
+        rel="noreferrer"
+        target="_blank"
+      >
+        th studio - Flaticon
+      </a>
+      .
+    </span>
+  );
+
   return (
     <div className="footer">
       <p>
@@ -70,7 +84,7 @@ const Footer = () => {
           Evan Ryan
         </a>
         . Ruby, Rails, PostgreSQL, JavaScript, React, Redux, and related
-        languages and frameworks are implemented by Yup.
+        languages and frameworks are implemented by Yup. {navBarAttribution}
       </p>
       {location.state === "404" && <BizShowErrorCopy />}
       {location.state !== "404" &&
