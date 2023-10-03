@@ -61,8 +61,14 @@
   padding-top: 20px;
   font-size: 22px;
   font-weight: 400;
+
+  & span {
+    cursor: pointer;
+    color: rgb(234, 0, 0);
+    /* color: rgb(215, 17, 17); */
+  }
 }
 
-#invalid-business-container h3 a {
+/* #invalid-business-container h3 a {
   font-weight: 500;
-}
+} */

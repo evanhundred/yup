@@ -12,8 +12,10 @@ import linkedinLogo from "../../assets/images/linkedin.png";
 import linkedinLogoBlack from "../../assets/images/linkedin-black.png";
 import SearchIcon from "../../assets/images/search.png";
 
-const Navigation = () => {
+const Navigation = ({ props }) => {
   const sessionUser = useSelector((state) => state.session.user);
+  // const searchBoxRef = useRef(null);
+  // const searchBoxRef = props.searchBoxRef;
 
   const location = useLocation();
   const blackTextOnWhite = useMemo(() => {
@@ -56,6 +58,7 @@ const Navigation = () => {
   const SearchBar = () => {
     const history = useHistory();
     const dispatch = useDispatch();
+    // const myRef = useRef(null);
 
     const [query, setQuery] = useState("");
 
@@ -78,10 +81,16 @@ const Navigation = () => {
           });
       }
     };
-    console.log(query.length);
+    // console.log(query.length);
+    // console.log(searchBoxRef);
     return (
       <form>
-        <input value={query} onChange={(e) => setQuery(e.target.value)} />
+        <input
+          className="user-search-string"
+          // ref={searchBoxRef}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
         <input value="New York, NY" readOnly={true} />
         <button
           onClick={(e) => {

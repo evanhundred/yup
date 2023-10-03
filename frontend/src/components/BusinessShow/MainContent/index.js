@@ -13,10 +13,6 @@ const MainContent = ({
 }) => {
   const location = useLocation();
 
-  // if (location.search.includes("reviews") {
-
-  // }
-
   let reviewsComponent = document.getElementById("reviews-container");
 
   // console.log(location);

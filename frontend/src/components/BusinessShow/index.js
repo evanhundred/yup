@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useParams, Link, useLocation, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
@@ -8,10 +8,13 @@ import TitleCard from "./TitleCard";
 import MainContent from "./MainContent";
 import webSpider from "../../assets/images/web-spider.jpg";
 
-const BusinessShow = ({ props }) => {
+const BusinessShow = ({ props, searchBoxRef }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
+  // const searchBoxRef = useRef(null);
+  // const searchBoxRef = props.searchBoxRef;
+  // console.log(searchBoxRef);
 
   const { businessId } = useParams();
   const business = useSelector(getBusiness(businessId));
@@ -42,6 +45,14 @@ const BusinessShow = ({ props }) => {
 
   if (!business) return <div className="loading">loading...</div>;
 
+  const handleSearchClick = () => {
+    // searchBoxRef.current.focus();
+    const searchInputBox = document.querySelector(
+      ".search-bar-container input.user-search-string"
+    );
+    searchInputBox.focus();
+  };
+
   if (business.status === 500) {
     location.state = "404";
 
@@ -50,7 +61,7 @@ const BusinessShow = ({ props }) => {
         <div className={`left-side ${layoutWidth}`}>
           <h2>We're sorry. We can't find the page you're looking for.</h2>
           <h3>
-            Please try a new <Link to="/search">search</Link>.
+            Please try a new <span onClick={handleSearchClick}>search</span>.
           </h3>
         </div>
         <div className={`right-side ${layoutWidth}`}>
@@ -67,7 +78,10 @@ const BusinessShow = ({ props }) => {
         business={business}
         currentUser={currentUser}
         // fetchedUser={fetchedUser}
-        props={props === "goToReviews" ? "goToReviews" : "none"}
+        props={
+          props && props.goToReviews === "goToReviews" ? "goToReviews" : "none"
+        }
+        // searchBoxRef={props.searchBoxRef}
         handleWriteReview={handleWriteReview}
       />
     </>
