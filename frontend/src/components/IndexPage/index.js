@@ -11,23 +11,8 @@ import TitleCard from "./TitleCard";
 
 const IndexPage = () => {
   const dispatch = useDispatch();
-
-  // const businessesObject = (state) => state.businesses;
-
-  // const businesses = useSelector((state) => Object.values(state.businesses));
-
-  // const businessesObject = useSelector(getBusinesses);
-  // const businesses = Object.values(businessesObject);
-
   const businesses = useSelector(getBusinesses);
 
-  // console.log(businesses);
-  // useEffect(() => {
-  //   const clearErrors = () => {
-  //     delete businesses.errors;
-  //   };
-  //   clearErrors();
-  // }, [businesses.errors]);
   useEffect(() => {
     dispatch(clearErrors());
     dispatch(fetchBusinesses());
@@ -36,7 +21,6 @@ const IndexPage = () => {
   if (businesses.errors) {
     return null;
   }
-
   if (!businesses.length || !businesses[0].imageUrls)
     return (
       <div>

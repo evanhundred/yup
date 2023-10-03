@@ -97,6 +97,43 @@ const Navigation = ({ props }) => {
     );
   };
 
+  const YelpForBusinessMenu = () => {
+    const [showYelpForBusinessMenu, setShowYelpForBusinessMenu] =
+      useState(false);
+    const openYelpForBusinessMenu = () => {
+      if (showYelpForBusinessMenu) return;
+      setShowYelpForBusinessMenu(true);
+    };
+
+    useEffect(() => {
+      if (!showYelpForBusinessMenu) return;
+
+      const closeYelpForBusinessMenu = () => {
+        setShowYelpForBusinessMenu(false);
+      };
+
+      document.addEventListener("click", closeYelpForBusinessMenu);
+      return () =>
+        document.removeEventListener("click", closeYelpForBusinessMenu);
+    }, [showYelpForBusinessMenu]);
+
+    return (
+      <div className="yelp-for-business-link" onClick={openYelpForBusinessMenu}>
+        <h4>Yelp for Business</h4>
+        <img
+          src={pageType === "index" ? downArrowWhite : downArrowBlack}
+          alt="drop down this menu"
+        />
+        {showYelpForBusinessMenu && (
+          <ul className="yelp-for-business-dropdown">
+            <li>first</li>
+            <li>second</li>
+          </ul>
+        )}
+      </div>
+    );
+  };
+
   const HomeNav = ({ navType }) => {
     return (
       <div id="nav-bar" className={pageType}>
@@ -109,13 +146,9 @@ const Navigation = ({ props }) => {
           <div className="search-bar-container">
             <SearchBar />
           </div>
-          <div className="yelp-for-business-link">
-            <h4>Yelp for Business</h4>
-            <img
-              src={pageType === "index" ? downArrowWhite : downArrowBlack}
-              alt="drop down this menu"
-            />
-          </div>
+          {/* <div className="yelp-for-business-link"> */}
+          <YelpForBusinessMenu />
+          {/* </div> */}
         </div>
         <div className="right-side">
           <div className="socials">

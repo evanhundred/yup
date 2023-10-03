@@ -10,7 +10,6 @@ export const CLEAR_ERRORS = "businesses/CLEAR_ERRORS";
 
 export const SHARE_BUSINESS = "businesses/SHARE_BUSINESS";
 export const CLEAR_BUSINESSES = "businesses/CLEAR_BUSINESSES";
-// export const SEARCH_BUSINESSES = "businesses/SEARCH_BUSINESSES";
 
 export const receiveBusinesses = (businesses) => ({
   type: RECEIVE_BUSINESSES,
@@ -42,21 +41,12 @@ export const clearBusinesses = () => {
   };
 };
 
-// export const searchBusinesses = (query) => ({
-//   type: SEARCH_BUSINESSES,
-//   query
-// });
-
 export const getBusiness =
   (businessId) =>
   ({ businesses }) => {
     if (businesses.errors) return businesses.errors;
     return businesses[businessId];
   };
-
-// export const getBusinesses = ({ businesses }) => {
-//   return businesses ? Object.values(businesses) : [];
-// };
 
 export const getBusinesses = createSelector(
   (state) => state.businesses,
@@ -66,12 +56,10 @@ export const getBusinesses = createSelector(
 );
 
 export const fetchBusinesses = () => async (dispatch) => {
-  // debugger;
   const res = await csrfFetch("/api/businesses");
   let data;
   if (res.ok) {
     data = await res.json();
-    // debugger;
     dispatch(receiveBusinesses(data));
   } else {
     data = res.errors;
@@ -86,10 +74,7 @@ export const fetchBusiness = (businessId) => async (dispatch) => {
   if (res.ok) {
     data = await res.json();
     dispatch(receiveBusiness(data));
-  } // else {
-  // const errors = await res.statusText;
-  //dispatch(receiveErrors(errors));
-  // }
+  }
 };
 
 export const searchBusinesses = (query) => async (dispatch) => {
@@ -115,10 +100,8 @@ const businessesReducer = (preloadedState = {}, action) => {
     case RECEIVE_BUSINESSES:
       return { ...newState, ...action.businesses };
     case RECEIVE_BUSINESS:
-      // if (action.)
       if (action.business.id) newState[action.business.id] = action.business;
       else newState.errors = action.business;
-      // newState[]
       return newState;
     case RECEIVE_ERRORS:
       newState.errors = action.errors;
