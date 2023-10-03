@@ -85,7 +85,11 @@ const Navigation = ({ props }) => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <input value="New York, NY" readOnly={true} />
+        <input
+          className="location-input"
+          value="New York, NY"
+          readOnly={true}
+        />
         <button
           onClick={(e) => {
             handleSearchBarClick(e);

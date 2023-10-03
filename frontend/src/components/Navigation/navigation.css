@@ -149,8 +149,22 @@ a {
   */
   min-width: 865px;
 
-  &.index .yelp-for-business-link {
-    color: white;
+  &.index {
+    & input {
+      &.location-input {
+        margin-left: 1px;
+      }
+    }
+
+    & input.user-search-string:focus {
+      border: none;
+      box-shadow: 0 0 7px 3px rgb(170, 101, 255);
+      margin-right: 3px;
+    }
+
+    & .yelp-for-business-link {
+      color: white;
+    }
   }
 
   & .yelp-for-business-link {
