@@ -9,7 +9,6 @@ import "./index.css";
 const SearchResults = () => {
   const location = useLocation();
   const businesses = useSelector(getBusinesses);
-  console.log(location);
   const searchString = location.search.slice(1);
 
   if (location.state && location.state.searchErrors)

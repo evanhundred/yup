@@ -216,7 +216,7 @@ const ContentNavBar = ({
 
   const handleSaveClick = async () => {
     const res = await dispatch(createSavedBusiness(business.id));
-    console.log(res);
+    // console.log(res);
   };
 
   return (

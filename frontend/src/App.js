@@ -1,5 +1,6 @@
-import LoginFormPage from "./components/LoginFormPage";
+import { useRef } from "react";
 import { Switch, Route } from "react-router-dom";
+import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
 import IndexPage from "./components/IndexPage";
@@ -25,7 +26,7 @@ function App() {
           <BusinessShow />
           <Route path="/businesses/:businessId/search">
             {/* REMOVE PROPS - REDUNDANT */}
-            <BusinessShow props="loadFromReviews" />
+            <BusinessShow props={"loadFromReviews"} />
           </Route>
         </Route>
         <Route path="/biz-user-photos/:businessId">

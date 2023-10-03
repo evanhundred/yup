@@ -12,7 +12,7 @@ import linkedinLogo from "../../assets/images/linkedin.png";
 import linkedinLogoBlack from "../../assets/images/linkedin-black.png";
 import SearchIcon from "../../assets/images/search.png";
 
-const Navigation = () => {
+const Navigation = ({ props }) => {
   const sessionUser = useSelector((state) => state.session.user);
 
   const location = useLocation();
@@ -69,8 +69,6 @@ const Navigation = () => {
             if (res && res.status === 404) {
               errors = { searchErrors: "404 not found" };
             }
-
-            console.log(res);
           })
           .then(() => {
             if (errors) history.push(`/search?${query}`, errors);
@@ -78,10 +76,13 @@ const Navigation = () => {
           });
       }
     };
-    console.log(query.length);
     return (
       <form>
-        <input value={query} onChange={(e) => setQuery(e.target.value)} />
+        <input
+          className="user-search-string"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
         <input value="New York, NY" readOnly={true} />
         <button
           onClick={(e) => {

@@ -100,7 +100,6 @@ const ReviewForm2 = () => {
 
   const handleStarBoxClick = (e, num) => {
     e.preventDefault();
-    console.log(num);
     if (!initialRatingClicked) setInitialRatingClicked(true);
     styleStarBoxes(num);
     setRating(num);

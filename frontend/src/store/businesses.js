@@ -100,7 +100,6 @@ export const searchBusinesses = (query) => async (dispatch) => {
     body: JSON.stringify({ query: query })
   }).catch((error) => {
     data = error;
-    console.log(error);
   });
   if (res && res.ok) {
     data = await res.json();

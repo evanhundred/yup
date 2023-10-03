@@ -13,13 +13,7 @@ const MainContent = ({
 }) => {
   const location = useLocation();
 
-  // if (location.search.includes("reviews") {
-
-  // }
-
   let reviewsComponent = document.getElementById("reviews-container");
-
-  // console.log(location);
 
   if (reviewsComponent && location.search.includes("reviews")) {
     reviewsComponent.scrollIntoView({ behavior: "smooth" });
