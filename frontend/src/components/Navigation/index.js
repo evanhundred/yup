@@ -17,6 +17,7 @@ import downArrowWhite from "../../assets/icons/down-arrow-white.png";
 const Navigation = ({ props }) => {
   const sessionUser = useSelector((state) => state.session.user);
 
+  const history = useHistory();
   const location = useLocation();
   const blackTextOnWhite = useMemo(() => {
     return ["businesses", "search", "biz-photos", "biz-user-photos"];
@@ -74,7 +75,7 @@ const Navigation = ({ props }) => {
   }
 
   const SearchBar = () => {
-    const history = useHistory();
+    // const history = useHistory();
     const dispatch = useDispatch();
 
     const [query, setQuery] = useState("");
@@ -158,7 +159,10 @@ const Navigation = ({ props }) => {
 
   const writeReviewNavLink = () => {
     return (
-      <div className="write-review-link">
+      <div
+        className="write-review-link"
+        onClick={() => history.push("/WriteAReview")}
+      >
         <h4>Write a Review</h4>
       </div>
     );
