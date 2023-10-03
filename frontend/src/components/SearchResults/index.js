@@ -11,8 +11,6 @@ const SearchResults = () => {
   const businesses = useSelector(getBusinesses);
   const searchString = location.search.slice(1);
 
-  console.log(location);
-
   if (location.state && location.state.searchErrors)
     return (
       <div id="search-results-errors">

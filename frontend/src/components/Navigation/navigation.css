@@ -162,14 +162,22 @@ a {
       margin-right: 3px;
     }
 
-    & .yelp-for-business-link {
+    & .yelp-for-business-link,
+    .write-review-link {
       color: white;
     }
   }
 
   & .yelp-for-business-link {
-    color: black;
     margin-left: 52px;
+  }
+  & .write-review-link {
+    margin-left: 10px;
+  }
+
+  & .yelp-for-business-link,
+  .write-review-link {
+    color: black;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -195,7 +203,8 @@ a {
 
 #nav-bar div.left-side {
   display: flex;
-  width: 700px;
+  width: max-content;
+  /* width: 700px; */
 }
 
 .left-side h1#logo {

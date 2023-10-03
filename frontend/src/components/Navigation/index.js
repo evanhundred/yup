@@ -37,6 +37,24 @@ const Navigation = ({ props }) => {
     }
   }, [location, blackTextOnWhite]);
 
+  // let SessionLinks;
+  // if (sessionUser) {
+  //   SessionLinks = <ProfileButton user={sessionUser} />;
+  // } else {
+  //   SessionLinks = (
+  //     <>
+  //       <div className="session-link log-in-button">
+  //         <NavLink to="/login">Log In</NavLink>
+  //       </div>
+  //       <div className="session-link signupButton">
+  //         <NavLink to="/signup" className="signupButton">
+  //           Sign Up
+  //         </NavLink>
+  //       </div>
+  //     </>
+  //   );
+  // }
+
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = <ProfileButton user={sessionUser} />;
@@ -138,6 +156,14 @@ const Navigation = ({ props }) => {
     );
   };
 
+  const writeReviewNavLink = () => {
+    return (
+      <div className="write-review-link">
+        <h4>Write a Review</h4>
+      </div>
+    );
+  };
+
   const HomeNav = ({ navType }) => {
     return (
       <div id="nav-bar" className={pageType}>
@@ -150,9 +176,9 @@ const Navigation = ({ props }) => {
           <div className="search-bar-container">
             <SearchBar />
           </div>
-          {/* <div className="yelp-for-business-link"> */}
+
           <YelpForBusinessMenu />
-          {/* </div> */}
+          {writeReviewNavLink()}
         </div>
         <div className="right-side">
           <div className="socials">
@@ -184,6 +210,7 @@ const Navigation = ({ props }) => {
             </div>
           </div>
           <div id="session-links" className={pageType}>
+            {/* <SessionLinks /> */}
             {sessionLinks}
           </div>
         </div>
