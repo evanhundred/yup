@@ -151,13 +151,18 @@ a {
 
   &.index .yelp-for-business-link {
     color: white;
-    margin-left: 57px;
+    margin-left: 52px;
     cursor: pointer;
     display: flex;
     align-items: center;
     margin-bottom: 3px;
     width: max-content;
     gap: 8px;
+    border-radius: 5px;
+    padding: 0 10px;
+    &:hover {
+      background: rgba(171, 171, 171, 0.35);
+    }
 
     & img {
       padding-top: 1px;
