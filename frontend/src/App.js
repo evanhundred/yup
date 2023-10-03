@@ -12,7 +12,6 @@ import BusinessAddUserPhotos from "./components/BusinessAddUserPhotos";
 import BusinessPhotos from "./components/BusinessPhotos";
 
 function App() {
-  // const searchBoxRef = useRef(null);
   return (
     <>
       <Navigation />
@@ -27,10 +26,7 @@ function App() {
           <BusinessShow />
           <Route path="/businesses/:businessId/search">
             {/* REMOVE PROPS - REDUNDANT */}
-            <BusinessShow
-              // searchBoxRef={searchBoxRef}
-              props={"loadFromReviews"}
-            />
+            <BusinessShow props={"loadFromReviews"} />
           </Route>
         </Route>
         <Route path="/biz-user-photos/:businessId">

@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import { useParams, Link, useLocation, useHistory } from "react-router-dom";
+import { useEffect } from "react";
+import { useParams, useLocation, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusiness, fetchBusiness } from "../../store/businesses";
 import { fetchUser } from "../../store/users";
@@ -8,20 +8,15 @@ import TitleCard from "./TitleCard";
 import MainContent from "./MainContent";
 import webSpider from "../../assets/images/web-spider.jpg";
 
-const BusinessShow = ({ props, searchBoxRef }) => {
+const BusinessShow = ({ props }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
-  // const searchBoxRef = useRef(null);
-  // const searchBoxRef = props.searchBoxRef;
-  // console.log(searchBoxRef);
 
   const { businessId } = useParams();
   const business = useSelector(getBusiness(businessId));
 
   const currentUser = useSelector((state) => state.session.user);
-
-  // console.log(currentUser);
 
   const handleWriteReview = (e) => {
     e.preventDefault();
@@ -34,7 +29,6 @@ const BusinessShow = ({ props, searchBoxRef }) => {
     dispatch(fetchBusiness(businessId)); // .catch((errors) => console.log(errors));
     if (currentUser) dispatch(fetchUser(currentUser.id));
   }, [businessId, currentUser, dispatch]);
-  // const fetchedUser = useSelector((state) => state.users[currentUser.id]);
 
   let layoutWidth;
   const updateSize = () => {
@@ -46,7 +40,6 @@ const BusinessShow = ({ props, searchBoxRef }) => {
   if (!business) return <div className="loading">loading...</div>;
 
   const handleSearchClick = () => {
-    // searchBoxRef.current.focus();
     const searchInputBox = document.querySelector(
       ".search-bar-container input.user-search-string"
     );
@@ -77,11 +70,9 @@ const BusinessShow = ({ props, searchBoxRef }) => {
       <MainContent
         business={business}
         currentUser={currentUser}
-        // fetchedUser={fetchedUser}
         props={
           props && props.goToReviews === "goToReviews" ? "goToReviews" : "none"
         }
-        // searchBoxRef={props.searchBoxRef}
         handleWriteReview={handleWriteReview}
       />
     </>

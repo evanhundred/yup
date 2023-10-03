@@ -14,8 +14,6 @@ import SearchIcon from "../../assets/images/search.png";
 
 const Navigation = ({ props }) => {
   const sessionUser = useSelector((state) => state.session.user);
-  // const searchBoxRef = useRef(null);
-  // const searchBoxRef = props.searchBoxRef;
 
   const location = useLocation();
   const blackTextOnWhite = useMemo(() => {
@@ -58,7 +56,6 @@ const Navigation = ({ props }) => {
   const SearchBar = () => {
     const history = useHistory();
     const dispatch = useDispatch();
-    // const myRef = useRef(null);
 
     const [query, setQuery] = useState("");
 
@@ -72,8 +69,6 @@ const Navigation = ({ props }) => {
             if (res && res.status === 404) {
               errors = { searchErrors: "404 not found" };
             }
-
-            console.log(res);
           })
           .then(() => {
             if (errors) history.push(`/search?${query}`, errors);
@@ -81,13 +76,10 @@ const Navigation = ({ props }) => {
           });
       }
     };
-    // console.log(query.length);
-    // console.log(searchBoxRef);
     return (
       <form>
         <input
           className="user-search-string"
-          // ref={searchBoxRef}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />

@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { getBusinesses } from "../../store/businesses";
 import { useSelector } from "react-redux";
@@ -9,9 +8,7 @@ import "./index.css";
 
 const SearchResults = () => {
   const location = useLocation();
-  const ref = useRef(null);
   const businesses = useSelector(getBusinesses);
-  console.log(location);
   const searchString = location.search.slice(1);
 
   if (location.state && location.state.searchErrors)
