@@ -161,7 +161,10 @@ const Navigation = ({ props }) => {
             <li>
               <div className="first-row">
                 <img src={onlineStore} alt="add a business" />
-                <h4>Add a business</h4>
+                <div className="menu-h4-container">
+                  <div className="spacer" />
+                  <h4>Add a business</h4>
+                </div>
               </div>
             </li>
             <li>

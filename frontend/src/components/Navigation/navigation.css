@@ -176,9 +176,9 @@ a {
       background-color: white;
 
       color: black;
-      margin-top: 163px;
+      margin-top: 166px;
       margin-left: -9px;
-      padding: 15px 18px;
+      padding: 11px 18px 15px;
       /* min-width: 230px; */
       max-width: 220px;
       width: max-content;
@@ -189,14 +189,21 @@ a {
       /* right: 10px; */
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
 
       & li {
         padding: 5px;
         width: 100%;
+        border-radius: 3px;
+
+        &:hover {
+          background: rgba(171, 171, 171, 0.35);
+        }
 
         & > div {
+          padding: 3px 2px 2px 3px;
           display: flex;
+          align-items: center;
           /* justify-content: space-between; */
           gap: 15px;
           /* width: max-content; */
@@ -207,12 +214,24 @@ a {
           /* height: 25px; */
           width: 12%;
           height: 12%;
+          display: flex;
+          align-items: center;
+        }
+
+        & .menu-h4-container {
+          display: flex;
+          flex-direction: column;
+
+          & .spacer {
+            height: 4px;
+          }
         }
 
         & h4 {
           /* padding-top: 2px; */
           display: flex;
-          margin-top: 1px;
+          align-items: center;
+          /* margin-top: 1px; */
         }
       }
     }
