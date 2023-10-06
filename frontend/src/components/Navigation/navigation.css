@@ -189,12 +189,19 @@ a {
       /* right: 10px; */
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 3px;
 
       & li {
         padding: 5px;
         width: 100%;
         border-radius: 3px;
+        display: flex;
+
+        & a {
+          display: flex;
+          width: max-content;
+          gap: 12px;
+        }
 
         &:hover {
           background: rgba(171, 171, 171, 0.35);
@@ -210,10 +217,10 @@ a {
         }
 
         & img {
-          /* width: 25px; */
-          /* height: 25px; */
-          width: 12%;
-          height: 12%;
+          width: 25px;
+          height: 25px;
+          /* width: 12%;
+          height: 12%; */
           display: flex;
           align-items: center;
         }
@@ -222,9 +229,9 @@ a {
           display: flex;
           flex-direction: column;
 
-          & .spacer {
+          /* & .spacer {
             height: 4px;
-          }
+          } */
         }
 
         & h4 {

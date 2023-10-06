@@ -1,6 +1,6 @@
 import { useMemo, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { NavLink, useLocation, useHistory } from "react-router-dom";
+import { NavLink, useLocation, useHistory, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { searchBusinesses, clearBusinesses } from "../../store/businesses";
 
@@ -160,17 +160,24 @@ const Navigation = ({ props }) => {
           <ul className="yelp-for-business-dropdown">
             <li>
               <div className="first-row">
-                <img src={onlineStore} alt="add a business" />
-                <div className="menu-h4-container">
-                  <div className="spacer" />
-                  <h4>Add a business</h4>
-                </div>
+                <Link to="/add-business">
+                  <img src={onlineStore} alt="add a business" />
+                  <div className="menu-h4-container">
+                    <div className="spacer" />
+                    <h4>Add a business</h4>
+                  </div>
+                </Link>
               </div>
             </li>
             <li>
               <div className="second-row">
-                <img src={checkIcon} alt="claim your business" />
-                <h4>Claim your business</h4>
+                <Link to="/add-business">
+                  <img src={checkIcon} alt="claim your business" />
+                  <div className="menu-h4-container">
+                    <div className="spacer" />
+                    <h4>Claim your business</h4>
+                  </div>
+                </Link>
               </div>
             </li>
           </ul>
