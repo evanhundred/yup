@@ -28,9 +28,16 @@ const Navigation = ({ props }) => {
       "search",
       "biz-photos",
       "biz-user-photos",
-      "write-a-review"
+      "write-a-review",
+      "add-business-owner",
+      "add-business-customer"
     ];
   }, []);
+
+  // const minimalNavHeader = useMemo(() => {
+  //   return ["write-a-review", "add-business-owner", "add-business-customer"];
+  // }, []);
+
   const [pageType, setPageType] = useState(
     blackTextOnWhite.some((pageType) => location.pathname.includes(pageType))
       ? "business"
@@ -46,24 +53,6 @@ const Navigation = ({ props }) => {
       setPageType("index");
     }
   }, [location, blackTextOnWhite]);
-
-  // let SessionLinks;
-  // if (sessionUser) {
-  //   SessionLinks = <ProfileButton user={sessionUser} />;
-  // } else {
-  //   SessionLinks = (
-  //     <>
-  //       <div className="session-link log-in-button">
-  //         <NavLink to="/login">Log In</NavLink>
-  //       </div>
-  //       <div className="session-link signupButton">
-  //         <NavLink to="/signup" className="signupButton">
-  //           Sign Up
-  //         </NavLink>
-  //       </div>
-  //     </>
-  //   );
-  // }
 
   let sessionLinks;
   if (sessionUser) {
@@ -84,7 +73,6 @@ const Navigation = ({ props }) => {
   }
 
   const SearchBar = () => {
-    // const history = useHistory();
     const dispatch = useDispatch();
 
     const [query, setQuery] = useState("");
@@ -160,7 +148,7 @@ const Navigation = ({ props }) => {
           <ul className="yelp-for-business-dropdown">
             <li>
               <div className="first-row">
-                <Link to="/add-business">
+                <Link to="/add-business-owner">
                   <img src={onlineStore} alt="add a business" />
                   <div className="menu-h4-container">
                     <div className="spacer" />
@@ -171,7 +159,7 @@ const Navigation = ({ props }) => {
             </li>
             <li>
               <div className="second-row">
-                <Link to="/add-business">
+                <Link to="/add-business-owner">
                   <img src={checkIcon} alt="claim your business" />
                   <div className="menu-h4-container">
                     <div className="spacer" />
@@ -293,13 +281,35 @@ const Navigation = ({ props }) => {
     );
   };
 
+  const MinimalNavHeader = () => {
+    return (
+      <div id="minimal-nav-header-container">
+        <NavLink exact className="homeLink" to="/">
+          <div className="logo-container">
+            <h1 id="logo">
+              yup
+              <span className="star">*</span>
+            </h1>
+          </div>
+        </NavLink>
+      </div>
+    );
+  };
+
   let headerType;
   if (["/login", "/signup"].includes(window.location.pathname)) {
     headerType = <FormHeader />;
+  } else if (
+    [
+      "/write-a-review",
+      "/add-business-owner",
+      "/add-business-customer"
+    ].includes(window.location.pathname)
+  ) {
+    headerType = <MinimalNavHeader />;
   } else {
     headerType = <HomeNav />;
   }
-
   return <>{headerType}</>;
 };
 

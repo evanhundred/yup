@@ -10,6 +10,8 @@ import SearchResults from "./components/SearchResults";
 import BusinessAddUserPhotos from "./components/BusinessAddUserPhotos";
 import BusinessPhotos from "./components/BusinessPhotos";
 import WriteAReviewSearch from "./components/WriteAReviewSearch";
+import AddBusinessOwner from "./components/AddBusinessOwner";
+import AddBusinessCustomer from "./components/AddBusinessCustomer";
 
 function App() {
   return (
@@ -49,6 +51,12 @@ function App() {
         </Route>
         <Route path="/write-a-review">
           <WriteAReviewSearch />
+        </Route>
+        <Route path="/add-business-owner">
+          <AddBusinessOwner />
+        </Route>
+        <Route path="/add-business-customer">
+          <AddBusinessCustomer />
         </Route>
       </Switch>
       <Footer />
