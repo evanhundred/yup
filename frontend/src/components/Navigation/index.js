@@ -13,6 +13,8 @@ import linkedinLogoBlack from "../../assets/images/linkedin-black.png";
 import SearchIcon from "../../assets/images/search.png";
 import downArrowBlack from "../../assets/icons/down-arrow-black.png";
 import downArrowWhite from "../../assets/icons/down-arrow-white.png";
+import onlineStore from "../../assets/icons/online-store.png";
+import checkIcon from "../../assets/icons/check.png";
 
 const Navigation = ({ props }) => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -156,8 +158,18 @@ const Navigation = ({ props }) => {
         />
         {showYelpForBusinessMenu && (
           <ul className="yelp-for-business-dropdown">
-            <li>first</li>
-            <li>second</li>
+            <li>
+              <div className="first-row">
+                <img src={onlineStore} alt="add a business" />
+                <h4>Add a business</h4>
+              </div>
+            </li>
+            <li>
+              <div className="second-row">
+                <img src={checkIcon} alt="claim your business" />
+                <h4>Claim your business</h4>
+              </div>
+            </li>
           </ul>
         )}
       </div>

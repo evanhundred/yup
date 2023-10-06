@@ -170,6 +170,52 @@ a {
 
   & .yelp-for-business-link {
     margin-left: 52px;
+
+    & ul.yelp-for-business-dropdown {
+      position: absolute;
+      background-color: white;
+
+      color: black;
+      margin-top: 163px;
+      margin-left: -9px;
+      padding: 15px 18px;
+      /* min-width: 230px; */
+      max-width: 220px;
+      width: max-content;
+      font-size: 17px;
+      /* font-weight: 500; */
+      line-height: 1.7;
+      border-radius: 5px;
+      /* right: 10px; */
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+
+      & li {
+        padding: 5px;
+        width: 100%;
+
+        & > div {
+          display: flex;
+          /* justify-content: space-between; */
+          gap: 15px;
+          /* width: max-content; */
+        }
+
+        & img {
+          /* width: 25px; */
+          /* height: 25px; */
+          width: 12%;
+          height: 12%;
+        }
+
+        & h4 {
+          /* padding-top: 2px; */
+          display: flex;
+          margin-top: 1px;
+        }
+      }
+    }
   }
   & .write-review-link {
     margin-left: 10px;
