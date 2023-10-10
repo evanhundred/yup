@@ -87,6 +87,21 @@ const Footer = () => {
     </span>
   );
 
+  const addBizAsOwnerAttribution = (
+    <span className="add-biz-as-owner-attribution">
+      Left arrow icon created by{" "}
+      <a
+        href="https://www.flaticon.com/authors/ariefstudio"
+        title="ariefstudio"
+        rel="noreferrer"
+        target="_blank"
+      >
+        ariefstudio - Flaticon
+      </a>
+      .
+    </span>
+  );
+
   return (
     <div className="footer">
       <p>
@@ -107,6 +122,9 @@ const Footer = () => {
         {location.state &&
           location.state.searchErrors &&
           spiderImageAttribution}
+        {["/add-business-as-owner", "add-business-as-customer"].includes(
+          location.pathname
+        ) && addBizAsOwnerAttribution}
       </p>
       {location.state === "404" && <BizShowErrorCopy />}
       {location.state !== "404" &&
