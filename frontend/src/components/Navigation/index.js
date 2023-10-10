@@ -29,8 +29,8 @@ const Navigation = ({ props }) => {
       "biz-photos",
       "biz-user-photos",
       "write-a-review",
-      "add-business-owner",
-      "add-business-customer"
+      "add-business-as-owner",
+      "add-business-as-customer"
     ];
   }, []);
 
@@ -148,7 +148,7 @@ const Navigation = ({ props }) => {
           <ul className="yelp-for-business-dropdown">
             <li>
               <div className="first-row">
-                <Link to="/add-business-owner">
+                <Link to="/add-business-as-owner">
                   <img src={onlineStore} alt="add a business" />
                   <div className="menu-h4-container">
                     <div className="spacer" />
@@ -159,7 +159,7 @@ const Navigation = ({ props }) => {
             </li>
             <li>
               <div className="second-row">
-                <Link to="/add-business-owner">
+                <Link to="/add-business-as-owner">
                   <img src={checkIcon} alt="claim your business" />
                   <div className="menu-h4-container">
                     <div className="spacer" />
@@ -284,14 +284,41 @@ const Navigation = ({ props }) => {
   const MinimalNavHeader = () => {
     return (
       <div id="minimal-nav-header-container">
-        <NavLink exact className="homeLink" to="/">
-          <div className="logo-container">
-            <h1 id="logo">
-              yup
-              <span className="star">*</span>
-            </h1>
+        <div className="left-side">
+          <NavLink exact className="homeLink" to="/">
+            <div className="logo-container">
+              <h1 id="logo">
+                yup
+                <span className="star">*</span>
+              </h1>
+            </div>
+          </NavLink>
+        </div>
+        <div className="right-side">
+          <div className="socials">
+            <div id="github">
+              <a
+                href="https://www.github.com/evanryan/yup"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={githubLogoBlack} alt="GitHub repo" />
+              </a>
+            </div>
+            <div id="linkedin">
+              <a
+                href="https://www.linkedin.com/in/evan-ryan-dev"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={linkedinLogoBlack} alt="LinkedIn page" />
+              </a>
+            </div>
           </div>
-        </NavLink>
+          <div id="session-links" className={pageType}>
+            {sessionLinks}
+          </div>
+        </div>
       </div>
     );
   };
@@ -302,8 +329,8 @@ const Navigation = ({ props }) => {
   } else if (
     [
       "/write-a-review",
-      "/add-business-owner",
-      "/add-business-customer"
+      "/add-business-as-owner",
+      "/add-business-as-spocustomer"
     ].includes(window.location.pathname)
   ) {
     headerType = <MinimalNavHeader />;

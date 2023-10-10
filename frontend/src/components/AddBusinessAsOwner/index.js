@@ -1,6 +1,6 @@
 import "./index.css";
 
-const AddBusinessOwner = () => {
+const AddBusinessAsOwner = () => {
   return (
     <div id="add-business-owner-container">
       <h2>Add business.</h2>
@@ -8,4 +8,4 @@ const AddBusinessOwner = () => {
   );
 };
 
-export default AddBusinessOwner;
+export default AddBusinessAsOwner;
