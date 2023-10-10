@@ -100,9 +100,10 @@ const Footer = () => {
           Evan Ryan
         </a>
         . Ruby, Rails, PostgreSQL, JavaScript, React, Redux, and related
-        languages and frameworks are implemented by Yup. {
-          navBarAttribution
-        }{" "}
+        languages and frameworks are implemented by Yup.{" "}
+        {!["/add-business-as-owner", "add-business-as-customer"].includes(
+          location.pathname
+        ) && navBarAttribution}{" "}
         {location.state &&
           location.state.searchErrors &&
           spiderImageAttribution}

@@ -48,4 +48,16 @@
       /* font-weight: 500; */
     }
   }
+
+  & .step-two-container {
+    & .back-button {
+      width: max-content;
+      margin: 0 0 25px;
+      font-size: 18px;
+      font-weight: 500;
+      color: rgb(0, 127, 177);
+
+      font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+  }
 }
