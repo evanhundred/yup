@@ -1,0 +1,51 @@
+#add-business-owner-container {
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 50px 0 35px;
+  margin-left: 4em;
+  min-height: 70vh;
+
+  & .prompt {
+    padding-bottom: 4px;
+    & h2.prompt-title {
+      font-size: 35px;
+      font-weight: 500;
+    }
+    & p.prompt-text {
+      margin: 25px 0;
+      font-size: 20px;
+      font-weight: 300;
+      color: rgb(94, 94, 94);
+    }
+  }
+
+  & .business-name-input-form {
+    padding-top: 12px;
+
+    & form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & input {
+      height: 45px;
+      width: 450px;
+      border: 1px solid rgb(188, 188, 188);
+      border-radius: 5px;
+      padding: 4px 14px;
+      font-size: 17.5px;
+    }
+
+    & button {
+      width: min-content;
+      margin-top: 25px;
+      border: none;
+      font-size: 19px;
+      background: #e34234;
+      color: white;
+      padding: 13px 18px;
+      border-radius: 5px;
+      font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      /* font-weight: 500; */
+    }
+  }
+}

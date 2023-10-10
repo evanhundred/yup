@@ -8,7 +8,7 @@
 
   & .business-show-footer-copy {
     display: flex;
-    margin: 5px;
+    margin: 0 5px 5px;
     & > * {
       margin-right: 4px;
     }
