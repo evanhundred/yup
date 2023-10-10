@@ -3,6 +3,8 @@ import { useState } from "react";
 
 import "./index.css";
 
+import LeftArrow from "../../assets/icons/arrow-left.png";
+
 const AddBusinessAsOwner = () => {
   // const history = useHistory();
 
@@ -98,7 +100,8 @@ const AddBusinessAsOwner = () => {
       {componentToRender === "step-two" && (
         <div className="step-two-container">
           <div className="back-button" onClick={handleBackButtonClick}>
-            {`<---`} Back
+            <img src={LeftArrow} alt="previous page" />
+            <p>Back</p>
           </div>
           <h2>business name: {businessName}</h2>
         </div>

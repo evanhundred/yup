@@ -51,6 +51,8 @@
 
   & .step-two-container {
     & .back-button {
+      display: flex;
+      gap: 17px;
       width: max-content;
       margin: 0 0 25px;
       font-size: 18px;
@@ -58,6 +60,13 @@
       color: rgb(0, 127, 177);
 
       font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+      & img {
+        height: 19px;
+      }
+      & p {
+        margin-top: 1.7px;
+      }
     }
   }
 }
