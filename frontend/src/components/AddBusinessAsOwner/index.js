@@ -103,7 +103,19 @@ const AddBusinessAsOwner = () => {
             <img src={LeftArrow} alt="previous page" />
             <p>Back</p>
           </div>
-          <h2>business name: {businessName}</h2>
+          <div className="prompt">
+            <h2 className="prompt-title">
+              Give customers a phone number so they can call your business
+            </h2>
+            <p>
+              Add the phone number for <span>{businessName}</span> to help
+              customers connect with you.
+            </p>
+          </div>
+          <div className="phone-number-entry">
+            <div className="prefix"></div>
+            <div className="main-number"></div>
+          </div>
         </div>
       )}
     </div>

@@ -68,5 +68,39 @@
         margin-top: 1.7px;
       }
     }
+    & .prompt {
+      line-height: 1.2;
+      & h2.prompt-title {
+        font-size: 32px;
+      }
+      & p {
+        margin: 22px 0;
+        font-size: 21px;
+        font-weight: 300;
+        & span {
+          font-weight: 500;
+        }
+      }
+    }
+
+    & .phone-number-entry {
+      margin-top: 15px;
+      border: 1px solid rgb(187, 187, 187);
+      height: 56px;
+      width: 485px;
+      border-radius: 3px;
+
+      display: flex;
+      align-items: center;
+
+      & .prefix {
+        height: 55%;
+        width: 30%;
+        border-right: 1px solid rgb(187, 187, 187);
+      }
+      & .main-number {
+        width: 70%;
+      }
+    }
   }
 }
