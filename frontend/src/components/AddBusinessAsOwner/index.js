@@ -1,9 +1,35 @@
 import { useState } from "react";
-// import { useHistory } from "react-router-dom";
 
 import "./index.css";
 
+// import FlagAR from "../../assets/icons/flags/4x3/ar.svg";
+// import FlagAU from "../../assets/icons/flags/4x3/au.svg";
+// import FlagAT from "../../assets/icons/flags/4x3/at.svg";
+// import FlagBE from "../../assets/icons/flags/4x3/be.svg";
+// import FlagBR from "../../assets/icons/flags/4x3/br.svg";
 import LeftArrow from "../../assets/icons/arrow-left.png";
+
+import { ReactComponent as FlagAR } from "../../assets/icons/flags/4x3/br.svg";
+
+const importAll = (r) => {
+  let images = {};
+  r.keys().map((item) => {
+    images[item.replace("./", "")] = r(item);
+  });
+  return images;
+};
+
+const images = importAll(
+  require.context("../../assets/icons/flags/4x3/", false, /\.svg/)
+);
+console.log(images);
+// require("./[A-Z]{2}.svg/", ".svg");
+// const context = require.context(
+//   "../../assets/icons/flags/4x3/",
+//   false,
+//   /[a-z]{2}\.svg/
+// );
+// console.log(context);
 
 const AddBusinessAsOwner = () => {
   // const history = useHistory();
@@ -115,6 +141,16 @@ const AddBusinessAsOwner = () => {
           <div className="phone-number-entry">
             <div className="prefix"></div>
             <div className="main-number"></div>
+          </div>
+          <div className="flags-container">
+            <img src={images["ar.svg"]} alt="argentinia" />
+            {/* <img src={FlagAR} alt="argentina" />
+            <img src={FlagAU} alt="australia" />
+            <img src={FlagAT} alt="austria" />
+            <img src={FlagBE} alt="belgium" />
+            <img src={FlagBR} alt="brazil" /> */}
+
+            <FlagAR />
           </div>
         </div>
       )}
