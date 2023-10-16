@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./index.css";
 
@@ -7,14 +7,15 @@ import "./index.css";
 // import FlagAT from "../../assets/icons/flags/4x3/at.svg";
 // import FlagBE from "../../assets/icons/flags/4x3/be.svg";
 // import FlagBR from "../../assets/icons/flags/4x3/br.svg";
-import LeftArrow from "../../assets/icons/arrow-left.png";
+// import { ReactComponent as FlagAR } from "../../assets/icons/flags/4x3/br.svg";
 
-import { ReactComponent as FlagAR } from "../../assets/icons/flags/4x3/br.svg";
+import LeftArrow from "../../assets/icons/arrow-left.png";
 
 const importAll = (r) => {
   let images = {};
   r.keys().map((item) => {
-    images[item.replace("./", "")] = r(item);
+    // added 'return'
+    return (images[item.replace("./", "")] = r(item));
   });
   return images;
 };
@@ -22,7 +23,8 @@ const importAll = (r) => {
 const images = importAll(
   require.context("../../assets/icons/flags/4x3/", false, /\.svg/)
 );
-console.log(images);
+// console.log(images);
+
 // require("./[A-Z]{2}.svg/", ".svg");
 // const context = require.context(
 //   "../../assets/icons/flags/4x3/",
@@ -36,6 +38,7 @@ const AddBusinessAsOwner = () => {
 
   const [businessName, setBusinessName] = useState("");
   const [componentToRender, setComponentToRender] = useState("initial");
+  const [showSelectIntlCodeMenu, setShowSelectIntlCodeMenu] = useState(false);
 
   const handleBusinessNameSubmit = (e) => {
     e.preventDefault();
@@ -95,6 +98,22 @@ const AddBusinessAsOwner = () => {
     setComponentToRender("initial");
   };
 
+  const openSelectIntlCodeMenu = (e) => {
+    e.preventDefault();
+    setShowSelectIntlCodeMenu(true);
+  };
+
+  useEffect(() => {
+    if (!showSelectIntlCodeMenu) return;
+
+    const closeSelectIntlCodeMenu = () => {
+      setShowSelectIntlCodeMenu(false);
+    };
+
+    document.addEventListener("click", closeSelectIntlCodeMenu);
+    return () => document.removeEventListener("click", closeSelectIntlCodeMenu);
+  }, []);
+
   return (
     <div id="add-business-owner-container">
       {/* <InitialComponent /> */}
@@ -138,19 +157,24 @@ const AddBusinessAsOwner = () => {
               customers connect with you.
             </p>
           </div>
-          <div className="phone-number-entry">
+          <div
+            className="phone-number-entry"
+            onClick={(e) => openSelectIntlCodeMenu(e)}
+          >
             <div className="prefix"></div>
             <div className="main-number"></div>
           </div>
+        </div>
+      )}
+      {showSelectIntlCodeMenu && (
+        <div className="select-intl-code-menu-container">
           <div className="flags-container">
-            <img src={images["ar.svg"]} alt="argentinia" />
-            {/* <img src={FlagAR} alt="argentina" />
-            <img src={FlagAU} alt="australia" />
-            <img src={FlagAT} alt="austria" />
-            <img src={FlagBE} alt="belgium" />
-            <img src={FlagBR} alt="brazil" /> */}
-
-            <FlagAR />
+            <img
+              className="flag-icon"
+              src={images["ar.svg"]}
+              alt="argentinia"
+              style={{ width: "40px" }}
+            />
           </div>
         </div>
       )}
