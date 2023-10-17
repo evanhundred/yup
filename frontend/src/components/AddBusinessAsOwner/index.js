@@ -112,7 +112,74 @@ const AddBusinessAsOwner = () => {
 
     document.addEventListener("click", closeSelectIntlCodeMenu);
     return () => document.removeEventListener("click", closeSelectIntlCodeMenu);
-  }, []);
+  }, [showSelectIntlCodeMenu]);
+
+  const countriesArray = [
+    ["Argentina", 54, "ar"],
+    ["Australia", 61, "au"],
+    ["Austria", 43, "at"],
+    ["Belgium", 32, "be"],
+    ["Brazil", 55, "br"],
+    ["Canada", 1, "ca"],
+    ["Chile", 56, "cl"],
+    ["Czhech Republic", 420, "cz"],
+    ["Denmark", 45, "dk"],
+    ["Finland", 358, "fi"],
+    ["France", 33, "fr"],
+    ["Germany", 49, "de"],
+    ["Hong Kong", 852, "hk"],
+    ["Italy", 39, "it"],
+    ["Japan", 81, "jp"],
+    ["Malaysia", 60, "my"],
+    ["Mexico", 52, "mx"],
+    ["New Zealand", 64, "nz"],
+    ["Norway", 47, "no"],
+    ["Philippines", 63, "ph"],
+    ["Poland", 48, "pl"],
+    ["Portugal", 351, "pt"],
+    ["Republic of Ireland", 353, "ie"],
+    ["Singapore", 65, "sg"],
+    ["Spain", 34, "es"],
+    ["Sweden", 46, "se"],
+    ["Switzerland", 41, "ch"],
+    ["Taiwan", 886, "tw"],
+    ["The Netherlands", 31, "nl"],
+    ["Turkey", 90, "tr"],
+    ["United Kingdom", 44, "gb"],
+    ["United States", 1, "us"]
+  ];
+
+  const countryCodesObject = {};
+
+  countriesArray.forEach((countryCell) => {
+    countryCodesObject[countryCell[0]] = {
+      fileName: countryCell[2],
+      code: `+${countryCell[1]}`
+    };
+  });
+
+  countriesArray.map((countryCell) => {
+    return (
+      <li>
+        <div className="flag-icon-container">
+          <img
+            className="flag-icon"
+            src={images[`${countryCell[2]}.svg`]}
+            alt={countryCell[0]}
+            style={{ width: "40px" }}
+          />
+        </div>
+        <h4>{`${countryCell[0]} ${countryCell[1]}`}</h4>
+      </li>
+    );
+  });
+
+  // console.log(countryCodesObject);
+
+  // const countryCodesObject = {
+  //   "Argentina": {fileName:"ar.svg", code: "+54"},
+  //   "Australia": {fileName}
+  // }
 
   return (
     <div id="add-business-owner-container">
@@ -168,14 +235,19 @@ const AddBusinessAsOwner = () => {
       )}
       {showSelectIntlCodeMenu && (
         <div className="select-intl-code-menu-container">
-          <div className="flags-container">
-            <img
-              className="flag-icon"
-              src={images["ar.svg"]}
-              alt="argentinia"
-              style={{ width: "40px" }}
-            />
-          </div>
+          <ul className="select-intl-code-dropdown">
+            <li>
+              <div className="flag-icon-container">
+                <img
+                  className="flag-icon"
+                  src={images["ar.svg"]}
+                  alt="argentinia"
+                  style={{ width: "40px" }}
+                />
+              </div>
+              <h4>Argentina +54</h4>
+            </li>
+          </ul>
         </div>
       )}
     </div>
