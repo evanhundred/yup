@@ -177,16 +177,31 @@ const AddBusinessAsOwner = () => {
     );
   };
 
-  // console.log(countryCodesObject);
+  const handlePhoneNumberSubmit = () => {
+    setComponentToRender("step-three");
+  };
 
-  // const countryCodesObject = {
-  //   "Argentina": {fileName:"ar.svg", code: "+54"},
-  //   "Australia": {fileName}
-  // }
+  const stepThreePromptText =
+    "Fill out the fields below. Your Yup listing will not appear in searches until it has been reviewed and approved by our moderators. You will then receive an email with further information on how to take over your Yup listing.";
+
+  const BusinessInfoForm = () => {
+    return (
+      <div className="business-info-form">
+        <label htmlFor="country">country</label>
+        <select id="country" name="country">
+          {countriesArray.map((countryCell) => {
+            const countryName = countryCell[0];
+            return (
+              <option value={countryName.toLowerCase()}>{countryName}</option>
+            );
+          })}
+        </select>
+      </div>
+    );
+  };
 
   return (
     <div id="add-business-owner-container">
-      {/* <InitialComponent /> */}
       {componentToRender === "initial" && (
         <div className="initial-component">
           <div className="prompt">
@@ -240,12 +255,26 @@ const AddBusinessAsOwner = () => {
               />
             </div>
           </div>
-          <div className="continue-submit-button">Continue</div>
+          <div
+            className="continue-submit-button"
+            onClick={handlePhoneNumberSubmit}
+          >
+            Continue
+          </div>
         </div>
       )}
       {showSelectIntlCodeMenu && (
         <div className="select-intl-code-menu-container">
           <CountryCodeDropdown />
+        </div>
+      )}
+      {componentToRender === "step-three" && (
+        <div className="step-three-container">
+          <div className="prompt">
+            <h2>List your business on Yup</h2>
+            <p>{stepThreePromptText}</p>
+          </div>
+          <BusinessInfoForm />
         </div>
       )}
     </div>
