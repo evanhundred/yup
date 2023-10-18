@@ -105,6 +105,10 @@
   }
 
   & .select-intl-code-menu-container {
+    height: 400px;
+    width: 300px;
+    overflow: scroll;
+
     box-shadow: 0 0 7px 2px rgb(232, 232, 232);
     border-radius: 3px;
     margin: 1px 0 0 3px;
