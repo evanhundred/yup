@@ -178,7 +178,7 @@
   }
 
   & .step-three-container {
-    width: 600px;
+    width: 575px;
     /* max-width: 700px; */
 
     & h2 {
@@ -197,7 +197,8 @@
       display: flex;
       flex-direction: column;
 
-      width: 522px;
+      width: 100%;
+      /* width: 522px; */
 
       & label {
         font-weight: 500;
@@ -206,18 +207,22 @@
       & select,
       input {
         /* width: max-content; */
-        box-sizing: content-box;
+        box-sizing: border-box;
+        /* box-sizing: content-box; */
         font-size: 17px;
         padding: 5px 10px;
         /* max-width: 500px; */
         margin-bottom: 20px;
         width: 100%;
         /* width: 522px; */
-        border: 1px solid gray;
+        border: 1.1px solid rgb(107, 107, 107);
         border-radius: 4px;
       }
       & input {
         /* width: 500px; */
+        padding-left: 13px;
+        padding-top: 6px;
+        padding-bottom: 6px;
       }
     }
   }
