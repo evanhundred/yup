@@ -10,6 +10,7 @@ import "./index.css";
 // import { ReactComponent as FlagAR } from "../../assets/icons/flags/4x3/br.svg";
 
 import LeftArrow from "../../assets/icons/arrow-left.png";
+import downArrow from "../../assets/icons/down-arrow-black.png";
 
 const importAll = (r) => {
   let images = {};
@@ -39,59 +40,48 @@ const AddBusinessAsOwner = () => {
   const [businessName, setBusinessName] = useState("");
   const [componentToRender, setComponentToRender] = useState("initial");
   const [showSelectIntlCodeMenu, setShowSelectIntlCodeMenu] = useState(false);
+  const [chosenCountryCode, setChosenCountryCode] = useState(1);
 
   const handleBusinessNameSubmit = (e) => {
     e.preventDefault();
 
     setComponentToRender("step-two");
-    // history.push("step-two");
   };
 
-  const InitialComponent = () => {
-    return (
-      <div className="initial-component">
-        <div className="prompt">
-          <h2 className="prompt-title">
-            Hello. Let's start with your business name
-          </h2>
-          <p className="prompt-text">
-            We'll use this information to help you claim your Yelp page. Your
-            business will come up automatically if it is already listed.
-          </p>
-        </div>
-        <div className="business-name-input-form">
-          <form onSubmit={(e) => handleBusinessNameSubmit(e)}>
-            <input
-              onChange={(e) => setBusinessName(e.target.value)}
-              // value={businessName}
-              value={`${businessName}`}
-              className="business-name"
-              // placeholder="Your business name"
-            />
-            <button className="continue">Continue</button>
-          </form>
-        </div>
-      </div>
-    );
-  };
+  // const InitialComponent = () => {
+  //   return (
+  //     <div className="initial-component">
+  //       <div className="prompt">
+  //         <h2 className="prompt-title">
+  //           Hello. Let's start with your business name
+  //         </h2>
+  //         <p className="prompt-text">
+  //           We'll use this information to help you claim your Yelp page. Your
+  //           business will come up automatically if it is already listed.
+  //         </p>
+  //       </div>
+  //       <div className="business-name-input-form">
+  //         <form onSubmit={(e) => handleBusinessNameSubmit(e)}>
+  //           <input
+  //             onChange={(e) => setBusinessName(e.target.value)}
+  //             // value={businessName}
+  //             value={`${businessName}`}
+  //             className="business-name"
+  //             // placeholder="Your business name"
+  //           />
+  //           <button className="continue">Continue</button>
+  //         </form>
+  //       </div>
+  //     </div>
+  //   );
+  // };
 
-  const StepTwo = () => {
-    return (
-      <div className="step-two-container">
-        <h2>business name: {businessName}</h2>
-      </div>
-    );
-  };
-
-  // const componentSelector = () => {
-  //   switch (componentToRender) {
-  //     case "initial":
-  //       return <InitialComponent key="initial" />;
-  //     case "step-two":
-  //       return <StepTwo key="step-2" />;
-  //     default:
-  //       return null;
-  //   }
+  // const StepTwo = () => {
+  //   return (
+  //     <div className="step-two-container">
+  //       <h2>business name: {businessName}</h2>
+  //     </div>
+  //   );
   // };
 
   const handleBackButtonClick = () => {
@@ -159,12 +149,18 @@ const AddBusinessAsOwner = () => {
   // });
 
   const CountryCodeDropdown = () => {
+    const handleCountryCodeClick = (code) => {
+      setChosenCountryCode(code);
+    };
     return (
       <ul className="select-intl-code-dropdown">
         {countriesArray.map((countryCell) => {
           return (
-            <li key={countryCell[0]}>
-              <div className="flag-icon-container">
+            <li
+              key={countryCell[0]}
+              onClick={() => handleCountryCodeClick(countryCell[1])}
+            >
+              <div className="flag-icon-container" key={countryCell[0]}>
                 <img
                   className="flag-icon"
                   src={images[`${countryCell[2]}.svg`]}
@@ -230,11 +226,11 @@ const AddBusinessAsOwner = () => {
               customers connect with you.
             </p>
           </div>
-          <div
-            className="phone-number-entry"
-            onClick={(e) => openSelectIntlCodeMenu(e)}
-          >
-            <div className="prefix"></div>
+          <div className="phone-number-entry">
+            <div className="prefix" onClick={(e) => openSelectIntlCodeMenu(e)}>
+              <p>{`+${chosenCountryCode}`}</p>
+              <img src={downArrow} alt="choose country code" />
+            </div>
             <div className="main-number"></div>
           </div>
         </div>
@@ -242,19 +238,6 @@ const AddBusinessAsOwner = () => {
       {showSelectIntlCodeMenu && (
         <div className="select-intl-code-menu-container">
           <CountryCodeDropdown />
-          {/* <ul className="select-intl-code-dropdown">
-            <li>
-              <div className="flag-icon-container">
-                <img
-                  className="flag-icon"
-                  src={images["ar.svg"]}
-                  alt="argentinia"
-                  style={{ width: "40px" }}
-                />
-              </div>
-              <h4>Argentina +54</h4>
-            </li>
-          </ul> */}
         </div>
       )}
     </div>

@@ -94,8 +94,25 @@
       align-items: center;
 
       & .prefix {
+        display: flex;
+        justify-content: space-between;
+
+        /* margin: 0 20px; */
+        padding: 0 20px;
+        /* padding: 20px 0; */
+
+        & p {
+          display: flex;
+          align-items: center;
+        }
+        & img {
+          object-fit: contain;
+          width: 12px;
+          /* height: 100%; */
+        }
+
         height: 55%;
-        width: 30%;
+        width: 25%;
         border-right: 1px solid rgb(187, 187, 187);
       }
       & .main-number {
@@ -105,6 +122,10 @@
   }
 
   & .select-intl-code-menu-container {
+    position: absolute;
+    /* z-index: 2; */
+    background: white;
+
     height: 400px;
     width: 300px;
     overflow: scroll;
@@ -112,14 +133,21 @@
     box-shadow: 0 0 7px 2px rgb(232, 232, 232);
     border-radius: 3px;
     margin: 1px 0 0 3px;
+    padding: 20px 15px;
+    /* padding: 20px 25px; */
 
-    padding: 20px 25px;
     & ul.select-intl-code-dropdown {
       display: flex;
       flex-direction: column;
+      cursor: pointer;
 
       & li {
-        padding: 12px 0;
+        border-radius: 3px;
+        &:hover {
+          background: rgb(225, 225, 225);
+        }
+
+        padding: 12px 0 12px 10px;
 
         display: flex;
         gap: 20px;
