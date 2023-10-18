@@ -196,6 +196,12 @@ const AddBusinessAsOwner = () => {
             );
           })}
         </select>
+        <label htmlFor="company-name">Company Name</label>
+        <input
+          id="company-name"
+          name="company-name"
+          placeholder="Restaurant Mozart"
+        />
       </div>
     );
   };
