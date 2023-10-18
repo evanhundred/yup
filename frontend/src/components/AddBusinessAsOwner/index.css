@@ -117,13 +117,19 @@
       }
       & .main-number {
         width: 70%;
+        padding: 0 20px;
+
+        & input {
+          width: 100%;
+          border: none;
+          font-size: 20px;
+        }
       }
     }
   }
 
   & .select-intl-code-menu-container {
     position: absolute;
-    /* z-index: 2; */
     background: white;
 
     height: 400px;
@@ -134,7 +140,6 @@
     border-radius: 3px;
     margin: 1px 0 0 3px;
     padding: 20px 15px;
-    /* padding: 20px 25px; */
 
     & ul.select-intl-code-dropdown {
       display: flex;

@@ -41,6 +41,7 @@ const AddBusinessAsOwner = () => {
   const [componentToRender, setComponentToRender] = useState("initial");
   const [showSelectIntlCodeMenu, setShowSelectIntlCodeMenu] = useState(false);
   const [chosenCountryCode, setChosenCountryCode] = useState(1);
+  const [businessPhoneNumber, setBusinessPhoneNumber] = useState("");
 
   const handleBusinessNameSubmit = (e) => {
     e.preventDefault();
@@ -231,7 +232,13 @@ const AddBusinessAsOwner = () => {
               <p>{`+${chosenCountryCode}`}</p>
               <img src={downArrow} alt="choose country code" />
             </div>
-            <div className="main-number"></div>
+            <div className="main-number">
+              <input
+                placeholder="Business Phone Number"
+                value={businessPhoneNumber}
+                onChange={(e) => setBusinessPhoneNumber(e.target.value)}
+              />
+            </div>
           </div>
         </div>
       )}
