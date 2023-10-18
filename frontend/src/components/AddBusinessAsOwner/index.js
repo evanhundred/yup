@@ -149,30 +149,36 @@ const AddBusinessAsOwner = () => {
     ["United States", 1, "us"]
   ];
 
-  const countryCodesObject = {};
+  // const countryCodesObject = {};
 
-  countriesArray.forEach((countryCell) => {
-    countryCodesObject[countryCell[0]] = {
-      fileName: countryCell[2],
-      code: `+${countryCell[1]}`
-    };
-  });
+  // countriesArray.forEach((countryCell) => {
+  //   countryCodesObject[countryCell[0]] = {
+  //     fileName: countryCell[2],
+  //     code: `+${countryCell[1]}`
+  //   };
+  // });
 
-  countriesArray.map((countryCell) => {
+  const CountryCodeDropdown = () => {
     return (
-      <li>
-        <div className="flag-icon-container">
-          <img
-            className="flag-icon"
-            src={images[`${countryCell[2]}.svg`]}
-            alt={countryCell[0]}
-            style={{ width: "40px" }}
-          />
-        </div>
-        <h4>{`${countryCell[0]} ${countryCell[1]}`}</h4>
-      </li>
+      <ul className="select-intl-code-dropdown">
+        {countriesArray.map((countryCell) => {
+          return (
+            <li key={countryCell[0]}>
+              <div className="flag-icon-container">
+                <img
+                  className="flag-icon"
+                  src={images[`${countryCell[2]}.svg`]}
+                  alt={countryCell[0]}
+                  style={{ width: "40px" }}
+                />
+              </div>
+              <h4>{`${countryCell[0]} +${countryCell[1]}`}</h4>
+            </li>
+          );
+        })}
+      </ul>
     );
-  });
+  };
 
   // console.log(countryCodesObject);
 
@@ -235,7 +241,8 @@ const AddBusinessAsOwner = () => {
       )}
       {showSelectIntlCodeMenu && (
         <div className="select-intl-code-menu-container">
-          <ul className="select-intl-code-dropdown">
+          <CountryCodeDropdown />
+          {/* <ul className="select-intl-code-dropdown">
             <li>
               <div className="flag-icon-container">
                 <img
@@ -247,7 +254,7 @@ const AddBusinessAsOwner = () => {
               </div>
               <h4>Argentina +54</h4>
             </li>
-          </ul>
+          </ul> */}
         </div>
       )}
     </div>
