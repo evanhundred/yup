@@ -126,6 +126,17 @@
         }
       }
     }
+
+    & .continue-submit-button {
+      border-radius: 5px;
+      background: #e34234;
+      color: white;
+      padding: 13px 18px;
+      width: min-content;
+      margin-top: 40px;
+      font-size: 19px;
+      cursor: pointer;
+    }
   }
 
   & .select-intl-code-menu-container {

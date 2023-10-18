@@ -240,6 +240,7 @@ const AddBusinessAsOwner = () => {
               />
             </div>
           </div>
+          <div className="continue-submit-button">Continue</div>
         </div>
       )}
       {showSelectIntlCodeMenu && (
