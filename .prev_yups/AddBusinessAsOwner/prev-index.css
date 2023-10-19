@@ -201,13 +201,15 @@
       /* width: 522px; */
 
       & label {
+        & p.label {
+          font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+          font-weight: 500;
+        }
         margin: 10px 0;
-      }
-      & label,
-      & label p.label {
-        font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-weight: 500;
-        font-size: 16px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
       & select,
       input {
@@ -215,7 +217,8 @@
         box-sizing: border-box;
         /* box-sizing: content-box; */
         font-size: 17px;
-        padding: 5px 10px;
+        padding: 0 10px;
+        margin: 5px 0 15px;
         /* max-width: 500px; */
         margin-bottom: 15px;
         width: 100%;
