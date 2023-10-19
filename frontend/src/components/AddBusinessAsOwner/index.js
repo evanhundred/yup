@@ -27,7 +27,9 @@ const AddBusinessAsOwner = () => {
   const [showSelectIntlCodeMenu, setShowSelectIntlCodeMenu] = useState(false);
   const [chosenCountryCode, setChosenCountryCode] = useState(1);
   const [businessPhoneNumber, setBusinessPhoneNumber] = useState("");
-  const [countryName, setCountryName] = useState("United States");
+  const [countryName, setCountryName] = useState("");
+  const [selectedCountryName, setSelectedCountryName] =
+    useState("united states");
 
   const handleBusinessNameSubmit = (e) => {
     e.preventDefault();
@@ -95,7 +97,8 @@ const AddBusinessAsOwner = () => {
           <p className="label">Country</p>
           <select
             name="country"
-            value={countryName}
+            defaultValue="united states"
+            value={selectedCountryName}
             onChange={(e) => handleCountryNameChange(e)}
           >
             {countriesArray.map((countryCell) => {
