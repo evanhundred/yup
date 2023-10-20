@@ -28,7 +28,10 @@ const AddBusinessAsOwner = () => {
   const [chosenCountryCode, setChosenCountryCode] = useState(1);
   const [businessPhoneNumber, setBusinessPhoneNumber] = useState("");
   const [countryName, setCountryName] = useState("");
-  const [selectedCountryName, setSelectedCountryName] = useState("");
+  const [addressLine1, setAddressLine1] = useState("");
+  const [addressLine2, setAddressLine2] = useState("");
+  const [city, setCity] = useState("");
+  const [chosenState, setChosenState] = useState("");
 
   const handleBusinessNameSubmit = (e) => {
     e.preventDefault();
@@ -183,19 +186,34 @@ const AddBusinessAsOwner = () => {
         </label>
         <label>
           <p>Address Line 1</p>
-          <input placeholder="386 Flatbush Ave." />
+          <input
+            value={addressLine1}
+            onChange={(e) => setAddressLine1(e.target.value)}
+            placeholder="386 Flatbush Ave."
+          />
         </label>
         <label>
           <p>Address Line 2</p>
-          <input />
+          <input
+            value={addressLine2}
+            onChange={(e) => setAddressLine2(e.target.value)}
+          />
         </label>
         <label>
           <p>City</p>
-          <input placeholder="New York" />
+          <input
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            placeholder="New York"
+          />
         </label>
         <label>
           <p>State</p>
-          <input placeholder="New York" />
+          <input
+            value={chosenState}
+            onChange={(e) => setChosenState(e.target.value)}
+            placeholder="New York"
+          />
         </label>
         <label>
           <p>Zip Code</p>
