@@ -147,7 +147,7 @@ const AddBusinessAsOwner = () => {
   const businessFormPromptText =
     "Fill out the fields below. Your Yup listing will not appear in searches until it has been reviewed and approved by our moderators. You will then receive an email with further information on how to take over your Yup listing.";
 
-  const BusinessInfoForm = () => {
+  const businessInfoForm = () => {
     const handleBizInfoFormSubmit = () => {
       setComponentToRender("step-four");
     };
@@ -175,12 +175,13 @@ const AddBusinessAsOwner = () => {
             })}
           </select>
         </label>
-        <label htmlFor="company-name">Company Name</label>
-        <input
-          id="company-name"
-          name="company-name"
-          placeholder="Junior's Cheesecake"
-        />
+        <label>
+          Company Name
+          <input
+            value={businessName}
+            onChange={(e) => setBusinessName(e.target.value)}
+          />
+        </label>
         <label htmlFor="address-line-1">Address Line 1</label>
         <input
           id="address-line-1"
@@ -286,7 +287,7 @@ const AddBusinessAsOwner = () => {
             <h2>List your business on Yup</h2>
             <p>{businessFormPromptText}</p>
           </div>
-          <BusinessInfoForm />
+          {businessInfoForm()}
         </div>
       )}
     </div>
