@@ -29,7 +29,7 @@ const AddBusinessAsOwner = () => {
   }, [dispatch]);
 
   const business = useSelector(getBusiness(0));
-  console.log(business);
+  // console.log(business);
 
   const [businessName, setBusinessName] = useState("");
   const [componentToRender, setComponentToRender] = useState("initial");
@@ -144,17 +144,9 @@ const AddBusinessAsOwner = () => {
       }
     };
     countriesArray.some(countryCodeDoesMatch);
-
-    // countriesArray.forEach(countryCell=>{
-    //   if (countryCell[1] === chosenCountryCode) setCountryName(countryCell[0]);
-    //   break;
-    // });
-
-    // switch (chosenCountryCode) {
-    //   case
-    // }
     setComponentToRender("step-three");
   };
+
   const handleCountryNameChange = (e) => {
     e.preventDefault();
 
@@ -256,6 +248,8 @@ const AddBusinessAsOwner = () => {
     history.push("/login", addBusinessObject);
   };
 
+  if (!business) return null;
+
   return (
     <div id="add-business-owner-container">
       {componentToRender === "initial" && (
@@ -272,8 +266,10 @@ const AddBusinessAsOwner = () => {
           <div className="business-name-input-form">
             <form onSubmit={(e) => handleBusinessNameSubmit(e)}>
               <input
-                onChange={(e) => setBusinessName(e.target.value)}
-                value={businessName}
+                onChange={(e) => (business.name = e.target.value)}
+                // onChange={(e) => setBusinessName(e.target.value)}
+                value={business.name}
+                // value={businessName}
                 className="business-name"
                 placeholder="Your business name"
               />
