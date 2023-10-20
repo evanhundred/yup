@@ -91,7 +91,7 @@ const AddBusinessAsOwner = () => {
     ["United States", 1, "us"]
   ];
 
-  const CountryCodeDropdown = () => {
+  const countryCodeDropdown = () => {
     const handleCountryCodeClick = (code) => {
       setChosenCountryCode(code);
     };
@@ -154,10 +154,9 @@ const AddBusinessAsOwner = () => {
     return (
       <div className="business-info-form">
         <label>
-          <p className="label">Country</p>
+          <p>Country</p>
           <select
             name="country"
-            // defaultValue="united states"
             value={countryName.toLowerCase()}
             onChange={(e) => handleCountryNameChange(e)}
           >
@@ -176,26 +175,36 @@ const AddBusinessAsOwner = () => {
           </select>
         </label>
         <label>
-          Company Name
+          <p>Company Name</p>
           <input
             value={businessName}
             onChange={(e) => setBusinessName(e.target.value)}
           />
         </label>
-        <label htmlFor="address-line-1">Address Line 1</label>
-        <input
-          id="address-line-1"
-          name="address-line-1"
-          placeholder="386 Flatbush Ave."
-        />
-        <label htmlFor="address-line-2">Address Line 2</label>
-        <input id="address-line-2" name="address-line-2" />
-        <label htmlFor="city">Neighborhood</label>
-        <input id="city" name="city" placeholder="New Dorp" />
-        <label htmlFor="state">State</label>
-        <input id="state" name="state" placeholder="New York" />
-        <label htmlFor="zip-code">City</label>
-        <input id="zip-code" name="zip-code" placeholder="11003" />
+        <label>
+          <p>Address Line 1</p>
+          <input placeholder="386 Flatbush Ave." />
+        </label>
+        <label>
+          <p>Address Line 2</p>
+          <input />
+        </label>
+        <label>
+          <p>City</p>
+          <input placeholder="New York" />
+        </label>
+        <label>
+          <p>State</p>
+          <input placeholder="New York" />
+        </label>
+        <label>
+          <p>Zip Code</p>
+          <input placeholder="11003" />
+        </label>
+        <label>
+          <p>Neighborhood</p>
+          <input placeholder="Downtown Brooklyn" />
+        </label>
         <div
           className="continue-submit-button"
           onClick={handleBizInfoFormSubmit}
@@ -270,7 +279,7 @@ const AddBusinessAsOwner = () => {
           </div>
           {showSelectIntlCodeMenu && (
             <div className="select-intl-code-menu-container">
-              <CountryCodeDropdown />
+              {countryCodeDropdown()}
             </div>
           )}
           <div
