@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getBusiness, newBusiness } from "../../store/businesses";
 import "./index.css";
 
 import LeftArrow from "../../assets/icons/arrow-left.png";
@@ -20,7 +21,15 @@ const images = importAll(
 );
 
 const AddBusinessAsOwner = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
+
+  useEffect(() => {
+    dispatch(newBusiness());
+  }, [dispatch]);
+
+  const business = useSelector(getBusiness(0));
+  console.log(business);
 
   const [businessName, setBusinessName] = useState("");
   const [componentToRender, setComponentToRender] = useState("initial");
@@ -124,9 +133,9 @@ const AddBusinessAsOwner = () => {
 
   const handlePhoneNumberSubmit = () => {
     const countryCodeDoesMatch = (countryCell) => {
-      const countryCellName = countryCell[0];
-      if (countryCell[1] === chosenCountryCode) {
-        if (countryCellName === "Canada") {
+      const countryCellCode = countryCell[1];
+      if (countryCellCode === chosenCountryCode) {
+        if (countryCellCode === 1) {
           setCountryName("United States");
         } else {
           setCountryName(countryCell[0]);

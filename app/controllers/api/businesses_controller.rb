@@ -21,9 +21,14 @@ class Api::BusinessesController < ApplicationController
         end
     end
 
-    def share
-        @recepient = params[:recepient]
+    def new
+        @business = Business.new
+        render :show
     end
+
+    # def share
+    #     @recepient = params[:recepient]
+    # end
 
     def search
         query = params[:query]
@@ -37,7 +42,7 @@ class Api::BusinessesController < ApplicationController
         end
     end
 
-    private
+    # private
 
     # def share_biz_params
     #     params.require()
