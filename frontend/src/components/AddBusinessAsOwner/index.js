@@ -6,24 +6,24 @@ import "./index.css";
 import LeftArrow from "../../assets/icons/arrow-left.png";
 import downArrow from "../../assets/icons/down-arrow-black.png";
 
-// const importAll = (r) => {
-//   let images = {};
-//   r.keys().map((item) => {
-//     // added 'return'
-//     return (images[item.replace("./", "")] = r(item));
-//   });
-//   return images;
-// };
+const importAll = (r) => {
+  let images = {};
+  r.keys().map((item) => {
+    // added 'return'
+    return (images[item.replace("./", "")] = r(item));
+  });
+  return images;
+};
 
-// const images = importAll(
-//   require.context("../../assets/icons/flags/4x3/", false, /\.svg/)
-// );
+const images = importAll(
+  require.context("../../assets/icons/flags/4x3/", false, /\.svg/)
+);
 
 const AddBusinessAsOwner = () => {
   const history = useHistory();
 
   const [businessName, setBusinessName] = useState("");
-  const [componentToRender, setComponentToRender] = useState("business-form");
+  const [componentToRender, setComponentToRender] = useState("initial");
   const [showSelectIntlCodeMenu, setShowSelectIntlCodeMenu] = useState(false);
   const [chosenCountryCode, setChosenCountryCode] = useState(1);
   const [businessPhoneNumber, setBusinessPhoneNumber] = useState("");
@@ -33,6 +33,8 @@ const AddBusinessAsOwner = () => {
 
   const handleBusinessNameSubmit = (e) => {
     e.preventDefault();
+
+    setComponentToRender("step-two");
   };
 
   const handleBackButtonClick = () => {
@@ -43,6 +45,17 @@ const AddBusinessAsOwner = () => {
     e.preventDefault();
     setShowSelectIntlCodeMenu(true);
   };
+
+  useEffect(() => {
+    if (!showSelectIntlCodeMenu) return;
+
+    const closeSelectIntlCodeMenu = () => {
+      setShowSelectIntlCodeMenu(false);
+    };
+
+    document.addEventListener("click", closeSelectIntlCodeMenu);
+    return () => document.removeEventListener("click", closeSelectIntlCodeMenu);
+  }, [showSelectIntlCodeMenu]);
 
   const countriesArray = [
     ["Argentina", 54, "ar"],
@@ -79,7 +92,37 @@ const AddBusinessAsOwner = () => {
     ["United States", 1, "us"]
   ];
 
-  const handlePhoneNumberSubmit = () => {};
+  const CountryCodeDropdown = () => {
+    const handleCountryCodeClick = (code) => {
+      setChosenCountryCode(code);
+    };
+    return (
+      <ul className="select-intl-code-dropdown">
+        {countriesArray.map((countryCell) => {
+          return (
+            <li
+              key={countryCell[0]}
+              onClick={() => handleCountryCodeClick(countryCell[1])}
+            >
+              <div className="flag-icon-container">
+                <img
+                  className="flag-icon"
+                  src={images[`${countryCell[2]}.svg`]}
+                  alt={countryCell[0]}
+                  style={{ width: "40px" }}
+                />
+              </div>
+              <h4>{`${countryCell[0]} +${countryCell[1]}`}</h4>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  };
+
+  const handlePhoneNumberSubmit = () => {
+    setComponentToRender("step-three");
+  };
   const handleCountryNameChange = (e) => {
     e.preventDefault();
 
@@ -90,7 +133,9 @@ const AddBusinessAsOwner = () => {
     "Fill out the fields below. Your Yup listing will not appear in searches until it has been reviewed and approved by our moderators. You will then receive an email with further information on how to take over your Yup listing.";
 
   const BusinessInfoForm = () => {
-    const handleBizInfoFormSubmit = () => {};
+    const handleBizInfoFormSubmit = () => {
+      setComponentToRender("step-four");
+    };
     return (
       <div className="business-info-form">
         <label>
@@ -125,11 +170,11 @@ const AddBusinessAsOwner = () => {
         <input
           id="address-line-1"
           name="address-line-1"
-          placeholder="1176 Pennsylvania Ave."
+          placeholder="386 Flatbush Ave."
         />
         <label htmlFor="address-line-2">Address Line 2</label>
         <input id="address-line-2" name="address-line-2" />
-        <label htmlFor="city">City</label>
+        <label htmlFor="city">Neighborhood</label>
         <input id="city" name="city" placeholder="New Dorp" />
         <label htmlFor="state">State</label>
         <input id="state" name="state" placeholder="New York" />
@@ -155,7 +200,73 @@ const AddBusinessAsOwner = () => {
 
   return (
     <div id="add-business-owner-container">
-      {componentToRender === "business-form" && (
+      {componentToRender === "initial" && (
+        <div className="initial-component">
+          <div className="prompt">
+            <h2 className="prompt-title">
+              Hello. Let's start with your business name
+            </h2>
+            <p className="prompt-text">
+              We'll use this information to help you claim your Yelp page. Your
+              business will come up automatically if it is already listed.
+            </p>
+          </div>
+          <div className="business-name-input-form">
+            <form onSubmit={(e) => handleBusinessNameSubmit(e)}>
+              <input
+                onChange={(e) => setBusinessName(e.target.value)}
+                value={businessName}
+                // value={`${businessName}`}
+                className="business-name"
+                placeholder="Your business name"
+              />
+              <button className="continue">Continue</button>
+            </form>
+          </div>
+        </div>
+      )}
+      {componentToRender === "step-two" && (
+        <div className="step-two-container">
+          <div className="back-button" onClick={handleBackButtonClick}>
+            <img src={LeftArrow} alt="previous page" />
+            <p>Back</p>
+          </div>
+          <div className="prompt">
+            <h2 className="prompt-title">
+              Give customers a phone number so they can call your business
+            </h2>
+            <p>
+              Add the phone number for <span>{businessName}</span> to help
+              customers connect with you.
+            </p>
+          </div>
+          <div className="phone-number-entry">
+            <div className="prefix" onClick={(e) => openSelectIntlCodeMenu(e)}>
+              <p>{`+${chosenCountryCode}`}</p>
+              <img src={downArrow} alt="choose country code" />
+            </div>
+            <div className="main-number">
+              <input
+                placeholder="Business Phone Number"
+                value={businessPhoneNumber}
+                onChange={(e) => setBusinessPhoneNumber(e.target.value)}
+              />
+            </div>
+          </div>
+          <div
+            className="continue-submit-button"
+            onClick={handlePhoneNumberSubmit}
+          >
+            Continue
+          </div>
+        </div>
+      )}
+      {showSelectIntlCodeMenu && (
+        <div className="select-intl-code-menu-container">
+          <CountryCodeDropdown />
+        </div>
+      )}
+      {componentToRender === "step-three" && (
         <div className="step-three-container">
           <div className="prompt">
             <h2>List your business on Yup</h2>

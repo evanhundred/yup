@@ -2,3 +2,7 @@
   "workbench.colorTheme": "Solarized Light",
   "window.zoomLevel": 1.3
 }
+
+// "files.exclude": {
+//   "db/migrate/schema.rb": true
+// }
