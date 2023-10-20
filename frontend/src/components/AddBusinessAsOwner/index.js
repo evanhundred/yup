@@ -28,8 +28,7 @@ const AddBusinessAsOwner = () => {
   const [chosenCountryCode, setChosenCountryCode] = useState(1);
   const [businessPhoneNumber, setBusinessPhoneNumber] = useState("");
   const [countryName, setCountryName] = useState("");
-  const [selectedCountryName, setSelectedCountryName] =
-    useState("united states");
+  const [selectedCountryName, setSelectedCountryName] = useState("");
 
   const handleBusinessNameSubmit = (e) => {
     e.preventDefault();
@@ -121,6 +120,22 @@ const AddBusinessAsOwner = () => {
   };
 
   const handlePhoneNumberSubmit = () => {
+    const countryCodeDoesMatch = (countryCell) => {
+      if (countryCell[1] === chosenCountryCode) {
+        setCountryName(countryCell[0]);
+        return true;
+      }
+    };
+    countriesArray.some(countryCodeDoesMatch);
+
+    // countriesArray.forEach(countryCell=>{
+    //   if (countryCell[1] === chosenCountryCode) setCountryName(countryCell[0]);
+    //   break;
+    // });
+
+    // switch (chosenCountryCode) {
+    //   case
+    // }
     setComponentToRender("step-three");
   };
   const handleCountryNameChange = (e) => {
@@ -142,8 +157,8 @@ const AddBusinessAsOwner = () => {
           <p className="label">Country</p>
           <select
             name="country"
-            defaultValue="united states"
-            value={selectedCountryName}
+            // defaultValue="united states"
+            value={countryName.toLowerCase()}
             onChange={(e) => handleCountryNameChange(e)}
           >
             {countriesArray.map((countryCell) => {
