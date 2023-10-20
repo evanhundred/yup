@@ -216,7 +216,6 @@ const AddBusinessAsOwner = () => {
               <input
                 onChange={(e) => setBusinessName(e.target.value)}
                 value={businessName}
-                // value={`${businessName}`}
                 className="business-name"
                 placeholder="Your business name"
               />
@@ -253,17 +252,17 @@ const AddBusinessAsOwner = () => {
               />
             </div>
           </div>
+          {showSelectIntlCodeMenu && (
+            <div className="select-intl-code-menu-container">
+              <CountryCodeDropdown />
+            </div>
+          )}
           <div
             className="continue-submit-button"
             onClick={handlePhoneNumberSubmit}
           >
             Continue
           </div>
-        </div>
-      )}
-      {showSelectIntlCodeMenu && (
-        <div className="select-intl-code-menu-container">
-          <CountryCodeDropdown />
         </div>
       )}
       {componentToRender === "step-three" && (
