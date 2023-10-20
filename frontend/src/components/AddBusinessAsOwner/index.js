@@ -124,8 +124,13 @@ const AddBusinessAsOwner = () => {
 
   const handlePhoneNumberSubmit = () => {
     const countryCodeDoesMatch = (countryCell) => {
+      const countryCellName = countryCell[0];
       if (countryCell[1] === chosenCountryCode) {
-        setCountryName(countryCell[0]);
+        if (countryCellName === "Canada") {
+          setCountryName("United States");
+        } else {
+          setCountryName(countryCell[0]);
+        }
         return true;
       }
     };
@@ -154,6 +159,7 @@ const AddBusinessAsOwner = () => {
     const handleBizInfoFormSubmit = () => {
       setComponentToRender("step-four");
     };
+
     return (
       <div className="business-info-form">
         <label>
