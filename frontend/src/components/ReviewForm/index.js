@@ -235,6 +235,9 @@ const ReviewForm = () => {
     styleStarBoxes(rating);
   }
 
+  const currentUser = useSelector((state) => state.session.user);
+  if (!currentUser) history.push("/login");
+
   return (
     <div id="review-form-container">
       <div className="top-line">

@@ -154,16 +154,16 @@ a {
       margin-right: 3px;
     }
 
-    & .yelp-for-business-link,
+    & .yup-for-business-link,
     .write-review-link {
       color: white;
     }
   }
 
-  & .yelp-for-business-link {
+  & .yup-for-business-link {
     margin-left: 52px;
 
-    & ul.yelp-for-business-dropdown {
+    & ul.yup-for-business-dropdown {
       position: absolute;
       background-color: white;
 
@@ -203,8 +203,9 @@ a {
           padding: 3px 2px 2px 3px;
           display: flex;
           align-items: center;
-          /* justify-content: space-between; */
           gap: 15px;
+          cursor: pointer;
+          /* justify-content: space-between; */
           /* width: max-content; */
         }
 
@@ -239,7 +240,7 @@ a {
     margin-left: 10px;
   }
 
-  & .yelp-for-business-link,
+  & .yup-for-business-link,
   .write-review-link {
     color: black;
     cursor: pointer;

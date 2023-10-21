@@ -117,55 +117,61 @@ const Navigation = ({ props }) => {
     );
   };
 
-  const YelpForBusinessMenu = () => {
-    const [showYelpForBusinessMenu, setShowYelpForBusinessMenu] =
-      useState(false);
-    const openYelpForBusinessMenu = () => {
-      if (showYelpForBusinessMenu) return;
-      setShowYelpForBusinessMenu(true);
+  const YupForBusinessMenu = () => {
+    const [showYupForBusinessMenu, setShowYupForBusinessMenu] = useState(false);
+    const openYupForBusinessMenu = () => {
+      if (showYupForBusinessMenu) return;
+      setShowYupForBusinessMenu(true);
     };
 
     useEffect(() => {
-      if (!showYelpForBusinessMenu) return;
+      if (!showYupForBusinessMenu) return;
 
-      const closeYelpForBusinessMenu = () => {
-        setShowYelpForBusinessMenu(false);
+      const closeYupForBusinessMenu = () => {
+        setShowYupForBusinessMenu(false);
       };
 
-      document.addEventListener("click", closeYelpForBusinessMenu);
+      document.addEventListener("click", closeYupForBusinessMenu);
       return () =>
-        document.removeEventListener("click", closeYelpForBusinessMenu);
-    }, [showYelpForBusinessMenu]);
+        document.removeEventListener("click", closeYupForBusinessMenu);
+    }, [showYupForBusinessMenu]);
+
+    const currentUser = useSelector((state) => state.session.user);
+
+    const handleYupForBusinessClick = () => {
+      if (currentUser) history.push("/add-business-as-owner");
+      else history.push("/login");
+    };
 
     return (
-      <div className="yelp-for-business-link" onClick={openYelpForBusinessMenu}>
-        <h4>Yelp for Business</h4>
+      <div className="yup-for-business-link" onClick={openYupForBusinessMenu}>
+        <h4>Yup for Business</h4>
         <img
           src={pageType === "index" ? downArrowWhite : downArrowBlack}
           alt="drop down this menu"
         />
-        {showYelpForBusinessMenu && (
-          <ul className="yelp-for-business-dropdown">
+        {showYupForBusinessMenu && (
+          <ul className="yup-for-business-dropdown">
             <li>
-              <div className="first-row">
-                <Link to="/add-business-as-owner">
-                  <img src={onlineStore} alt="add a business" />
-                  <div className="menu-h4-container">
-                    <div className="spacer" />
-                    <h4>Add a business</h4>
-                  </div>
-                </Link>
+              <div className="first-row" onClick={handleYupForBusinessClick}>
+                {/* <Link to="/add-business-as-owner"> */}
+                <img src={onlineStore} alt="add a business" />
+                <div className="menu-h4-container">
+                  <div className="spacer" />
+                  <h4>Add a business</h4>
+                </div>
+                {/* </Link> */}
               </div>
             </li>
             <li>
-              <div className="second-row">
-                <Link to="/add-business-as-owner">
-                  <img src={checkIcon} alt="claim your business" />
-                  <div className="menu-h4-container">
-                    <div className="spacer" />
-                    <h4>Claim your business</h4>
-                  </div>
-                </Link>
+              <div className="second-row" onClick={handleYupForBusinessClick}>
+                {/* <Link to="/add-business-as-owner"> */}
+                <img src={checkIcon} alt="claim your business" />
+                <div className="menu-h4-container">
+                  <div className="spacer" />
+                  <h4>Claim your business</h4>
+                </div>
+                {/* </Link> */}
               </div>
             </li>
           </ul>
@@ -203,7 +209,7 @@ const Navigation = ({ props }) => {
             <SearchBar />
           </div>
 
-          <YelpForBusinessMenu />
+          <YupForBusinessMenu />
           {writeReviewNavLink()}
         </div>
         <div className="right-side">

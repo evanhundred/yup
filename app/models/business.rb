@@ -21,9 +21,11 @@
 #  updated_at   :datetime         not null
 #  neighborhood :string
 #  place_id     :string
+#  country_code :integer
+#  country      :string
 #
 class Business < ApplicationRecord
-    validates :name, :address, :zipcode, :city, :state, :phone, :open_at, :closed_at, :about, :category, :price, :neighborhood, presence: true
+    validates :name, :address, :zipcode, :city, :state, :phone, :open_at, :closed_at, :about, :category, :price, :neighborhood, :country_code, :country, presence: true
 
     has_many :reviews,
         class_name: :Review,

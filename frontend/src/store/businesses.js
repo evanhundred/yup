@@ -11,12 +11,12 @@ export const CLEAR_ERRORS = "businesses/CLEAR_ERRORS";
 export const SHARE_BUSINESS = "businesses/SHARE_BUSINESS";
 export const CLEAR_BUSINESSES = "businesses/CLEAR_BUSINESSES";
 
-export const RECEIVE_TEMPLATE = "buinesses/RECEIVE_TEMPLATE";
+// export const RECEIVE_TEMPLATE = "buinesses/RECEIVE_TEMPLATE";
 
-export const receiveTemplate = (template) => ({
-  type: RECEIVE_TEMPLATE,
-  template
-});
+// export const receiveTemplate = (template) => ({
+//   type: RECEIVE_TEMPLATE,
+//   template
+// });
 
 export const receiveBusinesses = (businesses) => ({
   type: RECEIVE_BUSINESSES,
@@ -84,17 +84,17 @@ export const fetchBusiness = (businessId) => async (dispatch) => {
   }
 };
 
-export const newBusiness = () => async (dispatch) => {
-  let data;
-  const res = await csrfFetch("/api/businesses/new");
-  if (res.ok) {
-    data = await res.json();
-    dispatch(clearBusinesses());
-    dispatch(receiveTemplate(data));
-  } else {
-    data = res.errors;
-  }
-};
+// export const newBusiness = () => async (dispatch) => {
+//   let data;
+//   const res = await csrfFetch("/api/businesses/new");
+//   if (res.ok) {
+//     data = await res.json();
+//     dispatch(clearBusinesses());
+//     dispatch(receiveTemplate(data));
+//   } else {
+//     data = res.errors;
+//   }
+// };
 
 export const searchBusinesses = (query) => async (dispatch) => {
   let data;
@@ -129,9 +129,9 @@ const businessesReducer = (preloadedState = {}, action) => {
       return {};
     case CLEAR_BUSINESSES:
       return {};
-    case RECEIVE_TEMPLATE:
-      newState[0] = action.template;
-      return newState;
+    // case RECEIVE_TEMPLATE:
+    //   newState[0] = action.template;
+    //   return newState;
     default:
       return preloadedState;
   }

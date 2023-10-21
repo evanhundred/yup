@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getBusiness, newBusiness } from "../../store/businesses";
+// import { getBusiness, newBusiness } from "../../store/businesses";
+import { newBusiness } from "../../utils/businesses";
 import "./index.css";
 
 import LeftArrow from "../../assets/icons/arrow-left.png";
@@ -24,23 +25,22 @@ const AddBusinessAsOwner = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  useEffect(() => {
-    dispatch(newBusiness());
-  }, [dispatch]);
-
-  const business = useSelector(getBusiness(0));
-  // console.log(business);
-
-  const [businessName, setBusinessName] = useState("");
   const [componentToRender, setComponentToRender] = useState("initial");
   const [showSelectIntlCodeMenu, setShowSelectIntlCodeMenu] = useState(false);
-  const [chosenCountryCode, setChosenCountryCode] = useState(1);
-  const [businessPhoneNumber, setBusinessPhoneNumber] = useState("");
-  const [countryName, setCountryName] = useState("");
-  const [addressLine1, setAddressLine1] = useState("");
-  const [addressLine2, setAddressLine2] = useState("");
-  const [city, setCity] = useState("");
-  const [chosenState, setChosenState] = useState("");
+
+  // const [businessName, setBusinessName] = useState("");
+  // const [chosenCountryCode, setChosenCountryCode] = useState(1);
+  // const [chosenPhoneNumber, setChosenPhoneNumber] = useState("");
+  // const [countryName, setCountryName] = useState("");
+  // const [addressLine1, setAddressLine1] = useState("");
+  // const [addressLine2, setAddressLine2] = useState("");
+  // const [city, setCity] = useState("");
+  // const [chosenState, setChosenState] = useState("");
+
+  const newBusinessTemplate = newBusiness();
+  const [bizTemplate, setBizTemplate] = useState(newBusinessTemplate);
+
+  console.log(bizTemplate);
 
   const handleBusinessNameSubmit = (e) => {
     e.preventDefault();
@@ -105,7 +105,9 @@ const AddBusinessAsOwner = () => {
 
   const countryCodeDropdown = () => {
     const handleCountryCodeClick = (code) => {
-      setChosenCountryCode(code);
+      bizTemplate.countryCode = code;
+
+      // setChosenCountryCode(code);
     };
     return (
       <ul className="select-intl-code-dropdown">
@@ -132,13 +134,18 @@ const AddBusinessAsOwner = () => {
   };
 
   const handlePhoneNumberSubmit = () => {
+    // business.phone = chosenCountryCode.toString().concat(chosenPhoneNumber);
+    if (!bizTemplate.countryCode) {
+      bizTemplate.countryCode = 1;
+    }
+
     const countryCodeDoesMatch = (countryCell) => {
       const countryCellCode = countryCell[1];
-      if (countryCellCode === chosenCountryCode) {
+      if (countryCellCode === bizTemplate.countryCode) {
         if (countryCellCode === 1) {
-          setCountryName("United States");
+          bizTemplate.country = "United States";
         } else {
-          setCountryName(countryCell[0]);
+          bizTemplate.country = countryCell[0];
         }
         return true;
       }
@@ -150,7 +157,8 @@ const AddBusinessAsOwner = () => {
   const handleCountryNameChange = (e) => {
     e.preventDefault();
 
-    setCountryName(e.target.value);
+    bizTemplate.country = e.target.value;
+    // setCountryName(e.target.value);
   };
 
   const businessFormPromptText =
@@ -167,7 +175,7 @@ const AddBusinessAsOwner = () => {
           <p>Country</p>
           <select
             name="country"
-            value={countryName.toLowerCase()}
+            value={bizTemplate.country.toLowerCase()}
             onChange={(e) => handleCountryNameChange(e)}
           >
             {countriesArray.map((countryCell) => {
@@ -187,48 +195,56 @@ const AddBusinessAsOwner = () => {
         <label>
           <p>Company Name</p>
           <input
-            value={businessName}
-            onChange={(e) => setBusinessName(e.target.value)}
+            value={bizTemplate.name}
+            onChange={(e) => (bizTemplate.name = e.target.value)}
           />
         </label>
         <label>
           <p>Address Line 1</p>
           <input
-            value={addressLine1}
-            onChange={(e) => setAddressLine1(e.target.value)}
+            value={bizTemplate.address}
+            onChange={(e) => (bizTemplate.address = e.target.value)}
             placeholder="386 Flatbush Ave."
           />
         </label>
-        <label>
+        {/* <label>
           <p>Address Line 2</p>
           <input
             value={addressLine2}
             onChange={(e) => setAddressLine2(e.target.value)}
           />
-        </label>
+        </label> */}
         <label>
           <p>City</p>
           <input
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
+            value={bizTemplate.city}
+            onChange={(e) => (bizTemplate.city = e.target.value)}
             placeholder="New York"
           />
         </label>
         <label>
           <p>State</p>
           <input
-            value={chosenState}
-            onChange={(e) => setChosenState(e.target.value)}
+            value={bizTemplate.state}
+            onChange={(e) => (bizTemplate.state = e.target.value)}
             placeholder="New York"
           />
         </label>
         <label>
           <p>Zip Code</p>
-          <input placeholder="11003" />
+          <input
+            placeholder="11003"
+            value={bizTemplate.zipcode}
+            onChange={(e) => (bizTemplate.zipcode = e.target.value)}
+          />
         </label>
         <label>
           <p>Neighborhood</p>
-          <input placeholder="Downtown Brooklyn" />
+          <input
+            placeholder="Downtown Brooklyn"
+            value={bizTemplate.neighborhood}
+            onChange={(e) => (bizTemplate.neighborhood = e.target.value)}
+          />
         </label>
         <div
           className="continue-submit-button"
@@ -240,15 +256,17 @@ const AddBusinessAsOwner = () => {
     );
   };
 
-  const handleLogInClick = () => {
-    const addBusinessObject = {
-      addBusiness: true,
-      businessName: businessName
-    };
-    history.push("/login", addBusinessObject);
-  };
+  // const handleLogInClick = () => {
+  //   const addBusinessObject = {
+  //     addBusiness: true,
+  //     businessName: businessName
+  //   };
+  //   history.push("/login", addBusinessObject);
+  // };
 
-  if (!business) return null;
+  // if (!business) return null;
+  const currentUser = useSelector((state) => state.session.user);
+  if (!currentUser) history.push("/login");
 
   return (
     <div id="add-business-owner-container">
@@ -259,17 +277,16 @@ const AddBusinessAsOwner = () => {
               Hello. Let's start with your business name
             </h2>
             <p className="prompt-text">
-              We'll use this information to help you claim your Yelp page. Your
+              We'll use this information to help you claim your Yup page. Your
               business will come up automatically if it is already listed.
             </p>
           </div>
           <div className="business-name-input-form">
             <form onSubmit={(e) => handleBusinessNameSubmit(e)}>
               <input
-                onChange={(e) => (business.name = e.target.value)}
+                onChange={(e) => (bizTemplate.name = e.target.value)}
                 // onChange={(e) => setBusinessName(e.target.value)}
-                value={business.name}
-                // value={businessName}
+                value={bizTemplate.name}
                 className="business-name"
                 placeholder="Your business name"
               />
@@ -289,20 +306,20 @@ const AddBusinessAsOwner = () => {
               Give customers a phone number so they can call your business
             </h2>
             <p>
-              Add the phone number for <span>{businessName}</span> to help
+              Add the phone number for <span>{bizTemplate.name}</span> to help
               customers connect with you.
             </p>
           </div>
           <div className="phone-number-entry">
             <div className="prefix" onClick={(e) => openSelectIntlCodeMenu(e)}>
-              <p>{`+${chosenCountryCode}`}</p>
+              <p>{`+${bizTemplate.countryCode || 1}`}</p>
               <img src={downArrow} alt="choose country code" />
             </div>
             <div className="main-number">
               <input
                 placeholder="Business Phone Number"
-                value={businessPhoneNumber}
-                onChange={(e) => setBusinessPhoneNumber(e.target.value)}
+                value={bizTemplate.phone}
+                onChange={(e) => (bizTemplate.phone = e.target.value)}
               />
             </div>
           </div>
@@ -326,6 +343,20 @@ const AddBusinessAsOwner = () => {
             <p>{businessFormPromptText}</p>
           </div>
           {businessInfoForm()}
+        </div>
+      )}
+      {componentToRender === "step-four" && (
+        <div className="step-four-container">
+          <div className="prompt">
+            <h2>Successful submission.</h2>
+            <p>
+              Your business is now live in "stub mode". Business stubs can
+              accept reviews from all users, and revisions by the stub owner.
+              Yup will then verify this business, and fill in the details. As a
+              business owner, your account will have live access to edit and
+              destroy the business profile.
+            </p>
+          </div>
         </div>
       )}
     </div>
