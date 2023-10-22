@@ -43,7 +43,7 @@ export const newBusiness = () => {
     const key = keysArray.pop();
     data[[key]] = "";
   }
-  data.stub = true;
+  data.stub = "true";
 
   return data;
 };

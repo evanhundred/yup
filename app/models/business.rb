@@ -23,7 +23,7 @@
 #  place_id     :string
 #  country_code :integer
 #  country      :string
-#  stub         :boolean
+#  stub         :string
 #  owner_id     :bigint
 #
 class Business < ApplicationRecord
