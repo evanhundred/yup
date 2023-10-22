@@ -162,6 +162,8 @@ const AddBusinessAsOwner = () => {
   //   // setCountryName(e.target.value);
   // };
 
+  console.log(bizTemplate);
+
   const [errors, setErrors] = useState([]);
   const submitBizInfoToBackend = async () => {
     const businessObject = { business: bizTemplate };
@@ -179,6 +181,9 @@ const AddBusinessAsOwner = () => {
         console.log(errors);
       }
     );
+
+    if (res.ok) setComponentToRender("step-four");
+    else console.log("fail");
 
     // let data;
     // if (res.ok) {

@@ -32,12 +32,17 @@ class Business < ApplicationRecord
 
     # full business:
     # validates :name, :address, :zipcode, :city, :state, :phone, :open_at, :closed_at, :about, :category, :price, :neighborhood, :country_code, :country, :stub, presence: true
-    attr_accessor :stub
+    # attr_accessor :stub
+
+    # def stub=(string)
+    #     self.stub = string
+    # end
 
     has_many :reviews,
         class_name: :Review,
         foreign_key: :business_id,
-        inverse_of: :business
+        inverse_of: :business,
+        dependent: :destroy
 
     belongs_to :owner,
         class_name: :User,
