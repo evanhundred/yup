@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { getBusiness, newBusiness } from "../../store/businesses";
 import { newBusiness } from "../../utils/businesses";
+import { createBusinessStub } from "../../store/businesses";
 import "./index.css";
 
 import LeftArrow from "../../assets/icons/arrow-left.png";
@@ -40,7 +41,7 @@ const AddBusinessAsOwner = () => {
   const newBusinessTemplate = newBusiness();
   const [bizTemplate, setBizTemplate] = useState(newBusinessTemplate);
 
-  console.log(bizTemplate);
+  // console.log(bizTemplate);
 
   const handleBusinessNameSubmit = (e) => {
     e.preventDefault();
@@ -161,12 +162,18 @@ const AddBusinessAsOwner = () => {
     // setCountryName(e.target.value);
   };
 
+  const submitBizInfoToBackend = () => {
+    dispatch(createBusinessStub(bizTemplate));
+  };
+
   const businessFormPromptText =
     "Fill out the fields below. Your Yup listing will not appear in searches until it has been reviewed and approved by our moderators. You will then receive an email with further information on how to take over your Yup listing.";
 
   const businessInfoForm = () => {
     const handleBizInfoFormSubmit = () => {
       setComponentToRender("step-four");
+
+      submitBizInfoToBackend();
     };
 
     return (
@@ -268,6 +275,15 @@ const AddBusinessAsOwner = () => {
   const currentUser = useSelector((state) => state.session.user);
   if (!currentUser) history.push("/login");
 
+  const handleChange = (e) => {
+    const attributeName = e.target.className;
+    // console.log(attributeName);
+    setBizTemplate({
+      ...bizTemplate,
+      [attributeName]: e.target.value
+    });
+  };
+
   return (
     <div id="add-business-owner-container">
       {componentToRender === "initial" && (
@@ -284,10 +300,11 @@ const AddBusinessAsOwner = () => {
           <div className="business-name-input-form">
             <form onSubmit={(e) => handleBusinessNameSubmit(e)}>
               <input
-                onChange={(e) => (bizTemplate.name = e.target.value)}
+                onChange={(e) => handleChange(e)}
+                // onChange={(e) => (bizTemplate.name = e.target.value)}
                 // onChange={(e) => setBusinessName(e.target.value)}
                 value={bizTemplate.name}
-                className="business-name"
+                className="name"
                 placeholder="Your business name"
               />
               <button className="continue">Continue</button>

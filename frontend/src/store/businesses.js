@@ -11,6 +11,13 @@ export const CLEAR_ERRORS = "businesses/CLEAR_ERRORS";
 export const SHARE_BUSINESS = "businesses/SHARE_BUSINESS";
 export const CLEAR_BUSINESSES = "businesses/CLEAR_BUSINESSES";
 
+// export const CREATE_BUSINESS_STUB = "businesses/CREATE_BUSINESS_STUB";
+
+// export const createBusinessStub = (business) => ({
+//   type: CREATE_BUSINESS_STUB,
+//   business
+// })
+
 // export const RECEIVE_TEMPLATE = "buinesses/RECEIVE_TEMPLATE";
 
 // export const receiveTemplate = (template) => ({
@@ -84,6 +91,22 @@ export const fetchBusiness = (businessId) => async (dispatch) => {
   }
 };
 
+export const createBusinessStub = (business) => async (dispatch) => {
+  let data;
+  const res = await csrfFetch(`/api/businesses/`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(business)
+  }).catch((error) => {
+    data = error;
+  });
+  if (res && res.ok) {
+    data = await res.json();
+    dispatch(receiveBusiness(data));
+  }
+  return data;
+};
+
 // export const newBusiness = () => async (dispatch) => {
 //   let data;
 //   const res = await csrfFetch("/api/businesses/new");
@@ -112,6 +135,10 @@ export const searchBusinesses = (query) => async (dispatch) => {
 
   return data;
 };
+
+// export const showTemplate = (state) => {
+//   console.log(state);
+// }
 
 const businessesReducer = (preloadedState = {}, action) => {
   const newState = { ...preloadedState };

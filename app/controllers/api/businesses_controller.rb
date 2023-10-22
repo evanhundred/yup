@@ -26,6 +26,10 @@ class Api::BusinessesController < ApplicationController
         render :show
     end
 
+    def create
+
+    end
+
     # def share
     #     @recepient = params[:recepient]
     # end

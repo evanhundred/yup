@@ -23,7 +23,7 @@ export const newBusiness = () => {
   const data = {};
   while (keysArray.length !== 0) {
     const key = keysArray.pop();
-    data[[key]] = null;
+    data[[key]] = "";
   }
 
   return data;
