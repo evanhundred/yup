@@ -155,25 +155,70 @@ const AddBusinessAsOwner = () => {
     setComponentToRender("step-three");
   };
 
-  const handleCountryNameChange = (e) => {
-    e.preventDefault();
+  // const handleCountryNameChange = (e) => {
+  //   e.preventDefault();
 
-    bizTemplate.country = e.target.value;
-    // setCountryName(e.target.value);
-  };
+  //   bizTemplate.country = e.target.value;
+  //   // setCountryName(e.target.value);
+  // };
 
-  const submitBizInfoToBackend = () => {
-    dispatch(createBusinessStub(bizTemplate));
+  const [errors, setErrors] = useState([]);
+  const submitBizInfoToBackend = async () => {
+    const businessObject = { business: bizTemplate };
+    const res = await dispatch(createBusinessStub(businessObject)).catch(
+      async (res) => {
+        let data;
+        try {
+          data = await res.clone().json();
+        } catch {
+          data = await res.text();
+        }
+        if (data?.errors) setErrors(data.errors);
+        else if (data) setErrors([data]);
+        else setErrors([res.statusText]);
+        console.log(errors);
+      }
+    );
+
+    // let data;
+    // if (res.ok) {
+    //   data = await res.json();
+    //   console.log(await data);
+    //   return data;
+    // } else {
+    //   data = await res.json();
+    //   // data = { errors: res };
+    //   console.log(data);
+    // }
   };
 
   const businessFormPromptText =
     "Fill out the fields below. Your Yup listing will not appear in searches until it has been reviewed and approved by our moderators. You will then receive an email with further information on how to take over your Yup listing.";
 
-  const businessInfoForm = () => {
-    const handleBizInfoFormSubmit = () => {
-      setComponentToRender("step-four");
+  const handleChange = (e) => {
+    const attributeName = e.target.className;
+    console.log(attributeName);
+    setBizTemplate({
+      ...bizTemplate,
+      [attributeName]: e.target.value
+    });
+  };
 
-      submitBizInfoToBackend();
+  const businessInfoForm = () => {
+    const handleBizInfoFormSubmit = async () => {
+      const res = await submitBizInfoToBackend();
+      let next;
+      let data;
+      console.log(res);
+      // if (res.ok) {
+      //   data = await res.json();
+      //   console.log(data);
+      //   next = "step-four";
+      // } else {
+      //   data = { errors: res };
+      //   next = "submission-fail";
+      // }
+      // setComponentToRender(next);
     };
 
     return (
@@ -182,8 +227,9 @@ const AddBusinessAsOwner = () => {
           <p>Country</p>
           <select
             name="country"
+            className="country"
             value={bizTemplate.country.toLowerCase()}
-            onChange={(e) => handleCountryNameChange(e)}
+            onChange={(e) => handleChange(e)}
           >
             {countriesArray.map((countryCell) => {
               const countryArrayName = countryCell[0];
@@ -202,15 +248,17 @@ const AddBusinessAsOwner = () => {
         <label>
           <p>Company Name</p>
           <input
+            className="name"
             value={bizTemplate.name}
-            onChange={(e) => (bizTemplate.name = e.target.value)}
+            onChange={(e) => handleChange(e)}
           />
         </label>
         <label>
           <p>Address Line 1</p>
           <input
+            className="address"
             value={bizTemplate.address}
-            onChange={(e) => (bizTemplate.address = e.target.value)}
+            onChange={(e) => handleChange(e)}
             placeholder="386 Flatbush Ave."
           />
         </label>
@@ -224,33 +272,37 @@ const AddBusinessAsOwner = () => {
         <label>
           <p>City</p>
           <input
+            className="city"
             value={bizTemplate.city}
-            onChange={(e) => (bizTemplate.city = e.target.value)}
+            onChange={(e) => handleChange(e)}
             placeholder="New York"
           />
         </label>
         <label>
           <p>State</p>
           <input
+            className="state"
             value={bizTemplate.state}
-            onChange={(e) => (bizTemplate.state = e.target.value)}
-            placeholder="New York"
+            onChange={(e) => handleChange(e)}
+            placeholder="NY"
           />
         </label>
         <label>
           <p>Zip Code</p>
           <input
             placeholder="11003"
+            className="zipcode"
             value={bizTemplate.zipcode}
-            onChange={(e) => (bizTemplate.zipcode = e.target.value)}
+            onChange={(e) => handleChange(e)}
           />
         </label>
         <label>
           <p>Neighborhood</p>
           <input
+            className="neighborhood"
             placeholder="Downtown Brooklyn"
             value={bizTemplate.neighborhood}
-            onChange={(e) => (bizTemplate.neighborhood = e.target.value)}
+            onChange={(e) => handleChange(e)}
           />
         </label>
         <div
@@ -263,26 +315,8 @@ const AddBusinessAsOwner = () => {
     );
   };
 
-  // const handleLogInClick = () => {
-  //   const addBusinessObject = {
-  //     addBusiness: true,
-  //     businessName: businessName
-  //   };
-  //   history.push("/login", addBusinessObject);
-  // };
-
-  // if (!business) return null;
   const currentUser = useSelector((state) => state.session.user);
   if (!currentUser) history.push("/login");
-
-  const handleChange = (e) => {
-    const attributeName = e.target.className;
-    // console.log(attributeName);
-    setBizTemplate({
-      ...bizTemplate,
-      [attributeName]: e.target.value
-    });
-  };
 
   return (
     <div id="add-business-owner-container">
@@ -334,9 +368,10 @@ const AddBusinessAsOwner = () => {
             </div>
             <div className="main-number">
               <input
+                className="phone"
                 placeholder="Business Phone Number"
                 value={bizTemplate.phone}
-                onChange={(e) => (bizTemplate.phone = e.target.value)}
+                onChange={(e) => handleChange(e)}
               />
             </div>
           </div>
@@ -375,6 +410,9 @@ const AddBusinessAsOwner = () => {
             </p>
           </div>
         </div>
+      )}
+      {componentToRender === "submission-fail" && (
+        <div className="error-message">Submission fail.</div>
       )}
     </div>
   );

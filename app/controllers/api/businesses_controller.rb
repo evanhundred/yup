@@ -21,13 +21,20 @@ class Api::BusinessesController < ApplicationController
         end
     end
 
-    def new
-        @business = Business.new
-        render :show
-    end
+    # def new
+    #     @business = Business.new
+    #     render :show
+    # end
 
     def create
-
+        @business = Business.new(business_params)
+        @business.stub = true
+        @business.owner_id = current_user.id
+        if @business.save
+            render json: { message: 'success' }, status: 200
+        else
+            render json: {errors: @business.errors.full_messages}, status: 422
+        end
     end
 
     # def share
@@ -46,7 +53,31 @@ class Api::BusinessesController < ApplicationController
         end
     end
 
-    # private
+    private
+
+    def business_params
+        params.require(:business).permit(
+            :name,
+            :latitude,
+            :longitude,
+            :address,
+            :city,
+            :state,
+            :zipcode,
+            :neighborhood,
+            :phone,
+            :website,
+            :open_at,
+            :closed_at,
+            :about,
+            :category,
+            :price,
+            :place_id,
+            :country,
+            :country_code,
+            :stub
+        )
+    end
 
     # def share_biz_params
     #     params.require()
