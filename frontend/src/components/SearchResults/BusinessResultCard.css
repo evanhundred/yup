@@ -1,155 +1,157 @@
-.business-card-container {
-  display: flex;
-  gap: 20px;
-  margin: 5px 0;
-  padding: 24px;
-}
+#search-results-container {
+  & .business-card-container {
+    display: flex;
+    gap: 20px;
+    margin: 5px 0;
+    padding: 24px;
+  }
 
-.business-card-container.unhovered {
-  border-bottom: 2px solid rgb(0, 0, 0, 0.2);
-  /* browswer behaves erratically with shadow on/off */
-  /* margin-bottom: -1px; */
-}
+  & .business-card-container.unhovered {
+    border-bottom: 2px solid rgb(0, 0, 0, 0.2);
+    /* browswer behaves erratically with shadow on/off */
+    /* margin-bottom: -1px; */
+  }
 
-.business-card-container.hovered {
-  /* padding-top: -10px; */
-  box-shadow: 0 0 20px 0 rgb(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.19);
-  /* border: 2px solid rgb(105, 104, 104); */
-  border-radius: 6px;
-}
+  & .business-card-container.hovered {
+    /* padding-top: -10px; */
+    box-shadow: 0 0 20px 0 rgb(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.19);
+    /* border: 2px solid rgb(105, 104, 104); */
+    border-radius: 6px;
+  }
 
-.business-card-container div.shadow-reset {
-  margin: 1px;
-}
+  & .business-card-container div.shadow-reset {
+    margin: 1px;
+  }
 
-.business-photo-container {
-  border-radius: 6px;
-}
+  & .business-photo-container {
+    border-radius: 6px;
+  }
 
-.business-photo-container img {
-  border-radius: 4px;
-  object-fit: cover;
-  height: 225px;
-  width: 225px;
-  display: flex;
-}
+  & .business-photo-container img {
+    border-radius: 4px;
+    object-fit: cover;
+    height: 225px;
+    width: 225px;
+    display: flex;
+  }
 
-.business-card-container .business-info {
-  margin-top: 10px;
-}
+  & .business-card-container .business-info {
+    margin-top: 10px;
+  }
 
-.business-card-container .business-info p {
-  font-weight: 500;
-  text-decoration: none;
-}
+  & .business-card-container .business-info p {
+    font-weight: 500;
+    text-decoration: none;
+  }
 
-.business-info .business-title p {
-  color: black;
-  font-size: 23px;
-}
+  & .business-info .business-title p {
+    color: black;
+    font-size: 23px;
+  }
 
-.stars-and-count-container {
-  display: flex;
-}
+  & .stars-and-count-container {
+    display: flex;
+  }
 
-div.star-rating .rendered-stars,
-div.no-reviews-yet {
-  margin: 5px 0;
-  color: rgb(92, 92, 92);
-}
+  & div.star-rating .rendered-stars,
+  & div.no-reviews-yet {
+    margin: 5px 0;
+    color: rgb(92, 92, 92);
+  }
 
-div.star-rating .rendered-stars {
-  color: rgb(244, 90, 38);
-  font-size: 23px;
-}
+  & div.star-rating .rendered-stars {
+    color: rgb(244, 90, 38);
+    font-size: 23px;
+  }
 
-div.star-rating .review-count {
-  display: flex;
-  align-items: center;
-  /* justify-content: center; */
-  margin: 0 0 0 8px;
-}
+  & div.star-rating .review-count {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    margin: 0 0 0 8px;
+  }
 
-div.star-rating .review-count p {
-  font-size: 18px;
-  color: rgb(105, 104, 104);
-  font-weight: 400;
-  margin-top: 3px;
-}
+  & div.star-rating .review-count p {
+    font-size: 18px;
+    color: rgb(105, 104, 104);
+    font-weight: 400;
+    margin-top: 3px;
+  }
 
-div.third-line-search-results {
-  display: flex;
-  gap: 5px;
-}
+  & div.third-line-search-results {
+    display: flex;
+    gap: 5px;
+  }
 
-div.category-tags {
-  display: flex;
-  gap: 8px;
-}
+  & div.category-tags {
+    display: flex;
+    gap: 8px;
+  }
 
-.category-tags p.tag-bubble {
-  background: rgb(240, 239, 239);
-  border-radius: 3px;
-  color: #6a6a6a;
-  font-size: 16px;
-  padding: 4px 5px;
-}
+  & .category-tags p.tag-bubble {
+    background: rgb(240, 239, 239);
+    border-radius: 3px;
+    color: #6a6a6a;
+    font-size: 16px;
+    padding: 4px 5px;
+  }
 
-.price-rating {
-  display: flex;
-  align-items: center;
-}
+  & .price-rating {
+    display: flex;
+    align-items: center;
+  }
 
-.price-rating p.price-rating-text,
-.dot,
-.city {
-  color: #6a6a6a;
-}
+  & .price-rating p.price-rating-text,
+  & .dot,
+  & .city {
+    color: #6a6a6a;
+  }
 
-.price-rating p.price-rating-text {
-  font-size: 14px;
-  font-weight: 400;
-}
+  & .price-rating p.price-rating-text {
+    font-size: 14px;
+    font-weight: 400;
+  }
 
-.third-line-search-results p.dot,
-.third-line-search-results p.city {
-  margin-top: 3.2px;
-  font-weight: 300;
-}
+  & .third-line-search-results p.dot,
+  & .third-line-search-results p.city {
+    margin-top: 3.2px;
+    font-weight: 300;
+  }
 
-.business-info p.open-or-closed {
-  color: black;
-  margin: 10px 0;
-  font-weight: 300;
-}
+  & .business-info p.open-or-closed {
+    color: black;
+    margin: 10px 0;
+    font-weight: 300;
+  }
 
-.open-or-closed span.first-word {
-  font-weight: 500;
-}
+  & .open-or-closed span.first-word {
+    font-weight: 500;
+  }
 
-.open-or-closed span.first-word.open {
-  color: green;
-}
+  & .open-or-closed span.first-word.open {
+    color: green;
+  }
 
-.open-or-closed span.first-word.closed {
-  color: red;
-}
+  & .open-or-closed span.first-word.closed {
+    color: red;
+  }
 
-div.selected-comment-container {
-  display: flex;
-  gap: 5px;
-}
+  & div.selected-comment-container {
+    display: flex;
+    gap: 5px;
+  }
 
-.selected-comment-container div.selected-comment-bubble-icon img {
-  width: 16px;
-}
+  & .selected-comment-container div.selected-comment-bubble-icon img {
+    width: 16px;
+  }
 
-.selected-comment-container p.selected-comment-text {
-  font-weight: 300;
-  color: rgb(98, 97, 97);
-}
+  & .selected-comment-container p.selected-comment-text {
+    font-weight: 300;
+    color: rgb(98, 97, 97);
+  }
 
-p.selected-comment-text span.more-text {
-  font-weight: 500;
-  color: rgb(65, 130, 196);
+  & p.selected-comment-text span.more-text {
+    font-weight: 500;
+    color: rgb(65, 130, 196);
+  }
 }

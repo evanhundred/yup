@@ -164,7 +164,7 @@ const AddBusinessAsOwner = () => {
 
   // console.log(bizTemplate);
 
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState(null);
 
   const submitBizInfoToBackend = async () => {
     const businessObject = { business: bizTemplate };
@@ -215,10 +215,20 @@ const AddBusinessAsOwner = () => {
     });
   };
 
-  const [formErrors, setFormErrors] = useState([]);
+  const [formErrors, setFormErrors] = useState({});
 
   const businessInfoForm = () => {
     const handleBizInfoFormSubmit = async () => {
+      const clearErrors = () => {
+        setFormErrors({});
+        const inputBoxes = document.querySelectorAll(
+          "#add-business-owner-container .business-info-form input.error"
+        );
+        inputBoxes.forEach((box) => box.classList.remove("error"));
+      };
+
+      clearErrors();
+
       const mccString = " must contain characters.";
       const anyDigitsOrLetters = /[0-9a-zA-Z]+/;
 
@@ -251,13 +261,27 @@ const AddBusinessAsOwner = () => {
         while (fieldsArray.length > 0) {
           const field = fieldsArray.pop();
           console.log(field);
-          if (!field.match(constraints[[field]].expression)) {
-            setFormErrors({
-              ...formErrors,
-              [field]: constraints[[field]].errorMsg
+          console.log(constraints[[field]]);
+          console.log(bizTemplate[[field]]);
+          console.log(
+            bizTemplate[[field]].match(constraints[[field]].expression)
+          );
+          console.log(
+            !bizTemplate[field].match(constraints[[field]].expression)
+          );
+          if (!bizTemplate[field].match(constraints[[field]].expression)) {
+            console.log(formErrors);
+            const newError = { [field]: constraints[[field]].errorMsg };
+            console.log({
+              ...newError
             });
+            setFormErrors((formErrors) => ({
+              ...formErrors,
+              ...newError
+            }));
+            console.log(formErrors);
 
-            inputsValid = false;
+            if (inputsValid) inputsValid = false;
           }
         }
 
