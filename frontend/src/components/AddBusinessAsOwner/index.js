@@ -273,7 +273,8 @@ const AddBusinessAsOwner = () => {
             "#add-business-owner-container .business-info-form input"
           );
           inputBoxes.forEach((box) => {
-            if (constraintKeys.include(box.className)) {
+            console.log(formErrors[box.className]);
+            if (formErrors[[box.className]]) {
               box.classList.add("error");
             }
           });
@@ -291,7 +292,6 @@ const AddBusinessAsOwner = () => {
       );
     };
 
-    const formErrorsExist = formErrors.length > 0;
     console.log(formErrors);
 
     // const inputHasError = (field) => {

@@ -207,15 +207,19 @@
 
         & div.error-box {
           position: absolute;
+          margin-left: 10px;
+
+          font-family: "Helvetica Neue";
+          color: red;
         }
       }
-      & label,
-      & label p {
+
+      & label > p {
         font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-weight: 500;
         font-size: 16px;
       }
-      & label p {
+      & label > p {
         margin: 0 0 14px;
       }
       & select,
