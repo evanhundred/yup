@@ -331,6 +331,30 @@ const AddBusinessAsOwner = () => {
   const currentUser = useSelector((state) => state.session.user);
   if (!currentUser) history.push("/login");
 
+  const SuccessMessage = () => {
+    const handleEditStubClick = () => {
+      console.log("edit stub");
+    };
+
+    return (
+      <div className="step-four-container">
+        <div className="prompt">
+          <h2>Successful submission.</h2>
+          <p>
+            Your business is now live in "stub mode". Business stubs can accept
+            reviews from all users, and revisions by the stub owner. Yup will
+            then verify this business, and fill in the details. As a business
+            owner, your account will have live access to edit and destroy the
+            business profile.
+          </p>
+          <p className="edit-stub-link" onClick={handleEditStubClick}>
+            Edit Stub
+          </p>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div id="add-business-owner-container">
       {componentToRender === "initial" && (
@@ -410,20 +434,7 @@ const AddBusinessAsOwner = () => {
           {businessInfoForm()}
         </div>
       )}
-      {componentToRender === "step-four" && (
-        <div className="step-four-container">
-          <div className="prompt">
-            <h2>Successful submission.</h2>
-            <p>
-              Your business is now live in "stub mode". Business stubs can
-              accept reviews from all users, and revisions by the stub owner.
-              Yup will then verify this business, and fill in the details. As a
-              business owner, your account will have live access to edit and
-              destroy the business profile.
-            </p>
-          </div>
-        </div>
-      )}
+      {componentToRender === "step-four" && <SuccessMessage />}
       {componentToRender === "submission-fail" && (
         <div className="error-message">Submission fail.</div>
       )}

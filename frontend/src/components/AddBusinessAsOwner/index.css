@@ -249,6 +249,7 @@
   }
 
   & .step-four-container {
+    width: 600px;
     & h2 {
       font-size: 30px;
       font-weight: 500;
@@ -264,10 +265,15 @@
     } */
     & p {
       color: rgb(123, 123, 123);
-      & span {
+      & span,
+      &.edit-stub-link {
         cursor: pointer;
-        color: rgb(0, 146, 122);
         font-weight: 500;
+        color: rgb(0, 146, 122);
+      }
+      &.edit-stub-link {
+        font-size: 20px;
+        margin: 20px 0;
       }
     }
   }
