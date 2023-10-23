@@ -204,6 +204,10 @@
 
       & label {
         margin: 10px 0;
+
+        & div.error-box {
+          position: absolute;
+        }
       }
       & label,
       & label p {
@@ -233,6 +237,10 @@
         padding-left: 13px;
         padding-top: 6px;
         padding-bottom: 6px;
+
+        &.error {
+          border-color: red;
+        }
       }
 
       & .continue-submit-button {

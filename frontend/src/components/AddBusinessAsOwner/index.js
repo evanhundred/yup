@@ -41,8 +41,6 @@ const AddBusinessAsOwner = () => {
   const newBusinessTemplate = newBusiness();
   const [bizTemplate, setBizTemplate] = useState(newBusinessTemplate);
 
-  // const [errors, setErrors] = useState(null);
-
   // console.log(bizTemplate);
 
   const handleBusinessNameSubmit = (e) => {
@@ -217,22 +215,88 @@ const AddBusinessAsOwner = () => {
     });
   };
 
+  const [formErrors, setFormErrors] = useState([]);
+
   const businessInfoForm = () => {
     const handleBizInfoFormSubmit = async () => {
-      const res = await submitBizInfoToBackend();
-      let next;
-      let data;
-      console.log(res);
-      // if (res.ok) {
-      //   data = await res.json();
-      //   console.log(data);
-      //   next = "step-four";
-      // } else {
-      //   data = { errors: res };
-      //   next = "submission-fail";
-      // }
-      // setComponentToRender(next);
+      const mccString = " must contain characters.";
+      const anyDigitsOrLetters = /[0-9a-zA-Z]+/;
+
+      const constraints = {
+        name: [anyDigitsOrLetters, `Business name${mccString}`],
+        address: [anyDigitsOrLetters, `Address${mccString}`],
+        city: [anyDigitsOrLetters, `City name${mccString}`],
+        state: [anyDigitsOrLetters, `State name${mccString}`],
+        zipcode: [/\d{5,}/, `Zipcode must be 5 or more numeric integers.`],
+        neighborhood: [anyDigitsOrLetters, `Neighborhood name${mccString}`]
+      };
+
+      const constraintKeys = Object.keys(constraints);
+
+      while (constraintKeys.length > 0) {
+        const constraintKey = constraintKeys.pop();
+        const valueArray = constraints[[constraintKey]];
+        constraints[[constraintKey]] = {
+          expression: valueArray[0],
+          errorMsg: valueArray[1]
+        };
+      }
+
+      console.log(constraints);
+
+      const validateInputs = () => {
+        let inputsValid = true;
+
+        const fieldsArray = Object.keys(constraints);
+        while (fieldsArray.length > 0) {
+          const field = fieldsArray.pop();
+          console.log(field);
+          if (!field.match(constraints[[field]].expression)) {
+            setFormErrors({
+              ...formErrors,
+              [field]: constraints[[field]].errorMsg
+            });
+
+            inputsValid = false;
+          }
+        }
+
+        return inputsValid;
+      };
+
+      if (validateInputs()) {
+        const res = await submitBizInfoToBackend(); // this also sets next componentToRender
+        console.log(res);
+      } else {
+        const styleInputBoxes = () => {
+          const inputBoxes = document.querySelectorAll(
+            "#add-business-owner-container .business-info-form input"
+          );
+          inputBoxes.forEach((box) => {
+            if (constraintKeys.include(box.className)) {
+              box.classList.add("error");
+            }
+          });
+        };
+
+        styleInputBoxes();
+      }
     };
+
+    const errorBox = (field) => {
+      return (
+        <div className="error-box">
+          <p>{formErrors[field]}</p>
+        </div>
+      );
+    };
+
+    const formErrorsExist = formErrors.length > 0;
+    console.log(formErrors);
+
+    // const inputHasError = (field) => {
+    //   if (formErrors[field])
+    // }
 
     return (
       <div className="business-info-form">
@@ -265,23 +329,18 @@ const AddBusinessAsOwner = () => {
             value={bizTemplate.name}
             onChange={(e) => handleChange(e)}
           />
+          {formErrors.name && errorBox("name")}
         </label>
         <label>
-          <p>Address Line 1</p>
+          <p>Address</p>
           <input
             className="address"
             value={bizTemplate.address}
             onChange={(e) => handleChange(e)}
             placeholder="386 Flatbush Ave."
           />
+          {formErrors.address && errorBox("address")}
         </label>
-        {/* <label>
-          <p>Address Line 2</p>
-          <input
-            value={addressLine2}
-            onChange={(e) => setAddressLine2(e.target.value)}
-          />
-        </label> */}
         <label>
           <p>City</p>
           <input
@@ -290,6 +349,7 @@ const AddBusinessAsOwner = () => {
             onChange={(e) => handleChange(e)}
             placeholder="New York"
           />
+          {formErrors.city && errorBox("city")}
         </label>
         <label>
           <p>State</p>
@@ -299,6 +359,7 @@ const AddBusinessAsOwner = () => {
             onChange={(e) => handleChange(e)}
             placeholder="NY"
           />
+          {formErrors.state && errorBox("state")}
         </label>
         <label>
           <p>Zip Code</p>
@@ -308,6 +369,7 @@ const AddBusinessAsOwner = () => {
             value={bizTemplate.zipcode}
             onChange={(e) => handleChange(e)}
           />
+          {formErrors.zipcode && errorBox("zipcode")}
         </label>
         <label>
           <p>Neighborhood</p>
@@ -317,6 +379,7 @@ const AddBusinessAsOwner = () => {
             value={bizTemplate.neighborhood}
             onChange={(e) => handleChange(e)}
           />
+          {formErrors.neighborhood && errorBox("neighborhood")}
         </label>
         <div
           className="continue-submit-button"
