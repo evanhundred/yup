@@ -58,7 +58,7 @@ require "open-uri"
             category: "Coffee & Tea",
             price: "$",
             place_id: "ChIJi7flemFZwokRDpIJuxfOGek",
-            stub: false)
+            stub: "false")
 
         business2 = Business.create!(
             name: "El Paso Mexican Grill",
@@ -77,7 +77,7 @@ require "open-uri"
             category: "Tex Mex, Mexican",
             price: "$",
             place_id: "ChIJL0SyADVbwokRx1rSo2ilrZM",
-            stub: false)
+            stub: "false")
 
         business3 = Business.create!(
             name: "Golden Krust Bakery & Grill",
@@ -97,7 +97,7 @@ require "open-uri"
             category: "Caribbean",
             price: "$",
             place_id: "ChIJdf3GsD5bwokR8sWJFinChw4",
-            stub: false)
+            stub: "false")
 
         business4 = Business.create!(
             name: "Mirna's Pupuseria",
@@ -117,7 +117,7 @@ require "open-uri"
             category: "Salvadoran",
             price: "$",
             place_id: "ChIJJ8XhtEdbwokR44t91MZmCaM",
-            stub: false)
+            stub: "false")
 
         business5 = Business.create!(
             name: "E Noodle",
@@ -142,7 +142,7 @@ require "open-uri"
             category: "Noodles, Cantonese, Hong Kong Style Cafe",
             price: "$$",
             place_id: "ChIJwwql-mBFwokRfMa2YHqiR-Y",
-            stub: false)
+            stub: "false")
 
         business6 = Business.create!(
             name: "Beverly Pizza & Cafe",
@@ -161,7 +161,7 @@ require "open-uri"
             category: "Cafes, Italian, Pizza",
             price: "$",
             place_id: "ChIJSR5FIylbwokRtOH1ehlLY9c",
-            stub: false)
+            stub: "false")
 
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/photo_1.jpg"), filename: "photo_1.jpg")
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/photo_2.jpg"), filename: "photo_2.jpg")

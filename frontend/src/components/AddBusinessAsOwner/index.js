@@ -41,6 +41,8 @@ const AddBusinessAsOwner = () => {
   const newBusinessTemplate = newBusiness();
   const [bizTemplate, setBizTemplate] = useState(newBusinessTemplate);
 
+  // const [errors, setErrors] = useState(null);
+
   // console.log(bizTemplate);
 
   const handleBusinessNameSubmit = (e) => {
@@ -162,9 +164,10 @@ const AddBusinessAsOwner = () => {
   //   // setCountryName(e.target.value);
   // };
 
-  console.log(bizTemplate);
+  // console.log(bizTemplate);
 
   const [errors, setErrors] = useState([]);
+
   const submitBizInfoToBackend = async () => {
     const businessObject = { business: bizTemplate };
     const res = await dispatch(createBusinessStub(businessObject)).catch(
@@ -182,8 +185,13 @@ const AddBusinessAsOwner = () => {
       }
     );
 
-    if (res.ok) setComponentToRender("step-four");
-    else console.log("fail");
+    let next;
+    // const data = await res.json();
+    console.log(res);
+    if (res.id) next = "step-four";
+    else next = "submission-fail";
+
+    setComponentToRender(next);
 
     // let data;
     // if (res.ok) {
