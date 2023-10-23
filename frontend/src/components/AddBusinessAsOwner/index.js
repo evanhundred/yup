@@ -207,12 +207,25 @@ const AddBusinessAsOwner = () => {
     "Fill out the fields below. Your Yup listing will not appear in searches until it has been reviewed and approved by our moderators. You will then receive an email with further information on how to take over your Yup listing.";
 
   const handleChange = (e) => {
-    const attributeName = e.target.className;
+    const errorIndex = e.target.className.indexOf("error");
+    console.log(errorIndex);
+    console.log(e);
+    let attributeName;
+    if (errorIndex === -1) {
+      attributeName = e.target.className;
+    } else {
+      if (errorIndex > 0) {
+        attributeName = e.target.className.slice(0, errorIndex).trim();
+      }
+      if (errorIndex === 0) {
+        attributeName = e.target.className.slice(5).trim();
+      }
+    }
     console.log(attributeName);
-    setBizTemplate({
+    setBizTemplate((bizTemplate) => ({
       ...bizTemplate,
       [attributeName]: e.target.value
-    });
+    }));
   };
 
   const [formErrors, setFormErrors] = useState({});
@@ -260,26 +273,27 @@ const AddBusinessAsOwner = () => {
         const fieldsArray = Object.keys(constraints);
         while (fieldsArray.length > 0) {
           const field = fieldsArray.pop();
-          console.log(field);
-          console.log(constraints[[field]]);
-          console.log(bizTemplate[[field]]);
-          console.log(
-            bizTemplate[[field]].match(constraints[[field]].expression)
-          );
-          console.log(
-            !bizTemplate[field].match(constraints[[field]].expression)
-          );
+          // console.log(field);
+          // console.log(constraints[[field]]);
+          // console.log(bizTemplate[[field]]);
+          // console.log(
+          //   bizTemplate[[field]].match(constraints[[field]].expression)
+          // );
+          // console.log(
+          //   !bizTemplate[field].match(constraints[[field]].expression)
+          // );
+
           if (!bizTemplate[field].match(constraints[[field]].expression)) {
-            console.log(formErrors);
+            // console.log(formErrors);
             const newError = { [field]: constraints[[field]].errorMsg };
-            console.log({
-              ...newError
-            });
+            // console.log({
+            //   ...newError
+            // });
             setFormErrors((formErrors) => ({
               ...formErrors,
               ...newError
             }));
-            console.log(formErrors);
+            // console.log(formErrors);
 
             if (inputsValid) inputsValid = false;
           }
