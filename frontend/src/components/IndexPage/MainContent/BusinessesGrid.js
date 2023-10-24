@@ -3,21 +3,46 @@
 import { Link } from "react-router-dom";
 // import { getBusinesses, fetchBusinesses } from "../../store/businesses";
 
-const BusinessesGrid = ({ businesses }) => {
+import photoBlank from "../../../assets/images/broccoli.png";
+
+const BusinessesGrid = ({ businesses, loadState }) => {
   // console.log(businesses[0]);
   if (!businesses.length || businesses[0].status === 500)
     return (
       <div>
-        <h1>loading BusinessesGrid...</h1>
+        <h1>loading businesses...</h1>
       </div>
     );
 
-  const businessesBlock = businesses.map((business, idx) => {
+  // const startingSixBusinesses = businesses.slice(0, 6);
+
+  const businessesLoaderSlice = businesses.slice(0, loadState);
+
+  const photoIsPresent = (business) => {
+    return business.imageUrls.length > 0;
+  };
+
+  const businessCardImage = (business) => {
+    if (photoIsPresent(business)) return business.imageUrls[1];
+    return photoBlank;
+  };
+
+  // const deliverBusinessName = (business) => {
+  //   const isOverflown = (element) => {
+  //     return element.scrollWidth > element.clientWidth;
+  //   }
+
+  // }
+  const businessesBlock = businessesLoaderSlice.map((business, idx) => {
     return (
       <div className="business-card" key={idx}>
-        <div className="card-image">
+        <div
+          className={`card-image${
+            photoIsPresent(business) ? "" : " photo-blank"
+          }`}
+        >
           <Link to={`/businesses/${business.id}`}>
-            <img src={business.imageUrls[1]} alt="delicious business" />
+            <img src={businessCardImage(business)} alt={business.name} />
           </Link>
         </div>
 

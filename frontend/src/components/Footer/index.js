@@ -102,6 +102,33 @@ const Footer = () => {
     </span>
   );
 
+  const searchResultsAttribution = () => {
+    return (
+      <span className="search-results-attribution">
+        Broccoli icon made by{" "}
+        <a
+          href="https://www.flaticon.com/authors/futuer"
+          title="Futuer"
+          rel="noreferrer"
+          target="_blank"
+        >
+          Futuer
+        </a>{" "}
+        from{" "}
+        <a
+          href="https://www.flaticon.com/"
+          title="Flaticon"
+          rel="noreferrer"
+          target="_blank"
+        >
+          www.flaticon.com
+        </a>
+        .
+      </span>
+    );
+  };
+
+  // console.log(location.pathname.match(/search/));
   return (
     <div className="footer">
       <p>
@@ -125,15 +152,16 @@ const Footer = () => {
         {["/add-business-as-owner", "add-business-as-customer"].includes(
           location.pathname
         ) && addBizAsOwnerAttribution}
+        {location.state === "404" && <BizShowErrorCopy />}
+        {location.state !== "404" &&
+          location.pathname.match(/businesses\/[0-9]+/) && (
+            <div className="business-show-footer-copy">
+              <ShareIconCopy />
+              {reviewWriteIconAttribution}
+            </div>
+          )}
+        {location.pathname.match(/search/) && searchResultsAttribution()}
       </p>
-      {location.state === "404" && <BizShowErrorCopy />}
-      {location.state !== "404" &&
-        location.pathname.match(/businesses\/[0-9]+/) && (
-          <div className="business-show-footer-copy">
-            <ShareIconCopy />
-            {reviewWriteIconAttribution}
-          </div>
-        )}
     </div>
   );
 };

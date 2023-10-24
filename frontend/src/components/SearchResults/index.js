@@ -11,6 +11,11 @@ const SearchResults = () => {
   const businesses = useSelector(getBusinesses);
   const searchString = location.search.slice(1);
 
+  const rootElement = document.getElementById("root");
+  rootElement.scrollIntoView(true);
+
+  console.log(location);
+
   if (location.state && location.state.searchErrors)
     return (
       <div id="search-results-errors">
@@ -30,12 +35,14 @@ const SearchResults = () => {
       </div>
     );
 
+  const firstTenBusinesses = businesses.slice(0, 10);
+
   return (
     <div>
       <div id="search-results-container">
         <h2>{`All "${searchString}" results near New York, NY`}</h2>
         <ul>
-          {businesses.map((business, idx) => {
+          {firstTenBusinesses.map((business, idx) => {
             return (
               <li key={business.name}>
                 <BusinessResultCard business={business} idx={idx} />

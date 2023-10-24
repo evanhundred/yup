@@ -1,56 +1,89 @@
-.section-header {
-  font-size: 30px;
-  text-align: center;
-  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  padding: 15px 0;
-}
+#index-page {
+  & .section-header {
+    font-size: 30px;
+    text-align: center;
+    font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    padding: 10px 0 25px;
+  }
 
-.business-block-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 1em;
-}
+  & .business-block-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: -40px 1em 0;
+  }
 
-div#business-block {
-  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin: 1em 0 0 45px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  min-width: 900px;
-}
+  & div#business-block {
+    font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 1em 0 0 45px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    min-width: 900px;
+  }
 
-.business-card {
-  width: 45%;
-  border: #ccc solid 1px;
-  max-width: 500px;
-  min-width: 400px;
-  border-radius: 5px;
-  display: flex;
-}
+  & .business-card {
+    /* width: 400px; */
+    width: 45%;
+    border: #ccc solid 1px;
+    max-width: 500px;
+    min-width: 400px;
+    border-radius: 5px;
+    display: flex;
+  }
 
-div#business-block .card-image {
-  display: flex;
-}
+  & div#business-block .card-image {
+    display: flex;
 
-.card-image img {
-  object-fit: cover;
-}
+    &.photo-blank {
+      background: rgb(236, 236, 236);
+      /* filter: brightness(95%); */
+      filter: grayscale(25%);
+    }
+    & img {
+      object-fit: cover;
+    }
 
-.card-image a,
-.card-image img {
-  width: 250px;
-  height: 250px;
-}
+    & a,
+    & img {
+      width: 250px;
+      height: 250px;
+    }
+  }
 
-.business-card .info-section {
-  padding: 30px 18px;
-}
+  & .business-card .info-section {
+    /* width: 100%; */
+    overflow: auto;
+    padding: 30px 18px;
+  }
 
-.business-card h3 {
-  font-size: 24px;
-  font-weight: 700;
+  & .business-card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    /* width: min-content; */
+  }
+
+  & .post-biz-grid-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+
+    & h3 {
+      border-radius: 5px;
+      color: white;
+      font-size: 25px;
+      cursor: pointer;
+      padding: 20px;
+
+      background: rgb(100, 0, 223);
+
+      &:hover {
+        background: rgb(140, 130, 249);
+        /* background: rgb(193, 176, 255); */
+      }
+    }
+  }
 }

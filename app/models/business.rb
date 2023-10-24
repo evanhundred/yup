@@ -29,7 +29,7 @@
 class Business < ApplicationRecord
     # stub:
     validates :name, :address, :city, :state, :phone, :neighborhood, :country_code, :country, :stub, presence: true
-
+    validates :name, uniqueness: { case_sensitive: false }
     # full business:
     # validates :name, :address, :zipcode, :city, :state, :phone, :open_at, :closed_at, :about, :category, :price, :neighborhood, :country_code, :country, :stub, presence: true
     # attr_accessor :stub
