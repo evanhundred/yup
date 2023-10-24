@@ -9,7 +9,7 @@
 #  city         :string           not null
 #  state        :string           not null
 #  latitude     :decimal(, )
-#  longitude    :decimal(, )
+#  longitude    decimal(, )
 #  phone        :string           not null
 #  website      :string
 #  open_at      :string
@@ -44,10 +44,14 @@ class Business < ApplicationRecord
         inverse_of: :business,
         dependent: :destroy
 
-    belongs_to :owner,
-        class_name: :User,
-        foreign_key: :owner_id,
-        inverse_of: :owned_businesses
+    has_many :owners,
+        through: :businesses_owners,
+        foreign_key: :business_id
+
+    # has_and_belongs_to_many :owners,
+    #     class_name: :User,
+    #     foreign_key: :owner_id,
+    #     inverse_of: :owned_businesses
 
     # has_one :biz_photo_box,
     #     foreign_key: :business_id,
@@ -57,6 +61,12 @@ class Business < ApplicationRecord
         inverse_of: :saved_business,
         foreign_key: :saved_business_id,
         class_name: :SavedBusiness,
+        dependent: :destroy
+
+    has_many :owns,
+        inverse_of: :business,
+        foreign_key: :owned_business_id,
+        class_name: :OwnedBusiness,
         dependent: :destroy
 
     has_many_attached :photos

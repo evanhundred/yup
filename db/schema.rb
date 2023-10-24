@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_22_213403) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_24_033239) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,6 +79,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_213403) do
     t.index ["zipcode"], name: "index_businesses_on_zipcode"
   end
 
+  create_table "owned_businesses", id: false, force: :cascade do |t|
+    t.bigint "owned_business_id", null: false
+    t.bigint "owner_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owned_business_id", "owner_id"], name: "index_owned_businesses_on_owned_business_id_and_owner_id"
+    t.index ["owned_business_id"], name: "index_owned_businesses_on_owned_business_id"
+    t.index ["owner_id"], name: "index_owned_businesses_on_owner_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "rating", null: false
     t.text "body", null: false
@@ -115,6 +125,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_213403) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "biz_photo_boxes", "businesses"
   add_foreign_key "businesses", "users", column: "owner_id"
+  add_foreign_key "owned_businesses", "businesses", column: "owned_business_id"
+  add_foreign_key "owned_businesses", "users", column: "owner_id"
   add_foreign_key "reviews", "businesses"
   add_foreign_key "reviews", "users", column: "author_id"
   add_foreign_key "saved_businesses", "businesses", column: "saved_business_id"
