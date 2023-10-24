@@ -185,7 +185,7 @@ const AddBusinessAsOwner = () => {
 
     let next;
     // const data = await res.json();
-    console.log(res);
+    // console.log(res);
     if (res.id) next = "step-four";
     else next = "submission-fail";
 
@@ -208,8 +208,8 @@ const AddBusinessAsOwner = () => {
 
   const handleChange = (e) => {
     const errorIndex = e.target.className.indexOf("error");
-    console.log(errorIndex);
-    console.log(e);
+    // console.log(errorIndex);
+    // console.log(e);
     let attributeName;
     if (errorIndex === -1) {
       attributeName = e.target.className;
@@ -221,7 +221,7 @@ const AddBusinessAsOwner = () => {
         attributeName = e.target.className.slice(5).trim();
       }
     }
-    console.log(attributeName);
+    // console.log(attributeName);
     setBizTemplate((bizTemplate) => ({
       ...bizTemplate,
       [attributeName]: e.target.value
@@ -247,10 +247,11 @@ const AddBusinessAsOwner = () => {
 
       const constraints = {
         name: [anyDigitsOrLetters, `Business name${mccString}`],
+        phone: [/.{5,}/, "Phone number must contain 5 or more characters"],
         address: [anyDigitsOrLetters, `Address${mccString}`],
         city: [anyDigitsOrLetters, `City name${mccString}`],
         state: [anyDigitsOrLetters, `State name${mccString}`],
-        zipcode: [/\d{5,}/, `Zipcode must be 5 or more numeric integers.`],
+        // zipcode: [/\d{5,}/, `Zipcode must contain 5 or more numeric integers.`],
         neighborhood: [anyDigitsOrLetters, `Neighborhood name${mccString}`]
       };
 
@@ -310,22 +311,23 @@ const AddBusinessAsOwner = () => {
       if (validateInputs()) {
         const res = await submitBizInfoToBackend(); // this also sets next componentToRender
         console.log(res);
-      } else {
-        console.log("errors exist.");
-        // const styleInputBoxes = () => {
-        //   const inputBoxes = document.querySelectorAll(
-        //     "#add-business-owner-container .business-info-form input"
-        //   );
-        //   inputBoxes.forEach((box) => {
-        //     console.log(formErrors[box.className]);
-        //     if (formErrors[box.className]) {
-        //       box.classList.add("error");
-        //     }
-        //   });
-        // };
-
-        // styleInputBoxes();
       }
+      // else {
+      //   console.log("errors exist.");
+      //   // const styleInputBoxes = () => {
+      //   //   const inputBoxes = document.querySelectorAll(
+      //   //     "#add-business-owner-container .business-info-form input"
+      //   //   );
+      //   //   inputBoxes.forEach((box) => {
+      //   //     console.log(formErrors[box.className]);
+      //   //     if (formErrors[box.className]) {
+      //   //       box.classList.add("error");
+      //   //     }
+      //   //   });
+      //   // };
+
+      //   // styleInputBoxes();
+      // }
     };
 
     const errorBox = (field) => {
@@ -372,6 +374,15 @@ const AddBusinessAsOwner = () => {
             onChange={(e) => handleChange(e)}
           />
           {formErrors.name && errorBox("name")}
+        </label>
+        <label>
+          <p>Phone Number</p>
+          <input
+            className="phone"
+            value={bizTemplate.phone}
+            onChange={(e) => handleChange(e)}
+          />
+          {formErrors.phone && errorBox("phone")}
         </label>
         <label>
           <p>Address</p>
