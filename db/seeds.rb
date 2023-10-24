@@ -59,7 +59,7 @@ require "open-uri"
             price: "$",
             place_id: "ChIJi7flemFZwokRDpIJuxfOGek",
             country: "United States",
-            countryCode: 1,
+            country_code: 1,
             stub: "false")
 
         business2 = Business.create!(
@@ -80,7 +80,7 @@ require "open-uri"
             price: "$",
             place_id: "ChIJL0SyADVbwokRx1rSo2ilrZM",
             country: "United States",
-            countryCode: 1,
+            country_code: 1,
             stub: "false")
 
         business3 = Business.create!(
@@ -102,7 +102,7 @@ require "open-uri"
             price: "$",
             place_id: "ChIJdf3GsD5bwokR8sWJFinChw4",
             country: "United States",
-            countryCode: 1,
+            country_code: 1,
             stub: "false")
 
         business4 = Business.create!(
@@ -124,7 +124,7 @@ require "open-uri"
             price: "$",
             place_id: "ChIJJ8XhtEdbwokR44t91MZmCaM",
             country: "United States",
-            countryCode: 1,
+            country_code: 1,
             stub: "false")
 
         business5 = Business.create!(
@@ -151,7 +151,7 @@ require "open-uri"
             price: "$$",
             place_id: "ChIJwwql-mBFwokRfMa2YHqiR-Y",
             country: "United States",
-            countryCode: 1,
+            country_code: 1,
             stub: "false")
 
         business6 = Business.create!(
@@ -172,7 +172,7 @@ require "open-uri"
             price: "$",
             place_id: "ChIJSR5FIylbwokRtOH1ehlLY9c",
             country: "United States",
-            countryCode: 1,
+            country_code: 1,
             stub: "false")
 
     business1.photos.attach(io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/photo_1.jpg"), filename: "photo_1.jpg")
