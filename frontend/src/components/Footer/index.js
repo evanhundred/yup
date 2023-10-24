@@ -8,6 +8,21 @@ const Footer = () => {
   const location = useLocation();
 
   // console.log(location);
+  const spiderImageAttribution = (
+    <span className="spider-image-attribution">
+      Spider image created by
+      <a
+        href="https://www.flaticon.com/free-icons/draw"
+        title="draw icons"
+        rel="noreferrer"
+        target="_blank"
+      >
+        {" "}
+        Freepik - Flaticon
+      </a>
+      .
+    </span>
+  );
   const BizShowErrorCopy = () => {
     return <p className="image-attribution">Spider image by freepik.</p>;
   };
@@ -57,6 +72,36 @@ const Footer = () => {
     );
   };
 
+  const navBarAttribution = (
+    <span className="nav-bar-attribution">
+      Down arrow icons created by{" "}
+      <a
+        href="https://www.flaticon.com/free-icons/down-arrow"
+        title="down arrow icons"
+        rel="noreferrer"
+        target="_blank"
+      >
+        Roundicons - Flaticon
+      </a>
+      .
+    </span>
+  );
+
+  const addBizAsOwnerAttribution = (
+    <span className="add-biz-as-owner-attribution">
+      Left arrow icon created by{" "}
+      <a
+        href="https://www.flaticon.com/authors/ariefstudio"
+        title="ariefstudio"
+        rel="noreferrer"
+        target="_blank"
+      >
+        ariefstudio - Flaticon
+      </a>
+      .
+    </span>
+  );
+
   return (
     <div className="footer">
       <p>
@@ -70,7 +115,16 @@ const Footer = () => {
           Evan Ryan
         </a>
         . Ruby, Rails, PostgreSQL, JavaScript, React, Redux, and related
-        languages and frameworks are implemented by Yup.
+        languages and frameworks are implemented by Yup.{" "}
+        {!["/add-business-as-owner", "add-business-as-customer"].includes(
+          location.pathname
+        ) && navBarAttribution}{" "}
+        {location.state &&
+          location.state.searchErrors &&
+          spiderImageAttribution}
+        {["/add-business-as-owner", "add-business-as-customer"].includes(
+          location.pathname
+        ) && addBizAsOwnerAttribution}
       </p>
       {location.state === "404" && <BizShowErrorCopy />}
       {location.state !== "404" &&

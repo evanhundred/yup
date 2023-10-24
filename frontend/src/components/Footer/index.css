@@ -8,14 +8,15 @@
 
   & .business-show-footer-copy {
     display: flex;
-    margin: 5px;
+    margin: 0 5px 5px;
     & > * {
       margin-right: 4px;
     }
   }
-  /* & .review-write-icon-attribution {
 
-  } */
+  & p {
+    line-height: 1.1;
+  }
 }
 
 .footer,

@@ -29,8 +29,10 @@
 /config/master.key
 
 .byebug_history
-
+/frontend/node_modules
 /public
 
 bfg-1.14.0.jar
 .git.bfg-report
+
+.DS_Store

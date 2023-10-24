@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useLocation } from "react-router-dom";
 import "./LoginForm.css";
 import LoginImage from "./LoginImage";
 
@@ -16,6 +16,9 @@ const LoginFormPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const location = useLocation();
+  console.log(location);
 
   if (sessionUser) return <Redirect to="/" />;
 

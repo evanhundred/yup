@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { Switch, Route } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
@@ -10,6 +9,10 @@ import ReviewForm from "./components/ReviewForm";
 import SearchResults from "./components/SearchResults";
 import BusinessAddUserPhotos from "./components/BusinessAddUserPhotos";
 import BusinessPhotos from "./components/BusinessPhotos";
+import WriteAReviewSearch from "./components/WriteAReviewSearch";
+import AddBusinessAsOwner from "./components/AddBusinessAsOwner";
+import AddBusinessAsCustomer from "./components/AddBusinessAsCustomer";
+// import AddBiz2 from "./components/AddBusinessAsOwner/AddBiz2";
 
 function App() {
   return (
@@ -46,6 +49,18 @@ function App() {
         </Route>
         <Route path="/search">
           <SearchResults />
+        </Route>
+        <Route path="/write-a-review">
+          <WriteAReviewSearch />
+        </Route>
+        <Route path="/add-business-as-owner">
+          <AddBusinessAsOwner />
+          {/* <Route path="step-two">
+            <AddBiz2 />
+          </Route> */}
+        </Route>
+        <Route path="/add-business-as-customer">
+          <AddBusinessAsCustomer />
         </Route>
       </Switch>
       <Footer />

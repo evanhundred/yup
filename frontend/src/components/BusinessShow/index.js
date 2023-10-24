@@ -64,6 +64,9 @@ const BusinessShow = ({ props }) => {
     );
   }
 
+  if (business.stub === "true")
+    return <div className="stub-container">this is a stub.</div>;
+
   return (
     <>
       <TitleCard business={business} />

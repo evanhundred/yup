@@ -10,7 +10,20 @@ export const CLEAR_ERRORS = "businesses/CLEAR_ERRORS";
 
 export const SHARE_BUSINESS = "businesses/SHARE_BUSINESS";
 export const CLEAR_BUSINESSES = "businesses/CLEAR_BUSINESSES";
-// export const SEARCH_BUSINESSES = "businesses/SEARCH_BUSINESSES";
+
+// export const CREATE_BUSINESS_STUB = "businesses/CREATE_BUSINESS_STUB";
+
+// export const createBusinessStub = (business) => ({
+//   type: CREATE_BUSINESS_STUB,
+//   business
+// })
+
+// export const RECEIVE_TEMPLATE = "buinesses/RECEIVE_TEMPLATE";
+
+// export const receiveTemplate = (template) => ({
+//   type: RECEIVE_TEMPLATE,
+//   template
+// });
 
 export const receiveBusinesses = (businesses) => ({
   type: RECEIVE_BUSINESSES,
@@ -31,10 +44,10 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
-export const shareBusiness = (data) => ({
-  type: SHARE_BUSINESS,
-  data
-});
+// export const shareBusiness = (data) => ({
+//   type: SHARE_BUSINESS,
+//   data
+// });
 
 export const clearBusinesses = () => {
   return {
@@ -42,21 +55,12 @@ export const clearBusinesses = () => {
   };
 };
 
-// export const searchBusinesses = (query) => ({
-//   type: SEARCH_BUSINESSES,
-//   query
-// });
-
 export const getBusiness =
   (businessId) =>
   ({ businesses }) => {
     if (businesses.errors) return businesses.errors;
     return businesses[businessId];
   };
-
-// export const getBusinesses = ({ businesses }) => {
-//   return businesses ? Object.values(businesses) : [];
-// };
 
 export const getBusinesses = createSelector(
   (state) => state.businesses,
@@ -66,12 +70,10 @@ export const getBusinesses = createSelector(
 );
 
 export const fetchBusinesses = () => async (dispatch) => {
-  // debugger;
   const res = await csrfFetch("/api/businesses");
   let data;
   if (res.ok) {
     data = await res.json();
-    // debugger;
     dispatch(receiveBusinesses(data));
   } else {
     data = res.errors;
@@ -86,11 +88,36 @@ export const fetchBusiness = (businessId) => async (dispatch) => {
   if (res.ok) {
     data = await res.json();
     dispatch(receiveBusiness(data));
-  } // else {
-  // const errors = await res.statusText;
-  //dispatch(receiveErrors(errors));
-  // }
+  }
 };
+
+export const createBusinessStub = (business) => async (dispatch) => {
+  let data;
+  const res = await csrfFetch(`/api/businesses/`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(business)
+  }).catch((error) => {
+    data = error;
+  });
+  if (res && res.ok) {
+    data = await res.json();
+    dispatch(receiveBusiness(data));
+  }
+  return data;
+};
+
+// export const newBusiness = () => async (dispatch) => {
+//   let data;
+//   const res = await csrfFetch("/api/businesses/new");
+//   if (res.ok) {
+//     data = await res.json();
+//     dispatch(clearBusinesses());
+//     dispatch(receiveTemplate(data));
+//   } else {
+//     data = res.errors;
+//   }
+// };
 
 export const searchBusinesses = (query) => async (dispatch) => {
   let data;
@@ -109,16 +136,18 @@ export const searchBusinesses = (query) => async (dispatch) => {
   return data;
 };
 
+// export const showTemplate = (state) => {
+//   console.log(state);
+// }
+
 const businessesReducer = (preloadedState = {}, action) => {
   const newState = { ...preloadedState };
   switch (action.type) {
     case RECEIVE_BUSINESSES:
       return { ...newState, ...action.businesses };
     case RECEIVE_BUSINESS:
-      // if (action.)
       if (action.business.id) newState[action.business.id] = action.business;
       else newState.errors = action.business;
-      // newState[]
       return newState;
     case RECEIVE_ERRORS:
       newState.errors = action.errors;
@@ -127,6 +156,9 @@ const businessesReducer = (preloadedState = {}, action) => {
       return {};
     case CLEAR_BUSINESSES:
       return {};
+    // case RECEIVE_TEMPLATE:
+    //   newState[0] = action.template;
+    //   return newState;
     default:
       return preloadedState;
   }

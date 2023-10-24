@@ -1,6 +1,6 @@
 import { useMemo, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { NavLink, useLocation, useHistory } from "react-router-dom";
+import { NavLink, useLocation, useHistory, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { searchBusinesses, clearBusinesses } from "../../store/businesses";
 
@@ -11,14 +11,33 @@ import githubLogoBlack from "../../assets/images/github-black.png";
 import linkedinLogo from "../../assets/images/linkedin.png";
 import linkedinLogoBlack from "../../assets/images/linkedin-black.png";
 import SearchIcon from "../../assets/images/search.png";
+import downArrowBlack from "../../assets/icons/down-arrow-black.png";
+import downArrowWhite from "../../assets/icons/down-arrow-white.png";
+import onlineStore from "../../assets/icons/online-store.png";
+import checkIcon from "../../assets/icons/check.png";
 
 const Navigation = ({ props }) => {
   const sessionUser = useSelector((state) => state.session.user);
 
+  const history = useHistory();
   const location = useLocation();
+
   const blackTextOnWhite = useMemo(() => {
-    return ["businesses", "search", "biz-photos", "biz-user-photos"];
+    return [
+      "businesses",
+      "search",
+      "biz-photos",
+      "biz-user-photos",
+      "write-a-review",
+      "add-business-as-owner",
+      "add-business-as-customer"
+    ];
   }, []);
+
+  // const minimalNavHeader = useMemo(() => {
+  //   return ["write-a-review", "add-business-owner", "add-business-customer"];
+  // }, []);
+
   const [pageType, setPageType] = useState(
     blackTextOnWhite.some((pageType) => location.pathname.includes(pageType))
       ? "business"
@@ -54,7 +73,6 @@ const Navigation = ({ props }) => {
   }
 
   const SearchBar = () => {
-    const history = useHistory();
     const dispatch = useDispatch();
 
     const [query, setQuery] = useState("");
@@ -83,7 +101,11 @@ const Navigation = ({ props }) => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <input value="New York, NY" readOnly={true} />
+        <input
+          className="location-input"
+          value="New York, NY"
+          readOnly={true}
+        />
         <button
           onClick={(e) => {
             handleSearchBarClick(e);
@@ -95,9 +117,88 @@ const Navigation = ({ props }) => {
     );
   };
 
+  const YupForBusinessMenu = () => {
+    const [showYupForBusinessMenu, setShowYupForBusinessMenu] = useState(false);
+    const openYupForBusinessMenu = () => {
+      if (showYupForBusinessMenu) return;
+      setShowYupForBusinessMenu(true);
+    };
+
+    useEffect(() => {
+      if (!showYupForBusinessMenu) return;
+
+      const closeYupForBusinessMenu = () => {
+        setShowYupForBusinessMenu(false);
+      };
+
+      document.addEventListener("click", closeYupForBusinessMenu);
+      return () =>
+        document.removeEventListener("click", closeYupForBusinessMenu);
+    }, [showYupForBusinessMenu]);
+
+    const currentUser = useSelector((state) => state.session.user);
+
+    const handleYupForBusinessClick = () => {
+      if (currentUser) history.push("/add-business-as-owner");
+      else history.push("/login");
+    };
+
+    return (
+      <div className="yup-for-business-link" onClick={openYupForBusinessMenu}>
+        <h4>Yup for Business</h4>
+        <img
+          src={pageType === "index" ? downArrowWhite : downArrowBlack}
+          alt="drop down this menu"
+        />
+        {showYupForBusinessMenu && (
+          <ul className="yup-for-business-dropdown">
+            <li>
+              <div className="first-row" onClick={handleYupForBusinessClick}>
+                {/* <Link to="/add-business-as-owner"> */}
+                <img src={onlineStore} alt="add a business" />
+                <div className="menu-h4-container">
+                  <div className="spacer" />
+                  <h4>Add a business</h4>
+                </div>
+                {/* </Link> */}
+              </div>
+            </li>
+            <li>
+              <div className="second-row" onClick={handleYupForBusinessClick}>
+                {/* <Link to="/add-business-as-owner"> */}
+                <img src={checkIcon} alt="claim your business" />
+                <div className="menu-h4-container">
+                  <div className="spacer" />
+                  <h4>Claim your business</h4>
+                </div>
+                {/* </Link> */}
+              </div>
+            </li>
+          </ul>
+        )}
+      </div>
+    );
+  };
+
+  const writeReviewNavLink = () => {
+    const handleClick = () => {
+      history.push("/write-a-review");
+    };
+    return (
+      <div
+        className="write-review-link"
+        onClick={() => {
+          handleClick();
+        }}
+      >
+        <h4>Write a Review</h4>
+      </div>
+    );
+  };
+
   const HomeNav = ({ navType }) => {
     return (
-      <div id="nav-bar">
+      <div id="nav-bar" className={pageType}>
         <div className="left-side">
           <NavLink exact className="homeLink" to="/">
             <h1 id="logo" className={pageType}>
@@ -107,6 +208,9 @@ const Navigation = ({ props }) => {
           <div className="search-bar-container">
             <SearchBar />
           </div>
+
+          <YupForBusinessMenu />
+          {writeReviewNavLink()}
         </div>
         <div className="right-side">
           <div className="socials">
@@ -138,6 +242,7 @@ const Navigation = ({ props }) => {
             </div>
           </div>
           <div id="session-links" className={pageType}>
+            {/* <SessionLinks /> */}
             {sessionLinks}
           </div>
         </div>
@@ -182,13 +287,62 @@ const Navigation = ({ props }) => {
     );
   };
 
+  const MinimalNavHeader = () => {
+    return (
+      <div id="minimal-nav-header-container">
+        <div className="left-side">
+          <NavLink exact className="homeLink" to="/">
+            <div className="logo-container">
+              <h1 id="logo">
+                yup
+                <span className="star">*</span>
+              </h1>
+            </div>
+          </NavLink>
+        </div>
+        <div className="right-side">
+          <div className="socials">
+            <div id="github">
+              <a
+                href="https://www.github.com/evanryan/yup"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={githubLogoBlack} alt="GitHub repo" />
+              </a>
+            </div>
+            <div id="linkedin">
+              <a
+                href="https://www.linkedin.com/in/evan-ryan-dev"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={linkedinLogoBlack} alt="LinkedIn page" />
+              </a>
+            </div>
+          </div>
+          <div id="session-links" className={pageType}>
+            {sessionLinks}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   let headerType;
   if (["/login", "/signup"].includes(window.location.pathname)) {
     headerType = <FormHeader />;
+  } else if (
+    [
+      "/write-a-review",
+      "/add-business-as-owner",
+      "/add-business-as-spocustomer"
+    ].includes(window.location.pathname)
+  ) {
+    headerType = <MinimalNavHeader />;
   } else {
     headerType = <HomeNav />;
   }
-
   return <>{headerType}</>;
 };
 

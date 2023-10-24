@@ -1,7 +1,6 @@
 import "./PresentStars.css";
 
 const PresentStars = ({ business }) => {
-  // debugger;
   if (business.reviews.length === 0)
     return <div className="no-reviews-yet">No reviews yet!</div>;
 
@@ -43,7 +42,6 @@ const PresentStars = ({ business }) => {
           </span>
         </div>
       );
-    // if (reducedAvg === 1.5) starText = "★☆";
     if (reducedAvg === 2) starText = "★★";
     if (reducedAvg === 2.5)
       starText = (
@@ -79,8 +77,6 @@ const PresentStars = ({ business }) => {
   };
 
   const reviewCount = business.reviews.length;
-
-  // debugger;
 
   return (
     <div className="stars-and-count-container star-rating">

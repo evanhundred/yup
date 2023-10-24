@@ -15,9 +15,10 @@
 
   & .search-errors-content {
     display: flex;
+    width: max-content;
 
     & h1 {
-      font-size: 50px;
+      font-size: 47px;
       font-weight: 500;
       display: flex;
       align-items: center;

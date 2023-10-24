@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_27_145250) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_22_213403) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,15 +60,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_145250) do
     t.decimal "longitude"
     t.string "phone", null: false
     t.string "website"
-    t.string "open_at", null: false
-    t.string "closed_at", null: false
-    t.text "about", null: false
-    t.string "category", null: false
-    t.string "price", null: false
+    t.string "open_at"
+    t.string "closed_at"
+    t.text "about"
+    t.string "category"
+    t.string "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "neighborhood"
     t.string "place_id"
+    t.integer "country_code"
+    t.string "country"
+    t.string "stub"
+    t.bigint "owner_id"
     t.index ["address"], name: "index_businesses_on_address"
     t.index ["city"], name: "index_businesses_on_city"
     t.index ["name"], name: "index_businesses_on_name"
@@ -110,6 +114,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_145250) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "biz_photo_boxes", "businesses"
+  add_foreign_key "businesses", "users", column: "owner_id"
   add_foreign_key "reviews", "businesses"
   add_foreign_key "reviews", "users", column: "author_id"
   add_foreign_key "saved_businesses", "businesses", column: "saved_business_id"
