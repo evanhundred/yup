@@ -265,7 +265,7 @@ const AddBusinessAsOwner = () => {
         };
       }
 
-      console.log(constraints);
+      // console.log(constraints);
 
       const validateInputs = () => {
         let inputsValid = true;
@@ -293,6 +293,11 @@ const AddBusinessAsOwner = () => {
               ...formErrors,
               ...newError
             }));
+
+            const inputBox = document.querySelector(
+              `#add-business-owner-container .business-info-form input.${field}`
+            );
+            inputBox.classList.add("error");
             // console.log(formErrors);
 
             if (inputsValid) inputsValid = false;
@@ -306,19 +311,20 @@ const AddBusinessAsOwner = () => {
         const res = await submitBizInfoToBackend(); // this also sets next componentToRender
         console.log(res);
       } else {
-        const styleInputBoxes = () => {
-          const inputBoxes = document.querySelectorAll(
-            "#add-business-owner-container .business-info-form input"
-          );
-          inputBoxes.forEach((box) => {
-            console.log(formErrors[box.className]);
-            if (formErrors[[box.className]]) {
-              box.classList.add("error");
-            }
-          });
-        };
+        console.log("errors exist.");
+        // const styleInputBoxes = () => {
+        //   const inputBoxes = document.querySelectorAll(
+        //     "#add-business-owner-container .business-info-form input"
+        //   );
+        //   inputBoxes.forEach((box) => {
+        //     console.log(formErrors[box.className]);
+        //     if (formErrors[box.className]) {
+        //       box.classList.add("error");
+        //     }
+        //   });
+        // };
 
-        styleInputBoxes();
+        // styleInputBoxes();
       }
     };
 
@@ -329,8 +335,6 @@ const AddBusinessAsOwner = () => {
         </div>
       );
     };
-
-    console.log(formErrors);
 
     // const inputHasError = (field) => {
     //   if (formErrors[field])
