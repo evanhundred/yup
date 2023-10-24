@@ -4,6 +4,8 @@ import PresentStars from "./PresentStars";
 import CommentIcon from "../../assets/images/message.png";
 import { useHistory, useLocation } from "react-router-dom";
 
+import photoBlank from "../../assets/images/broccoli.png";
+
 const BusinessResultCard = ({ business, idx }) => {
   const history = useHistory();
 
@@ -204,6 +206,21 @@ const BusinessResultCard = ({ business, idx }) => {
   //   }
   // };
 
+  const businessPhotoContainer = () => {
+    const photoIsPresent = business.imageUrls.length > 0;
+    const selectedImage = photoIsPresent ? business.imageUrls[5] : photoBlank;
+
+    return (
+      <div
+        className={`business-photo-container${
+          photoIsPresent ? "" : " photo-blank"
+        }`}
+      >
+        <img src={selectedImage} alt="delicious item" />
+      </div>
+    );
+  };
+
   return (
     <Link to={`/businesses/${business.id}`}>
       <div
@@ -212,9 +229,7 @@ const BusinessResultCard = ({ business, idx }) => {
         onMouseLeave={(e) => removeHoverShadow(e.target)}
         // onClick={(e) => handleClick(e.target)}
       >
-        <div className="business-photo-container">
-          <img src={business.imageUrls[5]} alt="delicious item" />
-        </div>
+        {businessPhotoContainer()}
         <div className="business-info">
           <div className="business-title">
             <p>

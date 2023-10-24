@@ -25,14 +25,19 @@
 
   & .business-photo-container {
     border-radius: 6px;
-  }
 
-  & .business-photo-container img {
-    border-radius: 4px;
-    object-fit: cover;
-    height: 225px;
-    width: 225px;
-    display: flex;
+    & img {
+      border-radius: 4px;
+      object-fit: cover;
+      height: 225px;
+      width: 225px;
+      display: flex;
+    }
+
+    &.photo-blank img {
+      filter: brightness(95%);
+      background: rgb(236, 236, 236);
+    }
   }
 
   & .business-card-container .business-info {
