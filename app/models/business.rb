@@ -9,7 +9,7 @@
 #  city         :string           not null
 #  state        :string           not null
 #  latitude     :decimal(, )
-#  longitude    :decimal(, )
+#  longitude    decimal(, )
 #  phone        :string           not null
 #  website      :string
 #  open_at      :string

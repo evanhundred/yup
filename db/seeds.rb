@@ -12,6 +12,7 @@ require "open-uri"
     User.destroy_all
     Review.destroy_all
     SavedBusiness.destroy_all
+    OwnedBusiness.destroy_all
     Business.destroy_all
     # BizPhotoBox.destroy_all
 
@@ -20,6 +21,7 @@ require "open-uri"
     ApplicationRecord.connection.reset_pk_sequence!('businesses')
     ApplicationRecord.connection.reset_pk_sequence!('reviews')
     ApplicationRecord.connection.reset_pk_sequence!('saved_businesses')
+    ApplicationRecord.connection.reset_pk_sequence!('owned_businesses')
 
     puts "Creating users..."
     User.create!(
