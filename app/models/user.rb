@@ -31,10 +31,11 @@ class User < ApplicationRecord
     inverse_of: :saver,
     dependent: :destroy
 
-  has_and_belongs_to_many :owned_businesses,
-    class_name: :Business,
+  has_many :owned_businesses,
+    class_name: :OwnedBusiness,
     foreign_key: :owner_id,
-    inverse_of: :owners
+    inverse_of: :owner,
+    dependent: :destroy
 
   def save_business(business_id)
     @user = current_user
