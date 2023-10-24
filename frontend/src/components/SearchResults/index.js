@@ -11,6 +11,9 @@ const SearchResults = () => {
   const businesses = useSelector(getBusinesses);
   const searchString = location.search.slice(1);
 
+  const rootElement = document.getElementById("root");
+  rootElement.scrollIntoView(true);
+
   console.log(location);
 
   if (location.state && location.state.searchErrors)
