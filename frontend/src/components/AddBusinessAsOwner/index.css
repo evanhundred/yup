@@ -208,9 +208,11 @@
         & div.error-box {
           position: absolute;
           margin-left: 10px;
+          margin-top: -1px;
 
           font-family: "Helvetica Neue";
-          color: red;
+          color: rgb(220, 0, 0);
+          /* color: red; */
         }
       }
 
@@ -243,7 +245,8 @@
         padding-bottom: 6px;
 
         &.error {
-          border-color: red;
+          border-color: rgb(192, 1, 1);
+          box-shadow: 0 0 2px 0.5px red;
         }
       }
 

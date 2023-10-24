@@ -28,7 +28,7 @@
 #
 class Business < ApplicationRecord
     # stub:
-    validates :name, :address, :zipcode, :city, :state, :phone, :neighborhood, :country_code, :country, :stub, presence: true
+    validates :name, :address, :city, :state, :phone, :neighborhood, :country_code, :country, :stub, presence: true
 
     # full business:
     # validates :name, :address, :zipcode, :city, :state, :phone, :open_at, :closed_at, :about, :category, :price, :neighborhood, :country_code, :country, :stub, presence: true
