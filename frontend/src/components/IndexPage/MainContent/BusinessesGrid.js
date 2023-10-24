@@ -8,16 +8,18 @@ const BusinessesGrid = ({ businesses }) => {
   if (!businesses.length || businesses[0].status === 500)
     return (
       <div>
-        <h1>loading BusinessesGrid...</h1>
+        <h1>loading businesses...</h1>
       </div>
     );
 
-  const businessesBlock = businesses.map((business, idx) => {
+  const startingSixBusinesses = businesses.slice(0, 6);
+
+  const businessesBlock = startingSixBusinesses.map((business, idx) => {
     return (
       <div className="business-card" key={idx}>
         <div className="card-image">
           <Link to={`/businesses/${business.id}`}>
-            <img src={business.imageUrls[1]} alt="delicious business" />
+            <img src={business.imageUrls[1]} alt={business.name} />
           </Link>
         </div>
 
