@@ -3,6 +3,8 @@
 import { Link } from "react-router-dom";
 // import { getBusinesses, fetchBusinesses } from "../../store/businesses";
 
+import photoBlank from "../../../assets/images/broccoli.png";
+
 const BusinessesGrid = ({ businesses, loadState }) => {
   // console.log(businesses[0]);
   if (!businesses.length || businesses[0].status === 500)
@@ -16,12 +18,25 @@ const BusinessesGrid = ({ businesses, loadState }) => {
 
   const businessesLoaderSlice = businesses.slice(0, loadState);
 
+  const photoIsPresent = (business) => {
+    return business.imageUrls.length > 0;
+  };
+
+  const businessCardImage = (business) => {
+    if (photoIsPresent(business)) return business.imageUrls[1];
+    return photoBlank;
+  };
+
   const businessesBlock = businessesLoaderSlice.map((business, idx) => {
     return (
       <div className="business-card" key={idx}>
-        <div className="card-image">
+        <div
+          className={`card-image${
+            photoIsPresent(business) ? "" : " photo-blank"
+          }`}
+        >
           <Link to={`/businesses/${business.id}`}>
-            <img src={business.imageUrls[1]} alt={business.name} />
+            <img src={businessCardImage(business)} alt={business.name} />
           </Link>
         </div>
 

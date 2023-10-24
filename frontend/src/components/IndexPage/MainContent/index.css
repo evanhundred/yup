@@ -25,6 +25,7 @@
   }
 
   & .business-card {
+    /* width: 400px; */
     width: 45%;
     border: #ccc solid 1px;
     max-width: 500px;
@@ -35,25 +36,33 @@
 
   & div#business-block .card-image {
     display: flex;
-  }
 
-  & .card-image img {
-    object-fit: cover;
-  }
+    &.photo-blank {
+      background: rgb(236, 236, 236);
+      /* filter: brightness(95%); */
+      filter: grayscale(25%);
+    }
+    & img {
+      object-fit: cover;
+    }
 
-  & .card-image a,
-  & .card-image img {
-    width: 250px;
-    height: 250px;
+    & a,
+    & img {
+      width: 250px;
+      height: 250px;
+    }
   }
 
   & .business-card .info-section {
+    /* width: 100%; */
+    overflow: auto;
     padding: 30px 18px;
   }
 
   & .business-card h3 {
     font-size: 24px;
     font-weight: 700;
+    /* width: min-content; */
   }
 
   & .post-biz-grid-container {

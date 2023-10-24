@@ -35,7 +35,8 @@
     }
 
     &.photo-blank img {
-      filter: brightness(95%);
+      filter: grayscale(25%);
+      /* filter: brightness(95%); */
       background: rgb(236, 236, 236);
     }
   }
