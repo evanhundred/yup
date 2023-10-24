@@ -75,6 +75,11 @@ const BusinessResultCard = ({ business, idx }) => {
     // location.
 
     // timeString = "7:00 PM" (closedAt)
+
+    if (!business.openAt || !business.closedAt) {
+      return <p className="open-or-closed">-</p>;
+    }
+
     const extractTimeNumber = (timeString) => {
       let bizHourNumber;
       let bizMinuteNumber;
