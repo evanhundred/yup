@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.c1f54607.css",
-    "main.js": "/static/js/main.9f88f42a.js",
+    "main.css": "/static/css/main.d133eab5.css",
+    "main.js": "/static/js/main.52e7fdf3.js",
     "static/media/web-spider.jpg": "/static/media/web-spider.5bc63b7e25d471559470.jpg",
     "static/media/devocion_bar.jpeg": "/static/media/devocion_bar.759f9d7865f309d41ed6.jpeg",
     "static/media/rs.svg": "/static/media/rs.8bc417a0e2c97bda035d.svg",
@@ -12,6 +12,7 @@
     "static/media/es.svg": "/static/media/es.e3db1b5f8a2ec8ae8764.svg",
     "static/media/sv.svg": "/static/media/sv.688fbc18c25251118e13.svg",
     "static/media/me.svg": "/static/media/me.0c03b01f0a036dd1e720.svg",
+    "static/media/broccoli.png": "/static/media/broccoli.a0f22d7b2c405a82267b.png",
     "static/media/do.svg": "/static/media/do.960745a72ddd4d797a1f.svg",
     "static/media/bz.svg": "/static/media/bz.aff76e57af51a17339da.svg",
     "static/media/hr.svg": "/static/media/hr.f573d7d4790518e20f73.svg",
@@ -277,11 +278,11 @@
     "static/media/bd.svg": "/static/media/bd.0ad8c443ef4d47ea0497.svg",
     "static/media/pe.svg": "/static/media/pe.d64e9732fcaa8f765994.svg",
     "static/media/id.svg": "/static/media/id.f624e2c8444a7794b357.svg",
-    "main.c1f54607.css.map": "/static/css/main.c1f54607.css.map",
-    "main.9f88f42a.js.map": "/static/js/main.9f88f42a.js.map"
+    "main.d133eab5.css.map": "/static/css/main.d133eab5.css.map",
+    "main.52e7fdf3.js.map": "/static/js/main.52e7fdf3.js.map"
   },
   "entrypoints": [
-    "static/css/main.c1f54607.css",
-    "static/js/main.9f88f42a.js"
+    "static/css/main.d133eab5.css",
+    "static/js/main.52e7fdf3.js"
   ]
 }

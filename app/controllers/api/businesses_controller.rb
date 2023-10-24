@@ -29,7 +29,6 @@ class Api::BusinessesController < ApplicationController
     def create
         @business = Business.new(business_params)
         # @business.stub = 'true'
-        @business.owner_id = current_user.id
         if @business.save
             render :show
         else

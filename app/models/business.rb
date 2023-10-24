@@ -64,7 +64,7 @@ class Business < ApplicationRecord
         dependent: :destroy
 
     has_many :owns,
-        inverse_of: :business,
+        inverse_of: :owned_business,
         foreign_key: :owned_business_id,
         class_name: :OwnedBusiness,
         dependent: :destroy
