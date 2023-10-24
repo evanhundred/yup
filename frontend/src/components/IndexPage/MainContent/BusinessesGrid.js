@@ -3,7 +3,7 @@
 import { Link } from "react-router-dom";
 // import { getBusinesses, fetchBusinesses } from "../../store/businesses";
 
-const BusinessesGrid = ({ businesses }) => {
+const BusinessesGrid = ({ businesses, loadState }) => {
   // console.log(businesses[0]);
   if (!businesses.length || businesses[0].status === 500)
     return (
@@ -12,9 +12,11 @@ const BusinessesGrid = ({ businesses }) => {
       </div>
     );
 
-  const startingSixBusinesses = businesses.slice(0, 6);
+  // const startingSixBusinesses = businesses.slice(0, 6);
 
-  const businessesBlock = startingSixBusinesses.map((business, idx) => {
+  const businessesLoaderSlice = businesses.slice(0, loadState);
+
+  const businessesBlock = businessesLoaderSlice.map((business, idx) => {
     return (
       <div className="business-card" key={idx}>
         <div className="card-image">
