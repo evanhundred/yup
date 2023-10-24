@@ -27,6 +27,12 @@ const BusinessesGrid = ({ businesses, loadState }) => {
     return photoBlank;
   };
 
+  // const deliverBusinessName = (business) => {
+  //   const isOverflown = (element) => {
+  //     return element.scrollWidth > element.clientWidth;
+  //   }
+
+  // }
   const businessesBlock = businessesLoaderSlice.map((business, idx) => {
     return (
       <div className="business-card" key={idx}>

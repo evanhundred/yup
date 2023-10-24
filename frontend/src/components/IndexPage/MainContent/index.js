@@ -29,7 +29,7 @@ const MainContent = ({ businesses }) => {
 
   return (
     <div className="business-block-container">
-      <SectionHeader title={{ text: "Wonderful Restaurants" }} />
+      <SectionHeader title={{ text: "Featured Businesses" }} />
       <BusinessesGrid businesses={businesses} loadState={businessesToLoad} />
       {loadMoreOrSearch()}
     </div>
