@@ -190,8 +190,11 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
     businessIsSaved || savedStateData.businessIsSaved ? "Saved" : "Save";
 
   const editBusinessButton = () => {
+    const handleEditBusinessClick = () => {
+      history.push(`/businesses/${business.id}/edit`);
+    };
     return (
-      <div className="edit-business-button">
+      <div className="edit-business-button" onClick={handleEditBusinessClick}>
         <div className="icon">
           <i className="fa-solid fa-pencil"></i>
         </div>

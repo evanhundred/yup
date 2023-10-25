@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import "./share-modal.css";
 import ContentNavBar from "./ContentNavBar";
 import MenuCard from "./MenuCard";
@@ -11,6 +11,7 @@ const MainContent = ({
   props,
   handleWriteReview
 }) => {
+  const history = useHistory();
   const location = useLocation();
 
   let reviewsComponent = document.getElementById("reviews-container");
@@ -32,7 +33,7 @@ const MainContent = ({
     business.owns.some((own) => own.id === user.id);
 
   const handleEditStubClick = () => {
-    console.log("edit stub.");
+    history.push(`/businesses/${business.id}/edit`);
   };
 
   if (business.stub === "true")
