@@ -40,7 +40,7 @@ const MainContent = ({
     return (
       <div id="stub-container">
         <h2>this is a stub.</h2>
-        {currentUser && businessIsOwnedBy(currentUser) && (
+        {business.owns && currentUser && businessIsOwnedBy(currentUser) && (
           <h2 className="edit-button" onClick={handleEditStubClick}>
             edit stub
           </h2>

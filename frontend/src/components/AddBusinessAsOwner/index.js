@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { getBusiness, newBusiness } from "../../store/businesses";
-import { newBusiness } from "../../utils/businesses";
+import { newBusinessStub } from "../../utils/businesses";
 import { createBusinessStub } from "../../store/businesses";
 import "./index.css";
 
@@ -29,7 +29,7 @@ const AddBusinessAsOwner = () => {
   const [componentToRender, setComponentToRender] = useState("initial");
   const [showSelectIntlCodeMenu, setShowSelectIntlCodeMenu] = useState(false);
 
-  const newBusinessTemplate = newBusiness();
+  const newBusinessTemplate = newBusinessStub();
   const [bizTemplate, setBizTemplate] = useState(newBusinessTemplate);
 
   const handleBusinessNameSubmit = (e) => {
