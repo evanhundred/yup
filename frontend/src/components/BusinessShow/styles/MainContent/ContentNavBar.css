@@ -6,64 +6,79 @@
   gap: 13px;
   margin-left: 4em;
   border-bottom: #ccc solid 1px;
-}
 
-.content-nav-bar-container > div.container {
-  height: 50px;
-  border: solid #ccc 1px;
-  border-radius: 4px;
-  padding: 4px 19px;
-  font-size: 22px;
-  /* width: 100%; */
-  white-space: nowrap;
-  display: flex;
-  /* min-width: 200px; */
-}
+  & > div.container {
+    height: 50px;
+    border: solid #ccc 1px;
+    border-radius: 4px;
+    padding: 4px 19px;
+    font-size: 22px;
+    /* width: 100%; */
+    white-space: nowrap;
+    display: flex;
+    /* min-width: 200px; */
+  }
 
-.content-nav-bar-container div.content > div:first-child {
-  padding-right: 8px;
-}
+  & div.content > div:first-child {
+    padding-right: 8px;
+  }
 
-.content-nav-bar-container div.write-review-button.container div > i,
-.content-nav-bar-container div.write-review-button.container h2 {
-  color: white;
-  background-color: #e34234;
-}
+  & div.write-review-button.container div > i,
+  & div.write-review-button.container h2 {
+    color: white;
+    background-color: #e34234;
+  }
 
-.content-nav-bar-container div.container div > i,
-.content-nav-bar-container div.container h2 {
-  color: black;
-  background-color: white;
-}
+  & div.container div > i,
+  & div.container h2 {
+    color: black;
+    background-color: white;
+  }
 
-.content-nav-bar-container div.write-review-button.content {
-  color: #e34234;
-}
+  & div.write-review-button.content {
+    color: #e34234;
+  }
 
-.content-nav-bar-container div.content {
-  margin-top: 0.8rem;
-  width: 100%;
-  display: flex;
-  /* white-space: nowrap; */
-  padding-top: 1px;
-}
-.content-nav-bar-container div.write-review-button.container {
-  background-color: #e34234;
-  cursor: pointer;
-}
+  & div.content {
+    margin-top: 0.8rem;
+    width: 100%;
+    display: flex;
+    /* white-space: nowrap; */
+    padding-top: 1px;
+  }
+  & div.write-review-button.container {
+    background-color: #e34234;
+    cursor: pointer;
+  }
 
-.content-nav-bar-container div.button-container {
-  cursor: pointer;
-}
+  & div.button-container {
+    cursor: pointer;
+  }
 
-/* .save-bookmark-button.saved * */
-/* .content-nav-bar-container div.saved h2 */
-div.content-nav-bar-container div.save-bookmark-button.saved,
-div.content-nav-bar-container div.save-bookmark-button.saved * {
-  background: #e34234;
-}
+  & div.save-bookmark-button.saved,
+  & div.save-bookmark-button.saved * {
+    background: #e34234;
+  }
 
-div.save-bookmark-button.saved h2,
-.content-nav-bar-container div.save-bookmark-button.saved div > i {
-  color: white;
+  & div.save-bookmark-button.saved h2,
+  & div.save-bookmark-button.saved div > i {
+    color: white;
+  }
+
+  & .edit-business-button {
+    margin-left: 200px;
+    cursor: pointer;
+    background: rgb(147, 147, 255);
+    color: white;
+    height: 50px;
+    border-radius: 4px;
+    padding: 4px 19px;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    &:hover {
+      background: rgb(120, 94, 255);
+    }
+  }
 }

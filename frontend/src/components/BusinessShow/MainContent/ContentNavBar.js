@@ -189,6 +189,17 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   const savedTextString = () =>
     businessIsSaved || savedStateData.businessIsSaved ? "Saved" : "Save";
 
+  const editBusinessButton = () => {
+    return (
+      <div className="edit-business-button">
+        <div className="icon">
+          <i className="fa-solid fa-pencil"></i>
+        </div>
+        <h2>Edit Business</h2>
+      </div>
+    );
+  };
+
   return (
     <div className="content-nav-bar-container">
       <div
@@ -238,6 +249,7 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
           </div>
         </div>
       </div>
+      {editBusinessButton()}
     </div>
   );
 };
