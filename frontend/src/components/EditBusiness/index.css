@@ -2,13 +2,34 @@
   margin: 20px 5vw;
 
   & form {
-    margin: 30px 15px 20px;
+    margin: 30px 16vw 20px 6vw;
     display: flex;
     flex-direction: column;
     gap: 15px;
 
+    & label {
+      margin: 5px 3px 10px;
+    }
+
     & input {
+      width: 100%;
+      padding: 10px;
       font-size: 20px;
+    }
+
+    & button {
+      width: max-content;
+      margin-top: 30px;
+      height: 50px;
+      border-radius: 4px;
+      padding: 8px 25px;
+      font-size: 25px;
+      border: none;
+      color: white;
+      background: rgb(205, 25, 49);
+      &:hover {
+        background: rgb(214, 0, 0);
+      }
     }
   }
 }

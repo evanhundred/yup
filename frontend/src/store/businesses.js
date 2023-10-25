@@ -110,6 +110,22 @@ export const createBusinessStub = (business) => async (dispatch) => {
   return data;
 };
 
+export const updateBusiness = (business) => async (dispatch) => {
+  let data;
+  const res = await csrfFetch(`/api/businesses/${business.id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(business)
+  }).catch((error) => {
+    data = error;
+  });
+  if (res && res.ok) {
+    data = await res.json();
+    dispatch(receiveBusiness(data));
+  }
+  return data;
+};
+
 // export const newBusiness = () => async (dispatch) => {
 //   let data;
 //   const res = await csrfFetch("/api/businesses/new");
