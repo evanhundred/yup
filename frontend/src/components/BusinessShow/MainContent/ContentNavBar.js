@@ -5,7 +5,7 @@ import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
 import {
   createSavedBusiness,
   deleteSavedBusiness
-} from "../../../store/savedBusinesses.js";
+} from "../../../store/savedBusinesses";
 import CopyIcon from "../../../assets/icons/copy-icon.png";
 
 const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {

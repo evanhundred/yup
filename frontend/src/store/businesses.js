@@ -1,5 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 
+import { createOwnedBusiness } from "./ownedBusinesses";
+
 import csrfFetch from "./csrf";
 
 export const RECEIVE_BUSINESSES = "businesses/RECEIVE_BUSINESSES";
@@ -101,6 +103,7 @@ export const createBusinessStub = (business) => async (dispatch) => {
     data = error;
   });
   if (res && res.ok) {
+    dispatch(createOwnedBusiness(business.id));
     data = await res.json();
     dispatch(receiveBusiness(data));
   }
