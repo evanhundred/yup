@@ -103,8 +103,8 @@ export const createBusinessStub = (business) => async (dispatch) => {
     data = error;
   });
   if (res && res.ok) {
-    dispatch(createOwnedBusiness(business.id));
     data = await res.json();
+    dispatch(createOwnedBusiness(data.id));
     dispatch(receiveBusiness(data));
   }
   return data;

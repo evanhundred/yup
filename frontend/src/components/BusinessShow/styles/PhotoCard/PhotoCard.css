@@ -2,6 +2,11 @@
 @import "ThirdLine.css";
 @import "FourthLine.css";
 
+.business-image-container.stub {
+  background: rgb(193, 193, 193);
+  height: 500px;
+}
+
 .business-image-container {
   display: flex;
   justify-content: center;
@@ -42,6 +47,13 @@ div.business-image img {
   padding-left: 4em;
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: white;
+
+  &.stub {
+    align-items: center;
+    & h2 {
+      font-size: 50px;
+    }
+  }
 }
 
 #business-title-card h1 {

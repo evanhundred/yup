@@ -1,4 +1,7 @@
 const PhotoBlock = ({ business }) => {
+  if (business.stub === "true") {
+    return <div className="business-image-container stub"></div>;
+  }
   return (
     <div className="business-image-container">
       <div className="business-image one">

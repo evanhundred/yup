@@ -45,3 +45,20 @@
 #pre-footer-height-reset {
   margin: -230px;
 }
+
+#stub-container {
+  margin: 0 50px 70px;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  & h2 {
+    border-radius: 4px;
+    &.edit-button {
+      cursor: pointer;
+      padding: 10px;
+      color: rgb(58, 58, 58);
+      background: rgb(204, 255, 204);
+    }
+  }
+}

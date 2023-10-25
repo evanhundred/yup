@@ -18,6 +18,9 @@ const BusinessShow = ({ props }) => {
 
   const currentUser = useSelector((state) => state.session.user);
 
+  // const currentUserId = currentUser ? currentUser.id : null;
+  // const fetchedUser = useSelector(state=>state.users[currentUserId]);
+
   const handleWriteReview = (e) => {
     e.preventDefault();
     if (currentUser) history.push(`/businesses/${business.id}/reviews/new`);
@@ -64,8 +67,18 @@ const BusinessShow = ({ props }) => {
     );
   }
 
-  if (business.stub === "true")
-    return <div className="stub-container">this is a stub.</div>;
+  // const businessIsOwnedBy = (user) =>
+  //   business.owns.some((own) => own.id === user.id);
+
+  // if (business.stub === "true")
+  //   return (
+  //     <div id="stub-container">
+  //       <h2>this is a stub.</h2>
+  //       {currentUser && businessIsOwnedBy(currentUser) && (
+  //         <h2 className="edit-button">edit stub</h2>
+  //       )}
+  //     </div>
+  //   );
 
   return (
     <>

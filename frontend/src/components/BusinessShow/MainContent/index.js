@@ -21,18 +21,31 @@ const MainContent = ({
     const rootElement = document.getElementById("root");
     rootElement.scrollIntoView(true);
   }
-  // if (location.state && reviewsComponent && location.state.scrollToReviews) {
-  //   reviewsComponent.scrollIntoView({ behavior: "smooth" });
-  // } else {
-  //   const rootElement = document.getElementById("root");
-  //   rootElement.scrollIntoView(true);
-  // }
 
   // REDUNDANT-- CLEAN
   if (props === "goToReviews") {
     const reviewsComponent = document.getElementById("reviews-container");
     reviewsComponent.scrollIntoView({ behavior: "smooth" });
   }
+
+  const businessIsOwnedBy = (user) =>
+    business.owns.some((own) => own.id === user.id);
+
+  const handleEditStubClick = () => {
+    console.log("edit stub.");
+  };
+
+  if (business.stub === "true")
+    return (
+      <div id="stub-container">
+        <h2>this is a stub.</h2>
+        {currentUser && businessIsOwnedBy(currentUser) && (
+          <h2 className="edit-button" onClick={handleEditStubClick}>
+            edit stub
+          </h2>
+        )}
+      </div>
+    );
 
   return (
     <>
@@ -43,7 +56,6 @@ const MainContent = ({
           handleWriteReview={handleWriteReview}
         />
 
-        {/* menu */}
         <MenuCard business={business} />
 
         {/* Location & hours */}
