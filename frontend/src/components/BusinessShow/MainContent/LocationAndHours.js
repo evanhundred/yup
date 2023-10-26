@@ -3,11 +3,31 @@ const LocationAndHours = ({ business }) => {
   const urlifiedBizCoords = `${business.latitude}%2C${business.longitude}`;
   // let googleMapParams = `query=${urlifiedBizName}&query_place_id=${business.placeId}`;
   let googleMapParams = `query=${urlifiedBizCoords}&query_place_id=${business.placeId}`;
-  const mapSearchUrl = `https://www.google.com/maps/search/?api=1&${googleMapParams}`;
+
+  const urlifyBizName = () => {
+    const nameArray = business.name.split(" ");
+    const locationArray = business.city
+      .concat("%2C")
+      .concat(business.state)
+      .split(" ");
+    const filteredNameArray = nameArray.concat(locationArray).map((word) => {
+      return word.match(/[a-zA-Z0-9]/g).join("");
+    });
+    const finalForm = filteredNameArray.join("+");
+    return finalForm;
+  };
+
+  const urlifiedBizName = urlifyBizName();
+  const stubMapParams = `query=${urlifiedBizName}`;
+
+  const mapSearchUrl = (params) =>
+    `https://www.google.com/maps/search/?api=1&${params}`;
+  const getParams = business.stub === "true" ? stubMapParams : googleMapParams;
 
   // const mapSearchUrl = `https://maps.google.com/?ll=${business.latitude},${business.longitude}`;
   const neighborhoodString = business.neighborhood;
   // const neighborhoodString = business ? business.neighborhood : "text";
+
   return (
     <div className="location card-container">
       <div className="main-title">
@@ -19,7 +39,11 @@ const LocationAndHours = ({ business }) => {
           <img src={business.imageUrls[6]} alt="google maps" />
           <div className="bottom-left-side">
             <div className="address">
-              <a href={mapSearchUrl} target="_blank" rel="noopener noreferrer">
+              <a
+                href={mapSearchUrl(getParams)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <h3 className="street-address">{business.address}</h3>
               </a>
 
@@ -32,7 +56,11 @@ const LocationAndHours = ({ business }) => {
 
             <div className="get-directions-container">
               <div className="get-directions-button">
-                <a target="_blank" rel="noreferrer" href={mapSearchUrl}>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href={mapSearchUrl(getParams)}
+                >
                   Get directions
                 </a>
               </div>

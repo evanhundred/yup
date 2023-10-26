@@ -203,6 +203,10 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
     );
   };
 
+  const currentUserIsOwner =
+    business.owns &&
+    business.owns.some((own) => own.ownerId === currentUser.id);
+
   return (
     <div className="content-nav-bar-container">
       <div
@@ -252,7 +256,7 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
           </div>
         </div>
       </div>
-      {editBusinessButton()}
+      {currentUserIsOwner && editBusinessButton()}
     </div>
   );
 };
