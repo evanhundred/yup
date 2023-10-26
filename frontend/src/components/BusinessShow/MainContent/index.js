@@ -39,12 +39,14 @@ const MainContent = ({
   if (business.stub === "true")
     return (
       <div id="stub-container">
-        <h2>this is a stub.</h2>
-        {business.owns && currentUser && businessIsOwnedBy(currentUser) && (
-          <h2 className="edit-button" onClick={handleEditStubClick}>
-            edit stub
-          </h2>
-        )}
+        <div className="first-line">
+          <h2>this is a stub.</h2>
+          {business.owns && currentUser && businessIsOwnedBy(currentUser) && (
+            <h2 className="edit-button" onClick={handleEditStubClick}>
+              edit stub
+            </h2>
+          )}
+        </div>
       </div>
     );
 

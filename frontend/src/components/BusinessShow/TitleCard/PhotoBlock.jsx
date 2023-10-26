@@ -41,24 +41,21 @@ const PhotoBlock = ({ business }) => {
       <div className="business-image one">
         <img src={getImage(0)} alt="delicious items" />
       </div>
-      {business.stub === "false" && (
-        <div className="business-image two">
-          <img src={getImage(3)} alt="fantastic store" />
-        </div>
-      )}
+
+      <div className="business-image two">
+        <img src={getImage(3)} alt="fantastic store" />
+      </div>
+
       <div className="business-image three">
         <img src={getImage(1)} alt="more delicious items" />
       </div>
-      {business.stub === "false" && (
-        <>
-          <div className="business-image four">
-            <img src={getImage(2)} alt="more delicious deliciousness" />
-          </div>
-          <div className="business-image five">
-            <img src={getImage(4)} alt="more more delicious deliciousness" />
-          </div>
-        </>
-      )}
+
+      <div className="business-image four">
+        <img src={getImage(2)} alt="more delicious deliciousness" />
+      </div>
+      <div className="business-image five">
+        <img src={getImage(4)} alt="more more delicious deliciousness" />
+      </div>
     </div>
   );
 };
