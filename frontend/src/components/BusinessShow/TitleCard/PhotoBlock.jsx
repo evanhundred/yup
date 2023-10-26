@@ -23,35 +23,42 @@ const PhotoBlock = ({ business }) => {
     }
     return business.imageUrls[idx];
   };
-  if (business.stub === "true") {
-    return (
-      <div className="business-image-container stub">
-        <div className="default-image">
-          <img src={getImage(1)} alt={"delicious store"} />
-        </div>
-      </div>
-    );
-  }
+  // if (business.stub === "true") {
+  //   return (
+  //     <div className="business-image-container stub">
+  //       <div className="default-image">
+  //         <img src={getImage(1)} alt={"delicious store"} />
+  //       </div>
+  //     </div>
+  //   );
+  // }
   return (
-    <div className="business-image-container">
+    <div
+      className={`business-image-container${
+        business.stub === "true" ? " stub" : ""
+      }`}
+    >
       <div className="business-image one">
-        <img src={business.imageUrls[0]} alt="delicious items" />
+        <img src={getImage(0)} alt="delicious items" />
       </div>
-      <div className="business-image two">
-        <img src={business.imageUrls[3]} alt="fantastic store" />
-      </div>
+      {business.stub === "false" && (
+        <div className="business-image two">
+          <img src={getImage(3)} alt="fantastic store" />
+        </div>
+      )}
       <div className="business-image three">
-        <img src={business.imageUrls[1]} alt="more delicious items" />
+        <img src={getImage(1)} alt="more delicious items" />
       </div>
-      <div className="business-image four">
-        <img src={business.imageUrls[2]} alt="more delicious deliciousness" />
-      </div>
-      <div className="business-image five">
-        <img
-          src={business.imageUrls[4]}
-          alt="more more delicious deliciousness"
-        />
-      </div>
+      {business.stub === "false" && (
+        <>
+          <div className="business-image four">
+            <img src={getImage(2)} alt="more delicious deliciousness" />
+          </div>
+          <div className="business-image five">
+            <img src={getImage(4)} alt="more more delicious deliciousness" />
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -2,34 +2,16 @@
 @import "ThirdLine.css";
 @import "FourthLine.css";
 
-.business-image-container.stub {
+/* .business-image-container.stub {
   background: rgb(193, 193, 193);
   height: 500px;
   justify-content: flex-start;
-
-  /* overflow: hidden; */
   height: 20%;
   & .default-image {
     height: 500px;
-    /* position: relative; */
     overflow: hidden;
-    /* background: linear-gradient(to bottom, transparent 50%, black 100%); */
-
-    /* &:after {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to bottom, transparent 70%, black 100%);
-    } */
     & img {
       height: 175%;
-      /* max-height: 100%;
-      max-width: 100%; */
-      /* height: 500px; */
-      /* height: 500px; */
       object-fit: cover;
       object-position: -150px -100px;
 
@@ -39,6 +21,26 @@
       filter: hue-rotate(340deg);
       filter: grayscale(5%);
       filter: blur(1.5px);
+    }
+  }
+} */
+.business-image-container.stub {
+  & .business-image {
+    /* height: 500px; */
+    overflow: hidden;
+    & img {
+      /* height: 175%;
+      object-fit: cover; */
+      /* object-position: -150px -100px; */
+      transform: scale(1.25);
+
+      opacity: 0.85;
+      /* filter: brightness(80%); */
+
+      /* filter: hue-rotate(340deg); */
+      /* filter: grayscale(5%); */
+      filter: blur(3px);
+      /* filter: blur(1.5px); */
     }
   }
 }
@@ -76,7 +78,7 @@ div.business-image img {
 #business-title-card {
   position: relative;
   top: -280px;
-  left: 10px;
+  left: 20px;
   width: 1000px;
   display: flex;
   flex-direction: column;
@@ -85,11 +87,16 @@ div.business-image img {
   color: white;
 
   &.stub {
+    top: -360px;
+    left: 0;
     align-items: center;
     width: 100%;
     padding: 0;
     & h2 {
       font-size: 50px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      border-radius: 4px;
     }
   }
 }
