@@ -1,7 +1,7 @@
 import defaultImage from "../../../assets/images/stub/1.jpeg";
 
 const PhotoBlock = ({ business }) => {
-  let images;
+  let defaultImages;
   if (business.stub === "true") {
     const importAll = (r) => {
       let images = {};
@@ -10,14 +10,16 @@ const PhotoBlock = ({ business }) => {
       });
       return images;
     };
-    images = importAll(
+    defaultImages = importAll(
       require.context("../../../assets/images/stub/", false, /\S/)
     );
   }
-  const defaultImages = [];
+
+  console.log(defaultImages);
+
   const getImage = (idx) => {
     if (business.stub === "true") {
-      return defaultImages[idx];
+      return defaultImages[`${idx}.jpeg`];
     }
     return business.imageUrls[idx];
   };
@@ -25,7 +27,7 @@ const PhotoBlock = ({ business }) => {
     return (
       <div className="business-image-container stub">
         <div className="default-image">
-          <img src={defaultImage} alt={"delicious store"} />
+          <img src={getImage(1)} alt={"delicious store"} />
         </div>
       </div>
     );
