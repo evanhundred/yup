@@ -133,7 +133,7 @@ const TitleCardContent = ({ business }) => {
   if (business.stub === "true")
     return (
       <div id="business-title-card" className="stub">
-        <h2>stub</h2>
+        <h2>{business.name}</h2>
       </div>
     );
 

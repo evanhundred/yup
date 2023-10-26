@@ -86,6 +86,9 @@ const EditBusiness = () => {
     timeFields.forEach((field) => {
       fieldsObject[field] = "time";
     });
+    // fieldsObject.zipcode = "tel";
+    // fieldsObject.phone = "tel";
+    fieldsObject.website = "url";
 
     const data = filteredKeysArray.map((key) => {
       if (exclude.includes(key)) return <h3 key={key}>hi</h3>;

@@ -5,6 +5,42 @@
 .business-image-container.stub {
   background: rgb(193, 193, 193);
   height: 500px;
+  justify-content: flex-start;
+
+  /* overflow: hidden; */
+  height: 20%;
+  & .default-image {
+    height: 500px;
+    /* position: relative; */
+    overflow: hidden;
+    /* background: linear-gradient(to bottom, transparent 50%, black 100%); */
+
+    /* &:after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, transparent 70%, black 100%);
+    } */
+    & img {
+      height: 175%;
+      /* max-height: 100%;
+      max-width: 100%; */
+      /* height: 500px; */
+      /* height: 500px; */
+      object-fit: cover;
+      object-position: -150px -100px;
+
+      opacity: 0.75;
+      filter: brightness(75%);
+
+      filter: hue-rotate(340deg);
+      filter: grayscale(5%);
+      filter: blur(1.5px);
+    }
+  }
 }
 
 .business-image-container {
@@ -50,6 +86,8 @@ div.business-image img {
 
   &.stub {
     align-items: center;
+    width: 100%;
+    padding: 0;
     & h2 {
       font-size: 50px;
     }
