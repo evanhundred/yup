@@ -1,4 +1,6 @@
 const MenuCard = ({ business }) => {
+  const businessWebsite =
+    business.stub === "true" ? "https://yup.evanryan.dev" : business.website;
   return (
     <div className="menu-bar card-container">
       <div className="main-title">
@@ -25,7 +27,7 @@ const MenuCard = ({ business }) => {
         <div className="popular-item-subcard"></div>
       </div>
 
-      <a href={business.website} target="_blank" rel="noreferrer">
+      <a href={businessWebsite} target="_blank" rel="noreferrer">
         <div className="website-menu-link">
           <i className="fa-solid fa-up-right-from-square"></i>
           <h2>Website menu</h2>

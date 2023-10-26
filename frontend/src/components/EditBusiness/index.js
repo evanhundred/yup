@@ -88,7 +88,11 @@ const EditBusiness = () => {
     });
     const handleSubmit = () => {
       const runValidations = () => {
+        const constraints = {};
         // validate
+        let inputsValid = true;
+
+        // const fieldsArray=
       };
       if (runValidations()) {
         dispatch(updateBusiness(bizTemplate));
