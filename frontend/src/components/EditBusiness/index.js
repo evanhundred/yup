@@ -32,6 +32,10 @@ const EditBusiness = () => {
 
   const keysArray = business ? Object.keys(business) : null;
   const exclude = ["id", "imageUrls", "authorNames", "reviews", "owns"];
+  const excludeObject = {};
+  exclude.forEach((key) => {
+    excludeObject[key] = key;
+  });
 
   // let keysArrayCopy;
   // while (keysArrayCopy) {
@@ -50,8 +54,8 @@ const EditBusiness = () => {
   // console.log(bizT)
 
   if (!business) return <div className="loading">Loading...</div>;
-
   const businessInfoForm = () => {
+    if (!bizTemplate) setBizTemplate({ ...businessObject });
     const handleChange = (e, key) => {
       setBizTemplate({
         ...bizTemplate,
@@ -59,15 +63,26 @@ const EditBusiness = () => {
       });
     };
 
-    const data = keysArray.map((key) => {
-      if (exclude.includes(key)) return <>{/* <h3>hi</h3> */}</>;
+    const filteredKeysArray = [];
+    keysArray.forEach((key) => {
+      if (!excludeObject[key]) filteredKeysArray.push(key);
+    });
+
+    const data = filteredKeysArray.map((key) => {
+      if (exclude.includes(key)) return <h3 key={key}>hi</h3>;
+      let proxyKey;
+      if (bizTemplate) {
+        if (!bizTemplate[[key]]) {
+          proxyKey = "";
+        } else {
+          proxyKey = bizTemplate[[key]];
+        }
+      }
+
       return (
         <label key={key}>
           <h4>{key}</h4>
-          <input
-            value={bizTemplate ? bizTemplate[[key]] : ""}
-            onChange={(e) => handleChange(e, key)}
-          />
+          <input value={proxyKey} onChange={(e) => handleChange(e, key)} />
         </label>
       );
     });
