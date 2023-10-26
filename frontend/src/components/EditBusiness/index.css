@@ -1,20 +1,31 @@
 #edit-business-container {
   margin: 20px 5vw;
 
+  /* & .business-info-form-container {
+
+  } */
+
   & form {
     margin: 30px 16vw 20px 6vw;
     display: flex;
     flex-direction: column;
     gap: 15px;
 
-    & label {
-      margin: 5px 3px 10px;
-    }
+    & .input-fields {
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      & label {
+        margin: 5px 3px 10px;
+      }
 
-    & input {
-      width: 100%;
-      padding: 10px;
-      font-size: 20px;
+      & input {
+        width: 100%;
+        max-width: 300px;
+        padding: 10px;
+        font-size: 20px;
+      }
     }
 
     & button {

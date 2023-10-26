@@ -140,7 +140,7 @@ const EditBusiness = () => {
       <div className="business-info-form-container">
         {/* <p>hi</p> */}
         <form onSubmit={handleSubmit}>
-          {data}
+          <div className="input-fields">{data}</div>
           <button>Submit</button>
         </form>
       </div>
