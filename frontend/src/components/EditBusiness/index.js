@@ -31,7 +31,7 @@ const EditBusiness = () => {
   );
 
   const keysArray = business ? Object.keys(business) : null;
-  const exclude = ["id", "imageUrls", "authorNames", "reviews", "owns"];
+  const exclude = ["id", "imageUrls", "authorNames", "reviews", "owns", "stub"];
   const excludeObject = {};
   exclude.forEach((key) => {
     excludeObject[key] = key;
@@ -68,6 +68,25 @@ const EditBusiness = () => {
       if (!excludeObject[key]) filteredKeysArray.push(key);
     });
 
+    const fieldsObject = {};
+
+    const textFields = [
+      "name",
+      "address",
+      "city",
+      "state",
+      "neighborhood",
+      "about",
+      "country"
+    ];
+    textFields.forEach((field) => {
+      fieldsObject[field] = "text";
+    });
+    const timeFields = ["openAt", "closedAt"];
+    timeFields.forEach((field) => {
+      fieldsObject[field] = "time";
+    });
+
     const data = filteredKeysArray.map((key) => {
       if (exclude.includes(key)) return <h3 key={key}>hi</h3>;
       let proxyKey;
@@ -79,16 +98,31 @@ const EditBusiness = () => {
         }
       }
 
+      // const inputType = (key) => {
+      //   let type;
+      //   if (textFieldsObject[[key]]) type = "text";
+      //   if (key === "openAt")
+
+      //   return type;
+      // }
+
       return (
         <label key={key}>
           <h4>{key}</h4>
-          <input value={proxyKey} onChange={(e) => handleChange(e, key)} />
+          <input
+            value={proxyKey}
+            type={fieldsObject[key]}
+            onChange={(e) => handleChange(e, key)}
+          />
         </label>
       );
     });
     const handleSubmit = () => {
       const runValidations = () => {
-        const constraints = {};
+        // "category",
+        const constraints = {
+          name: /^[a-zA-Z0-9\s]+/g
+        };
         // validate
         let inputsValid = true;
 
