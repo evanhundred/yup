@@ -46,12 +46,10 @@ const EditBusiness = () => {
   //   });
   // }
   // setBizTemplate(businessObject);
-  console.log(bizTemplate);
-  console.log(businessObject);
+  // console.log(bizTemplate);
+  // console.log(businessObject);
 
   const [componentToRender, setComponentToRender] = useState("initial");
-
-  // console.log(bizT)
 
   if (!business) return <div className="loading">Loading...</div>;
   const businessInfoForm = () => {
@@ -67,6 +65,33 @@ const EditBusiness = () => {
     keysArray.forEach((key) => {
       if (!excludeObject[key]) filteredKeysArray.push(key);
     });
+
+    const keyPositions = [
+      "name",
+      "category",
+      "price",
+      "website",
+      "countryCode",
+      "phone",
+      "address",
+      "city",
+      "state",
+      "zipcode",
+      "country",
+      "neighborhood",
+      "openAt",
+      "closedAt",
+      "about",
+      "latitude",
+      "longitude",
+      "placeId"
+    ];
+    const keyPositionsObject = {};
+    keyPositions.forEach((key, idx) => {
+      keyPositionsObject[key] = idx;
+    });
+
+    console.log(keyPositionsObject);
 
     const fieldsObject = {};
 
@@ -88,7 +113,8 @@ const EditBusiness = () => {
     });
     // fieldsObject.zipcode = "tel";
     // fieldsObject.phone = "tel";
-    fieldsObject.website = "url";
+    // fieldsObject.website = "url";
+    // fieldsObject.price =
 
     const data = filteredKeysArray.map((key) => {
       if (exclude.includes(key)) return <h3 key={key}>hi</h3>;
@@ -101,16 +127,34 @@ const EditBusiness = () => {
         }
       }
 
-      // const inputType = (key) => {
-      //   let type;
-      //   if (textFieldsObject[[key]]) type = "text";
-      //   if (key === "openAt")
+      if (key === "price")
+        return (
+          <label style={{ order: keyPositionsObject[["price"]] }}>
+            <h4>{key}</h4>
+            <div className="price-input-container">
+              <p>$$$$</p>
+            </div>
+          </label>
+        );
 
-      //   return type;
-      // }
+      const styleObject = () => {
+        let orderNumber;
+        if (keyPositionsObject && keyPositionsObject[key]) {
+          orderNumber = keyPositionsObject[key];
+        } else {
+          orderNumber = 0;
+        }
+        return { order: orderNumber };
+      };
 
       return (
-        <label key={key}>
+        <label
+          style={styleObject()}
+          // style={{ order: `${keyPositions[key]}` }}
+          className={`${key}`}
+          // className={`${key} order-${keyPositions[key]}`}
+          key={key}
+        >
           <h4>{key}</h4>
           <input
             value={proxyKey}

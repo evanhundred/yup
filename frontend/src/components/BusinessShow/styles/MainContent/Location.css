@@ -1,82 +1,84 @@
-.main-content-div {
-  display: flex;
-}
+.main-content-container .location.card-container {
+  .main-content-div {
+    display: flex;
+  }
 
-.left-side-map {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.location.card-container img {
-  opacity: 1;
-  width: 370px;
-}
+  .left-side-map {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .location.card-container img {
+    opacity: 1;
+    width: 370px;
+  }
 
-.address {
-  font-size: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 130%;
-}
+  .address {
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 130%;
+  }
 
-/* .address * {
-  margin: 0;
-} */
+  /* .address * {
+    margin: 0;
+  } */
 
-.street-address,
-.city-state-zip {
-  font-weight: 600;
-  width: max-content;
-}
+  .street-address,
+  .city-state-zip {
+    font-weight: 600;
+    width: max-content;
+  }
 
-h3.street-address {
-  color: #11709c;
-}
+  h3.street-address {
+    color: #11709c;
+  }
 
-.bottom-left-side {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 0 0;
-  width: 100%;
-}
+  .bottom-left-side {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0 0;
+    width: 100%;
+  }
 
-.get-directions-button {
-  padding: 14px;
-  font-size: 19px;
-  border: solid #ccc 1px;
-  border-radius: 5px;
-}
+  .get-directions-button {
+    padding: 14px;
+    font-size: 19px;
+    border: solid #ccc 1px;
+    border-radius: 5px;
+  }
 
-.hours-div {
-  display: flex;
-  flex-direction: column;
-  padding-left: 35px;
-  gap: 17px;
-  font-size: 18px;
-}
+  .hours-div {
+    display: flex;
+    flex-direction: column;
+    padding-left: 35px;
+    gap: 17px;
+    font-size: 18px;
+  }
 
-.day-container {
-  display: flex;
-}
+  .day-container {
+    display: flex;
+  }
 
-.day-name {
-  width: 100px;
-}
+  .day-name {
+    width: 100px;
+  }
 
-.time-range {
-  width: 200px;
-}
+  .time-range {
+    width: 200px;
+  }
 
-.edit-info-button {
-  display: flex;
-  color: #11709c;
-  padding-top: 4px;
-  font-weight: 500;
-}
+  .edit-info-button {
+    display: flex;
+    color: #11709c;
+    padding-top: 4px;
+    font-weight: 500;
+  }
 
-.edit-info-button i {
-  font-size: 16px;
-  padding-right: 10px;
-  margin-top: 3px;
+  .edit-info-button i {
+    font-size: 16px;
+    padding-right: 10px;
+    margin-top: 3px;
+  }
 }

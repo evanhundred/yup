@@ -17,15 +17,38 @@
         flex-direction: column;
         gap: 10px;
         flex-wrap: wrap;
+
         & label {
           margin: 5px 3px 10px;
-        }
 
-        & input {
-          width: 100%;
-          max-width: 300px;
-          padding: 10px;
-          font-size: 20px;
+          /* .order-1 {
+            order: 1;
+          }
+          .order-2 {
+            order: 1;
+          }
+          .order-3 {
+            order: 1;
+          }
+          &.state {
+            order: 0;
+          }
+
+          &.city {
+            order: 1;
+          } */
+
+          & input,
+          & .price-input-container {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px;
+            font-size: 20px;
+          }
+
+          & .price-input-container {
+            font-family: Rubik, "Helvetica Neue", Helvetica, sans-serif;
+          }
         }
       }
 
