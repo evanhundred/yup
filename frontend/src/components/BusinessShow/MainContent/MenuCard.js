@@ -1,6 +1,28 @@
 const MenuCard = ({ business }) => {
   const businessWebsite =
     business.stub === "true" ? "https://yup.evanryan.dev" : business.website;
+
+  const websiteLinkComponent = (
+    <a href={businessWebsite} target="_blank" rel="noreferrer">
+      <div className="website-menu-link">
+        <i className="fa-solid fa-up-right-from-square"></i>
+        <h2>Website menu</h2>
+      </div>
+    </a>
+  );
+  const stubWebsiteComponent = (
+    <div className="website-menu-link">
+      <i className="fa-solid fa-up-right-from-square"></i>
+      <h2>Website:</h2>
+      <h2>{business.website}</h2>
+    </div>
+  );
+  const getWebsiteComponent = () => {
+    let componentToRender;
+    if (business.stub === "true") componentToRender = stubWebsiteComponent;
+    else componentToRender = websiteLinkComponent;
+    return componentToRender;
+  };
   return (
     <div className="menu-bar card-container">
       <div className="main-title">
@@ -27,12 +49,13 @@ const MenuCard = ({ business }) => {
         <div className="popular-item-subcard"></div>
       </div>
 
-      <a href={businessWebsite} target="_blank" rel="noreferrer">
+      {getWebsiteComponent()}
+      {/* <a href={businessWebsite} target="_blank" rel="noreferrer">
         <div className="website-menu-link">
           <i className="fa-solid fa-up-right-from-square"></i>
           <h2>Website menu</h2>
         </div>
-      </a>
+      </a> */}
     </div>
   );
 };
