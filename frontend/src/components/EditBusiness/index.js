@@ -243,8 +243,9 @@ const EditBusiness = () => {
       return componentsArray;
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
       const runValidations = () => {
+        e.preventDefault();
         // "category",
         const constraints = {
           name: /^[a-zA-Z0-9\s]+/g
@@ -253,6 +254,7 @@ const EditBusiness = () => {
         let inputsValid = true;
 
         // const fieldsArray=
+        return false;
       };
       if (runValidations()) {
         dispatch(updateBusiness(bizTemplate));
@@ -265,7 +267,7 @@ const EditBusiness = () => {
     return (
       <div className="business-info-form-container">
         {/* <p>hi</p> */}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => handleSubmit(e)}>
           <div className="input-fields">
             {keyPositionsObject &&
               keyPositionsObject &&
