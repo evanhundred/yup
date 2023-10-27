@@ -8,8 +8,8 @@
       margin: 30px 16vw 20px 6vw;
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      height: 66vh;
+      gap: 50px;
+      height: 65vh;
 
       & .input-fields {
         height: 100%;
@@ -17,26 +17,18 @@
         flex-direction: column;
         gap: 10px;
         flex-wrap: wrap;
+        justify-content: space-between;
 
         & label {
           margin: 5px 3px 10px;
 
-          /* .order-1 {
-            order: 1;
+          & input {
+            border: 1px solid rgb(216, 216, 216);
+            border-radius: 3px;
+            &:focus {
+              box-shadow: 0 0 2px 0.5px grey;
+            }
           }
-          .order-2 {
-            order: 1;
-          }
-          .order-3 {
-            order: 1;
-          }
-          &.state {
-            order: 0;
-          }
-
-          &.city {
-            order: 1;
-          } */
 
           & input,
           & .price-input-container {
@@ -48,6 +40,16 @@
 
           & .price-input-container {
             font-family: Rubik, "Helvetica Neue", Helvetica, sans-serif;
+            & p {
+              font-size: 30px;
+              & span {
+                font-weight: 500;
+                padding: 0 3px;
+                &:hover {
+                  color: green;
+                }
+              }
+            }
           }
         }
       }
@@ -58,6 +60,7 @@
         height: 50px;
         border-radius: 4px;
         padding: 8px 25px;
+        margin-left: 10px;
         font-size: 25px;
         border: none;
         color: white;
