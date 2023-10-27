@@ -4,6 +4,12 @@
 
 .business-image-container.stub {
   & .business-image {
+    &.four {
+      width: 900px;
+    }
+    &.five {
+      width: 400px;
+    }
     overflow: hidden;
     & img {
       transform: scale(1.25);

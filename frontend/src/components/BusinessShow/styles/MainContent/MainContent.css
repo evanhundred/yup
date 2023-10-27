@@ -57,20 +57,24 @@
   & .first-line {
     display: flex;
     gap: 20px;
+
     & h2 {
+      cursor: default;
       border-radius: 4px;
       display: flex;
       align-items: center;
+
       &.edit-button {
         cursor: pointer;
         padding: 10px;
         color: rgb(58, 58, 58);
         /* background: rgb(212, 248, 225); */
         background: rgb(220, 244, 220);
-      }
-      &:hover {
-        box-shadow: 0 0 3px 2.5px rgb(231, 231, 231);
-        /* color: white; */
+
+        &:hover {
+          box-shadow: 0 0 3px 2.5px rgb(231, 231, 231);
+          /* color: white; */
+        }
       }
     }
   }
