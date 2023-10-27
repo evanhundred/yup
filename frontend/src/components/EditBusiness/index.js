@@ -127,12 +127,23 @@ const EditBusiness = () => {
         }
       }
 
+      const getDollarArray = () => {
+        const dollars = [];
+        let count = 1;
+        while (count <= 4) {
+          const dollarComponent = <span className={`dollar-${count}`}>$</span>;
+          dollars.push(dollarComponent);
+          count += 1;
+        }
+        return dollars;
+      };
+
       if (key === "price")
         return (
           <label style={{ order: keyPositionsObject[["price"]] }}>
             <h4>{key}</h4>
             <div className="price-input-container">
-              <p>$$$$</p>
+              <p>{getDollarArray()}</p>
             </div>
           </label>
         );
