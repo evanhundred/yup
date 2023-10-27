@@ -208,14 +208,29 @@ const EditBusiness = () => {
           return dollars;
         };
         labelComponent = (
-          <label>
+          <label className="price">
             <h4>{key}</h4>
             <div className="price-input-container">{getDollarArray()}</div>
           </label>
         );
       } else {
+        const toSkewerCase = (string) => {
+          const stringArray = string.split("");
+          const skeweredArray = [];
+          for (let i = 0; i < string.length; i++) {
+            if (i === 0) {
+              skeweredArray.push(stringArray[i].toLowerCase());
+            } else if (stringArray[i] === stringArray[i].toUpperCase()) {
+              skeweredArray.push("-");
+              skeweredArray.push(stringArray[i].toLowerCase());
+            } else {
+              skeweredArray.push(stringArray[i]);
+            }
+          }
+          return skeweredArray.join("");
+        };
         labelComponent = (
-          <label className={`${key}`} key={key}>
+          <label className={`${toSkewerCase(key)}`} key={key}>
             <h4>{key}</h4>
             <input
               value={proxyKey}

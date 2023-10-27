@@ -20,9 +20,14 @@
         justify-content: space-between;
 
         & label {
-          margin: 5px 3px 10px;
+          width: 30vw;
+          min-width: 300px;
+          max-width: 800px;
+          margin: 5px 30px 10px;
+          /* margin: 0 auto; */
 
-          & input {
+          &.closedAt & input {
+            /* margin: 0 5px; */
             border: 1px solid rgb(216, 216, 216);
             border-radius: 3px;
             &:focus {
@@ -33,7 +38,7 @@
           & input,
           & .price-input-container {
             width: 100%;
-            max-width: 300px;
+            /* width: 20vw; */
             padding: 10px;
             font-size: 20px;
           }
