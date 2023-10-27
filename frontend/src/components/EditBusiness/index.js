@@ -30,6 +30,9 @@ const EditBusiness = () => {
     business ? { ...businessObject } : null
   );
 
+  const [initialPriceRatingClicked, setInitialPriceRatingClicked] =
+    useState(false);
+
   const keysArray = business ? Object.keys(business) : null;
   const exclude = ["id", "imageUrls", "authorNames", "reviews", "owns", "stub"];
   const excludeObject = {};
@@ -52,6 +55,10 @@ const EditBusiness = () => {
   const [componentToRender, setComponentToRender] = useState("initial");
 
   if (!business) return <div className="loading">Loading...</div>;
+
+  const handleHover = (e, isHovered, num) => {};
+  const handleClick = (e) => {};
+
   const businessInfoForm = () => {
     if (!bizTemplate) setBizTemplate({ ...businessObject });
     const handleChange = (e, key) => {
@@ -114,10 +121,6 @@ const EditBusiness = () => {
     timeFields.forEach((field) => {
       fieldsObject[field] = "time";
     });
-    // fieldsObject.zipcode = "tel";
-    // fieldsObject.phone = "tel";
-    // fieldsObject.website = "url";
-    // fieldsObject.price =
 
     filteredKeysArray.forEach((key) => {
       if (exclude.includes(key)) return <h3 key={key}>hi</h3>;
@@ -137,8 +140,21 @@ const EditBusiness = () => {
           const dollars = [];
           let count = 1;
           while (count <= 4) {
+            const spanNumber = count;
             const dollarComponent = (
-              <span className={`dollar-${count}`}>$</span>
+              <span
+                className={`dollar-${spanNumber}`}
+                onMouseEnter={(e) =>
+                  !initialPriceRatingClicked && handleHover(e, true, spanNumber)
+                }
+                onMouseLeave={(e) => {
+                  if (!initialPriceRatingClicked)
+                    handleHover(e, false, spanNumber);
+                }}
+                onClick={(e) => handleClick(e)}
+              >
+                $
+              </span>
             );
             dollars.push(dollarComponent);
             count += 1;

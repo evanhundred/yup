@@ -64,9 +64,12 @@
         font-size: 25px;
         border: none;
         color: white;
-        background: rgb(205, 25, 49);
+        background: rgb(255, 33, 63);
         &:hover {
-          background: rgb(214, 0, 0);
+          box-shadow: 0 0 4px 2px rgb(195, 192, 192);
+          /* box-shadow: 0 0 4px 2px rgb(216, 142, 153); */
+          /* background: rgb(255, 0, 0); */
+          /* box-shadow: 0 0 2px 2px (rgb(255, 33, 63)); */
         }
       }
     }
