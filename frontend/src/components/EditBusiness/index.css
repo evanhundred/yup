@@ -42,10 +42,13 @@
             font-family: Rubik, "Helvetica Neue", Helvetica, sans-serif;
             & p {
               font-size: 30px;
-              & span {
+              display: flex;
+              & .dollar-box {
+                cursor: pointer;
                 font-weight: 500;
                 padding: 0 3px;
-                &:hover {
+
+                &.hovered {
                   color: green;
                 }
               }

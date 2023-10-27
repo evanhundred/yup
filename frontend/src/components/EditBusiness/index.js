@@ -33,6 +33,12 @@ const EditBusiness = () => {
   const [initialPriceRatingClicked, setInitialPriceRatingClicked] =
     useState(false);
 
+  const getPriceNumber = () => {
+    if (business && business.price) return business.price.length;
+    else return 0;
+  };
+  const [priceRating, setPriceRating] = useState(getPriceNumber());
+
   const keysArray = business ? Object.keys(business) : null;
   const exclude = ["id", "imageUrls", "authorNames", "reviews", "owns", "stub"];
   const excludeObject = {};
@@ -55,9 +61,6 @@ const EditBusiness = () => {
   const [componentToRender, setComponentToRender] = useState("initial");
 
   if (!business) return <div className="loading">Loading...</div>;
-
-  const handleHover = (e, isHovered, num) => {};
-  const handleClick = (e) => {};
 
   const businessInfoForm = () => {
     if (!bizTemplate) setBizTemplate({ ...businessObject });
@@ -101,8 +104,8 @@ const EditBusiness = () => {
       // keyPositionsObject[key] = { position: idx, component: null };
     });
 
-    console.log(keyPositionsObject);
-    console.log(fieldOrderObject);
+    // console.log(keyPositionsObject);
+    // console.log(fieldOrderObject);
 
     const fieldsObject = {};
     const textFields = [
@@ -121,6 +124,43 @@ const EditBusiness = () => {
     timeFields.forEach((field) => {
       fieldsObject[field] = "time";
     });
+
+    const priceSpans = document.querySelectorAll(
+      "#edit-business-container.price-input-container div.dollar-box"
+    );
+
+    const stylePriceSpans = (num) => {
+      const oldNum = priceRating;
+      priceSpans.forEach((span, idx) => {
+        if (idx < oldNum) span.classList.remove(`hovered`);
+        if (idx < num) span.classList.add(`hovered`);
+        // if (idx < oldNum) span.classList.remove(`hovered-${oldNum}`);
+        // if (idx < num) span.classList.add(`hovered-${num}`);
+      });
+    };
+
+    const handlePriceHover = (e, isHovered, num) => {
+      if (isHovered) {
+        setPriceRating(num);
+      } else {
+        setPriceRating(0);
+      }
+      priceSpans.forEach((span, idx) => {
+        if (idx < num) {
+          if (isHovered) span.classList.add(`hovered`);
+          else span.classList.remove(`hovered`);
+          // if (isHovered) span.classList.add(`hovered-${num}`);
+          // else span.classList.remove(`hovered-${num}`);
+        }
+      });
+    };
+    stylePriceSpans(priceRating);
+    const handlePriceClick = (num, e = null) => {
+      if (e) e.preventDefault();
+      if (!initialPriceRatingClicked) setInitialPriceRatingClicked(true);
+      stylePriceSpans(num);
+      setPriceRating(num);
+    };
 
     filteredKeysArray.forEach((key) => {
       if (exclude.includes(key)) return <h3 key={key}>hi</h3>;
@@ -142,19 +182,20 @@ const EditBusiness = () => {
           while (count <= 4) {
             const spanNumber = count;
             const dollarComponent = (
-              <span
-                className={`dollar-${spanNumber}`}
+              <div
+                className={`dollar-box dollar-${spanNumber}`}
                 onMouseEnter={(e) =>
-                  !initialPriceRatingClicked && handleHover(e, true, spanNumber)
+                  !initialPriceRatingClicked &&
+                  handlePriceHover(e, true, spanNumber)
                 }
                 onMouseLeave={(e) => {
                   if (!initialPriceRatingClicked)
-                    handleHover(e, false, spanNumber);
+                    handlePriceHover(e, false, spanNumber);
                 }}
-                onClick={(e) => handleClick(e)}
+                onClick={(e) => handlePriceClick(spanNumber, e)}
               >
                 $
-              </span>
+              </div>
             );
             dollars.push(dollarComponent);
             count += 1;
