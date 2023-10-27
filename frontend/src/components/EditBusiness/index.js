@@ -128,7 +128,7 @@ const EditBusiness = () => {
     const priceSpans = document.querySelectorAll(
       "#edit-business-container .price-input-container div.dollar-box"
     );
-    console.log(priceSpans);
+    // console.log(priceSpans);
 
     const stylePriceSpans = (num) => {
       const oldNum = priceRating;
@@ -141,7 +141,7 @@ const EditBusiness = () => {
     };
 
     const handlePriceHover = (e, isHovered, num) => {
-      console.log(e);
+      // console.log(e);
       if (isHovered) {
         setPriceRating(num);
       } else {
@@ -159,12 +159,12 @@ const EditBusiness = () => {
 
     const handlePriceClick = (num, e = null) => {
       if (e) e.preventDefault();
-      console.log(e);
+      // console.log(e);
       if (!initialPriceRatingClicked) setInitialPriceRatingClicked(true);
       stylePriceSpans(num);
       setPriceRating(num);
     };
-    console.log(priceRating);
+    // console.log(priceRating);
 
     filteredKeysArray.forEach((key) => {
       if (exclude.includes(key)) return <h3 key={key}>hi</h3>;
