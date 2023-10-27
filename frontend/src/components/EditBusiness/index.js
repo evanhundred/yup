@@ -8,7 +8,6 @@ import {
   fetchBusiness,
   updateBusiness
 } from "../../store/businesses";
-import { newBusinessFull } from "../../utils/businesses";
 
 const EditBusiness = () => {
   const dispatch = useDispatch();
@@ -24,7 +23,7 @@ const EditBusiness = () => {
   const currentUser = useSelector((state) => state.session.user);
 
   if (!currentUser) history.push("/login");
-  // const newBusinessTemplate = newBusinessFull();
+
   const businessObject = { ...business };
   const [bizTemplate, setBizTemplate] = useState(
     business ? { ...businessObject } : null
@@ -104,8 +103,8 @@ const EditBusiness = () => {
       // keyPositionsObject[key] = { position: idx, component: null };
     });
 
-    // console.log(keyPositionsObject);
-    // console.log(fieldOrderObject);
+    console.log(keyPositionsObject);
+    console.log(fieldOrderObject);
 
     const fieldsObject = {};
     const textFields = [
@@ -261,12 +260,62 @@ const EditBusiness = () => {
     const handleSubmit = (e) => {
       const runValidations = () => {
         e.preventDefault();
-        // "category",
-        const constraints = {
-          name: /^[a-zA-Z0-9\s]+/g
+
+        // create validations
+        const basicChars = /^[a-zA-Z0-9\s]+/g;
+        const numbersOnly = /^\d+/g;
+
+        const constraints = {};
+
+        const numbersFieldsArray = ["phone", "countryCode"];
+        const numbersFieldsObject = {};
+        numbersFieldsArray.forEach((field) => {
+          numbersFieldsObject[field] = field;
+        });
+        const timeFieldsArray = ["openAt", "closedAt"];
+        const timeFieldsObject = {};
+        timeFieldsArray.forEach((field) => {
+          timeFieldsObject[field] = field;
+        });
+        // console.log(numbersFieldsObject);
+
+        const validateTimeFields = () => {
+          // timeFieldsArray.forEach((field) => {
+          //   const [hours, minutes] = field
+          //     .split(":")
+          //     .map((string) => parseInt(string));
+          // });
         };
+
+        keyPositions.forEach((key) => {
+          let expression;
+          let errorMsg;
+          if (numbersFieldsObject[key]) {
+            expression = numbersOnly;
+            errorMsg = `${key} must contain 1 or more numbers.`;
+          } else if (!timeFieldsObject[key]) {
+            expression = basicChars;
+            errorMsg = `${key} must contain 1 or more numbers.`;
+          }
+
+          constraints[key] = {
+            expression: expression || null,
+            errorMsg: errorMsg || null
+          };
+        });
+
+        console.log(constraints);
+
         // validate
         let inputsValid = true;
+        const fieldsArray = Object.keys(constraints);
+        while (fieldsArray.length > 0) {
+          const field = fieldsArray.pop();
+
+          // if (!bizTemplate[field].match(constraints[[field]])) {
+          //   console.log("ok");
+          // }
+        }
 
         // const fieldsArray=
         return false;
