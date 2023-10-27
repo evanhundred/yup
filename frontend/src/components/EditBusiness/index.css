@@ -40,17 +40,16 @@
 
           & .price-input-container {
             font-family: Rubik, "Helvetica Neue", Helvetica, sans-serif;
-            & p {
-              font-size: 30px;
-              display: flex;
-              & .dollar-box {
-                cursor: pointer;
-                font-weight: 500;
-                padding: 0 3px;
+            font-size: 30px;
+            display: flex;
+            & .dollar-box {
+              cursor: pointer;
+              font-weight: 500;
+              padding: 0 3px;
 
-                &.hovered {
-                  color: green;
-                }
+              &.hovered {
+                color: green;
+                /* background: green; */
               }
             }
           }

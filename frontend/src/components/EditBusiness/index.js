@@ -126,8 +126,9 @@ const EditBusiness = () => {
     });
 
     const priceSpans = document.querySelectorAll(
-      "#edit-business-container.price-input-container div.dollar-box"
+      "#edit-business-container .price-input-container div.dollar-box"
     );
+    console.log(priceSpans);
 
     const stylePriceSpans = (num) => {
       const oldNum = priceRating;
@@ -140,6 +141,7 @@ const EditBusiness = () => {
     };
 
     const handlePriceHover = (e, isHovered, num) => {
+      console.log(e);
       if (isHovered) {
         setPriceRating(num);
       } else {
@@ -154,13 +156,15 @@ const EditBusiness = () => {
         }
       });
     };
-    stylePriceSpans(priceRating);
+
     const handlePriceClick = (num, e = null) => {
       if (e) e.preventDefault();
+      console.log(e);
       if (!initialPriceRatingClicked) setInitialPriceRatingClicked(true);
       stylePriceSpans(num);
       setPriceRating(num);
     };
+    console.log(priceRating);
 
     filteredKeysArray.forEach((key) => {
       if (exclude.includes(key)) return <h3 key={key}>hi</h3>;
@@ -183,6 +187,7 @@ const EditBusiness = () => {
             const spanNumber = count;
             const dollarComponent = (
               <div
+                key={spanNumber}
                 className={`dollar-box dollar-${spanNumber}`}
                 onMouseEnter={(e) =>
                   !initialPriceRatingClicked &&
@@ -205,9 +210,7 @@ const EditBusiness = () => {
         labelComponent = (
           <label>
             <h4>{key}</h4>
-            <div className="price-input-container">
-              <p>{getDollarArray()}</p>
-            </div>
+            <div className="price-input-container">{getDollarArray()}</div>
           </label>
         );
       } else {
@@ -256,6 +259,9 @@ const EditBusiness = () => {
         setComponentToRender("success");
       }
     };
+
+    stylePriceSpans(priceRating);
+
     return (
       <div className="business-info-form-container">
         {/* <p>hi</p> */}
