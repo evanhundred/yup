@@ -87,14 +87,17 @@ const EditBusiness = () => {
       "placeId"
     ];
     const keyPositionsObject = {};
+    const fieldOrderObject = {};
     keyPositions.forEach((key, idx) => {
-      keyPositionsObject[key] = idx;
+      keyPositionsObject[idx + 1] = { fieldName: key, component: null };
+      fieldOrderObject[key] = idx + 1;
+      // keyPositionsObject[key] = { position: idx, component: null };
     });
 
     console.log(keyPositionsObject);
+    console.log(fieldOrderObject);
 
     const fieldsObject = {};
-
     const textFields = [
       "name",
       "address",
@@ -116,7 +119,7 @@ const EditBusiness = () => {
     // fieldsObject.website = "url";
     // fieldsObject.price =
 
-    const data = filteredKeysArray.map((key) => {
+    filteredKeysArray.forEach((key) => {
       if (exclude.includes(key)) return <h3 key={key}>hi</h3>;
       let proxyKey;
       if (bizTemplate) {
@@ -127,54 +130,59 @@ const EditBusiness = () => {
         }
       }
 
-      const getDollarArray = () => {
-        const dollars = [];
-        let count = 1;
-        while (count <= 4) {
-          const dollarComponent = <span className={`dollar-${count}`}>$</span>;
-          dollars.push(dollarComponent);
-          count += 1;
-        }
-        return dollars;
-      };
+      let labelComponent;
 
-      if (key === "price")
-        return (
-          <label style={{ order: keyPositionsObject[["price"]] }}>
+      if (key === "price") {
+        const getDollarArray = () => {
+          const dollars = [];
+          let count = 1;
+          while (count <= 4) {
+            const dollarComponent = (
+              <span className={`dollar-${count}`}>$</span>
+            );
+            dollars.push(dollarComponent);
+            count += 1;
+          }
+          return dollars;
+        };
+        labelComponent = (
+          <label>
             <h4>{key}</h4>
             <div className="price-input-container">
               <p>{getDollarArray()}</p>
             </div>
           </label>
         );
+      } else {
+        labelComponent = (
+          <label className={`${key}`} key={key}>
+            <h4>{key}</h4>
+            <input
+              value={proxyKey}
+              type={fieldsObject[key]}
+              onChange={(e) => handleChange(e, key)}
+            />
+          </label>
+        );
+      }
 
-      const styleObject = () => {
-        let orderNumber;
-        if (keyPositionsObject && keyPositionsObject[key]) {
-          orderNumber = keyPositionsObject[key];
-        } else {
-          orderNumber = 0;
-        }
-        return { order: orderNumber };
+      keyPositionsObject[fieldOrderObject[key]] = {
+        ...keyPositionsObject[fieldOrderObject[key]],
+        component: labelComponent
       };
-
-      return (
-        <label
-          style={styleObject()}
-          // style={{ order: `${keyPositions[key]}` }}
-          className={`${key}`}
-          // className={`${key} order-${keyPositions[key]}`}
-          key={key}
-        >
-          <h4>{key}</h4>
-          <input
-            value={proxyKey}
-            type={fieldsObject[key]}
-            onChange={(e) => handleChange(e, key)}
-          />
-        </label>
-      );
     });
+
+    const orderedLabelComponents = () => {
+      const numberOfKeys = Object.keys(keyPositionsObject).length;
+      const componentsArray = [];
+      let count = 1;
+      while (count <= numberOfKeys) {
+        componentsArray.push(keyPositionsObject[count].component);
+        count++;
+      }
+      return componentsArray;
+    };
+
     const handleSubmit = () => {
       const runValidations = () => {
         // "category",
@@ -195,7 +203,11 @@ const EditBusiness = () => {
       <div className="business-info-form-container">
         {/* <p>hi</p> */}
         <form onSubmit={handleSubmit}>
-          <div className="input-fields">{data}</div>
+          <div className="input-fields">
+            {keyPositionsObject &&
+              keyPositionsObject &&
+              orderedLabelComponents()}
+          </div>
           <button>Submit</button>
         </form>
       </div>
