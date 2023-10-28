@@ -24,11 +24,6 @@ const EditBusiness = () => {
 
   if (!currentUser) history.push("/login");
 
-  const businessObject = { ...business };
-  const [bizTemplate, setBizTemplate] = useState(
-    business ? { ...businessObject } : null
-  );
-
   const [formErrors, setFormErrors] = useState({});
 
   const [initialPriceRatingClicked, setInitialPriceRatingClicked] =
@@ -63,10 +58,58 @@ const EditBusiness = () => {
 
   const [errors, setErrors] = useState(null);
 
+  const keyPositions = [
+    "name",
+    "category",
+    "price",
+    "website",
+    "countryCode",
+    "phone",
+    "address",
+    "city",
+    "state",
+    "zipcode",
+    "country",
+    "neighborhood",
+    "openAt",
+    "closedAt",
+    "about",
+    "latitude",
+    "longitude",
+    "placeId"
+  ];
+  const keyPositionsObject = {};
+  const fieldOrderObject = {};
+  keyPositions.forEach((key, idx) => {
+    keyPositionsObject[idx + 1] = { fieldName: key, component: null };
+    fieldOrderObject[key] = idx + 1;
+    // keyPositionsObject[key] = { position: idx, component: null };
+  });
+
+  // console.log(keyPositionsObject);
+  // console.log(fieldOrderObject);
+
+  const populateTemplateObject = () => {
+    const templateObject = {};
+    keyPositions.forEach((key) => {
+      templateObject[key] = business[key];
+    });
+    return templateObject;
+  };
+
+  const [bizTemplate, setBizTemplate] = useState(
+    business ? { ...populateTemplateObject() } : null
+  );
+
+  // const businessObject = { ...business };
+  // const [bizTemplate, setBizTemplate] = useState(
+  //   business ? { ...businessObject } : null
+  // );
+
   if (!business) return <div className="loading">Loading...</div>;
 
   const businessInfoForm = () => {
-    if (!bizTemplate) setBizTemplate({ ...businessObject });
+    if (!bizTemplate) setBizTemplate({ ...populateTemplateObject() });
     const handleChange = (e, key) => {
       setBizTemplate({
         ...bizTemplate,
@@ -78,37 +121,6 @@ const EditBusiness = () => {
     keysArray.forEach((key) => {
       if (!excludeObject[key]) filteredKeysArray.push(key);
     });
-
-    const keyPositions = [
-      "name",
-      "category",
-      "price",
-      "website",
-      "countryCode",
-      "phone",
-      "address",
-      "city",
-      "state",
-      "zipcode",
-      "country",
-      "neighborhood",
-      "openAt",
-      "closedAt",
-      "about",
-      "latitude",
-      "longitude",
-      "placeId"
-    ];
-    const keyPositionsObject = {};
-    const fieldOrderObject = {};
-    keyPositions.forEach((key, idx) => {
-      keyPositionsObject[idx + 1] = { fieldName: key, component: null };
-      fieldOrderObject[key] = idx + 1;
-      // keyPositionsObject[key] = { position: idx, component: null };
-    });
-
-    console.log(keyPositionsObject);
-    console.log(fieldOrderObject);
 
     const fieldsObject = {};
     const textFields = [
@@ -263,7 +275,12 @@ const EditBusiness = () => {
     };
 
     const submitUpdate = async () => {
-      const businessObject = { business: bizTemplate };
+      const businessObject = {
+        business: { ...bizTemplate, id: business.id },
+        id: business.id
+      };
+      // console.log(businessObject);
+
       const res = await dispatch(updateBusiness(businessObject)).catch(
         async (res) => {
           let data;
@@ -279,9 +296,12 @@ const EditBusiness = () => {
         }
       );
 
+      console.log(res);
       let next;
       if (res.id) next = "submit-success";
       else next = "submit-fail";
+
+      // console.log(next);
 
       setComponentToRender(next);
     };
@@ -297,6 +317,7 @@ const EditBusiness = () => {
     };
 
     const handleSubmit = (e) => {
+      e.preventDefault();
       // const runValidations = () => {
       //   e.preventDefault();
 

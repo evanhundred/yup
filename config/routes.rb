@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       resources :owned_businesses, only: [:create]
       resources :users, only: [:create, :show]
       resource :session, only: [:show, :create, :destroy]
-      resources :businesses, only: [:index, :show, :create] do
+      resources :businesses, only: [:index, :show, :create, :update] do
         resources :reviews, only: [:index, :new, :create, :destroy, :edit, :update]
         collection do
           post :search

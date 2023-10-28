@@ -71,7 +71,7 @@ class Business < ApplicationRecord
     has_many_attached :photos
 
     def user_is_owner(user)
-        self.owns.any do |own|
+        self.owns.any? do |own|
             user.id == own.owner_id
         end
     end

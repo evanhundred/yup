@@ -42,7 +42,7 @@ class Api::BusinessesController < ApplicationController
 
     def update
         @business = Business.find(params[:id])
-        if user_is_owner(current_user) && @business.update(business_params)
+        if @business.user_is_owner(current_user) && @business.update(business_params)
             render :show
         else
             render json: { errors: @business.errors.full_messages }, status: 422
@@ -65,6 +65,7 @@ class Api::BusinessesController < ApplicationController
 
     def business_params
         params.require(:business).permit(
+            :id,
             :name,
             :latitude,
             :longitude,
