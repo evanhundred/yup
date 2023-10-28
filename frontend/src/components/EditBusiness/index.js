@@ -29,6 +29,8 @@ const EditBusiness = () => {
     business ? { ...businessObject } : null
   );
 
+  const [formErrors, setFormErrors] = useState({});
+
   const [initialPriceRatingClicked, setInitialPriceRatingClicked] =
     useState(false);
 
@@ -58,6 +60,8 @@ const EditBusiness = () => {
   // console.log(businessObject);
 
   const [componentToRender, setComponentToRender] = useState("initial");
+
+  const [errors, setErrors] = useState(null);
 
   if (!business) return <div className="loading">Loading...</div>;
 
@@ -207,7 +211,7 @@ const EditBusiness = () => {
           return dollars;
         };
         labelComponent = (
-          <label className="price">
+          <label className="price" key="price">
             <h4>{key}</h4>
             <div className="price-input-container">{getDollarArray()}</div>
           </label>
@@ -236,6 +240,7 @@ const EditBusiness = () => {
               type={fieldsObject[key]}
               onChange={(e) => handleChange(e, key)}
             />
+            {formErrors[key] && errorBox(key)}
           </label>
         );
       }
@@ -257,73 +262,130 @@ const EditBusiness = () => {
       return componentsArray;
     };
 
-    const handleSubmit = (e) => {
-      const runValidations = () => {
-        e.preventDefault();
-
-        // create validations
-        const basicChars = /^[a-zA-Z0-9\s]+/g;
-        const numbersOnly = /^\d+/g;
-
-        const constraints = {};
-
-        const numbersFieldsArray = ["phone", "countryCode"];
-        const numbersFieldsObject = {};
-        numbersFieldsArray.forEach((field) => {
-          numbersFieldsObject[field] = field;
-        });
-        const timeFieldsArray = ["openAt", "closedAt"];
-        const timeFieldsObject = {};
-        timeFieldsArray.forEach((field) => {
-          timeFieldsObject[field] = field;
-        });
-        // console.log(numbersFieldsObject);
-
-        const validateTimeFields = () => {
-          // timeFieldsArray.forEach((field) => {
-          //   const [hours, minutes] = field
-          //     .split(":")
-          //     .map((string) => parseInt(string));
-          // });
-        };
-
-        keyPositions.forEach((key) => {
-          let expression;
-          let errorMsg;
-          if (numbersFieldsObject[key]) {
-            expression = numbersOnly;
-            errorMsg = `${key} must contain 1 or more numbers.`;
-          } else if (!timeFieldsObject[key]) {
-            expression = basicChars;
-            errorMsg = `${key} must contain 1 or more numbers.`;
+    const submitUpdate = async () => {
+      const businessObject = { business: bizTemplate };
+      const res = await dispatch(updateBusiness(businessObject)).catch(
+        async (res) => {
+          let data;
+          try {
+            data = await res.clone().json();
+          } catch {
+            data = await res.text();
           }
-
-          constraints[key] = {
-            expression: expression || null,
-            errorMsg: errorMsg || null
-          };
-        });
-
-        console.log(constraints);
-
-        // validate
-        let inputsValid = true;
-        const fieldsArray = Object.keys(constraints);
-        while (fieldsArray.length > 0) {
-          const field = fieldsArray.pop();
-
-          // if (!bizTemplate[field].match(constraints[[field]])) {
-          //   console.log("ok");
-          // }
+          if (data?.errors) setErrors(data.errors);
+          else if (data) setErrors([data]);
+          else setErrors([res.statusText]);
+          console.log(errors);
         }
+      );
 
-        // const fieldsArray=
-        return false;
-      };
-      if (runValidations()) {
-        dispatch(updateBusiness(bizTemplate));
-        setComponentToRender("success");
-      }
+      let next;
+      if (res.id) next = "submit-success";
+      else next = "submit-fail";
+
+      setComponentToRender(next);
+    };
+
+    const submitFailComponent = () => {
+      return (
+        <div class="submit-fail">
+          {errors.map((error) => (
+            <h2 key={error}>error</h2>
+          ))}
+        </div>
+      );
+    };
+
+    const handleSubmit = (e) => {
+      // const runValidations = () => {
+      //   e.preventDefault();
+
+      //   // create validations
+      //   const basicChars = /^[a-zA-Z0-9\s]+/g;
+      //   const numbersOnly = /^\d+/g;
+
+      //   const constraints = {};
+
+      //   const numbersFieldsArray = ["phone", "countryCode"];
+      //   const numbersFieldsObject = {};
+      //   numbersFieldsArray.forEach((field) => {
+      //     numbersFieldsObject[field] = field;
+      //   });
+      //   const excludeFieldsArray = ["openAt", "closedAt", "price"];
+      //   const excludeFieldsObject = {};
+      //   excludeFieldsArray.forEach((field) => {
+      //     excludeFieldsObject[field] = field;
+      //   });
+      //   // console.log(numbersFieldsObject);
+
+      //   keyPositions.forEach((key) => {
+      //     let expression;
+      //     let errorMsg;
+      //     if (numbersFieldsObject[key]) {
+      //       expression = numbersOnly;
+      //       errorMsg = `${key} must contain 1 or more numbers.`;
+      //     } else if (!excludeFieldsObject[key]) {
+      //       expression = basicChars;
+      //       errorMsg = `${key} must contain 1 or more numbers.`;
+      //     }
+
+      //     constraints[key] = {
+      //       expression: expression || null,
+      //       errorMsg: errorMsg || null
+      //     };
+      //   });
+
+      //   console.log(constraints);
+
+      //   // validate
+      //   let inputsValid = true;
+      //   const fieldsArray = Object.keys(constraints);
+      //   while (fieldsArray.length > 0) {
+      //     const field = fieldsArray.pop();
+      //     console.log(field);
+
+      //     const expressionExists = !!constraints[field].expression;
+
+      //     // console.log(expressionExists);
+      //     console.log(bizTemplate[field]);
+
+      //     // const expressionInvalidates =
+      //     //   !bizTemplate[field].match(constraints).expression;
+
+      //     // if (expressionExists && expressionInvalidates) {
+      //     //   const newError = { [field]: constraints[field].errorMsg };
+
+      //     //   setFormErrors((formErrors) => ({
+      //     //     ...formErrors,
+      //     //     ...newError
+      //     //   }));
+
+      //     //   const inputBox = document.querySelector(
+      //     //     `#edit-business-container .business-info-form-container input.${field}`
+      //     //   );
+      //     //   inputBox.classList.add("error");
+      //     // }
+      //   }
+
+      //   inputsValid = false;
+
+      //   return inputsValid;
+      // };
+      // if (runValidations()) {
+      //   console.log("VALIDATIONS PASSED");
+      //   // dispatch(updateBusiness(bizTemplate));
+      //   setComponentToRender("success");
+      // }
+
+      submitUpdate();
+    };
+
+    const errorBox = (field) => {
+      return (
+        <div className="error-box">
+          <p>{formErrors[field]}</p>
+        </div>
+      );
     };
 
     stylePriceSpans(priceRating);
@@ -339,6 +401,7 @@ const EditBusiness = () => {
           </div>
           <button>Submit</button>
         </form>
+        {componentToRender === "submit-fail" && submitFailComponent()}
       </div>
     );
   };
