@@ -1,6 +1,10 @@
 #edit-business-container {
   margin: 20px 5vw;
 
+  & .submit-success {
+    height: 70vh;
+  }
+
   & h2 {
     font-size: 30px;
     padding: 10px 0 10px 60px;

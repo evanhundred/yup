@@ -502,7 +502,18 @@ const EditBusiness = () => {
   if (!business) return <div>loading...</div>;
 
   const submitSuccessComponent = () => {
-    return <div className="submit-success">Success. </div>;
+    return (
+      <div className="submit-success">
+        <h2>Success.</h2>
+        <h2>
+          Visit{" "}
+          <span className="bizNameLink" onClick={handleBizNameClick}>
+            {business.name}
+          </span>
+          .
+        </h2>
+      </div>
+    );
   };
 
   const submitFailComponent = () => {
