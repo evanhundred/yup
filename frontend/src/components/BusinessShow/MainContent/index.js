@@ -36,12 +36,25 @@ const MainContent = ({
   //   history.push(`/businesses/${business.id}/edit`);
   // };
 
+  const currentUserIsOwner = currentUser
+    ? business.owns &&
+      business.owns.some((own) => own.ownerId === currentUser.id)
+    : false;
   const stubContainer = () => {
     return (
       <div id="stub-container">
         <div className="spacer" />
         <div className="first-line">
-          <h2>this is a stub.</h2>
+          <h2>
+            This is a stub.{" "}
+            {currentUserIsOwner && (
+              <span className="grey">
+                {" "}
+                Complete and submit the details to create a full business
+                listing.
+              </span>
+            )}
+          </h2>
           {/* {business.owns && currentUser && businessIsOwnedBy(currentUser) && (
             <h2 className="edit-button" onClick={handleEditStubClick}>
               edit stub

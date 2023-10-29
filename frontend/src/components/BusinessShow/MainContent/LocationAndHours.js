@@ -46,7 +46,7 @@ const LocationAndHours = ({ business }) => {
 
       <div className="main-content-div">
         <div className="left-side-map">
-          <img src={business.imageUrls[6]} alt="google maps" />
+          {!isStub && <img src={business.imageUrls[6]} alt="google maps" />}
           <div className="bottom-left-side">
             <div className="address">
               <a

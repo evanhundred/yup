@@ -203,9 +203,10 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
     );
   };
 
-  const currentUserIsOwner =
-    business.owns &&
-    business.owns.some((own) => own.ownerId === currentUser.id);
+  const currentUserIsOwner = currentUser
+    ? business.owns &&
+      business.owns.some((own) => own.ownerId === currentUser.id)
+    : false;
 
   return (
     <div className="content-nav-bar-container">

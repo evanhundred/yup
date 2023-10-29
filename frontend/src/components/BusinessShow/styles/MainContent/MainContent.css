@@ -52,7 +52,7 @@
   width: 100%;
   /* top: 5px; */
   /* min-height: 26vh; */
-  margin: 0px 0 -5px 0;
+  margin: 7px 0 -5px 0;
   padding-right: 5.3vw;
   font-size: 25px;
   display: flex;
@@ -83,6 +83,11 @@
       border-radius: 4px;
       display: flex;
       align-items: center;
+
+      & span.grey {
+        color: rgb(137, 142, 136);
+        margin-left: 20px;
+      }
 
       &.edit-button {
         cursor: pointer;
