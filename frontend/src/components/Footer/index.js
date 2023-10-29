@@ -48,6 +48,22 @@ const Footer = () => {
     </>
   );
 
+  const stubAttribution = (
+    <span>
+      {" "}
+      Blueberry pie image by{" "}
+      <a
+        href="https://www.123rf.com/profile_lineartestpilot"
+        title="pie"
+        rel="noreferrer"
+        target="_blank"
+      >
+        lineartestpilot
+      </a>
+      .
+    </span>
+  );
+
   const ShareIconCopy = () => {
     return (
       <span className="image-attribution">
@@ -163,6 +179,7 @@ const Footer = () => {
               <ShareIconCopy />
               {reviewWriteIconAttribution}
               {/* </div> */}
+              {stubAttribution}
             </>
           )}
         {location.pathname.match(/search/) && searchResultsAttribution()}
