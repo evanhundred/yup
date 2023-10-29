@@ -52,7 +52,7 @@
   width: 100%;
   /* top: 5px; */
   /* min-height: 26vh; */
-  margin: 0px 0 10px 0;
+  margin: 0px 0 -5px 0;
   padding-right: 5.3vw;
   font-size: 25px;
   display: flex;
@@ -66,15 +66,15 @@
   }
 
   & .first-line {
-    background: linear-gradient(
+    /* background: linear-gradient(
       to right,
       rgb(243, 243, 243),
       rgb(182, 182, 182)
-    );
+    ); */
     /* background: rgb(245, 245, 245); */
     display: flex;
     gap: 30px;
-    padding: 10px 0 10px 60px;
+    padding: 20px 0 0 60px;
     /* border-bottom: solid 1px rgb(202, 202, 202); */
     width: 100%;
 
@@ -89,14 +89,14 @@
         padding: 10px;
         color: rgb(58, 58, 58);
         /* background: rgb(212, 248, 225); */
-        background: rgb(186, 255, 186);
+        /* background: rgb(186, 255, 186); */
         /* background: rgb(220, 244, 220); */
         /* color: rgb(243, 243, 243); */
+        background: rgb(201, 255, 201);
 
-        &:hover {
-          /* box-shadow: 0 0 4px 4px rgb(171, 171, 171); */
-          background: rgb(201, 255, 201);
-        }
+        /* &:hover { */
+        /* box-shadow: 0 0 4px 4px rgb(171, 171, 171); */
+        /* } */
       }
     }
   }
