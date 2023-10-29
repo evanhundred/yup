@@ -1,6 +1,19 @@
 #edit-business-container {
   margin: 20px 5vw;
 
+  & h2 {
+    font-size: 30px;
+    padding: 10px 0 10px 60px;
+
+    & .bizNameLink {
+      /* font-family: "Rubik", "Helvetica Neue", Helvetica, sans-serif;
+      font-si */
+      font-weight: 500;
+      color: rgb(17, 103, 73);
+      cursor: pointer;
+    }
+  }
+
   & .business-info-form-container {
     height: 76vh;
     margin-bottom: 30px;

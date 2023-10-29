@@ -1,6 +1,6 @@
 import "./index.css";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -15,13 +15,79 @@ const EditBusiness = () => {
 
   const { businessId } = useParams();
 
+  const business = useSelector(getBusiness(businessId));
+  const [priceRating, setPriceRating] = useState(
+    business ? business.price : null
+  );
+  console.log(priceRating);
+
+  // const stylePriceSpans = (num) => {
+  //   // if (!business) return;
+
+  //   // console.log(business);
+  //   const oldNum = parseInt(priceRating);
+  //   console.log(num);
+  //   console.log(oldNum);
+  //   priceSpans.forEach((span, idx) => {
+  //     console.log(idx);
+  //     if (idx < oldNum) span.classList.remove(`hovered`);
+  //     if (idx < parseInt(num)) span.classList.add(`hovered`);
+  //   });
+  // };
+  // const priceSpans = document.querySelectorAll(
+  //   "#edit-business-container .price-input-container div.dollar-box"
+  // );
+  // console.log(priceSpans);
   useEffect(() => {
     dispatch(fetchBusiness(businessId));
   }, [dispatch, businessId]);
 
-  const business = useSelector(getBusiness(businessId));
-  const currentUser = useSelector((state) => state.session.user);
+  useEffect(() => {
+    const priceSpans = document.querySelectorAll(
+      "#edit-business-container .price-input-container div.dollar-box"
+    );
+    const priceNumber = business ? business.price : null;
+    const stylePriceSpans = (num) => {
+      const oldNum = parseInt(priceNumber);
+      console.log(num);
+      console.log(oldNum);
+      priceSpans.forEach((span, idx) => {
+        console.log(idx);
+        if (idx < oldNum) span.classList.remove(`hovered`);
+        if (idx < parseInt(num)) span.classList.add(`hovered`);
+      });
+    };
 
+    if (business) stylePriceSpans(priceNumber);
+    console.log(priceSpans);
+  }, [business]);
+
+  // if (business) stylePriceSpans(business.price);
+
+  // useEffect(() => {
+  //   if (business) stylePriceSpans(business.price);
+  // }, [stylePriceSpans, business]);
+
+  // const priceSpans = document.querySelectorAll(
+  //   "#edit-business-container .price-input-container div.dollar-box"
+  // );
+  // // console.log(priceSpans);
+  // const stylePriceSpans = useCallback(
+  //   (num) => {
+  //     const oldNum = priceRating;
+  //     priceSpans.forEach((span, idx) => {
+  //       if (idx < oldNum) span.classList.remove(`hovered`);
+  //       if (idx < num) span.classList.add(`hovered`);
+  //     });
+  //   },
+  //   [priceRating, priceSpans]
+  // );
+
+  // useEffect(() => {
+  //   stylePriceSpans(priceRating);
+  // }, [business, stylePriceSpans, priceRating]);
+
+  const currentUser = useSelector((state) => state.session.user);
   if (!currentUser) history.push("/login");
 
   const [formErrors, setFormErrors] = useState({});
@@ -29,11 +95,12 @@ const EditBusiness = () => {
   const [initialPriceRatingClicked, setInitialPriceRatingClicked] =
     useState(false);
 
-  const getPriceNumber = () => {
-    if (business && business.price) return business.price.length;
-    else return 0;
-  };
-  const [priceRating, setPriceRating] = useState(getPriceNumber());
+  // const getPriceNumber = () => {
+  //   if (business && business.price) return parseInt(business ? business.price : );
+  //   // else return 0;
+  // };
+
+  // const [priceRating, setPriceRating] = useState(getPriceNumber());
 
   const keysArray = business ? Object.keys(business) : null;
   const exclude = ["id", "imageUrls", "authorNames", "reviews", "owns", "stub"];
@@ -41,18 +108,6 @@ const EditBusiness = () => {
   exclude.forEach((key) => {
     excludeObject[key] = key;
   });
-
-  // let keysArrayCopy;
-  // while (keysArrayCopy) {
-  //   const key = keysArrayCopy.pop();
-  //   setBizTemplate({
-  //     ...bizTemplate,
-  //     [[key]]: business[key]
-  //   });
-  // }
-  // setBizTemplate(businessObject);
-  // console.log(bizTemplate);
-  // console.log(businessObject);
 
   const [componentToRender, setComponentToRender] = useState("initial");
 
@@ -83,7 +138,6 @@ const EditBusiness = () => {
   keyPositions.forEach((key, idx) => {
     keyPositionsObject[idx + 1] = { fieldName: key, component: null };
     fieldOrderObject[key] = idx + 1;
-    // keyPositionsObject[key] = { position: idx, component: null };
   });
 
   // console.log(keyPositionsObject);
@@ -100,11 +154,6 @@ const EditBusiness = () => {
   const [bizTemplate, setBizTemplate] = useState(
     business ? { ...populateTemplateObject() } : null
   );
-
-  // const businessObject = { ...business };
-  // const [bizTemplate, setBizTemplate] = useState(
-  //   business ? { ...businessObject } : null
-  // );
 
   if (!business) return <div className="loading">Loading...</div>;
 
@@ -146,14 +195,20 @@ const EditBusiness = () => {
     // console.log(priceSpans);
 
     const stylePriceSpans = (num) => {
-      const oldNum = priceRating;
+      // if (!business) return;
+
+      // console.log(business);
+      const oldNum = parseInt(priceRating);
+      console.log(num);
+      console.log(oldNum);
       priceSpans.forEach((span, idx) => {
+        console.log(idx);
         if (idx < oldNum) span.classList.remove(`hovered`);
-        if (idx < num) span.classList.add(`hovered`);
-        // if (idx < oldNum) span.classList.remove(`hovered-${oldNum}`);
-        // if (idx < num) span.classList.add(`hovered-${num}`);
+        if (idx < parseInt(num)) span.classList.add(`hovered`);
       });
     };
+
+    // stylePriceSpans(priceRating);
 
     const handlePriceHover = (e, isHovered, num) => {
       // console.log(e);
@@ -276,7 +331,7 @@ const EditBusiness = () => {
 
     const submitUpdate = async () => {
       const businessObject = {
-        business: { ...bizTemplate, id: business.id },
+        business: { ...bizTemplate, id: business.id, price: priceRating },
         id: business.id
       };
       // console.log(businessObject);
@@ -420,18 +475,49 @@ const EditBusiness = () => {
               keyPositionsObject &&
               orderedLabelComponents()}
           </div>
+          {stylePriceSpans(priceRating)}
           <button>Submit</button>
         </form>
         {componentToRender === "submit-fail" && submitFailComponent()}
       </div>
     );
   };
+  // const priceSpans = document.querySelectorAll(
+  //   "#edit-business-container .price-input-container div.dollar-box"
+  // );
+  // // console.log(priceSpans);
+
+  // const stylePriceSpans = (num) => {
+  //   const oldNum = priceRating;
+  //   priceSpans.forEach((span, idx) => {
+  //     if (idx < oldNum) span.classList.remove(`hovered`);
+  //     if (idx < num) span.classList.add(`hovered`);
+  //     // if (idx < oldNum) span.classList.remove(`hovered-${oldNum}`);
+  //     // if (idx < num) span.classList.add(`hovered-${num}`);
+  //   });
+  // };
+
+  // useEffect(()=>{
+  //   stylePriceSpans(business.price);
+
+  // },[business])
+  // // stylePriceSpans(business.price);
 
   const successComponent = () => <div className="success">success.</div>;
+  const handleBizNameClick = () => history.push(`/businesses/${business.id}`);
+
+  if (!business) return <div>loading...</div>;
+
   if (business.stub === "true") {
     return (
       <div id="edit-business-container">
-        <h2>Edit business stub.</h2>
+        <h2>
+          Edit business stub for{" "}
+          <span className="bizNameLink" onClick={handleBizNameClick}>
+            {business.name}
+          </span>
+          .
+        </h2>
         {businessInfoForm()}
         {componentToRender === "success" && successComponent()}
       </div>
