@@ -29,12 +29,12 @@ const MainContent = ({
     reviewsComponent.scrollIntoView({ behavior: "smooth" });
   }
 
-  const businessIsOwnedBy = (user) =>
-    business.owns.some((own) => own.id === user.id);
+  // const businessIsOwnedBy = (user) =>
+  //   business.owns.some((own) => own.id === user.id);
 
-  const handleEditStubClick = () => {
-    history.push(`/businesses/${business.id}/edit`);
-  };
+  // const handleEditStubClick = () => {
+  //   history.push(`/businesses/${business.id}/edit`);
+  // };
 
   const stubContainer = () => {
     return (
@@ -42,11 +42,11 @@ const MainContent = ({
         <div className="spacer" />
         <div className="first-line">
           <h2>this is a stub.</h2>
-          {business.owns && currentUser && businessIsOwnedBy(currentUser) && (
+          {/* {business.owns && currentUser && businessIsOwnedBy(currentUser) && (
             <h2 className="edit-button" onClick={handleEditStubClick}>
               edit stub
             </h2>
-          )}
+          )} */}
         </div>
       </div>
     );

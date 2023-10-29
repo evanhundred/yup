@@ -1,4 +1,9 @@
+import defaultItem from "../../../assets/images/stub/pie.jpeg";
+
 const MenuCard = ({ business }) => {
+  const isStub = business.stub === "true";
+  const featuredImage = () => (isStub ? defaultItem : business.imageUrls[5]);
+  // console.log(isStub);
   const businessWebsite =
     business.stub === "true" ? "https://yup.evanryan.dev" : business.website;
 
@@ -35,8 +40,12 @@ const MenuCard = ({ business }) => {
 
       <div className="popular-items-bar">
         <div className="popular-item-subcard">
-          <div className="popular-item-image">
-            <img src={business.imageUrls[5]} alt="chocolate croissant" />
+          <div className={`popular-item-image${isStub && " stub"}`}>
+            <img
+              src={featuredImage()}
+              alt="chocolate croissant"
+              className="stub"
+            />
           </div>
           <div className="popular-item-name">
             <h2>Delicious Item</h2>
