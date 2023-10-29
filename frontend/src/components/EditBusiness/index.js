@@ -49,10 +49,10 @@ const EditBusiness = () => {
     const priceNumber = business ? business.price : null;
     const stylePriceSpans = (num) => {
       const oldNum = parseInt(priceNumber);
-      console.log(num);
-      console.log(oldNum);
+      // console.log(num);
+      // console.log(oldNum);
       priceSpans.forEach((span, idx) => {
-        console.log(idx);
+        // console.log(idx);
         if (idx < oldNum) span.classList.remove(`hovered`);
         if (idx < parseInt(num)) span.classList.add(`hovered`);
       });
@@ -361,16 +361,6 @@ const EditBusiness = () => {
       setComponentToRender(next);
     };
 
-    const submitFailComponent = () => {
-      return (
-        <div class="submit-fail">
-          {errors.map((error) => (
-            <h2 key={error}>error</h2>
-          ))}
-        </div>
-      );
-    };
-
     const handleSubmit = (e) => {
       e.preventDefault();
       // const runValidations = () => {
@@ -478,7 +468,6 @@ const EditBusiness = () => {
           {stylePriceSpans(priceRating)}
           <button>Submit</button>
         </form>
-        {componentToRender === "submit-fail" && submitFailComponent()}
       </div>
     );
   };
@@ -508,18 +497,37 @@ const EditBusiness = () => {
 
   if (!business) return <div>loading...</div>;
 
+  const submitSuccessComponent = () => {
+    return <div class="submit-success">Success. </div>;
+  };
+
+  const submitFailComponent = () => {
+    return (
+      <div class="submit-fail">
+        {errors.map((error) => (
+          <h2 key={error}>error</h2>
+        ))}
+      </div>
+    );
+  };
+
   if (business.stub === "true") {
     return (
       <div id="edit-business-container">
-        <h2>
-          Edit business stub for{" "}
-          <span className="bizNameLink" onClick={handleBizNameClick}>
-            {business.name}
-          </span>
-          .
-        </h2>
-        {businessInfoForm()}
-        {componentToRender === "success" && successComponent()}
+        {componentToRender === "initial" && (
+          <>
+            <h2>
+              Edit business stub for{" "}
+              <span className="bizNameLink" onClick={handleBizNameClick}>
+                {business.name}
+              </span>
+              .
+            </h2>
+            {businessInfoForm()}
+          </>
+        )}
+        {componentToRender === "submit-fail" && submitFailComponent()}
+        {componentToRender === "submit-success" && submitSuccessComponent()}
       </div>
     );
   }
