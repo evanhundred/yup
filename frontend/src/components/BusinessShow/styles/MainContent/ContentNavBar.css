@@ -1,6 +1,7 @@
 .content-nav-bar-container {
   padding: 30px 0 35px;
   width: 100%;
+  min-width: 870px;
   display: flex;
   justify-content: left;
   gap: 13px;
@@ -66,6 +67,7 @@
   }
 
   & .edit-business-button {
+    width: max-content;
     justify-self: flex-end;
     margin-left: auto;
     margin-right: 130px;

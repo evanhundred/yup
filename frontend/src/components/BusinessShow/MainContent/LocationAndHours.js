@@ -6,12 +6,21 @@ const LocationAndHours = ({ business }) => {
 
   const urlifyBizName = () => {
     const nameArray = business.name.split(" ");
+
     const locationArray = business.city
       .concat("%2C")
       .concat(business.state)
       .split(" ");
     const filteredNameArray = nameArray.concat(locationArray).map((word) => {
-      return word.match(/[a-zA-Z0-9]/g).join("");
+      // let result;
+      if (word) {
+        const match = word.match(/[a-zA-Z0-9]/g);
+        if (match) return match;
+      }
+      return "";
+      // if (word.match(/[a-zA-Z0-9]/g))
+      //   return word.match(/[a-zA-Z0-9]/g).join("");
+      // return "";
     });
     const finalForm = filteredNameArray.join("+");
     return finalForm;
@@ -20,9 +29,10 @@ const LocationAndHours = ({ business }) => {
   const urlifiedBizName = urlifyBizName();
   const stubMapParams = `query=${urlifiedBizName}`;
 
+  const isStub = business.stub === "true";
   const mapSearchUrl = (params) =>
     `https://www.google.com/maps/search/?api=1&${params}`;
-  const getParams = business.stub === "true" ? stubMapParams : googleMapParams;
+  const getParams = isStub ? stubMapParams : googleMapParams;
 
   // const mapSearchUrl = `https://maps.google.com/?ll=${business.latitude},${business.longitude}`;
   const neighborhoodString = business.neighborhood;

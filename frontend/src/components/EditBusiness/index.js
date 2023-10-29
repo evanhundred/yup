@@ -447,7 +447,11 @@ const EditBusiness = () => {
       //   setComponentToRender("success");
       // }
 
-      submitUpdate();
+      if (business.name && business.name.length > 0) {
+        submitUpdate();
+      } else {
+        setErrors(errors.concat(["Name needed."]));
+      }
     };
 
     const errorBox = (field) => {
