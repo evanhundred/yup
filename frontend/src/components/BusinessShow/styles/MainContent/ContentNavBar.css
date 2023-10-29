@@ -4,7 +4,7 @@
   display: flex;
   justify-content: left;
   gap: 13px;
-  margin-left: 4em;
+  margin-left: 5.3vw;
   border-bottom: #ccc solid 1px;
 
   & > div.container {

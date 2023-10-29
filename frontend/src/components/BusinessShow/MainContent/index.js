@@ -36,9 +36,10 @@ const MainContent = ({
     history.push(`/businesses/${business.id}/edit`);
   };
 
-  if (business.stub === "true")
+  const stubContainer = () => {
     return (
       <div id="stub-container">
+        <div className="spacer" />
         <div className="first-line">
           <h2>this is a stub.</h2>
           {business.owns && currentUser && businessIsOwnedBy(currentUser) && (
@@ -49,10 +50,14 @@ const MainContent = ({
         </div>
       </div>
     );
+  };
+
+  // if (business.stub === "true")
 
   return (
     <>
       <div className="main-content-container">
+        {business.stub === "true" && stubContainer()}
         <ContentNavBar
           business={business}
           currentUser={currentUser}

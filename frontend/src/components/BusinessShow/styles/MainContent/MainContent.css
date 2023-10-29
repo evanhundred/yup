@@ -47,16 +47,36 @@
 }
 
 #stub-container {
-  min-height: 26vh;
-  margin: -25px 50px 70px;
+  position: relative;
+  left: 0;
+  width: 100%;
+  /* top: 5px; */
+  /* min-height: 26vh; */
+  margin: 0px 0 10px 0;
+  padding-right: 5.3vw;
   font-size: 25px;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   gap: 15px;
 
+  & .spacer {
+    position: relative;
+    height: 130px;
+  }
+
   & .first-line {
+    background: linear-gradient(
+      to right,
+      rgb(238, 238, 238),
+      rgb(210, 210, 210)
+    );
+    /* background: rgb(245, 245, 245); */
     display: flex;
-    gap: 20px;
+    gap: 30px;
+    padding: 10px 0 10px 60px;
+    /* border-bottom: solid 1px rgb(202, 202, 202); */
+    width: 100%;
 
     & h2 {
       cursor: default;
@@ -69,7 +89,8 @@
         padding: 10px;
         color: rgb(58, 58, 58);
         /* background: rgb(212, 248, 225); */
-        background: rgb(220, 244, 220);
+        background: rgb(219, 255, 219);
+        /* background: rgb(220, 244, 220); */
 
         &:hover {
           box-shadow: 0 0 3px 2.5px rgb(231, 231, 231);
