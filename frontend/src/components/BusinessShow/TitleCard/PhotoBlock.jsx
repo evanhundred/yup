@@ -15,7 +15,7 @@ const PhotoBlock = ({ business }) => {
     );
   }
 
-  console.log(defaultImages);
+  // console.log(defaultImages);
 
   const getImage = (idx) => {
     if (business.stub === "true") {

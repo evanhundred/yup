@@ -155,7 +155,7 @@ const AddBusinessAsOwner = () => {
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
         else setErrors([res.statusText]);
-        console.log(errors);
+        // console.log(errors);
       }
     );
 
@@ -256,7 +256,7 @@ const AddBusinessAsOwner = () => {
 
       if (validateInputs()) {
         const res = await submitBizInfoToBackend(); // this also sets next componentToRender
-        console.log(res);
+        // console.log(res);
       }
     };
 
@@ -375,7 +375,7 @@ const AddBusinessAsOwner = () => {
 
   const SuccessMessage = () => {
     const handleEditStubClick = () => {
-      console.log("edit stub");
+      // console.log("edit stub");
     };
 
     return (

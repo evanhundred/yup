@@ -19,7 +19,7 @@ const EditBusiness = () => {
   const [priceRating, setPriceRating] = useState(
     business ? business.price : null
   );
-  console.log(priceRating);
+  // console.log(priceRating);
 
   // const stylePriceSpans = (num) => {
   //   // if (!business) return;
@@ -59,7 +59,7 @@ const EditBusiness = () => {
     };
 
     if (business) stylePriceSpans(priceNumber);
-    console.log(priceSpans);
+    // console.log(priceSpans);
   }, [business]);
 
   // if (business) stylePriceSpans(business.price);
@@ -199,10 +199,10 @@ const EditBusiness = () => {
 
       // console.log(business);
       const oldNum = parseInt(priceRating);
-      console.log(num);
-      console.log(oldNum);
+      // console.log(num);
+      // console.log(oldNum);
       priceSpans.forEach((span, idx) => {
-        console.log(idx);
+        // console.log(idx);
         if (idx < oldNum) span.classList.remove(`hovered`);
         if (idx < parseInt(num)) span.classList.add(`hovered`);
       });
@@ -277,12 +277,16 @@ const EditBusiness = () => {
           }
           return dollars;
         };
+        // if (business.price && parseInt(business.price) < 1) {
         labelComponent = (
           <label className="price" key="price">
             <h4>{key}</h4>
             <div className="price-input-container">{getDollarArray()}</div>
           </label>
         );
+        // } else {
+        //   labelComponent = null;
+        // }
       } else {
         const toSkewerCase = (string) => {
           const stringArray = string.split("");
@@ -454,7 +458,7 @@ const EditBusiness = () => {
       );
     };
 
-    stylePriceSpans(priceRating);
+    // stylePriceSpans(priceRating);
 
     return (
       <div className="business-info-form-container">
@@ -465,7 +469,7 @@ const EditBusiness = () => {
               keyPositionsObject &&
               orderedLabelComponents()}
           </div>
-          {stylePriceSpans(priceRating)}
+          {/* {stylePriceSpans(priceRating)} */}
           <button>Submit</button>
         </form>
       </div>
@@ -492,18 +496,18 @@ const EditBusiness = () => {
   // },[business])
   // // stylePriceSpans(business.price);
 
-  const successComponent = () => <div className="success">success.</div>;
+  // const successComponent = () => <div className="success">success.</div>;
   const handleBizNameClick = () => history.push(`/businesses/${business.id}`);
 
   if (!business) return <div>loading...</div>;
 
   const submitSuccessComponent = () => {
-    return <div class="submit-success">Success. </div>;
+    return <div className="submit-success">Success. </div>;
   };
 
   const submitFailComponent = () => {
     return (
-      <div class="submit-fail">
+      <div className="submit-fail">
         {errors.map((error) => (
           <h2 key={error}>error</h2>
         ))}
