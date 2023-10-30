@@ -7,21 +7,22 @@
     }
   }
 
-  .main-content-div {
+  & .main-content-div {
     display: flex;
+    gap: 40px;
   }
 
-  .left-side-map {
+  & .left-side-map {
     display: flex;
     flex-direction: column;
     gap: 5px;
   }
-  .location.card-container img {
+  & .location.card-container img {
     opacity: 1;
     width: 370px;
   }
 
-  .address {
+  & .address {
     font-size: 16px;
     display: flex;
     flex-direction: column;
@@ -29,62 +30,60 @@
     height: 130%;
   }
 
-  /* .address * {
-    margin: 0;
-  } */
-
   .street-address,
-  .city-state-zip {
+  & .city-state-zip {
     font-weight: 600;
     width: max-content;
   }
 
-  h3.street-address {
+  & h3.street-address {
     color: #11709c;
   }
 
-  .bottom-left-side {
+  & .bottom-left-side {
     display: flex;
     justify-content: space-between;
     padding: 20px 0 0;
     width: 100%;
   }
 
-  .get-directions-button {
+  & .get-directions-button {
     padding: 14px;
     font-size: 19px;
     border: solid #ccc 1px;
     border-radius: 5px;
   }
 
-  .hours-div {
+  & div.hours-div {
     display: flex;
     flex-direction: column;
     padding-left: 35px;
     gap: 17px;
     font-size: 18px;
+    /* width: max-content; */
   }
 
-  .day-container {
+  & .day-container {
+    /* width: max-content; */
     display: flex;
   }
 
-  .day-name {
-    width: 100px;
+  & .day-name {
+    width: 75px;
   }
 
-  .time-range {
+  & .time-range {
     width: 200px;
   }
 
-  .edit-info-button {
+  & .edit-info-button {
     display: flex;
     color: #11709c;
     padding-top: 4px;
     font-weight: 500;
   }
 
-  .edit-info-button i {
+  & .edit-info-button i {
     font-size: 16px;
     padding-right: 10px;
     margin-top: 3px;

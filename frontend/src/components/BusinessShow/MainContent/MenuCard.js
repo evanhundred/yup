@@ -40,7 +40,7 @@ const MenuCard = ({ business }) => {
 
       <div className="popular-items-bar">
         <div className="popular-item-subcard">
-          <div className={`popular-item-image${isStub && " stub"}`}>
+          <div className={`popular-item-image${isStub ? " stub" : ""}`}>
             <img
               src={featuredImage()}
               alt="chocolate croissant"
