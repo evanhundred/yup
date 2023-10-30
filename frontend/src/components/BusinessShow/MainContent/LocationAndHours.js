@@ -39,7 +39,7 @@ const LocationAndHours = ({ business }) => {
   // const neighborhoodString = business ? business.neighborhood : "text";
 
   return (
-    <div className="location card-container">
+    <div className={`location card-container${isStub ? " stub" : ""}`}>
       <div className="main-title">
         <h2>Location and Hours</h2>
       </div>

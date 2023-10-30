@@ -1,4 +1,12 @@
 .main-content-container .location.card-container {
+  &.stub {
+    & .main-content-div {
+      & .left-side-map {
+        min-width: 350px;
+      }
+    }
+  }
+
   .main-content-div {
     display: flex;
   }
