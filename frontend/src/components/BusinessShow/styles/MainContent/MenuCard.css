@@ -41,6 +41,7 @@
 }
 
 div.website-menu-link {
+  width: max-content;
   border: 1px solid #ccc;
   display: flex;
   color: black;

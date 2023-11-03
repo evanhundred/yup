@@ -47,11 +47,18 @@
     width: 100%;
   }
 
-  & .get-directions-button {
-    padding: 14px;
-    font-size: 19px;
-    border: solid #ccc 1px;
-    border-radius: 5px;
+  & .get-directions-container {
+    cursor: pointer;
+    &:hover {
+      background: rgb(247, 243, 243);
+    }
+
+    & .get-directions-button {
+      padding: 14px;
+      font-size: 19px;
+      border: solid #ccc 1px;
+      border-radius: 5px;
+    }
   }
 
   & div.hours-div {

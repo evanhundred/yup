@@ -1,6 +1,6 @@
 {
-  "workbench.colorTheme": "GitHub Dark Default",
-  "window.zoomLevel": 1.2,
+  "workbench.colorTheme": "Gruvbox Light Hard",
+  "window.zoomLevel": 1.3,
   "search.exclude": {
     ".prev_yups": true
   }
