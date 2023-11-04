@@ -52,6 +52,7 @@
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
+          width: 100vw;
           & .h2-container {
             display: flex;
             width: 100vw;
@@ -63,7 +64,7 @@
               font-size: 25px;
               padding: 20px;
               width: max-content;
-              margin-left: 50px;
+              margin-left: 70px;
               /* display: flex;
               justify-content: center; */
             }
@@ -142,7 +143,7 @@ div.business-image img {
   /* top: -280px; */
   /* position: relative;
   top: -280px; */
-  left: 20px;
+  /* left: 20px; */
   width: 1000px;
   display: flex;
   flex-direction: column;

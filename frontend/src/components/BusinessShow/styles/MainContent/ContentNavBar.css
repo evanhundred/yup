@@ -5,7 +5,8 @@
   display: flex;
   justify-content: left;
   gap: 13px;
-  margin-left: 5.3vw;
+  margin-left: 70px;
+  /* margin-left: 5.3vw; */
   border-bottom: #ccc solid 1px;
 
   & > div.container {
