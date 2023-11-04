@@ -2,6 +2,36 @@
 @import "ThirdLine.css";
 @import "FourthLine.css";
 
+#business-show-container.stub {
+  & .title-card-container {
+    & .title-card-content-container {
+      position: absolute;
+      display: flex;
+      height: 600px;
+      align-items: center;
+      justify-content: center;
+      width: 100vw;
+      & #business-title-card {
+        margin: 0;
+        padding: 0;
+        /* display: flex; */
+        align-items: center;
+        width: 100vw;
+        & h1 {
+          /* position: absolute; */
+
+          font-weight: 400;
+
+          font-size: 60px;
+          background: rgba(0, 0, 0, 0.3);
+          padding: 10px;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}
+
 .business-image-container.stub {
   & .business-image {
     &.four {
@@ -50,9 +80,21 @@ div.business-image img {
   max-width: 1000px;
 }
 
+#title-card-content-container {
+  /* z-index: 2; */
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+}
+
 #business-title-card {
-  position: relative;
-  top: -280px;
+  z-index: 2;
+  position: absolute;
+  margin-top: 50px;
+  /* top: -280px; */
+  /* position: relative;
+  top: -280px; */
   left: 20px;
   width: 1000px;
   display: flex;

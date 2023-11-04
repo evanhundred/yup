@@ -66,22 +66,10 @@ const BusinessShow = ({ props }) => {
       </div>
     );
   }
-
-  // const businessIsOwnedBy = (user) =>
-  //   business.owns.some((own) => own.id === user.id);
-
-  // if (business.stub === "true")
-  //   return (
-  //     <div id="stub-container">
-  //       <h2>this is a stub.</h2>
-  //       {currentUser && businessIsOwnedBy(currentUser) && (
-  //         <h2 className="edit-button">edit stub</h2>
-  //       )}
-  //     </div>
-  //   );
+  const isStub = business.stub === "true";
 
   return (
-    <>
+    <div id={`business-show-container`} className={`${isStub ? "stub" : ""}`}>
       <TitleCard business={business} />
       <MainContent
         business={business}
@@ -91,7 +79,7 @@ const BusinessShow = ({ props }) => {
         }
         handleWriteReview={handleWriteReview}
       />
-    </>
+    </div>
   );
 };
 

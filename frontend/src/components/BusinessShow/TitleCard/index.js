@@ -3,10 +3,10 @@ import PhotoBlock from "./PhotoBlock";
 
 const TitleCard = ({ business = null }) => {
   return (
-    <>
-      <PhotoBlock business={business} />
+    <div className="title-card-container">
       <TitleCardContent business={business} />
-    </>
+      <PhotoBlock business={business} />
+    </div>
   );
 };
 

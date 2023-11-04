@@ -21,29 +21,19 @@ const TitleCardContent = ({ business }) => {
   const ratingsAvg =
     Math.round((ratingsSum / business.reviews.length) * 10) / 10;
 
-  // console.log(ratingsAvg);
-
   // HALF STAR STYLE LOGIC
 
   const lastRatingDigit = (ratingsAvg * 10) % 10;
   const firstRatingDigit = Math.floor(ratingsAvg);
   let isHalfStar;
   if (lastRatingDigit >= 2.5) isHalfStar = true;
-  // if (lastRatingDigit >= 2.5 && lastRatingDigit <= 7.5) isHalfStar = true;
   else isHalfStar = false;
 
-  // console.log(isHalfStar);
-  // const ratingsAvgHalves = Math.round(ratingsAvg);
   const targetDiv = document.querySelector(`.box-${firstRatingDigit + 1}`);
   if (targetDiv && isHalfStar) {
-    // console.log(targetDiv);
     targetDiv.classList.add("half-star");
     targetDiv.setAttribute("data-title-text", "&lowast;");
   }
-
-  // console.log(ratingsAvg, firstRatingDigit);
-
-  // ratingsAvgHalves / 10
 
   const reviewString = business.reviews.length === 1 ? "review" : "reviews";
 
@@ -130,22 +120,27 @@ const TitleCardContent = ({ business }) => {
     );
   };
 
-  if (business.stub === "true")
-    return (
-      <div id="business-title-card" className="stub">
-        <h2>{business.name}</h2>
-      </div>
-    );
+  // if (business.stub === "true")
+  //   return (
+  //     <div id="business-title-card" className="stub">
+  //       <h2>{business.name}</h2>
+  //     </div>
+  //   );
 
   return (
-    <>
+    <div className="title-card-content-container">
+      <div className="spacer" />
       <div id="business-title-card">
         <h1>{business.name}</h1>
-        <SecondLine />
-        <ThirdLine business={business} />
-        <FourthLine business={business} />
+        {business.stub === "false" && (
+          <>
+            <SecondLine />
+            <ThirdLine business={business} />
+            <FourthLine business={business} />
+          </>
+        )}
       </div>
-    </>
+    </div>
   );
 };
 export default TitleCardContent;

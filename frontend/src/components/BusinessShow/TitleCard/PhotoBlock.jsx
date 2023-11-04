@@ -1,5 +1,3 @@
-import defaultImage from "../../../assets/images/stub/1.jpeg";
-
 const PhotoBlock = ({ business }) => {
   let defaultImages;
   if (business.stub === "true") {
@@ -15,23 +13,12 @@ const PhotoBlock = ({ business }) => {
     );
   }
 
-  // console.log(defaultImages);
-
   const getImage = (idx) => {
     if (business.stub === "true") {
       return defaultImages[`${idx}.jpeg`];
     }
     return business.imageUrls[idx];
   };
-  // if (business.stub === "true") {
-  //   return (
-  //     <div className="business-image-container stub">
-  //       <div className="default-image">
-  //         <img src={getImage(1)} alt={"delicious store"} />
-  //       </div>
-  //     </div>
-  //   );
-  // }
   return (
     <div
       className={`business-image-container${

@@ -10,8 +10,8 @@
   color: black;
 
   /* reset height to bottom of photo card */
-  top: -216px;
-  position: relative;
+  /* top: -216px;
+  position: relative; */
 
   & .card-container {
     border-bottom: #ccc solid 1px;
@@ -62,7 +62,8 @@
 
   & .spacer {
     position: relative;
-    height: 130px;
+    height: 85 * px;
+    /* height: 130px; */
   }
 
   & .first-line {
