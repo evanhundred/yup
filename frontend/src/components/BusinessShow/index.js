@@ -69,8 +69,11 @@ const BusinessShow = ({ props }) => {
   const isStub = business.stub === "true";
 
   return (
-    <div id={`business-show-container`} className={`${isStub ? "stub" : ""}`}>
-      <TitleCard business={business} />
+    <div
+      id={`business-show-container`}
+      className={`${isStub ? "stub" : "full"}`}
+    >
+      <TitleCard business={business} currentUser={currentUser} />
       <MainContent
         business={business}
         currentUser={currentUser}

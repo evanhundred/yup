@@ -1,7 +1,7 @@
 import { useState } from "react";
 import BlueCheck from "../../../assets/images/blue-check.png";
 
-const TitleCardContent = ({ business }) => {
+const TitleCardContent = ({ business, currentUser }) => {
   const handleReviewCountClick = () => {
     const reviewsComponent = document.getElementById("reviews-container");
     reviewsComponent.scrollIntoView({ behavior: "smooth" });
@@ -127,11 +127,31 @@ const TitleCardContent = ({ business }) => {
   //     </div>
   //   );
 
+  const currentUserIsOwner = currentUser
+    ? business.owns &&
+      business.owns.some((own) => own.ownerId === currentUser.id)
+    : false;
+
   return (
     <div className="title-card-content-container">
       <div className="spacer" />
       <div id="business-title-card">
+        <div className="spacer" />
         <h1>{business.name}</h1>
+        {business.stub === "true" && (
+          <div className="stub-message">
+            <div className="h2-container">
+              <h2>This is a stub. </h2>
+              {currentUserIsOwner && (
+                <h2 className="user-is-owner">
+                  {" "}
+                  Complete and submit the details to create a full business
+                  listing.
+                </h2>
+              )}
+            </div>
+          </div>
+        )}
         {business.stub === "false" && (
           <>
             <SecondLine />

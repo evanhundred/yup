@@ -55,11 +55,6 @@ const MainContent = ({
               </span>
             )}
           </h2>
-          {/* {business.owns && currentUser && businessIsOwnedBy(currentUser) && (
-            <h2 className="edit-button" onClick={handleEditStubClick}>
-              edit stub
-            </h2>
-          )} */}
         </div>
       </div>
     );
@@ -70,7 +65,7 @@ const MainContent = ({
   return (
     <>
       <div className="main-content-container">
-        {business.stub === "true" && stubContainer()}
+        {/* {business.stub === "true" && stubContainer()} */}
         <ContentNavBar
           business={business}
           currentUser={currentUser}
