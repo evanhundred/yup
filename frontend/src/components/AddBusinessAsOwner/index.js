@@ -191,6 +191,11 @@ const AddBusinessAsOwner = () => {
 
   const [formErrors, setFormErrors] = useState({});
 
+  const html = document.querySelector("html");
+  if (html) {
+    html.style.overflow = "auto";
+  }
+
   const businessInfoForm = () => {
     const handleBizInfoFormSubmit = async () => {
       const clearErrors = () => {

@@ -53,6 +53,8 @@ class Api::BusinessesController < ApplicationController
         @business = Business.find(params[:id])
         unless @business && @business.destroy
             render json: { errors: @business.errors.full_messages }, status: 422
+        else
+            render json: { message: "success" }, status: 200
         end
     end
 
