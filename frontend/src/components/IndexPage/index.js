@@ -6,12 +6,16 @@ import {
   clearErrors
 } from "../../store/businesses";
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import MainContent from "./MainContent";
 import TitleCard from "./TitleCard";
 
 const IndexPage = () => {
   const dispatch = useDispatch();
   const businesses = useSelector(getBusinesses);
+  const location = useLocation();
+
+  console.log(location);
 
   useEffect(() => {
     dispatch(clearErrors());
@@ -27,6 +31,9 @@ const IndexPage = () => {
         <h1>loading...</h1>
       </div>
     );
+
+  const html = document.querySelector("html");
+  if (html) html.style.overflow = "auto";
 
   return (
     <div id="index-page">

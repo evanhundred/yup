@@ -139,6 +139,10 @@ export const deleteBusiness = (businessId) => async (dispatch) => {
   });
   if (res.ok) {
     dispatch(removeBusiness(businessId));
+    const data = res.json();
+    return data;
+  } else {
+    return res;
   }
 };
 

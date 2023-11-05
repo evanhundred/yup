@@ -7,7 +7,8 @@ import {
   getBusiness,
   fetchBusiness,
   updateBusiness,
-  deleteBusiness
+  deleteBusiness,
+  clearErrors
 } from "../../store/businesses";
 import {
   backgroundNavBar,
@@ -27,6 +28,7 @@ const EditBusiness = () => {
   );
 
   useEffect(() => {
+    dispatch(clearErrors());
     dispatch(fetchBusiness(businessId));
   }, [dispatch, businessId]);
 
@@ -386,7 +388,13 @@ const EditBusiness = () => {
 
       console.log(res);
       let next;
-      if (res.ok) next = "delete-success";
+      if (res.message === "success") {
+        history.push("/", {
+          message: `business ${businessId} deleted successfully.`
+        });
+      }
+      // if (res.message === "success") next = "delete-success";
+      // if (res.ok) next = "delete-success";
       else next = "submit-fail";
 
       setComponentToRender(next);
@@ -517,7 +525,7 @@ const EditBusiness = () => {
             .
           </h2>
         )}
-        {submitType === "delete" && (
+        {submitType === "delete-success" && (
           <div className="biz-deleted-prompt">
             <h2>Business deleted.</h2>
             <Link to="/">
