@@ -1,13 +1,19 @@
 import "./index.css";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getBusiness,
   fetchBusiness,
-  updateBusiness
+  updateBusiness,
+  deleteBusiness
 } from "../../store/businesses";
+import {
+  backgroundNavBar,
+  unBackgroundNavBar,
+  capitalize
+} from "../../utils/modal";
 
 const EditBusiness = () => {
   const dispatch = useDispatch();
@@ -154,6 +160,9 @@ const EditBusiness = () => {
   const [bizTemplate, setBizTemplate] = useState(
     business ? { ...populateTemplateObject() } : null
   );
+
+  const [updateType, setUpdateType] = useState(null);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   if (!business) return <div className="loading">Loading...</div>;
 
@@ -365,93 +374,103 @@ const EditBusiness = () => {
       setComponentToRender(next);
     };
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      // const runValidations = () => {
-      //   e.preventDefault();
-
-      //   // create validations
-      //   const basicChars = /^[a-zA-Z0-9\s]+/g;
-      //   const numbersOnly = /^\d+/g;
-
-      //   const constraints = {};
-
-      //   const numbersFieldsArray = ["phone", "countryCode"];
-      //   const numbersFieldsObject = {};
-      //   numbersFieldsArray.forEach((field) => {
-      //     numbersFieldsObject[field] = field;
-      //   });
-      //   const excludeFieldsArray = ["openAt", "closedAt", "price"];
-      //   const excludeFieldsObject = {};
-      //   excludeFieldsArray.forEach((field) => {
-      //     excludeFieldsObject[field] = field;
-      //   });
-      //   // console.log(numbersFieldsObject);
-
-      //   keyPositions.forEach((key) => {
-      //     let expression;
-      //     let errorMsg;
-      //     if (numbersFieldsObject[key]) {
-      //       expression = numbersOnly;
-      //       errorMsg = `${key} must contain 1 or more numbers.`;
-      //     } else if (!excludeFieldsObject[key]) {
-      //       expression = basicChars;
-      //       errorMsg = `${key} must contain 1 or more numbers.`;
-      //     }
-
-      //     constraints[key] = {
-      //       expression: expression || null,
-      //       errorMsg: errorMsg || null
-      //     };
-      //   });
-
-      //   console.log(constraints);
-
-      //   // validate
-      //   let inputsValid = true;
-      //   const fieldsArray = Object.keys(constraints);
-      //   while (fieldsArray.length > 0) {
-      //     const field = fieldsArray.pop();
-      //     console.log(field);
-
-      //     const expressionExists = !!constraints[field].expression;
-
-      //     // console.log(expressionExists);
-      //     console.log(bizTemplate[field]);
-
-      //     // const expressionInvalidates =
-      //     //   !bizTemplate[field].match(constraints).expression;
-
-      //     // if (expressionExists && expressionInvalidates) {
-      //     //   const newError = { [field]: constraints[field].errorMsg };
-
-      //     //   setFormErrors((formErrors) => ({
-      //     //     ...formErrors,
-      //     //     ...newError
-      //     //   }));
-
-      //     //   const inputBox = document.querySelector(
-      //     //     `#edit-business-container .business-info-form-container input.${field}`
-      //     //   );
-      //     //   inputBox.classList.add("error");
-      //     // }
-      //   }
-
-      //   inputsValid = false;
-
-      //   return inputsValid;
-      // };
-      // if (runValidations()) {
-      //   console.log("VALIDATIONS PASSED");
-      //   // dispatch(updateBusiness(bizTemplate));
-      //   setComponentToRender("success");
-      // }
-
-      if (business.name && business.name.length > 0) {
-        submitUpdate();
-      } else {
-        setErrors(errors.concat(["Name needed."]));
+    const confirmUpdate = () => {
+      switch (updateType) {
+        case "update":
+          submitUpdate();
+          break;
+        case "delete":
+          dispatchDeleteBusiness();
+          break;
+        default:
+          return;
       }
+    };
+
+    const ConfirmModal = () => {
+      return (
+        <div id="confirm-modal-container" onLoad={listenForEsc}>
+          <div
+            className="confirm-modal-overlay"
+            onClick={(e) => handleCloseModal(e)}
+          />
+          <div className="confirm-modal-box">
+            <div className="confirm-modal-content">
+              <div className="prompt">
+                <div className="confirm-modal-line-1">
+                  <div className="close-x" onClick={(e) => handleCloseModal(e)}>
+                    X
+                  </div>
+                  <h2>{`Please confirm ${capitalize(updateType)}.`}</h2>
+                </div>
+                <div className="buttons">
+                  <h3 className="cancel" onClick={(e) => handleCloseModal(e)}>
+                    Cancel
+                  </h3>
+                  <h3 className="confirm" onClick={confirmUpdate}>
+                    Confirm
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    const dispatchDeleteBusiness = () => {
+      dispatch(deleteBusiness(businessId)).then(() => {
+        history.push(`/businesses`);
+      });
+    };
+
+    const html = document.querySelector("html");
+    if (!showConfirmModal) html.style.overflow = "auto";
+
+    const handleSubmit = (e, actionType) => {
+      e.preventDefault();
+
+      if (html) html.style.overflow = "hidden";
+      backgroundNavBar();
+
+      switch (actionType) {
+        case "update":
+          setUpdateType("update");
+          if (business.name && business.name.length > 0) {
+            setShowConfirmModal(true);
+            // submitUpdate();
+          } else {
+            setErrors(errors.concat(["Name needed."]));
+          }
+          break;
+        case "delete":
+          setUpdateType("delete");
+          setShowConfirmModal(true);
+          // dispatchDeleteBusiness();
+          break;
+        default:
+          return;
+      }
+    };
+
+    const handleCloseModal = (e) => {
+      e.preventDefault();
+
+      if (html) html.style.overflow = "auto";
+      unBackgroundNavBar();
+
+      setShowConfirmModal(false);
+    };
+
+    const closeOnPressEsc = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal(e);
+        html.removeEventListener("keydown", closeOnPressEsc);
+      }
+    };
+
+    const listenForEsc = () => {
+      html.addEventListener("keydown", closeOnPressEsc, { once: true });
     };
 
     const errorBox = (field) => {
@@ -467,15 +486,23 @@ const EditBusiness = () => {
     return (
       <div className="business-info-form-container">
         {/* <p>hi</p> */}
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form onSubmit={(e) => handleSubmit(e, "update")}>
           <div className="input-fields">
             {keyPositionsObject &&
               keyPositionsObject &&
               orderedLabelComponents()}
           </div>
           {/* {stylePriceSpans(priceRating)} */}
-          <button>Submit</button>
+          <div className="button-container">
+            <label>
+              <button>Submit</button>
+            </label>
+            <div className="delete" onClick={(e) => handleSubmit(e, "delete")}>
+              <h3>Delete</h3>
+            </div>
+          </div>
         </form>
+        {showConfirmModal && <ConfirmModal />}
       </div>
     );
   };

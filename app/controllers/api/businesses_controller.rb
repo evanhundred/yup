@@ -49,6 +49,13 @@ class Api::BusinessesController < ApplicationController
         end
     end
 
+    def destroy
+        @business = Business.find(params[:id])
+        unless @business && @business.destroy
+            render json: { errors: @business.errors.full_messages }, status: 422
+        end
+    end
+
     def search
         query = params[:query]
         @businesses = Business.where("name ILIKE ? OR category ILIKE ? OR price ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%")

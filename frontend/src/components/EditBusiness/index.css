@@ -1,6 +1,51 @@
 #edit-business-container {
   margin: 20px 5vw;
 
+  #confirm-modal-container {
+    & .confirm-modal-content {
+      & .prompt {
+        display: flex;
+        flex-direction: column;
+        /* gap: 20px; */
+        justify-content: center;
+        & .confirm-modal-line-1 {
+          width: 100%;
+          /* margin-bottom: 20px; */
+          display: flex;
+          justify-content: center;
+          & .close-x {
+            font-family: Rubik, "Helvetica Neue", Helvetica, sans-serif;
+            width: 100%;
+          }
+          & h2 {
+            padding-left: 0;
+          }
+        }
+      }
+
+      & .buttons {
+        & h3 {
+          &.cancel {
+            background: rgb(192, 15, 15);
+            border: 3px solid rgb(150, 4, 4);
+            &:hover {
+              background: rgba(192, 15, 15, 0.6);
+              border: 3px solid rgb(193, 101, 65);
+            }
+          }
+          &.confirm {
+            background: rgb(0, 213, 114);
+            border: 3px solid rgba(0, 185, 99, 0.5);
+            &:hover {
+              background: rgba(0, 213, 114, 0.6);
+              border: 3px solid rgba(0, 185, 99, 0.3);
+            }
+          }
+        }
+      }
+    }
+  }
+
   & .submit-success {
     height: 70vh;
   }
@@ -19,17 +64,17 @@
   }
 
   & .business-info-form-container {
-    height: 76vh;
+    /* height: 76vh; */
     margin-bottom: 30px;
     & form {
       margin: 30px 16vw 20px 6vw;
       display: flex;
       flex-direction: column;
       gap: 50px;
-      height: 65vh;
 
       & .input-fields {
-        height: 100%;
+        height: 65vh;
+        /* height: 100%; */
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -83,22 +128,57 @@
         }
       }
 
-      & button {
-        width: max-content;
-        /* margin-top: 30px; */
-        height: 50px;
-        border-radius: 4px;
-        padding: 8px 25px;
-        margin-left: 10px;
-        font-size: 25px;
-        border: none;
-        color: white;
-        background: rgb(255, 33, 63);
-        &:hover {
-          box-shadow: 0 0 4px 2px rgb(195, 192, 192);
-          /* box-shadow: 0 0 4px 2px rgb(216, 142, 153); */
-          /* background: rgb(255, 0, 0); */
-          /* box-shadow: 0 0 2px 2px (rgb(255, 33, 63)); */
+      & .button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+
+        & .delete {
+          width: 150px;
+          cursor: pointer;
+          margin-left: 10px;
+          & h3 {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            /* min-width: max-content; */
+            /* margin-top: 30px; */
+            /* height: 50px; */
+            border-radius: 4px;
+            padding: 12px 0px;
+            font-size: 25px;
+            border: none;
+            color: white;
+            background: rgb(165, 149, 149);
+            &:hover {
+              background: rgba(191, 19, 42, 0.6);
+              box-shadow: 0 0 4px 2px rgb(195, 192, 192);
+            }
+          }
+        }
+
+        & label {
+          width: max-content;
+          & button {
+            width: 150px;
+            box-sizing: inherit;
+            /* min-width: max-content; */
+            /* margin-top: 30px; */
+            /* height: 50px; */
+            border-radius: 4px;
+            padding: 12px 0px;
+            margin-left: 10px;
+            font-size: 25px;
+            border: none;
+            color: white;
+            background: rgb(234, 30, 11);
+            &:hover {
+              box-shadow: 0 0 4px 2px rgb(195, 192, 192);
+              /* box-shadow: 0 0 4px 2px rgb(216, 142, 153); */
+              /* background: rgb(255, 0, 0); */
+              /* box-shadow: 0 0 2px 2px (rgb(255, 33, 63)); */
+            }
+          }
         }
       }
     }

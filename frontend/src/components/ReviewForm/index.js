@@ -188,7 +188,9 @@ const ReviewForm = () => {
                 <h2>{`Please confirm ${capitalize(updateType)}.`}</h2>
               </div>
               <div className="buttons">
-                <h3 className="cancel">Cancel</h3>
+                <h3 className="cancel" onClick={(e) => handleCloseModal(e)}>
+                  Cancel
+                </h3>
                 <h3 className="confirm" onClick={confirmUpdate}>
                   Confirm
                 </h3>

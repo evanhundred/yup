@@ -13,6 +13,13 @@ export const CLEAR_ERRORS = "businesses/CLEAR_ERRORS";
 export const SHARE_BUSINESS = "businesses/SHARE_BUSINESS";
 export const CLEAR_BUSINESSES = "businesses/CLEAR_BUSINESSES";
 
+export const REMOVE_BUSINESS = "businesses/REMOVE_BUSINESS";
+
+export const removeBusiness = (businessId) => ({
+  type: REMOVE_BUSINESS,
+  businessId
+});
+
 // export const CREATE_BUSINESS_STUB = "businesses/CREATE_BUSINESS_STUB";
 
 // export const createBusinessStub = (business) => ({
@@ -126,6 +133,15 @@ export const updateBusiness = (business) => async (dispatch) => {
   return data;
 };
 
+export const deleteBusiness = (businessId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/businesses/${businessId}`, {
+    method: "DELETE"
+  });
+  if (res.ok) {
+    dispatch(removeBusiness(businessId));
+  }
+};
+
 // export const newBusiness = () => async (dispatch) => {
 //   let data;
 //   const res = await csrfFetch("/api/businesses/new");
@@ -171,6 +187,9 @@ const businessesReducer = (preloadedState = {}, action) => {
     case RECEIVE_ERRORS:
       newState.errors = action.errors;
       return { ...newState, ...action.errors };
+    case REMOVE_BUSINESS:
+      delete newState[action.businessId];
+      return newState;
     case CLEAR_ERRORS:
       return {};
     case CLEAR_BUSINESSES:
