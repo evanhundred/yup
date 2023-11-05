@@ -7,6 +7,7 @@ import { backgroundNavBar, unBackgroundNavBar } from "../../utils/modal";
 
 import "./index.css";
 import "./review-guidelines-modal.css";
+import "./confirmUpdateModal.css";
 
 const ReviewForm = () => {
   const match = useRouteMatch();
@@ -50,6 +51,9 @@ const ReviewForm = () => {
   const [showReviewGuidelinesModal, setShowReviewGuidelinesModal] =
     useState(false);
 
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [updateType, setUpdateType] = useState(null);
+
   useEffect(() => {
     dispatch(fetchBusiness(businessId));
   }, [businessId, dispatch]);
@@ -70,25 +74,132 @@ const ReviewForm = () => {
     }
   };
 
-  const handleSubmitUpdate = (e) => {
-    e.preventDefault();
-    if (rating && body) {
-      const data = { ...review, body: body, rating: rating };
-      dispatch(updateReview(data, businessId)).then(() => {
-        history.push(`/businesses/${businessId}`);
-      });
-    }
-    if (!body) setErrors("ⓘ no review text.");
+  const dispatchUpdateReview = () => {
+    const data = { ...review, body: body, rating: rating };
+    dispatch(updateReview(data, businessId)).then(() => {
+      history.push(`/businesses/${businessId}`);
+    });
   };
 
-  const handleSubmitDelete = (e) => {
+  const handleSubmitUpdate = (e, type) => {
     e.preventDefault();
+    if (html) html.style.overflow = "hidden";
+    backgroundNavBar();
+    switch (type) {
+      case "update":
+        setUpdateType("update");
+        if (!body) setErrors("ⓘ no review text.");
+        if (rating && body) {
+          setShowConfirmModal(true);
+        }
+        break;
+      case "delete":
+        setUpdateType("delete");
+        setShowConfirmModal(true);
+        break;
+      default:
+        return;
+
+      // dispatchUpdateReview();
+    }
+  };
+
+  const html = document.querySelector("html");
+
+  const handleCloseModal = (e, modalType) => {
+    e.preventDefault();
+    if (html) html.style.overflow = "auto";
+    unBackgroundNavBar();
+    switch (modalType) {
+      case "review-guidelines":
+        setShowReviewGuidelinesModal(false);
+        break;
+      case "confirm":
+        setShowConfirmModal(false);
+        break;
+      default:
+        return;
+    }
+  };
+  const closeOnPressEsc = (e) => {
+    if (e.key === "Escape") {
+      handleCloseModal(e);
+      html.removeEventListener("keydown", closeOnPressEsc);
+    }
+  };
+
+  const listenForEsc = () =>
+    html.addEventListener("keydown", closeOnPressEsc, { once: true });
+
+  const capitalize = (string) => {
+    const capitalized = string
+      .slice(0, 1)
+      .toUpperCase()
+      .concat(string.slice(1));
+    // capitalized[0] = capitalized[0].toUpperCase;
+    return capitalized;
+  };
+
+  const dispatchDeleteReview = () => {
     dispatch(deleteReview(reviewId, businessId)).then(() => {
       history.push(`/businesses/${businessId}`);
     });
   };
 
-  const html = document.querySelector("html");
+  const confirmUpdate = () => {
+    console.log(updateType);
+    switch (updateType) {
+      case "update":
+        dispatchUpdateReview();
+        break;
+      case "delete":
+        dispatchDeleteReview();
+        break;
+      default:
+        return;
+    }
+  };
+  const ConfirmModal = () => {
+    return (
+      <div id="confirm-modal-container" onLoad={listenForEsc}>
+        <div
+          className="confirm-modal-overlay"
+          onClick={(e) => handleCloseModal(e)}
+        />
+        <div className="confirm-modal-box">
+          <div className="confirm-modal-content">
+            <div className="prompt">
+              <div className="confirm-modal-line-1">
+                <div
+                  className="close-x"
+                  onClick={(e) => handleCloseModal(e, "confirm")}
+                >
+                  <p>X</p>
+                </div>
+                <h2>{`Please confirm ${capitalize(updateType)}.`}</h2>
+              </div>
+              <div className="buttons">
+                <h3 className="cancel">Cancel</h3>
+                <h3 className="confirm" onClick={confirmUpdate}>
+                  Confirm
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // const handleSubmitDelete = (e) => {
+  //   e.preventDefault();
+  //   setUpdateType("delete");
+  //   setShowConfirmModal(true);
+  // confirmUpdate();
+  // dispatch(deleteReview(reviewId, businessId)).then(() => {
+  //   history.push(`/businesses/${businessId}`);
+  // });
+  // };
 
   const handleGuidelinesClick = () => {
     if (html) html.style.overflow = "hidden";
@@ -160,21 +271,6 @@ const ReviewForm = () => {
   };
 
   const ReviewGuidelinesModal = () => {
-    const handleCloseModal = (e) => {
-      e.preventDefault();
-      if (html) html.style.overflow = "auto";
-      setShowReviewGuidelinesModal(false);
-      unBackgroundNavBar();
-    };
-    const closeOnPressEsc = (e) => {
-      if (e.key === "Escape") {
-        handleCloseModal(e);
-        html.removeEventListener("keydown", closeOnPressEsc);
-      }
-    };
-    const listenForEsc = () => {
-      html.addEventListener("keydown", closeOnPressEsc, { once: true });
-    };
     const reviewGuidelinesSubheader =
       "Please respect the following principles.";
     const reviewGuidelinesBulletList = () => {
@@ -200,6 +296,7 @@ const ReviewForm = () => {
         </ul>
       );
     };
+
     return (
       <div
         className="review-guidelines-modal-container"
@@ -217,7 +314,10 @@ const ReviewForm = () => {
               <h2 className="review-guidelines-title">
                 Review Content Guidelines
               </h2>
-              <div className="close-x" onClick={(e) => handleCloseModal(e)}>
+              <div
+                className="close-x"
+                onClick={(e) => handleCloseModal(e, "review-guidelines")}
+              >
                 X
               </div>
             </div>
@@ -283,15 +383,21 @@ const ReviewForm = () => {
       )}
       {pathType === "edit" && (
         <div className="edit-buttons-container">
-          <div className="update-review-button" onClick={handleSubmitUpdate}>
+          <div
+            className="update-review-button"
+            onClick={(e) => handleSubmitUpdate(e, "update")}
+          >
             <h3>Update Review</h3>
           </div>
-          <div className="delete-review-button" onClick={handleSubmitDelete}>
+          <div
+            className="delete-review-button"
+            onClick={(e) => handleSubmitUpdate(e, "delete")}
+          >
             <h3>Delete Review</h3>
           </div>
         </div>
       )}
-
+      {showConfirmModal && <ConfirmModal />}
       {showReviewGuidelinesModal && <ReviewGuidelinesModal />}
     </div>
   );
