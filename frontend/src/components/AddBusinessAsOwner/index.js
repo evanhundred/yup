@@ -32,6 +32,8 @@ const AddBusinessAsOwner = () => {
   const newBusinessTemplate = newBusinessStub();
   const [bizTemplate, setBizTemplate] = useState(newBusinessTemplate);
 
+  const [newBusinessId, setNewBusinessId] = useState(null);
+
   const handleBusinessNameSubmit = (e) => {
     e.preventDefault();
     setComponentToRender("step-two");
@@ -160,8 +162,12 @@ const AddBusinessAsOwner = () => {
     );
 
     let next;
-    if (res.id) next = "step-four";
-    else next = "submission-fail";
+    if (res.id) {
+      setNewBusinessId(res.id);
+      next = "step-four";
+    } else {
+      next = "submission-fail";
+    }
 
     setComponentToRender(next);
   };
@@ -380,7 +386,7 @@ const AddBusinessAsOwner = () => {
 
   const SuccessMessage = () => {
     const handleEditStubClick = () => {
-      // console.log("edit stub");
+      history.push(`/businesses/${newBusinessId}/edit`);
     };
 
     return (
