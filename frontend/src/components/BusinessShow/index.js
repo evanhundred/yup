@@ -1,7 +1,11 @@
 import { useEffect } from "react";
 import { useParams, useLocation, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getBusiness, fetchBusiness } from "../../store/businesses";
+import {
+  getBusiness,
+  fetchBusiness,
+  clearBusinesses
+} from "../../store/businesses";
 import { fetchUser } from "../../store/users";
 import "./index.css";
 import TitleCard from "./TitleCard";
@@ -29,6 +33,7 @@ const BusinessShow = ({ props }) => {
 
   location.state = null;
   useEffect(() => {
+    dispatch(clearBusinesses());
     dispatch(fetchBusiness(businessId)); // .catch((errors) => console.log(errors));
     if (currentUser) dispatch(fetchUser(currentUser.id));
   }, [businessId, currentUser, dispatch]);

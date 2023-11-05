@@ -57,6 +57,9 @@
     cursor: pointer;
   }
 
+  .save-bookmark-button.container {
+    margin-right: 50px;
+  }
   & div.save-bookmark-button.saved,
   & div.save-bookmark-button.saved * {
     background: #e34234;
@@ -84,6 +87,10 @@
     gap: 10px;
     &:hover {
       background: rgb(120, 94, 255);
+    }
+
+    & h2 {
+      width: max-content;
     }
   }
 }

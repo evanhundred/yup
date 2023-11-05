@@ -7,7 +7,7 @@ class Api::OwnedBusinessesController < ApplicationController
 
         @owned_business.owner_id = current_user.id
         @business = Business.find(params[:business_id])
-        @owned_busienss.owned_business_id = @business.id
+        @owned_business.owned_business_id = @business.id
         if @owned_business.save
             render json: { message: 'success', status: 200, owned_business_id: @owned_business.id }
         else

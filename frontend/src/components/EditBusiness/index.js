@@ -1,7 +1,7 @@
 import "./index.css";
 
 import { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getBusiness,
@@ -25,25 +25,7 @@ const EditBusiness = () => {
   const [priceRating, setPriceRating] = useState(
     business ? business.price : null
   );
-  // console.log(priceRating);
 
-  // const stylePriceSpans = (num) => {
-  //   // if (!business) return;
-
-  //   // console.log(business);
-  //   const oldNum = parseInt(priceRating);
-  //   console.log(num);
-  //   console.log(oldNum);
-  //   priceSpans.forEach((span, idx) => {
-  //     console.log(idx);
-  //     if (idx < oldNum) span.classList.remove(`hovered`);
-  //     if (idx < parseInt(num)) span.classList.add(`hovered`);
-  //   });
-  // };
-  // const priceSpans = document.querySelectorAll(
-  //   "#edit-business-container .price-input-container div.dollar-box"
-  // );
-  // console.log(priceSpans);
   useEffect(() => {
     dispatch(fetchBusiness(businessId));
   }, [dispatch, businessId]);
@@ -55,43 +37,14 @@ const EditBusiness = () => {
     const priceNumber = business ? business.price : null;
     const stylePriceSpans = (num) => {
       const oldNum = parseInt(priceNumber);
-      // console.log(num);
-      // console.log(oldNum);
       priceSpans.forEach((span, idx) => {
-        // console.log(idx);
         if (idx < oldNum) span.classList.remove(`hovered`);
         if (idx < parseInt(num)) span.classList.add(`hovered`);
       });
     };
 
     if (business) stylePriceSpans(priceNumber);
-    // console.log(priceSpans);
   }, [business]);
-
-  // if (business) stylePriceSpans(business.price);
-
-  // useEffect(() => {
-  //   if (business) stylePriceSpans(business.price);
-  // }, [stylePriceSpans, business]);
-
-  // const priceSpans = document.querySelectorAll(
-  //   "#edit-business-container .price-input-container div.dollar-box"
-  // );
-  // // console.log(priceSpans);
-  // const stylePriceSpans = useCallback(
-  //   (num) => {
-  //     const oldNum = priceRating;
-  //     priceSpans.forEach((span, idx) => {
-  //       if (idx < oldNum) span.classList.remove(`hovered`);
-  //       if (idx < num) span.classList.add(`hovered`);
-  //     });
-  //   },
-  //   [priceRating, priceSpans]
-  // );
-
-  // useEffect(() => {
-  //   stylePriceSpans(priceRating);
-  // }, [business, stylePriceSpans, priceRating]);
 
   const currentUser = useSelector((state) => state.session.user);
   if (!currentUser) history.push("/login");
@@ -145,9 +98,6 @@ const EditBusiness = () => {
     keyPositionsObject[idx + 1] = { fieldName: key, component: null };
     fieldOrderObject[key] = idx + 1;
   });
-
-  // console.log(keyPositionsObject);
-  // console.log(fieldOrderObject);
 
   const populateTemplateObject = () => {
     const templateObject = {};
@@ -418,10 +368,32 @@ const EditBusiness = () => {
       );
     };
 
-    const dispatchDeleteBusiness = () => {
-      dispatch(deleteBusiness(businessId)).then(() => {
-        history.push(`/businesses`);
-      });
+    const dispatchDeleteBusiness = async () => {
+      const res = await dispatch(deleteBusiness(businessId)).catch(
+        async (res) => {
+          let data;
+          try {
+            data = await res.clone().json();
+          } catch {
+            data = await res.text();
+          }
+          if (data?.errors) setErrors(data.errors);
+          else if (data) setErrors([data]);
+          else setErrors([res.statusText]);
+          console.log(errors);
+        }
+      );
+
+      console.log(res);
+      let next;
+      if (res.ok) next = "delete-success";
+      else next = "submit-fail";
+
+      setComponentToRender(next);
+
+      // .then(() => {
+      //   history.push(`/businesses`);
+      // });
     };
 
     const html = document.querySelector("html");
@@ -532,17 +504,27 @@ const EditBusiness = () => {
 
   if (!business) return <div>loading...</div>;
 
-  const submitSuccessComponent = () => {
+  const submitSuccessComponent = (submitType) => {
     return (
       <div className="submit-success">
         <h2>Success.</h2>
-        <h2>
-          Visit{" "}
-          <span className="bizNameLink" onClick={handleBizNameClick}>
-            {business.name}
-          </span>
-          .
-        </h2>
+        {submitType === "update" && (
+          <h2>
+            Visit{" "}
+            <span className="bizNameLink" onClick={handleBizNameClick}>
+              {business.name}
+            </span>
+            .
+          </h2>
+        )}
+        {submitType === "delete" && (
+          <div className="biz-deleted-prompt">
+            <h2>Business deleted.</h2>
+            <Link to="/">
+              <h2>Yup home.</h2>
+            </Link>
+          </div>
+        )}
       </div>
     );
   };
@@ -573,7 +555,10 @@ const EditBusiness = () => {
           </>
         )}
         {componentToRender === "submit-fail" && submitFailComponent()}
-        {componentToRender === "submit-success" && submitSuccessComponent()}
+        {componentToRender === "submit-success" &&
+          submitSuccessComponent("update")}
+        {componentToRender === "delete-success" &&
+          submitSuccessComponent("delete")}
       </div>
     );
   }
