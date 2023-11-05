@@ -68,6 +68,11 @@ const BusinessShow = ({ props }) => {
   }
   const isStub = business.stub === "true";
 
+  const html = document.querySelector("html");
+  if (html) {
+    html.style.overflow = "auto";
+  }
+
   return (
     <div
       id={`business-show-container`}

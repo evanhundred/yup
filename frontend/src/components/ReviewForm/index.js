@@ -81,7 +81,14 @@ const ReviewForm = () => {
     });
   };
 
+  const html = document.querySelector("html");
+  if (!showConfirmModal || !showReviewGuidelinesModal) {
+    html.style.overflow = "auto";
+  }
+
+  console.log(html);
   const handleSubmitUpdate = (e, type) => {
+    // const html = document.querySelector("html");
     e.preventDefault();
     if (html) html.style.overflow = "hidden";
     backgroundNavBar();
@@ -104,10 +111,9 @@ const ReviewForm = () => {
     }
   };
 
-  const html = document.querySelector("html");
-
   const handleCloseModal = (e, modalType) => {
     e.preventDefault();
+    // const html = document.querySelector("html");
     if (html) html.style.overflow = "auto";
     unBackgroundNavBar();
     switch (modalType) {
@@ -122,14 +128,17 @@ const ReviewForm = () => {
     }
   };
   const closeOnPressEsc = (e) => {
+    // const html = document.querySelector("html");
     if (e.key === "Escape") {
       handleCloseModal(e);
       html.removeEventListener("keydown", closeOnPressEsc);
     }
   };
 
-  const listenForEsc = () =>
+  const listenForEsc = () => {
+    // const html = document.querySelector("html");
     html.addEventListener("keydown", closeOnPressEsc, { once: true });
+  };
 
   const capitalize = (string) => {
     const capitalized = string
@@ -202,6 +211,7 @@ const ReviewForm = () => {
   // };
 
   const handleGuidelinesClick = () => {
+    // const html = document.querySelector("html");
     if (html) html.style.overflow = "hidden";
     setShowReviewGuidelinesModal(true);
     backgroundNavBar();
