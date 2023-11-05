@@ -4,3 +4,43 @@
   margin: 15px 0 0 45px;
   min-height: 65vh;
 }
+
+#index-page {
+  #redirect-message-modal-container {
+    & .redirect-message-modal-overlay {
+      background: rgba(49, 49, 49, 0.8);
+    }
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1;
+    & .redirect-message-modal-box {
+      width: 680px;
+      height: 310px;
+      position: relative;
+      background: #f9f9f9;
+      display: flex;
+      border-radius: 10px;
+
+      & .redirect-message-modal-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 2.5em 3, 5em;
+        & .message-container {
+          display: flex;
+          justify-content: space-between;
+          & h2 {
+            font-size: 30px;
+          }
+        }
+      }
+    }
+  }
+}
