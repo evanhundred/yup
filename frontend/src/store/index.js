@@ -7,7 +7,7 @@ import users from "./users";
 import bizPhotoBoxes from "./bizPhotoBoxes";
 import savedBusinesses from "./savedBusinesses";
 import ownedBusinesses from "./ownedBusinesses";
-import message from "./message";
+import messages from "./messages";
 
 const rootReducer = combineReducers({
   session,
@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
   users,
   savedBusinesses,
   ownedBusinesses,
-  message
+  messages
 });
 
 let enhancer;

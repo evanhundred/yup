@@ -1,41 +1,43 @@
 export const RECEIVE_MESSAGE = "message/RECEIVE_MESSAGE";
 
-export const CLEAR_MESSAGE = "message/CLEAR_MESSAGE";
+export const CLEAR_MESSAGES = "message/CLEAR_MESSAGES";
 
 export const receiveMessage = (message) => ({
   type: RECEIVE_MESSAGE,
   message
 });
 
-export const clearMessage = () => ({
-  type: CLEAR_MESSAGE
+export const clearMessages = () => ({
+  type: CLEAR_MESSAGES
 });
 
 export const loadMessage = (message) => async (dispatch) => {
   const res = dispatch(receiveMessage(message));
   // let data;
   // if (res) data = await res.json();
-  console.log(res);
+  // console.log(res);
   return res;
 };
 
-export const resetMessage = () => async (dispatch) => {
+export const getMessages = ({ messages }) => ({ ...messages });
+
+export const resetMessages = () => async (dispatch) => {
   // const res = await dispatch(clearMessage);
   // const data = await res.json();
   // return data;
-  dispatch(clearMessage());
+  dispatch(clearMessages());
 };
 
-const messageReducer = (preloadedState = {}, action) => {
+const messagesReducer = (preloadedState = {}, action) => {
   const newState = { ...preloadedState };
   switch (action.type) {
     case RECEIVE_MESSAGE:
-      return { ...newState, message: action.message };
-    case CLEAR_MESSAGE:
+      return { ...newState, ...action.message };
+    case CLEAR_MESSAGES:
       return {};
     default:
       return newState;
   }
 };
 
-export default messageReducer;
+export default messagesReducer;

@@ -60,9 +60,10 @@ class Api::BusinessesController < ApplicationController
 
     def search
 
-        # query = Regexp.new(params[:query])
+        # query = Regexp.new(params[:query].parameterize)
         #     business.price.match(query) ||
 
+        # query =
         query = params[:query].parameterize
 
         # @businesses = Business.find_each do |business|
@@ -72,7 +73,18 @@ class Api::BusinessesController < ApplicationController
         #         business.neighborhood.parameterize.match(query)
         # end
         # @businesses = Business.find_by(name: name.parameterize)
-        @businesses = Business.where("name ILIKE ? OR category ILIKE ? OR price ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%")
+        # @businesses = Business.where(name.parameterize.match(query))
+        @businesses = []
+        for biz in Business.all do
+            if biz.name.parameterize.match(query) ||
+                biz.category.parameterize.match(query) ||
+                biz.price.parameterize.match(query) ||
+                biz.neighborhood.parameterize.match(query)
+                    @businesses.push(biz)
+            end
+        end
+
+        # @businesses = Business.where("name LIKE ? OR category LIKE ? OR price LIKE ?", "%#{Business.sanitize_sql_like(query)}%", "%#{query}%", "%#{query}%")
         # render json: @businesses
 
         # @businesses = Business.where("name LIKE ? OR category LIKE ? OR price LIKE ? OR neighborhood LIKE ?", "%{#query}%", "%{#query}%", "%{#query}%", "%{#query}%")
