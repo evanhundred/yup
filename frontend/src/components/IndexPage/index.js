@@ -16,7 +16,7 @@ const IndexPage = () => {
   const businesses = useSelector(getBusinesses);
   const location = useLocation();
 
-  console.log(location);
+  // console.log(location);
 
   // console.log(location.state && location.state.message);
 
@@ -26,7 +26,7 @@ const IndexPage = () => {
     message && message.message ? true : false
   );
 
-  console.log(message);
+  // console.log(message);
   // console.log(message.keys);
 
   // if (location.message) setShowRedirectMessage(true);
@@ -53,7 +53,7 @@ const IndexPage = () => {
 
       const res = await dispatch(resetMessage());
       // const data = await res.json();
-      console.log(res);
+      // console.log(res);
 
       if (html) html.style.overflow = "auto";
       setShowRedirectMessage(false);
@@ -86,7 +86,7 @@ const IndexPage = () => {
 
   // if (location.state.message) setShowRedirectMessage(true);
 
-  console.log(showRedirectMessage);
+  // console.log(showRedirectMessage);
   return (
     <div id="index-page">
       {showRedirectMessage && redirectMessageModal()}

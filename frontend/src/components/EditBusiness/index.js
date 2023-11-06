@@ -313,11 +313,11 @@ const EditBusiness = () => {
           if (data?.errors) setErrors(data.errors);
           else if (data) setErrors([data]);
           else setErrors([res.statusText]);
-          console.log(errors);
+          // console.log(errors);
         }
       );
 
-      console.log(res);
+      // console.log(res);
       let next;
       if (res.id) next = "submit-success";
       else next = "submit-fail";
@@ -383,22 +383,23 @@ const EditBusiness = () => {
           if (data?.errors) setErrors(data.errors);
           else if (data) setErrors([data]);
           else setErrors([res.statusText]);
-          console.log(errors);
+          // console.log(errors);
         }
       );
 
-      console.log(res);
+      // console.log(res);
       let next;
       let data;
       if (res.message === "success") {
-        const message = `business ${businessId} deleted successfully.`;
+        const message = `${bizTemplate.name} deleted successfully.`;
+        // const message = `business ${businessId} deleted successfully.`;
         const res = await dispatch(loadMessage(message));
         if (res && res.ok) {
           data = res.json();
         } else {
           data = res;
         }
-        console.log(data);
+        // console.log(data);
         history.push("/");
         // history.push("/", {
         //   message: `business ${businessId} deleted successfully.`

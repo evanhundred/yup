@@ -86,7 +86,7 @@ const ReviewForm = () => {
     html.style.overflow = "auto";
   }
 
-  console.log(html);
+  // console.log(html);
   const handleSubmitUpdate = (e, type) => {
     // const html = document.querySelector("html");
     e.preventDefault();
@@ -156,7 +156,7 @@ const ReviewForm = () => {
   };
 
   const confirmUpdate = () => {
-    console.log(updateType);
+    // console.log(updateType);
     switch (updateType) {
       case "update":
         dispatchUpdateReview();
