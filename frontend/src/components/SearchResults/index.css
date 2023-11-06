@@ -5,11 +5,16 @@
 #search-results-container {
   margin-left: 4em;
   & h2 {
-    margin: 10px 0 20px;
+    margin: 20px 0;
+    font-size: 25px;
+  }
+
+  & h3.popular-businesses-prompt {
+    font-size: 20px;
   }
 }
 
-#search-results-errors {
+/* #search-results-errors {
   margin: 40px 0 10px 50px;
   height: 60vh;
 
@@ -26,10 +31,10 @@
     }
 
     & .web-spider-image {
-      /* width: 70px; */
+
       & img {
         width: 400px;
       }
     }
   }
-}
+} */

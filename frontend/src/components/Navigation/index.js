@@ -1,8 +1,9 @@
 import { useMemo, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { NavLink, useLocation, useHistory, Link } from "react-router-dom";
+import { NavLink, useLocation, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { searchBusinesses, clearBusinesses } from "../../store/businesses";
+import { loadMessage } from "../../store/message";
 
 import ProfileButton from "./ProfileButton";
 import "./navigation.css";
@@ -82,10 +83,13 @@ const Navigation = ({ props }) => {
       if (query.length >= 1) {
         dispatch(clearBusinesses());
         let errors;
+        // const parameterizedQuery = qu
         dispatch(searchBusinesses(query))
           .then((res) => {
             if (res && res.status === 404) {
+              // console.log(res)
               errors = { searchErrors: "404 not found" };
+              dispatch(loadMessage("404 not found"));
             }
           })
           .then(() => {
@@ -182,7 +186,7 @@ const Navigation = ({ props }) => {
 
   const writeReviewNavLink = () => {
     const handleClick = () => {
-      history.push("/write-a-review");
+      history.push("/search?write-review");
     };
     return (
       <div

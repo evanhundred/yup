@@ -59,10 +59,24 @@ class Api::BusinessesController < ApplicationController
     end
 
     def search
-        query = params[:query]
+
+        # query = Regexp.new(params[:query])
+        #     business.price.match(query) ||
+
+        query = params[:query].parameterize
+
+        # @businesses = Business.find_each do |business|
+        #     business.name.parameterize.match(query) ||
+        #         business.category.parameterize.match(query) ||
+        #         business.city.parameterize.match(query) ||
+        #         business.neighborhood.parameterize.match(query)
+        # end
+        # @businesses = Business.find_by(name: name.parameterize)
         @businesses = Business.where("name ILIKE ? OR category ILIKE ? OR price ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%")
         # render json: @businesses
-        if (@businesses.length > 0)
+
+        # @businesses = Business.where("name LIKE ? OR category LIKE ? OR price LIKE ? OR neighborhood LIKE ?", "%{#query}%", "%{#query}%", "%{#query}%", "%{#query}%")
+        if (@businesses && @businesses.length > 0)
             render :index
         else
             # render json: { message: @businesses.length }, status: 404

@@ -15,6 +15,7 @@ export const loadMessage = (message) => async (dispatch) => {
   const res = dispatch(receiveMessage(message));
   // let data;
   // if (res) data = await res.json();
+  console.log(res);
   return res;
 };
 
