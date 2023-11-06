@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { getBusiness, newBusiness } from "../../store/businesses";
-import { newBusiness } from "../../utils/businesses";
+import { newBusinessStub } from "../../utils/businesses";
 import { createBusinessStub } from "../../store/businesses";
 import "./index.css";
 
@@ -29,23 +29,13 @@ const AddBusinessAsOwner = () => {
   const [componentToRender, setComponentToRender] = useState("initial");
   const [showSelectIntlCodeMenu, setShowSelectIntlCodeMenu] = useState(false);
 
-  // const [businessName, setBusinessName] = useState("");
-  // const [chosenCountryCode, setChosenCountryCode] = useState(1);
-  // const [chosenPhoneNumber, setChosenPhoneNumber] = useState("");
-  // const [countryName, setCountryName] = useState("");
-  // const [addressLine1, setAddressLine1] = useState("");
-  // const [addressLine2, setAddressLine2] = useState("");
-  // const [city, setCity] = useState("");
-  // const [chosenState, setChosenState] = useState("");
-
-  const newBusinessTemplate = newBusiness();
+  const newBusinessTemplate = newBusinessStub();
   const [bizTemplate, setBizTemplate] = useState(newBusinessTemplate);
 
-  // console.log(bizTemplate);
+  const [newBusinessId, setNewBusinessId] = useState(null);
 
   const handleBusinessNameSubmit = (e) => {
     e.preventDefault();
-
     setComponentToRender("step-two");
   };
 
@@ -107,8 +97,6 @@ const AddBusinessAsOwner = () => {
   const countryCodeDropdown = () => {
     const handleCountryCodeClick = (code) => {
       bizTemplate.countryCode = code;
-
-      // setChosenCountryCode(code);
     };
     return (
       <ul className="select-intl-code-dropdown">
@@ -135,7 +123,6 @@ const AddBusinessAsOwner = () => {
   };
 
   const handlePhoneNumberSubmit = () => {
-    // business.phone = chosenCountryCode.toString().concat(chosenPhoneNumber);
     if (!bizTemplate.countryCode) {
       bizTemplate.countryCode = 1;
     }
@@ -155,15 +142,6 @@ const AddBusinessAsOwner = () => {
     setComponentToRender("step-three");
   };
 
-  // const handleCountryNameChange = (e) => {
-  //   e.preventDefault();
-
-  //   bizTemplate.country = e.target.value;
-  //   // setCountryName(e.target.value);
-  // };
-
-  // console.log(bizTemplate);
-
   const [errors, setErrors] = useState(null);
 
   const submitBizInfoToBackend = async () => {
@@ -179,28 +157,19 @@ const AddBusinessAsOwner = () => {
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
         else setErrors([res.statusText]);
-        console.log(errors);
+        // console.log(errors);
       }
     );
 
     let next;
-    // const data = await res.json();
-    // console.log(res);
-    if (res.id) next = "step-four";
-    else next = "submission-fail";
+    if (res.id) {
+      setNewBusinessId(res.id);
+      next = "step-four";
+    } else {
+      next = "submission-fail";
+    }
 
     setComponentToRender(next);
-
-    // let data;
-    // if (res.ok) {
-    //   data = await res.json();
-    //   console.log(await data);
-    //   return data;
-    // } else {
-    //   data = await res.json();
-    //   // data = { errors: res };
-    //   console.log(data);
-    // }
   };
 
   const businessFormPromptText =
@@ -208,8 +177,6 @@ const AddBusinessAsOwner = () => {
 
   const handleChange = (e) => {
     const errorIndex = e.target.className.indexOf("error");
-    // console.log(errorIndex);
-    // console.log(e);
     let attributeName;
     if (errorIndex === -1) {
       attributeName = e.target.className;
@@ -221,7 +188,7 @@ const AddBusinessAsOwner = () => {
         attributeName = e.target.className.slice(5).trim();
       }
     }
-    // console.log(attributeName);
+
     setBizTemplate((bizTemplate) => ({
       ...bizTemplate,
       [attributeName]: e.target.value
@@ -229,6 +196,11 @@ const AddBusinessAsOwner = () => {
   };
 
   const [formErrors, setFormErrors] = useState({});
+
+  const html = document.querySelector("html");
+  if (html) {
+    html.style.overflow = "auto";
+  }
 
   const businessInfoForm = () => {
     const handleBizInfoFormSubmit = async () => {
@@ -266,30 +238,16 @@ const AddBusinessAsOwner = () => {
         };
       }
 
-      // console.log(constraints);
-
       const validateInputs = () => {
         let inputsValid = true;
 
         const fieldsArray = Object.keys(constraints);
         while (fieldsArray.length > 0) {
           const field = fieldsArray.pop();
-          // console.log(field);
-          // console.log(constraints[[field]]);
-          // console.log(bizTemplate[[field]]);
-          // console.log(
-          //   bizTemplate[[field]].match(constraints[[field]].expression)
-          // );
-          // console.log(
-          //   !bizTemplate[field].match(constraints[[field]].expression)
-          // );
 
           if (!bizTemplate[field].match(constraints[[field]].expression)) {
-            // console.log(formErrors);
             const newError = { [field]: constraints[[field]].errorMsg };
-            // console.log({
-            //   ...newError
-            // });
+
             setFormErrors((formErrors) => ({
               ...formErrors,
               ...newError
@@ -299,7 +257,6 @@ const AddBusinessAsOwner = () => {
               `#add-business-owner-container .business-info-form input.${field}`
             );
             inputBox.classList.add("error");
-            // console.log(formErrors);
 
             if (inputsValid) inputsValid = false;
           }
@@ -310,24 +267,8 @@ const AddBusinessAsOwner = () => {
 
       if (validateInputs()) {
         const res = await submitBizInfoToBackend(); // this also sets next componentToRender
-        console.log(res);
+        // console.log(res);
       }
-      // else {
-      //   console.log("errors exist.");
-      //   // const styleInputBoxes = () => {
-      //   //   const inputBoxes = document.querySelectorAll(
-      //   //     "#add-business-owner-container .business-info-form input"
-      //   //   );
-      //   //   inputBoxes.forEach((box) => {
-      //   //     console.log(formErrors[box.className]);
-      //   //     if (formErrors[box.className]) {
-      //   //       box.classList.add("error");
-      //   //     }
-      //   //   });
-      //   // };
-
-      //   // styleInputBoxes();
-      // }
     };
 
     const errorBox = (field) => {
@@ -337,10 +278,6 @@ const AddBusinessAsOwner = () => {
         </div>
       );
     };
-
-    // const inputHasError = (field) => {
-    //   if (formErrors[field])
-    // }
 
     return (
       <div className="business-info-form">
@@ -449,7 +386,7 @@ const AddBusinessAsOwner = () => {
 
   const SuccessMessage = () => {
     const handleEditStubClick = () => {
-      console.log("edit stub");
+      history.push(`/businesses/${newBusinessId}/edit`);
     };
 
     return (
@@ -488,8 +425,6 @@ const AddBusinessAsOwner = () => {
             <form onSubmit={(e) => handleBusinessNameSubmit(e)}>
               <input
                 onChange={(e) => handleChange(e)}
-                // onChange={(e) => (bizTemplate.name = e.target.value)}
-                // onChange={(e) => setBusinessName(e.target.value)}
                 value={bizTemplate.name}
                 className="name"
                 placeholder="Your business name"

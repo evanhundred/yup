@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import "./share-modal.css";
 import ContentNavBar from "./ContentNavBar";
 import MenuCard from "./MenuCard";
@@ -11,6 +11,7 @@ const MainContent = ({
   props,
   handleWriteReview
 }) => {
+  const history = useHistory();
   const location = useLocation();
 
   let reviewsComponent = document.getElementById("reviews-container");
@@ -21,12 +22,6 @@ const MainContent = ({
     const rootElement = document.getElementById("root");
     rootElement.scrollIntoView(true);
   }
-  // if (location.state && reviewsComponent && location.state.scrollToReviews) {
-  //   reviewsComponent.scrollIntoView({ behavior: "smooth" });
-  // } else {
-  //   const rootElement = document.getElementById("root");
-  //   rootElement.scrollIntoView(true);
-  // }
 
   // REDUNDANT-- CLEAN
   if (props === "goToReviews") {
@@ -34,16 +29,49 @@ const MainContent = ({
     reviewsComponent.scrollIntoView({ behavior: "smooth" });
   }
 
+  // const businessIsOwnedBy = (user) =>
+  //   business.owns.some((own) => own.id === user.id);
+
+  // const handleEditStubClick = () => {
+  //   history.push(`/businesses/${business.id}/edit`);
+  // };
+
+  const currentUserIsOwner = currentUser
+    ? business.owns &&
+      business.owns.some((own) => own.ownerId === currentUser.id)
+    : false;
+  const stubContainer = () => {
+    return (
+      <div id="stub-container">
+        <div className="spacer" />
+        <div className="first-line">
+          <h2>
+            This is a stub.{" "}
+            {currentUserIsOwner && (
+              <span className="grey">
+                {" "}
+                Complete and submit the details to create a full business
+                listing.
+              </span>
+            )}
+          </h2>
+        </div>
+      </div>
+    );
+  };
+
+  // if (business.stub === "true")
+
   return (
     <>
       <div className="main-content-container">
+        {/* {business.stub === "true" && stubContainer()} */}
         <ContentNavBar
           business={business}
           currentUser={currentUser}
           handleWriteReview={handleWriteReview}
         />
 
-        {/* menu */}
         <MenuCard business={business} />
 
         {/* Location & hours */}

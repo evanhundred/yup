@@ -5,7 +5,7 @@ import { backgroundNavBar, unBackgroundNavBar } from "../../../utils/modal";
 import {
   createSavedBusiness,
   deleteSavedBusiness
-} from "../../../store/savedBusinesses.js";
+} from "../../../store/savedBusinesses";
 import CopyIcon from "../../../assets/icons/copy-icon.png";
 
 const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
@@ -189,6 +189,25 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
   const savedTextString = () =>
     businessIsSaved || savedStateData.businessIsSaved ? "Saved" : "Save";
 
+  const editBusinessButton = () => {
+    const handleEditBusinessClick = () => {
+      history.push(`/businesses/${business.id}/edit`);
+    };
+    return (
+      <div className="edit-business-button" onClick={handleEditBusinessClick}>
+        <div className="icon">
+          <i className="fa-solid fa-pencil"></i>
+        </div>
+        <h2>Edit Business</h2>
+      </div>
+    );
+  };
+
+  const currentUserIsOwner = currentUser
+    ? business.owns &&
+      business.owns.some((own) => own.ownerId === currentUser.id)
+    : false;
+
   return (
     <div className="content-nav-bar-container">
       <div
@@ -238,6 +257,7 @@ const ContentNavBar = ({ business, currentUser, handleWriteReview }) => {
           </div>
         </div>
       </div>
+      {currentUserIsOwner && editBusinessButton()}
     </div>
   );
 };

@@ -7,13 +7,21 @@
   position: relative;
   border-radius: 6px;
   background-size: auto 20px;
+  overflow: hidden;
 }
 
 .popular-item-image img {
-  object-fit: cover;
   height: 200px;
   width: 300px;
   border-radius: 6px;
+
+  /* &:not(.stub) {
+  } */
+  object-fit: cover;
+  &.stub {
+    object-fit: contain;
+    transform: scale(1.4);
+  }
 }
 
 .popular-item-name {
@@ -33,6 +41,7 @@
 }
 
 div.website-menu-link {
+  width: max-content;
   border: 1px solid #ccc;
   display: flex;
   color: black;

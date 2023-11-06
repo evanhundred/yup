@@ -31,3 +31,9 @@ export const closeOnPressEsc = (e, handleCloseModal) => {
 export const listenForEsc = () => {
   document.addEventListener("keydown", (e) => closeOnPressEsc(e));
 };
+
+export const capitalize = (string) => {
+  const capitalized = string.slice(0, 1).toUpperCase().concat(string.slice(1));
+  // capitalized[0] = capitalized[0].toUpperCase;
+  return capitalized;
+};

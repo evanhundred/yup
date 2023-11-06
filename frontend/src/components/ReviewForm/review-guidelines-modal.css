@@ -1,9 +1,12 @@
-.review-guidelines-modal-overlay {
+.review-guidelines-modal-overlay,
+.confirm-modal-overlay {
   background: rgba(49, 49, 49, 0.8);
 }
 
 .review-guidelines-modal-container,
-.review-guidelines-modal-overlay {
+.review-guidelines-modal-overlay,
+#confirm-modal-container,
+.confirm-modal-overlay {
   top: 0;
   left: 0;
   right: 0;
@@ -14,35 +17,112 @@
   align-items: center;
 }
 
-.review-guidelines-modal-container {
+.review-guidelines-modal-container,
+#confirm-modal-container {
   z-index: 1;
 }
-
 .review-guidelines-modal-box {
-  position: relative;
-  background: #f9f9f9;
-  display: flex;
-  border-radius: 10px;
   width: 680px;
   height: 310px;
 }
 
-.review-guidelines-modal-content {
+.review-guidelines-modal-box,
+.confirm-modal-box {
+  position: relative;
+  background: #f9f9f9;
+  display: flex;
+  border-radius: 10px;
+}
+
+.review-guidelines-modal-content,
+.confrim-modal-content {
   width: 100%;
   display: flex;
   flex-direction: column;
   padding: 2.5em 3.5em 2.5em;
 }
 
-.review-guidelines-modal-line-1 {
+.review-guidelines-modal-line-1,
+.confirm-modal-line-1 {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 0.9em;
+}
+.review-guidelines-modal-line-1 {
   border-bottom: 1px solid rgb(205, 205, 205);
   margin-bottom: 10px;
+  padding-bottom: 0.9em;
 }
 
-.review-guidelines-modal-line-1 h2 {
+#confirm-modal-container {
+  /* & .confirm-modal-box {
+    width:
+  } */
+  & .confirm-modal-content {
+    padding: 40px 100px 50px;
+    width: 100%;
+  }
+  & .prompt {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    & .confirm-modal-line-1 {
+      width: 100%;
+      margin-bottom: 20px;
+
+      display: flex;
+      justify-content: center;
+
+      /* position: absolute; */
+
+      & .close-x {
+        position: absolute;
+        margin: 0;
+        width: inherit;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 55px;
+        align-items: center;
+      }
+    }
+
+    & .buttons {
+      height: 50px;
+      display: flex;
+      gap: 150px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+
+      & h3 {
+        cursor: pointer;
+        padding: 9px 19px;
+        color: white;
+        border-radius: 9px;
+        font-size: 28px;
+        &.cancel {
+          background: rgb(192, 15, 15);
+          border: 3px solid rgb(150, 4, 4);
+          &:hover {
+            background: rgba(192, 15, 15, 0.6);
+            border: 3px solid rgb(193, 101, 65);
+          }
+        }
+        &.confirm {
+          background: rgb(9, 115, 9);
+          border: 3px solid rgb(0, 90, 0);
+          &:hover {
+            background: rgba(9, 115, 9, 0.6);
+            border: 3px solid rgb(123, 152, 123);
+          }
+        }
+      }
+    }
+  }
+}
+
+.review-guidelines-modal-line-1 h2,
+#confirm-modal-container h2 {
   font-size: 25px;
 }
 

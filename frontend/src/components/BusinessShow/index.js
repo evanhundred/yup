@@ -1,7 +1,11 @@
 import { useEffect } from "react";
 import { useParams, useLocation, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getBusiness, fetchBusiness } from "../../store/businesses";
+import {
+  getBusiness,
+  fetchBusiness,
+  clearBusinesses
+} from "../../store/businesses";
 import { fetchUser } from "../../store/users";
 import "./index.css";
 import TitleCard from "./TitleCard";
@@ -18,6 +22,9 @@ const BusinessShow = ({ props }) => {
 
   const currentUser = useSelector((state) => state.session.user);
 
+  // const currentUserId = currentUser ? currentUser.id : null;
+  // const fetchedUser = useSelector(state=>state.users[currentUserId]);
+
   const handleWriteReview = (e) => {
     e.preventDefault();
     if (currentUser) history.push(`/businesses/${business.id}/reviews/new`);
@@ -26,6 +33,7 @@ const BusinessShow = ({ props }) => {
 
   location.state = null;
   useEffect(() => {
+    dispatch(clearBusinesses());
     dispatch(fetchBusiness(businessId)); // .catch((errors) => console.log(errors));
     if (currentUser) dispatch(fetchUser(currentUser.id));
   }, [businessId, currentUser, dispatch]);
@@ -63,13 +71,19 @@ const BusinessShow = ({ props }) => {
       </div>
     );
   }
+  const isStub = business.stub === "true";
 
-  if (business.stub === "true")
-    return <div className="stub-container">this is a stub.</div>;
+  const html = document.querySelector("html");
+  if (html) {
+    html.style.overflow = "auto";
+  }
 
   return (
-    <>
-      <TitleCard business={business} />
+    <div
+      id={`business-show-container`}
+      className={`${isStub ? "stub" : "full"}`}
+    >
+      <TitleCard business={business} currentUser={currentUser} />
       <MainContent
         business={business}
         currentUser={currentUser}
@@ -78,7 +92,7 @@ const BusinessShow = ({ props }) => {
         }
         handleWriteReview={handleWriteReview}
       />
-    </>
+    </div>
   );
 };
 

@@ -12,7 +12,7 @@ import BusinessPhotos from "./components/BusinessPhotos";
 import WriteAReviewSearch from "./components/WriteAReviewSearch";
 import AddBusinessAsOwner from "./components/AddBusinessAsOwner";
 import AddBusinessAsCustomer from "./components/AddBusinessAsCustomer";
-// import AddBiz2 from "./components/AddBusinessAsOwner/AddBiz2";
+import EditBusiness from "./components/EditBusiness";
 
 function App() {
   return (
@@ -55,9 +55,9 @@ function App() {
         </Route>
         <Route path="/add-business-as-owner">
           <AddBusinessAsOwner />
-          {/* <Route path="step-two">
-            <AddBiz2 />
-          </Route> */}
+        </Route>
+        <Route path="/businesses/:businessId/edit">
+          <EditBusiness />
         </Route>
         <Route path="/add-business-as-customer">
           <AddBusinessAsCustomer />

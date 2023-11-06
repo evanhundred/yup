@@ -1,5 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 
+import { createOwnedBusiness } from "./ownedBusinesses";
+
 import csrfFetch from "./csrf";
 
 export const RECEIVE_BUSINESSES = "businesses/RECEIVE_BUSINESSES";
@@ -10,6 +12,13 @@ export const CLEAR_ERRORS = "businesses/CLEAR_ERRORS";
 
 export const SHARE_BUSINESS = "businesses/SHARE_BUSINESS";
 export const CLEAR_BUSINESSES = "businesses/CLEAR_BUSINESSES";
+
+export const REMOVE_BUSINESS = "businesses/REMOVE_BUSINESS";
+
+export const removeBusiness = (businessId) => ({
+  type: REMOVE_BUSINESS,
+  businessId
+});
 
 // export const CREATE_BUSINESS_STUB = "businesses/CREATE_BUSINESS_STUB";
 
@@ -102,9 +111,39 @@ export const createBusinessStub = (business) => async (dispatch) => {
   });
   if (res && res.ok) {
     data = await res.json();
+    dispatch(createOwnedBusiness(data.id));
     dispatch(receiveBusiness(data));
   }
   return data;
+};
+
+export const updateBusiness = (business) => async (dispatch) => {
+  let data;
+  const res = await csrfFetch(`/api/businesses/${business.id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(business)
+  }).catch((error) => {
+    data = error;
+  });
+  if (res && res.ok) {
+    data = await res.json();
+    dispatch(receiveBusiness(data));
+  }
+  return data;
+};
+
+export const deleteBusiness = (businessId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/businesses/${businessId}`, {
+    method: "DELETE"
+  });
+  if (res.ok) {
+    dispatch(removeBusiness(businessId));
+    const data = res.json();
+    return data;
+  } else {
+    return res;
+  }
 };
 
 // export const newBusiness = () => async (dispatch) => {
@@ -152,6 +191,9 @@ const businessesReducer = (preloadedState = {}, action) => {
     case RECEIVE_ERRORS:
       newState.errors = action.errors;
       return { ...newState, ...action.errors };
+    case REMOVE_BUSINESS:
+      delete newState[action.businessId];
+      return newState;
     case CLEAR_ERRORS:
       return {};
     case CLEAR_BUSINESSES:

@@ -9,7 +9,7 @@
 #  city         :string           not null
 #  state        :string           not null
 #  latitude     :decimal(, )
-#  longitude    decimal(, )
+#  longitude    :decimal(, )
 #  phone        :string           not null
 #  website      :string
 #  open_at      :string
@@ -24,7 +24,6 @@
 #  country_code :integer
 #  country      :string
 #  stub         :string
-#  owner_id     :bigint
 #
 class Business < ApplicationRecord
     # stub:
@@ -44,9 +43,9 @@ class Business < ApplicationRecord
         inverse_of: :business,
         dependent: :destroy
 
-    has_many :owners,
-        through: :businesses_owners,
-        foreign_key: :business_id
+    # has_many :owners,
+    #     through: :businesses_owners,
+    #     foreign_key: :business_id
 
     # has_and_belongs_to_many :owners,
     #     class_name: :User,
@@ -70,4 +69,10 @@ class Business < ApplicationRecord
         dependent: :destroy
 
     has_many_attached :photos
+
+    def user_is_owner(user)
+        self.owns.any? do |own|
+            user.id == own.owner_id
+        end
+    end
 end

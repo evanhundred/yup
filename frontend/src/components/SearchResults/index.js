@@ -14,7 +14,7 @@ const SearchResults = () => {
   const rootElement = document.getElementById("root");
   rootElement.scrollIntoView(true);
 
-  console.log(location);
+  // console.log(location);
 
   if (location.state && location.state.searchErrors)
     return (

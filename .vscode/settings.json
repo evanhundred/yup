@@ -1,6 +1,9 @@
 {
-  "workbench.colorTheme": "Solarized Light",
-  "window.zoomLevel": 1.3
+  "workbench.colorTheme": "Quiet Light",
+  "window.zoomLevel": 1,
+  "search.exclude": {
+    ".prev_yups": true
+  }
 }
 
 // "files.exclude": {

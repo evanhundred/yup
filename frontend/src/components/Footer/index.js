@@ -28,8 +28,10 @@ const Footer = () => {
   };
 
   const reviewWriteIconAttribution = (
-    <div className="review-write-icon-attribution">
-      <p>
+    <>
+      {/* <div className="review-write-icon-attribution"> */}
+      <span>
+        {" "}
         Draw icons created by
         <a
           href="https://www.flaticon.com/free-icons/draw"
@@ -41,13 +43,30 @@ const Footer = () => {
           Freepik - Flaticon
         </a>
         .
-      </p>
-    </div>
+      </span>
+      {/* </div> */}
+    </>
+  );
+
+  const stubAttribution = (
+    <span>
+      {" "}
+      Blueberry pie image by{" "}
+      <a
+        href="https://www.123rf.com/profile_lineartestpilot"
+        title="pie"
+        rel="noreferrer"
+        target="_blank"
+      >
+        lineartestpilot
+      </a>
+      .
+    </span>
   );
 
   const ShareIconCopy = () => {
     return (
-      <p className="image-attribution">
+      <span className="image-attribution">
         'Copy' Icon made by
         <a
           href="https://www.flaticon.com/authors/catalin-fertu"
@@ -68,7 +87,7 @@ const Footer = () => {
           {" "}
           www.flaticon.com.
         </a>
-      </p>
+      </span>
     );
   };
 
@@ -155,10 +174,13 @@ const Footer = () => {
         {location.state === "404" && <BizShowErrorCopy />}
         {location.state !== "404" &&
           location.pathname.match(/businesses\/[0-9]+/) && (
-            <div className="business-show-footer-copy">
+            <>
+              {/* <div className="business-show-footer-copy"> */}
               <ShareIconCopy />
               {reviewWriteIconAttribution}
-            </div>
+              {/* </div> */}
+              {stubAttribution}
+            </>
           )}
         {location.pathname.match(/search/) && searchResultsAttribution()}
       </p>

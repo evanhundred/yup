@@ -40,6 +40,24 @@ class Api::BusinessesController < ApplicationController
     #     @recepient = params[:recepient]
     # end
 
+    def update
+        @business = Business.find(params[:id])
+        if @business.user_is_owner(current_user) && @business.update(business_params)
+            render :show
+        else
+            render json: { errors: @business.errors.full_messages }, status: 422
+        end
+    end
+
+    def destroy
+        @business = Business.find(params[:id])
+        unless @business && @business.destroy
+            render json: { errors: @business.errors.full_messages }, status: 422
+        else
+            render json: { message: "success" }, status: 200
+        end
+    end
+
     def search
         query = params[:query]
         @businesses = Business.where("name ILIKE ? OR category ILIKE ? OR price ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%")
@@ -56,6 +74,7 @@ class Api::BusinessesController < ApplicationController
 
     def business_params
         params.require(:business).permit(
+            :id,
             :name,
             :latitude,
             :longitude,

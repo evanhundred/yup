@@ -2,14 +2,15 @@
 #
 # Table name: owned_businesses
 #
-#  user_id           :bigint           not null
-#  business_id       :bigint           not null
 #  owned_business_id :bigint           not null
 #  owner_id          :bigint           not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  id                :bigint           not null, primary key
 #
 class OwnedBusiness < ApplicationRecord
+    validates :owned_business_id, uniqueness: { scope: :owner_id, message: "only one own per user + business combination" }
+
     belongs_to :owner,
         class_name: :User,
         foreign_key: :owner_id,
