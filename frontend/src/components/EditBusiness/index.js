@@ -10,6 +10,7 @@ import {
   deleteBusiness,
   clearErrors
 } from "../../store/businesses";
+import { loadMessage } from "../../store/message";
 import {
   backgroundNavBar,
   unBackgroundNavBar,
@@ -388,10 +389,20 @@ const EditBusiness = () => {
 
       console.log(res);
       let next;
+      let data;
       if (res.message === "success") {
-        history.push("/", {
-          message: `business ${businessId} deleted successfully.`
-        });
+        const message = `business ${businessId} deleted successfully.`;
+        const res = await dispatch(loadMessage(message));
+        if (res && res.ok) {
+          data = res.json();
+        } else {
+          data = res;
+        }
+        console.log(data);
+        history.push("/");
+        // history.push("/", {
+        //   message: `business ${businessId} deleted successfully.`
+        // });
       }
       // if (res.message === "success") next = "delete-success";
       // if (res.ok) next = "delete-success";
