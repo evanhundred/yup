@@ -1,8 +1,9 @@
 import { useMemo, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { NavLink, useLocation, useHistory, Link } from "react-router-dom";
+import { NavLink, useLocation, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { searchBusinesses, clearBusinesses } from "../../store/businesses";
+import { searchBusinesses, resetBusinesses } from "../../store/businesses";
+import { loadMessages, resetMessages } from "../../store/messages";
 
 import ProfileButton from "./ProfileButton";
 import "./navigation.css";
@@ -18,6 +19,7 @@ import checkIcon from "../../assets/icons/check.png";
 
 const Navigation = ({ props }) => {
   const sessionUser = useSelector((state) => state.session.user);
+  const messages = useSelector((state) => state.messages);
 
   const history = useHistory();
   const location = useLocation();
@@ -79,23 +81,51 @@ const Navigation = ({ props }) => {
 
     const handleSearchBarClick = (e) => {
       e.preventDefault();
+      // let locationState = { from: "search-bar" };
       if (query.length >= 1) {
-        dispatch(clearBusinesses());
+        dispatch(resetBusinesses());
+        // dispatch(clearBusinesses());
+        dispatch(resetMessages());
         let errors;
+        // console.log(errors);
+        let messageStateObject = {};
+
+        // dispatch(resetMessages())
+        //   .then(() => dispatch(searchBusinesses(query)))
         dispatch(searchBusinesses(query))
           .then((res) => {
             if (res && res.status === 404) {
-              errors = { searchErrors: "404 not found" };
+              // console.log(res);
+              errors = { searchErrors: `404 - ${query} not found` };
+              // dispatch(loadMessage(errors));
             }
           })
           .then(() => {
-            if (errors) history.push(`/search?${query}`, errors);
-            else history.push(`/search?${query}`);
+            if (errors) {
+              // dispatch(loadMessage(errors));
+              const keyName = Object.keys(errors)[0];
+              messageStateObject[keyName] = errors[keyName];
+              // locationState = { ...locationState, ...errors };
+            }
+
+            messageStateObject.from = "nav-search-bar";
+            messageStateObject.loaded = false;
+
+            // console.log(errors);
+            // console.log(messages);
+            // console.log({ ...messages, ...messageStateObject });
+            // dispatch(loadMessage({ from: "nav-search-bar" }));
+            dispatch(loadMessages(messageStateObject));
+            // dispatch(loadMessage({ loaded: false }));
+            history.push(`/search?${query}`);
+            // if (errors) history.push(`/search?${query}`, errors);
+            // else history.push(`/search?${query}`, { from: "search-bar" });
           });
       }
     };
     return (
-      <form>
+      <form onSubmit={(e) => handleSearchBarClick(e)}>
+        {/* <form onSubmit={(e) => handleSearchBarClick(e)}> */}
         <input
           className="user-search-string"
           value={query}
@@ -182,7 +212,7 @@ const Navigation = ({ props }) => {
 
   const writeReviewNavLink = () => {
     const handleClick = () => {
-      history.push("/write-a-review");
+      history.push("/search?write-review");
     };
     return (
       <div

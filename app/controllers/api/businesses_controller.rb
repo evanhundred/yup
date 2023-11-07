@@ -59,10 +59,36 @@ class Api::BusinessesController < ApplicationController
     end
 
     def search
-        query = params[:query]
-        @businesses = Business.where("name ILIKE ? OR category ILIKE ? OR price ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%")
+
+        # query = Regexp.new(params[:query].parameterize)
+        #     business.price.match(query) ||
+
+        # query =
+        query = params[:query].parameterize
+
+        # @businesses = Business.find_each do |business|
+        #     business.name.parameterize.match(query) ||
+        #         business.category.parameterize.match(query) ||
+        #         business.city.parameterize.match(query) ||
+        #         business.neighborhood.parameterize.match(query)
+        # end
+        # @businesses = Business.find_by(name: name.parameterize)
+        # @businesses = Business.where(name.parameterize.match(query))
+        @businesses = []
+        for biz in Business.all do
+            if biz.name.parameterize.match(query) ||
+                biz.category.parameterize.match(query) ||
+                biz.price.parameterize.match(query) ||
+                biz.neighborhood.parameterize.match(query)
+                    @businesses.push(biz)
+            end
+        end
+
+        # @businesses = Business.where("name LIKE ? OR category LIKE ? OR price LIKE ?", "%#{Business.sanitize_sql_like(query)}%", "%#{query}%", "%#{query}%")
         # render json: @businesses
-        if (@businesses.length > 0)
+
+        # @businesses = Business.where("name LIKE ? OR category LIKE ? OR price LIKE ? OR neighborhood LIKE ?", "%{#query}%", "%{#query}%", "%{#query}%", "%{#query}%")
+        if (@businesses && @businesses.length > 0)
             render :index
         else
             # render json: { message: @businesses.length }, status: 404

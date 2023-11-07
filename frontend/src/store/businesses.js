@@ -64,6 +64,10 @@ export const clearBusinesses = () => {
   };
 };
 
+export const resetBusinesses = () => async (dispatch) => {
+  dispatch(clearBusinesses());
+};
+
 export const getBusiness =
   (businessId) =>
   ({ businesses }) => {

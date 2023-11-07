@@ -5,7 +5,7 @@ import {
   getBusinesses,
   clearErrors
 } from "../../store/businesses";
-import { resetMessage } from "../../store/message";
+import { resetMessages, getMessages } from "../../store/messages";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import MainContent from "./MainContent";
@@ -20,10 +20,10 @@ const IndexPage = () => {
 
   // console.log(location.state && location.state.message);
 
-  const message = useSelector((state) => state.message);
+  const messages = useSelector(getMessages);
 
   const [showRedirectMessage, setShowRedirectMessage] = useState(
-    message && message.message ? true : false
+    messages && messages.delete ? true : false
   );
 
   // console.log(message);
@@ -51,7 +51,7 @@ const IndexPage = () => {
     const closeModal = async (e = null) => {
       if (e) e.preventDefault();
 
-      const res = await dispatch(resetMessage());
+      const res = await dispatch(resetMessages());
       // const data = await res.json();
       // console.log(res);
 
@@ -70,7 +70,7 @@ const IndexPage = () => {
         <div className="redirect-message-modal-box">
           <div className="redirect-message-modal-content">
             <div className="message-container">
-              <h2 className="message">{message.message}</h2>
+              <h2 className="message">{messages.delete}</h2>
               <h2 className="ok" onClick={handleOK}>
                 OK
               </h2>

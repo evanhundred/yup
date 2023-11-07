@@ -13,19 +13,27 @@ const LoginFormPage = () => {
   const [errors, setErrors] = useState([]);
   const [hideErrorBox, setHideErrorBox] = useState(false);
 
+  const [submitClicked, setSubmitClicked] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (submitClicked) return null;
     setHideErrorBox(false);
     setErrors([]);
+    setSubmitClicked(true);
+    const buttons = document.querySelectorAll(".login-page-container button");
+    buttons.forEach((button) => {
+      button.classList.add("ghosted");
+    });
 
     // console.log(email);
     // console.log(password);

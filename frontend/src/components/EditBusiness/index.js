@@ -10,7 +10,7 @@ import {
   deleteBusiness,
   clearErrors
 } from "../../store/businesses";
-import { loadMessage } from "../../store/message";
+import { loadMessage } from "../../store/messages";
 import {
   backgroundNavBar,
   unBackgroundNavBar,
@@ -391,7 +391,9 @@ const EditBusiness = () => {
       let next;
       let data;
       if (res.message === "success") {
-        const message = `${bizTemplate.name} deleted successfully.`;
+        const message = {
+          deleted: `${bizTemplate.name} deleted successfully.`
+        };
         // const message = `business ${businessId} deleted successfully.`;
         const res = await dispatch(loadMessage(message));
         if (res && res.ok) {

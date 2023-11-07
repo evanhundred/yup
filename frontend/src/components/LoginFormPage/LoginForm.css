@@ -113,6 +113,11 @@ div.forgot-password-link {
   border-radius: 3px;
   padding: 8px 0;
   text-align: center;
+
+  &.ghosted {
+    cursor: wait;
+    background-color: rgba(227, 68, 54, 0.4);
+  }
 }
 
 ::placeholder {
