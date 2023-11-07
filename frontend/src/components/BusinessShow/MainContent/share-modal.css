@@ -4,6 +4,7 @@
 
 .share-modal-overlay {
   background: rgba(49, 49, 49, 0.8);
+  z-index: 1;
 }
 
 .share-modal-container,
@@ -19,10 +20,12 @@
 }
 
 .share-modal-container {
-  z-index: 1;
+  z-index: 2;
 }
 
 .share-modal-box {
+  z-index: 2;
+
   position: relative;
   background: #f9f9f9;
   display: flex;
