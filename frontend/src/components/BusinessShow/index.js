@@ -11,6 +11,7 @@ import "./index.css";
 import TitleCard from "./TitleCard";
 import MainContent from "./MainContent";
 import webSpider from "../../assets/images/web-spider.jpg";
+import Loading from "../Loading";
 
 const BusinessShow = ({ props }) => {
   const dispatch = useDispatch();
@@ -45,7 +46,8 @@ const BusinessShow = ({ props }) => {
   window.addEventListener("resize", updateSize);
   layoutWidth = window.innerWidth >= 600 ? "full-size" : "narrow-size";
 
-  if (!business) return <div className="loading">loading...</div>;
+  // if (true) return <Loading />;
+  if (!business) return <Loading />;
 
   const handleSearchClick = () => {
     const searchInputBox = document.querySelector(

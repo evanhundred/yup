@@ -11,6 +11,7 @@ import { useLocation } from "react-router-dom";
 import MainContent from "./MainContent";
 import TitleCard from "./TitleCard";
 import Loading from "../Loading";
+// import "../Loading/index.css";
 
 const IndexPage = () => {
   const dispatch = useDispatch();
@@ -40,8 +41,30 @@ const IndexPage = () => {
   if (businesses.errors) {
     return null;
   }
-  if (true) return <Loading />;
-  // if (!businesses.length || !businesses[0].imageUrls) return <Loading />;
+
+  const loadingAnimation = () => {
+    return (
+      <>
+        <div
+          className="loader"
+          onAnimationStart={(e) => console.log("onAnimationStart")}
+          onAnimationIteration={(e) => console.log("onAnimationIteration")}
+          onAnimationEnd={(e) => console.log("onAnimationEnd")}
+        ></div>
+      </>
+    );
+  };
+
+  // if (true)
+  //   return (
+  //     <div id="loading-container">
+  //       <h1 className="prompt">{loadingAnimation()}</h1>
+  //       {/* <h1 className="prompt">loading{<span>{getPeriods()}</span>}</h1> */}
+  //     </div>
+  //   );
+
+  // if (true) return <Loading />;
+  if (!businesses.length || !businesses[0].imageUrls) return <Loading />;
 
   const redirectMessageModal = () => {
     // const message = location.state.message.slice();
