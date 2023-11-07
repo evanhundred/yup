@@ -2,17 +2,12 @@
 // import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 // import { getBusinesses, fetchBusinesses } from "../../store/businesses";
-
+import Loading from "../../Loading";
 import photoBlank from "../../../assets/images/broccoli.png";
 
 const BusinessesGrid = ({ businesses, loadState }) => {
   // console.log(businesses[0]);
-  if (!businesses.length || businesses[0].status === 500)
-    return (
-      <div>
-        <h1>loading businesses...</h1>
-      </div>
-    );
+  if (!businesses.length || businesses[0].status === 500) return <Loading />;
 
   // const startingSixBusinesses = businesses.slice(0, 6);
 

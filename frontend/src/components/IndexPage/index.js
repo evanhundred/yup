@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import MainContent from "./MainContent";
 import TitleCard from "./TitleCard";
+import Loading from "../Loading";
 
 const IndexPage = () => {
   const dispatch = useDispatch();
@@ -39,12 +40,8 @@ const IndexPage = () => {
   if (businesses.errors) {
     return null;
   }
-  if (!businesses.length || !businesses[0].imageUrls)
-    return (
-      <div>
-        <h1>loading...</h1>
-      </div>
-    );
+  if (true) return <Loading />;
+  // if (!businesses.length || !businesses[0].imageUrls) return <Loading />;
 
   const redirectMessageModal = () => {
     // const message = location.state.message.slice();
