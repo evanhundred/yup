@@ -13,7 +13,7 @@ import BusinessResultCard from "./BusinessResultCard";
 import "./index.css";
 
 const SearchResults = () => {
-  const history = useHistory();
+  // const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
   const businesses = useSelector(getBusinesses);
@@ -61,9 +61,9 @@ const SearchResults = () => {
 
   // console.log(initiallyLoaded);
   useEffect(() => {
-    console.log(businesses);
-    console.log(messages);
-    console.log(initiallyLoaded);
+    // console.log(businesses);
+    // console.log(messages);
+    // console.log(initiallyLoaded);
     if (!messages.loaded && businesses.length > 0) {
       dispatch(loadMessage({ loaded: true }));
     }
@@ -76,7 +76,7 @@ const SearchResults = () => {
     ) {
       dispatch(fetchBusinesses());
       setInitiallyLoaded(true);
-      console.log(messages);
+      // console.log(messages);
       dispatch(loadMessage({ loaded: true }));
     }
   }, [businesses, dispatch, messages, initiallyLoaded]);
@@ -86,7 +86,7 @@ const SearchResults = () => {
     messages.from !== "nav-search-bar" &&
     businesses.length === 0
   ) {
-    if (!messages.from) dispatch(resetMessages());
+    // if (!messages.from) dispatch(resetMessages());
     setInitiallyLoaded(true);
     let messageObject = { loaded: true };
     // loadMessage({loaded: true});
@@ -96,7 +96,7 @@ const SearchResults = () => {
       .then(() => dispatch(searchBusinesses(searchString)))
       .then((res) => {
         if (res && res.status === 404) {
-          console.log(res);
+          // console.log(res);
           errors = { searchErrors: `404 - ${searchString} not fround` };
           dispatch(fetchBusinesses());
           if (!messages.searchErrors)
@@ -104,7 +104,7 @@ const SearchResults = () => {
           // dispatch(loadMessages({ ...messages, ...errors }));
           // console.log(errors);
         }
-        dispatch(loadMessages({ ...messageObject }));
+        dispatch(loadMessages(messageObject));
       });
   }
 

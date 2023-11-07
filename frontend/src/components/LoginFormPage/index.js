@@ -20,7 +20,7 @@ const LoginFormPage = () => {
   }, []);
 
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   if (sessionUser) return <Redirect to="/" />;
 

@@ -87,7 +87,7 @@ const Navigation = ({ props }) => {
         // dispatch(clearBusinesses());
         dispatch(resetMessages());
         let errors;
-        console.log(errors);
+        // console.log(errors);
         let messageStateObject = {};
 
         // dispatch(resetMessages())
@@ -95,7 +95,7 @@ const Navigation = ({ props }) => {
         dispatch(searchBusinesses(query))
           .then((res) => {
             if (res && res.status === 404) {
-              console.log(res);
+              // console.log(res);
               errors = { searchErrors: `404 - ${query} not found` };
               // dispatch(loadMessage(errors));
             }
@@ -111,9 +111,9 @@ const Navigation = ({ props }) => {
             messageStateObject.from = "nav-search-bar";
             messageStateObject.loaded = false;
 
-            console.log(errors);
-            console.log(messages);
-            console.log({ ...messages, ...messageStateObject });
+            // console.log(errors);
+            // console.log(messages);
+            // console.log({ ...messages, ...messageStateObject });
             // dispatch(loadMessage({ from: "nav-search-bar" }));
             dispatch(loadMessages(messageStateObject));
             // dispatch(loadMessage({ loaded: false }));

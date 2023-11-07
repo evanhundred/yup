@@ -33,7 +33,7 @@ export const loadMessages = (messages) => async (dispatch) => {
 export const getMessages = ({ messages }) => ({ ...messages });
 
 export const resetMessages = () => async (dispatch) => {
-  console.log("resetMessages");
+  // console.log("resetMessages");
   // const res = await dispatch(clearMessage);
   // const data = await res.json();
   // return data;
