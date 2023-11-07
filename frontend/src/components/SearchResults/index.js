@@ -5,7 +5,7 @@ import {
   fetchBusinesses,
   searchBusinesses
 } from "../../store/businesses";
-import { loadMessage, resetMessages } from "../../store/messages";
+import { loadMessage, loadMessages, resetMessages } from "../../store/messages";
 import { useSelector, useDispatch } from "react-redux";
 import BusinessResultCard from "./BusinessResultCard";
 // import webSpider from "../../assets/images/web-spider.jpg";
@@ -31,7 +31,7 @@ const SearchResults = () => {
   // console.log(location);
   // console.log(history);
 
-  const errorsExist = location.state && !!location.state.searchErrors;
+  // const errorsExist = location.state && !!location.state.searchErrors;
   // console.log(errorsExist);
 
   // if (errorsExist) {
@@ -47,47 +47,86 @@ const SearchResults = () => {
     promptString = `All "${searchString}" results near New York, NY`;
   }
 
-  const fromSearchBar =
-    location.state &&
-    location.state.from &&
-    location.state.from === "search-bar";
-  const searchedFromSearch =
-    location.state && location.state.from === "search-page";
+  // const fromSearchBar =
+  //   location.state &&
+  //   location.state.from &&
+  //   location.state.from === "search-bar";
+  // const searchedFromSearch =
+  //   location.state && location.state.from === "search-page";
 
-  if (!initiallyLoaded && businesses.length === 0) {
-    let errors;
-    // location.state.from = "search-page";
-    dispatch(searchBusinesses(searchString)).then((res) => {
-      if (res && res.status === 404) {
-        dispatch(resetMessages());
-        // console.log(res)
-        errors = { searchErrors: `404 - ${searchString} not found` };
-        if (!messages.searchErrors) dispatch(loadMessage(errors));
-        dispatch(fetchBusinesses);
-        // console.log(errors);
-      }
-      setInitiallyLoaded(true);
-    });
-  }
+  // const setLoadedState = () => {
+  //   if (messages.loaded === false)
+  //     dispatch(loadMessages({ ...messages, loaded: true }));
+  // };
 
-  const loadBusinessesIfErrors = () => {
+  // console.log(initiallyLoaded);
+  useEffect(() => {
+    console.log(businesses);
+    console.log(messages);
+    console.log(initiallyLoaded);
+    if (!messages.loaded && businesses.length > 0) {
+      dispatch(loadMessage({ loaded: true }));
+    }
     if (
-      (initiallyLoaded && messages.searchErrors && businesses.length === 0) ||
-      (!initiallyLoaded &&
-        businesses.length === 0 &&
-        messages.from === "nav-search-bar")
+      !messages.loaded &&
+      // !initiallyLoaded &&
+      messages.from === "nav-search-bar" &&
+      messages.searchErrors &&
+      !businesses.length
     ) {
       dispatch(fetchBusinesses());
-      if (!initiallyLoaded) setInitiallyLoaded(true);
+      setInitiallyLoaded(true);
+      console.log(messages);
+      dispatch(loadMessage({ loaded: true }));
     }
-  };
+  }, [businesses, dispatch, messages, initiallyLoaded]);
 
-  useEffect(loadBusinessesIfErrors, [
-    dispatch,
-    messages,
-    businesses,
-    initiallyLoaded
-  ]);
+  if (
+    !initiallyLoaded &&
+    messages.from !== "nav-search-bar" &&
+    businesses.length === 0
+  ) {
+    if (!messages.from) dispatch(resetMessages());
+    setInitiallyLoaded(true);
+    let messageObject = { loaded: true };
+    // loadMessage({loaded: true});
+    let errors;
+    // location.state.from = "search-page";
+    dispatch(resetMessages())
+      .then(() => dispatch(searchBusinesses(searchString)))
+      .then((res) => {
+        if (res && res.status === 404) {
+          console.log(res);
+          errors = { searchErrors: `404 - ${searchString} not fround` };
+          dispatch(fetchBusinesses());
+          if (!messages.searchErrors)
+            messageObject = { ...messageObject, ...errors };
+          // dispatch(loadMessages({ ...messages, ...errors }));
+          // console.log(errors);
+        }
+        dispatch(loadMessages({ ...messageObject }));
+      });
+  }
+
+  // const loadBusinessesIfErrors = () => {
+  //   if (
+  //     // (initiallyLoaded && messages.searchErrors && businesses.length === 0) ||
+  //     !initiallyLoaded &&
+  //     businesses.length === 0 &&
+  //     messages.from === "nav-search-bar"
+  //   ) {
+  //     dispatch(fetchBusinesses());
+  //     if (!initiallyLoaded) setInitiallyLoaded(true);
+  //   }
+  // };
+
+  // useEffect(loadBusinessesIfErrors, [
+  //   dispatch,
+  //   messages,
+  //   businesses,
+  //   initiallyLoaded
+  // ]);
+
   // if (message.message) {
   //   promptString = message.message;
   //   dispatch(fetchBusinesses());
@@ -112,7 +151,7 @@ const SearchResults = () => {
       <div id="search-results-container">
         <h2>{promptString}</h2>
         <h3 className="popular-businesses-prompt">
-          {Object.keys(messages).length > 0 && emptySearchString}
+          {messages.loaded && !!messages.searchErrors && emptySearchString}
         </h3>
         <ul>
           {firstTenBusinesses.map((business, idx) => {

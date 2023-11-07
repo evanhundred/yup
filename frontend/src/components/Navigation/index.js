@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { NavLink, useLocation, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { searchBusinesses, resetBusinesses } from "../../store/businesses";
-import { loadMessage, resetMessages } from "../../store/messages";
+import { loadMessages, resetMessages } from "../../store/messages";
 
 import ProfileButton from "./ProfileButton";
 import "./navigation.css";
@@ -81,28 +81,43 @@ const Navigation = ({ props }) => {
 
     const handleSearchBarClick = (e) => {
       e.preventDefault();
-      let locationState = { from: "search-bar" };
+      // let locationState = { from: "search-bar" };
       if (query.length >= 1) {
         dispatch(resetBusinesses());
         // dispatch(clearBusinesses());
         dispatch(resetMessages());
         let errors;
-        // const parameterizedQuery = qu
+        console.log(errors);
+        let messageStateObject = {};
+
+        // dispatch(resetMessages())
+        //   .then(() => dispatch(searchBusinesses(query)))
         dispatch(searchBusinesses(query))
           .then((res) => {
             if (res && res.status === 404) {
-              // console.log(res)
+              console.log(res);
               errors = { searchErrors: `404 - ${query} not found` };
-              dispatch(loadMessage(errors));
+              // dispatch(loadMessage(errors));
             }
           })
           .then(() => {
             if (errors) {
-              dispatch(loadMessage(errors));
-              locationState = { ...locationState, ...errors };
+              // dispatch(loadMessage(errors));
+              const keyName = Object.keys(errors)[0];
+              messageStateObject[keyName] = errors[keyName];
+              // locationState = { ...locationState, ...errors };
             }
-            dispatch(loadMessage({ from: "nav-search-bar" }));
-            history.push(`/search?${query}`, locationState);
+
+            messageStateObject.from = "nav-search-bar";
+            messageStateObject.loaded = false;
+
+            console.log(errors);
+            console.log(messages);
+            console.log({ ...messages, ...messageStateObject });
+            // dispatch(loadMessage({ from: "nav-search-bar" }));
+            dispatch(loadMessages(messageStateObject));
+            // dispatch(loadMessage({ loaded: false }));
+            history.push(`/search?${query}`);
             // if (errors) history.push(`/search?${query}`, errors);
             // else history.push(`/search?${query}`, { from: "search-bar" });
           });
