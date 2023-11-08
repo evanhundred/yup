@@ -86,6 +86,14 @@ const LoginFormPage = () => {
 
   const demoLoginClick = (e) => {
     e.preventDefault();
+
+    if (submitClicked) return null;
+
+    const buttons = document.querySelectorAll(".login-page-container button");
+    buttons.forEach((button) => {
+      button.classList.add("ghosted");
+    });
+    setSubmitClicked(true);
     return dispatch(
       sessionActions.login({ email: "john@email.io", password: "password" })
     );

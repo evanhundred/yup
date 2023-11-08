@@ -8,7 +8,7 @@ import {
 import { loadMessage, loadMessages, resetMessages } from "../../store/messages";
 import { useSelector, useDispatch } from "react-redux";
 import BusinessResultCard from "./BusinessResultCard";
-// import webSpider from "../../assets/images/web-spider.jpg";
+import Loading from "../Loading";
 
 import "./index.css";
 
@@ -132,12 +132,7 @@ const SearchResults = () => {
   //   dispatch(fetchBusinesses());
   // }
 
-  if (!businesses.length)
-    return (
-      <div>
-        <h1>loading...</h1>
-      </div>
-    );
+  if (!businesses.length) return <Loading />;
 
   // if (errorsExist) {
   //   promptString = `${location.state.searchErrors}`;

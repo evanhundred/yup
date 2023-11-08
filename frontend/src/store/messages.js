@@ -1,3 +1,5 @@
+import { createSelector } from "@reduxjs/toolkit";
+
 export const RECEIVE_MESSAGE = "message/RECEIVE_MESSAGE";
 export const RECEIVE_MESSAGES = "message/RECEIVE_MESSAGES";
 
@@ -30,7 +32,14 @@ export const loadMessages = (messages) => async (dispatch) => {
   return res;
 };
 
-export const getMessages = ({ messages }) => ({ ...messages });
+export const getMessages = createSelector(
+  (state) => state.messages,
+  (messages) => {
+    return Object.values(messages);
+  }
+);
+
+// ({ messages }) => ({ ...messages });
 
 export const resetMessages = () => async (dispatch) => {
   // console.log("resetMessages");

@@ -16,6 +16,7 @@ import {
   unBackgroundNavBar,
   capitalize
 } from "../../utils/modal";
+import Loading from "../Loading";
 
 const EditBusiness = () => {
   const dispatch = useDispatch();
@@ -117,7 +118,7 @@ const EditBusiness = () => {
   const [updateType, setUpdateType] = useState(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
-  if (!business) return <div className="loading">Loading...</div>;
+  if (!business) return <Loading />;
 
   const businessInfoForm = () => {
     if (!bizTemplate) setBizTemplate({ ...populateTemplateObject() });
@@ -524,7 +525,7 @@ const EditBusiness = () => {
   // const successComponent = () => <div className="success">success.</div>;
   const handleBizNameClick = () => history.push(`/businesses/${business.id}`);
 
-  if (!business) return <div>loading...</div>;
+  // if (!business) return <div>loading...</div>;
 
   const submitSuccessComponent = (submitType) => {
     return (

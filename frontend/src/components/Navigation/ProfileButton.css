@@ -20,6 +20,10 @@
   line-height: 1.7;
   border-radius: 5px;
   right: 46px;
+
+  /* cursor: pointer; */
+
+  /* z-index: 2; */
 }
 
 .profile-dropdown-row {
@@ -38,7 +42,11 @@
   margin-right: 10px;
   display: flex;
   align-items: center;
-  cursor: default;
+  /* cursor: default; */
+}
+
+.logout-button-container .profile-icon {
+  cursor: pointer;
 }
 
 .profile-icon img {
@@ -63,7 +71,7 @@
   padding-bottom: 17px;
 }
 
-.logout-button-container {
+#profile-menu-button .logout-button-container {
   margin-top: 17px;
   cursor: pointer;
 }

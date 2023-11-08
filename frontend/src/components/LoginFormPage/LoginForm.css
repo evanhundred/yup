@@ -115,7 +115,7 @@ div.forgot-password-link {
   text-align: center;
 
   &.ghosted {
-    cursor: wait;
+    cursor: default;
     background-color: rgba(227, 68, 54, 0.4);
   }
 }

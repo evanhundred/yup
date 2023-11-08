@@ -30,7 +30,7 @@ const PhotoBlock = ({ business }) => {
       </div>
 
       <div className="business-image two">
-        <img src={getImage(3)} alt="fantastic store" />
+        <img src={getImage(4)} alt="fantastic store" />
       </div>
 
       <div className="business-image three">
@@ -41,7 +41,7 @@ const PhotoBlock = ({ business }) => {
         <img src={getImage(2)} alt="more delicious deliciousness" />
       </div>
       <div className="business-image five">
-        <img src={getImage(4)} alt="more more delicious deliciousness" />
+        <img src={getImage(3)} alt="more more delicious deliciousness" />
       </div>
     </div>
   );
