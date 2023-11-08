@@ -9,6 +9,9 @@
       #business-title-card {
         .spacer {
           height: 260px;
+          /* visibility: hidden;
+          position: relative;
+          z-index: 0; */
         }
       }
     }
@@ -138,7 +141,7 @@ div.business-image img {
 }
 
 #business-title-card {
-  z-index: 2;
+  z-index: 1;
   position: absolute;
   margin-top: 50px;
   /* top: -280px; */

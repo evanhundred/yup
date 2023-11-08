@@ -359,6 +359,8 @@ const Navigation = ({ props }) => {
     );
   };
 
+  // if (!businesses) return null;
+
   let headerType;
   if (["/login", "/signup"].includes(window.location.pathname)) {
     headerType = <FormHeader />;

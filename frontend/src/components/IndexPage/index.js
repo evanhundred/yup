@@ -42,18 +42,18 @@ const IndexPage = () => {
     return null;
   }
 
-  const loadingAnimation = () => {
-    return (
-      <>
-        <div
-          className="loader"
-          onAnimationStart={(e) => console.log("onAnimationStart")}
-          onAnimationIteration={(e) => console.log("onAnimationIteration")}
-          onAnimationEnd={(e) => console.log("onAnimationEnd")}
-        ></div>
-      </>
-    );
-  };
+  // const loadingAnimation = () => {
+  //   return (
+  //     <>
+  //       <div
+  //         className="loader"
+  //         onAnimationStart={(e) => console.log("onAnimationStart")}
+  //         onAnimationIteration={(e) => console.log("onAnimationIteration")}
+  //         onAnimationEnd={(e) => console.log("onAnimationEnd")}
+  //       ></div>
+  //     </>
+  //   );
+  // };
 
   // if (true)
   //   return (
