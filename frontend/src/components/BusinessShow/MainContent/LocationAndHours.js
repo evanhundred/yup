@@ -58,7 +58,7 @@ const LocationAndHours = ({ business }) => {
     "%27"
   );
 
-  console.log(urlifiedBizName);
+  // console.log(urlifiedBizName);
   const stubMapParams = `query=${urlifiedBizName}`;
 
   const isStub = business.stub === "true";

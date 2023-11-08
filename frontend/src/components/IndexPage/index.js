@@ -7,16 +7,14 @@ import {
 } from "../../store/businesses";
 import { resetMessages, getMessages } from "../../store/messages";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import MainContent from "./MainContent";
 import TitleCard from "./TitleCard";
 import Loading from "../Loading";
-// import "../Loading/index.css";
 
 const IndexPage = () => {
   const dispatch = useDispatch();
   const businesses = useSelector(getBusinesses);
-  const location = useLocation();
+  // const location = useLocation();
 
   // console.log(location);
 
@@ -25,7 +23,7 @@ const IndexPage = () => {
   const messages = useSelector(getMessages);
 
   const [showRedirectMessage, setShowRedirectMessage] = useState(
-    messages && messages.delete ? true : false
+    messages && messages.deleted ? true : false
   );
 
   // console.log(message);
@@ -37,6 +35,21 @@ const IndexPage = () => {
     dispatch(clearErrors());
     dispatch(fetchBusinesses());
   }, [dispatch]);
+
+  // console.log(messages);
+  // useEffect(() => {
+  //   // if (!businesses) {
+  //   //   console.log(messages);
+  //   //   dispatch(loadMessage({ isLoading: true }));
+  //   // }
+  //   if (businesses && messages.isLoading) {
+  //     console.log(messages);
+  //     const killMessage = { indexLoaded: true, isLoading: false };
+  //     dispatch(loadMessages(killMessage));
+  //     dispatch(loadMessage({ isLoading: false }));
+  //     // dispatch(deleteMessage(messages.isLoading));
+  //   }
+  // }, [dispatch, messages, businesses]);
 
   if (businesses.errors) {
     return null;
@@ -64,7 +77,13 @@ const IndexPage = () => {
   //   );
 
   // if (true) return <Loading />;
-  if (!businesses.length || !businesses[0].imageUrls) return <Loading />;
+  if (!businesses.length || !businesses[0].imageUrls) {
+    // const message = { indexLoaded: false };
+    // dispatch(loadMessage(message));
+    return <Loading />;
+  }
+
+  // dispatch(resetMessages());
 
   const redirectMessageModal = () => {
     // const message = location.state.message.slice();
@@ -90,7 +109,7 @@ const IndexPage = () => {
         <div className="redirect-message-modal-box">
           <div className="redirect-message-modal-content">
             <div className="message-container">
-              <h2 className="message">{messages.delete}</h2>
+              <h2 className="message">{messages.deleted}</h2>
               <h2 className="ok" onClick={handleOK}>
                 OK
               </h2>
