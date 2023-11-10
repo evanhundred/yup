@@ -19,8 +19,29 @@ const SignupFormPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(email);
     setHideErrorBox(false);
-    if (password === confirmPassword) {
+    let readyToSend = false;
+    const errorsArray = [];
+    if (password !== confirmPassword) {
+      const errorMsg =
+        "Confirm Password field must be the same as the Password field";
+      errorsArray.push(errorMsg);
+    }
+    if (name.isTooShort) {
+      const errorMsg = "name must contain from 3 to 30 characters.";
+      errorsArray.push(errorMsg);
+    }
+    if (name.isEmail) {
+      const errorMsg = "name must not be an email address.";
+    }
+    if (email.isNotEmail) {
+      const errorMsg = "email must be valid format.";
+    }
+
+    setErrors(errorsArray);
+
+    if (readyToSend) {
       setErrors([]);
       return dispatch(sessionActions.signup({ name, email, password })).catch(
         async (res) => {
@@ -36,9 +57,7 @@ const SignupFormPage = () => {
         }
       );
     }
-    return setErrors([
-      "Confirm Password field must be the same as the Password field"
-    ]);
+    return;
   };
 
   const closeBox = () => setHideErrorBox(true);

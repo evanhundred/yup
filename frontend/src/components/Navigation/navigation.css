@@ -4,7 +4,7 @@ body {
 
 /* SEARCH BAR */
 .search-bar-container {
-  width: 350px;
+  min-width: 350px;
 
   & input {
     padding-left: 5px;
@@ -161,7 +161,7 @@ a {
   }
 
   & .yup-for-business-link {
-    margin-left: 52px;
+    margin-left: 30px;
 
     & ul.yup-for-business-dropdown {
       position: absolute;
