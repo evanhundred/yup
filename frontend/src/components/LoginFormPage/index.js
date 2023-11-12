@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useLocation } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import "./LoginForm.css";
 import LoginImage from "./LoginImage";
 
@@ -19,7 +19,7 @@ const LoginFormPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const location = useLocation();
+  // const location = useLocation();
   // console.log(location);
 
   if (sessionUser) return <Redirect to="/" />;
@@ -79,7 +79,7 @@ const LoginFormPage = () => {
     if (errors.length > 0)
       return (
         <div className="forgot-password-link">
-          <a href="#">Forgot password?</a>
+          <span className="link">Forgot password?</span>
         </div>
       );
   };
@@ -112,8 +112,9 @@ const LoginFormPage = () => {
               New to Yup? <a href="/signup">Sign up</a>
             </h3>
             <p>
-              By logging in, you agree to Yup's <a href="#">Terms of Service</a>{" "}
-              and <a href="#">Privacy Policy</a>.
+              By logging in, you agree to Yup's{" "}
+              <span className="link">Terms of Service</span> and{" "}
+              <span className="link">Privacy Policy</span>.
             </p>
           </div>
           <form className="login-form">
