@@ -40,26 +40,23 @@ const SignupFormPage = () => {
   const validationErrorsExist = Object.keys(validationErrors).length >= 1;
 
   const validateInputs = () => {
-    // let inputsValid = true;
     for (const field in constraints) {
       const constraintObj = constraints[field];
       console.log(constraintObj);
-      // console.log(constraints[field]);
       if (field === "name") {
         const nameValidationErrors = [];
         for (const validationParameter in constraintObj) {
+          console.log(validationParameter);
           console.log(constraintObj[validationParameter]);
-          if (!name.match(constraintObj[validationParameter].expression)) {
-            // if (!constraintObj[validationParameter].expression.match(name)) {
+          if (
+            (validationParameter === "isTooShort" &&
+              !name.match(constraintObj[validationParameter].expression)) ||
+            (validationParameter === "isEmail" &&
+              name.match(constraintObj[validationParameter].expression))
+          ) {
             nameValidationErrors.push(
               constraintObj[validationParameter].errorMsg
             );
-            // const newError = {[field]: validationParameter.errorMsg};
-
-            // setValidationErrors({
-            //   ...validationErrors,
-            //   ...newError
-            // })
           }
         }
         const newError = { [field]: nameValidationErrors };
@@ -137,6 +134,7 @@ const SignupFormPage = () => {
     e.preventDefault();
     console.log(email);
     setHideErrorBox(false);
+    setValidationErrors({});
     // let readyToSend = false;
     // const errorsArray = [];
     // if (password !== confirmPassword) {
