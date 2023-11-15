@@ -81,7 +81,8 @@
   line-height: 140%;
 }
 
-.top-text a {
+.top-text span {
+  cursor: pointer;
   color: #0073bb;
 }
 

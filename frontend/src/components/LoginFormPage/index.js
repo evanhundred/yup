@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useLocation } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import "./LoginForm.css";
 import LoginImage from "./LoginImage";
 
@@ -19,21 +19,42 @@ const LoginFormPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const location = useLocation();
+  // const location = useLocation();
   // console.log(location);
 
   if (sessionUser) return <Redirect to="/" />;
+
+  const toggleButtonAccess = (type) => {
+    if (type === "ghost") {
+      setSubmitClicked(true);
+    }
+    if (type === "unghost") {
+      setSubmitClicked(false);
+    }
+
+    const buttons = document.querySelectorAll(".login-page-container button");
+    buttons.forEach((button) => {
+      if (type === "ghost") {
+        button.classList.add("ghosted");
+      }
+      if (type === "unghost") {
+        button.classList.remove("ghosted");
+      }
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (submitClicked) return null;
     setHideErrorBox(false);
     setErrors([]);
-    setSubmitClicked(true);
-    const buttons = document.querySelectorAll(".login-page-container button");
-    buttons.forEach((button) => {
-      button.classList.add("ghosted");
-    });
+
+    toggleButtonAccess("ghost");
+    // setSubmitClicked(true);
+    // const buttons = document.querySelectorAll(".login-page-container button");
+    // buttons.forEach((button) => {
+    //   button.classList.add("ghosted");
+    // });
 
     // console.log(email);
     // console.log(password);
@@ -49,6 +70,7 @@ const LoginFormPage = () => {
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
         else setErrors([res.statusText]);
+        toggleButtonAccess("unghost");
       }
     );
   };
@@ -79,7 +101,7 @@ const LoginFormPage = () => {
     if (errors.length > 0)
       return (
         <div className="forgot-password-link">
-          <a href="#">Forgot password?</a>
+          <span className="link">Forgot password?</span>
         </div>
       );
   };
@@ -89,11 +111,13 @@ const LoginFormPage = () => {
 
     if (submitClicked) return null;
 
-    const buttons = document.querySelectorAll(".login-page-container button");
-    buttons.forEach((button) => {
-      button.classList.add("ghosted");
-    });
-    setSubmitClicked(true);
+    toggleButtonAccess("ghost");
+
+    // const buttons = document.querySelectorAll(".login-page-container button");
+    // buttons.forEach((button) => {
+    //   button.classList.add("ghosted");
+    // });
+    // setSubmitClicked(true);
     return dispatch(
       sessionActions.login({ email: "john@email.io", password: "password" })
     );
@@ -112,8 +136,9 @@ const LoginFormPage = () => {
               New to Yup? <a href="/signup">Sign up</a>
             </h3>
             <p>
-              By logging in, you agree to Yup's <a href="#">Terms of Service</a>{" "}
-              and <a href="#">Privacy Policy</a>.
+              By logging in, you agree to Yup's{" "}
+              <span className="link">Terms of Service</span> and{" "}
+              <span className="link">Privacy Policy</span>.
             </p>
           </div>
           <form className="login-form">

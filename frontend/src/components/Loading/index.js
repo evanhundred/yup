@@ -1,78 +1,57 @@
+// import { loadMessage, getMessages } from "../../store/messages";
+// import { useDispatch, useSelector } from "react-redux";
+// import { useEffect } from "react";
+
 import "./index.css";
-// import ReactCSSTransitionGroup from 'react-transition-group';
+
+// import githubLogo from "../../assets/images/github.png";
+// import githubLogoBlack from "../../assets/images/github-black.png";
+// import linkedinLogo from "../../assets/images/linkedin.png";
+// import linkedinLogoBlack from "../../assets/images/linkedin-black.png";
 
 const Loading = () => {
-  // const periodAnimation = () => {
-  //   const periodArray = [];
-  //   let count = 1;
-  //   let limit = 9;
-  //   while (count <= limit) {
-  //     periodArray.push(".");
-  //     count += 1;
-  //   }
-  //   count = 1;
-  //   const pushPeriods = () => {
-  //     while (count < limit) {
-  //       count += 1;
-  //       return periodArray.pop();
-  //     }
-  //   }
-  // setTimeout();
-  // const getPeriods = () => {
-  //   const limit = 9;
-  //   let count = 1;
-  //   const periodsArray = [];
-  //   const putPeriod = () => {
-  //     if (periodsArray.length <= limit) {
-  //       periodsArray.push(".");
-  //     } else {
-  //       return [];
-  //     }
-  //     return periodsArray;
-  //   }
-  //   setInterval(putPeriod, 1000)
-  //   return periodsArray;
-  //   // while (count <= limit) {
-  //   //   periodsArray.push(".");
-  //   //   count += 1;
-  //   // }
-  //   // console.log(periodsArray);
-  // };
-  // return <span>{periodArray.map((char) => char)}</span>;
-  // };
-  // const periodsLimit = 9;
-  // const getPeriods = () => {
-  //   let count = 1;
-  //   let max = periodsLimit;
-  //   const periodsArray = [];
-  //   while (count <= max) {
-  //     const periodComponent = <span class={`period period-${count}`}>.</span>;
-  //     periodsArray.push(periodComponent);
-  //     count += 1;
-  //   }
-  //   return periodsArray;
+  // const messages = useSelector(getMessages);
+  // const restyleNavBar = () => {
+  //   // const itemsToStyle
+  //   const imageItems = ["github", "linkedin"];
+  //   imageItems.forEach((item) => {
+  //     const image = document.querySelector(`#nav-bar #${item} img`);
+  //     if (image) image.src = `../../assets/images/${item}-black.png`;
+  //   });
+
+  //   // const navBar = document.getElementById("nav-bar");
+  //   // if (navBar) navBar.style.color = "black";
   // };
 
-  // const stylePeriods = () => {
-  //   const periods = document.querySelectorAll("#loading-container span.period");
-  //   let count = periods.length;
-  //   while (count > 0) {
-  //     count += 1;
-  //   }
+  // restyleNavBar();
+
+  // const styleNavBar = () => {
+  //   const githubImage = document.querySelector(`#nav-bar #github img`);
+  //   githubImage.onload = () => {
+  //     githubImage.src = githubLogoBlack;
+  //   };
+  //   console.log(githubImage);
+  //   const linkedinImage = document.querySelector("#nav-bar #linkedin img");
+  //   linkedinImage.src = linkedinLogoBlack;
+  //   const logo = document.querySelector("#nav-bar #logo");
+  //   console.log(logo);
+  //   logo.style.color = "black";
+  //   const star = document.querySelector("#nav-bar #logo span.star");
+  //   star.style.color = "red";
   // };
 
-  // const loadingAnimation = () => {
-  //   return (
-  //     <>
-  //       <div
-  //         className="loader"
-  //         onAnimationStart={(e) => console.log("onAnimationStart")}
-  //         onAnimationIteration={(e) => console.log("onAnimationIteration")}
-  //         onAnimationEnd={(e) => console.log("onAnimationEnd")}
-  //       ></div>
-  //     </>
-  //   );
-  // };
+  // useEffect(() => {
+  //   styleNavBar();
+  // }, []);
+  // styleNavBar();
+
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   if (messages && !messages.indexLoaded && messages.isLoading) {
+  //     const message = { isLoading: true };
+  //     dispatch(loadMessage(message));
+  //   }
+  // }, [dispatch, messages]);
 
   return (
     <div id="loading-container">

@@ -47,14 +47,17 @@ const Navigation = ({ props }) => {
   );
 
   useEffect(() => {
+    // const isLoading = messages.isLoading;
+
     if (
+      // isLoading ||
       blackTextOnWhite.some((pageType) => location.pathname.includes(pageType))
     ) {
       setPageType("business");
     } else {
       setPageType("index");
     }
-  }, [location, blackTextOnWhite]);
+  }, [location, blackTextOnWhite, messages]);
 
   let sessionLinks;
   if (sessionUser) {
