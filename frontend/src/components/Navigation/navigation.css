@@ -156,6 +156,7 @@ a {
 
     & .yup-for-business-link,
     .write-review-link {
+      /* font-family: "Helvetica Neue", Helvetica, sans-serif; */
       color: white;
     }
   }
@@ -251,6 +252,9 @@ a {
     gap: 8px;
     border-radius: 5px;
     padding: 0 10px;
+    & h4 {
+      font-family: "Helvetica Neue", Helvetica, sans-serif;
+    }
     &:hover {
       background: rgba(171, 171, 171, 0.35);
     }
