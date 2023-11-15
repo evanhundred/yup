@@ -82,7 +82,7 @@
 }
 
 .top-text span {
-  /* cursor: pointer; */
+  cursor: pointer;
   color: #0073bb;
 }
 

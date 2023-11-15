@@ -1,0 +1,64 @@
+.signup-page-container {
+  & #modal-container {
+    z-index: 1;
+    & .modal-overlay {
+      background: rgba(49, 49, 49, 0.8);
+    }
+    & .modal-box {
+      width: 600px;
+      height: 300px;
+      position: relative;
+      background: #f9f9f9;
+      display: flex;
+      border-radius: 10px;
+
+      & .modal-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        /* justify-content: center; */
+        gap: 15px;
+        padding: 2.5em 3.5em;
+        & .modal-line-1 {
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+        }
+        & .prompt {
+          display: flex;
+          justify-content: center;
+          min-height: 80px;
+          margin-top: 20px;
+          & h2 {
+            font-size: 25px;
+          }
+        }
+        & .buttons {
+          display: flex;
+          justify-content: center;
+          & h3 {
+            font-family: Rubik, "Helvetica Neue", Helvetica, sans-serif;
+            background: rgb(205, 14, 14);
+            border-radius: 5px;
+            padding: 15px 50px;
+            cursor: pointer;
+            color: white;
+            font-size: 25px;
+          }
+        }
+      }
+    }
+  }
+  & #modal-container,
+  & .modal-overlay {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

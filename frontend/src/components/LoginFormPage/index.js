@@ -24,16 +24,37 @@ const LoginFormPage = () => {
 
   if (sessionUser) return <Redirect to="/" />;
 
+  const toggleButtonAccess = (type) => {
+    if (type === "ghost") {
+      setSubmitClicked(true);
+    }
+    if (type === "unghost") {
+      setSubmitClicked(false);
+    }
+
+    const buttons = document.querySelectorAll(".login-page-container button");
+    buttons.forEach((button) => {
+      if (type === "ghost") {
+        button.classList.add("ghosted");
+      }
+      if (type === "unghost") {
+        button.classList.remove("ghosted");
+      }
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (submitClicked) return null;
     setHideErrorBox(false);
     setErrors([]);
-    setSubmitClicked(true);
-    const buttons = document.querySelectorAll(".login-page-container button");
-    buttons.forEach((button) => {
-      button.classList.add("ghosted");
-    });
+
+    toggleButtonAccess("ghost");
+    // setSubmitClicked(true);
+    // const buttons = document.querySelectorAll(".login-page-container button");
+    // buttons.forEach((button) => {
+    //   button.classList.add("ghosted");
+    // });
 
     // console.log(email);
     // console.log(password);
@@ -49,6 +70,7 @@ const LoginFormPage = () => {
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
         else setErrors([res.statusText]);
+        toggleButtonAccess("unghost");
       }
     );
   };
@@ -89,11 +111,13 @@ const LoginFormPage = () => {
 
     if (submitClicked) return null;
 
-    const buttons = document.querySelectorAll(".login-page-container button");
-    buttons.forEach((button) => {
-      button.classList.add("ghosted");
-    });
-    setSubmitClicked(true);
+    toggleButtonAccess("ghost");
+
+    // const buttons = document.querySelectorAll(".login-page-container button");
+    // buttons.forEach((button) => {
+    //   button.classList.add("ghosted");
+    // });
+    // setSubmitClicked(true);
     return dispatch(
       sessionActions.login({ email: "john@email.io", password: "password" })
     );
