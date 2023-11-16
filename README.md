@@ -6,7 +6,7 @@
 
 Yup is a clone of Yelp.com. It allows users to browse local businesses and leave reviews.
 
-Live deployment on [render.com](https://yup-z7t1.onrender.com/). Please wait up to 60 seconds for render.com to load page.
+Live deployment on [render.com](https://yup-z7t1.onrender.com/).
 
 &nbsp;
 

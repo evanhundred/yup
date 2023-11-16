@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   # post 'api/test', to: 'application#test'
+  get '/ping', to: 'ping#pong', as: 'ping'
+
   Rails.application.routes.draw do
     namespace :api, defaults: { format: :json } do
       resources :saved_businesses, only: [:create, :destroy]
