@@ -70,6 +70,7 @@
     display: flex;
     justify-content: center;
     gap: 30px;
+    font-family: Rubik, "Helvetica Neue", Helvetica, sans-serif;
 
     & h3 {
       border-radius: 5px;

@@ -68,3 +68,5 @@ own_object = {
 
 @new_own = OwnedBusiness.new(own_object)
 @new_own.save
+
+# thanks
