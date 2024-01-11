@@ -43,6 +43,8 @@ const SearchResults = () => {
     promptString = "Search for business to review.";
   } else if (messages.searchErrors) {
     promptString = messages.searchErrors;
+  } else if (searchString === "new-search") {
+    promptString = "Businesses in New York, NY";
   } else {
     promptString = `All "${searchString}" results near New York, NY`;
   }
