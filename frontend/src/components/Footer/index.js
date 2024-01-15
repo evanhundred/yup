@@ -1,5 +1,7 @@
 import "./index.css";
+import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { getBusiness } from "../../store/businesses";
 
 // i want to allow components to autonomously populate the footer component as needed.
 // biz show error page - spider image attribution
@@ -7,6 +9,11 @@ import { useLocation } from "react-router-dom";
 const Footer = () => {
   const location = useLocation();
 
+  const bizPath = location.pathname.split("/");
+  const businessId = parseInt(bizPath[bizPath.length - 1]);
+  // const businesses = useSelector(getBusinesses);
+  const business = useSelector(getBusiness(businessId));
+  console.log(business);
   // console.log(location);
   const spiderImageAttribution = (
     <span className="spider-image-attribution">
@@ -48,21 +55,25 @@ const Footer = () => {
     </>
   );
 
-  const stubAttribution = (
-    <span>
-      {" "}
-      Blueberry pie image by{" "}
-      <a
-        href="https://www.123rf.com/profile_lineartestpilot"
-        title="pie"
-        rel="noreferrer"
-        target="_blank"
-      >
-        lineartestpilot
-      </a>
-      .
-    </span>
-  );
+  const stubAttribution = () => {
+    if (business && business.stub === "true") {
+      return (
+        <span>
+          {" "}
+          Blueberry pie image by{" "}
+          <a
+            href="https://www.123rf.com/profile_lineartestpilot"
+            title="pie"
+            rel="noreferrer"
+            target="_blank"
+          >
+            lineartestpilot
+          </a>
+          .
+        </span>
+      );
+    }
+  };
 
   const ShareIconCopy = () => {
     return (
@@ -179,7 +190,7 @@ const Footer = () => {
               <ShareIconCopy />
               {reviewWriteIconAttribution}
               {/* </div> */}
-              {stubAttribution}
+              {stubAttribution()}
             </>
           )}
         {location.pathname.match(/search/) && searchResultsAttribution()}

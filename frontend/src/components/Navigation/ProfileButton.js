@@ -17,35 +17,33 @@ const Carrot = () => (
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const [clickIsInDropbox, setClickIsInDropbox] = useState(false);
+  // const [clickIsInDropbox, setClickIsInDropbox] = useState(false);
 
   const openMenu = () => {
+    // e.preventDefault();
+    // console.log(showMenu);
     if (showMenu) return;
     setShowMenu(true);
+  };
+
+  const closeMenu = (e) => {
+    // e.preventDefault();
+
+    console.log(e);
+    // if (
+    //   e.target !== "ul.profile-dropdown" ||
+    //   e.target === "li div.logout-button.profile-dropdown-row"
+    // ) {
+    setShowMenu(false);
   };
 
   useEffect(() => {
     if (!showMenu) return;
 
-    const closeMenu = (e) => {
-      console.log(e);
-      if (
-        e.target !== "ul.profile-dropdown" ||
-        e.target === "li div.logout-button.profile-dropdown-row"
-      ) {
-        setShowMenu(false);
-      }
-      // if (clickIsInDropbox) {
-      //   setClickIsInDropbox(false);
-      // } else {
-      //   setShowMenu(false);
-      // }
-    };
-
-    document.addEventListener("click", (e) => closeMenu(e));
+    document.addEventListener("click", closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu, clickIsInDropbox]);
+  }, [showMenu]);
 
   const handleLogoutClick = (e) => {
     logout(e);
@@ -56,23 +54,23 @@ const ProfileButton = ({ user }) => {
     dispatch(sessionActions.logout());
   };
 
-  const preventDropdownClose = (e) => {
-    console.log(e);
-    if (e.target !== "div.logout-button.profile-dropdown-row") {
-      // e.preventDefault();
-      setClickIsInDropbox(true);
-    }
-  };
+  // const preventDropdownClose = (e) => {
+  //   console.log(e);
+  //   if (e.target !== "div.logout-button.profile-dropdown-row") {
+  //     // e.preventDefault();
+  //     setClickIsInDropbox(true);
+  //   }
+  // };
 
   return (
     <div id="profile-menu-button">
-      <div className="profile-image-container" onClick={openMenu}>
+      <div className="profile-image-container" onClick={(e) => openMenu(e)}>
         <Carrot />
       </div>
       {showMenu && (
         <ul
           className="profile-dropdown"
-          onClick={(e) => preventDropdownClose(e)}
+          // onClick={(e) => preventDropdownClose(e)}
         >
           <li className="user-options-container">
             {/* <a href="#"> */}
