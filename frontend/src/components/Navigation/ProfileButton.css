@@ -34,7 +34,7 @@
   border-radius: 4px;
 }
 
-.profile-dropdown-row:hover {
+.logout-button.profile-dropdown-row:hover {
   background-color: #e5e5e5;
 }
 
