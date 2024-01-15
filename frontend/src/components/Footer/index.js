@@ -1,5 +1,7 @@
 import "./index.css";
+import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { getBusiness } from "../../store/businesses";
 
 // i want to allow components to autonomously populate the footer component as needed.
 // biz show error page - spider image attribution
@@ -7,14 +9,17 @@ import { useLocation } from "react-router-dom";
 const Footer = () => {
   const location = useLocation();
 
-  // console.log(location);
+  const bizPath = location.pathname.split("/");
+  const businessId = parseInt(bizPath[bizPath.length - 1]);
+  const business = useSelector(getBusiness(businessId));
+
   const spiderImageAttribution = (
     <span className="spider-image-attribution">
       Spider image created by
       <a
         href="https://www.flaticon.com/free-icons/draw"
         title="draw icons"
-        rel="noreferrer"
+        rel="noopener noreferrer"
         target="_blank"
       >
         {" "}
@@ -29,14 +34,13 @@ const Footer = () => {
 
   const reviewWriteIconAttribution = (
     <>
-      {/* <div className="review-write-icon-attribution"> */}
       <span>
         {" "}
         Draw icons created by
         <a
           href="https://www.flaticon.com/free-icons/draw"
           title="draw icons"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           target="_blank"
         >
           {" "}
@@ -44,25 +48,28 @@ const Footer = () => {
         </a>
         .
       </span>
-      {/* </div> */}
     </>
   );
 
-  const stubAttribution = (
-    <span>
-      {" "}
-      Blueberry pie image by{" "}
-      <a
-        href="https://www.123rf.com/profile_lineartestpilot"
-        title="pie"
-        rel="noreferrer"
-        target="_blank"
-      >
-        lineartestpilot
-      </a>
-      .
-    </span>
-  );
+  const stubAttribution = () => {
+    if (business && business.stub === "true") {
+      return (
+        <span>
+          {" "}
+          Blueberry pie image by{" "}
+          <a
+            href="https://www.123rf.com/profile_lineartestpilot"
+            title="pie"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            lineartestpilot
+          </a>
+          .
+        </span>
+      );
+    }
+  };
 
   const ShareIconCopy = () => {
     return (
@@ -71,7 +78,7 @@ const Footer = () => {
         <a
           href="https://www.flaticon.com/authors/catalin-fertu"
           title="Catalin Fertu"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           target="_blank"
         >
           {" "}
@@ -80,7 +87,7 @@ const Footer = () => {
         from
         <a
           href="https://www.flaticon.com/"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           target="_blank"
           title="Flaticon"
         >
@@ -97,7 +104,7 @@ const Footer = () => {
       <a
         href="https://www.flaticon.com/free-icons/down-arrow"
         title="down arrow icons"
-        rel="noreferrer"
+        rel="noopener noreferrer"
         target="_blank"
       >
         Roundicons - Flaticon
@@ -112,7 +119,7 @@ const Footer = () => {
       <a
         href="https://www.flaticon.com/authors/ariefstudio"
         title="ariefstudio"
-        rel="noreferrer"
+        rel="noopener noreferrer"
         target="_blank"
       >
         ariefstudio - Flaticon
@@ -128,7 +135,7 @@ const Footer = () => {
         <a
           href="https://www.flaticon.com/authors/futuer"
           title="Futuer"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           target="_blank"
         >
           Futuer
@@ -137,7 +144,7 @@ const Footer = () => {
         <a
           href="https://www.flaticon.com/"
           title="Flaticon"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           target="_blank"
         >
           www.flaticon.com
@@ -154,7 +161,7 @@ const Footer = () => {
         Copyright © 2023 Yup Inc. and
         <a
           href="https://evanryan.dev"
-          rel="noreferrer noopener"
+          rel="noopener noreferrer"
           target="_blank"
         >
           {" "}
@@ -179,7 +186,7 @@ const Footer = () => {
               <ShareIconCopy />
               {reviewWriteIconAttribution}
               {/* </div> */}
-              {stubAttribution}
+              {stubAttribution()}
             </>
           )}
         {location.pathname.match(/search/) && searchResultsAttribution()}

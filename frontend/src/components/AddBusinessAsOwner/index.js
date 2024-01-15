@@ -389,6 +389,8 @@ const AddBusinessAsOwner = () => {
       history.push(`/businesses/${newBusinessId}/edit`);
     };
 
+    window.scrollTo({ top: 0, behavior: "auto" });
+
     return (
       <div className="step-four-container">
         <div className="prompt">

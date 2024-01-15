@@ -42,7 +42,7 @@ const ShareModal = ({
           <div className="share-modal-line-2">
             <a
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               href={`https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fyup.evanryan.dev%2Fbusinesses%2F${business.id}&amp;src=sdkpreparse`}
               className="fb-xfbml-parse-ignore"
             >
@@ -52,7 +52,7 @@ const ShareModal = ({
               </div>
             </a>
             <a
-              rel="noreferrer"
+              rel="noopener noreferrer"
               target="_blank"
               href={`https://twitter.com/intent/tweet?text=Check out this amazing business on Yup.&url=https://yup.evanryan.dev/businesses/${business.id}`}
               className="twitter-share-button"

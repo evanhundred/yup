@@ -36,10 +36,6 @@ const Navigation = ({ props }) => {
     ];
   }, []);
 
-  // const minimalNavHeader = useMemo(() => {
-  //   return ["write-a-review", "add-business-owner", "add-business-customer"];
-  // }, []);
-
   const [pageType, setPageType] = useState(
     blackTextOnWhite.some((pageType) => location.pathname.includes(pageType))
       ? "business"
@@ -47,10 +43,7 @@ const Navigation = ({ props }) => {
   );
 
   useEffect(() => {
-    // const isLoading = messages.isLoading;
-
     if (
-      // isLoading ||
       blackTextOnWhite.some((pageType) => location.pathname.includes(pageType))
     ) {
       setPageType("business");
@@ -84,51 +77,32 @@ const Navigation = ({ props }) => {
 
     const handleSearchBarClick = (e) => {
       e.preventDefault();
-      // let locationState = { from: "search-bar" };
       if (query.length >= 1) {
         dispatch(resetBusinesses());
-        // dispatch(clearBusinesses());
         dispatch(resetMessages());
         let errors;
-        // console.log(errors);
         let messageStateObject = {};
-
-        // dispatch(resetMessages())
-        //   .then(() => dispatch(searchBusinesses(query)))
         dispatch(searchBusinesses(query))
           .then((res) => {
             if (res && res.status === 404) {
-              // console.log(res);
               errors = { searchErrors: `404 - ${query} not found` };
-              // dispatch(loadMessage(errors));
             }
           })
           .then(() => {
             if (errors) {
-              // dispatch(loadMessage(errors));
               const keyName = Object.keys(errors)[0];
               messageStateObject[keyName] = errors[keyName];
-              // locationState = { ...locationState, ...errors };
             }
 
             messageStateObject.from = "nav-search-bar";
             messageStateObject.loaded = false;
-
-            // console.log(errors);
-            // console.log(messages);
-            // console.log({ ...messages, ...messageStateObject });
-            // dispatch(loadMessage({ from: "nav-search-bar" }));
             dispatch(loadMessages(messageStateObject));
-            // dispatch(loadMessage({ loaded: false }));
             history.push(`/search?${query}`);
-            // if (errors) history.push(`/search?${query}`, errors);
-            // else history.push(`/search?${query}`, { from: "search-bar" });
           });
       }
     };
     return (
       <form onSubmit={(e) => handleSearchBarClick(e)}>
-        {/* <form onSubmit={(e) => handleSearchBarClick(e)}> */}
         <input
           className="user-search-string"
           value={query}
@@ -187,13 +161,11 @@ const Navigation = ({ props }) => {
           <ul className="yup-for-business-dropdown">
             <li>
               <div className="first-row" onClick={handleYupForBusinessClick}>
-                {/* <Link to="/add-business-as-owner"> */}
                 <img src={onlineStore} alt="add a business" />
                 <div className="menu-h4-container">
                   <div className="spacer" />
                   <h4>Add a business</h4>
                 </div>
-                {/* </Link> */}
               </div>
             </li>
             <li>
@@ -300,7 +272,7 @@ const Navigation = ({ props }) => {
               <a
                 href="https://www.github.com/evanhundred/yup"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 <img src={githubLogo} alt="GitHub" />
               </a>
@@ -309,7 +281,7 @@ const Navigation = ({ props }) => {
               <a
                 href="https://www.linkedin.com/in/evan-ryan-dev/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 <img src={linkedinLogo} alt="LinkedIn" />
               </a>
@@ -339,7 +311,7 @@ const Navigation = ({ props }) => {
               <a
                 href="https://www.github.com/evanryan/yup"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 <img src={githubLogoBlack} alt="GitHub repo" />
               </a>
@@ -348,7 +320,7 @@ const Navigation = ({ props }) => {
               <a
                 href="https://www.linkedin.com/in/evan-ryan-dev"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 <img src={linkedinLogoBlack} alt="LinkedIn page" />
               </a>
@@ -361,8 +333,6 @@ const Navigation = ({ props }) => {
       </div>
     );
   };
-
-  // if (!businesses) return null;
 
   let headerType;
   if (["/login", "/signup"].includes(window.location.pathname)) {

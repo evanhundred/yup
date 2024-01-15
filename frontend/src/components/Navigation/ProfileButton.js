@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./ProfileButton.css";
@@ -17,37 +17,44 @@ const Carrot = () => (
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const dropdownRef = useRef(null);
 
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
   };
 
+  const closeMenu = (e) => {
+    if (!dropdownRef.current.contains(e.target)) {
+      setShowMenu(false);
+    }
+  };
+
   useEffect(() => {
     if (!showMenu) return;
-
-    const closeMenu = () => {
-      setShowMenu(false);
-    };
 
     document.addEventListener("click", closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
+  const handleLogoutClick = (e) => {
+    logout(e);
+  };
+
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
   };
+
   return (
     <div id="profile-menu-button">
-      <div className="profile-image-container" onClick={openMenu}>
+      <div className="profile-image-container" onClick={(e) => openMenu(e)}>
         <Carrot />
       </div>
       {showMenu && (
-        <ul className="profile-dropdown">
+        <ul className="profile-dropdown" ref={dropdownRef}>
           <li className="user-options-container">
-            {/* <a href="#"> */}
             <div className="first-row profile-dropdown-row">
               <div className="profile-icon">
                 <img src={profileIcon} alt="your profile" />
@@ -56,12 +63,11 @@ const ProfileButton = ({ user }) => {
                 <p>{user.name}</p>
               </div>
             </div>
-            {/* </a> */}
           </li>
           <li className="logout-button-container">
             <div
               className="logout-button profile-dropdown-row"
-              onClick={logout}
+              onClick={handleLogoutClick}
             >
               <div className="profile-icon">
                 <img src={logoutButton} alt="logout" />

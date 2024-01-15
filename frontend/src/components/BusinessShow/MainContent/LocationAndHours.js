@@ -100,7 +100,7 @@ const LocationAndHours = ({ business }) => {
               <div className="get-directions-button">
                 <a
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   href={mapSearchUrl(getParams)}
                 >
                   Get directions
