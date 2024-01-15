@@ -17,6 +17,7 @@ const Carrot = () => (
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const [clickIsInDropbox, setClickIsInDropbox] = useState(false);
 
   const openMenu = () => {
     if (showMenu) return;
@@ -26,26 +27,53 @@ const ProfileButton = ({ user }) => {
   useEffect(() => {
     if (!showMenu) return;
 
-    const closeMenu = () => {
-      setShowMenu(false);
+    const closeMenu = (e) => {
+      console.log(e);
+      if (
+        e.target !== "ul.profile-dropdown" ||
+        e.target === "li div.logout-button.profile-dropdown-row"
+      ) {
+        setShowMenu(false);
+      }
+      // if (clickIsInDropbox) {
+      //   setClickIsInDropbox(false);
+      // } else {
+      //   setShowMenu(false);
+      // }
     };
 
-    document.addEventListener("click", closeMenu);
+    document.addEventListener("click", (e) => closeMenu(e));
 
     return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
+  }, [showMenu, clickIsInDropbox]);
+
+  const handleLogoutClick = (e) => {
+    logout(e);
+  };
 
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
   };
+
+  const preventDropdownClose = (e) => {
+    console.log(e);
+    if (e.target !== "div.logout-button.profile-dropdown-row") {
+      // e.preventDefault();
+      setClickIsInDropbox(true);
+    }
+  };
+
   return (
     <div id="profile-menu-button">
       <div className="profile-image-container" onClick={openMenu}>
         <Carrot />
       </div>
       {showMenu && (
-        <ul className="profile-dropdown">
+        <ul
+          className="profile-dropdown"
+          onClick={(e) => preventDropdownClose(e)}
+        >
           <li className="user-options-container">
             {/* <a href="#"> */}
             <div className="first-row profile-dropdown-row">
@@ -61,7 +89,7 @@ const ProfileButton = ({ user }) => {
           <li className="logout-button-container">
             <div
               className="logout-button profile-dropdown-row"
-              onClick={logout}
+              onClick={handleLogoutClick}
             >
               <div className="profile-icon">
                 <img src={logoutButton} alt="logout" />
