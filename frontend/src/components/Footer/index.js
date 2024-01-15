@@ -153,8 +153,8 @@ const Footer = () => {
       <p>
         Copyright © 2023 Yup Inc. and
         <a
-          href="https://www.github.com/evanhundred"
-          rel="noreferrer"
+          href="https://evanryan.dev"
+          rel="noreferrer noopener"
           target="_blank"
         >
           {" "}
