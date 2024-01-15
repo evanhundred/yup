@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./ProfileButton.css";
@@ -17,24 +17,17 @@ const Carrot = () => (
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  // const [clickIsInDropbox, setClickIsInDropbox] = useState(false);
+  const dropdownRef = useRef(null);
 
   const openMenu = () => {
-    // e.preventDefault();
-    // console.log(showMenu);
     if (showMenu) return;
     setShowMenu(true);
   };
 
   const closeMenu = (e) => {
-    // e.preventDefault();
-
-    console.log(e);
-    // if (
-    //   e.target !== "ul.profile-dropdown" ||
-    //   e.target === "li div.logout-button.profile-dropdown-row"
-    // ) {
-    setShowMenu(false);
+    if (!dropdownRef.current.contains(e.target)) {
+      setShowMenu(false);
+    }
   };
 
   useEffect(() => {
@@ -54,26 +47,14 @@ const ProfileButton = ({ user }) => {
     dispatch(sessionActions.logout());
   };
 
-  // const preventDropdownClose = (e) => {
-  //   console.log(e);
-  //   if (e.target !== "div.logout-button.profile-dropdown-row") {
-  //     // e.preventDefault();
-  //     setClickIsInDropbox(true);
-  //   }
-  // };
-
   return (
     <div id="profile-menu-button">
       <div className="profile-image-container" onClick={(e) => openMenu(e)}>
         <Carrot />
       </div>
       {showMenu && (
-        <ul
-          className="profile-dropdown"
-          // onClick={(e) => preventDropdownClose(e)}
-        >
+        <ul className="profile-dropdown" ref={dropdownRef}>
           <li className="user-options-container">
-            {/* <a href="#"> */}
             <div className="first-row profile-dropdown-row">
               <div className="profile-icon">
                 <img src={profileIcon} alt="your profile" />
@@ -82,7 +63,6 @@ const ProfileButton = ({ user }) => {
                 <p>{user.name}</p>
               </div>
             </div>
-            {/* </a> */}
           </li>
           <li className="logout-button-container">
             <div

@@ -11,17 +11,15 @@ const Footer = () => {
 
   const bizPath = location.pathname.split("/");
   const businessId = parseInt(bizPath[bizPath.length - 1]);
-  // const businesses = useSelector(getBusinesses);
   const business = useSelector(getBusiness(businessId));
-  console.log(business);
-  // console.log(location);
+
   const spiderImageAttribution = (
     <span className="spider-image-attribution">
       Spider image created by
       <a
         href="https://www.flaticon.com/free-icons/draw"
         title="draw icons"
-        rel="noreferrer"
+        rel="noopener noreferrer"
         target="_blank"
       >
         {" "}
@@ -36,14 +34,13 @@ const Footer = () => {
 
   const reviewWriteIconAttribution = (
     <>
-      {/* <div className="review-write-icon-attribution"> */}
       <span>
         {" "}
         Draw icons created by
         <a
           href="https://www.flaticon.com/free-icons/draw"
           title="draw icons"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           target="_blank"
         >
           {" "}
@@ -51,7 +48,6 @@ const Footer = () => {
         </a>
         .
       </span>
-      {/* </div> */}
     </>
   );
 
@@ -64,7 +60,7 @@ const Footer = () => {
           <a
             href="https://www.123rf.com/profile_lineartestpilot"
             title="pie"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             target="_blank"
           >
             lineartestpilot
@@ -82,7 +78,7 @@ const Footer = () => {
         <a
           href="https://www.flaticon.com/authors/catalin-fertu"
           title="Catalin Fertu"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           target="_blank"
         >
           {" "}
@@ -91,7 +87,7 @@ const Footer = () => {
         from
         <a
           href="https://www.flaticon.com/"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           target="_blank"
           title="Flaticon"
         >
@@ -108,7 +104,7 @@ const Footer = () => {
       <a
         href="https://www.flaticon.com/free-icons/down-arrow"
         title="down arrow icons"
-        rel="noreferrer"
+        rel="noopener noreferrer"
         target="_blank"
       >
         Roundicons - Flaticon
@@ -123,7 +119,7 @@ const Footer = () => {
       <a
         href="https://www.flaticon.com/authors/ariefstudio"
         title="ariefstudio"
-        rel="noreferrer"
+        rel="noopener noreferrer"
         target="_blank"
       >
         ariefstudio - Flaticon
@@ -139,7 +135,7 @@ const Footer = () => {
         <a
           href="https://www.flaticon.com/authors/futuer"
           title="Futuer"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           target="_blank"
         >
           Futuer
@@ -148,7 +144,7 @@ const Footer = () => {
         <a
           href="https://www.flaticon.com/"
           title="Flaticon"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           target="_blank"
         >
           www.flaticon.com
@@ -165,7 +161,7 @@ const Footer = () => {
         Copyright © 2023 Yup Inc. and
         <a
           href="https://evanryan.dev"
-          rel="noreferrer noopener"
+          rel="noopener noreferrer"
           target="_blank"
         >
           {" "}

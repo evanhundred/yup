@@ -356,7 +356,7 @@ const ReviewForm = () => {
         <h3>
           <Link
             to={business ? `/businesses/${business.id}` : "/"}
-            rel="noreferrer"
+            rel="noopener noreferrer"
             target="_blank"
           >{`${business ? business.name : ""}`}</Link>
         </h3>
