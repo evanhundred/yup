@@ -9,6 +9,7 @@
   /* h1.prompt {
   } */
   & .loader {
+    display: block;
     margin: auto;
     border: 30px solid #eaf0f6;
     border-radius: 50%;
