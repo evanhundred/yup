@@ -170,13 +170,17 @@ export const searchBusinesses = (query) => async (dispatch) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query: query })
   }).catch((error) => {
+    console.log(error);
     data = error;
   });
   if (res && res.ok) {
     data = await res.json();
     dispatch(receiveBusinesses(await data));
+  } else {
+    data = res;
   }
-
+  console.log(res);
+  console.log(data);
   return data;
 };
 

@@ -75,13 +75,13 @@ class Api::BusinessesController < ApplicationController
         # @businesses = Business.find_by(name: name.parameterize)
         # @businesses = Business.where(name.parameterize.match(query))
         @businesses = []
-        puts @businesses
+        # puts @businesses
         if @businesses.length
             for biz in Business.all do
-                    if biz.name.parameterize.match(query) ||
-                        biz.category.parameterize.match(query) ||
-                        biz.price.parameterize.match(query) ||
-                        biz.neighborhood.parameterize.match(query)
+                    if biz.name && biz.name.parameterize.match(query) ||
+                        biz.category && biz.category.parameterize.match(query) ||
+                        biz.price && biz.price.parameterize.match(query) ||
+                        biz.neighborhood && biz.neighborhood.parameterize.match(query)
                         @businesses.push(biz)
                     end
                 end
