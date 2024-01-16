@@ -62,7 +62,7 @@
       font-size: 30px;
       padding: 10px 0 10px 60px;
 
-      & .bizNameLink {
+      & span.bizNameLink {
         /* font-family: "Rubik", "Helvetica Neue", Helvetica, sans-serif;
         font-si */
         font-weight: 500;
@@ -70,6 +70,12 @@
         cursor: pointer;
       }
     }
+  }
+
+  & h2 .bizNameLink {
+    font-weight: 500;
+    color: rgb(22, 150, 139);
+    cursor: pointer;
   }
 
   & .business-info-form-container {
