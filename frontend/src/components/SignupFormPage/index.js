@@ -216,7 +216,7 @@ const SignupFormPage = () => {
             if (data?.errors) setErrors(data.errors);
             else if (data) setErrors([data]);
             else setErrors([resError.statusText]);
-            // console.log(data);
+            console.log(data);
             toggleButtonAccess("unghost");
           }
         );

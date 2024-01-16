@@ -77,6 +77,9 @@ const Navigation = ({ props }) => {
 
     const handleSearchBarClick = (e) => {
       e.preventDefault();
+
+      console.log(query);
+
       if (query.length >= 1) {
         dispatch(resetBusinesses());
         dispatch(resetMessages());

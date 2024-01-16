@@ -75,13 +75,16 @@ class Api::BusinessesController < ApplicationController
         # @businesses = Business.find_by(name: name.parameterize)
         # @businesses = Business.where(name.parameterize.match(query))
         @businesses = []
-        for biz in Business.all do
-            if biz.name.parameterize.match(query) ||
-                biz.category.parameterize.match(query) ||
-                biz.price.parameterize.match(query) ||
-                biz.neighborhood.parameterize.match(query)
-                    @businesses.push(biz)
-            end
+        # puts @businesses
+        if @businesses.length
+            for biz in Business.all do
+                    if biz.name && biz.name.parameterize.match(query) ||
+                        biz.category && biz.category.parameterize.match(query) ||
+                        biz.price && biz.price.parameterize.match(query) ||
+                        biz.neighborhood && biz.neighborhood.parameterize.match(query)
+                        @businesses.push(biz)
+                    end
+                end
         end
 
         # @businesses = Business.where("name LIKE ? OR category LIKE ? OR price LIKE ?", "%#{Business.sanitize_sql_like(query)}%", "%#{query}%", "%#{query}%")

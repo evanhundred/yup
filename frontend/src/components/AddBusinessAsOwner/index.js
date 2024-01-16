@@ -148,12 +148,15 @@ const AddBusinessAsOwner = () => {
     const businessObject = { business: bizTemplate };
     const res = await dispatch(createBusinessStub(businessObject)).catch(
       async (res) => {
+        console.log(res);
         let data;
         try {
           data = await res.clone().json();
         } catch {
           data = await res.text();
+          console.log(res);
         }
+        console.log(res);
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
         else setErrors([res.statusText]);
@@ -410,6 +413,8 @@ const AddBusinessAsOwner = () => {
     );
   };
 
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "auto" });
+
   return (
     <div id="add-business-owner-container">
       {componentToRender === "initial" && (
@@ -489,7 +494,9 @@ const AddBusinessAsOwner = () => {
       )}
       {componentToRender === "step-four" && <SuccessMessage />}
       {componentToRender === "submission-fail" && (
-        <div className="error-message">Submission fail.</div>
+        <div className="error-message" onLoad={scrollToTop}>
+          Submission fail.
+        </div>
       )}
     </div>
   );
