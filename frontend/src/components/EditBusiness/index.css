@@ -1,5 +1,7 @@
 #edit-business-container {
   margin: 20px 5vw;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  /* max-width: 800px; */
 
   #confirm-modal-container {
     & .confirm-modal-content {
@@ -73,15 +75,16 @@
   & .business-info-form-container {
     /* height: 76vh; */
     margin-bottom: 30px;
+    /* width: 80vw; */
     & form {
-      margin: 30px 16vw 20px 6vw;
+      margin: 30px 20px 20px 10px;
       display: flex;
       flex-direction: column;
       gap: 50px;
 
       & .input-fields {
-        height: 65vh;
-        /* height: 100%; */
+        /* height: 65vh; */
+        width: 85vw;
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -89,11 +92,18 @@
         justify-content: space-between;
 
         & label {
-          width: 30vw;
-          min-width: 300px;
-          max-width: 800px;
+          /* width: 30vw; */
+          width: 40%;
+          /* min-width: 300px; */
+          /* max-width: 800px; */
           margin: 5px 30px 10px;
           /* margin: 0 auto; */
+          /* flex: 1 1 200px; */
+
+          & h4 {
+            margin-bottom: 6px;
+            font-size: 16px;
+          }
 
           &.closed-at,
           &.open-at {
@@ -139,11 +149,17 @@
         display: flex;
         flex-direction: column;
         gap: 25px;
+        & button,
+        h3 {
+          letter-spacing: 0.02rem;
+        }
 
         & .delete {
           width: 150px;
           cursor: pointer;
           margin-left: 10px;
+          font-family: "Helvetica Neue", Helvetica, sans-serif;
+          /* letter-spacing: 0.04rem; */
           & h3 {
             display: flex;
             justify-content: center;

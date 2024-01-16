@@ -111,6 +111,7 @@ export const createBusinessStub = (business) => async (dispatch) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(business)
   }).catch((error) => {
+    // console.log(error);
     data = error;
   });
   if (res && res.ok) {
