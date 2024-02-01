@@ -9,7 +9,7 @@
   filter: brightness(65%);
 }
 
-.image-container {
+.image-container * {
   position: absolute;
   top: 0;
   width: 100%;
@@ -25,7 +25,7 @@
   background: linear-gradient(to top, transparent 60%, black 100%);
 }
 
-.business-title-card {
+.business-title-card-container {
   position: relative;
   top: -340px;
   left: 10px;
@@ -38,7 +38,7 @@
   color: white;
 }
 
-.business-title-card h1 {
+.business-title-card-container h1 {
   font-size: 50px;
   font-weight: 500;
   padding-bottom: 4px;
@@ -46,41 +46,78 @@
 }
 
 #index-page {
-  & .business-title-card {
-    & .second-line {
-      padding: 16px 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 13px 30px;
-      background-color: red;
-      width: max-content;
-      border-radius: 5px;
-      cursor: pointer;
+  & .business-title-card-container {
+    & .main-content {
+      & .second-line {
+        padding: 16px 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 13px 30px;
+        background-color: red;
+        width: max-content;
+        border-radius: 5px;
+        cursor: pointer;
+        & img {
+          width: 20px;
+        }
+        & h3 {
+          font-weight: 400;
+          font-size: 18px;
+          color: white;
+        }
+      }
     }
   }
 }
 
-.second-line h3 {
-  font-weight: 400;
-  font-size: 18px;
-  color: white;
+#title-card-footer-container {
+  top: 200px;
+  width: 100%;
 }
 
-.second-line img {
-  width: 20px;
-}
-
+#title-card-footer-container,
 .title-card-footer {
+  /* .title-card-footer, */
+  /* #title-card-footer-container > div { */
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  /* width: 100%; */
+  justify-content: flex-start;
   /* height: 100px; */
 }
 
-.title-card-footer h2 {
+.title-card-footer {
+  width: max-content;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* .title-card-footer h2 { */
+#title-card-footer-container,
+.title-card-footer,
+#title-card-footer-container h2 {
   position: relative;
-  top: 200px;
   font-weight: 500;
+}
+
+#title-card-footer-container .carousel-dots {
+  width: 100vw;
+  /* width: 100%; */
+  margin: 0 auto;
+  position: fixed;
+  /* left: 50%;
+  right: 50%; */
+  /* bottom: 25%; */
+  padding: 0 auto;
+  display: flex;
+  justify-content: center;
+  /* height: min-content; */
+  & h2 {
+    cursor: pointer;
+    font-size: 50px;
+    & span {
+      margin: 0 5px;
+    }
+  }
 }

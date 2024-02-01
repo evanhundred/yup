@@ -13,6 +13,7 @@ import WriteAReviewSearch from "./components/WriteAReviewSearch";
 import AddBusinessAsOwner from "./components/AddBusinessAsOwner";
 import AddBusinessAsCustomer from "./components/AddBusinessAsCustomer";
 import EditBusiness from "./components/EditBusiness";
+import DemoCarousel from "./components/DemoCarousel";
 
 function App() {
   return (
@@ -61,6 +62,9 @@ function App() {
         </Route>
         <Route path="/add-business-as-customer">
           <AddBusinessAsCustomer />
+        </Route>
+        <Route path="/carousel">
+          <DemoCarousel />
         </Route>
       </Switch>
       <Footer />

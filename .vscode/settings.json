@@ -1,6 +1,6 @@
 {
   "workbench.colorTheme": "Quiet Light",
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0.3,
   "search.exclude": {
     ".prev_yups": true
   }
