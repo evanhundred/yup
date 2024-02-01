@@ -42,7 +42,7 @@ const TitleCardContent = () => {
   };
   const TitleCardFooter = () => {
     const handleCarouselDotClick = (dotIdx) => {
-      const img = document.getElementByIs("photo-block-splash-image");
+      const img = document.getElementById("photo-block-splash-image");
       switch (dotIdx) {
         case 1:
           img.src = CoffeeShop;

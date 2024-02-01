@@ -1,4 +1,4 @@
-.footer {
+#footer-container {
   font-family: "Helvetica Neue";
   font-size: 14px;
   margin: 50px 0 0 45px;
@@ -19,10 +19,10 @@
   }
 }
 
-.footer,
+/* .footer,
 .footer a {
   color: #696969;
-}
+} */
 
 /* .footer .image-attribution {
   margin-top: 5px;

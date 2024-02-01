@@ -156,7 +156,8 @@ const Footer = () => {
 
   // console.log(location.pathname.match(/search/));
   return (
-    <div className="footer">
+    // <div className="footer">
+    <div id="footer-container">
       <p>
         Copyright © 2023 Yup Inc. and
         <a
