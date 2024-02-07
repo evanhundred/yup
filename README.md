@@ -1,3 +1,5 @@
+<a href="https://wakatime.com/badge/user/0dd08ff7-b57e-4827-bdfc-279693df8d92/project/c58431b2-cc58-4fd9-a056-9619cdffa292"><img src="https://wakatime.com/badge/user/0dd08ff7-b57e-4827-bdfc-279693df8d92/project/c58431b2-cc58-4fd9-a056-9619cdffa292.svg" alt="wakatime"></a>
+
 # Welcome to Yup.
 
 &nbsp;
