@@ -69,22 +69,23 @@ const TitleCardContent = ({ business, currentUser }) => {
   const ThirdLine = ({ business }) => {
     return (
       <div className="third-line">
-        <div className="check-circle">
-          <img
-            src={BlueCheck}
-            className="check-symbol"
-            alt="claimed - check mark"
-          />
-        </div>
-        <p>Claimed</p>
-        <p>· {business?.price || ""} ·</p>
-        <p>{business?.category || ""}</p>
-        {/* <a href="#">
-          <div className="edit-button-container">
-            <div className="button-box"> </div>
-            <div className="edit-text">Edit</div>
-          </div>
-        </a> */}
+        {business.stub === "false" && (
+          <>
+            <div className="check-circle">
+              <img
+                src={BlueCheck}
+                className="check-symbol"
+                alt="claimed - check mark"
+              />
+            </div>
+            <p>Claimed</p>
+          </>
+        )}
+        {business.stub === "true" && <p>Unclaimed</p>}
+        {business.price !== "" && business.price !== null && (
+          <p>· {business?.price || ""}</p>
+        )}
+        {business.category !== "" && <p> · {business?.category || ""}</p>}
       </div>
     );
   };
@@ -120,13 +121,6 @@ const TitleCardContent = ({ business, currentUser }) => {
     );
   };
 
-  // if (business.stub === "true")
-  //   return (
-  //     <div id="business-title-card" className="stub">
-  //       <h2>{business.name}</h2>
-  //     </div>
-  //   );
-
   const currentUserIsOwner = currentUser
     ? business.owns &&
       business.owns.some((own) => own.ownerId === currentUser.id)
@@ -137,7 +131,16 @@ const TitleCardContent = ({ business, currentUser }) => {
       <div className="spacer" />
       <div id="business-title-card">
         <div className="spacer" />
-        <h1>{business.name}</h1>
+        <div className="biz-info-container">
+          <h1>{business.name}</h1>
+          {/* {business.stub === "false" && (
+          <> */}
+          <SecondLine />
+          <ThirdLine business={business} />
+          {business.openAt && business.closedAt && (
+            <FourthLine business={business} />
+          )}
+        </div>
         {business.stub === "true" && (
           <div className="stub-message">
             <div className="h2-container">
@@ -152,13 +155,8 @@ const TitleCardContent = ({ business, currentUser }) => {
             </div>
           </div>
         )}
-        {business.stub === "false" && (
-          <>
-            <SecondLine />
-            <ThirdLine business={business} />
-            <FourthLine business={business} />
-          </>
-        )}
+        {/* </>
+        )} */}
       </div>
     </div>
   );
