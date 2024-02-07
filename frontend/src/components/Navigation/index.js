@@ -17,7 +17,7 @@ import downArrowWhite from "../../assets/icons/down-arrow-white.png";
 import onlineStore from "../../assets/icons/online-store.png";
 import checkIcon from "../../assets/icons/check.png";
 
-const Navigation = ({ props }) => {
+const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const messages = useSelector((state) => state.messages);
 
@@ -173,13 +173,11 @@ const Navigation = ({ props }) => {
             </li>
             <li>
               <div className="second-row" onClick={handleYupForBusinessClick}>
-                {/* <Link to="/add-business-as-owner"> */}
                 <img src={checkIcon} alt="claim your business" />
                 <div className="menu-h4-container">
                   <div className="spacer" />
                   <h4>Claim your business</h4>
                 </div>
-                {/* </Link> */}
               </div>
             </li>
           </ul>

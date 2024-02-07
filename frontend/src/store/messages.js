@@ -32,9 +32,6 @@ export const loadMessage = (message) => async (dispatch) => {
 
 export const loadMessages = (messages) => async (dispatch) => {
   const res = dispatch(receiveMessages(messages));
-  // let data;
-  // if (res) data = await res.json();
-  // console.log(res);
   return res;
 };
 
@@ -44,8 +41,6 @@ export const getMessages = createSelector(
     return messages;
   }
 );
-
-// ({ messages }) => ({ ...messages });
 
 export const deleteMessage = (message) => async (dispatch) => {
   const messageKey = Object.keys(message)[0];

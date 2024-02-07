@@ -16,9 +16,6 @@
   }
 
   #redirect-message-modal-container {
-    /* & .redirect-message-modal-overlay {
-    } */
-
     z-index: 1;
     & .redirect-message-modal-box {
       width: 680px;
@@ -55,7 +52,6 @@
               justify-content: center;
               &:hover {
                 background: rgba(225, 34, 34, 0.85);
-                /* box-shadow: 0 0 7px 2px rgb(232, 232, 232); */
                 box-shadow: 0 0 4px 2px rgb(195, 192, 192);
               }
             }
