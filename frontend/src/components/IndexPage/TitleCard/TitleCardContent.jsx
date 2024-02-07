@@ -41,6 +41,57 @@ const TitleCardContent = () => {
     );
   };
   const TitleCardFooter = () => {
+    // const handleCarouselDotClick = (dotIdx) => {
+    //   const img = document.getElementById("photo-block-splash-image");
+    //   switch (dotIdx) {
+    //     case 1:
+    //       img.src = CoffeeShop;
+    //       break;
+    //     case 2:
+    //       img.src = KeyFood;
+    //       break;
+    //     case 3:
+    //       img.src = Skyline;
+    //       break;
+    //     default:
+    //       break;
+    //   }
+    // };
+    return (
+      <div id="title-card-footer-container">
+        <div className="title-card-footer">
+          <h2>Devoción</h2>
+        </div>
+        {/* <div className="carousel-dots">
+          <h2>
+            <span
+              onClick={() => {
+                handleCarouselDotClick(1);
+              }}
+            >
+              ⚪️
+            </span>
+            <span
+              onClick={() => {
+                handleCarouselDotClick(2);
+              }}
+            >
+              ⚪️
+            </span>
+            <span
+              onClick={() => {
+                handleCarouselDotClick(3);
+              }}
+            >
+              ⚪️
+            </span>
+          </h2>
+        </div> */}
+      </div>
+    );
+  };
+
+  const CarouselButtons = () => {
     const handleCarouselDotClick = (dotIdx) => {
       const img = document.getElementById("photo-block-splash-image");
       switch (dotIdx) {
@@ -58,38 +109,29 @@ const TitleCardContent = () => {
       }
     };
     return (
-      <div id="title-card-footer-container">
-        <div className="title-card-footer">
-          <h2>Devoción</h2>
-        </div>
-        <div className="carousel-dots">
-          <h2>
-            <span
-              onClick={() => {
-                handleCarouselDotClick(1);
-              }}
-            >
-              ⚪️
-            </span>
-            <span
-              onClick={() => {
-                handleCarouselDotClick(2);
-              }}
-            >
-              ⚪️
-              {/* white circle
-Unicode: U+26AA U+FE0F, UTF-8: E2 9A AA EF B8 8F */}
-            </span>
-            <span
-              onClick={() => {
-                handleCarouselDotClick(3);
-              }}
-            >
-              ⚪️
-            </span>
-          </h2>
-        </div>
-      </div>
+      <h2>
+        <span
+          onClick={() => {
+            handleCarouselDotClick(1);
+          }}
+        >
+          ⚪️
+        </span>
+        <span
+          onClick={() => {
+            handleCarouselDotClick(2);
+          }}
+        >
+          ⚪️
+        </span>
+        <span
+          onClick={() => {
+            handleCarouselDotClick(3);
+          }}
+        >
+          ⚪️
+        </span>
+      </h2>
     );
   };
 
@@ -102,6 +144,9 @@ Unicode: U+26AA U+FE0F, UTF-8: E2 9A AA EF B8 8F */}
         </div>
         <div className="footer">
           <TitleCardFooter />
+        </div>
+        <div className="carousel-buttons">
+          <CarouselButtons />
         </div>
       </div>
     </>

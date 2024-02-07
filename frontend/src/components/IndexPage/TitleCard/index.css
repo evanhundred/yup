@@ -22,18 +22,19 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to top, transparent 60%, black 100%);
+  background: linear-gradient(0deg, transparent 60%, black 100%);
+  /* background: linear-gradient(to top, transparent 60%, black 100%); */
 }
 
 .business-title-card-container {
   position: relative;
   top: -340px;
-  left: 10px;
+  /* left: 10px; */
   width: 1000px;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  padding-left: 4em;
+  /* padding-left: 4em; */
   font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: white;
 }
@@ -48,13 +49,15 @@
 #index-page {
   & .business-title-card-container {
     & .main-content {
+      padding-left: 4.6em;
       & .second-line {
-        padding: 16px 4px;
+        /* padding: 16px 4px; */
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
         padding: 13px 30px;
+        margin: 15px 0;
         background-color: red;
         width: max-content;
         border-radius: 5px;
@@ -73,7 +76,7 @@
 }
 
 #title-card-footer-container {
-  top: 200px;
+  top: 172px;
   width: 100%;
 }
 
@@ -103,22 +106,27 @@
   font-weight: 500;
 }
 
-#title-card-footer-container .carousel-dots {
+#business-title-card-container .carousel-buttons {
   width: 100vw;
   /* width: 100%; */
-  margin: 0 auto;
-  position: relative;
+  /* margin: 0 auto; */
+  /* position: relative; */
+  /* right: 50vw; */
   /* left: 50%;
   right: 50%; */
   /* bottom: 25%; */
-  padding: 0 auto;
+  /* padding: 0 auto; */
   display: flex;
   justify-content: center;
   /* height: min-content; */
   & h2 {
-    cursor: pointer;
-    font-size: 50px;
+    display: flex;
+    gap: 10px;
+    font-size: 35px;
+    opacity: 0.7;
     & span {
+      cursor: pointer;
+      /* box-shadow: gray 5px 5px; */
       margin: 0 5px;
     }
   }
