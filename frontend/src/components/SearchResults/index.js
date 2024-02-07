@@ -1,4 +1,4 @@
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   getBusinesses,
@@ -13,7 +13,6 @@ import Loading from "../Loading";
 import "./index.css";
 
 const SearchResults = () => {
-  // const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
   const businesses = useSelector(getBusinesses);
@@ -94,20 +93,25 @@ const SearchResults = () => {
     // loadMessage({loaded: true});
     let errors;
     // location.state.from = "search-page";
-    dispatch(resetMessages())
-      .then(() => dispatch(searchBusinesses(searchString)))
-      .then((res) => {
-        if (res && res.status === 404) {
-          // console.log(res);
-          errors = { searchErrors: `404 - ${searchString} not fround` };
-          dispatch(fetchBusinesses());
-          if (!messages.searchErrors)
-            messageObject = { ...messageObject, ...errors };
-          // dispatch(loadMessages({ ...messages, ...errors }));
-          // console.log(errors);
-        }
-        dispatch(loadMessages(messageObject));
-      });
+    if (searchString === "new-search") {
+      dispatch(resetMessages()).then(() => dispatch(fetchBusinesses()));
+      dispatch(loadMessages(messageObject));
+    } else {
+      dispatch(resetMessages())
+        .then(() => dispatch(searchBusinesses(searchString)))
+        .then((res) => {
+          if (res && res.status === 404) {
+            // console.log(res);
+            errors = { searchErrors: `404 - ${searchString} not fround` };
+            dispatch(fetchBusinesses());
+            if (!messages.searchErrors)
+              messageObject = { ...messageObject, ...errors };
+            // dispatch(loadMessages({ ...messages, ...errors }));
+            // console.log(errors);
+          }
+          dispatch(loadMessages(messageObject));
+        });
+    }
   }
 
   // const loadBusinessesIfErrors = () => {

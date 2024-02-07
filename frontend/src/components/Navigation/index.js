@@ -204,7 +204,7 @@ const Navigation = ({ props }) => {
     );
   };
 
-  const HomeNav = ({ navType }) => {
+  const HomeNav = () => {
     return (
       <div id="nav-bar" className={pageType}>
         <div className="left-side">
