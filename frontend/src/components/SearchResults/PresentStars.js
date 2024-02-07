@@ -5,7 +5,7 @@ const PresentStars = ({ business }) => {
     return <div className="no-reviews-yet">No reviews yet!</div>;
 
   let avgRating;
-  let reducedAvg; // average ratings "rounded" to the nearest .5
+  let reducedAvg;
   if (business.reviews.length === 1) {
     reducedAvg = business.reviews[0].rating;
   } else {
@@ -15,7 +15,6 @@ const PresentStars = ({ business }) => {
     }
     avgRating = sumRatings / business.reviews.length;
 
-    // chop off decimals after the first 2
     let avgRating2dp = Math.round(avgRating * 100) / 100;
 
     if (Number.isInteger(avgRating2dp)) reducedAvg = avgRating2dp;
@@ -26,9 +25,6 @@ const PresentStars = ({ business }) => {
       else reducedAvg = Math.ceil(avgRating2dp);
     }
   }
-  // now we have the average ratings for the business, rounded to the nearest half-star.
-  // TODO: use this tool to calculate business ratings, and format output to be presented
-  // as stars. 04-25-23
 
   const renderStars = () => {
     let starText;
@@ -89,7 +85,3 @@ const PresentStars = ({ business }) => {
 };
 
 export default PresentStars;
-
-// business has no reviews
-// business has one review
-// business has more than one review

@@ -14,12 +14,8 @@
   left: 0;
   color: rgb(244, 90, 38);
   clip: rect(0, 0.4504em, 19px, 0);
-  /* clip: rect(20px, 20px, 0px, 20px); */
-  /* clip: rect(500px, 500px, 500px, 500px); */
 }
 
 /*
-042823
-these css stars are janky.
-next best idea is making a star and half-star png
+next: style review star boxes to be solid halves, instead of a fade effect.
 */

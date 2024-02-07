@@ -13,28 +13,3 @@
     font-size: 20px;
   }
 }
-
-/* #search-results-errors {
-  margin: 40px 0 10px 50px;
-  height: 60vh;
-
-  & .search-errors-content {
-    display: flex;
-    width: max-content;
-
-    & h1 {
-      font-size: 47px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      padding: 0 50px 0 30px;
-    }
-
-    & .web-spider-image {
-
-      & img {
-        width: 400px;
-      }
-    }
-  }
-} */
