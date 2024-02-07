@@ -58,13 +58,6 @@ const EditBusiness = () => {
   const [initialPriceRatingClicked, setInitialPriceRatingClicked] =
     useState(false);
 
-  // const getPriceNumber = () => {
-  //   if (business && business.price) return parseInt(business ? business.price : );
-  //   // else return 0;
-  // };
-
-  // const [priceRating, setPriceRating] = useState(getPriceNumber());
-
   const keysArray = business ? Object.keys(business) : null;
   const exclude = ["id", "imageUrls", "authorNames", "reviews", "owns", "stub"];
   const excludeObject = {};
@@ -155,26 +148,16 @@ const EditBusiness = () => {
     const priceSpans = document.querySelectorAll(
       "#edit-business-container .price-input-container div.dollar-box"
     );
-    // console.log(priceSpans);
 
     const stylePriceSpans = (num) => {
-      // if (!business) return;
-
-      // console.log(business);
       const oldNum = parseInt(priceRating);
-      // console.log(num);
-      // console.log(oldNum);
       priceSpans.forEach((span, idx) => {
-        // console.log(idx);
         if (idx < oldNum) span.classList.remove(`hovered`);
         if (idx < parseInt(num)) span.classList.add(`hovered`);
       });
     };
 
-    // stylePriceSpans(priceRating);
-
-    const handlePriceHover = (e, isHovered, num) => {
-      // console.log(e);
+    const handlePriceHover = (isHovered, num) => {
       if (isHovered) {
         setPriceRating(num);
       } else {
@@ -184,20 +167,16 @@ const EditBusiness = () => {
         if (idx < num) {
           if (isHovered) span.classList.add(`hovered`);
           else span.classList.remove(`hovered`);
-          // if (isHovered) span.classList.add(`hovered-${num}`);
-          // else span.classList.remove(`hovered-${num}`);
         }
       });
     };
 
     const handlePriceClick = (num, e = null) => {
       if (e) e.preventDefault();
-      // console.log(e);
       if (!initialPriceRatingClicked) setInitialPriceRatingClicked(true);
       stylePriceSpans(num);
       setPriceRating(num);
     };
-    // console.log(priceRating);
 
     filteredKeysArray.forEach((key) => {
       if (exclude.includes(key)) return <h3 key={key}>hi</h3>;
@@ -240,16 +219,13 @@ const EditBusiness = () => {
           }
           return dollars;
         };
-        // if (business.price && parseInt(business.price) < 1) {
+
         labelComponent = (
           <label className="price" key="price">
             <h4>{key}</h4>
             <div className="price-input-container">{getDollarArray()}</div>
           </label>
         );
-        // } else {
-        //   labelComponent = null;
-        // }
       } else {
         const toSkewerCase = (string) => {
           const stringArray = string.split("");
@@ -296,12 +272,62 @@ const EditBusiness = () => {
       return componentsArray;
     };
 
+    const convertTimeFormat = (openAt, closedAt) => {
+      const fields = {
+        openAt: openAt,
+        closedAt: closedAt
+      };
+      // console.log(openAt);
+      for (const [field, time] of Object.entries(fields)) {
+        console.log(field);
+        const hours = parseInt(time.slice(0, 2));
+        const minutes = parseInt(time.slice(3, 5));
+        let hoursString;
+        if (hours > 12) {
+          hoursString = `${hours % 12}:${minutes} PM`;
+        } else {
+          hoursString = `${hours}:${minutes} AM`;
+        }
+
+        if (field === "openAt") {
+          openAt = { [field]: hoursString };
+        } else {
+          closedAt = { [field]: hoursString };
+        }
+        console.log(openAt);
+        console.log(closedAt);
+        console.log({
+          [field]: hoursString
+        });
+        console.log(hoursString);
+      }
+      setBizTemplate({
+        ...bizTemplate,
+        openAt: openAt,
+        closedAt: closedAt
+      });
+      console.log(bizTemplate);
+    };
+
     const submitUpdate = async () => {
+      const needsConversion = (string) => {
+        const lastTwoChars = string.slice(string.length - 2);
+        if (lastTwoChars[-1] !== "M") return true;
+        return false;
+      };
+      if (
+        bizTemplate.openAt &&
+        bizTemplate.closedAt &&
+        needsConversion(bizTemplate.openAt) &&
+        needsConversion(bizTemplate.closedAt)
+      ) {
+        console.log("hi");
+        convertTimeFormat(bizTemplate.openAt, bizTemplate.closedAt);
+      }
       const businessObject = {
         business: { ...bizTemplate, id: business.id, price: priceRating },
         id: business.id
       };
-      // console.log(businessObject);
 
       const res = await dispatch(updateBusiness(businessObject)).catch(
         async (res) => {
@@ -314,16 +340,12 @@ const EditBusiness = () => {
           if (data?.errors) setErrors(data.errors);
           else if (data) setErrors([data]);
           else setErrors([res.statusText]);
-          // console.log(errors);
         }
       );
 
-      // console.log(res);
       let next;
       if (res.id) next = "submit-success";
       else next = "submit-fail";
-
-      // console.log(next);
 
       setComponentToRender(next);
     };
@@ -384,39 +406,26 @@ const EditBusiness = () => {
           if (data?.errors) setErrors(data.errors);
           else if (data) setErrors([data]);
           else setErrors([res.statusText]);
-          // console.log(errors);
         }
       );
 
-      // console.log(res);
       let next;
       let data;
       if (res.message === "success") {
         const message = {
           deleted: `${bizTemplate.name} deleted successfully.`
         };
-        // const message = `business ${businessId} deleted successfully.`;
         const res = await dispatch(loadMessage(message));
         if (res && res.ok) {
           data = res.json();
         } else {
           data = res;
         }
-        // console.log(data);
+
         history.push("/");
-        // history.push("/", {
-        //   message: `business ${businessId} deleted successfully.`
-        // });
-      }
-      // if (res.message === "success") next = "delete-success";
-      // if (res.ok) next = "delete-success";
-      else next = "submit-fail";
+      } else next = "submit-fail";
 
       setComponentToRender(next);
-
-      // .then(() => {
-      //   history.push(`/businesses`);
-      // });
     };
 
     const html = document.querySelector("html");
@@ -433,7 +442,6 @@ const EditBusiness = () => {
           setUpdateType("update");
           if (business.name && business.name.length > 0) {
             setShowConfirmModal(true);
-            // submitUpdate();
           } else {
             setErrors(errors.concat(["Name needed."]));
           }
@@ -441,7 +449,6 @@ const EditBusiness = () => {
         case "delete":
           setUpdateType("delete");
           setShowConfirmModal(true);
-          // dispatchDeleteBusiness();
           break;
         default:
           return;
@@ -476,18 +483,14 @@ const EditBusiness = () => {
       );
     };
 
-    // stylePriceSpans(priceRating);
-
     return (
       <div className="business-info-form-container">
-        {/* <p>hi</p> */}
         <form onSubmit={(e) => handleSubmit(e, "update")}>
           <div className="input-fields">
             {keyPositionsObject &&
               keyPositionsObject &&
               orderedLabelComponents()}
           </div>
-          {/* {stylePriceSpans(priceRating)} */}
           <div className="button-container">
             <label>
               <button>Submit</button>
@@ -501,31 +504,8 @@ const EditBusiness = () => {
       </div>
     );
   };
-  // const priceSpans = document.querySelectorAll(
-  //   "#edit-business-container .price-input-container div.dollar-box"
-  // );
-  // // console.log(priceSpans);
 
-  // const stylePriceSpans = (num) => {
-  //   const oldNum = priceRating;
-  //   priceSpans.forEach((span, idx) => {
-  //     if (idx < oldNum) span.classList.remove(`hovered`);
-  //     if (idx < num) span.classList.add(`hovered`);
-  //     // if (idx < oldNum) span.classList.remove(`hovered-${oldNum}`);
-  //     // if (idx < num) span.classList.add(`hovered-${num}`);
-  //   });
-  // };
-
-  // useEffect(()=>{
-  //   stylePriceSpans(business.price);
-
-  // },[business])
-  // // stylePriceSpans(business.price);
-
-  // const successComponent = () => <div className="success">success.</div>;
   const handleBizNameClick = () => history.push(`/businesses/${business.id}`);
-
-  // if (!business) return <div>loading...</div>;
 
   const submitSuccessComponent = (submitType) => {
     return (
