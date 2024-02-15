@@ -6,8 +6,6 @@
 
   display: flex;
   align-items: center;
-  /* h1.prompt {
-  } */
   & .loader {
     display: block;
     margin: auto;
@@ -16,17 +14,6 @@
     border-top: 30px solid #ff7a59;
     width: 200px;
     height: 200px;
-    /* animation-name: spinner;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-    -webkit-animation-name: spinner;
-    -webkit-animation-duration: 4s;
-    -webkit-animation-iteration-count: infinite; */
-    /* animation: 4s infinite linear spinner; */
-    /* webkit-animation: 4s infinite linear spinner; */
-    /* animation: 4s 2 spinner;
-    -webkit-animation: 4s 2 spinner; */
-    /* animation: spinner 4s linear linfinite; */
     animation-name: spinner;
     animation-duration: 2.5s;
     animation-iteration-count: infinite;
@@ -35,26 +22,14 @@
 }
 @keyframes spinner {
   0% {
-    /* margin-left: 10px; */
     transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
-    /* border: 20px solid #eaf0f6; */
-    /* -webkit-margin-left: 10px;
-    -webkit-border: 20px solid #eaf0f6; */
   }
 
-  /* 50% {
-    transform: rotate(180deg);
-  } */
   100% {
-    /* margin-right: 10px; */
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
-    /* border: 20px solid #ff7a59; */
-    /* -webkit-margin-right: 10px;
-    -webkit-transform: rotate(180deg);
-    -webkit-border: 20px solid #ff7a59; */
   }
 }
