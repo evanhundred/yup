@@ -50,3 +50,13 @@
     -moz-transform: rotate(360deg);
   }
 }
+@supports (rotate: 0deg) {
+  @keyframes loader {
+    0% {
+      rotate: 0deg;
+    }
+    100% {
+      rotate: 180deg;
+    }
+  }
+}
