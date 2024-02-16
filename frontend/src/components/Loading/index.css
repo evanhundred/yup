@@ -18,6 +18,10 @@
     animation-duration: 2.5s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+    -webkit-animation-name: spinner;
+    -webkit-animation-duration: 2.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
   }
 }
 @keyframes spinner {
