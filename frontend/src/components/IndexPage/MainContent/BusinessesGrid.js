@@ -5,7 +5,7 @@ import photoBlank from '../../../assets/images/broccoli.png';
 const BusinessesGrid = ({ loadState }) => {
   const businesses = null;
   if (!businesses || !businesses.length || businesses[0].status === 500)
-    return <Loading />;
+    return <Loading type='small' />;
 
   const businessesLoaderSlice = businesses.slice(0, loadState);
 

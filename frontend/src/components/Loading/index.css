@@ -3,9 +3,9 @@
   font-family: Rubik, sans-serif;
   font-size: 45px;
   height: 64vh;
-
   display: flex;
   align-items: center;
+
   & .loader {
     display: block;
     margin: auto;
@@ -23,7 +23,18 @@
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
   }
+
+  &.small-scale {
+    margin: 35px 50px 30px;
+    height: 200px;
+
+    & .loader {
+      width: 100px;
+      height: 100px;
+    }
+  }
 }
+
 @keyframes spinner {
   0% {
     transform: rotate(0deg);
