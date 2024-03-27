@@ -1,19 +1,19 @@
-import "./index.css";
-import { useDispatch, useSelector } from "react-redux";
+import './index.css';
+import { useDispatch, useSelector } from 'react-redux';
 import {
-  fetchBusinesses,
-  getBusinesses,
+  // fetchBusinesses,
+  // getBusinesses,
   clearErrors
-} from "../../store/businesses";
-import { resetMessages, getMessages } from "../../store/messages";
-import { useEffect, useState } from "react";
-import MainContent from "./MainContent";
-import TitleCard from "./TitleCard";
-import Loading from "../Loading";
+} from '../../store/businesses';
+import { resetMessages, getMessages } from '../../store/messages';
+import { useEffect, useState } from 'react';
+import MainContent from './MainContent';
+import TitleCard from './TitleCard';
+import Loading from '../Loading';
 
 const IndexPage = () => {
   const dispatch = useDispatch();
-  const businesses = useSelector(getBusinesses);
+  // const businesses = useSelector(getBusinesses);
   const messages = useSelector(getMessages);
 
   const [showRedirectMessage, setShowRedirectMessage] = useState(
@@ -22,24 +22,23 @@ const IndexPage = () => {
 
   useEffect(() => {
     dispatch(clearErrors());
-    dispatch(fetchBusinesses());
+    // dispatch(fetchBusinesses()); // refactor
   }, [dispatch]);
 
-  if (businesses.errors) {
-    return null;
-  }
-
-  if (!businesses.length || !businesses[0].imageUrls) {
-    return <Loading />;
-  }
+  // if (businesses.errors) {
+  //   return null;
+  // }
+  // if (true) {
+  //   return <Loading />;
+  // }
 
   const redirectMessageModal = () => {
     const closeModal = async (e = null) => {
       if (e) e.preventDefault();
 
-      const res = await dispatch(resetMessages());
+      await dispatch(resetMessages());
 
-      if (html) html.style.overflow = "auto";
+      if (html) html.style.overflow = 'auto';
       setShowRedirectMessage(false);
     };
 
@@ -48,13 +47,13 @@ const IndexPage = () => {
     };
 
     return (
-      <div id="redirect-message-modal-container">
-        <div className="redirect-message-modal-overlay" onClick={handleOK} />
-        <div className="redirect-message-modal-box">
-          <div className="redirect-message-modal-content">
-            <div className="message-container">
-              <h2 className="message">{messages.deleted}</h2>
-              <h2 className="ok" onClick={handleOK}>
+      <div id='redirect-message-modal-container'>
+        <div className='redirect-message-modal-overlay' onClick={handleOK} />
+        <div className='redirect-message-modal-box'>
+          <div className='redirect-message-modal-content'>
+            <div className='message-container'>
+              <h2 className='message'>{messages.deleted}</h2>
+              <h2 className='ok' onClick={handleOK}>
                 OK
               </h2>
             </div>
@@ -64,14 +63,14 @@ const IndexPage = () => {
     );
   };
 
-  const html = document.querySelector("html");
-  if (html) html.style.overflow = "auto";
+  const html = document.querySelector('html');
+  if (html) html.style.overflow = 'auto';
 
   return (
-    <div id="index-page">
+    <div id='index-page'>
       {showRedirectMessage && redirectMessageModal()}
-      <TitleCard businesses={businesses} />
-      <MainContent businesses={businesses} />
+      <TitleCard />
+      <MainContent />
     </div>
   );
 };
