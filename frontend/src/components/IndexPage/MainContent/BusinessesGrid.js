@@ -8,7 +8,6 @@ import photoBlank from '../../../assets/images/broccoli.png';
 const BusinessesGrid = ({ businessesToLoad }) => {
   const dispatch = useDispatch();
   const businesses = useSelector(getBusinesses);
-  // console.log(businesses);
 
   useEffect(() => {
     dispatch(fetchBusinesses());

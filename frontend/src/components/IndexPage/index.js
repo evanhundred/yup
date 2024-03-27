@@ -1,15 +1,10 @@
 import './index.css';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  // fetchBusinesses,
-  // getBusinesses,
-  clearErrors
-} from '../../store/businesses';
+import { clearErrors } from '../../store/businesses';
 import { resetMessages, getMessages } from '../../store/messages';
 import { useEffect, useState } from 'react';
 import MainContent from './MainContent';
 import TitleCard from './TitleCard';
-// import Loading from '../Loading';
 
 const IndexPage = () => {
   const dispatch = useDispatch();
