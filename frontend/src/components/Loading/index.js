@@ -1,15 +1,10 @@
 import './index.css';
 
 const Loading = ({ type = null }) => {
-  if (type === 'small') {
-    return (
-      <div id='loading-container' className='small-scale'>
-        <div className='loader' />
-      </div>
-    );
-  }
+  const isSmall = type === 'small';
+
   return (
-    <div id='loading-container'>
+    <div id='loading-container' className={isSmall && 'small-scale'}>
       <div className='loader' />
     </div>
   );
