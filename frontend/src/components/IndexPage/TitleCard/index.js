@@ -1,14 +1,11 @@
-import PhotoBlock from "./PhotoBlock";
-import TitleCardContent from "./TitleCardContent";
+import PhotoBlock from './PhotoBlock';
+import TitleCardContent from './TitleCardContent';
 
-const TitleCard = ({ businesses }) => {
-  const randomNum = Math.floor(Math.random() * businesses.length);
-  const business = businesses ? businesses[randomNum] : {};
-
+const TitleCard = () => {
   return (
     <>
-      <PhotoBlock business={business} />
-      <TitleCardContent business={business} />
+      <PhotoBlock />
+      <TitleCardContent />
     </>
   );
 };

@@ -1,9 +1,11 @@
-import "./index.css";
+import './index.css';
 
-const Loading = () => {
+const Loading = ({ type = null }) => {
+  const isSmall = type === 'small';
+
   return (
-    <div id="loading-container">
-      <div className="loader" />
+    <div id='loading-container' className={isSmall && 'small-scale'}>
+      <div className='loader' />
     </div>
   );
 };
