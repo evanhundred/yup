@@ -9,11 +9,10 @@ import { resetMessages, getMessages } from '../../store/messages';
 import { useEffect, useState } from 'react';
 import MainContent from './MainContent';
 import TitleCard from './TitleCard';
-import Loading from '../Loading';
+// import Loading from '../Loading';
 
 const IndexPage = () => {
   const dispatch = useDispatch();
-  // const businesses = useSelector(getBusinesses);
   const messages = useSelector(getMessages);
 
   const [showRedirectMessage, setShowRedirectMessage] = useState(
@@ -22,15 +21,7 @@ const IndexPage = () => {
 
   useEffect(() => {
     dispatch(clearErrors());
-    // dispatch(fetchBusinesses()); // refactor
   }, [dispatch]);
-
-  // if (businesses.errors) {
-  //   return null;
-  // }
-  // if (true) {
-  //   return <Loading />;
-  // }
 
   const redirectMessageModal = () => {
     const closeModal = async (e = null) => {

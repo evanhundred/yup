@@ -1,13 +1,23 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchBusinesses, getBusinesses } from '../../../store/businesses';
 import Loading from '../../Loading';
 import photoBlank from '../../../assets/images/broccoli.png';
 
-const BusinessesGrid = ({ loadState }) => {
-  const businesses = null;
+const BusinessesGrid = ({ businessesToLoad }) => {
+  const dispatch = useDispatch();
+  const businesses = useSelector(getBusinesses);
+  // console.log(businesses);
+
+  useEffect(() => {
+    dispatch(fetchBusinesses());
+  }, [dispatch]);
+
   if (!businesses || !businesses.length || businesses[0].status === 500)
     return <Loading type='small' />;
 
-  const businessesLoaderSlice = businesses.slice(0, loadState);
+  const businessesLoaderSlice = businesses.slice(0, businessesToLoad);
 
   const photoIsPresent = (business) => {
     return business.imageUrls.length > 0;
