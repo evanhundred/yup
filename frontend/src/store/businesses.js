@@ -1,38 +1,24 @@
-import { createSelector } from "@reduxjs/toolkit";
+import { createSelector } from '@reduxjs/toolkit';
 
-import { createOwnedBusiness } from "./ownedBusinesses";
+import { createOwnedBusiness } from './ownedBusinesses';
 
-import csrfFetch from "./csrf";
+import csrfFetch from './csrf';
 
-export const RECEIVE_BUSINESSES = "businesses/RECEIVE_BUSINESSES";
-export const RECEIVE_BUSINESS = "businesses/RECEIVE_BUSINESS";
+export const RECEIVE_BUSINESSES = 'businesses/RECEIVE_BUSINESSES';
+export const RECEIVE_BUSINESS = 'businesses/RECEIVE_BUSINESS';
 
-export const RECEIVE_ERRORS = "businesses/RECEIVE_ERRORS";
-export const CLEAR_ERRORS = "businesses/CLEAR_ERRORS";
+export const RECEIVE_ERRORS = 'businesses/RECEIVE_ERRORS';
+export const CLEAR_ERRORS = 'businesses/CLEAR_ERRORS';
 
-export const SHARE_BUSINESS = "businesses/SHARE_BUSINESS";
-export const CLEAR_BUSINESSES = "businesses/CLEAR_BUSINESSES";
+export const SHARE_BUSINESS = 'businesses/SHARE_BUSINESS';
+export const CLEAR_BUSINESSES = 'businesses/CLEAR_BUSINESSES';
 
-export const REMOVE_BUSINESS = "businesses/REMOVE_BUSINESS";
+export const REMOVE_BUSINESS = 'businesses/REMOVE_BUSINESS';
 
 export const removeBusiness = (businessId) => ({
   type: REMOVE_BUSINESS,
   businessId
 });
-
-// export const CREATE_BUSINESS_STUB = "businesses/CREATE_BUSINESS_STUB";
-
-// export const createBusinessStub = (business) => ({
-//   type: CREATE_BUSINESS_STUB,
-//   business
-// })
-
-// export const RECEIVE_TEMPLATE = "buinesses/RECEIVE_TEMPLATE";
-
-// export const receiveTemplate = (template) => ({
-//   type: RECEIVE_TEMPLATE,
-//   template
-// });
 
 export const receiveBusinesses = (businesses) => ({
   type: RECEIVE_BUSINESSES,
@@ -52,11 +38,6 @@ export const receiveErrors = (errors) => ({
 export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
-
-// export const shareBusiness = (data) => ({
-//   type: SHARE_BUSINESS,
-//   data
-// });
 
 export const clearBusinesses = () => {
   return {
@@ -83,7 +64,7 @@ export const getBusinesses = createSelector(
 );
 
 export const fetchBusinesses = () => async (dispatch) => {
-  const res = await csrfFetch("/api/businesses");
+  const res = await csrfFetch('/api/businesses');
   let data;
   if (res.ok) {
     data = await res.json();
@@ -107,8 +88,8 @@ export const fetchBusiness = (businessId) => async (dispatch) => {
 export const createBusinessStub = (business) => async (dispatch) => {
   let data;
   const res = await csrfFetch(`/api/businesses/`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(business)
   }).catch((error) => {
     // console.log(error);
@@ -125,8 +106,8 @@ export const createBusinessStub = (business) => async (dispatch) => {
 export const updateBusiness = (business) => async (dispatch) => {
   let data;
   const res = await csrfFetch(`/api/businesses/${business.id}`, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(business)
   }).catch((error) => {
     data = error;
@@ -140,7 +121,7 @@ export const updateBusiness = (business) => async (dispatch) => {
 
 export const deleteBusiness = (businessId) => async (dispatch) => {
   const res = await csrfFetch(`/api/businesses/${businessId}`, {
-    method: "DELETE"
+    method: 'DELETE'
   });
   if (res.ok) {
     dispatch(removeBusiness(businessId));
@@ -151,23 +132,11 @@ export const deleteBusiness = (businessId) => async (dispatch) => {
   }
 };
 
-// export const newBusiness = () => async (dispatch) => {
-//   let data;
-//   const res = await csrfFetch("/api/businesses/new");
-//   if (res.ok) {
-//     data = await res.json();
-//     dispatch(clearBusinesses());
-//     dispatch(receiveTemplate(data));
-//   } else {
-//     data = res.errors;
-//   }
-// };
-
 export const searchBusinesses = (query) => async (dispatch) => {
   let data;
   const res = await csrfFetch(`/api/businesses/search`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ query: query })
   }).catch((error) => {
     console.log(error);
@@ -183,10 +152,6 @@ export const searchBusinesses = (query) => async (dispatch) => {
   console.log(data);
   return data;
 };
-
-// export const showTemplate = (state) => {
-//   console.log(state);
-// }
 
 const businessesReducer = (preloadedState = {}, action) => {
   const newState = { ...preloadedState };
