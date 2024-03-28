@@ -54,15 +54,10 @@ module Api
     def search
       query = params[:query].parameterize
       @businesses = []
-      if @businesses.length
-        Business.all.each do |biz|
-          next unless business_matches_query(biz, query)
+      businesses = Business.all
+      @businesses.push(test_businesses_for_search(businesses, query))
 
-          @businesses.push(biz)
-        end
-      end
-
-      if @businesses&.businesses&.length&.positive?
+      if @businesses&.length&.positive?
         render :index
       else
         render json: ["No results found for #{query}"], status: 404
@@ -71,14 +66,23 @@ module Api
 
     private
 
+    def test_businesses_for_search(businesses, query)
+      result = []
+      businesses.each do |biz|
+        result.push(biz) if business_matches_query(biz, query)
+      end
+      result
+    end
+
     def business_matches_query(business, query)
       fields = [business.name, business.category, business.price, business.neighborhood]
       fields.each do |field|
         return true if field&.field&.parameterize&.match(query)
       end
+      false
     end
 
-    def business_params
+    def business_params # rubocop:disable Metrics/MethodLength
       params.require(:business).permit(
         :id,
         :name,
