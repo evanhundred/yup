@@ -10,8 +10,10 @@ const BusinessesGrid = ({ businessesToLoad }) => {
   const businesses = useSelector(getBusinesses);
 
   useEffect(() => {
-    dispatch(fetchBusinesses());
-  }, [dispatch]);
+    if (!businesses || businesses.length === 0) {
+      dispatch(fetchBusinesses());
+    }
+  }, [dispatch, businesses]);
 
   if (!businesses || !businesses.length || businesses[0].status === 500)
     return <Loading type='small' />;
