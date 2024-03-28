@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -15,27 +17,28 @@ class User < ApplicationRecord
 
   before_validation :ensure_session_token
 
-  validates :name, presence: true, length: {in: 3..30}, format: { without: URI::MailTo::EMAIL_REGEXP, message: "can't be an email" }
+  validates :name, presence: true, length: { in: 3..30 },
+                   format: { without: URI::MailTo::EMAIL_REGEXP, message: "can't be an email" }
   validates :email, :session_token, presence: true, uniqueness: true
-  validates :email, length: {in: 3..255}, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email, length: { in: 3..255 }, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, length: { in: 6..255 }, allow_nil: true
 
   has_many :reviews,
-    foreign_key: :author_id,
-    inverse_of: :author,
-    dependent: :destroy
+           foreign_key: :author_id,
+           inverse_of: :author,
+           dependent: :destroy
 
   has_many :saved_businesses,
-    class_name: :SavedBusiness,
-    foreign_key: :saver_id,
-    inverse_of: :saver,
-    dependent: :destroy
+           class_name: :SavedBusiness,
+           foreign_key: :saver_id,
+           inverse_of: :saver,
+           dependent: :destroy
 
   has_many :owned_businesses,
-    class_name: :OwnedBusiness,
-    foreign_key: :owner_id,
-    inverse_of: :owner,
-    dependent: :destroy
+           class_name: :OwnedBusiness,
+           foreign_key: :owner_id,
+           inverse_of: :owner,
+           dependent: :destroy
 
   def save_business(business_id)
     @user = current_user
@@ -43,21 +46,21 @@ class User < ApplicationRecord
 
     if @business && @user
       @user.saved_businesses.push(@business)
-      render json: { message: 'success'}
+      render json: { message: 'success' }
     else
-      render json: { errors: @user.errors.full_messages}, status: 422
+      render json: { errors: @user.errors.full_messages }, status: 422
     end
   end
 
   def self.find_by_credentials(email, password)
-    user = User.find_by(email: email)
-    return user&.authenticate(password) ? user : nil
+    user = User.find_by(email:)
+    user&.authenticate(password) ? user : nil
   end
 
   def reset_session_token!
     self.session_token = generate_unique_session_token
-    self.save
-    self.session_token
+    save
+    session_token
   end
 
   private

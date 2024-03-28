@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -8,12 +10,13 @@ Rails.application.routes.draw do
 
   Rails.application.routes.draw do
     namespace :api, defaults: { format: :json } do
-      resources :saved_businesses, only: [:create, :destroy]
-      resources :owned_businesses, only: [:create]
-      resources :users, only: [:create, :show]
-      resource :session, only: [:show, :create, :destroy]
-      resources :businesses, only: [:index, :show, :create, :update, :destroy] do
-        resources :reviews, only: [:index, :new, :create, :destroy, :edit, :update]
+      resources :saved_businesses, only: %i[create destroy]
+      # resources :saved_businesses, only: [:create, :destroy]
+      resources :owned_businesses, only: %i[create]
+      resources :users, only: %i[create show]
+      resource :session, only: %i[show create destroy]
+      resources :businesses, only: %i[index show create update destroy] do
+        resources :reviews, only: %i[index new create destroy edit update]
         collection do
           post :search
         end

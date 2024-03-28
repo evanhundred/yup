@@ -10,13 +10,13 @@ const BusinessesGrid = ({ businessesToLoad }) => {
   const businesses = useSelector(getBusinesses);
 
   useEffect(() => {
-    if (!businesses || businesses.length === 0) {
-      dispatch(fetchBusinesses());
-    }
-  }, [dispatch, businesses]);
+    dispatch(fetchBusinesses());
+  }, [dispatch]);
 
-  if (!businesses || !businesses.length || businesses[0].status === 500)
+  if (!businesses || !businesses.length || businesses[0].status === 500) {
+    // console.log(businesses);
     return <Loading type='small' />;
+  }
 
   const businessesLoaderSlice = businesses.slice(0, businessesToLoad);
 
