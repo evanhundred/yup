@@ -3,6 +3,10 @@
   "window.zoomLevel": 1,
   "search.exclude": {
     ".prev_yups": true
+  },
+  "editor.detectIndentation": false,
+  "[ruby]": {
+    "editor.tabSize": 2
   }
 }
 
