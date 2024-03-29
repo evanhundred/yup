@@ -78,10 +78,7 @@ const Navigation = () => {
       e.preventDefault();
 
       if (query.trim().length >= 1) {
-        console.log(query);
-        console.log(query.trim());
         setQuery(query.trim());
-        console.log(query);
         dispatch(resetBusinesses());
         dispatch(resetMessages());
         let errors;

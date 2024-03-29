@@ -1,24 +1,13 @@
 import { createSelector } from '@reduxjs/toolkit';
-
 import { createOwnedBusiness } from './ownedBusinesses';
-
 import csrfFetch from './csrf';
 
 export const RECEIVE_BUSINESSES = 'businesses/RECEIVE_BUSINESSES';
 export const RECEIVE_BUSINESS = 'businesses/RECEIVE_BUSINESS';
-
+export const CLEAR_BUSINESSES = 'businesses/CLEAR_BUSINESSES';
+export const REMOVE_BUSINESS = 'businesses/REMOVE_BUSINESS';
 export const RECEIVE_ERRORS = 'businesses/RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'businesses/CLEAR_ERRORS';
-
-export const SHARE_BUSINESS = 'businesses/SHARE_BUSINESS';
-export const CLEAR_BUSINESSES = 'businesses/CLEAR_BUSINESSES';
-
-export const REMOVE_BUSINESS = 'businesses/REMOVE_BUSINESS';
-
-export const removeBusiness = (businessId) => ({
-  type: REMOVE_BUSINESS,
-  businessId
-});
 
 export const receiveBusinesses = (businesses) => ({
   type: RECEIVE_BUSINESSES,
@@ -30,6 +19,15 @@ export const receiveBusiness = (business) => ({
   business
 });
 
+export const clearBusinesses = () => ({
+  type: CLEAR_BUSINESSES
+});
+
+export const removeBusiness = (businessId) => ({
+  type: REMOVE_BUSINESS,
+  businessId
+});
+
 export const receiveErrors = (errors) => ({
   type: RECEIVE_ERRORS,
   errors
@@ -38,12 +36,6 @@ export const receiveErrors = (errors) => ({
 export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
-
-export const clearBusinesses = () => {
-  return {
-    type: CLEAR_BUSINESSES
-  };
-};
 
 export const resetBusinesses = () => async (dispatch) => {
   dispatch(clearBusinesses());
@@ -92,7 +84,6 @@ export const createBusinessStub = (business) => async (dispatch) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(business)
   }).catch((error) => {
-    // console.log(error);
     data = error;
   });
   if (res && res.ok) {
@@ -135,13 +126,11 @@ export const deleteBusiness = (businessId) => async (dispatch) => {
 export const searchBusinesses = (query) => async (dispatch) => {
   let data;
   query = query.trim();
-  console.log(query);
   const res = await csrfFetch(`/api/businesses/search`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ query: query })
   }).catch((error) => {
-    console.log(error);
     data = error;
   });
   if (res && res.ok) {
@@ -150,8 +139,6 @@ export const searchBusinesses = (query) => async (dispatch) => {
   } else {
     data = res;
   }
-  console.log(res);
-  console.log(data);
   return data;
 };
 
@@ -174,9 +161,6 @@ const businessesReducer = (preloadedState = {}, action) => {
       return {};
     case CLEAR_BUSINESSES:
       return {};
-    // case RECEIVE_TEMPLATE:
-    //   newState[0] = action.template;
-    //   return newState;
     default:
       return preloadedState;
   }
