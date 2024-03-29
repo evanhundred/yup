@@ -134,6 +134,8 @@ export const deleteBusiness = (businessId) => async (dispatch) => {
 
 export const searchBusinesses = (query) => async (dispatch) => {
   let data;
+  query = query.trim();
+  console.log(query);
   const res = await csrfFetch(`/api/businesses/search`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

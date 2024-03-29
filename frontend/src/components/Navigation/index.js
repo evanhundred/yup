@@ -77,14 +77,16 @@ const Navigation = () => {
     const handleSearchBarClick = (e) => {
       e.preventDefault();
 
-      // console.log(query);
-
       if (query.trim().length >= 1) {
+        console.log(query);
+        console.log(query.trim());
+        setQuery(query.trim());
+        console.log(query);
         dispatch(resetBusinesses());
         dispatch(resetMessages());
         let errors;
         let messageStateObject = {};
-        dispatch(searchBusinesses(query))
+        dispatch(searchBusinesses(query.trim()))
           .then((res) => {
             if (res && res.status === 404) {
               errors = { searchErrors: `404 - ${query} not found` };
@@ -99,7 +101,7 @@ const Navigation = () => {
             messageStateObject.from = 'nav-search-bar';
             messageStateObject.loaded = false;
             dispatch(loadMessages(messageStateObject));
-            history.push(`/search?${query}`);
+            history.push(`/search?${query.trim()}`);
           });
       }
     };
