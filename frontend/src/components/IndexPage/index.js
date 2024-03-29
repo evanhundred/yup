@@ -9,14 +9,17 @@ import TitleCard from './TitleCard';
 const IndexPage = () => {
   const dispatch = useDispatch();
   const messages = useSelector(getMessages);
+  const stateErrors = useSelector((state) =>
+    state.errors ? Object.values(state.errors) : null
+  );
 
   const [showRedirectMessage, setShowRedirectMessage] = useState(
     messages && messages.deleted ? true : false
   );
 
   useEffect(() => {
-    dispatch(clearErrors());
-  }, [dispatch]);
+    if (stateErrors) dispatch(clearErrors());
+  }, [dispatch, stateErrors]);
 
   const redirectMessageModal = () => {
     const closeModal = async (e = null) => {
