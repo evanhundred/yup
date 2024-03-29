@@ -1,5 +1,4 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
@@ -33,15 +32,21 @@ const Root = () => {
 };
 
 const renderApplication = () => {
-  const container = document.getElementById('root');
-  const root = createRoot(container);
-  root.render(
-    <div>
-      <React.StrictMode>
-        <Root />
-      </React.StrictMode>
-    </div>
-  );
+  let container = null;
+
+  document.addEventListener('DOMContentLoaded', function (event) {
+    if (!container) {
+      container = document.getElementById('root');
+      const root = createRoot(container);
+      root.render(
+        <div>
+          <React.StrictMode>
+            <Root />
+          </React.StrictMode>
+        </div>
+      );
+    }
+  });
 };
 
 if (sessionStorage.getItem('X-CSRF-Token') === null) {
