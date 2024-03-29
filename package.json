@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/evanhundred/yup/issues"
   },
-  "homepage": "https://github.com/evanhundred/yup#readme"
+  "homepage": "https://github.com/evanhundred/yup#readme",
+  "dependencies": {
+    "react-dom": "^18.2.0"
+  }
 }
