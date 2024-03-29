@@ -55,7 +55,7 @@ module Api
       query = params[:query].parameterize
       @businesses = []
       businesses = Business.all
-      @businesses.push(test_businesses_for_search(businesses, query))
+      @businesses.concat(test_businesses_for_search(businesses, query))
 
       if @businesses&.length&.positive?
         render :index
@@ -77,7 +77,7 @@ module Api
     def business_matches_query(business, query)
       fields = [business.name, business.category, business.price, business.neighborhood]
       fields.each do |field|
-        return true if field&.field&.parameterize&.match(query)
+        return true if field&.parameterize&.match(query)
       end
       false
     end
