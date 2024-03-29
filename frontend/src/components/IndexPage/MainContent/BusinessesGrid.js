@@ -1,6 +1,6 @@
-// import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import { getBusinesses } from '../../../store/businesses';
 import useFetchBusinesses from '../../../hooks/useFetchBusinesses';
 import Loading from '../../Loading';
@@ -8,11 +8,14 @@ import photoBlank from '../../../assets/images/broccoli.png';
 
 const BusinessesGrid = ({ businessesToLoad }) => {
   const businesses = useSelector(getBusinesses);
-  // console.log(businesses);
 
+  // const [isLoaded, setIsLoaded] = useState(false);
   useFetchBusinesses();
 
+  let isLoaded = false;
+
   if (!businesses || !businesses.length || businesses[0].status === 500) {
+    isLoaded = true;
     return <Loading type='small' />;
   }
 
