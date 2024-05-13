@@ -12,10 +12,7 @@ const BusinessesGrid = ({ businessesToLoad }) => {
   // const [isLoaded, setIsLoaded] = useState(false);
   useFetchBusinesses();
 
-  let isLoaded = false;
-
   if (!businesses || !businesses.length || businesses[0].status === 500) {
-    isLoaded = true;
     return <Loading type='small' />;
   }
 
