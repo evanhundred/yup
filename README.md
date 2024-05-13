@@ -130,4 +130,4 @@ Thank you for checking out Yup. May the Schwartz be with you.
 &nbsp;
 &nbsp;
 
-`(e) 2024`
+`(e) 2023-24`
