@@ -1,6 +1,6 @@
 {
-  "workbench.colorTheme": "Gruvbox Dark Soft",
-  "window.zoomLevel": 1,
+  "workbench.colorTheme": "HBuilderX Soft Green Light",
+  "window.zoomLevel": 0.6,
   "search.exclude": {
     ".prev_yups": true
   },

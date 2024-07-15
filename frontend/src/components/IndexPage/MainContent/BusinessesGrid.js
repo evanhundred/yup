@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
 import { getBusinesses } from '../../../store/businesses';
 import useFetchBusinesses from '../../../hooks/useFetchBusinesses';
 import Loading from '../../Loading';
@@ -30,11 +29,7 @@ const BusinessesGrid = ({ businessesToLoad }) => {
   const businessesBlock = businessesLoaderSlice.map((business, idx) => {
     return (
       <div className='business-card' key={idx}>
-        <div
-          className={`card-image${
-            photoIsPresent(business) ? '' : ' photo-blank'
-          }`}
-        >
+        <div className={`card-image${photoIsPresent(business) ? '' : ' photo-blank'}`}>
           <Link to={`/businesses/${business.id}`}>
             <img src={businessCardImage(business)} alt={business.name} />
           </Link>
