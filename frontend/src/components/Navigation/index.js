@@ -25,27 +25,13 @@ const Navigation = () => {
   const location = useLocation();
 
   const blackTextOnWhite = useMemo(() => {
-    return [
-      'businesses',
-      'search',
-      'biz-photos',
-      'biz-user-photos',
-      'write-a-review',
-      'add-business-as-owner',
-      'add-business-as-customer'
-    ];
+    return ['businesses', 'search', 'biz-photos', 'biz-user-photos', 'write-a-review', 'add-business-as-owner', 'add-business-as-customer'];
   }, []);
 
-  const [pageType, setPageType] = useState(
-    blackTextOnWhite.some((pageType) => location.pathname.includes(pageType))
-      ? 'business'
-      : 'index'
-  );
+  const [pageType, setPageType] = useState(blackTextOnWhite.some((pageType) => location.pathname.includes(pageType)) ? 'business' : 'index');
 
   useEffect(() => {
-    if (
-      blackTextOnWhite.some((pageType) => location.pathname.includes(pageType))
-    ) {
+    if (blackTextOnWhite.some((pageType) => location.pathname.includes(pageType))) {
       setPageType('business');
     } else {
       setPageType('index');
@@ -104,16 +90,8 @@ const Navigation = () => {
     };
     return (
       <form onSubmit={(e) => handleSearchBarClick(e)}>
-        <input
-          className='user-search-string'
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <input
-          className='location-input'
-          value='New York, NY'
-          readOnly={true}
-        />
+        <input className='user-search-string' value={query} onChange={(e) => setQuery(e.target.value)} />
+        <input className='location-input' value='New York, NY' readOnly={true} />
         <button
           onClick={(e) => {
             handleSearchBarClick(e);
@@ -127,22 +105,7 @@ const Navigation = () => {
 
   const YupForBusinessMenu = () => {
     const [showYupForBusinessMenu, setShowYupForBusinessMenu] = useState(false);
-    const openYupForBusinessMenu = () => {
-      if (showYupForBusinessMenu) return;
-      setShowYupForBusinessMenu(true);
-    };
-
-    useEffect(() => {
-      if (!showYupForBusinessMenu) return;
-
-      const closeYupForBusinessMenu = () => {
-        setShowYupForBusinessMenu(false);
-      };
-
-      document.addEventListener('click', closeYupForBusinessMenu);
-      return () =>
-        document.removeEventListener('click', closeYupForBusinessMenu);
-    }, [showYupForBusinessMenu]);
+    const toggleYupForBusinessMenu = () => setShowYupForBusinessMenu(!showYupForBusinessMenu);
 
     const currentUser = useSelector((state) => state.session.user);
 
@@ -152,12 +115,9 @@ const Navigation = () => {
     };
 
     return (
-      <div className='yup-for-business-link' onClick={openYupForBusinessMenu}>
+      <div className='yup-for-business-link' onClick={toggleYupForBusinessMenu}>
         <h4>Yup for Business</h4>
-        <img
-          src={pageType === 'index' ? downArrowWhite : downArrowBlack}
-          alt='drop down this menu'
-        />
+        <img src={pageType === 'index' ? downArrowWhite : downArrowBlack} alt='drop down this menu' />
         {showYupForBusinessMenu && (
           <ul className='yup-for-business-dropdown'>
             <li>
@@ -219,29 +179,13 @@ const Navigation = () => {
         <div className='right-side'>
           <div className='socials'>
             <div id='github'>
-              <a
-                href='https://www.github.com/evanhundred/yup'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <img
-                  src={pageType === 'business' ? githubLogoBlack : githubLogo}
-                  alt='GitHub'
-                />
+              <a href='https://www.github.com/evanhundred/yup' target='_blank' rel='noopener noreferrer'>
+                <img src={pageType === 'business' ? githubLogoBlack : githubLogo} alt='GitHub' />
               </a>
             </div>
             <div id='linkedin'>
-              <a
-                href='https://www.linkedin.com/in/evan-ryan-dev/'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <img
-                  src={
-                    pageType === 'business' ? linkedinLogoBlack : linkedinLogo
-                  }
-                  alt='LinkedIn'
-                />
+              <a href='https://www.linkedin.com/in/evan-ryan-dev/' target='_blank' rel='noopener noreferrer'>
+                <img src={pageType === 'business' ? linkedinLogoBlack : linkedinLogo} alt='LinkedIn' />
               </a>
             </div>
           </div>
@@ -268,20 +212,12 @@ const Navigation = () => {
           </NavLink>
           <div className='socials'>
             <div id='github'>
-              <a
-                href='https://www.github.com/evanhundred/yup'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
+              <a href='https://www.github.com/evanhundred/yup' target='_blank' rel='noopener noreferrer'>
                 <img src={githubLogo} alt='GitHub' />
               </a>
             </div>
             <div id='linkedin'>
-              <a
-                href='https://www.linkedin.com/in/evan-ryan-dev/'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
+              <a href='https://www.linkedin.com/in/evan-ryan-dev/' target='_blank' rel='noopener noreferrer'>
                 <img src={linkedinLogo} alt='LinkedIn' />
               </a>
             </div>
@@ -307,20 +243,12 @@ const Navigation = () => {
         <div className='right-side'>
           <div className='socials'>
             <div id='github'>
-              <a
-                href='https://www.github.com/evanryan/yup'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
+              <a href='https://www.github.com/evanryan/yup' target='_blank' rel='noopener noreferrer'>
                 <img src={githubLogoBlack} alt='GitHub repo' />
               </a>
             </div>
             <div id='linkedin'>
-              <a
-                href='https://www.linkedin.com/in/evan-ryan-dev'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
+              <a href='https://www.linkedin.com/in/evan-ryan-dev' target='_blank' rel='noopener noreferrer'>
                 <img src={linkedinLogoBlack} alt='LinkedIn page' />
               </a>
             </div>
@@ -336,13 +264,7 @@ const Navigation = () => {
   let headerType;
   if (['/login', '/signup'].includes(window.location.pathname)) {
     headerType = <FormHeader />;
-  } else if (
-    [
-      '/write-a-review',
-      '/add-business-as-owner',
-      '/add-business-as-spocustomer'
-    ].includes(window.location.pathname)
-  ) {
+  } else if (['/write-a-review', '/add-business-as-owner', '/add-business-as-spocustomer'].includes(window.location.pathname)) {
     headerType = <MinimalNavHeader />;
   } else {
     headerType = <HomeNav />;
