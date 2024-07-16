@@ -1,42 +1,43 @@
-import { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
-import * as sessionActions from "../../store/session";
-import "./ProfileButton.css";
-import profileIcon from "../../assets/images/profile.png";
-import logoutButton from "../../assets/images/logout.png";
+import { useState, useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import * as sessionActions from '../../store/session';
+import './ProfileButton.css';
+import profileIcon from '../../assets/images/profile.png';
+import logoutButton from '../../assets/images/logout.png';
 
 const Carrot = () => (
-  <div
-    className="profile-picture"
-    style={{ color: "orange", fontSize: "40px" }}
-  >
-    <i className="fa-solid fa-carrot"></i>
+  <div className='profile-picture' style={{ color: 'orange', fontSize: '40px' }}>
+    <i className='fa-solid fa-carrot'></i>
   </div>
 );
 
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const dropdownRef = useRef(null);
+  // const dropdownRef = useRef(null);
 
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
   };
 
-  const closeMenu = (e) => {
-    if (!dropdownRef.current.contains(e.target)) {
-      setShowMenu(false);
-    }
-  };
+  // const openMenu = () => {
+  //   if (showMenu) return;
+  //   setShowMenu(true);
+  // };
 
-  useEffect(() => {
-    if (!showMenu) return;
+  // const closeMenu = (e) => {
+  //   if (!dropdownRef.current.contains(e.target)) {
+  //     setShowMenu(false);
+  //   }
+  // };
 
-    document.addEventListener("click", closeMenu);
+  // useEffect(() => {
+  //   if (!showMenu) return;
 
-    return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
+  //   document.addEventListener("click", closeMenu);
+
+  //   return () => document.removeEventListener("click", closeMenu);
+  // }, [showMenu]);
 
   const handleLogoutClick = (e) => {
     logout(e);
@@ -48,31 +49,28 @@ const ProfileButton = ({ user }) => {
   };
 
   return (
-    <div id="profile-menu-button">
-      <div className="profile-image-container" onClick={(e) => openMenu(e)}>
+    <div id='profile-menu-button'>
+      <div className='profile-image-container' onClick={toggleMenu}>
         <Carrot />
       </div>
       {showMenu && (
-        <ul className="profile-dropdown" ref={dropdownRef}>
-          <li className="user-options-container">
-            <div className="first-row profile-dropdown-row">
-              <div className="profile-icon">
-                <img src={profileIcon} alt="your profile" />
+        <ul className='profile-dropdown'>
+          <li className='user-options-container'>
+            <div className='first-row profile-dropdown-row'>
+              <div className='profile-icon'>
+                <img src={profileIcon} alt='your profile' />
               </div>
-              <div className="profile-dropdown-option">
+              <div className='profile-dropdown-option'>
                 <p>{user.name}</p>
               </div>
             </div>
           </li>
-          <li className="logout-button-container">
-            <div
-              className="logout-button profile-dropdown-row"
-              onClick={handleLogoutClick}
-            >
-              <div className="profile-icon">
-                <img src={logoutButton} alt="logout" />
+          <li className='logout-button-container'>
+            <div className='logout-button profile-dropdown-row' onClick={handleLogoutClick}>
+              <div className='profile-icon'>
+                <img src={logoutButton} alt='logout' />
               </div>
-              <div className="profile-dropdown-option">
+              <div className='profile-dropdown-option'>
                 <p>Log Out</p>
               </div>
             </div>
