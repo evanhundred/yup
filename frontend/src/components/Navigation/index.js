@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useState } from 'react';
+import { useMemo, useEffect, useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -103,11 +103,30 @@ const Navigation = () => {
     );
   };
 
+  const useComponentVisible = (initialIsVisible) => {
+    const [isComponentVisible, setIsComponentVisible] = useState(initialIsVisible);
+  };
+
   const YupForBusinessMenu = () => {
     const [showYupForBusinessMenu, setShowYupForBusinessMenu] = useState(false);
     const toggleYupForBusinessMenu = () => setShowYupForBusinessMenu(!showYupForBusinessMenu);
-
     const currentUser = useSelector((state) => state.session.user);
+
+    const dropdownRef = useRef(null);
+
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && dropdownRef.current.contains(e.target)) {
+        setShowYupForBusinessMenu(false);
+      }
+    };
+
+    useEffect(() => {
+      document.addEventListener('click', handleClickOutside, true);
+
+      return () => {
+        document.removeEventListener('click', handleClickOutside, true);
+      };
+    }, []);
 
     const handleYupForBusinessClick = () => {
       if (currentUser) history.push('/add-business-as-owner');
@@ -119,7 +138,7 @@ const Navigation = () => {
         <h4>Yup for Business</h4>
         <img src={pageType === 'index' ? downArrowWhite : downArrowBlack} alt='drop down this menu' />
         {showYupForBusinessMenu && (
-          <ul className='yup-for-business-dropdown'>
+          <ul className='yup-for-business-dropdown' ref={dropdownRef}>
             <li>
               <div className='first-row' onClick={handleYupForBusinessClick}>
                 <img src={onlineStore} alt='add a business' />
