@@ -105,21 +105,13 @@ const Navigation = () => {
 
   const useComponentVisible = (initialIsVisible) => {
     const [isComponentVisible, setIsComponentVisible] = useState(initialIsVisible);
-  };
-
-  const YupForBusinessMenu = () => {
-    const [showYupForBusinessMenu, setShowYupForBusinessMenu] = useState(false);
-    const toggleYupForBusinessMenu = () => setShowYupForBusinessMenu(!showYupForBusinessMenu);
-    const currentUser = useSelector((state) => state.session.user);
-
-    const dropdownRef = useRef(null);
+    const ref = useRef(null);
 
     const handleClickOutside = (e) => {
-      if (dropdownRef.current && dropdownRef.current.contains(e.target)) {
-        setShowYupForBusinessMenu(false);
+      if (ref.current && !ref.current.contains(e.target)) {
+        setIsComponentVisible(false);
       }
     };
-
     useEffect(() => {
       document.addEventListener('click', handleClickOutside, true);
 
@@ -127,6 +119,17 @@ const Navigation = () => {
         document.removeEventListener('click', handleClickOutside, true);
       };
     }, []);
+
+    return { ref, isComponentVisible, setIsComponentVisible };
+  };
+
+  const YupForBusinessMenu = () => {
+    // const [showYupForBusinessMenu, setShowYupForBusinessMenu] = useState(false);
+    const currentUser = useSelector((state) => state.session.user);
+
+    const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true);
+    const [showYupForBusinessMenu, setShowYupForBusinessMenu] = [isComponentVisible, setIsComponentVisible];
+    const toggleYupForBusinessMenu = () => setShowYupForBusinessMenu(!showYupForBusinessMenu);
 
     const handleYupForBusinessClick = () => {
       if (currentUser) history.push('/add-business-as-owner');
@@ -137,28 +140,30 @@ const Navigation = () => {
       <div className='yup-for-business-link' onClick={toggleYupForBusinessMenu}>
         <h4>Yup for Business</h4>
         <img src={pageType === 'index' ? downArrowWhite : downArrowBlack} alt='drop down this menu' />
-        {showYupForBusinessMenu && (
-          <ul className='yup-for-business-dropdown' ref={dropdownRef}>
-            <li>
-              <div className='first-row' onClick={handleYupForBusinessClick}>
-                <img src={onlineStore} alt='add a business' />
-                <div className='menu-h4-container'>
-                  <div className='spacer' />
-                  <h4>Add a business</h4>
+        <div id='yup-for-business-menu-wrapper' ref={ref}>
+          {showYupForBusinessMenu && (
+            <ul className='yup-for-business-dropdown'>
+              <li>
+                <div className='first-row' onClick={handleYupForBusinessClick}>
+                  <img src={onlineStore} alt='add a business' />
+                  <div className='menu-h4-container'>
+                    <div className='spacer' />
+                    <h4>Add a business</h4>
+                  </div>
                 </div>
-              </div>
-            </li>
-            <li>
-              <div className='second-row' onClick={handleYupForBusinessClick}>
-                <img src={checkIcon} alt='claim your business' />
-                <div className='menu-h4-container'>
-                  <div className='spacer' />
-                  <h4>Claim your business</h4>
+              </li>
+              <li>
+                <div className='second-row' onClick={handleYupForBusinessClick}>
+                  <img src={checkIcon} alt='claim your business' />
+                  <div className='menu-h4-container'>
+                    <div className='spacer' />
+                    <h4>Claim your business</h4>
+                  </div>
                 </div>
-              </div>
-            </li>
-          </ul>
-        )}
+              </li>
+            </ul>
+          )}
+        </div>
       </div>
     );
   };
