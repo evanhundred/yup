@@ -17,13 +17,32 @@ const ProfileButton = ({ user }) => {
   const dropdownRef = useRef(null);
 
   const toggleMenu = (e) => {
-    if (!dropdownRef.current.contains(e.target)) {
-      setShowMenu(!showMenu);
-      document.addEventListener('click', toggleMenu);
+    console.log(dropdownRef);
+    console.log(e.target);
 
-      // todo:
-      // create removeEventListener for menu close
+    // if (!showMenu) {
+    //   document.addEventListener('click', toggleMenu);
+    // } else {
+    //   document.removeEventListener('click', toggleMenu);
+    // }
+
+    if (!showMenu) {
+      setShowMenu(true);
+      document.addEventListener('click', toggleMenu);
+    } else if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      console.log('ok');
+      document.removeEventListener('click', toggleMenu);
+      setShowMenu(false);
     }
+    // console.log(dropdownRef);
+    // if (!showMenu || !dropdownRef.current.contains(e.target)) {
+    //   setShowMenu(!showMenu);
+    //   console.log(showMenu);
+    //   if (showMenu) {
+    //     console.log(dropdownRef);
+    //     document.addEventListener('click', toggleMenu);
+    //   }
+    // }
   };
 
   // const openMenu = () => {
