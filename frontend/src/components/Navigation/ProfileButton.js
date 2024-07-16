@@ -14,30 +14,10 @@ const Carrot = () => (
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  // const dropdownRef = useRef(null);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
-
-  // const openMenu = () => {
-  //   if (showMenu) return;
-  //   setShowMenu(true);
-  // };
-
-  // const closeMenu = (e) => {
-  //   if (!dropdownRef.current.contains(e.target)) {
-  //     setShowMenu(false);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (!showMenu) return;
-
-  //   document.addEventListener("click", closeMenu);
-
-  //   return () => document.removeEventListener("click", closeMenu);
-  // }, [showMenu]);
 
   const handleLogoutClick = (e) => {
     logout(e);
