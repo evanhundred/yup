@@ -127,7 +127,7 @@ const Navigation = () => {
     // const [showYupForBusinessMenu, setShowYupForBusinessMenu] = useState(false);
     const currentUser = useSelector((state) => state.session.user);
 
-    const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true);
+    const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
     const [showYupForBusinessMenu, setShowYupForBusinessMenu] = [isComponentVisible, setIsComponentVisible];
     const toggleYupForBusinessMenu = () => setShowYupForBusinessMenu(!showYupForBusinessMenu);
 

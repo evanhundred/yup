@@ -35,7 +35,7 @@ body {
 /* --------------------------- */
 
 #logo {
-  font-family: "Roboto Mono", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Roboto Mono', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 30px;
   color: white;
   height: 100%;
@@ -79,11 +79,11 @@ a {
   float: right;
   display: flex;
   gap: 15px;
-  font-family: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   width: max-content;
 
   & .session-link a {
-    font-family: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 800;
     font-size: 16px;
     border: 2px solid white;
@@ -156,7 +156,7 @@ a {
 
     & .yup-for-business-link,
     .write-review-link {
-      font-family: Rubik, "Helvetica Neue", Helvetica, sans-serif;
+      font-family: Rubik, 'Helvetica Neue', Helvetica, sans-serif;
       color: white;
     }
   }
@@ -164,75 +164,79 @@ a {
   & .yup-for-business-link {
     margin-left: 30px;
 
-    & ul.yup-for-business-dropdown {
+    div#yup-for-business-menu-wrapper {
       position: absolute;
-      background-color: white;
 
-      color: black;
-      margin-top: 166px;
-      margin-left: -9px;
-      padding: 11px 18px 15px;
-      /* min-width: 230px; */
-      max-width: 220px;
-      width: max-content;
-      font-size: 17px;
-      /* font-weight: 500; */
-      line-height: 1.7;
-      border-radius: 5px;
-      /* right: 10px; */
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
+      & ul.yup-for-business-dropdown {
+        position: relative;
+        background-color: white;
 
-      & li {
-        padding: 5px;
-        width: 100%;
-        border-radius: 3px;
+        color: black;
+        margin-top: 166px;
+        margin-left: -9px;
+        padding: 11px 18px 15px;
+        /* min-width: 230px; */
+        max-width: 220px;
+        width: max-content;
+        font-size: 17px;
+        /* font-weight: 500; */
+        line-height: 1.7;
+        border-radius: 5px;
+        /* right: 10px; */
         display: flex;
+        flex-direction: column;
+        gap: 3px;
 
-        & a {
+        & li {
+          padding: 5px;
+          width: 100%;
+          border-radius: 3px;
           display: flex;
-          width: max-content;
-          gap: 12px;
-        }
 
-        &:hover {
-          background: rgba(171, 171, 171, 0.35);
-        }
+          & a {
+            display: flex;
+            width: max-content;
+            gap: 12px;
+          }
 
-        & > div {
-          padding: 3px 2px 2px 3px;
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          cursor: pointer;
-          /* justify-content: space-between; */
-          /* width: max-content; */
-        }
+          &:hover {
+            background: rgba(171, 171, 171, 0.35);
+          }
 
-        & img {
-          width: 25px;
-          height: 25px;
-          /* width: 12%;
-          height: 12%; */
-          display: flex;
-          align-items: center;
-        }
+          & > div {
+            padding: 3px 2px 2px 3px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            /* justify-content: space-between; */
+            /* width: max-content; */
+          }
 
-        & .menu-h4-container {
-          display: flex;
-          flex-direction: column;
+          & img {
+            width: 25px;
+            height: 25px;
+            /* width: 12%;
+              height: 12%; */
+            display: flex;
+            align-items: center;
+          }
 
-          /* & .spacer {
-            height: 4px;
-          } */
-        }
+          & .menu-h4-container {
+            display: flex;
+            flex-direction: column;
 
-        & h4 {
-          /* padding-top: 2px; */
-          display: flex;
-          align-items: center;
-          /* margin-top: 1px; */
+            /* & .spacer {
+                height: 4px;
+              } */
+          }
+
+          & h4 {
+            /* padding-top: 2px; */
+            display: flex;
+            align-items: center;
+            /* margin-top: 1px; */
+          }
         }
       }
     }
@@ -253,7 +257,7 @@ a {
     border-radius: 5px;
     padding: 0 10px;
     & h4 {
-      font-family: "Helvetica Neue", Helvetica, sans-serif;
+      font-family: 'Helvetica Neue', Helvetica, sans-serif;
     }
     &:hover {
       background: rgba(171, 171, 171, 0.35);
@@ -311,7 +315,7 @@ a {
   & h1 {
     color: white;
 
-    font-family: "Roboto Mono", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Roboto Mono', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     display: inline-block;
     vertical-align: middle;
 
