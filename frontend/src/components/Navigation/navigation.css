@@ -186,12 +186,14 @@ a {
         display: flex;
         flex-direction: column;
         gap: 3px;
+        cursor: default;
 
         & li {
           padding: 5px;
           width: 100%;
           border-radius: 3px;
           display: flex;
+          cursor: pointer;
 
           & a {
             display: flex;
@@ -208,7 +210,6 @@ a {
             display: flex;
             align-items: center;
             gap: 15px;
-            cursor: pointer;
             /* justify-content: space-between; */
             /* width: max-content; */
           }
