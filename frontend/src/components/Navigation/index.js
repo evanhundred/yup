@@ -4,6 +4,7 @@ import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { searchBusinesses, resetBusinesses } from '../../store/businesses';
 import { loadMessages, resetMessages } from '../../store/messages';
+import useComponentVisible from '../../utils/useComponentVisible.js';
 
 import ProfileButton from './ProfileButton';
 import './navigation.css';
@@ -103,25 +104,25 @@ const Navigation = () => {
     );
   };
 
-  const useComponentVisible = (initialIsVisible) => {
-    const [isComponentVisible, setIsComponentVisible] = useState(initialIsVisible);
-    const ref = useRef(null);
+  // const useComponentVisible = (initialIsVisible) => {
+  //   const [isComponentVisible, setIsComponentVisible] = useState(initialIsVisible);
+  //   const ref = useRef(null);
 
-    const handleClickOutside = (e) => {
-      if (ref.current && !ref.current.contains(e.target)) {
-        setIsComponentVisible(false);
-      }
-    };
-    useEffect(() => {
-      document.addEventListener('click', handleClickOutside, true);
+  //   const handleClickOutside = (e) => {
+  //     if (ref.current && !ref.current.contains(e.target)) {
+  //       setIsComponentVisible(false);
+  //     }
+  //   };
+  //   useEffect(() => {
+  //     document.addEventListener('click', handleClickOutside, true);
 
-      return () => {
-        document.removeEventListener('click', handleClickOutside, true);
-      };
-    }, []);
+  //     return () => {
+  //       document.removeEventListener('click', handleClickOutside, true);
+  //     };
+  //   }, []);
 
-    return { ref, isComponentVisible, setIsComponentVisible };
-  };
+  //   return { ref, isComponentVisible, setIsComponentVisible };
+  // };
 
   const YupForBusinessMenu = () => {
     const currentUser = useSelector((state) => state.session.user);
@@ -221,7 +222,6 @@ const Navigation = () => {
             </div>
           </div>
           <div id='session-links' className={pageType}>
-            {/* <SessionLinks /> */}
             {sessionLinks}
           </div>
         </div>
