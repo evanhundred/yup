@@ -18,10 +18,10 @@
     animation-duration: 2.5s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-    -webkit-animation-name: spinner;
+    /* -webkit-animation-name: spinner;
     -webkit-animation-duration: 2.5s;
     -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
+    -webkit-animation-timing-function: linear; */
   }
 
   &.small-scale {
@@ -38,27 +38,27 @@
 @keyframes spinner {
   0% {
     transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
+    /* -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg); */
   }
 
   100% {
     transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
+    /* -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg); */
   }
 }
 @-webkit-keyframes spinner {
   0% {
     transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
+    /* -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg); */
   }
 
   100% {
     transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
+    /* -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg); */
   }
 }
 @supports (rotate: 0deg) {
