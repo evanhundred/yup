@@ -108,12 +108,6 @@ const Navigation = () => {
     const ref = useRef(null);
 
     const handleClickOutside = (e) => {
-      // e.preventDefault();
-      if (ref.current && e.target) {
-        // console.log(ref.current);
-        // console.log(e.target);
-        console.log(ref.current.contains(e.target));
-      }
       if (ref.current && !ref.current.contains(e.target)) {
         setIsComponentVisible(false);
       }
@@ -130,22 +124,15 @@ const Navigation = () => {
   };
 
   const YupForBusinessMenu = () => {
-    // const [showYupForBusinessMenu, setShowYupForBusinessMenu] = useState(false);
     const currentUser = useSelector((state) => state.session.user);
-
     const [initiallyClicked, setInitiallyClicked] = useState(false);
-
     const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
     const [showYupForBusinessMenu, setShowYupForBusinessMenu] = [isComponentVisible, setIsComponentVisible];
-    const toggleYupForBusinessMenu = (e) => {
-      // setShowYupForBusinessMenu(!showYupForBusinessMenu);
-      // e.preventDefault();
-      // console.log(ref.current);
-      // if (ref.current) console.log(ref.current.contains(e.target));
-      console.log(initiallyClicked);
+
+    const toggleYupForBusinessMenu = () => {
       if (initiallyClicked) {
         setInitiallyClicked(false);
-      } else if (!ref.current && !showYupForBusinessMenu) {
+      } else if (!showYupForBusinessMenu) {
         setInitiallyClicked(true);
         setShowYupForBusinessMenu(true);
       }
@@ -157,7 +144,7 @@ const Navigation = () => {
     };
 
     return (
-      <div className='yup-for-business-link' onClick={(e) => toggleYupForBusinessMenu(e)}>
+      <div className='yup-for-business-link' onClick={toggleYupForBusinessMenu}>
         <h4>Yup for Business</h4>
         <img src={pageType === 'index' ? downArrowWhite : downArrowBlack} alt='drop down this menu' />
         <div id='yup-for-business-menu-wrapper'>
