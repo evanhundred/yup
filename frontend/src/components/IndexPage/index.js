@@ -10,9 +10,9 @@ const IndexPage = () => {
   const dispatch = useDispatch();
   const messages = useSelector(getMessages);
 
-  const [showRedirectMessage, setShowRedirectMessage] = useState(
-    messages && messages.deleted ? true : false
-  );
+  // console.log('index');
+
+  const [showRedirectMessage, setShowRedirectMessage] = useState(messages && messages.deleted ? true : false);
 
   useEffect(() => {
     dispatch(clearErrors());
