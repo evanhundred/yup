@@ -34,19 +34,24 @@ const Root = () => {
 const renderApplication = () => {
   let container = null;
 
-  document.addEventListener('DOMContentLoaded', function () {
-    if (!container) {
-      container = document.getElementById('root');
-      const root = createRoot(container);
-      root.render(
-        <div>
-          <React.StrictMode>
-            <Root />
-          </React.StrictMode>
-        </div>
-      );
-    }
-  });
+  if (document.readyState !== 'loading') {
+    console.log('not loading');
+  } else {
+    document.addEventListener('DOMContentLoaded', function () {
+      console.log('render');
+      if (!container) {
+        container = document.getElementById('root');
+        const root = createRoot(container);
+        root.render(
+          <div>
+            <React.StrictMode>
+              <Root />
+            </React.StrictMode>
+          </div>
+        );
+      }
+    });
+  }
 };
 
 // if (sessionStorage.getItem('X-CSRF-Token') === null) {
@@ -57,7 +62,19 @@ const renderApplication = () => {
 // }
 
 if (sessionStorage.getItem('currentUser') === null || sessionStorage.getItem('X-CSRF-Token') === null) {
+  console.log('if');
   store.dispatch(sessionActions.restoreSession()).then(renderApplication);
 } else {
+  console.log('else');
   renderApplication();
 }
+
+// if (document.readyState !== 'loading') {
+//   console.log('document is already ready, just execute code here');
+//   myInitCode();
+// } else {
+//   document.addEventListener('DOMContentLoaded', function () {
+//     console.log('document was not ready, place code here');
+//     myInitCode();
+//   });
+// }
