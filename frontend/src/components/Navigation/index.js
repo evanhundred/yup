@@ -1,9 +1,10 @@
-import { useMemo, useEffect, useState } from 'react';
+import { useMemo, useEffect, useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { searchBusinesses, resetBusinesses } from '../../store/businesses';
 import { loadMessages, resetMessages } from '../../store/messages';
+import useComponentVisible from '../../utils/useComponentVisible.js';
 
 import ProfileButton from './ProfileButton';
 import './navigation.css';
@@ -104,10 +105,19 @@ const Navigation = () => {
   };
 
   const YupForBusinessMenu = () => {
-    const [showYupForBusinessMenu, setShowYupForBusinessMenu] = useState(false);
-    const toggleYupForBusinessMenu = () => setShowYupForBusinessMenu(!showYupForBusinessMenu);
-
     const currentUser = useSelector((state) => state.session.user);
+    const [initiallyClicked, setInitiallyClicked] = useState(false);
+    const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
+    const [showYupForBusinessMenu, setShowYupForBusinessMenu] = [isComponentVisible, setIsComponentVisible];
+
+    const toggleYupForBusinessMenu = () => {
+      if (initiallyClicked) {
+        setInitiallyClicked(false);
+      } else if (!showYupForBusinessMenu) {
+        setInitiallyClicked(true);
+        setShowYupForBusinessMenu(true);
+      }
+    };
 
     const handleYupForBusinessClick = () => {
       if (currentUser) history.push('/add-business-as-owner');
@@ -118,28 +128,30 @@ const Navigation = () => {
       <div className='yup-for-business-link' onClick={toggleYupForBusinessMenu}>
         <h4>Yup for Business</h4>
         <img src={pageType === 'index' ? downArrowWhite : downArrowBlack} alt='drop down this menu' />
-        {showYupForBusinessMenu && (
-          <ul className='yup-for-business-dropdown'>
-            <li>
-              <div className='first-row' onClick={handleYupForBusinessClick}>
-                <img src={onlineStore} alt='add a business' />
-                <div className='menu-h4-container'>
-                  <div className='spacer' />
-                  <h4>Add a business</h4>
+        <div id='yup-for-business-menu-wrapper'>
+          {showYupForBusinessMenu && (
+            <ul className='yup-for-business-dropdown' ref={ref}>
+              <li>
+                <div className='first-row' onClick={handleYupForBusinessClick}>
+                  <img src={onlineStore} alt='add a business' />
+                  <div className='menu-h4-container'>
+                    <div className='spacer' />
+                    <h4>Add a business</h4>
+                  </div>
                 </div>
-              </div>
-            </li>
-            <li>
-              <div className='second-row' onClick={handleYupForBusinessClick}>
-                <img src={checkIcon} alt='claim your business' />
-                <div className='menu-h4-container'>
-                  <div className='spacer' />
-                  <h4>Claim your business</h4>
+              </li>
+              <li>
+                <div className='second-row' onClick={handleYupForBusinessClick}>
+                  <img src={checkIcon} alt='claim your business' />
+                  <div className='menu-h4-container'>
+                    <div className='spacer' />
+                    <h4>Claim your business</h4>
+                  </div>
                 </div>
-              </div>
-            </li>
-          </ul>
-        )}
+              </li>
+            </ul>
+          )}
+        </div>
       </div>
     );
   };
@@ -190,7 +202,6 @@ const Navigation = () => {
             </div>
           </div>
           <div id='session-links' className={pageType}>
-            {/* <SessionLinks /> */}
             {sessionLinks}
           </div>
         </div>

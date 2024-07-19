@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import useComponentVisible from '../../utils/useComponentVisible';
 import './ProfileButton.css';
 import profileIcon from '../../assets/images/profile.png';
 import logoutButton from '../../assets/images/logout.png';
@@ -13,10 +14,17 @@ const Carrot = () => (
 
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
-  const [showMenu, setShowMenu] = useState(false);
+  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
+  const [initiallyClicked, setInitiallyClicked] = useState(false);
+  const [isMenuVisible, setIsMenuVisible] = [isComponentVisible, setIsComponentVisible];
 
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
+  const toggleProfileMenu = () => {
+    if (initiallyClicked) {
+      setInitiallyClicked(false);
+    } else if (!isMenuVisible) {
+      setInitiallyClicked(true);
+      setIsMenuVisible(true);
+    }
   };
 
   const handleLogoutClick = (e) => {
@@ -30,11 +38,11 @@ const ProfileButton = ({ user }) => {
 
   return (
     <div id='profile-menu-button'>
-      <div className='profile-image-container' onClick={toggleMenu}>
+      <div className='profile-image-container' onClick={toggleProfileMenu}>
         <Carrot />
       </div>
-      {showMenu && (
-        <ul className='profile-dropdown'>
+      {isMenuVisible && (
+        <ul className='profile-dropdown' ref={ref}>
           <li className='user-options-container'>
             <div className='first-row profile-dropdown-row'>
               <div className='profile-icon'>
