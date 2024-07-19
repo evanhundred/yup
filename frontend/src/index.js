@@ -34,7 +34,7 @@ const Root = () => {
 const renderApplication = () => {
   let container = null;
 
-  document.addEventListener('DOMContentLoaded', function (event) {
+  document.addEventListener('DOMContentLoaded', function () {
     if (!container) {
       container = document.getElementById('root');
       const root = createRoot(container);
@@ -49,16 +49,14 @@ const renderApplication = () => {
   });
 };
 
-if (sessionStorage.getItem('X-CSRF-Token') === null) {
-  restoreCSRF().then(renderApplication);
-} else {
-  renderApplication();
-}
+// if (sessionStorage.getItem('X-CSRF-Token') === null) {
+//   // console.log('xcsrf === null');
+//   restoreCSRF().then(renderApplication);
+// } else {
+//   renderApplication();
+// }
 
-if (
-  sessionStorage.getItem('currentUser') === null ||
-  sessionStorage.getItem('X-CSRF-Token') === null
-) {
+if (sessionStorage.getItem('currentUser') === null || sessionStorage.getItem('X-CSRF-Token') === null) {
   store.dispatch(sessionActions.restoreSession()).then(renderApplication);
 } else {
   renderApplication();

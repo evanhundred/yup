@@ -3,8 +3,7 @@ const csrfFetch = async (url, options = {}) => {
   options.headers = options.headers || {};
 
   if (options.method.toUpperCase() !== 'GET') {
-    options.headers['Content-Type'] =
-      options.headers['Content-Type'] || 'application/json';
+    options.headers['Content-Type'] = options.headers['Content-Type'] || 'application/json';
     options.headers['X-CSRF-Token'] = sessionStorage.getItem('X-CSRF-Token');
   }
 
@@ -13,6 +12,7 @@ const csrfFetch = async (url, options = {}) => {
 };
 
 export const restoreCSRF = async () => {
+  console.log('restoreCSRF');
   const res = await csrfFetch('/api/session');
   storeCSRFToken(res);
   return res;
