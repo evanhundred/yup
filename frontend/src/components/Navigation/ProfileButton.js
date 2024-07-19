@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-// import toggleMenu from '../../utils/toggleMenu';
 import useComponentVisible from '../../utils/useComponentVisible';
 import './ProfileButton.css';
 import profileIcon from '../../assets/images/profile.png';
