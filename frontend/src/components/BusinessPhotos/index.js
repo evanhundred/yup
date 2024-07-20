@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { getBusiness, fetchBusiness } from "../../store/businesses";
-import "./index.css";
-import "./modal.css";
-import rightArrowCircle from "../../assets/images/right-arrow-circle.png";
-import leftArrowCircle from "../../assets/images/left-arrow-circle.png";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { getBusiness, fetchBusiness } from '../../store/businesses';
+import './index.css';
+import './modal.css';
+import rightArrowCircle from '../../assets/images/right-arrow-circle.png';
+import leftArrowCircle from '../../assets/images/left-arrow-circle.png';
 
-import { backgroundNavBar, unBackgroundNavBar } from "../../utils/modal";
+import { backgroundNavBar, unBackgroundNavBar } from '../../util/modal';
 
 // import { ShowPhotoModal } from "../../context/Modal";
-import x from "../../assets/images/close.png";
+import x from '../../assets/images/close.png';
 
 const BusinessPhotos = () => {
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ const BusinessPhotos = () => {
 
     let colIdx = 0;
     return (
-      <ul className="photos-grid-ul">
+      <ul className='photos-grid-ul'>
         {business.imageUrls.map((photo, idx) => {
           colIdx += 1;
           if (colIdx === 7) colIdx = 1;
@@ -62,7 +62,7 @@ const BusinessPhotos = () => {
                   handlePhotoClick(e);
                 }}
               >
-                <img src={photo} alt="delicious item" />
+                <img src={photo} alt='delicious item' />
               </li>
             );
           else return null;
@@ -89,7 +89,7 @@ const BusinessPhotos = () => {
       const amountPhotos = business.imageUrls.length;
 
       let newPhotoIdx;
-      if (direction === "next") {
+      if (direction === 'next') {
         if (chosenPhotoIdx < amountPhotos - 2) newPhotoIdx = chosenPhotoIdx + 1;
         else newPhotoIdx = 0;
       } else {
@@ -107,56 +107,40 @@ const BusinessPhotos = () => {
     };
 
     const closeOnPressEsc = (e) => {
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         handleCloseModal(e);
       }
     };
 
     const listenForEsc = () => {
-      document.addEventListener("keydown", (e) => closeOnPressEsc(e), {
+      document.addEventListener('keydown', (e) => closeOnPressEsc(e), {
         once: true
       });
     };
 
     return (
-      <div className="modal-container" onLoad={listenForEsc()}>
-        <div className="overlay" onClick={(e) => handleCloseModal(e)} />
-        <div className="modal-content">
-          <div className="close-box" onClick={(e) => handleCloseModal(e)}>
-            <h3 className="close-text">Close</h3>
-            <img src={x} className="photo-modal-x" alt="close modal" />
+      <div className='modal-container' onLoad={listenForEsc()}>
+        <div className='overlay' onClick={(e) => handleCloseModal(e)} />
+        <div className='modal-content'>
+          <div className='close-box' onClick={(e) => handleCloseModal(e)}>
+            <h3 className='close-text'>Close</h3>
+            <img src={x} className='photo-modal-x' alt='close modal' />
           </div>
-          <div className="modal-left-side">
-            <div className="left-margin">
-              <img
-                src={leftArrowCircle}
-                className="photo-modal-nav-button"
-                alt="previous visualization"
-                onClick={(e) => handleNavClick(e, "prev")}
-              />
+          <div className='modal-left-side'>
+            <div className='left-margin'>
+              <img src={leftArrowCircle} className='photo-modal-nav-button' alt='previous visualization' onClick={(e) => handleNavClick(e, 'prev')} />
             </div>
-            <div className="photo-container">
-              <img
-                src={business.imageUrls[chosenPhotoIdx]}
-                alt="delicious food item"
-                className="photo-image"
-              />
+            <div className='photo-container'>
+              <img src={business.imageUrls[chosenPhotoIdx]} alt='delicious food item' className='photo-image' />
             </div>
-            <div className="right-margin">
-              <img
-                src={rightArrowCircle}
-                className="photo-modal-nav-button"
-                alt="next visualization"
-                onClick={(e) => handleNavClick(e, "next")}
-              />
+            <div className='right-margin'>
+              <img src={rightArrowCircle} className='photo-modal-nav-button' alt='next visualization' onClick={(e) => handleNavClick(e, 'next')} />
             </div>
           </div>
-          <div className="modal-right-side">
-            <div className="modal-right-side-content">
-              <h3 className="biz-photos-title">{`Photos for ${business.name}`}</h3>
-              <h4 className="photo-count">{`${chosenPhotoIdx + 1} of ${
-                business.imageUrls.length - 1
-              }`}</h4>
+          <div className='modal-right-side'>
+            <div className='modal-right-side-content'>
+              <h3 className='biz-photos-title'>{`Photos for ${business.name}`}</h3>
+              <h4 className='photo-count'>{`${chosenPhotoIdx + 1} of ${business.imageUrls.length - 1}`}</h4>
             </div>
           </div>
         </div>
@@ -165,14 +149,14 @@ const BusinessPhotos = () => {
   };
 
   return (
-    <div className="overall-page-container">
-      <div className="left-side-margin" />
-      <div className="biz-photos-container">
-        <h2 className="biz-photos-title">{`Photos for ${business.name}`}</h2>
+    <div className='overall-page-container'>
+      <div className='left-side-margin' />
+      <div className='biz-photos-container'>
+        <h2 className='biz-photos-title'>{`Photos for ${business.name}`}</h2>
         <PhotosGrid business={business} />
         {showPhotoModal && <Modal />}
       </div>
-      <div className="right-side-margin" />
+      <div className='right-side-margin' />
     </div>
   );
 };
