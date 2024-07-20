@@ -6,5 +6,7 @@ export const useEscape = (onEscape) => {
       if (e.keyCode === 27) onEscape();
     };
     window.addEventListener('keydown', handleEsc);
+
+    return () => window.removeEventListener('keydown', handleEsc);
   }, [onEscape]);
 };
