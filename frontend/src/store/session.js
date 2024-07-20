@@ -14,12 +14,10 @@ const removeCurrentUser = () => ({
 
 const storeCSRFToken = (response) => {
   const csrfToken = response.headers.get('X-CSRF-Token');
-  // console.log(csrfToken);
   if (csrfToken) sessionStorage.setItem('X-CSRF-Token', csrfToken);
 };
 
 const storeCurrentUser = (user) => {
-  // console.log('storeCurrentUser');
   if (user) sessionStorage.setItem('currentUser', JSON.stringify(user));
   else sessionStorage.removeItem('currentUser');
 };
@@ -35,7 +33,6 @@ export const login =
       })
     });
     const data = await res.json();
-    // console.log(data);
     storeCurrentUser(data);
     dispatch(setCurrentUser(data));
     return res;
@@ -53,7 +50,6 @@ export const signup = (user) => async (dispatch) => {
     })
   });
   const data = await res.json();
-  // console.log(data);
   storeCurrentUser(data);
   dispatch(setCurrentUser(data));
   return res;
@@ -69,13 +65,9 @@ export const logout = () => async (dispatch) => {
 };
 
 export const restoreSession = () => async (dispatch) => {
-  // console.log('restoreSession');
   const res = await csrfFetch('/api/session');
-  // console.log(res);
   storeCSRFToken(res);
-  // console.log('after store');
   const data = await res.json();
-  // console.log(data);
   storeCurrentUser(data.user);
   dispatch(setCurrentUser(data.user));
   return res;

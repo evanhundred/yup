@@ -20,10 +20,4 @@ const csrfFetch = async (url, options = {}) => {
 //   return res;
 // };
 
-// export const storeCSRFToken = (response) => {
-//   console.log('storeCSRFToken');
-//   const csrfToken = response.headers.get('X-CSRF-Token');
-//   if (csrfToken) sessionStorage.setItem('X-CSRF-Token', csrfToken);
-// };
-
 export default csrfFetch;
