@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import useComponentVisible from '../../utils/useComponentVisible';
@@ -17,6 +17,16 @@ const ProfileButton = ({ user }) => {
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
   const [initiallyClicked, setInitiallyClicked] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = [isComponentVisible, setIsComponentVisible];
+
+  useEffect(() => {
+    const closeIfEscape = (e) => {
+      e.key === 'Escape' && setIsMenuVisible(false);
+    };
+    document.addEventListener('keydown', (e) => closeIfEscape(e));
+    return () => {
+      document.removeEventListener('keydown', (e) => closeIfEscape(e));
+    };
+  }, [setIsMenuVisible]);
 
   const toggleProfileMenu = () => {
     if (initiallyClicked) {
