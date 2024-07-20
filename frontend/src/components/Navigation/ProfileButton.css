@@ -20,16 +20,15 @@
   line-height: 1.7;
   border-radius: 5px;
   right: 46px;
+}
 
-  /* cursor: pointer; */
-
-  /* z-index: 2; */
+#session-links.business .profile-dropdown {
+  box-shadow: 1px 1px 5px rgb(106, 101, 101);
 }
 
 .profile-dropdown-row {
   display: flex;
   align-items: center;
-  /* cursor: default; */
   padding: 10px 8px;
   border-radius: 4px;
 }
@@ -42,7 +41,6 @@
   margin-right: 10px;
   display: flex;
   align-items: center;
-  /* cursor: default; */
 }
 
 .logout-button-container .profile-icon {

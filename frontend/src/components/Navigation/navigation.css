@@ -113,10 +113,6 @@ a {
   }
 }
 
-/* #session-links.business-result a.signupButton {
-  color: white;
-} */
-
 /* ------- */
 /* NAV-BAR */
 /* ------- */
@@ -161,6 +157,10 @@ a {
     }
   }
 
+  &.business ul.yup-for-business-dropdown {
+    box-shadow: 1px 1px 5px rgb(106, 101, 101);
+  }
+
   & .yup-for-business-link {
     margin-left: 30px;
 
@@ -173,17 +173,13 @@ a {
 
         color: black;
         top: 85px;
-        /* margin-top: 166px; */
         margin-left: -9px;
         padding: 11px 18px 15px;
-        /* min-width: 230px; */
         max-width: 220px;
         width: max-content;
         font-size: 17px;
-        /* font-weight: 500; */
         line-height: 1.7;
         border-radius: 5px;
-        /* right: 10px; */
         display: flex;
         flex-direction: column;
         gap: 3px;
@@ -211,15 +207,11 @@ a {
             display: flex;
             align-items: center;
             gap: 15px;
-            /* justify-content: space-between; */
-            /* width: max-content; */
           }
 
           & img {
             width: 25px;
             height: 25px;
-            /* width: 12%;
-              height: 12%; */
             display: flex;
             align-items: center;
           }
@@ -227,17 +219,11 @@ a {
           & .menu-h4-container {
             display: flex;
             flex-direction: column;
-
-            /* & .spacer {
-                height: 4px;
-              } */
           }
 
           & h4 {
-            /* padding-top: 2px; */
             display: flex;
             align-items: center;
-            /* margin-top: 1px; */
           }
         }
       }
