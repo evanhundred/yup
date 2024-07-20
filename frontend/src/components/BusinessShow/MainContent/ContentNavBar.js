@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { backgroundNavBar, unBackgroundNavBar } from '../../../utils/modal';
+import { backgroundNavBar, unBackgroundNavBar } from '../../../util/modal';
 import { createSavedBusiness, deleteSavedBusiness } from '../../../store/savedBusinesses';
 import CopyIcon from '../../../assets/icons/copy-icon.png';
 
