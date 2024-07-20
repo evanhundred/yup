@@ -4,7 +4,7 @@ import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { searchBusinesses, resetBusinesses } from '../../store/businesses';
 import { loadMessages, resetMessages } from '../../store/messages';
-import useComponentVisible from '../../utils/useComponentVisible.js';
+import useComponentVisible from '../../util/useComponentVisible.js';
 
 import ProfileButton from './ProfileButton';
 import './navigation.css';

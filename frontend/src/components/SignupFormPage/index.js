@@ -1,19 +1,19 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import * as sessionActions from "../../store/session";
-import "./SignupForm.css";
-import LoginImage from "../LoginFormPage/LoginImage";
-import { backgroundHeaderBar, unBackgroundHeaderBar } from "../../utils/modal";
-import "./modal.css";
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import * as sessionActions from '../../store/session';
+import './SignupForm.css';
+import LoginImage from '../LoginFormPage/LoginImage';
+import { backgroundHeaderBar, unBackgroundHeaderBar } from '../../util/modal';
+import './modal.css';
 
 const SignupFormPage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState([]);
   const [hideErrorBox, setHideErrorBox] = useState(false);
 
@@ -23,44 +23,44 @@ const SignupFormPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState(null);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to='/' />;
 
-  const html = document.querySelector("html");
-  if (!showModal) html.style.overflow = "auto";
+  const html = document.querySelector('html');
+  if (!showModal) html.style.overflow = 'auto';
 
   const handleCloseModal = (e) => {
     e.preventDefault();
-    if (html) html.style.overflow = "auto";
+    if (html) html.style.overflow = 'auto';
     unBackgroundHeaderBar();
     setShowModal(false);
   };
 
   const closeOnPressEsc = (e) => {
-    if (e.key === "Escape") {
+    if (e.key === 'Escape') {
       handleCloseModal(e);
-      html.removeEventListener("keydown", closeOnPressEsc);
+      html.removeEventListener('keydown', closeOnPressEsc);
     }
   };
   const listenForEsc = () => {
-    html.addEventListener("keydown", closeOnPressEsc, { once: true });
+    html.addEventListener('keydown', closeOnPressEsc, { once: true });
   };
 
   const constraints = {
     name: {
       isTooShort: {
         expression: /.{3,30}/,
-        errorMsg: "name must contain from 3 to 30 characters."
+        errorMsg: 'name must contain from 3 to 30 characters.'
       },
       isEmail: {
         expression: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-        errorMsg: "name must not be in email address format."
+        errorMsg: 'name must not be in email address format.'
       }
     },
     email: {
       expression: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-      errorMsg: "email must be in valid format."
+      errorMsg: 'email must be in valid format.'
     },
-    password: "password must match confirm password."
+    password: 'password must match confirm password.'
   };
 
   const validationErrorsExist = Object.keys(validationErrors).length >= 1;
@@ -71,22 +71,15 @@ const SignupFormPage = () => {
     for (const field in constraints) {
       const constraintObj = constraints[field];
       // console.log(constraintObj);
-      if (field === "name") {
+      if (field === 'name') {
         const nameValidationErrors = [];
         for (const validationParameter in constraintObj) {
           // console.log(validationParameter);
           // console.log(constraintObj[validationParameter]);
           // console.log(name);
-          if (
-            (validationParameter === "isTooShort" &&
-              !name.match(constraintObj[validationParameter].expression)) ||
-            (validationParameter === "isEmail" &&
-              name.match(constraintObj[validationParameter].expression))
-          ) {
+          if ((validationParameter === 'isTooShort' && !name.match(constraintObj[validationParameter].expression)) || (validationParameter === 'isEmail' && name.match(constraintObj[validationParameter].expression))) {
             inputsValid = false;
-            nameValidationErrors.push(
-              constraintObj[validationParameter].errorMsg
-            );
+            nameValidationErrors.push(constraintObj[validationParameter].errorMsg);
           }
         }
         const newError = { [field]: nameValidationErrors };
@@ -95,7 +88,7 @@ const SignupFormPage = () => {
           ...newError
         }));
       }
-      if (field === "email") {
+      if (field === 'email') {
         if (!email.match(constraintObj.expression)) {
           inputsValid = false;
           const newError = { [field]: constraintObj.errorMsg };
@@ -105,7 +98,7 @@ const SignupFormPage = () => {
           }));
         }
       }
-      if (field === "password") {
+      if (field === 'password') {
         if (password !== confirmPassword) {
           inputsValid = false;
           const newError = { [field]: constraintObj };
@@ -143,7 +136,7 @@ const SignupFormPage = () => {
     let nameErrorsComponent;
     if (validationErrors.name) {
       nameErrorsComponent = (
-        <div className="name-errors">
+        <div className='name-errors'>
           {validationErrors.name.map((errorMsg, idx) => (
             <h3 key={errorMsg.slice(0, 6).concat(idx)}>{errorMsg}</h3>
           ))}
@@ -153,7 +146,7 @@ const SignupFormPage = () => {
     let emailErrorsComponent;
     if (validationErrors.email) {
       emailErrorsComponent = (
-        <div className="email-errors">
+        <div className='email-errors'>
           <h3>{validationErrors.email}</h3>
         </div>
       );
@@ -161,13 +154,13 @@ const SignupFormPage = () => {
     let passwordErrorsComponent;
     if (validationErrors.password) {
       passwordErrorsComponent = (
-        <div className="password-errors">
+        <div className='password-errors'>
           <h3>{validationErrors.password}</h3>
         </div>
       );
     }
     const component = (
-      <div className="validation-errors-container">
+      <div className='validation-errors-container'>
         {nameErrorsComponent && nameErrorsComponent}
         {emailErrorsComponent && emailErrorsComponent}
         {passwordErrorsComponent && passwordErrorsComponent}
@@ -177,16 +170,14 @@ const SignupFormPage = () => {
   };
 
   const toggleButtonAccess = (type) => {
-    const button = document.querySelector(
-      ".signup-page-container button#sign-up-button"
-    );
-    if (type === "ghost") {
+    const button = document.querySelector('.signup-page-container button#sign-up-button');
+    if (type === 'ghost') {
       setSubmitClicked(true);
-      button.classList.add("ghosted");
+      button.classList.add('ghosted');
     }
-    if (type === "unghost") {
+    if (type === 'unghost') {
       setSubmitClicked(false);
-      button.classList.remove("ghosted");
+      button.classList.remove('ghosted');
     }
   };
 
@@ -197,29 +188,27 @@ const SignupFormPage = () => {
     setHideErrorBox(false);
     setValidationErrors({});
 
-    toggleButtonAccess("ghost");
+    toggleButtonAccess('ghost');
 
     if (validateInputs(e)) {
       // console.log("dispatch route reached.");
 
       const sendDataToBackend = async () => {
         setErrors([]);
-        dispatch(sessionActions.signup({ name, email, password })).catch(
-          async (resError) => {
-            let data;
-            try {
-              data = await resError.clone().json();
-              // console.log(data);
-            } catch {
-              data = await resError.text();
-            }
-            if (data?.errors) setErrors(data.errors);
-            else if (data) setErrors([data]);
-            else setErrors([resError.statusText]);
-            console.log(data);
-            toggleButtonAccess("unghost");
+        dispatch(sessionActions.signup({ name, email, password })).catch(async (resError) => {
+          let data;
+          try {
+            data = await resError.clone().json();
+            // console.log(data);
+          } catch {
+            data = await resError.text();
           }
-        );
+          if (data?.errors) setErrors(data.errors);
+          else if (data) setErrors([data]);
+          else setErrors([resError.statusText]);
+          console.log(data);
+          toggleButtonAccess('unghost');
+        });
       };
 
       sendDataToBackend();
@@ -232,16 +221,16 @@ const SignupFormPage = () => {
   const ErrorBox = () => {
     if (errors.length > 0 && !hideErrorBox) {
       return (
-        <div id="signup-errors">
+        <div id='signup-errors'>
           <ul>
             {errors.map((error) => (
-              <li className="error-line" key={error}>
+              <li className='error-line' key={error}>
                 {error}
               </li>
             ))}
           </ul>
 
-          <button id="closeBoxButton" onClick={closeBox}>
+          <button id='closeBoxButton' onClick={closeBox}>
             x
           </button>
         </div>
@@ -252,10 +241,10 @@ const SignupFormPage = () => {
   };
 
   const renderTOSCopy = () => {
-    const tosCopy = "Be excellent to each other.";
-    const ppCopy = "Your personal data is private.";
-    if (modalType === "tos") return tosCopy;
-    if (modalType === "privacy") return ppCopy;
+    const tosCopy = 'Be excellent to each other.';
+    const ppCopy = 'Your personal data is private.';
+    if (modalType === 'tos') return tosCopy;
+    if (modalType === 'privacy') return ppCopy;
   };
 
   const handleTOSClick = (type) => {
@@ -269,24 +258,21 @@ const SignupFormPage = () => {
 
   const Modal = () => {
     return (
-      <div id="modal-container" onLoad={listenForEsc}>
-        <div className="modal-overlay" onClick={(e) => handleCloseModal(e)} />
-        <div className="modal-box">
-          <div className="modal-content">
-            <div className="modal-line-1">
-              <div
-                className="close-x"
-                onClick={(e) => handleCloseModal(e, "confirm")}
-              >
+      <div id='modal-container' onLoad={listenForEsc}>
+        <div className='modal-overlay' onClick={(e) => handleCloseModal(e)} />
+        <div className='modal-box'>
+          <div className='modal-content'>
+            <div className='modal-line-1'>
+              <div className='close-x' onClick={(e) => handleCloseModal(e, 'confirm')}>
                 <p>X</p>
               </div>
             </div>
-            <div className="modal-line-2">
-              <div className="prompt">
+            <div className='modal-line-2'>
+              <div className='prompt'>
                 <h2>{renderTOSCopy()}</h2>
               </div>
             </div>
-            <div className="buttons">
+            <div className='buttons'>
               <h3 onClick={(e) => handleCloseModal(e)}>OK</h3>
             </div>
           </div>
@@ -298,81 +284,47 @@ const SignupFormPage = () => {
   // console.log(validationErrorsExist);
   // console.log(validationErrors);
   return (
-    <div className="signup-page-container">
-      <div className="error-box-container">
+    <div className='signup-page-container'>
+      <div className='error-box-container'>
         <ErrorBox />
       </div>
-      <div className="signup-left">
-        <div className="top-text">
+      <div className='signup-left'>
+        <div className='top-text'>
           <h2>Sign Up for Yup</h2>
           <h3>Connect with great local businesses</h3>
           <p>
-            By continuing, you agree to Yup's{" "}
-            <span className="link" onClick={() => handleTOSClick("tos")}>
+            By continuing, you agree to Yup's{' '}
+            <span className='link' onClick={() => handleTOSClick('tos')}>
               Terms of Service
-            </span>{" "}
-            and acknowledge Yup's{" "}
-            <span className="link" onClick={() => handleTOSClick("privacy")}>
+            </span>{' '}
+            and acknowledge Yup's{' '}
+            <span className='link' onClick={() => handleTOSClick('privacy')}>
               Privacy Policy
             </span>
             .
           </p>
         </div>
-        <form onSubmit={handleSubmit} className="signup-form">
+        <form onSubmit={handleSubmit} className='signup-form'>
           <label>
-            <input
-              className={
-                errors.length > 0 ? "error-input-field" : "input-field"
-              }
-              value={name}
-              placeholder="Name"
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
+            <input className={errors.length > 0 ? 'error-input-field' : 'input-field'} value={name} placeholder='Name' onChange={(e) => setName(e.target.value)} required />
           </label>
           <label>
-            <input
-              className={
-                errors.length > 0 ? "error-input-field" : "input-field"
-              }
-              value={email}
-              placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+            <input className={errors.length > 0 ? 'error-input-field' : 'input-field'} value={email} placeholder='Email' onChange={(e) => setEmail(e.target.value)} required />
           </label>
           <label>
-            <input
-              className={
-                errors.length > 0 ? "error-input-field" : "input-field"
-              }
-              type="password"
-              value={password}
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            <input className={errors.length > 0 ? 'error-input-field' : 'input-field'} type='password' value={password} placeholder='Password' onChange={(e) => setPassword(e.target.value)} required />
           </label>
           <label>
-            <input
-              className={
-                errors.length > 0 ? "error-input-field" : "input-field"
-              }
-              type="password"
-              value={confirmPassword}
-              placeholder="Confirm Password"
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
+            <input className={errors.length > 0 ? 'error-input-field' : 'input-field'} type='password' value={confirmPassword} placeholder='Confirm Password' onChange={(e) => setConfirmPassword(e.target.value)} required />
           </label>
-          <button id="sign-up-button">Sign Up</button>
+          <button id='sign-up-button'>Sign Up</button>
         </form>
-        <div className="login-footer">
-          Already on Yup? <a href="/login">Log in</a>
+        <div className='login-footer'>
+          Already on Yup? <a href='/login'>Log in</a>
         </div>
         {validationErrorsExist && renderValidationErrors()}
       </div>
-      <div className="signup-right">
+      <div className='signup-right'>
         <LoginImage />
       </div>
       {showModal && <Modal />}

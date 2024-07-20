@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import { overallStarBox, reviewItemStarBox } from "../../../utils/starBox";
-import writeReviewIcon from "../../../assets/icons/writing.png";
+import { overallStarBox, reviewItemStarBox } from '../../../util/starBox';
+import writeReviewIcon from '../../../assets/icons/writing.png';
 
 const Reviews = ({ business, handleWriteReview, currentUser }) => {
   const getAuthorName = (review) => {
@@ -14,24 +14,21 @@ const Reviews = ({ business, handleWriteReview, currentUser }) => {
     return authorName;
   };
   const reviewItems = business.reviews.map((review, idx) => (
-    <div key={idx} className="review-item-container">
-      <div className="top-card">
-        <div className="profile-image-container">
-          <div
-            className="profile-picture"
-            style={{ color: "orange", fontSize: "40px" }}
-          >
-            <i className="fa-solid fa-carrot"></i>
+    <div key={idx} className='review-item-container'>
+      <div className='top-card'>
+        <div className='profile-image-container'>
+          <div className='profile-picture' style={{ color: 'orange', fontSize: '40px' }}>
+            <i className='fa-solid fa-carrot'></i>
           </div>
         </div>
-        <h5 className="author-name">{getAuthorName(review)}</h5>
+        <h5 className='author-name'>{getAuthorName(review)}</h5>
       </div>
-      <div className="star-rating">{reviewItemStarBox(review.rating)}</div>
-      <div className="review-text">{review.body}</div>
+      <div className='star-rating'>{reviewItemStarBox(review.rating)}</div>
+      <div className='review-text'>{review.body}</div>
       {currentUser && currentUser.id === review.author_id && (
-        <div className="edit-link">
+        <div className='edit-link'>
           <Link to={`/businesses/${business.id}/reviews/${review.id}/edit`}>
-            <h4 className="edit-review-link">Edit Review</h4>
+            <h4 className='edit-review-link'>Edit Review</h4>
           </Link>
         </div>
       )}
@@ -41,14 +38,14 @@ const Reviews = ({ business, handleWriteReview, currentUser }) => {
   const starsLegendsDivs = () => {
     const legendTextStrings = [];
     for (let i = 5; i >= 1; i--) {
-      const nextString = `${i} star${i > 1 ? "s" : ""}`;
+      const nextString = `${i} star${i > 1 ? 's' : ''}`;
       legendTextStrings.push(nextString);
     }
     return (
       <>
         {legendTextStrings.map((string) => {
           return (
-            <div key={string} className="star-rating-legend-container">
+            <div key={string} className='star-rating-legend-container'>
               <h4>{string}</h4>
             </div>
           );
@@ -110,10 +107,7 @@ const Reviews = ({ business, handleWriteReview, currentUser }) => {
         {fiver.map((num) => {
           return (
             <div key={num} className={`bar-${num}-star`}>
-              <div
-                className="color-bar"
-                style={{ width: `${stylePercentages[num]}%` }}
-              />
+              <div className='color-bar' style={{ width: `${stylePercentages[num]}%` }} />
             </div>
           );
         })}
@@ -122,35 +116,33 @@ const Reviews = ({ business, handleWriteReview, currentUser }) => {
   };
 
   return (
-    <div id="reviews-container" className="reviews-card-container">
-      <div className="reviews-title-container">
+    <div id='reviews-container' className='reviews-card-container'>
+      <div className='reviews-title-container'>
         <h2>Reviews</h2>
       </div>
-      <div className="write-review-link" onClick={(e) => handleWriteReview(e)}>
-        <div className="write-review-icon">
-          <img src={writeReviewIcon} alt="write your review" />
+      <div className='write-review-link' onClick={(e) => handleWriteReview(e)}>
+        <div className='write-review-icon'>
+          <img src={writeReviewIcon} alt='write your review' />
         </div>
         <h3>Write your review.</h3>
       </div>
-      <div className="recommended-reviews-title">
+      <div className='recommended-reviews-title'>
         <h4>Recommended Reviews</h4>
       </div>
-      <div className="overall-ratings-box">
-        <div className="left-side">
+      <div className='overall-ratings-box'>
+        <div className='left-side'>
           <h4>Overall rating</h4>
-          <div className="overall-rating-star-box-container">
-            {overallStarBox(business.reviews)}
-          </div>
-          <p className="review-count">{business.reviews.length} reviews</p>
+          <div className='overall-rating-star-box-container'>{overallStarBox(business.reviews)}</div>
+          <p className='review-count'>{business.reviews.length} reviews</p>
         </div>
 
-        <div className="right-side">
-          <div className="stars-legends-container">{starsLegendsDivs()}</div>
-          <div className="rating-bars-container">{ratingBarsDivs()}</div>
+        <div className='right-side'>
+          <div className='stars-legends-container'>{starsLegendsDivs()}</div>
+          <div className='rating-bars-container'>{ratingBarsDivs()}</div>
         </div>
       </div>
 
-      <div className="reviews-content">{reviewItems}</div>
+      <div className='reviews-content'>{reviewItems}</div>
     </div>
   );
 };
