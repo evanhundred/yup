@@ -2,12 +2,16 @@ import { useRef, useEffect, useState } from 'react';
 
 const useComponentVisible = (initialIsVisible) => {
   const [isComponentVisible, setIsComponentVisible] = useState(initialIsVisible);
-  const ref = useRef(null);
+  const menuRef = useRef(null);
+  const toggleRef = useRef(null);
 
-  // console.log('useComponentVisible');
+  console.log('useComponentVisible');
 
   const handleClickOutside = (e) => {
-    if (ref.current && !ref.current.contains(e.target)) {
+    console.log(e.target);
+    if (toggleRef.current && toggleRef.current.contains(e.target)) {
+      setIsComponentVisible(!isComponentVisible);
+    } else if (menuRef.current && !menuRef.current.contains(e.target)) {
       setIsComponentVisible(false);
     }
   };
@@ -19,7 +23,12 @@ const useComponentVisible = (initialIsVisible) => {
     };
   }, []);
 
-  return { ref, isComponentVisible, setIsComponentVisible };
+  // const toggleComponent = (activeState) => {
+  //   setIsComponentVisible(!activeState);
+  //   return isComponentVisible;
+  // };
+
+  return { menuRef, toggleRef, isComponentVisible };
 };
 
 export default useComponentVisible;

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import useComponentVisible from '../../util/useComponentVisible';
@@ -15,9 +15,11 @@ const Carrot = () => (
 
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
-  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
+  const { menuRef, toggleRef, isComponentVisible } = useComponentVisible(false);
   // const [initiallyClicked, setInitiallyClicked] = useState(false);
-  const [isMenuVisible, setIsMenuVisible] = [isComponentVisible, setIsComponentVisible];
+  // const [isMenuVisible, setIsMenuVisible] = [isComponentVisible, setIsComponentVisible];
+  console.log(isComponentVisible);
+  const [isMenuVisible, setIsMenuVisible] = useState(isComponentVisible);
 
   useEscape(() => {
     // console.log(isMenuVisible);
@@ -35,9 +37,17 @@ const ProfileButton = ({ user }) => {
   //   };
   // }, [setIsMenuVisible]);
 
-  const toggleProfileMenu = () => {
-    // setIsComponentVisible(!isComponentVisible);
-  };
+  // const toggleProfileMenu = () => {
+  //   // setIsComponentVisible(!isComponentVisible);
+  //   console.log(isMenuVisible);
+  //   toggleComponent(isMenuVisible);
+  //   // if (!isMenuVisible) {
+  //   //   setIsMenuVisible(true);
+  //   // } else {
+  //   //   setIsMenuVisible(false);
+  //   // }
+  //   console.log(isMenuVisible);
+  // };
 
   const handleLogoutClick = (e) => {
     logout(e);
@@ -49,12 +59,12 @@ const ProfileButton = ({ user }) => {
   };
 
   return (
-    <div id='profile-menu-button'>
-      <div className='profile-image-container' onClick={toggleProfileMenu}>
+    <div id='profile-menu-button' ref={toggleRef}>
+      <div className='profile-image-container'>
         <Carrot />
       </div>
       {isMenuVisible && (
-        <ul className='profile-dropdown' ref={ref}>
+        <ul className='profile-dropdown' ref={menuRef}>
           <li className='user-options-container'>
             <div className='first-row profile-dropdown-row'>
               <div className='profile-icon'>
