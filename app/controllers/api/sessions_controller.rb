@@ -5,7 +5,6 @@ module Api
   class SessionsController < ApplicationController
     def show
       if current_user
-        # render json: { user: current_user }
         @user = current_user
         render '/api/users/show'
       else

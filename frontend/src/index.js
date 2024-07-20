@@ -6,7 +6,7 @@ import './index.css';
 import './reset.css';
 import App from './App';
 import configureStore from './store';
-import csrfFetch, { restoreCSRF } from './store/csrf';
+import csrfFetch from './store/csrf';
 import * as sessionActions from './store/session';
 import * as businessActions from './store/businesses';
 import * as bizPhotoBoxActions from './store/bizPhotoBoxes';
@@ -34,32 +34,46 @@ const Root = () => {
 const renderApplication = () => {
   let container = null;
 
-  document.addEventListener('DOMContentLoaded', function (event) {
-    if (!container) {
-      container = document.getElementById('root');
-      const root = createRoot(container);
-      root.render(
-        <div>
-          <React.StrictMode>
-            <Root />
-          </React.StrictMode>
-        </div>
-      );
-    }
-  });
+  console.log('render');
+  if (!container) {
+    container = document.getElementById('root');
+    const root = createRoot(container);
+    root.render(
+      <div>
+        <React.StrictMode>
+          <Root />
+        </React.StrictMode>
+      </div>
+    );
+  }
+
+  // document.addEventListener('DOMContentLoaded', function () {
+  //   console.log('render');
+  //   if (!container) {
+  //     container = document.getElementById('root');
+  //     const root = createRoot(container);
+  //     root.render(
+  //       <div>
+  //         <React.StrictMode>
+  //           <Root />
+  //         </React.StrictMode>
+  //       </div>
+  //     );
+  //   }
+  // });
 };
 
-if (sessionStorage.getItem('X-CSRF-Token') === null) {
-  restoreCSRF().then(renderApplication);
-} else {
-  renderApplication();
-}
+// if (sessionStorage.getItem('X-CSRF-Token') === null) {
+//   // console.log('xcsrf === null');
+//   restoreCSRF().then(renderApplication);
+// } else {
+//   renderApplication();
+// }
 
-if (
-  sessionStorage.getItem('currentUser') === null ||
-  sessionStorage.getItem('X-CSRF-Token') === null
-) {
+if (sessionStorage.getItem('currentUser') === null || sessionStorage.getItem('X-CSRF-Token') === null) {
+  console.log('else');
   store.dispatch(sessionActions.restoreSession()).then(renderApplication);
 } else {
+  console.log('else');
   renderApplication();
 }
