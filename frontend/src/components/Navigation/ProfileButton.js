@@ -20,7 +20,7 @@ const ProfileButton = ({ user }) => {
   const [isMenuVisible, setIsMenuVisible] = [isComponentVisible, setIsComponentVisible];
 
   useEscape(() => {
-    console.log(isMenuVisible);
+    // console.log(isMenuVisible);
     if (isMenuVisible) setIsMenuVisible(false);
     // setInitiallyClicked(false);
   });
@@ -36,15 +36,7 @@ const ProfileButton = ({ user }) => {
   // }, [setIsMenuVisible]);
 
   const toggleProfileMenu = () => {
-    // if (initiallyClicked) {
-    //   setInitiallyClicked(false);
-    // } else if (!isMenuVisible) {
-    //   setInitiallyClicked(true);
-    // console.log(isMenuVisible);
-    setIsMenuVisible(!isMenuVisible);
-    // console.log(isMenuVisible);
-    // setIsMenuVisible(true);
-    // }
+    // setIsComponentVisible(!isComponentVisible);
   };
 
   const handleLogoutClick = (e) => {
