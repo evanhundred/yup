@@ -27,7 +27,7 @@
 }
 
 #session-links.business .profile-dropdown {
-  box-shadow: 0 0 5px black;
+  box-shadow: 1px 1px 5px rgb(106, 101, 101);
 }
 
 .profile-dropdown-row {
