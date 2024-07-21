@@ -6,14 +6,18 @@ const useComponentVisible = (initialIsVisible) => {
   const menuRef = useRef(null);
   const toggleRef = useRef(null);
 
-  console.log('useComponentVisible');
+  // console.log('useComponentVisible');
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      // console.log(e.target);
-      if (toggleRef.current && toggleRef.current.contains(e.target)) {
+      console.log(e.target);
+      console.log(menuRef.current);
+      console.log(menuRef.current && menuRef.current.contains(e.target));
+      if (menuRef.current && menuRef.current.contains(e.target)) {
+        return;
+      } else if (toggleRef.current && toggleRef.current.contains(e.target)) {
         setIsComponentVisible(!isComponentVisible);
-      } else if (menuRef.current && !menuRef.current.contains(e.target)) {
+      } else {
         setIsComponentVisible(false);
       }
     };

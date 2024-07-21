@@ -18,7 +18,7 @@ const ProfileButton = ({ user }) => {
   const { menuRef, toggleRef, isComponentVisible } = useComponentVisible(false);
   // const [initiallyClicked, setInitiallyClicked] = useState(false);
   // const [isMenuVisible, setIsMenuVisible] = [isComponentVisible, setIsComponentVisible];
-  console.log(isComponentVisible);
+  // console.log(isComponentVisible);
   // const [isMenuVisible, setIsMenuVisible] = useState(isComponentVisible);
   const isMenuVisible = isComponentVisible;
 
