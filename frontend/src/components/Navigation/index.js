@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useState, useRef } from 'react';
+import { useMemo, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -106,18 +106,19 @@ const Navigation = () => {
 
   const YupForBusinessMenu = () => {
     const currentUser = useSelector((state) => state.session.user);
-    const [initiallyClicked, setInitiallyClicked] = useState(false);
-    const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
-    const [showYupForBusinessMenu, setShowYupForBusinessMenu] = [isComponentVisible, setIsComponentVisible];
+    // const [initiallyClicked, setInitiallyClicked] = useState(false);
+    const { menuRef, toggleRef, isComponentVisible } = useComponentVisible(false);
+    // const [showYupForBusinessMenu, setShowYupForBusinessMenu] = [isComponentVisible, setIsComponentVisible];
+    const isMenuVisible = isComponentVisible;
 
-    const toggleYupForBusinessMenu = () => {
-      if (initiallyClicked) {
-        setInitiallyClicked(false);
-      } else if (!showYupForBusinessMenu) {
-        setInitiallyClicked(true);
-        setShowYupForBusinessMenu(true);
-      }
-    };
+    // const toggleYupForBusinessMenu = () => {
+    //   if (initiallyClicked) {
+    //     setInitiallyClicked(false);
+    //   } else if (!showYupForBusinessMenu) {
+    //     setInitiallyClicked(true);
+    //     setShowYupForBusinessMenu(true);
+    //   }
+    // };
 
     const handleYupForBusinessClick = () => {
       if (currentUser) history.push('/add-business-as-owner');
@@ -125,12 +126,12 @@ const Navigation = () => {
     };
 
     return (
-      <div className='yup-for-business-link' onClick={toggleYupForBusinessMenu}>
+      <div className='yup-for-business-link' ref={toggleRef}>
         <h4>Yup for Business</h4>
         <img src={pageType === 'index' ? downArrowWhite : downArrowBlack} alt='drop down this menu' />
         <div id='yup-for-business-menu-wrapper'>
-          {showYupForBusinessMenu && (
-            <ul className='yup-for-business-dropdown' ref={ref}>
+          {isMenuVisible && (
+            <ul className='yup-for-business-dropdown' ref={menuRef}>
               <li>
                 <div className='first-row' onClick={handleYupForBusinessClick}>
                   <img src={onlineStore} alt='add a business' />

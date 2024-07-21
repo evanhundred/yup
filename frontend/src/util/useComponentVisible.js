@@ -7,21 +7,21 @@ const useComponentVisible = (initialIsVisible) => {
 
   console.log('useComponentVisible');
 
-  const handleClickOutside = (e) => {
-    console.log(e.target);
-    if (toggleRef.current && toggleRef.current.contains(e.target)) {
-      setIsComponentVisible(!isComponentVisible);
-    } else if (menuRef.current && !menuRef.current.contains(e.target)) {
-      setIsComponentVisible(false);
-    }
-  };
   useEffect(() => {
+    const handleClickOutside = (e) => {
+      // console.log(e.target);
+      if (toggleRef.current && toggleRef.current.contains(e.target)) {
+        setIsComponentVisible(!isComponentVisible);
+      } else if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setIsComponentVisible(false);
+      }
+    };
     document.addEventListener('click', handleClickOutside, true);
 
     return () => {
       document.removeEventListener('click', handleClickOutside, true);
     };
-  }, []);
+  }, [isComponentVisible]);
 
   // const toggleComponent = (activeState) => {
   //   setIsComponentVisible(!activeState);
