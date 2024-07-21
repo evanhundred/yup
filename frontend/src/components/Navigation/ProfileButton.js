@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import useComponentVisible from '../../util/useComponentVisible';
-import { useEscape } from '../../util';
+// import { useEscape } from '../../util';
 import './ProfileButton.css';
 import profileIcon from '../../assets/images/profile.png';
 import logoutButton from '../../assets/images/logout.png';
@@ -19,13 +19,14 @@ const ProfileButton = ({ user }) => {
   // const [initiallyClicked, setInitiallyClicked] = useState(false);
   // const [isMenuVisible, setIsMenuVisible] = [isComponentVisible, setIsComponentVisible];
   console.log(isComponentVisible);
-  const [isMenuVisible, setIsMenuVisible] = useState(isComponentVisible);
+  // const [isMenuVisible, setIsMenuVisible] = useState(isComponentVisible);
+  const isMenuVisible = isComponentVisible;
 
-  useEscape(() => {
-    // console.log(isMenuVisible);
-    if (isMenuVisible) setIsMenuVisible(false);
-    // setInitiallyClicked(false);
-  });
+  // useEscape(() => {
+  //   // console.log(isMenuVisible);
+  //   if (isMenuVisible) setIsMenuVisible(false);
+  //   // setInitiallyClicked(false);
+  // });
 
   // useEffect(() => {
   //   const closeIfEscape = (e) => {
