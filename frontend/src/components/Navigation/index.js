@@ -106,19 +106,8 @@ const Navigation = () => {
 
   const YupForBusinessMenu = () => {
     const currentUser = useSelector((state) => state.session.user);
-    // const [initiallyClicked, setInitiallyClicked] = useState(false);
     const { menuRef, toggleRef, isComponentVisible } = useComponentVisible(false);
-    // const [showYupForBusinessMenu, setShowYupForBusinessMenu] = [isComponentVisible, setIsComponentVisible];
     const isMenuVisible = isComponentVisible;
-
-    // const toggleYupForBusinessMenu = () => {
-    //   if (initiallyClicked) {
-    //     setInitiallyClicked(false);
-    //   } else if (!showYupForBusinessMenu) {
-    //     setInitiallyClicked(true);
-    //     setShowYupForBusinessMenu(true);
-    //   }
-    // };
 
     const handleYupForBusinessClick = () => {
       if (currentUser) history.push('/add-business-as-owner');

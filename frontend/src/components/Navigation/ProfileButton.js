@@ -1,8 +1,6 @@
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import useComponentVisible from '../../util/useComponentVisible';
-// import { useEscape } from '../../util';
 import './ProfileButton.css';
 import profileIcon from '../../assets/images/profile.png';
 import logoutButton from '../../assets/images/logout.png';
@@ -16,39 +14,7 @@ const Carrot = () => (
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
   const { menuRef, toggleRef, isComponentVisible } = useComponentVisible(false);
-  // const [initiallyClicked, setInitiallyClicked] = useState(false);
-  // const [isMenuVisible, setIsMenuVisible] = [isComponentVisible, setIsComponentVisible];
-  // console.log(isComponentVisible);
-  // const [isMenuVisible, setIsMenuVisible] = useState(isComponentVisible);
   const isMenuVisible = isComponentVisible;
-
-  // useEscape(() => {
-  //   // console.log(isMenuVisible);
-  //   if (isMenuVisible) setIsMenuVisible(false);
-  //   // setInitiallyClicked(false);
-  // });
-
-  // useEffect(() => {
-  //   const closeIfEscape = (e) => {
-  //     e.key === 'Escape' && setIsMenuVisible(false);
-  //   };
-  //   document.addEventListener('keydown', (e) => closeIfEscape(e));
-  //   return () => {
-  //     document.removeEventListener('keydown', (e) => closeIfEscape(e));
-  //   };
-  // }, [setIsMenuVisible]);
-
-  // const toggleProfileMenu = () => {
-  //   // setIsComponentVisible(!isComponentVisible);
-  //   console.log(isMenuVisible);
-  //   toggleComponent(isMenuVisible);
-  //   // if (!isMenuVisible) {
-  //   //   setIsMenuVisible(true);
-  //   // } else {
-  //   //   setIsMenuVisible(false);
-  //   // }
-  //   console.log(isMenuVisible);
-  // };
 
   const handleLogoutClick = (e) => {
     logout(e);

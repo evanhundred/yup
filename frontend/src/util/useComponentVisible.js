@@ -1,12 +1,9 @@
 import { useRef, useEffect, useState } from 'react';
-// import { useEscape } from '.'
 
 const useComponentVisible = (initialIsVisible) => {
   const [isComponentVisible, setIsComponentVisible] = useState(initialIsVisible);
   const menuRef = useRef(null);
   const toggleRef = useRef(null);
-
-  // console.log('useComponentVisible');
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -24,7 +21,6 @@ const useComponentVisible = (initialIsVisible) => {
     const handleKeypress = (e) => {
       console.log(e);
       if (isComponentVisible && e.keyCode === 27) {
-        // Escape key
         setIsComponentVisible(false);
       }
     };
@@ -36,11 +32,6 @@ const useComponentVisible = (initialIsVisible) => {
       document.removeEventListener('keydown', handleKeypress, true);
     };
   }, [isComponentVisible]);
-
-  // const toggleComponent = (activeState) => {
-  //   setIsComponentVisible(!activeState);
-  //   return isComponentVisible;
-  // };
 
   return { menuRef, toggleRef, isComponentVisible };
 };
