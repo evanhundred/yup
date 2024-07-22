@@ -1,8 +1,6 @@
-import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import useComponentVisible from '../../util/useComponentVisible';
-import { useEscape } from '../../util';
 import './ProfileButton.css';
 import profileIcon from '../../assets/images/profile.png';
 import logoutButton from '../../assets/images/logout.png';
@@ -15,37 +13,8 @@ const Carrot = () => (
 
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
-  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
-  // const [initiallyClicked, setInitiallyClicked] = useState(false);
-  const [isMenuVisible, setIsMenuVisible] = [isComponentVisible, setIsComponentVisible];
-
-  useEscape(() => {
-    console.log(isMenuVisible);
-    if (isMenuVisible) setIsMenuVisible(false);
-    // setInitiallyClicked(false);
-  });
-
-  // useEffect(() => {
-  //   const closeIfEscape = (e) => {
-  //     e.key === 'Escape' && setIsMenuVisible(false);
-  //   };
-  //   document.addEventListener('keydown', (e) => closeIfEscape(e));
-  //   return () => {
-  //     document.removeEventListener('keydown', (e) => closeIfEscape(e));
-  //   };
-  // }, [setIsMenuVisible]);
-
-  const toggleProfileMenu = () => {
-    // if (initiallyClicked) {
-    //   setInitiallyClicked(false);
-    // } else if (!isMenuVisible) {
-    //   setInitiallyClicked(true);
-    // console.log(isMenuVisible);
-    setIsMenuVisible(!isMenuVisible);
-    // console.log(isMenuVisible);
-    // setIsMenuVisible(true);
-    // }
-  };
+  const { menuRef, toggleRef, isComponentVisible } = useComponentVisible(false);
+  const isMenuVisible = isComponentVisible;
 
   const handleLogoutClick = (e) => {
     logout(e);
@@ -57,12 +26,12 @@ const ProfileButton = ({ user }) => {
   };
 
   return (
-    <div id='profile-menu-button'>
-      <div className='profile-image-container' onClick={toggleProfileMenu}>
+    <div id='profile-menu-button' ref={toggleRef}>
+      <div className='profile-image-container'>
         <Carrot />
       </div>
       {isMenuVisible && (
-        <ul className='profile-dropdown' ref={ref}>
+        <ul className='profile-dropdown' ref={menuRef}>
           <li className='user-options-container'>
             <div className='first-row profile-dropdown-row'>
               <div className='profile-icon'>
