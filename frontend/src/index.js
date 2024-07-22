@@ -34,7 +34,7 @@ const Root = () => {
 const renderApplication = () => {
   let container = null;
 
-  console.log('render');
+  // console.log('render');
   if (!container) {
     container = document.getElementById('root');
     const root = createRoot(container);
@@ -71,9 +71,9 @@ const renderApplication = () => {
 // }
 
 if (sessionStorage.getItem('currentUser') === null || sessionStorage.getItem('X-CSRF-Token') === null) {
-  console.log('else');
+  // console.log('else');
   store.dispatch(sessionActions.restoreSession()).then(renderApplication);
 } else {
-  console.log('else');
+  // console.log('else');
   renderApplication();
 }

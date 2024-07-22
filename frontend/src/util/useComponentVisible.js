@@ -7,9 +7,9 @@ const useComponentVisible = (initialIsVisible) => {
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      console.log(e.target);
-      console.log(menuRef.current);
-      console.log(menuRef.current && menuRef.current.contains(e.target));
+      // console.log(e.target);
+      // console.log(menuRef.current);
+      // console.log(menuRef.current && menuRef.current.contains(e.target));
       if (menuRef.current && menuRef.current.contains(e.target)) {
         return;
       } else if (toggleRef.current && toggleRef.current.contains(e.target)) {
@@ -19,7 +19,7 @@ const useComponentVisible = (initialIsVisible) => {
       }
     };
     const handleKeypress = (e) => {
-      console.log(e);
+      // console.log(e);
       if (isComponentVisible && e.keyCode === 27) {
         setIsComponentVisible(false);
       }
