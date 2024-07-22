@@ -15,12 +15,7 @@ const Footer = () => {
   const spiderImageAttribution = (
     <span className='spider-image-attribution'>
       Spider image created by
-      <a
-        href='https://www.flaticon.com/free-icons/draw'
-        title='draw icons'
-        rel='noopener noreferrer'
-        target='_blank'
-      >
+      <a href='https://www.flaticon.com/free-icons/draw' title='draw icons' rel='noopener noreferrer' target='_blank'>
         {' '}
         Freepik - Flaticon
       </a>
@@ -36,12 +31,7 @@ const Footer = () => {
       <span>
         {' '}
         Draw icons created by
-        <a
-          href='https://www.flaticon.com/free-icons/draw'
-          title='draw icons'
-          rel='noopener noreferrer'
-          target='_blank'
-        >
+        <a href='https://www.flaticon.com/free-icons/draw' title='draw icons' rel='noopener noreferrer' target='_blank'>
           {' '}
           Freepik - Flaticon
         </a>
@@ -56,12 +46,7 @@ const Footer = () => {
         <span>
           {' '}
           Blueberry pie image by{' '}
-          <a
-            href='https://www.123rf.com/profile_lineartestpilot'
-            title='pie'
-            rel='noopener noreferrer'
-            target='_blank'
-          >
+          <a href='https://www.123rf.com/profile_lineartestpilot' title='pie' rel='noopener noreferrer' target='_blank'>
             lineartestpilot
           </a>
           .
@@ -74,22 +59,12 @@ const Footer = () => {
     return (
       <span className='image-attribution'>
         'Copy' Icon made by
-        <a
-          href='https://www.flaticon.com/authors/catalin-fertu'
-          title='Catalin Fertu'
-          rel='noopener noreferrer'
-          target='_blank'
-        >
+        <a href='https://www.flaticon.com/authors/catalin-fertu' title='Catalin Fertu' rel='noopener noreferrer' target='_blank'>
           {' '}
           Catalin Fertu
         </a>{' '}
         from
-        <a
-          href='https://www.flaticon.com/'
-          rel='noopener noreferrer'
-          target='_blank'
-          title='Flaticon'
-        >
+        <a href='https://www.flaticon.com/' rel='noopener noreferrer' target='_blank' title='Flaticon'>
           {' '}
           www.flaticon.com.
         </a>
@@ -100,12 +75,7 @@ const Footer = () => {
   const navBarAttribution = (
     <span className='nav-bar-attribution'>
       Down arrow icon created by{' '}
-      <a
-        href='https://www.flaticon.com/free-icons/down-arrow'
-        title='down arrow icons'
-        rel='noopener noreferrer'
-        target='_blank'
-      >
+      <a href='https://www.flaticon.com/free-icons/down-arrow' title='down arrow icons' rel='noopener noreferrer' target='_blank'>
         Roundicons - Flaticon
       </a>
       .
@@ -115,12 +85,7 @@ const Footer = () => {
   const addBizAsOwnerAttribution = (
     <span className='add-biz-as-owner-attribution'>
       Left arrow icon created by{' '}
-      <a
-        href='https://www.flaticon.com/authors/ariefstudio'
-        title='ariefstudio'
-        rel='noopener noreferrer'
-        target='_blank'
-      >
+      <a href='https://www.flaticon.com/authors/ariefstudio' title='ariefstudio' rel='noopener noreferrer' target='_blank'>
         ariefstudio - Flaticon
       </a>
       .
@@ -131,21 +96,11 @@ const Footer = () => {
     return (
       <span className='search-results-attribution'>
         Broccoli icon made by{' '}
-        <a
-          href='https://www.flaticon.com/authors/futuer'
-          title='Futuer'
-          rel='noopener noreferrer'
-          target='_blank'
-        >
+        <a href='https://www.flaticon.com/authors/futuer' title='Futuer' rel='noopener noreferrer' target='_blank'>
           Futuer
         </a>{' '}
         from{' '}
-        <a
-          href='https://www.flaticon.com/'
-          title='Flaticon'
-          rel='noopener noreferrer'
-          target='_blank'
-        >
+        <a href='https://www.flaticon.com/' title='Flaticon' rel='noopener noreferrer' target='_blank'>
           www.flaticon.com
         </a>
         .
@@ -157,34 +112,20 @@ const Footer = () => {
     <div className='footer'>
       <p>
         Copyright © 2024 Yup Inc. and
-        <a
-          href='https://evanryan.dev'
-          rel='noopener noreferrer'
-          target='_blank'
-        >
+        <a href='https://evanryan.dev' rel='noopener noreferrer' target='_blank'>
           {' '}
           Evan Ryan
         </a>
-        . Ruby, Rails, PostgreSQL, JavaScript, React, Redux, and related
-        languages and frameworks are implemented by Yup.{' '}
-        {!['/add-business-as-owner', 'add-business-as-customer'].includes(
-          location.pathname
-        ) && navBarAttribution}{' '}
-        {location.state &&
-          location.state.searchErrors &&
-          spiderImageAttribution}
-        {['/add-business-as-owner', 'add-business-as-customer'].includes(
-          location.pathname
-        ) && addBizAsOwnerAttribution}
+        . Ruby, Rails, PostgreSQL, JavaScript, React, Redux, and Git are used to implement Yup. {!['/add-business-as-owner', 'add-business-as-customer'].includes(location.pathname) && navBarAttribution} {location.state && location.state.searchErrors && spiderImageAttribution}
+        {['/add-business-as-owner', 'add-business-as-customer'].includes(location.pathname) && addBizAsOwnerAttribution}
         {location.state === '404' && <BizShowErrorCopy />}
-        {location.state !== '404' &&
-          location.pathname.match(/businesses\/[0-9]+/) && (
-            <>
-              <ShareIconCopy />
-              {reviewWriteIconAttribution}
-              {stubAttribution()}
-            </>
-          )}
+        {location.state !== '404' && location.pathname.match(/businesses\/[0-9]+/) && (
+          <>
+            <ShareIconCopy />
+            {reviewWriteIconAttribution}
+            {stubAttribution()}
+          </>
+        )}
         {location.pathname.match(/search/) && searchResultsAttribution()}
       </p>
     </div>
