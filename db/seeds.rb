@@ -35,14 +35,24 @@ User.create!(
 10.times do
   first = Faker::Name.first_name
   User.create!({
-                 name: "#{first} #{('A'..'Z').to_a.sample(1).first}.",
-                 # email: first + "-" + (Faker::Creature::Animal.name)
-                 email: Faker::Internet.unique.email(name: "#{first}.#{Faker::Creature::Animal.name}"),
-                 password: 'password'
-               })
+    name: "#{first} #{('A'..'Z').to_a.sample(1).first}.",
+    # email: first + "-" + (Faker::Creature::Animal.name)
+    email: Faker::Internet.unique.email(name: "#{first}.#{Faker::Creature::Animal.name}"),
+    password: 'password'
+  })
 end
 
 puts 'Creating businesses...'
+
+TOTAL_SEEDED_BUSINESSES = 6
+businesses = []
+
+TOTAL_SEEDED_BUSINESSES times do
+  business =
+end
+
+
+
 
 business1 = Business.create!(
   name: 'Devoción',
@@ -206,6 +216,7 @@ business6 = Business.create!(
   country_code: 1,
   stub: 'false'
 )
+
 
 business1.photos.attach(
   io: URI.open('https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/1-devocion/photo_1.jpg'),
