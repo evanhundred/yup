@@ -26,15 +26,16 @@ ApplicationRecord.connection.reset_pk_sequence!('saved_businesses')
 ApplicationRecord.connection.reset_pk_sequence!('owned_businesses')
 
 puts 'Creating users...'
-User.create!(
-  name: 'John B.',
+users = []
+users << User.create!(
+name: 'John B.',
   email: 'john@email.io',
   password: 'password'
 )
 
 10.times do
   first = Faker::Name.first_name
-  User.create!({
+  users << User.create!({
     name: "#{first} #{('A'..'Z').to_a.sample(1).first}.",
     # email: first + "-" + (Faker::Creature::Animal.name)
     email: Faker::Internet.unique.email(name: "#{first}.#{Faker::Creature::Animal.name}"),
