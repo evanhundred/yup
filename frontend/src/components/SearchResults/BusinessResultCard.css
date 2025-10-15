@@ -13,10 +13,7 @@
   & .business-card-container.hovered {
     box-shadow: 0 0 20px 0 rgb(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 6px;
-  }
-
-  & .business-card-container div.shadow-reset {
-    margin: 1px;
+    border-bottom: 2px solid rgb(0, 0, 0, 0);
   }
 
   & .business-photo-container {
