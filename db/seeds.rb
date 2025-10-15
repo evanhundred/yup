@@ -48,8 +48,8 @@ puts 'Creating businesses...'
 TOTAL_SEEDED_BUSINESSES = 6
 businesses = []
 
-TOTAL_SEEDED_BUSINESSES times do |i|
-  business = Business.create!(File.read("./seed_businesses/business.#{i}.rb"))
+TOTAL_SEEDED_BUSINESSES.times do |i|
+  business = Business.create!(File.read("./db/seed_businesses/business.#{i + 1}.rb"))
   businesses << business
 end
 
