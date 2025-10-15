@@ -45,12 +45,22 @@ end
 
 puts 'Creating businesses...'
 
-TOTAL_SEEDED_BUSINESSES = 6
+# TOTAL_SEEDED_BUSINESSES = 6
 businesses = []
 
-TOTAL_SEEDED_BUSINESSES.times do |i|
-  business = Business.create!(File.read("./db/seed_businesses/business.#{i + 1}.rb"))
-  businesses << business
+# TOTAL_SEEDED_BUSINESSES.times do |i|
+#   business = Business.create!(File.read("./db/seed_businesses/business.#{i + 1}.rb"))
+#   businesses << business
+# end
+
+businesses_data = YAML.load_file(Rails.root.join('db', 'businesseses_data.yml'))
+
+businesses_data.each do |business_attrs|
+  business = Business.create!(business_attrs)
+  business.photos.attach(
+    io: URI.open("https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/#{business_attrs['aws_dir']}/photo_1.jpg"),
+    filename: 'photo_1.jpg'
+  )
 end
 
 # photo_links = Dir.glob("")
