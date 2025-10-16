@@ -29,7 +29,8 @@
 #
 class Business < ApplicationRecord
   # stub:
-  validates :name, :address, :city, :state, :phone, :neighborhood, :country_code, :country, :stub, presence: true
+  validates :name, :address, :city, :state, :phone, :neighborhood, :country_code, :country, :stub, :aws_dir,
+            presence: true
   validates :name, uniqueness: { case_sensitive: false }
 
   has_many :reviews,
