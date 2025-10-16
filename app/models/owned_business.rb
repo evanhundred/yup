@@ -4,11 +4,22 @@
 #
 # Table name: owned_businesses
 #
-#  owned_business_id :bigint           not null
-#  owner_id          :bigint           not null
+#  id                :bigint           not null, primary key
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  id                :bigint           not null, primary key
+#  owned_business_id :bigint           not null
+#  owner_id          :bigint           not null
+#
+# Indexes
+#
+#  index_owned_businesses_on_owned_business_id               (owned_business_id)
+#  index_owned_businesses_on_owned_business_id_and_owner_id  (owned_business_id,owner_id)
+#  index_owned_businesses_on_owner_id                        (owner_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (owned_business_id => businesses.id)
+#  fk_rails_...  (owner_id => users.id)
 #
 class OwnedBusiness < ApplicationRecord
   validates :owned_business_id,

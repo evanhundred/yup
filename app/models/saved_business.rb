@@ -4,11 +4,22 @@
 #
 # Table name: saved_businesses
 #
-#  saved_business_id :bigint           not null
-#  saver_id          :bigint           not null
+#  id                :bigint           not null, primary key
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  id                :bigint           not null, primary key
+#  saved_business_id :bigint           not null
+#  saver_id          :bigint           not null
+#
+# Indexes
+#
+#  index_saved_businesses_on_saved_business_id               (saved_business_id)
+#  index_saved_businesses_on_saver_id                        (saver_id)
+#  index_saved_businesses_on_saver_id_and_saved_business_id  (saver_id,saved_business_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (saved_business_id => businesses.id)
+#  fk_rails_...  (saver_id => users.id)
 #
 class SavedBusiness < ApplicationRecord
   validates :saved_business_id,

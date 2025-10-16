@@ -5,12 +5,22 @@
 # Table name: reviews
 #
 #  id          :bigint           not null, primary key
-#  rating      :integer          not null
 #  body        :text             not null
-#  author_id   :bigint           not null
-#  business_id :bigint           not null
+#  rating      :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  author_id   :bigint           not null
+#  business_id :bigint           not null
+#
+# Indexes
+#
+#  index_reviews_on_author_id    (author_id)
+#  index_reviews_on_business_id  (business_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (author_id => users.id)
+#  fk_rails_...  (business_id => businesses.id)
 #
 class Review < ApplicationRecord
   validates :rating, presence: true, numericality: { only_integer: true },

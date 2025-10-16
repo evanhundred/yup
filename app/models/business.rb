@@ -5,31 +5,39 @@
 # Table name: businesses
 #
 #  id           :bigint           not null, primary key
-#  name         :string           not null
+#  about        :text
 #  address      :string           not null
-#  zipcode      :string           not null
+#  aws_dir      :string
+#  category     :string
 #  city         :string           not null
-#  state        :string           not null
+#  closed_at    :string
+#  country      :string
+#  country_code :integer
 #  latitude     :decimal(, )
 #  longitude    :decimal(, )
-#  phone        :string           not null
-#  website      :string
+#  name         :string           not null
+#  neighborhood :string
 #  open_at      :string
-#  closed_at    :string
-#  about        :text
-#  category     :string
+#  phone        :string           not null
 #  price        :string
+#  state        :string           not null
+#  stub         :string
+#  website      :string
+#  zipcode      :string           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  neighborhood :string
 #  place_id     :string
-#  country_code :integer
-#  country      :string
-#  stub         :string
+#
+# Indexes
+#
+#  index_businesses_on_address  (address)
+#  index_businesses_on_city     (city)
+#  index_businesses_on_name     (name)
+#  index_businesses_on_zipcode  (zipcode)
 #
 class Business < ApplicationRecord
   # stub:
-  validates :name, :address, :city, :state, :phone, :neighborhood, :country_code, :country, :stub, :aws_dir,
+  validates :name, :address, :city, :state, :phone, :neighborhood, :country_code, :country, :stub,
             presence: true
   validates :name, uniqueness: { case_sensitive: false }
 
