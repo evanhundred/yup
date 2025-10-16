@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'open-uri'
+include Rails.application.routes.url_helpers
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
@@ -58,20 +59,49 @@ businesses_data = YAML.load_file(Rails.root.join('db', 'businesses_data.yml'))
 image_names = YAML.load_file(Rails.root.join('db', 'business_photo_data.yml'))
 BASE_IMAGE_URL = 'https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/'
 
+AWS_BASE_URL = 'https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images'
+
 businesses_data.each do |business_attrs|
   business = Business.create!(business_attrs)
-  image_names.each do |image_name|
+  photos_metadata = {}
+
+  # attach regular photos and store metadata
+  image_names.each_with_index do |image_name, index|
+    key_name = "photo_#{index + 1}" # creates keys like photo_1, photo_2, etc.
+
     business.photos.attach(
       io: URI.parse("#{BASE_IMAGE_URL}#{business_attrs['aws_dir']}/#{image_name}").open,
       filename: image_name
     )
-    # puts "Attached #{image_name} to #{business.name}"
+
+    photos_metadata[key_name] = "#{AWS_BASE_URL}/#{business_attrs['aws_dir']}/#{image_name}"
+
+    # Store the URL in the metadata hash
+    # photos_metadata[key_name] = url_for(blob) if blob.present?
   end
+
+  # Attach popular items photo separately
   business.photos.attach(
     io: URI.parse("#{BASE_IMAGE_URL}#{business_attrs['aws_dir']}/popular-items/pop-item.jpg").open,
     filename: 'pop-item.jpg'
   )
-  # puts "Attached popular-items/pop-item.jpg to #{business.name}"
+
+  photos_metadata['popular_item'] = "#{AWS_BASE_URL}/#{business_attrs['aws_dir']}/popular-items/pop-item.jpg"
+
+  # update business with the photos_metadata JSON
+  business.update!(photos_metadata:)
+
+  # business.reload
+
+  # photos_metadata = {}
+
+  # business.photos[0...-1].each_with_index do |photo, index|
+  #   photos_metadata["photo_#{index + 1}"] = url_for(photo)
+  # end
+
+  # business.photos.last.present? && photos_metadata['popular_item'] = url_for(business.photos.last)
+  # end
+
   puts "Created #{business.name}."
 end
 

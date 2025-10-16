@@ -4,29 +4,30 @@
 #
 # Table name: businesses
 #
-#  id           :bigint           not null, primary key
-#  about        :text
-#  address      :string           not null
-#  aws_dir      :string
-#  category     :string
-#  city         :string           not null
-#  closed_at    :string
-#  country      :string
-#  country_code :integer
-#  latitude     :decimal(, )
-#  longitude    :decimal(, )
-#  name         :string           not null
-#  neighborhood :string
-#  open_at      :string
-#  phone        :string           not null
-#  price        :string
-#  state        :string           not null
-#  stub         :string
-#  website      :string
-#  zipcode      :string           not null
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  place_id     :string
+#  id              :bigint           not null, primary key
+#  about           :text
+#  address         :string           not null
+#  aws_dir         :string
+#  category        :string
+#  city            :string           not null
+#  closed_at       :string
+#  country         :string
+#  country_code    :integer
+#  latitude        :decimal(, )
+#  longitude       :decimal(, )
+#  name            :string           not null
+#  neighborhood    :string
+#  open_at         :string
+#  phone           :string           not null
+#  photos_metadata :jsonb
+#  price           :string
+#  state           :string           not null
+#  stub            :string
+#  website         :string
+#  zipcode         :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  place_id        :string
 #
 # Indexes
 #

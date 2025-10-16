@@ -5,15 +5,15 @@ const LocationAndHours = ({ business }) => {
   let googleMapParams = `query=${urlifiedBizCoords}&query_place_id=${business.placeId}`;
 
   // const PCT2C = "%2C";
-  const comma = ",";
-  const space = " ";
+  const comma = ',';
+  const space = ' ';
 
   const urlifyBizName = () => {
-    const nameArray = business.name.split(" ");
+    const nameArray = business.name.split(' ');
     // console.log(nameArray);
 
-    const cityArray = business.city.split(" ");
-    const stateArray = business.state.split(" ");
+    const cityArray = business.city.split(' ');
+    const stateArray = business.state.split(' ');
 
     const locationArray = cityArray.concat(comma).concat(stateArray);
     // console.log(locationArray);
@@ -22,7 +22,7 @@ const LocationAndHours = ({ business }) => {
     // console.log(wordsArray);
     const filteredWordsArray = wordsArray
       .map((word, idx) => {
-        if (!word) return "";
+        if (!word) return '';
 
         let result = [];
         // let plus = "+";
@@ -45,7 +45,7 @@ const LocationAndHours = ({ business }) => {
       })
       .flat();
 
-    const urlifiedBizName = filteredWordsArray.join("");
+    const urlifiedBizName = filteredWordsArray.join('');
     return urlifiedBizName;
     // console.log(filteredWordsArray.join(""));
     // const finalForm = filteredWordsArray.join("+");
@@ -53,17 +53,13 @@ const LocationAndHours = ({ business }) => {
     // return finalForm;
   };
 
-  const urlifiedBizName = encodeURIComponent(urlifyBizName()).replace(
-    /'/g,
-    "%27"
-  );
+  const urlifiedBizName = encodeURIComponent(urlifyBizName()).replace(/'/g, '%27');
 
   // console.log(urlifiedBizName);
   const stubMapParams = `query=${urlifiedBizName}`;
 
-  const isStub = business.stub === "true";
-  const mapSearchUrl = (params) =>
-    `https://www.google.com/maps/search/?api=1&${params}`;
+  const isStub = business.stub === 'true';
+  const mapSearchUrl = (params) => `https://www.google.com/maps/search/?api=1&${params}`;
   const getParams = isStub ? stubMapParams : googleMapParams;
 
   // const mapSearchUrl = `https://maps.google.com/?ll=${business.latitude},${business.longitude}`;
@@ -71,38 +67,30 @@ const LocationAndHours = ({ business }) => {
   // const neighborhoodString = business ? business.neighborhood : "text";
 
   return (
-    <div className={`location card-container${isStub ? " stub" : ""}`}>
-      <div className="main-title">
+    <div className={`location card-container${isStub ? ' stub' : ''}`}>
+      <div className='main-title'>
         <h2>Location and Hours</h2>
       </div>
 
-      <div className="main-content-div">
-        <div className="left-side-map">
-          {!isStub && <img src={business.imageUrls[6]} alt="google maps" />}
-          <div className="bottom-left-side">
-            <div className="address">
-              <a
-                href={mapSearchUrl(getParams)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <h3 className="street-address">{business.address}</h3>
+      <div className='main-content-div'>
+        <div className='left-side-map'>
+          {!isStub && <img src={business.imageUrls[5]} alt='google maps' />}
+          <div className='bottom-left-side'>
+            <div className='address'>
+              <a href={mapSearchUrl(getParams)} target='_blank' rel='noopener noreferrer'>
+                <h3 className='street-address'>{business.address}</h3>
               </a>
 
-              <h4 className="city-state-zip">
+              <h4 className='city-state-zip'>
                 {business.city}, {business.state} {business.zipcode}
               </h4>
               {/* <p>{business.neighborhood}</p> */}
               <p>{neighborhoodString}</p>
             </div>
 
-            <div className="get-directions-container">
-              <div className="get-directions-button">
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={mapSearchUrl(getParams)}
-                >
+            <div className='get-directions-container'>
+              <div className='get-directions-button'>
+                <a target='_blank' rel='noopener noreferrer' href={mapSearchUrl(getParams)}>
                   Get directions
                 </a>
               </div>
@@ -110,34 +98,34 @@ const LocationAndHours = ({ business }) => {
           </div>
         </div>
 
-        <div className="hours-div">
-          <div className="day-container">
-            <div className="day-name">Mon</div>
-            <div className="time-range">{`${business.openAt} - ${business.closedAt}`}</div>
+        <div className='hours-div'>
+          <div className='day-container'>
+            <div className='day-name'>Mon</div>
+            <div className='time-range'>{`${business.openAt} - ${business.closedAt}`}</div>
           </div>
-          <div className="day-container">
-            <div className="day-name">Tue</div>
-            <div className="time-range">{`${business.openAt} - ${business.closedAt}`}</div>
+          <div className='day-container'>
+            <div className='day-name'>Tue</div>
+            <div className='time-range'>{`${business.openAt} - ${business.closedAt}`}</div>
           </div>
-          <div className="day-container">
-            <div className="day-name">Wed</div>
-            <div className="time-range">{`${business.openAt} - ${business.closedAt}`}</div>
+          <div className='day-container'>
+            <div className='day-name'>Wed</div>
+            <div className='time-range'>{`${business.openAt} - ${business.closedAt}`}</div>
           </div>
-          <div className="day-container">
-            <div className="day-name">Thu</div>
-            <div className="time-range">{`${business.openAt} - ${business.closedAt}`}</div>
+          <div className='day-container'>
+            <div className='day-name'>Thu</div>
+            <div className='time-range'>{`${business.openAt} - ${business.closedAt}`}</div>
           </div>
-          <div className="day-container">
-            <div className="day-name">Fri</div>
-            <div className="time-range">{`${business.openAt} - ${business.closedAt}`}</div>
+          <div className='day-container'>
+            <div className='day-name'>Fri</div>
+            <div className='time-range'>{`${business.openAt} - ${business.closedAt}`}</div>
           </div>
-          <div className="day-container">
-            <div className="day-name">Sat</div>
-            <div className="time-range">{`${business.openAt} - ${business.closedAt}`}</div>
+          <div className='day-container'>
+            <div className='day-name'>Sat</div>
+            <div className='time-range'>{`${business.openAt} - ${business.closedAt}`}</div>
           </div>
-          <div className="day-container">
-            <div className="day-name">Sun</div>
-            <div className="time-range">{`${business.openAt} - ${business.closedAt}`}</div>
+          <div className='day-container'>
+            <div className='day-name'>Sun</div>
+            <div className='time-range'>{`${business.openAt} - ${business.closedAt}`}</div>
           </div>
           {/* <a href="#">
             <div className="edit-info-button">

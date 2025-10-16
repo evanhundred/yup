@@ -1,21 +1,21 @@
-import { Link } from "react-router-dom";
-import "./BusinessResultCard.css";
-import PresentStars from "./PresentStars";
-import CommentIcon from "../../assets/images/message.png";
-import { useHistory } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import './BusinessResultCard.css';
+import PresentStars from './PresentStars';
+import CommentIcon from '../../assets/images/message.png';
+import { useHistory } from 'react-router-dom';
 
-import photoBlank from "../../assets/images/broccoli.png";
+import photoBlank from '../../assets/images/broccoli.png';
 
 const BusinessResultCard = ({ business, idx }) => {
   const history = useHistory();
 
   const addHoverShadow = (card) => {
-    card.classList.remove("unhovered");
-    card.classList.add("hovered");
+    card.classList.remove('unhovered');
+    card.classList.add('hovered');
   };
   const removeHoverShadow = (card) => {
-    card.classList.remove("hovered");
-    card.classList.add("unhovered");
+    card.classList.remove('hovered');
+    card.classList.add('unhovered');
   };
 
   // categoryTags logic:
@@ -35,12 +35,12 @@ const BusinessResultCard = ({ business, idx }) => {
   // the first approach adds technical debt,and is more messy and confusing. However, at this point
   // it is much easier to apply, and I have to choose my battles so I can complete the clone.
   const CategoryTags = () => {
-    const tagsArray = business.category.split(",");
+    const tagsArray = business.category.split(',');
 
     return (
-      <div className="category-tags">
+      <div className='category-tags'>
         {tagsArray.map((cat) => (
-          <p key={cat} className="tag-bubble">
+          <p key={cat} className='tag-bubble'>
             {cat}
           </p>
         ))}
@@ -50,8 +50,8 @@ const BusinessResultCard = ({ business, idx }) => {
 
   const PriceRating = () => {
     return (
-      <div className="price-rating">
-        <p className="price-rating-text">{business.price}</p>
+      <div className='price-rating'>
+        <p className='price-rating-text'>{business.price}</p>
       </div>
     );
   };
@@ -66,7 +66,7 @@ const BusinessResultCard = ({ business, idx }) => {
     // timeString = "7:00 PM" (closedAt)
 
     if (!business.openAt || !business.closedAt) {
-      return <p className="open-or-closed">-</p>;
+      return <p className='open-or-closed'>-</p>;
     }
 
     const extractTimeNumber = (timeString) => {
@@ -74,7 +74,7 @@ const BusinessResultCard = ({ business, idx }) => {
       let bizMinuteNumber;
 
       for (let i = 0; i < timeString.length; i++) {
-        if (timeString[i] === ":") {
+        if (timeString[i] === ':') {
           bizHourNumber = timeString.slice(0, i);
           bizMinuteNumber = timeString.slice(i + 1, i + 3);
         }
@@ -82,7 +82,7 @@ const BusinessResultCard = ({ business, idx }) => {
 
       const amOrPm = timeString.slice(timeString.length - 2);
       let hourInteger = parseInt(bizHourNumber, 10);
-      if (amOrPm === "PM") hourInteger += 12;
+      if (amOrPm === 'PM') hourInteger += 12;
 
       return hourInteger * 100 + parseInt(bizMinuteNumber, 10);
     };
@@ -101,29 +101,23 @@ const BusinessResultCard = ({ business, idx }) => {
     let untilString;
     // scenario 1
     if (currentTime < extractTimeNumber(business.openAt)) {
-      openOrClosed = "Closed";
+      openOrClosed = 'Closed';
       untilString = ` until ${business.openAt}`;
     } else {
       // scenario 2
       if (currentTime < extractTimeNumber(business.closedAt)) {
-        openOrClosed = "Open";
+        openOrClosed = 'Open';
         untilString = ` until ${business.closedAt}`;
       } else {
         // scenario 3
-        openOrClosed = "Closed";
+        openOrClosed = 'Closed';
         untilString = ` until ${business.openAt} tomorrow`;
       }
     }
 
     return (
-      <p className="open-or-closed">
-        <span
-          className={`first-word ${
-            openOrClosed === "Open" ? "open" : "closed"
-          }`}
-        >
-          {openOrClosed}
-        </span>
+      <p className='open-or-closed'>
+        <span className={`first-word ${openOrClosed === 'Open' ? 'open' : 'closed'}`}>{openOrClosed}</span>
         {untilString}
       </p>
     );
@@ -144,16 +138,16 @@ const BusinessResultCard = ({ business, idx }) => {
 
     return (
       <div
-        className="selected-comment-container"
+        className='selected-comment-container'
         onClick={(e) => {
           handleReviewsClick(e);
         }}
       >
-        <div className="selected-comment-bubble-icon">
-          <img src={CommentIcon} alt="featured review" />
+        <div className='selected-comment-bubble-icon'>
+          <img src={CommentIcon} alt='featured review' />
         </div>
-        <p className="selected-comment-text">
-          "{getTopComment()}"<span className="more-text"> more</span>
+        <p className='selected-comment-text'>
+          "{getTopComment()}"<span className='more-text'> more</span>
         </p>
       </div>
     );
@@ -163,46 +157,38 @@ const BusinessResultCard = ({ business, idx }) => {
     e.preventDefault();
     history.push({
       pathname: `/businesses/${business.id}`,
-      search: "?reviews",
+      search: '?reviews',
       state: { scrollToReviews: true }
     });
   };
 
   const businessPhotoContainer = () => {
     const photoIsPresent = business.imageUrls.length > 0;
-    const selectedImage = photoIsPresent ? business.imageUrls[5] : photoBlank;
+    const selectedImage = photoIsPresent ? business.imageUrls[6] : photoBlank;
 
     return (
-      <div
-        className={`business-photo-container${
-          photoIsPresent ? "" : " photo-blank"
-        }`}
-      >
-        <img src={selectedImage} alt="delicious item" />
+      <div className={`business-photo-container${photoIsPresent ? '' : ' photo-blank'}`}>
+        <img src={selectedImage} alt='delicious item' />
       </div>
     );
   };
 
   return (
     <Link to={`/businesses/${business.id}`}>
-      <div
-        className="business-card-container unhovered"
-        onMouseEnter={(e) => addHoverShadow(e.target)}
-        onMouseLeave={(e) => removeHoverShadow(e.target)}
-      >
+      <div className='business-card-container unhovered' onMouseEnter={(e) => addHoverShadow(e.target)} onMouseLeave={(e) => removeHoverShadow(e.target)}>
         {businessPhotoContainer()}
-        <div className="business-info">
-          <div className="business-title">
+        <div className='business-info'>
+          <div className='business-title'>
             <p>
               {idx}. {business.name}
             </p>
           </div>
           <PresentStars business={business} />
-          <div className="third-line-search-results">
+          <div className='third-line-search-results'>
             <CategoryTags />
             <PriceRating />
-            <p className="dot">•</p>
-            <p className="city">{business.city}</p>
+            <p className='dot'>•</p>
+            <p className='city'>{business.city}</p>
           </div>
           <OpenOrClosed />
           <SelectedComment />
