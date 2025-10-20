@@ -45,7 +45,7 @@ const PhotoBlock = ({ business }) => {
       </div>
 
       <div className='business-image four'>
-        <img src={getImage('photo3')} alt='more delicious deliciousness' />
+        <img src={getImage('photo5')} alt='more delicious deliciousness' />
       </div>
       <div className='business-image five'>
         <img src={getImage('photo4')} alt='more more delicious deliciousness' />
