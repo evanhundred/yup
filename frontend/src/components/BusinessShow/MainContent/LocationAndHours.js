@@ -74,7 +74,7 @@ const LocationAndHours = ({ business }) => {
 
       <div className='main-content-div'>
         <div className='left-side-map'>
-          {!isStub && <img src={business.imageUrls[5]} alt='google maps' />}
+          {!isStub && <img src={business.photosMetadata.photo6} alt='google maps' />}
           <div className='bottom-left-side'>
             <div className='address'>
               <a href={mapSearchUrl(getParams)} target='_blank' rel='noopener noreferrer'>

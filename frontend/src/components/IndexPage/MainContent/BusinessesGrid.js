@@ -19,8 +19,10 @@ const BusinessesGrid = ({ businessesToLoad }) => {
 
   const businessesLoaderSlice = businesses.slice(0, businessesToLoad);
 
+  // refactor for photosMetadata hash
   const photoIsPresent = (business) => {
-    return business.imageUrls.length > 0;
+    return Object.keys(business.photosMetadata).length > 0;
+    // return business.imageUrls.length > 0;
   };
 
   const businessCardImage = (business) => {

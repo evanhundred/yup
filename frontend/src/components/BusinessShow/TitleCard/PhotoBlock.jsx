@@ -26,28 +26,29 @@ const PhotoBlock = ({ business }) => {
     if (business.stub === 'true') {
       return defaultImages[`${imageType}.jpeg`];
     }
-    return business.imageUrls[imageType];
+    return business.photosMetadata[imageType];
+    // return business.imageUrls[imageType];
   };
 
   return (
     <div className={`business-image-container${business.stub === 'true' ? ' stub' : ''}`}>
       <div className='business-image one'>
-        <img src={getImage(0)} alt='delicious items' />
+        <img src={getImage('photo1')} alt='delicious items' />
       </div>
 
       <div className='business-image two'>
-        <img src={getImage(4)} alt='fantastic store' />
+        <img src={getImage('photo3')} alt='fantastic store' />
       </div>
 
       <div className='business-image three'>
-        <img src={getImage(1)} alt='more delicious items' />
+        <img src={getImage('photo2')} alt='more delicious items' />
       </div>
 
       <div className='business-image four'>
-        <img src={getImage(2)} alt='more delicious deliciousness' />
+        <img src={getImage('photo3')} alt='more delicious deliciousness' />
       </div>
       <div className='business-image five'>
-        <img src={getImage(3)} alt='more more delicious deliciousness' />
+        <img src={getImage('photo4')} alt='more more delicious deliciousness' />
       </div>
     </div>
   );
