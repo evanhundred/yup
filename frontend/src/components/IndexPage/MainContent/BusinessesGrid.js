@@ -14,7 +14,6 @@ const BusinessesGrid = ({ businessesToLoad }) => {
   }, [dispatch]);
 
   if (!businesses || !businesses.length || businesses[0].status === 500) {
-    // console.log(businesses);
     return <Loading type='small' />;
   }
 
@@ -25,18 +24,14 @@ const BusinessesGrid = ({ businessesToLoad }) => {
   };
 
   const businessCardImage = (business) => {
-    if (photoIsPresent(business)) return business.imageUrls[1];
+    if (photoIsPresent(business)) return business.photosMetadata.photo2;
     return photoBlank;
   };
 
   const businessesBlock = businessesLoaderSlice.map((business, idx) => {
     return (
       <div className='business-card' key={idx}>
-        <div
-          className={`card-image${
-            photoIsPresent(business) ? '' : ' photo-blank'
-          }`}
-        >
+        <div className={`card-image${photoIsPresent(business) ? '' : ' photo-blank'}`}>
           <Link to={`/businesses/${business.id}`}>
             <img src={businessCardImage(business)} alt={business.name} />
           </Link>

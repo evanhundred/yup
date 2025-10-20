@@ -57,8 +57,7 @@ puts 'Creating businesses...'
 # businesses_data = YAML.load_file('./businesseses_data.yml')
 businesses_data = YAML.load_file(Rails.root.join('db', 'businesses_data.yml'))
 image_names = YAML.load_file(Rails.root.join('db', 'business_photo_data.yml'))
-BASE_IMAGE_URL = 'https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/'
-
+# BASE_IMAGE_URL = 'https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/'
 AWS_BASE_URL = 'https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images'
 
 businesses_data.each do |business_attrs|
@@ -70,7 +69,7 @@ businesses_data.each do |business_attrs|
     key_name = "photo_#{index + 1}" # creates keys like photo_1, photo_2, etc.
 
     business.photos.attach(
-      io: URI.parse("#{BASE_IMAGE_URL}#{business_attrs['aws_dir']}/#{image_name}").open,
+      io: URI.parse("#{AWS_BASE_URL}/#{business_attrs['aws_dir']}/#{image_name}").open,
       filename: image_name
     )
 
@@ -82,7 +81,7 @@ businesses_data.each do |business_attrs|
 
   # Attach popular items photo separately
   business.photos.attach(
-    io: URI.parse("#{BASE_IMAGE_URL}#{business_attrs['aws_dir']}/popular-items/pop-item.jpg").open,
+    io: URI.parse("#{AWS_BASE_URL}/#{business_attrs['aws_dir']}/popular-items/pop-item.jpg").open,
     filename: 'pop-item.jpg'
   )
 
