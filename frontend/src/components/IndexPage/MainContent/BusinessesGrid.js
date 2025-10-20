@@ -21,7 +21,7 @@ const BusinessesGrid = ({ businessesToLoad }) => {
 
   // refactor for photosMetadata hash
   const photoIsPresent = (business) => {
-    return Object.keys(business.photosMetadata).length > 0;
+    return business.photosMetadata && Object.keys(business.photosMetadata).length > 0;
     // return business.imageUrls.length > 0;
   };
 
