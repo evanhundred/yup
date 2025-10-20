@@ -3,7 +3,6 @@ import defaultItem from '../../../assets/images/stub/pie.jpeg';
 const MenuCard = ({ business }) => {
   const isStub = business.stub === 'true';
   const featuredImage = () => (isStub ? defaultItem : business.photosMetadata.popularItem);
-  // console.log(isStub);
   const businessWebsite = business.stub === 'true' ? 'https://yup.evanryan.dev' : business.website;
 
   const websiteLinkComponent = (

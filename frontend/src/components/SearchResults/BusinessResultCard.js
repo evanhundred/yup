@@ -3,6 +3,7 @@ import './BusinessResultCard.css';
 import PresentStars from './PresentStars';
 import CommentIcon from '../../assets/images/message.png';
 import { useHistory } from 'react-router-dom';
+import { photoIsPresent } from '../../util/businesses/index.js';
 
 import photoBlank from '../../assets/images/broccoli.png';
 
@@ -163,8 +164,7 @@ const BusinessResultCard = ({ business, idx }) => {
   };
 
   const businessPhotoContainer = () => {
-    const photoIsPresent = business.imageUrls.length > 0;
-    const selectedImage = photoIsPresent ? business.imageUrls[6] : photoBlank;
+    const selectedImage = photoIsPresent(business) ? business.photosMetadata.popularItem : photoBlank;
 
     return (
       <div className={`business-photo-container${photoIsPresent ? '' : ' photo-blank'}`}>

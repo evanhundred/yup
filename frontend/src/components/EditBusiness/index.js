@@ -247,7 +247,6 @@ const EditBusiness = () => {
         business: { ...bizTemplate, id: business.id, price: priceRating },
         id: business.id
       };
-      // console.log(businessObject);
 
       const res = await dispatch(updateBusiness(businessObject)).catch(async (res) => {
         let data;
@@ -259,15 +258,11 @@ const EditBusiness = () => {
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
         else setErrors([res.statusText]);
-        // console.log(errors);
       });
 
-      // console.log(res);
       let next;
       if (res.id) next = 'submit-success';
       else next = 'submit-fail';
-
-      // console.log(next);
 
       setComponentToRender(next);
     };
@@ -324,32 +319,24 @@ const EditBusiness = () => {
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
         else setErrors([res.statusText]);
-        // console.log(errors);
       });
 
-      // console.log(res);
       let next;
       let data;
       if (res.message === 'success') {
         const message = {
           deleted: `${bizTemplate.name} deleted successfully.`
         };
-        // const message = `business ${businessId} deleted successfully.`;
+
         const res = await dispatch(loadMessage(message));
         if (res && res.ok) {
           data = res.json();
         } else {
           data = res;
         }
-        // console.log(data);
+
         history.push('/');
-        // history.push("/", {
-        //   message: `business ${businessId} deleted successfully.`
-        // });
-      }
-      // if (res.message === "success") next = "delete-success";
-      // if (res.ok) next = "delete-success";
-      else next = 'submit-fail';
+      } else next = 'submit-fail';
 
       setComponentToRender(next);
 

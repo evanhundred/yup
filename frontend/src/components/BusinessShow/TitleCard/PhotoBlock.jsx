@@ -1,10 +1,4 @@
 const PhotoBlock = ({ business }) => {
-  // refactor default images to return a hash instead of array
-  // defaultImages = {
-  //   0: 'url',
-  //   1: 'url',
-  //   ...
-  // }
   let defaultImages;
   if (business.stub === 'true') {
     const importAll = (stubImages) => {
@@ -17,17 +11,11 @@ const PhotoBlock = ({ business }) => {
     defaultImages = importAll(require.context('../../../assets/images/stub/', false, /\S/));
   }
 
-  // refactor getImage function to return hash of image metadata, instead of array
-  // hash structure:
-  // {
-  //   imageType: imageUrl
-  // }
   const getImage = (imageType) => {
     if (business.stub === 'true') {
       return defaultImages[`${imageType}.jpeg`];
     }
     return business.photosMetadata[imageType];
-    // return business.imageUrls[imageType];
   };
 
   return (
