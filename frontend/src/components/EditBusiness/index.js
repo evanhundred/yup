@@ -218,7 +218,8 @@ const EditBusiness = () => {
     };
 
     const submitUpdate = async () => {
-      console.log(business);
+      // console.log(business);
+      setShowConfirmModal(false);
       const businessObject = {
         business: { ...bizTemplate, id: business.id, price: priceRating },
         id: business.id
@@ -227,17 +228,22 @@ const EditBusiness = () => {
       const res = await dispatch(updateBusiness(businessObject)).catch(async (res) => {
         let data;
         try {
+          console.log('try');
           data = await res.clone().json();
         } catch {
+          console.log('catch');
           data = await res.text();
         }
         if (data?.errors) {
+          console.log('data?.errors');
           setErrors(data.errors);
           setComponentToRender('submit-fail');
         } else if (data) {
+          console.log('data');
           setErrors([data]);
           setComponentToRender('submit-fail');
         } else {
+          console.log('else');
           setErrors([res.statusText]);
           setComponentToRender('submit-fail');
         }
@@ -429,13 +435,19 @@ const EditBusiness = () => {
   };
 
   const submitFailComponent = () => {
+    // setShowConfirmModal(false);
+    window.scrollTo({ top: 0, behavior: 'auto' });
+
     return (
       <div className='submit-fail'>
+        <h2>Failed to submit.</h2>
+        <h2>Please fix the following errors:</h2>
         {errors.map((error, index) => (
           <h2 className={`error-${index}`} key={`error${index}`}>
             error: {error}
           </h2>
         ))}
+        {businessInfoForm()}
       </div>
     );
   };
@@ -443,6 +455,7 @@ const EditBusiness = () => {
   if (business.stub === 'true') {
     return (
       <div id='edit-business-container'>
+        {componentToRender === 'submit-fail' && submitFailComponent()}
         {componentToRender === 'initial' && (
           <>
             <h2>
@@ -455,7 +468,6 @@ const EditBusiness = () => {
             {businessInfoForm()}
           </>
         )}
-        {componentToRender === 'submit-fail' && submitFailComponent()}
         {componentToRender === 'submit-success' && submitSuccessComponent('update')}
         {componentToRender === 'delete-success' && submitSuccessComponent('delete')}
       </div>
