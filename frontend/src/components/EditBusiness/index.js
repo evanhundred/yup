@@ -39,16 +39,9 @@ const EditBusiness = () => {
   const currentUser = useSelector((state) => state.session.user);
   if (!currentUser) history.push('/login');
 
-  const [formErrors, setFormErrors] = useState({});
+  // const [formErrors, setFormErrors] = useState({});
 
   const [initialPriceRatingClicked, setInitialPriceRatingClicked] = useState(false);
-
-  // const getPriceNumber = () => {
-  //   if (business && business.price) return parseInt(business ? business.price : );
-  //   // else return 0;
-  // };
-
-  // const [priceRating, setPriceRating] = useState(getPriceNumber());
 
   const keysArray = business ? Object.keys(business) : null;
   const exclude = ['id', 'imageUrls', 'authorNames', 'reviews', 'owns', 'stub', 'photosMetadata'];
@@ -59,7 +52,7 @@ const EditBusiness = () => {
 
   const [componentToRender, setComponentToRender] = useState('initial');
 
-  const [errors, setErrors] = useState(null);
+  const [errors, setErrors] = useState([]);
 
   const keyPositions = ['name', 'category', 'price', 'website', 'countryCode', 'phone', 'address', 'city', 'state', 'zipcode', 'country', 'neighborhood', 'openAt', 'closedAt', 'about', 'latitude', 'longitude', 'placeId'];
   const keyPositionsObject = {};
@@ -109,26 +102,16 @@ const EditBusiness = () => {
     });
 
     const priceSpans = document.querySelectorAll('#edit-business-container .price-input-container div.dollar-box');
-    // console.log(priceSpans);
 
     const stylePriceSpans = (num) => {
-      // if (!business) return;
-
-      // console.log(business);
       const oldNum = parseInt(priceRating);
-      // console.log(num);
-      // console.log(oldNum);
       priceSpans.forEach((span, idx) => {
-        // console.log(idx);
         if (idx < oldNum) span.classList.remove(`hovered`);
         if (idx < parseInt(num)) span.classList.add(`hovered`);
       });
     };
 
-    // stylePriceSpans(priceRating);
-
     const handlePriceHover = (e, isHovered, num) => {
-      // console.log(e);
       if (isHovered) {
         setPriceRating(num);
       } else {
@@ -138,20 +121,16 @@ const EditBusiness = () => {
         if (idx < num) {
           if (isHovered) span.classList.add(`hovered`);
           else span.classList.remove(`hovered`);
-          // if (isHovered) span.classList.add(`hovered-${num}`);
-          // else span.classList.remove(`hovered-${num}`);
         }
       });
     };
 
     const handlePriceClick = (num, e = null) => {
       if (e) e.preventDefault();
-      // console.log(e);
       if (!initialPriceRatingClicked) setInitialPriceRatingClicked(true);
       stylePriceSpans(num);
       setPriceRating(num);
     };
-    // console.log(priceRating);
 
     filteredKeysArray.forEach((key) => {
       if (exclude.includes(key)) return <h3 key={key}>hi</h3>;
@@ -190,16 +169,12 @@ const EditBusiness = () => {
           }
           return dollars;
         };
-        // if (business.price && parseInt(business.price) < 1) {
         labelComponent = (
           <label className='price' key='price'>
             <h4>{key}</h4>
             <div className='price-input-container'>{getDollarArray()}</div>
           </label>
         );
-        // } else {
-        //   labelComponent = null;
-        // }
       } else {
         const toSkewerCase = (string) => {
           const stringArray = string.split('');
@@ -220,7 +195,7 @@ const EditBusiness = () => {
           <label className={`${toSkewerCase(key)}`} key={key}>
             <h4>{key}</h4>
             <input value={proxyKey} type={fieldsObject[key]} onChange={(e) => handleChange(e, key)} />
-            {formErrors[key] && errorBox(key)}
+            {/* {formErrors[key] && errorBox(key)} */}
           </label>
         );
       }
@@ -236,7 +211,6 @@ const EditBusiness = () => {
       const componentsArray = [];
       let count = 1;
       while (count <= numberOfKeys) {
-        // console.log(keyPositionsObject[count]);
         componentsArray.push(keyPositionsObject[count].component);
         count++;
       }
@@ -244,6 +218,7 @@ const EditBusiness = () => {
     };
 
     const submitUpdate = async () => {
+      console.log(business);
       const businessObject = {
         business: { ...bizTemplate, id: business.id, price: priceRating },
         id: business.id
@@ -256,13 +231,20 @@ const EditBusiness = () => {
         } catch {
           data = await res.text();
         }
-        if (data?.errors) setErrors(data.errors);
-        else if (data) setErrors([data]);
-        else setErrors([res.statusText]);
+        if (data?.errors) {
+          setErrors(data.errors);
+          setComponentToRender('submit-fail');
+        } else if (data) {
+          setErrors([data]);
+          setComponentToRender('submit-fail');
+        } else {
+          setErrors([res.statusText]);
+          setComponentToRender('submit-fail');
+        }
       });
 
       let next;
-      if (res.id) next = 'submit-success';
+      if (res && res.id) next = 'submit-success';
       else next = 'submit-fail';
 
       setComponentToRender(next);
@@ -340,10 +322,6 @@ const EditBusiness = () => {
       } else next = 'submit-fail';
 
       setComponentToRender(next);
-
-      // .then(() => {
-      //   history.push(`/businesses`);
-      // });
     };
 
     const html = document.querySelector('html');
@@ -358,17 +336,19 @@ const EditBusiness = () => {
       switch (actionType) {
         case 'update':
           setUpdateType('update');
-          if (business.name && business.name.length > 0) {
+          // if (business.name && business.name.length > 0) {
+          if (bizTemplate.name && bizTemplate.name.length > 0) {
             setShowConfirmModal(true);
             // submitUpdate();
           } else {
+            console.log(errors);
             setErrors(errors.concat(['Name needed.']));
+            setComponentToRender('submit-fail');
           }
           break;
         case 'delete':
           setUpdateType('delete');
           setShowConfirmModal(true);
-          // dispatchDeleteBusiness();
           break;
         default:
           return;
@@ -395,22 +375,18 @@ const EditBusiness = () => {
       html.addEventListener('keydown', closeOnPressEsc, { once: true });
     };
 
-    const errorBox = (field) => {
-      return (
-        <div className='error-box'>
-          <p>{formErrors[field]}</p>
-        </div>
-      );
-    };
-
-    // stylePriceSpans(priceRating);
+    // const errorBox = (field) => {
+    //   return (
+    //     <div className='error-box'>
+    //       <p>{formErrors[field]}</p>
+    //     </div>
+    //   );
+    // };
 
     return (
       <div className='business-info-form-container'>
-        {/* <p>hi</p> */}
         <form onSubmit={(e) => handleSubmit(e, 'update')}>
           <div className='input-fields'>{keyPositionsObject && keyPositionsObject && orderedLabelComponents()}</div>
-          {/* {stylePriceSpans(priceRating)} */}
           <div className='button-container'>
             <label>
               <button>Submit</button>
@@ -424,31 +400,8 @@ const EditBusiness = () => {
       </div>
     );
   };
-  // const priceSpans = document.querySelectorAll(
-  //   "#edit-business-container .price-input-container div.dollar-box"
-  // );
-  // // console.log(priceSpans);
 
-  // const stylePriceSpans = (num) => {
-  //   const oldNum = priceRating;
-  //   priceSpans.forEach((span, idx) => {
-  //     if (idx < oldNum) span.classList.remove(`hovered`);
-  //     if (idx < num) span.classList.add(`hovered`);
-  //     // if (idx < oldNum) span.classList.remove(`hovered-${oldNum}`);
-  //     // if (idx < num) span.classList.add(`hovered-${num}`);
-  //   });
-  // };
-
-  // useEffect(()=>{
-  //   stylePriceSpans(business.price);
-
-  // },[business])
-  // // stylePriceSpans(business.price);
-
-  // const successComponent = () => <div className="success">success.</div>;
   const handleBizNameClick = () => history.push(`/businesses/${business.id}`);
-
-  // if (!business) return <div>loading...</div>;
 
   const submitSuccessComponent = (submitType) => {
     return (
@@ -478,8 +431,10 @@ const EditBusiness = () => {
   const submitFailComponent = () => {
     return (
       <div className='submit-fail'>
-        {errors.map((error) => (
-          <h2 key={error}>error</h2>
+        {errors.map((error, index) => (
+          <h2 className={`error-${index}`} key={`error${index}`}>
+            error: {error}
+          </h2>
         ))}
       </div>
     );
