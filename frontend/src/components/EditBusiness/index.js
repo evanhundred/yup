@@ -336,6 +336,8 @@ const EditBusiness = () => {
     const handleSubmit = (e, actionType) => {
       e.preventDefault();
 
+      setComponentToRender('initial');
+
       if (html) html.style.overflow = 'hidden';
       backgroundNavBar();
 
