@@ -111,7 +111,7 @@ const Footer = () => {
   return (
     <div className='footer'>
       <p>
-        Copyright © 2024 Yup Inc. and
+        Copyright © 2025 Yup Inc. and
         <a href='https://evanryan.dev' rel='noopener noreferrer' target='_blank'>
           {' '}
           Evan Ryan

@@ -86,9 +86,7 @@ The biggest challenge for me was navigating the several asynchronous functions c
 
 ```js
 <h3>
-  Edit Review for <Link to={business ? `/businesses/${business.id}` : "/"}>{`${
-    business ? business.name : ""
-  }`}</Link>
+  Edit Review for <Link to={business ? `/businesses/${business.id}` : '/'}>{`${business ? business.name : ''}`}</Link>
 </h3>
 ```
 
@@ -98,9 +96,9 @@ The biggest challenge for me was navigating the several asynchronous functions c
 `(2) components/IndexPage`
 
 ```js
-<div className="card-image">
+<div className='card-image'>
   <Link to={`/businesses/${business.id}`}>
-    <img src={business.imageUrls[1]} alt="delicious business" />
+    <img src={business.imageUrls[1]} alt='delicious business' />
   </Link>
 </div>
 ```
@@ -130,4 +128,4 @@ Thank you for checking out Yup. May the Schwartz be with you.
 &nbsp;
 &nbsp;
 
-`(e) 2023-24`
+`(e) 2025`

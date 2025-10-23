@@ -60,6 +60,18 @@ image_names = YAML.load_file(Rails.root.join('db', 'business_photo_data.yml'))
 # BASE_IMAGE_URL = 'https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images/'
 AWS_BASE_URL = 'https://yup-seeds.s3.us-east-2.amazonaws.com/seeds-images'
 
+def create_reviews(business, users)
+  rand(3..7).times do
+    review = Review.create!(
+      rating: rand(1..5),
+      body: Faker::Restaurant.review,
+      author_id: users.sample.id,
+      business_id: business.id
+    )
+    puts "  Created review ##{review.id} for #{business.name}."
+  end
+end
+
 businesses_data.each do |business_attrs|
   business = Business.create!(business_attrs)
   photos_metadata = {}
@@ -73,10 +85,8 @@ businesses_data.each do |business_attrs|
       filename: image_name
     )
 
-    photos_metadata[key_name] = "#{AWS_BASE_URL}/#{business_attrs['aws_dir']}/#{image_name}"
-
     # Store the URL in the metadata hash
-    # photos_metadata[key_name] = url_for(blob) if blob.present?
+    photos_metadata[key_name] = "#{AWS_BASE_URL}/#{business_attrs['aws_dir']}/#{image_name}"
   end
 
   # Attach popular items photo separately
@@ -90,19 +100,28 @@ businesses_data.each do |business_attrs|
   # update business with the photos_metadata JSON
   business.update!(photos_metadata:)
 
-  # business.reload
-
-  # photos_metadata = {}
-
-  # business.photos[0...-1].each_with_index do |photo, index|
-  #   photos_metadata["photo_#{index + 1}"] = url_for(photo)
-  # end
-
-  # business.photos.last.present? && photos_metadata['popular_item'] = url_for(business.photos.last)
-  # end
-
   puts "Created #{business.name}."
+
+  # REVIEW: SEEDING
+  create_reviews(business, users)
 end
+
+# seed reviews
+
+# businesses_data.each do |business_attrs|
+#   business = Business.find_by(name: business_attrs['name'])
+#   rand(3..7).times do
+#     review = Review.create!(
+#       rating: rand(1..5),
+#       body: Faker::Restaurant.review,
+#       author_id: users.sample.id,
+#       business_id: business.id
+#     )
+#     puts "  Created review ##{review.id} for #{business.name}."
+#   end
+# end
+# reviews_data = YAML.load_file(Rails.root.join('db', 'reviews_data.yml'))
+# review = Review.create!(
 
 # photo_links = Dir.glob("")
 

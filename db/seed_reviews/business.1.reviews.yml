@@ -1,0 +1,15 @@
+- business.name: 'Devoción'
+  rating: 5
+  body: 'Amazing coffee and atmosphere. The staff is super friendly and knowledgeable about their coffee selection. The interior design is modern and inviting, making it a perfect spot to relax or work. Highly recommend the pour-over!'
+- business.name: 'El Paso Mexican Grill'
+  rating: 4
+  body: 'Great food with authentic flavors! The portions are generous and the prices are reasonable. The staff is attentive and the service is quick. My only complaint is that the restaurant can get quite noisy during peak hours, but overall a fantastic dining experience.'
+- business.name: 'E Noodle'
+  rating: 5
+  body: 'E Noodle is my go-to spot for delicious Cantonese cuisine in Brooklyn. The hand-prepared noodles and soup dumplings are exceptional, bursting with authentic flavors. The staff is friendly and the ambiance is cozy. A must-visit for anyone craving quality Chinese food!'
+- business.name: 'Beverley Pizza & Cafe'
+  rating: 4
+  body: 'Beverley Pizza & Cafe offers some of the best pizza in Brooklyn! The crust is perfectly crispy and the toppings are fresh and flavorful. The cafe also has a great selection of pasta and salads. The only downside is that it can get a bit crowded during weekends, but the food is worth the wait!'
+- business.name: "Mirna's Pupuseria"
+  rating: 5
+  body: "Mirna's Pupuseria is a hidden gem for authentic Salvadoran cuisine in the city. The pupusas are made fresh to order and come with a variety of delicious fillings. The staff is warm and welcoming, making you feel right at home. Don’t miss out on their homemade sauces – they add the perfect kick to every dish!"

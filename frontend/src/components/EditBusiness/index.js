@@ -86,10 +86,10 @@ const EditBusiness = () => {
 
   const businessInfoForm = () => {
     if (!bizTemplate) setBizTemplate({ ...populateTemplateObject() });
-    const handleChange = (e, key) => {
+    const handleChange = (event, key) => {
       setBizTemplate({
         ...bizTemplate,
-        [key]: e.target.value
+        [key]: event.target.value
       });
     };
 

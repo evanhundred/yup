@@ -2,3 +2,9 @@ AllCops:
   Exclude:
     - 'db/schema.rb'
     - 'node_modules/**/*'
+    # - 'gems/faker-*/**/*'
+    # - '**/gems/**/*'
+    # - '**/.rbenv/**/*'
+# Metrics/BlockLength:
+#   Exclude:
+#     - 'db/seeds.rb'
