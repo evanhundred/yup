@@ -51,7 +51,7 @@ const EditBusiness = () => {
   // const [priceRating, setPriceRating] = useState(getPriceNumber());
 
   const keysArray = business ? Object.keys(business) : null;
-  const exclude = ['id', 'imageUrls', 'authorNames', 'reviews', 'owns', 'stub'];
+  const exclude = ['id', 'imageUrls', 'authorNames', 'reviews', 'owns', 'stub', 'photosMetadata'];
   const excludeObject = {};
   exclude.forEach((key) => {
     excludeObject[key] = key;
@@ -236,6 +236,7 @@ const EditBusiness = () => {
       const componentsArray = [];
       let count = 1;
       while (count <= numberOfKeys) {
+        // console.log(keyPositionsObject[count]);
         componentsArray.push(keyPositionsObject[count].component);
         count++;
       }
