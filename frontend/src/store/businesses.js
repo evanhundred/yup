@@ -182,37 +182,51 @@ export const createBusinessStub = (business) => async (dispatch) => {
 
 export const updateBusiness = (business) => async (dispatch) => {
   try {
-    const res = await csrfFetch(`/api/businesses/${business.id}`, {
+    const response = await csrfFetch(`/api/businesses/${business.id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ business }) // wrap in business object for Rails strong params
+      body: JSON.stringify(business) // wrap in business object for Rails strong params
+      // body: JSON.stringify({ business }) // wrap in business object for Rails strong params
     });
 
-    const data = await res.json();
-
-    if (res.ok) {
-      dispatch(receiveBusiness(data.business));
-      return { success: true, business: data.business };
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(receiveBusiness(data));
+      return { ok: true, data };
     } else {
-      dispatch(receiveBusinessErrors(data.errors || ['Update failed']));
-      return { sucess: false, errors: data.errors };
-      // // handle non-200 responses
-      // const errorData = await res.json();
-      // return {
-      //   success: false,
-      //   errors: errorData.errors || ['Something went wrong']
-      // };
+      const errorResult = await handleApiError(response);
+      dispatch(receiveErrors(errorResult.errors));
+      return errorResult;
     }
+    // const data = await res.json();
+
+    // if (res.ok) {
+    //   dispatch(receiveBusiness(data.business));
+    //   return { success: true, business: data.business };
+    // } else {
+    //   dispatch(receiveBusinessErrors(data.errors || ['Update failed']));
+    //   return { sucess: false, errors: data.errors };
+    // // handle non-200 responses
+    // const errorData = await res.json();
+    // return {
+    //   success: false,
+    //   errors: errorData.errors || ['Something went wrong']
+    // };
   } catch (error) {
-    // handle network errors or other exceptions
-    const errorMessage = 'Network error. Please try again.';
-    // console.error('Update business error:', error);
-    dispatch(receiveBusinessErrors([errorMessage]));
-    return {
-      success: false,
-      errors: [errorMessage]
-    };
+    const errors = ['Network error: Unable to update business'];
+    dispatch(receiveErrors(errors));
+    return { ok: false, errors };
   }
+  // } catch (error) {
+  //   // handle network errors or other exceptions
+  //   const errorMessage = 'Network error. Please try again.';
+  //   // console.error('Update business error:', error);
+  //   dispatch(receiveBusinessErrors([errorMessage]));
+  //   return {
+  //     success: false,
+  //     errors: [errorMessage]
+  //   };
+  // }
 };
 
 // export const updateBusiness = (business) => async (dispatch) => {
@@ -262,58 +276,113 @@ export const updateBusiness = (business) => async (dispatch) => {
 // }
 
 export const deleteBusiness = (businessId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/businesses/${businessId}`, {
-    method: 'DELETE'
-  });
-  if (res.ok) {
-    dispatch(removeBusiness(businessId));
-    const data = res.json();
-    return data;
-  } else {
-    return res;
+  try {
+    const response = await csrfFetch(`/api/businesses/${businessId}`, {
+      method: 'DELETE'
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(removeBusiness(businessId));
+      return { ok: true, data };
+    } else {
+      const errorResult = await handleApiError(response);
+      dispatch(receiveErrors(errorResult.errors));
+      return errorResult;
+    }
+  } catch (error) {
+    const errors = ['Network error: Unable to delete business'];
+    dispatch(receiveErrors(errors));
+    return { ok: false, errors };
   }
 };
 
 export const searchBusinesses = (query) => async (dispatch) => {
-  let data;
-  query = query.trim();
-  const res = await csrfFetch(`/api/businesses/search`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ query: query })
-  }).catch((error) => {
-    data = error;
-  });
-  if (res && res.ok) {
-    data = await res.json();
-    dispatch(receiveBusinesses(await data));
-  } else {
-    data = res;
+  try {
+    const trimmedQuery = query.trim();
+
+    if (!trimmedQuery) {
+      const errors = ['Search query cannot be empty'];
+      dispatch(receiveErrors(errors));
+      return { ok: false, errors };
+    }
+
+    const response = await csrfFetch('/api/businesses/search', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: trimmedQuery })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(receiveBusiness(data));
+      return { ok: true, data };
+    } else {
+      const errorResult = await handleApiError(response);
+      dispatch(receiveErrors(errorResult.errors));
+      return errorResult;
+    }
+  } catch (error) {
+    const errors = ['Network error: Unable to search businesses'];
+    dispatch(receiveErrors(errors));
+    return { ok: false, errors };
   }
-  return data;
+  // const res = await csrfFetch(`/api/businesses/search`, {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({ query: query })
+  // }).catch((error) => {
+  //   data = error;
+  // });
+  // if (res && res.ok) {
+  //   data = await res.json();
+  //   dispatch(receiveBusinesses(await data));
+  // } else {
+  //   data = res;
+  // }
+  // return data;
 };
 
-const businessesReducer = (preloadedState = {}, action) => {
-  const newState = { ...preloadedState };
+// Reducer
+const businessesReducer = (state = {}, action) => {
+  // const newState = { ...preloadedState };
   switch (action.type) {
     case RECEIVE_BUSINESSES:
-      return { ...newState, ...action.businesses };
+      return { ...action.businesses };
+
     case RECEIVE_BUSINESS:
-      if (action.business.id) newState[action.business.id] = action.business;
-      else newState.errors = action.business;
-      return newState;
-    case RECEIVE_BUSINESS_ERRORS:
-      newState.errors = action.errors;
-      return { ...newState, ...action.errors };
-    case REMOVE_BUSINESS:
+      return {
+        ...state,
+        [action.business.id]: action.business
+      };
+    // if (action.business.id) newState[action.business.id] = action.business;
+    // else newState.errors = action.business;
+    // return newState;
+
+    case RECEIVE_ERRORS:
+      // newState.errors = action.errors;
+      return {
+        ...state,
+        errors: action.errors
+      };
+
+    case REMOVE_BUSINESS: {
+      const newState = { ...state };
       delete newState[action.businessId];
       return newState;
-    case CLEAR_BUSINESS_ERRORS:
-      return { ...newState, errors: [] };
+    }
+
+    case CLEAR_ERRORS: {
+      const newState = { ...state };
+      delete newState.errors;
+      return newState;
+    }
+
     case CLEAR_BUSINESSES:
       return {};
+
     default:
-      return preloadedState;
+      return state;
   }
 };
 
