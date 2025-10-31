@@ -136,24 +136,30 @@ const AddBusinessAsOwner = () => {
 
   const submitBizInfoToBackend = async () => {
     const businessObject = { business: bizTemplate };
-    const res = await dispatch(createBusinessStub(businessObject)).catch(async (res) => {
-      let data;
-      try {
-        data = await res.clone().json();
-      } catch {
-        data = await res.text();
-      }
-      if (data?.errors) setErrors(data.errors);
-      else if (data) setErrors([data]);
-      else setErrors([res.statusText]);
-      // console.log(errors);
-    });
+    // const res = await dispatch(createBusinessStub(businessObject)).catch(async (res) => {
+    //   // console.log(res);
+    //   let data;
+    //   try {
+    //     data = await res.clone().json();
+    //   } catch {
+    //     data = await res.text();
+    //   }
+    //   if (data?.errors) setErrors(data.errors);
+    //   else if (data) setErrors([data]);
+    //   else setErrors([res.statusText]);
+    //   // console.log(errors);
+    // });
+
+    const response = await dispatch(createBusinessStub(businessObject));
 
     let next;
-    if (res.id) {
-      setNewBusinessId(res.id);
+    // if (res.id) {
+    //   setNewBusinessId(res.id);
+    if (response.ok && response.data?.id) {
+      setNewBusinessId(response.data.id);
       next = 'step-four';
     } else {
+      if (response.errors) setErrors(response.errors);
       next = 'submission-fail';
     }
 
