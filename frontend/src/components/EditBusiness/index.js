@@ -4,7 +4,7 @@ import { useParams, useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBusiness, fetchBusiness, updateBusiness, deleteBusiness, clearErrors } from '../../store/businesses';
 import { loadMessage } from '../../store/messages';
-import { backgroundNavBar, unBackgroundNavBar, capitalize } from '../../util/modal';
+import { backgroundNavBar, unBackgroundNavBar } from '../../util/modal';
 import Loading from '../Loading';
 
 const EditBusiness = () => {
@@ -219,60 +219,45 @@ const EditBusiness = () => {
   }
 
   return (
-    <div id="edit-business-container">
+    <div id='edit-business-container'>
       <h2>
         Edit businesss:{' '}
-        <Link to={`/businesses/${businessId}`} className="bizNameLink">
+        <Link to={`/businesses/${businessId}`} className='bizNameLink'>
           {business.name}
         </Link>
       </h2>
 
       {/* Error Display */}
       {errors.length > 0 && (
-        <div className="error-container">
-          {errors.map((error, idx) -> (
-            <p key={idx} className="error-message">{error}</p>
+        <div className='error-container'>
+          {errors.map((error, idx) => (
+            <p key={idx} className='error-message'>
+              {error}
+            </p>
           ))}
         </div>
       )}
 
       {/* Form */}
       <form onSubmit={handleSubmit}>
-        <div className="input-fields">
-          {fieldConfig.map(field => (
-            <FormField
-              key={field.key}
-              field={field}
-              value={field.type === 'price' ? priceRating : formData[field.key]}
-              onChange={field.type === 'price' ? handlePriceClick : handleInputChange}
-            />
+        <div className='input-fields'>
+          {fieldConfig.map((field) => (
+            <FormField key={field.key} field={field} value={field.type === 'price' ? priceRating : formData[field.key]} onChange={field.type === 'price' ? handlePriceClick : handleInputChange} />
           ))}
         </div>
 
-        <div className="button-container">
-          <button type="submit" disabled={isSubmitting}>
+        <div className='button-container'>
+          <button type='submit' disabled={isSubmitting}>
             {isSubmitting ? 'Saving...' : 'Update Business'}
           </button>
-          <button
-            type="button"
-            className="delete-button"
-            onClick={handleDelete}
-            disabled={isSubmitting}
-          >
+          <button type='button' className='delete-button' onClick={handleDelete} disabled={isSubmitting}>
             Delete Business
           </button>
         </div>
       </form>
 
       {/* Confirmation Modal */}
-      {showConfirmModal && (
-        <ConfirmModal
-          action={confirmAction}
-          onConfirm={handleConfirm}
-          onCancel={closeModal}
-          isSubmitting={isSubmitting}
-        />
-      )}
+      {showConfirmModal && <ConfirmModal action={confirmAction} onConfirm={handleConfirm} onCancel={closeModal} isSubmitting={isSubmitting} />}
     </div>
   );
 };
@@ -281,7 +266,7 @@ const EditBusiness = () => {
 const FormField = ({ field, value, onChange }) => {
   if (field.type === 'price') {
     return (
-      <label className="price-field">
+      <label className='price-field'>
         <h4>{field.label}</h4>
         <PriceInput value={value} onChange={onChange} />
       </label>
@@ -290,13 +275,11 @@ const FormField = ({ field, value, onChange }) => {
 
   return (
     <label className={field.key}>
-      <h4>{field.label}{field.required && ' *'}</h4>
-      <input
-        type={field.type}
-        value={value}
-        onChange={(e) => onChange(field.key, e.target.value)}
-        required={field.required}
-      />
+      <h4>
+        {field.label}
+        {field.required && ' *'}
+      </h4>
+      <input type={field.type} value={value} onChange={(e) => onChange(field.key, e.target.value)} required={field.required} />
     </label>
   );
 };
@@ -308,15 +291,9 @@ const PriceInput = ({ value, onChange }) => {
   const displayValue = hoveredValue !== null ? hoveredValue : value;
 
   return (
-    <div className="price-input-container">
-      {[1, 2, 3, 4].map(num => (
-        <div
-          key={num}
-          className={`dollar-box ${num <= displayValue ? 'hovered}' : ''}`}
-          onMouseEnter={() => setHoveredValue(num)}
-          onMouseLeave={() => setHoveredValue(null)}
-          onClick={() => onChange(num)}
-        >
+    <div className='price-input-container'>
+      {[1, 2, 3, 4].map((num) => (
+        <div key={num} className={`dollar-box ${num <= displayValue ? 'hovered}' : ''}`} onMouseEnter={() => setHoveredValue(num)} onMouseLeave={() => setHoveredValue(null)} onClick={() => onChange(num)}>
           $
         </div>
       ))}
@@ -340,33 +317,25 @@ const ConfirmModal = ({ action, onConfirm, onCancel, isSubmitting }) => {
   const actionText = action === 'delete' ? 'Delete' : 'Update';
 
   return (
-    <div id="confirm-modal-container">
-      <div className="confirm-modal-overlay" onClick={!isSubmitting ? onCancel : undefined} />
-      <div className="confirm-modal-box">
-        <div className="confirm-modal-content">
-          <div className="prompt">
-            <div className="confirm-modal-line-1">
+    <div id='confirm-modal-container'>
+      <div className='confirm-modal-overlay' onClick={!isSubmitting ? onCancel : undefined} />
+      <div className='confirm-modal-box'>
+        <div className='confirm-modal-content'>
+          <div className='prompt'>
+            <div className='confirm-modal-line-1'>
               {!isSubmitting && (
-                <div className="close-x" onClick={onCancel}>x</div>
+                <div className='close-x' onClick={onCancel}>
+                  x
+                </div>
               )}
               <h2>Confirm {actionText}</h2>
             </div>
             <p>Are you sure you want to {action} this business?</p>
-            <div className="buttons">
-              <button
-                type="button"
-                className="cancel"
-                onClick={onCancel}
-                disabled={isSubmitting}
-              >
+            <div className='buttons'>
+              <button type='button' className='cancel' onClick={onCancel} disabled={isSubmitting}>
                 Cancel
               </button>
-              <button
-                type="button"
-                className="confirm"
-                onClick={onConfirm}
-                disabled={isSubmitting}
-              >
+              <button type='button' className='confirm' onClick={onConfirm} disabled={isSubmitting}>
                 {isSubmitting ? 'Processing...' : `Confirm ${actionText}`}
               </button>
             </div>
@@ -378,7 +347,6 @@ const ConfirmModal = ({ action, onConfirm, onCancel, isSubmitting }) => {
 };
 
 export default EditBusiness;
-
 
 //   useEffect(() => {
 //     const priceSpans = document.querySelectorAll('#edit-business-container .price-input-container div.dollar-box');
