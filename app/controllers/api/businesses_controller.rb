@@ -4,82 +4,106 @@ module Api
   # Provides publically accessible methods and fields for businesses
   class BusinessesController < ApplicationController
     wrap_parameters include: Business.attribute_names + %w[openAt closedAt]
+
+    before_action :set_business, only: %i[show update destroy]
+    # before_action :set_business, only: [:show, :update, :destroy]
+    before_action :require_owner, only: %i[update destroy]
+
     def index
       @businesses = Business.all
       @users = User.all
       @current_user = current_user
-      if @businesses
-        render :index
-      else
-        render json: @businesses.errors.full_messages, status: 404
-      end
+      render :index
     end
 
     def show
-      @business = Business.find(params[:id])
-      if @business
-        render :show
-      else
-        render json: @business.errors.full_messages, status: 404
-      end
+      render :show
     end
 
     def create
       @business = Business.new(business_params)
+
       if @business.save
-        render :show
+        render :show, status: :created
       else
-        render json: { errors: @business.errors.full_messages }, status: 422
+        render_errors(@business.errors.full_messages, :unprocessable_entity)
       end
     end
 
     def update
-      @business = Business.find(params[:id])
-      if @business.user_is_owner(current_user) && @business.update(business_params)
+      if @business.update(business_params)
         render :show
       else
-        render json: { errors: @business.errors.full_messages }, status: 422
+        render_errors(@business.errors.full_messages, :unprocessable_entity)
       end
+      # @business = Business.find(params[:id])
+      # if @business.user_is_owner(current_user) && @business.update(business_params)
+      #   render :show
+      # else
+      #   render json: { errors: @business.errors.full_messages }, status: 422
+      # end
     end
 
     def destroy
-      @business = Business.find(params[:id])
-      if @business&.destroy
-        render json: { message: 'success' }, status: 200
+      if @business.destroy
+        render json: { message: 'Business deleted successfully' }, status: ok
       else
-        render json: { errors: @business.errors.full_messages }, status: 422
+        render_errors(@business.errors.full_messages, :unprocessable_entity)
+        # render json: { errors: @business.errors.full_messages }, status: 422
       end
     end
 
+    # rubocop:disable Metrics/MethodLength
     def search
-      query = params[:query].parameterize
-      @businesses = []
-      businesses = Business.all
-      @businesses.concat(test_businesses_for_search(businesses, query))
+      query = params[:query]&.parameterize
 
-      if @businesses&.length&.positive?
+      if query.blank?
+        render_errors(['Search query cannot be empty'], :bad_request)
+        return
+      end
+
+      @businesses = Business.all.select { |biz| business_matches_query(biz, query) }
+
+      if @businesses.any?
         render :index
       else
-        render json: ["No results found for #{query}"], status: 404
+        render_errors(["No results found for '#{params[:query]}'"], :not_found)
       end
     end
+    # rubocop:enable Metrics/MethodLength
 
     private
 
-    def test_businesses_for_search(businesses, query)
-      result = []
-      businesses.each do |biz|
-        result.push(biz) if business_matches_query(biz, query)
-      end
-      result
+    def set_business
+      @business = Business.find_by(id: params[:id])
+
+      return if @business
+
+      render_errors(['Business not found'], :not_found)
     end
+
+    def require_owner
+      return if @business&.user_is_owner(current_user)
+
+      render_errors(['You must be the owner to perform this action'], :forbidden)
+    end
+
+    # def test_businesses_for_search(businesses, query)
+    #   result = []
+    #   businesses.each do |biz|
+    #     result.push(biz) if business_matches_query(biz, query)
+    #   end
+    #   result
+    # end
 
     def business_matches_query(business, query)
       fields = [business.name, business.category, business.price, business.neighborhood]
-      fields.each do |field|
-        return true if field&.parameterize&.match(query)
-      end
-      false
+      fields.any? { |field| field&.parameterize&.match(query) }
+    end
+
+    # Standardized error response format
+    def render_errors(messages, status)
+      render json: { errors: Array(messages) }, status:
     end
 
     def business_params # rubocop:disable Metrics/MethodLength

@@ -14,6 +14,10 @@ const EditBusiness = () => {
 
   const { businessId } = useParams();
 
+  const errors = useSelector((state) => state.businesses.errors);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState(business);
+
   const business = useSelector(getBusiness(businessId));
   const [priceRating, setPriceRating] = useState(business ? business.price : null);
 
@@ -217,6 +221,38 @@ const EditBusiness = () => {
       return componentsArray;
     };
 
+    const handleBackendErrors = (backendErrors) => {
+      const fieldErrors = {};
+
+      if (Array.isArray(backendErrors)) {
+        backendErrors.forEach((error) => {
+          if (error.toLowerCase().includes('name')) fieldErrors.name = error;
+          else if (error.toLowerCase().includes('email')) fieldErrors.email = error;
+          else if (error.toLowerCase.includes('phone')) fieldErrors.phone = error;
+          else {
+            if (!fieldErrors.general) fieldErrors.general = [];
+            fieldErrors.general.push(error);
+          }
+        });
+      } else if (typeof backendErrors === 'object') {
+        Object.keys(backendErrors).forEach((field) => {
+          if (backendErrors[field].length > 0) {
+            fieldErrors[field] = backendErrors[field][0];
+          }
+        });
+      } else {
+        fieldErrors.general = ['Something went wrong. Please try again.'];
+      }
+
+      setErrors(fieldErrors);
+      setComponentToRender('submit-fail');
+    };
+
+    const onSuccess = (business) => {
+      console.log('success:', business);
+      setComponentToRender('submit-success');
+    };
+
     const submitUpdate = async () => {
       // console.log(business);
       setShowConfirmModal(false);
@@ -225,35 +261,50 @@ const EditBusiness = () => {
         id: business.id
       };
 
-      const res = await dispatch(updateBusiness(businessObject)).catch(async (res) => {
-        let data;
-        try {
-          console.log('try');
-          data = await res.clone().json();
-        } catch {
-          console.log('catch');
-          data = await res.text();
-        }
-        if (data?.errors) {
-          console.log('data?.errors');
-          setErrors(data.errors);
-          setComponentToRender('submit-fail');
-        } else if (data) {
-          console.log('data');
-          setErrors([data]);
-          setComponentToRender('submit-fail');
-        } else {
-          console.log('else');
-          setErrors([res.statusText]);
-          setComponentToRender('submit-fail');
-        }
-      });
+      // const res = await dispatch(updateBusiness(businessObject)).catch(async (res) => {
+      //   let data;
+      //   try {
+      //     console.log('try');
+      //     data = await res.clone().json();
+      //   } catch {
+      //     console.log('catch');
+      //     data = await res.text();
+      //   }
+      //   if (data?.errors) {
+      //     console.log('data?.errors');
+      //     setErrors(data.errors);
+      //     setComponentToRender('submit-fail');
+      //   } else if (data) {
+      //     console.log('data');
+      //     setErrors([data]);
+      //     setComponentToRender('submit-fail');
+      //   } else {
+      //     console.log('else');
+      //     setErrors([res.statusText]);
+      //     setComponentToRender('submit-fail');
+      //   }
+      // });
 
-      let next;
-      if (res && res.id) next = 'submit-success';
-      else next = 'submit-fail';
+      const result = await dispatch(updateBusiness(businessObject));
+      if (result.success) {
+        onSuccess(result.business);
+      } else {
+        console.log('Update failed:', result.errors);
+      }
 
-      setComponentToRender(next);
+      setIsSubmitting(false);
+      // if (!response.ok) {
+      //   console.log('Backend errors received:', response.errors);
+      //   handleBackendErrors(response.errors);
+      // }
+
+      // onSuccess(response.business);
+
+      // let next;
+      // if (response && response.id) next = 'submit-success';
+      // else next = 'submit-fail';
+
+      // setComponentToRender(next);
     };
 
     const confirmUpdate = () => {
@@ -336,6 +387,15 @@ const EditBusiness = () => {
     const handleSubmit = (e, actionType) => {
       e.preventDefault();
 
+      const frontendErrors = validateBusinessForm(formData);
+      if (Object.keys(frontendErrors).length > 0) {
+        setLocalErrors(frontendErrors);
+        return;
+      }
+
+      setIsSubmitting(true);
+      dispatch(clearBusinessErrors()); // Clear previous errors
+
       setComponentToRender('initial');
 
       if (html) html.style.overflow = 'hidden';
@@ -394,6 +454,7 @@ const EditBusiness = () => {
     return (
       <div className='business-info-form-container'>
         <form onSubmit={(e) => handleSubmit(e, 'update')}>
+          {displayErrors()}
           <div className='input-fields'>{keyPositionsObject && keyPositionsObject && orderedLabelComponents()}</div>
           <div className='button-container'>
             <label>
@@ -449,7 +510,7 @@ const EditBusiness = () => {
             error: {error}
           </h2>
         ))}
-        {businessInfoForm()}
+        {/* {businessInfoForm()} */}
       </div>
     );
   };

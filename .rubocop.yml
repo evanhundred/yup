@@ -3,7 +3,7 @@ AllCops:
     - 'db/schema.rb'
     - 'node_modules/**/*'
     # - 'gems/faker-*/**/*'
-    # - '**/gems/**/*'
+    - '**/gems/**/*'
     # - '**/.rbenv/**/*'
 # Metrics/BlockLength:
 #   Exclude:

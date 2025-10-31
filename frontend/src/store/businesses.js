@@ -6,8 +6,8 @@ export const RECEIVE_BUSINESSES = 'businesses/RECEIVE_BUSINESSES';
 export const RECEIVE_BUSINESS = 'businesses/RECEIVE_BUSINESS';
 export const CLEAR_BUSINESSES = 'businesses/CLEAR_BUSINESSES';
 export const REMOVE_BUSINESS = 'businesses/REMOVE_BUSINESS';
-export const RECEIVE_ERRORS = 'businesses/RECEIVE_ERRORS';
-export const CLEAR_ERRORS = 'businesses/CLEAR_ERRORS';
+export const RECEIVE_BUSINESS_ERRORS = 'businesses/RECEIVE_BUSINESS_ERRORS';
+export const CLEAR_BUSINESS_ERRORS = 'businesses/CLEAR_BUSINESS_ERRORS';
 
 export const receiveBusinesses = (businesses) => ({
   type: RECEIVE_BUSINESSES,
@@ -28,13 +28,13 @@ export const removeBusiness = (businessId) => ({
   businessId
 });
 
-export const receiveErrors = (errors) => ({
-  type: RECEIVE_ERRORS,
+export const receiveBusinessErrors = (errors) => ({
+  type: RECEIVE_BUSINESS_ERRORS,
   errors
 });
 
-export const clearErrors = () => ({
-  type: CLEAR_ERRORS
+export const clearBusinessErrors = () => ({
+  type: CLEAR_BUSINESS_ERRORS
 });
 
 export const resetBusinesses = () => async (dispatch) => {
@@ -67,9 +67,7 @@ export const fetchBusinesses = () => async (dispatch) => {
 };
 
 export const fetchBusiness = (businessId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/businesses/${businessId}`).catch((errors) =>
-    dispatch(receiveErrors(errors))
-  );
+  const res = await csrfFetch(`/api/businesses/${businessId}`).catch((errors) => dispatch(receiveBusinessErrors(errors)));
   let data;
   if (res.ok) {
     data = await res.json();
@@ -95,20 +93,85 @@ export const createBusinessStub = (business) => async (dispatch) => {
 };
 
 export const updateBusiness = (business) => async (dispatch) => {
-  let data;
-  const res = await csrfFetch(`/api/businesses/${business.id}`, {
-    method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(business)
-  }).catch((error) => {
-    data = error;
-  });
-  if (res && res.ok) {
-    data = await res.json();
-    dispatch(receiveBusiness(data));
+  try {
+    const res = await csrfFetch(`/api/businesses/${business.id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ business }) // wrap in business object for Rails strong params
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      dispatch(receiveBusiness(data.business));
+      return { success: true, business: data.business };
+    } else {
+      dispatch(receiveBusinessErrors(data.errors || ['Update failed']));
+      return { sucess: false, errors: data.errors };
+      // // handle non-200 responses
+      // const errorData = await res.json();
+      // return {
+      //   success: false,
+      //   errors: errorData.errors || ['Something went wrong']
+      // };
+    }
+  } catch (error) {
+    // handle network errors or other exceptions
+    const errorMessage = 'Network error. Please try again.';
+    // console.error('Update business error:', error);
+    dispatch(receiveBusinessErrors([errorMessage]));
+    return {
+      success: false,
+      errors: [errorMessage]
+    };
   }
-  return data;
 };
+
+// export const updateBusiness = (business) => async (dispatch) => {
+//   let data;
+//   const res = await csrfFetch(`/api/businesses/${business.id}`, {
+//     method: 'PATCH',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(business)
+//   }).catch((error) => {
+//     data = error;
+//   });
+//   if (res && res.ok) {
+//     data = await res.json();
+//     dispatch(receiveBusiness(data));
+//   }
+//   return data;
+// };
+
+// export const updateBusiness = (business) => async (dispatch) => {
+//   try {
+//     console.log('Submitting data:', business);
+
+//     const response = await csrfFetch(`/api/businesses/*{business.id}`, {
+//       method: 'PATCH',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({business: business})
+//     });
+
+//     console.log('Response status:', response.status);
+
+//     const result = await response.json();
+//     return result;
+//     // console.log('Response data:', result);
+
+//     // if (!response.ok) {
+//     //   console.log('Backend errors received:', result.errors);
+//     //   return result.errors;
+//     // }
+
+//     // onSuccess(result.business);
+//   } catch (error) {
+//     console.error('Network error:', error);
+
+//   }
+// }
 
 export const deleteBusiness = (businessId) => async (dispatch) => {
   const res = await csrfFetch(`/api/businesses/${businessId}`, {
@@ -151,14 +214,14 @@ const businessesReducer = (preloadedState = {}, action) => {
       if (action.business.id) newState[action.business.id] = action.business;
       else newState.errors = action.business;
       return newState;
-    case RECEIVE_ERRORS:
+    case RECEIVE_BUSINESS_ERRORS:
       newState.errors = action.errors;
       return { ...newState, ...action.errors };
     case REMOVE_BUSINESS:
       delete newState[action.businessId];
       return newState;
-    case CLEAR_ERRORS:
-      return {};
+    case CLEAR_BUSINESS_ERRORS:
+      return { ...newState, errors: [] };
     case CLEAR_BUSINESSES:
       return {};
     default:
