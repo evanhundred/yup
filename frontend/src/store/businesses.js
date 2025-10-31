@@ -2,13 +2,17 @@ import { createSelector } from '@reduxjs/toolkit';
 import { createOwnedBusiness } from './ownedBusinesses';
 import csrfFetch from './csrf';
 
+// Action Types
 export const RECEIVE_BUSINESSES = 'businesses/RECEIVE_BUSINESSES';
 export const RECEIVE_BUSINESS = 'businesses/RECEIVE_BUSINESS';
 export const CLEAR_BUSINESSES = 'businesses/CLEAR_BUSINESSES';
 export const REMOVE_BUSINESS = 'businesses/REMOVE_BUSINESS';
-export const RECEIVE_BUSINESS_ERRORS = 'businesses/RECEIVE_BUSINESS_ERRORS';
-export const CLEAR_BUSINESS_ERRORS = 'businesses/CLEAR_BUSINESS_ERRORS';
+export const RECEIVE_ERRORS = 'businesses/RECEIVE_ERRORS';
+export const CLEAR_ERRORS = 'busineses/CLEAR_ERRORS';
+// export const RECEIVE_BUSINESS_ERRORS = 'businesses/RECEIVE_BUSINESS_ERRORS';
+// export const CLEAR_BUSINESS_ERRORS = 'businesses/CLEAR_BUSINESS_ERRORS';
 
+// Action Creators
 export const receiveBusinesses = (businesses) => ({
   type: RECEIVE_BUSINESSES,
   businesses
@@ -28,69 +32,153 @@ export const removeBusiness = (businessId) => ({
   businessId
 });
 
-export const receiveBusinessErrors = (errors) => ({
-  type: RECEIVE_BUSINESS_ERRORS,
+export const receiveErrors = (errors) => ({
+  type: RECEIVE_ERRORS,
   errors
 });
 
-export const clearBusinessErrors = () => ({
-  type: CLEAR_BUSINESS_ERRORS
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS
 });
 
-export const resetBusinesses = () => async (dispatch) => {
-  dispatch(clearBusinesses());
-};
+// Selectors
+// export const resetBusinesses = () => async (dispatch) => {
+//   dispatch(clearBusinesses());
+// };
 
 export const getBusiness =
   (businessId) =>
   ({ businesses }) => {
-    if (businesses.errors) return businesses.errors;
-    return businesses[businessId];
+    return businesses[businessId] || null;
+    // if (businesses.errors) return businesses.errors;
+    // return businesses[businessId];
   };
 
 export const getBusinesses = createSelector(
   (state) => state.businesses,
   (businesses) => {
-    return Object.values(businesses);
+    Object.values(businesses).filter((item) => typeof item === 'object' && item.id);
   }
 );
 
-export const fetchBusinesses = () => async (dispatch) => {
-  const res = await csrfFetch('/api/businesses');
-  let data;
-  if (res.ok) {
-    data = await res.json();
-    dispatch(receiveBusinesses(data));
-  } else {
-    data = res.errors;
+export const getBusinessErrors = (state) => state.businesses.errors || null;
+
+// Helper function to handle API errors consistently
+const handleApiError = async (response) => {
+  let errorData;
+
+  try {
+    errorData = await response.json();
+  } catch {
+    // If JSON parsing fails, create a generic error
+    errorData = { errors: ['An unexpected error occurred'] };
   }
+
+  // Ensure we always return an array of error messages
+  const errors = errorData.errors || [errorData.message] || ['An error occurred.'];
+
+  return {
+    ok: false,
+    errors: Array.isArray(errors) ? errors : [errors],
+    status: response.status
+  };
+};
+
+// Thunk Actions
+export const fetchBusinesses = () => async (dispatch) => {
+  try {
+    const response = await csrfFetch('/api/businesses');
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(receiveBusinesses(data));
+      return { ok: true, data };
+    } else {
+      const errorResult = await handleApiError(response);
+      dispatch(receiveErrors(errorResult.errors));
+      return errorResult;
+    }
+  } catch (error) {
+    const errors = ['Network error: Unable to fetch businesses'];
+    dispatch(receiveErrors(errors));
+    return { ok: false, errors };
+  }
+  // const res = await csrfFetch('/api/businesses');
+  // let data;
+  // if (res.ok) {
+  //   data = await res.json();
+  //   dispatch(receiveBusinesses(data));
+  // } else {
+  //   data = res.errors;
+  // }
 };
 
 export const fetchBusiness = (businessId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/businesses/${businessId}`).catch((errors) => dispatch(receiveBusinessErrors(errors)));
-  let data;
-  if (res.ok) {
-    data = await res.json();
-    dispatch(receiveBusiness(data));
+  try {
+    const response = await csrfFetch(`/api/businesses/${businessId}`);
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(receiveBusiness(data));
+      return { ok: true, data };
+    } else {
+      const errorResult = await handleApiError(response);
+      dispatch(receiveErrors(errorResult.errors));
+      return errorResult;
+    }
+  } catch (error) {
+    const errors = ['Network error: Unable to fetch business'];
+    dispatch(receiveErrors(errors));
+    return { ok: false, errors };
   }
+  // const res = await csrfFetch(`/api/businesses/${businessId}`).catch((errors) => dispatch(receiveBusinessErrors(errors)));
+  // let data;
+  // if (res.ok) {
+  //   data = await res.json();
+  //   dispatch(receiveBusiness(data));
+  // }
 };
 
 export const createBusinessStub = (business) => async (dispatch) => {
-  let data;
-  const res = await csrfFetch(`/api/businesses/`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(business)
-  }).catch((error) => {
-    data = error;
-  });
-  if (res && res.ok) {
-    data = await res.json();
-    dispatch(createOwnedBusiness(data.id));
-    dispatch(receiveBusiness(data));
+  try {
+    const response = await csrfFetch('/api/businesses', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(business)
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(createOwnedBusiness(data.id));
+      dispatch(receiveBusiness(data));
+      return { ok: true, data };
+    } else {
+      const errorResult = await handleApiError(response);
+      dispatch(receiveErrors(errorResult.errors));
+      return errorResult;
+    }
+  } catch (error) {
+    const errors = ['Network error: Unable to create business'];
+    dispatch(receiveErrors(errors));
+    return { ok: false, errors };
   }
-  return data;
+  //   let data;
+  //   const res = await csrfFetch(`/api/businesses/`, {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify(business)
+  //   }).catch((error) => {
+  //     data = error;
+  //   });
+  //   if (res && res.ok) {
+  //     data = await res.json();
+  //     dispatch(createOwnedBusiness(data.id));
+  //     dispatch(receiveBusiness(data));
+  //   }
+  //   return data;
 };
+
+// FINISH UPDATING AND REFACTORING PER CLAUDE SUGGESTIONS!!!
 
 export const updateBusiness = (business) => async (dispatch) => {
   try {
