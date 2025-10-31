@@ -46,7 +46,7 @@ module Api
 
     def destroy
       if @business.destroy
-        render json: { message: 'Business deleted successfully' }, status: ok
+        render json: { message: 'Business deleted successfully' }, status: :ok
       else
         render_errors(@business.errors.full_messages, :unprocessable_entity)
         # render json: { errors: @business.errors.full_messages }, status: 422

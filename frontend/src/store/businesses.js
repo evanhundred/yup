@@ -42,9 +42,9 @@ export const clearErrors = () => ({
 });
 
 // Selectors
-// export const resetBusinesses = () => async (dispatch) => {
-//   dispatch(clearBusinesses());
-// };
+export const resetBusinesses = () => async (dispatch) => {
+  dispatch(clearBusinesses());
+};
 
 export const getBusiness =
   (businessId) =>
@@ -56,9 +56,7 @@ export const getBusiness =
 
 export const getBusinesses = createSelector(
   (state) => state.businesses,
-  (businesses) => {
-    Object.values(businesses).filter((item) => typeof item === 'object' && item.id);
-  }
+  (businesses) => Object.values(businesses).filter((item) => typeof item === 'object' && item.id)
 );
 
 export const getBusinessErrors = (state) => state.businesses.errors || null;
